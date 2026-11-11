@@ -1,7 +1,7 @@
 /*
  * Mozaik design tokens.
- * --accent is the only colour a language pack overrides; everything else is
- * shared. Delft blue is the Dutch accent and the default.
+ * --accent is the only colour a language pack overrides (Dutch: Delft blue);
+ * everything else is shared by all languages.
  */
 :root {
   --porcelain: #f6f8fc;   /* page background, cool glazed white */
@@ -10,7 +10,7 @@
   --ink: #1b2232;         /* body text */
   --ink-muted: #56627c;   /* secondary text */
   --heading: #10255a;     /* headings, deepest blue */
-  --accent: #1d3f8c;      /* Delft blue, overridable per language */
+  --accent: #4a5878;      /* neutral until a language pack sets its own */
   --accent-ink: #ffffff;  /* text on the accent */
   --danger: #a3262a;
 
@@ -38,9 +38,21 @@
     --ink: #e4e9f3;
     --ink-muted: #9aa7c0;
     --heading: #d7e2fa;
-    --accent: #8fb0f0;
+    --accent: #a9b6cf;
     --accent-ink: #0e1524;
     --danger: #f08a8d;
+  }
+}
+
+/* The learner's language sets its accent (see LearningLanguageProvider). */
+.accent-scope {
+  --accent: var(--accent-light, #4a5878);
+  --focus: 0 0 0 3px var(--porcelain), 0 0 0 5px var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .accent-scope {
+    --accent: var(--accent-dark, #a9b6cf);
   }
 }
 
@@ -271,4 +283,29 @@ a {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.language-list {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 26rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.language-option {
+  width: 100%;
+  justify-content: space-between;
+  background: transparent;
+  color: var(--heading);
+  border: 1px solid var(--grout);
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+}
+
+.language-option small {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
 }

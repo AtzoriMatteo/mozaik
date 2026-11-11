@@ -26,6 +26,15 @@ each device.
 login and saves nothing, and says so in the top bar.
 Why: lets us show and test screens before accounts exist.
 
+**No default language to learn (Matteo).** Which language someone is
+learning is their own choice, saved per learner, switchable anytime; each
+language keeps its own mosaic and accent colour. With one pack installed
+the learner is simply placed in it; with several and no saved choice, the
+first screen asks "What do you want to learn?". The interface and
+explanation language is a separate setting (English for now).
+Cost/limit: until saved words live in the database, the choice is stored in
+the browser only; it moves to the learner's account in step 2.
+
 **Language packs (Claude).** The core app never names a language. Each pack
 (`src/packs/<code>`) supplies its tokeniser, accent colour, greeting and
 (later) content, grammar notes and pronunciation data. Adding a language =

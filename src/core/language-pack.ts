@@ -22,8 +22,8 @@ export interface LanguagePack {
   name: string;
   /** Name in the language itself, e.g. "Nederlands". */
   nativeName: string;
-  /** Accent colour for this language (any CSS colour). */
-  accent: string;
+  /** Accent colour for this language, for light and dark mode. */
+  accent: { light: string; dark: string };
   /** Levels this pack currently has content for. */
   levels: readonly CefrLevel[];
   /** Split a text into words, spaces and punctuation. */

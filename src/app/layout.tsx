@@ -6,6 +6,7 @@ import "@fontsource-variable/atkinson-hyperlegible-next";
 import "./globals.css";
 import { Logo } from "@/components/logo";
 import { Account } from "@/components/account";
+import { LearningLanguageProvider } from "@/components/learning-language";
 
 export const metadata: Metadata = {
   title: "Mozaik",
@@ -23,15 +24,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <div className="shell">
-          <header className="topbar">
-            <Logo />
-            <Suspense fallback={null}>
-              <Account />
-            </Suspense>
-          </header>
-          {children}
-        </div>
+        <LearningLanguageProvider>
+          <div className="shell">
+            <header className="topbar">
+              <Logo />
+              <Suspense fallback={null}>
+                <Account />
+              </Suspense>
+            </header>
+            {children}
+          </div>
+        </LearningLanguageProvider>
       </body>
     </html>
   );
