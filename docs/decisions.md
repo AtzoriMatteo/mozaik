@@ -5,6 +5,22 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-11 — Step 1 direction
+
+**Mozaik is completely free (Matteo).** No paid AI calls at runtime. Word
+help for course texts is written while building each text and stored with
+it, so tapping costs nothing. Hosting stays on free tiers. If AI help is
+ever added (e.g. for pasted texts), it must be optional: bring-your-own-key
+or a free tier, never a bill for the project.
+
+**No pasted texts for now (Matteo).** Step 1 covers the course's starter
+texts only; importing your own text comes later (it will need a free
+dictionary, e.g. Wiktionary data, for words without hand-written help).
+
+**Calm word help (Matteo).** Tapping a word shows only its meaning. The
+"see it differently" and "sound native" layers sit behind small optional
+buttons, one short line each, and only appear when a word has one.
+
 ## 2026-11-11 — Step 0: foundations
 
 **Tech stack (Claude).** Next.js 16 + TypeScript, Supabase (login + Postgres),
@@ -59,8 +75,6 @@ speaker would call one word.
   -avond/-nacht) with its English meaning: a tiny bit of Dutch on every visit.
 
 ## Open (Matteo to decide)
-- Who pays for AI usage once others use Mozaik: free with limits,
-  bring-your-own-key, or a paid tier.
 - Where course content comes from: AI-generated and reviewed, hand-written,
   or a mix. (Proposed for Milestone 1: AI-generated, carefully checked, with
   a "this sounds odd" flag for later native review.)
