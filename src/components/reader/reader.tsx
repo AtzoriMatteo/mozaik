@@ -8,6 +8,7 @@ import { getPack } from "@/core/registry";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
 import { useReadTexts } from "@/lib/progress/use-read-texts";
 import { WordPanel } from "./word-panel";
+import { ListenControls } from "./listen-controls";
 
 type WordRef = {
   key: string;
@@ -103,7 +104,10 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
         <p className="reader-subtitle">{text.titleTranslation}</p>
       </header>
 
-      <p className="reader-hint">Tap any word for help.</p>
+      <div className="reader-tools">
+        <p className="reader-hint">Tap any word for help.</p>
+        <ListenControls lang={pack.code} sentences={text.paragraphs.flat().map((s) => s.text)} />
+      </div>
 
       <div className="reader-body" lang={pack.code}>
         {paragraphs.map((sentences, p) => (
@@ -156,6 +160,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           surface={selected.surface}
           help={selected.help}
           translation={selected.translation}
+          sentence={selected.sentence}
           saved={saved.isSaved(selected.normalized)}
           error={saved.error}
           onToggleSave={() => toggleSave(selected)}

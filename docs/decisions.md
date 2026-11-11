@@ -5,6 +5,44 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Overnight: A1 course, review, listening
+
+**A1 course structure (Claude, from Matteo's brief).** 8 topic units ×
+2 different texts (16 texts, ~190 words each, 120–320 enforced): Meeting
+people, Family, Food and shopping, Days and time, Home and town, Work and
+study, Health, Free time and weather. Each unit has can-do goals. New
+recurring cast (no Sanne): Luca (Italian student new in Leiden), housemates
+Noor and Bram, neighbour mevrouw De Vries, classmate Fatima.
+
+**Full A1 coverage, enforced (Matteo).** The pack lists the A1 grammar
+syllabus (23 points) and ~400 core words. Tests fail if any core word or
+grammar point isn't in at least one A1 text, or if any word lacks help.
+Texts stay in present tense (plus fixed forms like "was"); the perfect
+tense waits for A2.
+
+**Better word notes (Matteo).** All help rewritten. "Look closer" = literal
+parts, sound rules linking to English (ij ↔ i, ui ↔ ou, d ↔ th), memorable
+origins. "Like a local" = set phrases, register, pronunciation traps, common
+mistakes (geen vs niet, kennen vs weten, lopen ≠ run). Trivia removed; a
+layer is simply absent when there's nothing useful to say.
+
+**Review = simple ladder (Claude).** Stages with waits of 0, 1, 3, 7, 16,
+35, 90 days. "Got it" moves up, "Not yet" restarts and returns in 10 min.
+A word is *learned* (a glazed tile) from stage 3: three successful reviews
+over about a week. Stages 0–1 show the word in its sentence (what does it
+mean?); from stage 2 the word is blanked out (which word means X?).
+Sessions are 10 cards max; "Stop for now" is always visible. Two buttons
+only, keys 1/2, Space to reveal. Needs migration 0002 (Matteo runs once).
+
+**Listening, free (Claude).** "Listen to the text" (normal/slow) and hear
+single words or sentences, using the device's own Dutch voice: free, nothing
+sent anywhere. Quality depends on the device; buttons hide if there is no
+Dutch voice. Natural recorded/AI audio can come later if wanted.
+
+**Progress on this device (Claude).** Which texts you've finished is kept
+in the browser for now (Continue button, read marks); saved words and their
+review schedule are in your account.
+
 ## 2026-11-12 — Step 1: the reader
 
 **Five A1 starter texts (Claude, Matteo's call delegated).** Introducing

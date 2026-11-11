@@ -36,11 +36,15 @@ src/
   app/           pages and routes (Next.js App Router)
   components/    shared UI (tile, mosaic, greeting, logo)
   core/          language-agnostic logic and the LanguagePack contract
-  packs/nl/      the Dutch language pack
+  packs/nl/      the Dutch language pack: units (texts), lexicon (word help),
+                 grammar syllabus, core vocabulary
+  lib/           saved words, reading progress, Supabase access
   lib/supabase/  login and database access
   proxy.ts       refreshes the session, sends signed-out visitors to /login
 docs/
   decisions.md   what we decided and why
+supabase/
+  migrations/    database changes, run in order in the Supabase SQL editor
 ```
 
 ## Adding a language

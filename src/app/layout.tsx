@@ -5,6 +5,7 @@ import "@fontsource-variable/literata/wght-italic.css";
 import "@fontsource-variable/atkinson-hyperlegible-next";
 import "./globals.css";
 import { Logo } from "@/components/logo";
+import { Nav } from "@/components/nav";
 import { Account } from "@/components/account";
 import { LearningLanguageProvider } from "@/components/learning-language";
 
@@ -27,7 +28,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <LearningLanguageProvider>
           <div className="shell">
             <header className="topbar">
-              <Logo />
+              <div className="topbar-left">
+                <Logo />
+                <Nav />
+              </div>
               <Suspense fallback={null}>
                 <Account />
               </Suspense>

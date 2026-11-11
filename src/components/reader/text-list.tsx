@@ -25,7 +25,7 @@ export function TextList() {
 
       {next ? (
         <Link href={`/read/${pack.code}/${next.id}`} className="button continue-button">
-          {readIds.size === 0 ? "Start with" : "Continue with"}:&nbsp;
+          {readIds.size === 0 ? "Start with" : "Continue with"}:{" "}
           <span lang={pack.code}>{next.title}</span>
         </Link>
       ) : (

@@ -16,6 +16,8 @@ type Row = {
   meaning: string;
   sentence: string;
   text_id: string;
+  stage?: number;
+  due_at?: string;
 };
 
 const fromRow = (r: Row): SavedWord => ({
@@ -26,7 +28,13 @@ const fromRow = (r: Row): SavedWord => ({
   meaning: r.meaning,
   sentence: r.sentence,
   textId: r.text_id,
+  stage: r.stage,
+  dueAt: r.due_at,
 });
+
+const BASE_COLUMNS = "language, word, surface, base, meaning, sentence, text_id";
+// Postgres "undefined column": the review migration hasn't been run yet.
+const MISSING_COLUMN = "42703";
 
 async function client() {
   const supabase = await createSupabaseServerClient();
@@ -34,15 +42,27 @@ async function client() {
   return supabase;
 }
 
-export async function listSavedWords(language: string): Promise<SavedWord[]> {
+export async function listSavedWords(
+  language: string,
+): Promise<{ words: SavedWord[]; reviewReady: boolean }> {
   const supabase = await client();
-  const { data, error } = await supabase
+  const full = await supabase
     .from("saved_words")
-    .select("language, word, surface, base, meaning, sentence, text_id")
+    .select(`${BASE_COLUMNS}, stage, due_at`)
     .eq("language", language)
     .order("created_at", { ascending: true });
-  if (error) throw new Error(`Couldn't load saved words: ${error.message}`);
-  return (data as Row[]).map(fromRow);
+
+  if (!full.error) return { words: (full.data as Row[]).map(fromRow), reviewReady: true };
+
+  if (full.error.code === MISSING_COLUMN) {
+    const basic = await supabase
+      .from("saved_words")
+      .select(BASE_COLUMNS)
+      .eq("language", language)
+      .order("created_at", { ascending: true });
+    if (!basic.error) return { words: (basic.data as Row[]).map(fromRow), reviewReady: false };
+  }
+  throw new Error(`Couldn't load saved words: ${full.error.message}`);
 }
 
 export async function saveWord(word: SavedWord): Promise<void> {
@@ -70,4 +90,19 @@ export async function unsaveWord(language: string, word: string): Promise<void> 
     .eq("language", language)
     .eq("word", word);
   if (error) throw new Error(`Couldn't remove "${word}": ${error.message}`);
+}
+
+export async function recordReview(
+  language: string,
+  word: string,
+  stage: number,
+  dueAt: string,
+): Promise<void> {
+  const supabase = await client();
+  const { error } = await supabase
+    .from("saved_words")
+    .update({ stage, due_at: dueAt, reviewed_at: new Date().toISOString() })
+    .eq("language", language)
+    .eq("word", word);
+  if (error) throw new Error(`Couldn't save your review: ${error.message}`);
 }

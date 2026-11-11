@@ -12,7 +12,7 @@ export async function Account() {
 
   return (
     <div className="account">
-      <span>{email}</span>
+      <span className="account-email">{email}</span>
       <form action="/auth/signout" method="post">
         <button type="submit" className="button button-quiet">Log out</button>
       </form>

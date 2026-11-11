@@ -8,4 +8,8 @@ export type SavedWord = {
   meaning: string;
   sentence: string;
   textId: string;
+  /** Spaced-repetition stage (0 = new). */
+  stage?: number;
+  /** ISO time of the next review. */
+  dueAt?: string;
 };

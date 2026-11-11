@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { WordHelp } from "@/core/content";
+import { SpeakButton } from "@/components/speak-button";
 
 type Layer = "closer" | "local" | "sentence";
 
@@ -14,6 +15,7 @@ export function WordPanel(props: {
   surface: string;
   help: WordHelp | undefined;
   translation: string;
+  sentence: string;
   saved: boolean;
   error: string | null;
   onToggleSave: () => void;
@@ -40,6 +42,7 @@ export function WordPanel(props: {
                 from <span lang={lang}>{help.base}</span>
               </span>
             ) : null}
+            <SpeakButton lang={lang} text={surface} label={`Hear ${surface}`} />
           </p>
           <button type="button" className="icon-button" aria-label="Close" onClick={props.onClose}>
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
@@ -77,7 +80,14 @@ export function WordPanel(props: {
           ) : null}
         </div>
 
-        {openLine ? <p className="word-panel-layer">{openLine}</p> : null}
+        {openLine ? (
+          <p className="word-panel-layer">
+            {openLine}
+            {open === "sentence" ? (
+              <SpeakButton lang={lang} text={props.sentence} label="Hear the sentence" rate={0.85} />
+            ) : null}
+          </p>
+        ) : null}
         {error ? <p className="error" role="alert">{error}</p> : null}
       </div>
     </aside>
