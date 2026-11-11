@@ -10,8 +10,10 @@ const fakePack = (code: string): LanguagePack => ({
   levels: ["A1"],
   tokenize: () => [],
   greeting: () => ({ text: "", meaning: "" }),
-  texts: [],
+  units: [],
   lexicon: {},
+  grammar: [],
+  coreVocabulary: {},
 });
 
 describe("language pack registry", () => {

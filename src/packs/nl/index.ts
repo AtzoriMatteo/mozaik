@@ -1,7 +1,9 @@
 import type { LanguagePack, Token } from "@/core/language-pack";
 import { segmentText } from "@/core/tokenize";
 import { lexicon } from "./lexicon";
-import { texts } from "./texts";
+import { grammar } from "./grammar";
+import { units } from "./units";
+import { coreVocabularyA1 } from "./vocabulary";
 
 /**
  * Dutch uses apostrophes inside words ("auto's", "baby's") and as the start
@@ -64,9 +66,11 @@ export const dutch: LanguagePack = {
   name: "Dutch",
   nativeName: "Nederlands",
   accent: { light: "#1d3f8c", dark: "#8fb0f0" }, // Delft blue
-  levels: ["A1", "A2"],
+  levels: ["A1"],
   tokenize: tokenizeDutch,
   greeting: greetingFor,
-  texts,
+  units,
   lexicon,
+  grammar,
+  coreVocabulary: { A1: coreVocabularyA1 },
 };

@@ -532,3 +532,87 @@ a {
 .icon-button:hover {
   background: var(--glaze);
 }
+
+/* ---------- Units ---------- */
+
+.continue-button {
+  margin-bottom: 2.5rem;
+}
+
+.unit {
+  margin: 0 0 2.75rem;
+  max-width: var(--measure);
+}
+
+.unit-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--step-2);
+}
+
+.unit-sub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.25rem 0 0.75rem;
+  color: var(--ink-muted);
+}
+
+.unit-progress {
+  font-size: 0.95rem;
+}
+
+.level-tag {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.1rem;
+  height: 1.6rem;
+  padding: 0 0.4rem;
+  border-radius: 4px;
+  background: var(--glaze);
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.can-do {
+  margin: 0 0 1rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.can-do summary {
+  cursor: pointer;
+  color: var(--accent);
+  width: fit-content;
+}
+
+.can-do ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.text-card[data-read] .text-card-title {
+  color: var(--ink-muted);
+}
+
+.text-card-done {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.reader-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  color: var(--ink-muted);
+}
+
+.reader-done {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}

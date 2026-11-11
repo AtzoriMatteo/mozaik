@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { allTexts } from "@/core/language-pack";
 import { getPack, listPacks } from "@/core/registry";
 import { Reader } from "@/components/reader/reader";
 
 type Params = { lang: string; textId: string };
 
 export function generateStaticParams(): Params[] {
-  return listPacks().flatMap((pack) => pack.texts.map((t) => ({ lang: pack.code, textId: t.id })));
+  return listPacks().flatMap((pack) => allTexts(pack).map((t) => ({ lang: pack.code, textId: t.id })));
 }
 
 function find({ lang, textId }: Params) {
-  return getPack(lang)?.texts.find((t) => t.id === textId);
+  const pack = getPack(lang);
+  return pack ? allTexts(pack).find((t) => t.id === textId) : undefined;
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {

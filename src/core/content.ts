@@ -3,16 +3,23 @@ import type { CefrLevel } from "./language-pack";
 /**
  * Help for one word, written by hand for course texts.
  * Only `meaning` is shown on tap; the other layers sit behind small optional
- * buttons and should be one short line each.
+ * buttons and must be one short line each. Leave a layer out rather than
+ * fill it with trivia: it should teach something you can use.
  */
 export type WordHelp = {
   /** Short meaning in the explanation language, e.g. "hospital". */
   meaning: string;
   /** Dictionary form when the word in the text is inflected, e.g. "wonen". */
   base?: string;
-  /** "See it differently": etymology, literal meaning, cognate, mnemonic. */
+  /**
+   * "Look closer": something that makes the word click or stick — literal
+   * parts, a cognate plus the sound rule behind it, a memorable link.
+   */
   closer?: string;
-  /** "Sound native": how locals actually use it. */
+  /**
+   * "Like a local": how it's really used — set phrases, register, a
+   * pronunciation trap, a common mistake to avoid.
+   */
   local?: string;
 };
 
@@ -32,8 +39,30 @@ export type ReadingText = {
   /** Title in the explanation language. */
   titleTranslation: string;
   paragraphs: Sentence[][];
+  /** Grammar points (ids) this text deliberately features. */
+  grammar: string[];
   /** Help that only applies in this text; overrides the pack lexicon. */
   words?: Record<string, WordHelp>;
+};
+
+/** A topic unit: several different texts on one theme, with clear goals. */
+export type Unit = {
+  id: string;
+  level: CefrLevel;
+  title: string;
+  titleTranslation: string;
+  /** What you can do after this unit, in plain words. */
+  canDo: string[];
+  texts: ReadingText[];
+};
+
+export type GrammarPoint = {
+  id: string;
+  level: CefrLevel;
+  /** Short name, e.g. "Verb second". */
+  title: string;
+  /** One-line plain explanation with an example. */
+  summary: string;
 };
 
 /** Pack-wide word help, keyed by the lower-cased word as it appears in texts. */
@@ -47,10 +76,18 @@ export function helpFor(
   return text.words?.[normalized] ?? lexicon[normalized];
 }
 
-/** Rough reading time at a slow, learner pace (~60 words a minute). */
-export function minutesToRead(text: ReadingText): number {
-  const words = text.paragraphs
+/** Dictionary form of a word: its `base` if inflected, otherwise itself. */
+export function lemmaOf(help: WordHelp | undefined, normalized: string): string {
+  return (help?.base ?? normalized).toLowerCase();
+}
+
+export function countWords(text: ReadingText): number {
+  return text.paragraphs
     .flat()
     .reduce((n, s) => n + s.text.split(/\s+/).filter(Boolean).length, 0);
-  return Math.max(1, Math.round(words / 60));
+}
+
+/** Rough reading time at a slow, learner pace (~60 words a minute). */
+export function minutesToRead(text: ReadingText): number {
+  return Math.max(1, Math.round(countWords(text) / 60));
 }

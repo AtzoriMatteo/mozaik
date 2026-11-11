@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { helpFor, type WordHelp } from "@/core/content";
-import type { LanguagePack } from "@/core/language-pack";
+import { allTexts, type LanguagePack } from "@/core/language-pack";
 import { getPack } from "@/core/registry";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
+import { useReadTexts } from "@/lib/progress/use-read-texts";
 import { WordPanel } from "./word-panel";
 
 type WordRef = {
@@ -20,10 +21,13 @@ type WordRef = {
 /** The reading screen: a text where every word can be tapped for help. */
 export function Reader({ lang, textId }: { lang: string; textId: string }) {
   const pack = getPack(lang) as LanguagePack;
-  const index = pack.texts.findIndex((t) => t.id === textId);
-  const text = pack.texts[index];
-  const next = pack.texts[index + 1];
+  const texts = allTexts(pack);
+  const index = texts.findIndex((t) => t.id === textId);
+  const text = texts[index];
+  const next = texts[index + 1];
+  const unit = pack.units.find((u) => u.texts.some((t) => t.id === textId));
   const saved = useSavedWords(pack.code);
+  const { markRead } = useReadTexts(pack.code);
 
   // Tokenise once and give every word a stable key, so the arrow keys can
   // move through them in reading order.
@@ -88,6 +92,12 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
   return (
     <article className="reader">
       <Link href="/read" className="back-link">All texts</Link>
+      {unit ? (
+        <p className="reader-unit">
+          <span className="level-tag">{unit.level}</span>
+          <span lang={pack.code}>{unit.title}</span>
+        </p>
+      ) : null}
       <header className="reader-head">
         <h1 lang={pack.code}>{text.title}</h1>
         <p className="reader-subtitle">{text.titleTranslation}</p>
@@ -125,11 +135,17 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
 
       <footer className="reader-end">
         {next ? (
-          <Link href={`/read/${pack.code}/${next.id}`} className="button">
+          <Link
+            href={`/read/${pack.code}/${next.id}`}
+            className="button"
+            onClick={() => markRead(text.id)}
+          >
             Next text: <span lang={pack.code}>{next.title}</span>
           </Link>
         ) : (
-          <Link href="/read" className="button">Back to all texts</Link>
+          <Link href="/read" className="button" onClick={() => markRead(text.id)}>
+            Done: back to all texts
+          </Link>
         )}
       </footer>
 
