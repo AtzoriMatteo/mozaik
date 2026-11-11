@@ -1,49 +1,274 @@
+/*
+ * Mozaik design tokens.
+ * --accent is the only colour a language pack overrides; everything else is
+ * shared. Delft blue is the Dutch accent and the default.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --porcelain: #f6f8fc;   /* page background, cool glazed white */
+  --glaze: #e3eaf7;       /* soft tile tint */
+  --grout: #c8d2e6;       /* lines between things */
+  --ink: #1b2232;         /* body text */
+  --ink-muted: #56627c;   /* secondary text */
+  --heading: #10255a;     /* headings, deepest blue */
+  --accent: #1d3f8c;      /* Delft blue, overridable per language */
+  --accent-ink: #ffffff;  /* text on the accent */
+  --danger: #a3262a;
+
+  --font-ui: "Atkinson Hyperlegible Next Variable", system-ui, sans-serif;
+  --font-read: "Literata Variable", Georgia, serif;
+
+  /* Type scale (roughly a perfect fourth) */
+  --step-0: 1.0625rem;
+  --step-1: 1.375rem;
+  --step-2: 1.75rem;
+  --step-3: 2.75rem;
+  --step-4: clamp(2.75rem, 8vw, 4.5rem);
+
+  --radius-tile: 6px;
+  --radius-control: 10px;
+  --measure: 34rem;
+  --focus: 0 0 0 3px var(--porcelain), 0 0 0 5px var(--accent);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --porcelain: #0e1524;
+    --glaze: #18233a;
+    --grout: #2c3a57;
+    --ink: #e4e9f3;
+    --ink-muted: #9aa7c0;
+    --heading: #d7e2fa;
+    --accent: #8fb0f0;
+    --accent-ink: #0e1524;
+    --danger: #f08a8d;
   }
 }
 
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html {
+  color-scheme: light dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--porcelain);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  color: var(--heading);
+  font-family: var(--font-read);
+  font-weight: 500;
+  line-height: 1.15;
   margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: var(--radius-control);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
+}
+
+/* ---------- Shell ---------- */
+
+.shell {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 4rem;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 9vh, 5rem);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--heading);
+  text-decoration: none;
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+  font-weight: 500;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.notice {
+  white-space: nowrap;
+  border: 1px dashed var(--grout);
+  border-radius: var(--radius-control);
+  padding: 0.35rem 0.75rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Buttons & fields ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.25rem;
+  padding: 0 1.75rem;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.button-quiet {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--grout);
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  font-weight: 500;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field input {
+  min-height: 3.25rem;
+  padding: 0 1rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+}
+
+.field input:focus-visible {
+  border-color: var(--accent);
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- Home ---------- */
+
+.greeting {
+  font-size: var(--step-4);
+  letter-spacing: -0.015em;
+}
+
+.greeting-meaning {
+  margin: 0.5rem 0 0;
+  color: var(--ink-muted);
+  font-family: var(--font-read);
+  font-style: italic;
+  font-size: var(--step-1);
+}
+
+.mosaic-block {
+  margin: clamp(2.5rem, 7vh, 4rem) 0 2.5rem;
+}
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  max-width: 26rem;
+}
+
+.mosaic svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mosaic-caption {
+  max-width: var(--measure);
+  margin: 1.25rem 0 0;
+  color: var(--ink-muted);
+}
+
+/* ---------- Simple pages ---------- */
+
+.page-title {
+  font-size: var(--step-3);
+  margin-bottom: 1rem;
+}
+
+.lede {
+  max-width: var(--measure);
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+  line-height: 1.6;
+  margin: 0 0 2rem;
+}
+
+.stack {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 26rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
