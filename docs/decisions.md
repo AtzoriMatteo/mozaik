@@ -13,7 +13,8 @@ Why: one language end to end, free tiers cover a single user comfortably,
 Vercel deploys automatically from GitHub, Supabase gives auth and a real
 database without running servers.
 
-**Database in the EU (Matteo).** The Supabase project lives in Frankfurt.
+**Database in the EU (Matteo).** The Supabase project lives in the EU
+(Stockholm; Frankfurt wasn't offered at signup).
 Why: keeps learner data inside GDPR territory. Cost: slightly slower for
 users far from Europe.
 
