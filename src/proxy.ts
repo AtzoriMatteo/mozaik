@@ -12,6 +12,17 @@ export async function proxy(request: NextRequest) {
   const env = getSupabaseEnv();
   if (!env) return NextResponse.next();
 
+  // A login link can land on any page (Supabase falls back to the Site URL
+  // when the exact return address isn't on its allow-list). Wherever it
+  // lands, forward its one-time code to the callback that completes login.
+  const code = request.nextUrl.searchParams.get("code");
+  if (code && !request.nextUrl.pathname.startsWith("/auth/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/callback";
+    url.search = `?code=${encodeURIComponent(code)}`;
+    return NextResponse.redirect(url);
+  }
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(env.url, env.key, {
