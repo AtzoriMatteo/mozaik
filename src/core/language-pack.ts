@@ -6,6 +6,8 @@
  * course content, grammar notes, pronunciation data) comes from a pack.
  */
 
+import type { Lexicon, ReadingText } from "./content";
+
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export type CefrLevel = (typeof CEFR_LEVELS)[number];
 
@@ -30,4 +32,8 @@ export interface LanguagePack {
   tokenize(text: string): Token[];
   /** A greeting for the given hour (0–23), with its English meaning. */
   greeting(hour: number): { text: string; meaning: string };
+  /** Reading texts, in suggested order. */
+  texts: readonly ReadingText[];
+  /** Word help shared by all texts in this pack. */
+  lexicon: Lexicon;
 }

@@ -309,3 +309,226 @@ a {
   font-size: 0.9rem;
   color: var(--ink-muted);
 }
+
+/* ---------- Reading list ---------- */
+
+.text-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: var(--measure);
+}
+
+.text-card {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 120ms ease;
+}
+
+.text-card:hover {
+  border-color: var(--accent);
+}
+
+.text-card-title {
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+  color: var(--heading);
+}
+
+.text-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.text-card-level {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Reader ---------- */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.reader-head h1 {
+  font-size: var(--step-3);
+}
+
+.reader-subtitle {
+  margin: 0.4rem 0 0;
+  color: var(--ink-muted);
+  font-family: var(--font-read);
+  font-style: italic;
+  font-size: var(--step-1);
+}
+
+.reader-hint {
+  margin: 1.75rem 0 1rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.reader-body {
+  max-width: var(--measure);
+  font-family: var(--font-read);
+  font-size: 1.375rem;
+  line-height: 1.85;
+}
+
+.reader-body p {
+  margin: 0 0 1.25em;
+}
+
+.word {
+  display: inline;
+  padding: 0.05em 0.1em;
+  margin: 0 -0.1em;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.word:hover {
+  background: var(--glaze);
+}
+
+.word[data-saved] {
+  text-decoration: underline dotted var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+.word[data-selected] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.reader-end {
+  margin: 2.5rem 0 1rem;
+}
+
+/* Help panel: stays at the bottom of the screen while you read. */
+.word-panel {
+  position: sticky;
+  bottom: 0;
+  margin: 0 -1.5rem;
+  padding: 0.75rem 1.5rem 1rem;
+  background: var(--porcelain);
+}
+
+.word-panel-inner {
+  max-width: var(--measure);
+  padding: 1rem 1.25rem 1.1rem;
+  border: 1px solid var(--grout);
+  border-top: 3px solid var(--accent);
+  border-radius: 0 0 var(--radius-control) var(--radius-control);
+  background: var(--porcelain);
+}
+
+.word-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.word-panel-word {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-family: var(--font-read);
+  font-size: var(--step-2);
+  color: var(--heading);
+  line-height: 1.2;
+}
+
+.word-panel-base {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.word-panel-meaning {
+  margin: 0.3rem 0 0.9rem;
+  font-size: var(--step-1);
+}
+
+.word-panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  min-height: 2.25rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--grout);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.chip[aria-expanded="true"] {
+  background: var(--glaze);
+  border-color: var(--accent);
+}
+
+.chip-save {
+  margin-left: auto;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.chip-save[aria-pressed="true"] {
+  background: transparent;
+  color: var(--accent);
+}
+
+.word-panel-layer {
+  margin: 0.8rem 0 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-control);
+  background: var(--glaze);
+  color: var(--heading);
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: var(--glaze);
+}

@@ -5,9 +5,11 @@ import { Greeting } from "./greeting";
 import { LanguagePicker } from "./language-picker";
 import { useLearningLanguage } from "./learning-language";
 import { Mosaic } from "./mosaic";
+import { useSavedWords } from "@/lib/saved-words/use-saved-words";
 
 export function Home() {
   const { pack } = useLearningLanguage();
+  const saved = useSavedWords(pack?.code ?? null);
   if (!pack) return <LanguagePicker />;
 
   // Saved words arrive in step 2; until then every mosaic starts empty.
@@ -24,6 +26,9 @@ export function Home() {
           {learned === 0
             ? "Your mosaic is empty. Every word you learn fills a tile."
             : `${learned} tiles so far.`}
+          {saved.words.length > 0
+            ? ` ${saved.words.length} ${saved.words.length === 1 ? "word" : "words"} saved for review.`
+            : ""}
         </p>
       </section>
 

@@ -1,5 +1,7 @@
 import type { LanguagePack, Token } from "@/core/language-pack";
 import { segmentText } from "@/core/tokenize";
+import { lexicon } from "./lexicon";
+import { texts } from "./texts";
 
 /**
  * Dutch uses apostrophes inside words ("auto's", "baby's") and as the start
@@ -65,4 +67,6 @@ export const dutch: LanguagePack = {
   levels: ["A1", "A2"],
   tokenize: tokenizeDutch,
   greeting: greetingFor,
+  texts,
+  lexicon,
 };

@@ -5,6 +5,25 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Step 1: the reader
+
+**Five A1 starter texts (Claude, Matteo's call delegated).** Introducing
+yourself, the supermarket, the train, the weather, your house. The same two
+people (Sanne and Daan) recur so vocabulary repeats naturally. Every word
+has hand-written help; a test fails the build if any tappable word lacks it,
+and another keeps each help line to 80 characters (calm by design).
+
+**Help panel buttons (Claude).** "Look closer" (see it differently), "Like a
+local" (sound native), "Whole sentence" (translation), and Save. One layer
+open at a time. Keyboard: ← → move between words, S saves, Esc closes.
+
+**Saved words (Claude).** Stored per learner in Supabase (`saved_words`,
+Row Level Security: only you can see your words), with the sentence they
+came from, ready for step 2's review cards. In preview mode they're kept in
+the browser instead. The mosaic still counts *learned* words, so it stays
+empty until step 2 defines "learned"; the home screen shows how many words
+are saved.
+
 ## 2026-11-11 — Step 1 direction
 
 **Mozaik is completely free (Matteo).** No paid AI calls at runtime. Word
