@@ -1,9 +1,9 @@
 import type { Unit } from "./content";
 import type { LanguagePack } from "./language-pack";
 
-export type ActivityKind = "read" | "listen" | "grammar";
+export type ActivityKind = "read" | "listen" | "grammar" | "speak";
 
-/** One thing to do in the course: read a text, listen, or a grammar lesson. */
+/** One thing to do in the course: read, listen, a grammar lesson, or speaking practice. */
 export type Activity = {
   kind: ActivityKind;
   id: string;
@@ -18,7 +18,7 @@ export function unitGrammar(pack: LanguagePack, unit: Unit) {
   return pack.grammar.filter((g) => g.unit === unit.id && g.lesson);
 }
 
-/** All activities in course order: per unit, texts, then listening, then grammar. */
+/** All activities in course order: per unit, texts, listening, grammar, then speaking. */
 export function activities(pack: LanguagePack): Activity[] {
   return pack.units.flatMap((unit) => [
     ...unit.texts.map((t) => ({
@@ -45,6 +45,18 @@ export function activities(pack: LanguagePack): Activity[] {
       unit,
       href: `/grammar/${pack.code}/${g.id}`,
     })),
+    ...(unit.speaking
+      ? [
+          {
+            kind: "speak" as const,
+            id: unit.id,
+            title: "Speaking practice",
+            titleTranslation: "Sounds and sentences to say aloud",
+            unit,
+            href: `/speak/${pack.code}/${unit.id}`,
+          },
+        ]
+      : []),
   ]);
 }
 
@@ -52,7 +64,14 @@ export const VERB: Record<ActivityKind, string> = {
   read: "read",
   listen: "listen to",
   grammar: "learn",
+  speak: "",
 };
+
+/** "read Nieuw in Leiden", "learn Verb second", "speaking practice". */
+export function activityLabel(a: Pick<Activity, "kind" | "title">): { verb: string; title: string; inTargetLanguage: boolean } {
+  if (a.kind === "speak") return { verb: "", title: "speaking practice", inTargetLanguage: false };
+  return { verb: VERB[a.kind], title: a.title, inTargetLanguage: a.kind !== "grammar" };
+}
 
 export function unitHref(pack: LanguagePack, unit: Unit): string {
   return `/course/${pack.code}/${unit.id}`;

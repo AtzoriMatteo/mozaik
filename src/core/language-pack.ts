@@ -7,6 +7,7 @@
  */
 
 import type { GrammarPoint, Lexicon, ReadingText, Unit } from "./content";
+import type { Sound } from "./pronunciation";
 
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export type CefrLevel = (typeof CEFR_LEVELS)[number];
@@ -38,6 +39,8 @@ export interface LanguagePack {
   lexicon: Lexicon;
   /** Grammar points the course covers, per level. */
   grammar: readonly GrammarPoint[];
+  /** The language's tricky sounds, with how-to tips and minimal pairs. */
+  sounds: readonly Sound[];
   /** Core words (dictionary forms) a learner should meet at each level. */
   coreVocabulary: Partial<Record<CefrLevel, readonly string[]>>;
 }

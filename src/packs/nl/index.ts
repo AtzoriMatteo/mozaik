@@ -4,6 +4,7 @@ import { lexicon } from "./lexicon";
 import { grammar } from "./grammar";
 import { units } from "./units";
 import { coreVocabularyA1 } from "./vocabulary";
+import { sounds } from "./speaking/sounds";
 
 /**
  * Dutch uses apostrophes inside words ("auto's", "baby's") and as the start
@@ -72,5 +73,6 @@ export const dutch: LanguagePack = {
   units,
   lexicon,
   grammar,
+  sounds,
   coreVocabulary: { A1: coreVocabularyA1 },
 };

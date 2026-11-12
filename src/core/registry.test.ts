@@ -13,6 +13,7 @@ const fakePack = (code: string): LanguagePack => ({
   units: [],
   lexicon: {},
   grammar: [],
+  sounds: [],
   coreVocabulary: {},
 });
 

@@ -1417,3 +1417,140 @@ a {
   font-size: var(--step-3);
   margin-bottom: 0.5rem;
 }
+
+/* ---------- Speaking ---------- */
+
+.model-gate {
+  max-width: var(--measure);
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--grout);
+  border-radius: 12px;
+}
+
+.model-gate h2 {
+  font-size: var(--step-1);
+}
+
+.model-gate p {
+  margin: 0;
+}
+
+.download {
+  width: 100%;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.download p {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.sound-title {
+  font-size: var(--step-3);
+  margin-bottom: 0.5rem;
+}
+
+.sound-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  list-style: none;
+}
+
+.speak-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.speak-target {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: var(--step-4);
+  color: var(--heading);
+  line-height: 1.1;
+}
+
+.speak-sentence {
+  font-size: var(--step-2);
+  line-height: 1.4;
+}
+
+.record-button {
+  gap: 0.6rem;
+}
+
+.record-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .record-button[data-recording] .record-dot {
+    animation: pulse 1s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.speak-feedback {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--grout);
+  border-top: 3px solid var(--accent);
+  border-radius: 0 0 var(--radius-control) var(--radius-control);
+}
+
+.verdict-good {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tip {
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-control);
+  background: var(--glaze);
+  color: var(--heading);
+}
+
+.heard-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+}
+
+.heard-words span {
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.heard-ok {
+  color: var(--heading);
+}
+
+.heard-misheard {
+  border: 1px dashed var(--danger);
+  color: var(--danger);
+}
+
+.heard-misheard small {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+}
+
+.heard-missed {
+  color: var(--ink-muted);
+  text-decoration: line-through;
+}

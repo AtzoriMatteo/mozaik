@@ -5,6 +5,32 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Speaking with free, on-device AI
+
+**On-device Whisper (Matteo: free + useful feedback).** Speech is recognised
+by OpenAI's Whisper (base, multilingual) running in the browser through
+transformers.js: WebGPU when available, WebAssembly otherwise. Free with no
+limits; the voice never leaves the device. Cost: a one-time download of
+roughly 100–150 MB from Hugging Face's CDN, cached by the browser, and a few
+seconds per check on older devices. Groq's free cloud Whisper was rejected
+as default: shared limits across all users, voice leaves the device.
+
+**Feedback that names the sound (Claude).** Whisper returns words, not
+sounds, so: (1) minimal-pair drills (huis/hoes, deur/duur, man/maan…) force
+the model to decide on the sound itself; (2) in sentences, a word heard as a
+similar word is compared letter by letter to find the sound that changed
+(ui ↔ oe) and show that sound's how-to tip; unrelated words are just
+"missed", with no misleading tip. You can play your recording next to the
+model voice. Silence and Whisper's stock phantom phrases are ignored.
+
+**Content (Claude).** 9 sounds (g/ch, ij/ei, ui, aa/a, eu, oe/uu, w/v, sch,
+final -en), one or two per unit, then 4 short sentences from the unit to
+shadow. Speaking comes last in each unit.
+
+**Not yet verified on real voices.** The workspace can't reach Hugging Face,
+so recognition accuracy on Dutch is to be checked by Matteo; if whisper-base
+is too weak, whisper-small is the next step (bigger download).
+
 ## 2026-11-12 — Grammar sections
 
 **Three grammar points per unit (Claude).** The 23 A1 points are spread

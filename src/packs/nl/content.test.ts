@@ -174,3 +174,49 @@ describe("Dutch grammar lessons", () => {
     }
   });
 });
+
+describe("Dutch speaking practice", () => {
+  const soundIds = new Set(dutch.sounds.map((s) => s.id));
+  const sentences = [
+    ...texts.flatMap((t) => t.paragraphs.flat().map((s) => s.text)),
+    ...dutch.units.flatMap((u) => u.listening.flatMap((l) => l.lines.map((x) => x.text))),
+  ].map((s) => s.replace(/"/g, ""));
+
+  it("gives every unit sounds to drill and sentences to shadow", () => {
+    for (const unit of dutch.units) {
+      expect(unit.speaking, unit.id).toBeDefined();
+      expect(unit.speaking!.sounds.length, unit.id).toBeGreaterThan(0);
+      expect(unit.speaking!.shadowing.length, unit.id).toBeGreaterThanOrEqual(3);
+      for (const id of unit.speaking!.sounds) expect(soundIds, unit.id).toContain(id);
+    }
+  });
+
+  it("teaches every sound somewhere", () => {
+    const used = new Set(dutch.units.flatMap((u) => u.speaking?.sounds ?? []));
+    expect(dutch.sounds.filter((s) => !used.has(s.id)).map((s) => s.id)).toEqual([]);
+  });
+
+  it("quotes shadowing sentences from the unit's own material", () => {
+    for (const unit of dutch.units) {
+      const own = [
+        ...unit.texts.flatMap((t) => t.paragraphs.flat().map((s) => s.text)),
+        ...unit.listening.flatMap((l) => l.lines.map((x) => x.text)),
+      ].map((s) => s.replace(/"/g, ""));
+      for (const s of unit.speaking?.shadowing ?? []) {
+        expect(own.some((o) => o.includes(s.text)), `${unit.id}: "${s.text}"`).toBe(true);
+      }
+    }
+    expect(sentences.length).toBeGreaterThan(0);
+  });
+
+  it("uses minimal pairs where the sound really is the difference", () => {
+    for (const s of dutch.sounds) {
+      for (const [word, other] of s.pairs) {
+        const inWord = s.spellings.some((sp) => new RegExp(sp).test(word));
+        const inOther = s.spellings.some((sp) => new RegExp(sp).test(other));
+        expect(inWord || inOther, `${s.id}: ${word}/${other}`).toBe(true);
+        expect(word).not.toBe(other);
+      }
+    }
+  });
+});

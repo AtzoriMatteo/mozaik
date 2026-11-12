@@ -81,6 +81,14 @@ export type ListeningItem = {
   words?: Record<string, WordHelp>;
 };
 
+/** Speaking practice for a unit: sounds to drill, then sentences to shadow. */
+export type UnitSpeaking = {
+  /** Sound ids from the pack's sound list. */
+  sounds: string[];
+  /** Short sentences quoted from the unit's material. */
+  shadowing: Sentence[];
+};
+
 /** A topic unit: several different texts on one theme, with clear goals. */
 export type Unit = {
   id: string;
@@ -91,6 +99,7 @@ export type Unit = {
   canDo: string[];
   texts: ReadingText[];
   listening: ListeningItem[];
+  speaking?: UnitSpeaking;
 };
 
 /** One tile in a word-order diagram. */

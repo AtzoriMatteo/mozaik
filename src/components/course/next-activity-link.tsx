@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { VERB, type Activity } from "@/core/course";
+import type { Activity } from "@/core/course";
+import { ActivityLabel } from "./activity-label";
 import type { LanguagePack } from "@/core/language-pack";
 
 /** The single "what's next" button at the end of an activity. */
@@ -23,8 +24,7 @@ export function NextActivityLink({
   }
   return (
     <Link href={next.href} className="button" onClick={onDone}>
-      Next: {VERB[next.kind]}{" "}
-      {next.kind === "grammar" ? next.title : <span lang={pack.code}>{next.title}</span>}
+      Next: <ActivityLabel activity={next} lang={pack.code} />
     </Link>
   );
 }

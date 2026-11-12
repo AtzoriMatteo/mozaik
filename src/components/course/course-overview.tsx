@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { activities, unitHref, VERB } from "@/core/course";
+import { activities, unitHref } from "@/core/course";
+import { ActivityLabel } from "./activity-label";
 import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
@@ -23,8 +24,7 @@ export function CourseOverview() {
 
       {next ? (
         <Link href={next.href} className="button continue-button">
-          {progress.started ? "Continue" : "Start"}: {VERB[next.kind]}{" "}
-          {next.kind === "grammar" ? next.title : <span lang={pack.code}>{next.title}</span>}
+          {progress.started ? "Continue" : "Start"}: <ActivityLabel activity={next} lang={pack.code} />
         </Link>
       ) : (
         <p className="lede">You&apos;ve done everything here. More is on the way.</p>
