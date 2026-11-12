@@ -5,6 +5,37 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Review for every part, mixed by default
+
+**One button, optional focus, settings tucked away (Matteo: not too much,
+interactive, customisable).** Review opens with a single "Start review":
+a short mixed session (10 cards by default) that alternates words, grammar
+and listening. Below it, four focus modes (Words, Grammar, Listening,
+Speaking) start a session on one part only. "Customise review" is closed by
+default: cards per session (5/10/20), new cards per day (0/5/10/20), which
+parts the mixed review includes (speaking off by default: it needs the
+mic), automatic course words on/off, recall and listening word cards on/off.
+
+**What comes back (Claude).** Things enter review only after you've done
+them: a text's core A1 words once you've read it (tiny words like de/en/ik
+skipped; saved words always included, never duplicated), every exercise of a
+finished grammar lesson, short lines (≤12 words) of finished listening, and
+the pair words and sentences of finished speaking practice.
+
+**Card types (Claude).** Words: meaning first; from stage 2 also recall
+(blank in the sentence) and listening (hear the word), varied. Grammar:
+the same exercises, auto-checked (right → Good, accent slip → Hard, wrong →
+Again). Listening: hear a line, type it (auto-checked) or just reveal and
+rate. Speaking: say it, Mozaik rates it from what the on-device AI heard.
+
+**Gentle limits (Claude).** New cards per day apply across all parts so a
+busy day of learning doesn't flood tomorrow's review. When everything is
+done: "All caught up for today", with an optional "Learn 5 more new cards".
+
+**Storage (Claude).** Schedules for course items live in a new
+review_items table (migration 0003); saved words keep theirs. Until the
+migration is run, review progress is kept on the device.
+
 ## 2026-11-12 — Speaking with free, on-device AI
 
 **On-device Whisper (Matteo: free + useful feedback).** Speech is recognised

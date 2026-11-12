@@ -1554,3 +1554,176 @@ a {
   color: var(--ink-muted);
   text-decoration: line-through;
 }
+
+/* ---------- Review hub ---------- */
+
+.review-main {
+  max-width: var(--measure);
+  margin: 0 0 2rem;
+}
+
+.review-start {
+  min-height: 4rem;
+  padding: 0 2.5rem;
+  font-size: var(--step-1);
+}
+
+.review-main-meta {
+  margin: 0.6rem 0 0;
+  color: var(--ink-muted);
+}
+
+.focus-modes {
+  max-width: var(--measure);
+  margin: 0 0 2rem;
+}
+
+.focus-modes h2 {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin-bottom: 0.6rem;
+}
+
+.focus-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.5rem;
+}
+
+.focus-chip {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: start;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--heading);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.focus-chip:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.focus-chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.focus-count {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.settings-panel {
+  max-width: var(--measure);
+  margin-top: 1rem;
+  border-top: 1px solid var(--grout);
+  padding-top: 1rem;
+}
+
+.settings-panel summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+  width: fit-content;
+}
+
+.settings-body {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+  margin-top: 1rem;
+}
+
+.setting {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.setting legend {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.check {
+  display: block;
+  cursor: pointer;
+}
+
+.check input {
+  accent-color: var(--accent);
+  margin: 0 0.5rem 0 0;
+}
+
+.check small {
+  color: var(--ink-muted);
+}
+
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+
+.segment {
+  min-width: 3rem;
+  padding: 0.45rem 0.9rem;
+  border: 0;
+  border-right: 1px solid var(--grout);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.segment:last-child {
+  border-right: 0;
+}
+
+.segment[aria-checked="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.kind-tag {
+  margin-left: 0.6rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--glaze);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.session-meter {
+  display: block;
+  height: 4px;
+  max-width: var(--measure);
+  margin: -0.75rem 0 1.5rem;
+  border-radius: 2px;
+  background: var(--glaze);
+  overflow: hidden;
+}
+
+.session-meter span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 200ms ease;
+}
+
+.listen-big {
+  margin-bottom: 1.5rem;
+}

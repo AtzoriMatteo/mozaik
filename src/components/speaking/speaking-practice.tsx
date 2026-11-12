@@ -15,7 +15,7 @@ import { NextActivityLink } from "@/components/course/next-activity-link";
 
 const noSubscribe = () => () => {};
 
-type Step =
+export type Step =
   | { kind: "sound"; sound: Sound }
   | { kind: "pair"; sound: Sound; target: string; contrast: string }
   | { kind: "word"; sound: Sound; target: string }
@@ -126,7 +126,7 @@ export function SpeakingPractice({ lang, unitId }: { lang: string; unitId: strin
 
 /* ---------------------------------------------------------------- */
 
-function ModelGate({ status, onLoad }: { status: AsrStatus; onLoad: () => void }) {
+export function ModelGate({ status, onLoad }: { status: AsrStatus; onLoad: () => void }) {
   const mb = (n: number) => Math.max(1, Math.round(n / 1_000_000));
   return (
     <section className="model-gate">
@@ -195,18 +195,23 @@ type Result =
   | { kind: "attempt"; feedback: AttemptFeedback; heard: string }
   | { kind: "silent" };
 
-function PracticeCard({
+export function PracticeCard({
   lang,
   step,
   sounds,
   transcribe,
   onNext,
+  onScored,
+  nextLabel = "Next",
 }: {
   lang: string;
   step: Exclude<Step, { kind: "sound" }>;
   sounds: readonly Sound[];
   transcribe: (a: Float32Array) => Promise<string>;
   onNext: () => void;
+  /** Called with how well it went, for review scheduling. */
+  onScored?: (r: "again" | "hard" | "good") => void;
+  nextLabel?: string;
 }) {
   const hasVoice = useHasVoice(lang);
   const [phase, setPhase] = useState<"idle" | "recording" | "thinking" | "done">("idle");
@@ -244,8 +249,15 @@ function PracticeCard({
       const raw = await transcribe(rec.audio16k);
       const heard = isPhantom(raw) ? "" : raw;
       if (!heard) setResult({ kind: "silent" });
-      else if (step.kind === "pair") setResult({ kind: "pair", verdict: judgePair(step.target, step.contrast, heard), heard });
-      else setResult({ kind: "attempt", feedback: analyzeAttempt(target, heard, sounds), heard });
+      else if (step.kind === "pair") {
+        const verdict = judgePair(step.target, step.contrast, heard);
+        setResult({ kind: "pair", verdict, heard });
+        onScored?.(verdict === "right" ? "good" : "again");
+      } else {
+        const feedback = analyzeAttempt(target, heard, sounds);
+        setResult({ kind: "attempt", feedback, heard });
+        onScored?.(feedback.understood >= 0.8 ? "good" : feedback.understood >= 0.5 ? "hard" : "again");
+      }
     } catch (e) {
       setError(`Something went wrong while listening: ${(e as Error).message}`);
     }
@@ -305,7 +317,7 @@ function PracticeCard({
               </button>
             ) : null}
             <button type="button" className="button" onClick={onNext}>
-              Next
+              {nextLabel}
             </button>
           </div>
         </div>

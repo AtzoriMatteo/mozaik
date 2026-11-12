@@ -1,91 +1,344 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import type { Verdict } from "@/core/answers";
+import { checkDictation, type DictationResult } from "@/core/dictation";
 import type { LanguagePack } from "@/core/language-pack";
-import { cardKind, describeWait, isDue, isLearned, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
+import {
+  buildSession, countItems, introducedToday, REVIEW_KINDS, wordCardFor,
+  type GrammarItem, type ListenItem, type ReviewItem, type ReviewKind, type SpeakItem, type WordItem,
+} from "@/core/review-items";
+import { describeWait, isLearned, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
 import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
 import { Mosaic } from "@/components/mosaic";
-import { useSavedWords } from "@/lib/saved-words/use-saved-words";
-import type { SavedWord } from "@/lib/saved-words/types";
 import { SpeakButton } from "@/components/speak-button";
+import { ExerciseCard, correctAnswer } from "@/components/grammar/grammar-lesson";
+import { ModelGate, PracticeCard } from "@/components/speaking/speaking-practice";
+import { useAsr, WHISPER_LANGUAGE } from "@/lib/asr/use-asr";
+import { useReview } from "@/lib/review/use-review";
+import { useReviewSettings, type ReviewSettings } from "@/lib/review/use-review-settings";
+import { speak, useHasVoice } from "@/lib/speech";
 import { useNow } from "@/lib/use-now";
 
-/** Short sessions by default; you can always stop earlier. */
-const SESSION_SIZE = 10;
+export const KIND_LABEL: Record<ReviewKind, string> = {
+  word: "Words",
+  grammar: "Grammar",
+  listen: "Listening",
+  speak: "Speaking",
+};
+
+type Session = { items: ReviewItem[]; label: string };
 
 export function Review() {
   const { pack } = useLearningLanguage();
-  const saved = useSavedWords(pack?.code ?? null);
-  const [done, setDone] = useState(0);
-  // Re-checked every minute, so "Not yet" words come back.
+  const { settings, update, reset } = useReviewSettings();
+  const review = useReview(pack, settings);
   const clock = useNow();
-  const now = clock ?? 0;
-
-  const due = useMemo(
-    () =>
-      saved.words
-        .filter((w) => isDue(w.dueAt, new Date(now)))
-        .sort((a, b) => (a.dueAt ?? "").localeCompare(b.dueAt ?? "")),
-    [saved.words, now],
-  );
+  const [session, setSession] = useState<Session | null>(null);
 
   if (!pack) return <LanguagePicker />;
-  if (!saved.loaded || clock === null) return <p className="lede">Loading your words…</p>;
+  if (!review.loaded || clock === null) return <p className="lede">Loading your reviews…</p>;
 
-  const learned = saved.words.filter((w) => isLearned(w.stage)).length;
+  const now = new Date(clock);
+  const learned = review.items.filter(
+    (i) => i.kind === "word" && isLearned(review.schedules.get(i.id)?.stage),
+  ).length;
 
-  if (!saved.reviewReady) {
+  if (session) {
     return (
-      <Message title="One setup step left">
-        Reviewing needs a small database update. It&apos;s in the summary Claude left for you.
-      </Message>
+      <SessionRunner
+        pack={pack}
+        session={session}
+        settings={settings}
+        rate={review.rate}
+        stageOf={(id) => review.schedules.get(id)?.stage ?? 0}
+        error={review.error}
+        onEnd={() => setSession(null)}
+      />
     );
   }
 
-  if (saved.words.length === 0) {
-    return (
-      <Message title="Nothing to review yet">
-        Save words while you read and they&apos;ll come back here, in the sentence you found them in.
-        <Link href="/course" className="button">Start the course</Link>
-      </Message>
-    );
-  }
+  const startedToday = introducedToday(review.schedules, now);
+  const allowanceLeft = Math.max(0, settings.newPerDay - startedToday);
+  const start = (kinds: ReviewKind[], label: string, extraNew = 0) =>
+    setSession({
+      label,
+      items: buildSession(review.items, review.schedules, {
+        kinds: new Set(kinds),
+        size: settings.size,
+        newPerDay: Math.max(settings.newPerDay, startedToday) + extraNew,
+        now,
+      }),
+    });
 
-  const current = due[0];
-  if (!current || done >= SESSION_SIZE) {
-    const nextDue = saved.words
-      .map((w) => w.dueAt)
-      .filter((d): d is string => !!d && new Date(d).getTime() > now)
-      .sort()[0];
+  const mixKinds = REVIEW_KINDS.filter((k) => settings.mix[k]);
+  const mixed = buildSession(review.items, review.schedules, {
+    kinds: new Set(mixKinds),
+    size: settings.size,
+    newPerDay: settings.newPerDay,
+    now,
+  });
+  const counts = countItems(review.items, review.schedules, now);
+  const nextDue = [...review.schedules.values()]
+    .map((s) => s.dueAt)
+    .filter((d) => new Date(d).getTime() > clock)
+    .sort()[0];
+
+  return (
+    <div className="review-hub">
+      <h1 className="page-title">Review</h1>
+
+      {!review.ready ? <SetupNeeded /> : null}
+
+      {review.items.length === 0 ? (
+        <div className="stack-loose">
+          <p className="lede">
+            Things come back here once you&apos;ve done them: words from texts you read, exercises from
+            grammar you learned, lines you listened to.
+          </p>
+          <Link href="/course" className="button">Go to the course</Link>
+        </div>
+      ) : (
+        <>
+          <section className="review-main" aria-labelledby="start-title">
+            <h2 id="start-title" className="sr-only">Mixed review</h2>
+            {mixed.length > 0 ? (
+              <>
+                <button
+                  type="button"
+                  className="button review-start"
+                  onClick={() => setSession({ items: mixed, label: "Mixed review" })}
+                >
+                  Start review
+                </button>
+                <p className="review-main-meta">
+                  {mixed.length} {mixed.length === 1 ? "card" : "cards"}, about {Math.max(1, Math.round(mixed.length * 0.4))} min.
+                  Mixes {mixKinds.map((k) => KIND_LABEL[k].toLowerCase()).join(", ")}.
+                </p>
+              </>
+            ) : (
+              <div className="stack-loose">
+                <p className="lede">
+                  All caught up for today{nextDue ? `. Next review ${describeWhen(nextDue, clock)}` : ""}.
+                </p>
+                {mixKinds.some((k) => counts[k].fresh > 0) ? (
+                  <button type="button" className="button button-quiet" onClick={() => start(mixKinds, "Extra", 5)}>
+                    Learn 5 more new cards
+                  </button>
+                ) : null}
+              </div>
+            )}
+          </section>
+
+          <section className="focus-modes" aria-labelledby="focus-title">
+            <h2 id="focus-title">Or focus on one part</h2>
+            <div className="focus-row">
+              {REVIEW_KINDS.map((k) => {
+                const available = counts[k].due + Math.min(counts[k].fresh, allowanceLeft);
+                return (
+                  <button
+                    key={k}
+                    type="button"
+                    className="focus-chip"
+                    disabled={available === 0}
+                    onClick={() => start([k], KIND_LABEL[k])}
+                  >
+                    <span>{KIND_LABEL[k]}</span>
+                    <span className="focus-count">
+                      {counts[k].due > 0
+                        ? `${counts[k].due} due`
+                        : available > 0
+                          ? `${Math.min(counts[k].fresh, allowanceLeft)} new`
+                          : counts[k].fresh > 0
+                            ? "more tomorrow"
+                            : "nothing yet"}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
+          <div className="mosaic-block">
+            <Mosaic learned={learned} />
+            <p className="mosaic-caption">
+              {learned} {learned === 1 ? "word" : "words"} learned.
+            </p>
+          </div>
+        </>
+      )}
+
+      <SettingsPanel settings={settings} update={update} reset={reset} />
+    </div>
+  );
+}
+
+function SetupNeeded() {
+  return (
+    <div className="notice-box">
+      <p>
+        <strong>One setup step left.</strong> Until the database update is done, review progress is
+        kept on this device only. Claude has the exact text to run in Supabase.
+      </p>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------- */
+
+function SettingsPanel({
+  settings,
+  update,
+  reset,
+}: {
+  settings: ReviewSettings;
+  update: (p: Partial<ReviewSettings>) => void;
+  reset: () => void;
+}) {
+  return (
+    <details className="settings-panel">
+      <summary>Customise review</summary>
+      <div className="settings-body">
+        <Segmented
+          label="Cards per session"
+          value={settings.size}
+          options={[5, 10, 20]}
+          onChange={(size) => update({ size })}
+        />
+        <Segmented
+          label="New cards per day"
+          value={settings.newPerDay}
+          options={[0, 5, 10, 20]}
+          onChange={(newPerDay) => update({ newPerDay })}
+        />
+
+        <fieldset className="setting">
+          <legend>Mixed review includes</legend>
+          {REVIEW_KINDS.map((k) => (
+            <label key={k} className="check">
+              <input
+                type="checkbox"
+                checked={settings.mix[k]}
+                onChange={(e) => update({ mix: { ...settings.mix, [k]: e.target.checked } })}
+              />
+              {KIND_LABEL[k]}
+              {k === "speak" ? <small> (needs the microphone)</small> : null}
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset className="setting">
+          <legend>Words</legend>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={settings.courseWords}
+              onChange={(e) => update({ courseWords: e.target.checked })}
+            />
+            Add each text&apos;s key words automatically
+            <small> (words you save always come back)</small>
+          </label>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={settings.recallCards}
+              onChange={(e) => update({ recallCards: e.target.checked })}
+            />
+            Recall cards: see the meaning, find the word
+          </label>
+          <label className="check">
+            <input
+              type="checkbox"
+              checked={settings.listenCards}
+              onChange={(e) => update({ listenCards: e.target.checked })}
+            />
+            Listening cards: hear the word, know its meaning
+          </label>
+        </fieldset>
+
+        <button type="button" className="link-button" onClick={reset}>
+          Back to the defaults
+        </button>
+      </div>
+    </details>
+  );
+}
+
+function Segmented({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  options: number[];
+  onChange: (v: number) => void;
+}) {
+  return (
+    <fieldset className="setting">
+      <legend>{label}</legend>
+      <div className="segmented" role="radiogroup">
+        {options.map((o) => (
+          <button
+            key={o}
+            type="button"
+            role="radio"
+            aria-checked={value === o}
+            className="segment"
+            onClick={() => onChange(o)}
+          >
+            {o}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+  );
+}
+
+/* ---------------------------------------------------------------- */
+
+function SessionRunner({
+  pack,
+  session,
+  settings,
+  rate,
+  stageOf,
+  error,
+  onEnd,
+}: {
+  pack: LanguagePack;
+  session: Session;
+  settings: ReviewSettings;
+  rate: (item: ReviewItem, r: ReviewResult) => Promise<void>;
+  stageOf: (id: string) => number;
+  error: string | null;
+  onEnd: () => void;
+}) {
+  const [index, setIndex] = useState(0);
+  const [tally, setTally] = useState({ good: 0, total: 0 });
+  const item = session.items[index];
+
+  const answer = (r: ReviewResult) => {
+    void rate(item, r);
+    setTally((t) => ({ good: t.good + (r === "again" ? 0 : 1), total: t.total + 1 }));
+    setIndex((i) => i + 1);
+  };
+
+  if (!item) {
     return (
       <div>
-        <h1 className="page-title">{done > 0 ? "Done for now" : "All caught up"}</h1>
+        <h1 className="page-title">Done for now</h1>
         <p className="lede">
-          {done > 0 ? `You reviewed ${done} ${done === 1 ? "word" : "words"}. ` : ""}
-          {due.length > 0
-            ? `${due.length} more ${due.length === 1 ? "is" : "are"} waiting whenever you like.`
-            : nextDue
-              ? `Next review ${describeWhen(nextDue, now)}.`
-              : ""}
+          {tally.total > 0
+            ? `${tally.good} of ${tally.total} came back to you. The rest will return sooner, that's how it sticks.`
+            : "Nothing to review in this part right now."}
         </p>
-        <div className="mosaic-block">
-          <Mosaic learned={learned} />
-          <p className="mosaic-caption">
-            {learned} {learned === 1 ? "word" : "words"} learned so far.
-          </p>
-        </div>
-        <div className="button-row">
-          {due.length > 0 ? (
-            <button type="button" className="button" onClick={() => setDone(0)}>
-              Review {Math.min(due.length, SESSION_SIZE)} more
-            </button>
-          ) : null}
-          <Link href="/course" className={due.length > 0 ? "button button-quiet" : "button"}>
-            Back to the course
-          </Link>
-        </div>
+        <button type="button" className="button" onClick={onEnd}>
+          Back to Review
+        </button>
       </div>
     );
   }
@@ -93,114 +346,33 @@ export function Review() {
   return (
     <div>
       <p className="review-progress" aria-live="polite">
-        {done + 1} of {Math.min(due.length + done, SESSION_SIZE)}
-        <Link href="/" className="review-stop">Stop for now</Link>
+        <span>
+          {session.label}: {index + 1} of {session.items.length}
+          <span className="kind-tag">{KIND_LABEL[item.kind]}</span>
+        </span>
+        <button type="button" className="link-button" onClick={onEnd}>
+          Stop for now
+        </button>
       </p>
-      <Card
-        key={`${current.word}:${current.dueAt}`}
-        pack={pack}
-        word={current}
-        onAnswer={(result) => {
-          void saved.review(current.word, result);
-          setDone((d) => d + 1);
-        }}
-      />
-      {saved.error ? <p className="error" role="alert">{saved.error}</p> : null}
+      <div className="session-meter" aria-hidden="true">
+        <span style={{ width: `${(index / session.items.length) * 100}%` }} />
+      </div>
+
+      {item.kind === "word" ? (
+        <WordCard key={item.id} pack={pack} item={item} stage={stageOf(item.id)} settings={settings} onAnswer={answer} />
+      ) : item.kind === "grammar" ? (
+        <GrammarCard key={item.id} lang={pack.code} item={item} onAnswer={answer} />
+      ) : item.kind === "listen" ? (
+        <ListenCard key={item.id} pack={pack} item={item} stage={stageOf(item.id)} onAnswer={answer} />
+      ) : (
+        <SpeakCard key={item.id} pack={pack} item={item} onAnswer={answer} />
+      )}
+      {error ? <p className="error" role="alert">{error}</p> : null}
     </div>
   );
 }
 
-function Card({
-  pack,
-  word,
-  onAnswer,
-}: {
-  pack: LanguagePack;
-  word: SavedWord;
-  onAnswer: (r: ReviewResult) => void;
-}) {
-  const [revealed, setRevealed] = useState(false);
-  const kind = cardKind(word.stage);
-  const tokens = pack.tokenize(word.sentence);
-
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (!revealed && (e.key === " " || e.key === "Enter")) setRevealed(true);
-      else if (revealed && ["1", "2", "3", "4"].includes(e.key)) onAnswer(REVIEW_RESULTS[Number(e.key) - 1]);
-      else if (revealed && (e.key === " " || e.key === "Enter")) onAnswer("good");
-      else return;
-      e.preventDefault();
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [revealed, onAnswer]);
-
-  return (
-    <section className="review-card" aria-label="Review card">
-      <p className="review-prompt">
-        {kind === "recognise" ? "What does the highlighted word mean?" : (
-          <>Which word means <strong>{word.meaning}</strong>?</>
-        )}
-      </p>
-
-      <p className="review-sentence" lang={pack.code}>
-        {tokens.map((tok, i) => {
-          const isTarget = tok.kind === "word" && tok.normalized === word.word;
-          if (!isTarget) return <span key={i}>{tok.text}</span>;
-          if (kind === "recall" && !revealed) {
-            return (
-              <span
-                key={i}
-                className="review-gap"
-                aria-label="missing word"
-                style={{ width: `${Math.max(3, tok.text.length) * 0.62}em` }}
-              />
-            );
-          }
-          return <mark key={i} className="review-target">{tok.text}</mark>;
-        })}
-      </p>
-
-      {!revealed ? (
-        <button type="button" className="button" onClick={() => setRevealed(true)}>
-          Show answer
-        </button>
-      ) : (
-        <>
-          <div className="review-answer">
-            <p className="review-word">
-              <span lang={pack.code}>{word.surface}</span>
-              {word.base && word.base !== word.word ? (
-                <span className="word-panel-base">
-                  from <span lang={pack.code}>{word.base}</span>
-                </span>
-              ) : null}
-              <SpeakButton lang={pack.code} text={word.surface} label={`Hear ${word.surface}`} />
-            </p>
-            <p className="review-meaning">{word.meaning}</p>
-          </div>
-          <p className="review-question">How well did you know it?</p>
-          <div className="rating-row" role="group" aria-label="Rate how well you knew it">
-            {RATINGS.map((r, i) => (
-              <button
-                key={r.result}
-                type="button"
-                className={r.result === "good" ? "rating rating-main" : "rating"}
-                onClick={() => onAnswer(r.result)}
-                title={`${r.hint} (key ${i + 1})`}
-              >
-                <span className="rating-label">{r.label}</span>
-                <span className="rating-wait">{describeWait(word.stage ?? 0, r.result, new Date())}</span>
-              </button>
-            ))}
-          </div>
-          <p className="shortcut-hint">Keys 1–4, or Space for Good</p>
-        </>
-      )}
-    </section>
-  );
-}
+/* ---------------------------------------------------------------- */
 
 const RATINGS: { result: ReviewResult; label: string; hint: string }[] = [
   { result: "again", label: "Again", hint: "Didn't know it" },
@@ -209,12 +381,297 @@ const RATINGS: { result: ReviewResult; label: string; hint: string }[] = [
   { result: "easy", label: "Easy", hint: "Knew it instantly" },
 ];
 
-function Message({ title, children }: { title: string; children: React.ReactNode }) {
+function RatingRow({ stage, onAnswer }: { stage: number; onAnswer: (r: ReviewResult) => void }) {
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.metaKey || e.ctrlKey || e.altKey || e.target instanceof HTMLInputElement) return;
+      if (["1", "2", "3", "4"].includes(e.key)) onAnswer(REVIEW_RESULTS[Number(e.key) - 1]);
+      else if (e.key === " " || e.key === "Enter") onAnswer("good");
+      else return;
+      e.preventDefault();
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onAnswer]);
+
   return (
-    <div>
-      <h1 className="page-title">{title}</h1>
-      <div className="lede stack-loose">{children}</div>
-    </div>
+    <>
+      <p className="review-question">How well did you know it?</p>
+      <div className="rating-row" role="group" aria-label="Rate how well you knew it">
+        {RATINGS.map((r, i) => (
+          <button
+            key={r.result}
+            type="button"
+            className={r.result === "good" ? "rating rating-main" : "rating"}
+            onClick={() => onAnswer(r.result)}
+            title={`${r.hint} (key ${i + 1})`}
+          >
+            <span className="rating-label">{r.label}</span>
+            <span className="rating-wait">{describeWait(stage, r.result, new Date())}</span>
+          </button>
+        ))}
+      </div>
+      <p className="shortcut-hint">Keys 1–4, or Space for Good</p>
+    </>
+  );
+}
+
+function useRevealKey(revealed: boolean, reveal: () => void) {
+  useEffect(() => {
+    if (revealed) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.target instanceof HTMLInputElement) return;
+      if (e.key === " " || e.key === "Enter") {
+        e.preventDefault();
+        reveal();
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [revealed, reveal]);
+}
+
+function WordCard({
+  pack,
+  item,
+  stage,
+  settings,
+  onAnswer,
+}: {
+  pack: LanguagePack;
+  item: WordItem;
+  stage: number;
+  settings: ReviewSettings;
+  onAnswer: (r: ReviewResult) => void;
+}) {
+  const lang = pack.code;
+  const hasVoice = useHasVoice(lang);
+  const direction = wordCardFor(stage, item.id, { recall: settings.recallCards, listen: settings.listenCards && hasVoice });
+  const [revealed, setRevealed] = useState(false);
+  const reveal = () => setRevealed(true);
+  useRevealKey(revealed, reveal);
+  const tokens = pack.tokenize(item.sentence);
+
+  return (
+    <section className="review-card" aria-label="Word card">
+      {direction === "listen" && !revealed ? (
+        <>
+          <p className="review-prompt">Listen. What does the word mean?</p>
+          <div className="button-row listen-big">
+            <button type="button" className="button" onClick={() => speak(lang, item.surface, 0.8)}>
+              Play the word
+            </button>
+            <button type="button" className="button button-quiet" onClick={() => speak(lang, item.sentence, 0.85)}>
+              Play the sentence
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <p className="review-prompt">
+            {direction === "recall" && !revealed ? (
+              <>
+                Which word means <strong>{item.meaning}</strong>?
+              </>
+            ) : (
+              "What does the highlighted word mean?"
+            )}
+          </p>
+          <p className="review-sentence" lang={lang}>
+            {tokens.map((tok, i) => {
+              const isTarget = tok.kind === "word" && tok.normalized === item.word;
+              if (!isTarget) return <span key={i}>{tok.text}</span>;
+              if (direction === "recall" && !revealed) {
+                return (
+                  <span
+                    key={i}
+                    className="review-gap"
+                    aria-label="missing word"
+                    style={{ width: `${Math.max(3, tok.text.length) * 0.62}em` }}
+                  />
+                );
+              }
+              return <mark key={i} className="review-target">{tok.text}</mark>;
+            })}
+          </p>
+        </>
+      )}
+
+      {!revealed ? (
+        <button type="button" className="button" onClick={reveal}>
+          Show answer
+        </button>
+      ) : (
+        <>
+          <div className="review-answer">
+            <p className="review-word">
+              <span lang={lang}>{item.surface}</span>
+              {item.base && item.base !== item.word ? (
+                <span className="word-panel-base">
+                  from <span lang={lang}>{item.base}</span>
+                </span>
+              ) : null}
+              <SpeakButton lang={lang} text={item.surface} label={`Hear ${item.surface}`} />
+            </p>
+            <p className="review-meaning">{item.meaning}</p>
+            {direction === "listen" ? (
+              <p className="example-translation" lang={lang}>{item.sentence}</p>
+            ) : null}
+            {item.translation ? <p className="example-translation">{item.translation}</p> : null}
+          </div>
+          <RatingRow stage={stage} onAnswer={onAnswer} />
+        </>
+      )}
+    </section>
+  );
+}
+
+const verdictToResult = (v: Verdict): ReviewResult => (v === "right" ? "good" : v === "almost" ? "hard" : "again");
+
+function GrammarCard({ lang, item, onAnswer }: { lang: string; item: GrammarItem; onAnswer: (r: ReviewResult) => void }) {
+  const [verdict, setVerdict] = useState<Verdict | null>(null);
+  return (
+    <section className="review-card">
+      <p className="review-prompt">Grammar: {item.pointTitle}</p>
+      <ExerciseCard lang={lang} seed={item.id} exercise={item.exercise} verdict={verdict} onCheck={setVerdict} />
+      {verdict ? (
+        <div className="feedback" role="status">
+          <p>
+            {verdict === "right" ? "Right." : verdict === "almost" ? "Almost: check the accents." : "Not quite."}{" "}
+            <span className="feedback-answer" lang={lang}>{correctAnswer(item.exercise)}</span>
+          </p>
+          <p className="example-translation">{item.exercise.translation}</p>
+          <button type="button" className="button" autoFocus onClick={() => onAnswer(verdictToResult(verdict))}>
+            Continue
+          </button>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+function ListenCard({
+  pack,
+  item,
+  stage,
+  onAnswer,
+}: {
+  pack: LanguagePack;
+  item: ListenItem;
+  stage: number;
+  onAnswer: (r: ReviewResult) => void;
+}) {
+  const lang = pack.code;
+  const hasVoice = useHasVoice(lang);
+  const [typed, setTyped] = useState("");
+  const [result, setResult] = useState<DictationResult | null>(null);
+  const [revealed, setRevealed] = useState(!hasVoice);
+
+  return (
+    <section className="review-card">
+      <p className="review-prompt">
+        {hasVoice ? "Listen and understand. Type what you hear, or just show the text." : "Read it and check you understand."}
+      </p>
+      {hasVoice ? (
+        <div className="button-row">
+          <button type="button" className="button button-quiet" onClick={() => speak(lang, item.text, 0.9)}>
+            Play
+          </button>
+          <button type="button" className="button button-quiet" onClick={() => speak(lang, item.text, 0.7)}>
+            Slow
+          </button>
+        </div>
+      ) : null}
+
+      {!revealed && !result ? (
+        <>
+          <div className="field dictation-field">
+            <label htmlFor="listen-typed">What do you hear? (optional)</label>
+            <input
+              id="listen-typed"
+              lang={lang}
+              value={typed}
+              autoComplete="off"
+              spellCheck={false}
+              onChange={(e) => setTyped(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && typed.trim()) setResult(checkDictation(item.text, typed));
+              }}
+            />
+          </div>
+          <div className="button-row">
+            <button
+              type="button"
+              className="button"
+              onClick={() => (typed.trim() ? setResult(checkDictation(item.text, typed)) : setRevealed(true))}
+            >
+              {typed.trim() ? "Check" : "Show the text"}
+            </button>
+          </div>
+        </>
+      ) : null}
+
+      {result ? (
+        <div className="feedback" role="status">
+          <p className="diff" lang={lang}>
+            {result.parts.map((p, i) => (
+              <span key={i} className={`diff-${p.kind}`}>
+                {p.kind === "extra" ? p.typed : p.word}
+              </span>
+            ))}
+          </p>
+          <p className="example-translation">{item.translation}</p>
+          <button
+            type="button"
+            className="button"
+            autoFocus
+            onClick={() => onAnswer(result.score >= 0.95 ? "good" : result.score >= 0.6 ? "hard" : "again")}
+          >
+            Continue
+          </button>
+        </div>
+      ) : revealed ? (
+        <>
+          <div className="review-answer">
+            <p className="review-meaning" lang={lang}>{item.text}</p>
+            <p className="example-translation">{item.translation}</p>
+          </div>
+          <RatingRow stage={stage} onAnswer={onAnswer} />
+        </>
+      ) : null}
+    </section>
+  );
+}
+
+function SpeakCard({ pack, item, onAnswer }: { pack: LanguagePack; item: SpeakItem; onAnswer: (r: ReviewResult) => void }) {
+  const asr = useAsr(WHISPER_LANGUAGE[pack.code] ?? pack.code);
+  const [score, setScore] = useState<ReviewResult | null>(null);
+
+  if (asr.status.state !== "ready") {
+    return (
+      <section className="review-card">
+        <ModelGate status={asr.status} onLoad={asr.load} />
+        <button type="button" className="link-button" onClick={() => onAnswer("hard")}>
+          Skip this card
+        </button>
+      </section>
+    );
+  }
+
+  const step = item.contrast
+    ? ({ kind: "pair", sound: pack.sounds.find((s) => s.id === item.soundId)!, target: item.text, contrast: item.contrast } as const)
+    : ({ kind: "shadow", sentence: { text: item.text, translation: item.translation ?? "" } } as const);
+
+  return (
+    <PracticeCard
+      lang={pack.code}
+      step={step}
+      sounds={pack.sounds}
+      transcribe={asr.transcribe}
+      onScored={setScore}
+      nextLabel="Continue"
+      onNext={() => onAnswer(score ?? "hard")}
+    />
   );
 }
 

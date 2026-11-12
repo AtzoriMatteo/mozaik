@@ -262,7 +262,7 @@ function ExerciseRunner({
   );
 }
 
-function correctAnswer(ex: Exercise): string {
+export function correctAnswer(ex: Exercise): string {
   switch (ex.kind) {
     case "fill":
       return `${ex.before}${ex.answers[0]}${ex.after}`;
@@ -275,7 +275,7 @@ function correctAnswer(ex: Exercise): string {
   }
 }
 
-function ExerciseCard({
+export function ExerciseCard({
   lang,
   seed,
   exercise,

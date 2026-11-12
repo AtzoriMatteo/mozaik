@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { isDue, isLearned } from "@/core/srs";
-import { useSavedWords } from "@/lib/saved-words/use-saved-words";
+import { isLearned } from "@/core/srs";
+import { buildSession, REVIEW_KINDS } from "@/core/review-items";
+import { useReview } from "@/lib/review/use-review";
+import { useReviewSettings } from "@/lib/review/use-review-settings";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { Greeting } from "./greeting";
 import { LanguagePicker } from "./language-picker";
@@ -12,15 +14,23 @@ import { useNow } from "@/lib/use-now";
 
 export function Home() {
   const { pack } = useLearningLanguage();
-  const saved = useSavedWords(pack?.code ?? null);
+  const { settings } = useReviewSettings();
+  const review = useReview(pack, settings);
   const progress = useCourseProgress(pack);
   const now = useNow();
   if (!pack) return <LanguagePicker />;
 
-  const learned = saved.words.filter((w) => isLearned(w.stage)).length;
+  const learned = review.items.filter(
+    (i) => i.kind === "word" && isLearned(review.schedules.get(i.id)?.stage),
+  ).length;
   const due =
-    now !== null && saved.reviewReady
-      ? saved.words.filter((w) => isDue(w.dueAt, new Date(now))).length
+    now !== null && review.loaded
+      ? buildSession(review.items, review.schedules, {
+          kinds: new Set(REVIEW_KINDS.filter((k) => settings.mix[k])),
+          size: settings.size,
+          newPerDay: settings.newPerDay,
+          now: new Date(now),
+        }).length
       : 0;
 
   return (
@@ -34,8 +44,8 @@ export function Home() {
           {learned === 0
             ? "Your mosaic is empty. Every word you learn fills a tile."
             : `${learned} ${learned === 1 ? "word" : "words"} learned.`}
-          {saved.words.length > learned
-            ? ` ${saved.words.length - learned} more on the way.`
+          {review.items.filter((i) => i.kind === "word").length > learned
+            ? ` ${review.items.filter((i) => i.kind === "word").length - learned} more on the way.`
             : ""}
         </p>
       </section>
@@ -44,7 +54,7 @@ export function Home() {
       <div className="button-row">
         {due > 0 ? (
           <Link href="/review" className="button">
-            Review {due} {due === 1 ? "word" : "words"}
+            Review ({due} {due === 1 ? "card" : "cards"})
           </Link>
         ) : null}
         <Link
