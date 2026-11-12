@@ -134,3 +134,43 @@ describe("Dutch listening material", () => {
     for (const item of items) for (const g of item.grammar) expect(ids, `${item.id}: ${g}`).toContain(g);
   });
 });
+
+describe("Dutch grammar lessons", () => {
+  const units = new Set(dutch.units.map((u) => u.id));
+  const sentences = [
+    ...texts.flatMap((t) => t.paragraphs.flat().map((s) => s.text)),
+    ...dutch.units.flatMap((u) => u.listening.flatMap((l) => l.lines.map((x) => x.text))),
+  ].map((s) => s.replace(/"/g, ""));
+
+  it.each(dutch.grammar.filter((g) => g.level === "A1").map((g) => [g.id, g] as const))(
+    "%s: has a unit and a full lesson",
+    (_id, g) => {
+      expect(units).toContain(g.unit);
+      expect(g.lesson, g.id).toBeDefined();
+      expect(g.lesson!.blocks.length).toBeGreaterThan(0);
+      expect(g.lesson!.examples.length).toBeGreaterThanOrEqual(2);
+      expect(g.lesson!.exercises.length).toBeGreaterThanOrEqual(5);
+    },
+  );
+
+  it("quotes examples from the course and highlights words that are in them", () => {
+    for (const g of dutch.grammar) {
+      for (const ex of g.lesson?.examples ?? []) {
+        expect(sentences.some((s) => s.includes(ex.text)), `${g.id}: "${ex.text}"`).toBe(true);
+        for (const h of ex.highlight) expect(ex.text, `${g.id}: ${h}`).toContain(h);
+      }
+    }
+  });
+
+  it("has well-formed exercises", () => {
+    for (const g of dutch.grammar) {
+      for (const ex of g.lesson?.exercises ?? []) {
+        const where = `${g.id}: ${JSON.stringify(ex).slice(0, 60)}`;
+        if (ex.kind === "choice") expect(ex.answer, where).toBeLessThan(ex.options.length);
+        if (ex.kind === "build") expect(ex.tiles.length, where).toBeGreaterThanOrEqual(3);
+        if (ex.kind === "fill" || ex.kind === "transform") expect(ex.answers.length, where).toBeGreaterThan(0);
+        expect(ex.translation.trim(), where).not.toBe("");
+      }
+    }
+  });
+});

@@ -1145,3 +1145,275 @@ a {
   margin: 0 0 1rem;
   font-weight: 600;
 }
+
+.capitalize::first-letter {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  display: inline-block;
+}
+
+/* ---------- Grammar ---------- */
+
+.lesson-text {
+  max-width: var(--measure);
+  margin: 0 0 1.25rem;
+}
+
+.lesson-figure {
+  max-width: var(--measure);
+  margin: 0 0 1.75rem;
+}
+
+.lesson-figure figcaption {
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.lesson-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.98rem;
+}
+
+.lesson-table th,
+.lesson-table td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--grout);
+  vertical-align: top;
+}
+
+.lesson-table thead th {
+  color: var(--ink-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.lesson-table tbody th {
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.lesson-table td {
+  font-family: var(--font-read);
+  color: var(--heading);
+}
+
+.slot-rows {
+  display: grid;
+  gap: 1rem;
+}
+
+.slot-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.slot {
+  display: inline-grid;
+  justify-items: center;
+  gap: 0.15rem;
+  min-width: 3rem;
+  padding: 0.55rem 0.8rem 0.4rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-tile);
+  background: var(--porcelain);
+}
+
+.slot-text {
+  font-family: var(--font-read);
+  font-size: 1.15rem;
+  color: var(--heading);
+}
+
+.slot-label {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.slot[data-focus] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.slot[data-focus] .slot-text,
+.slot[data-focus] .slot-label {
+  color: var(--accent-ink);
+}
+
+.slot-translation {
+  margin: 0.35rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.examples {
+  max-width: var(--measure);
+  margin: 0.5rem 0 2rem;
+}
+
+.examples h2 {
+  font-size: var(--step-1);
+  margin-bottom: 0.75rem;
+}
+
+.examples ul {
+  display: grid;
+  gap: 0.9rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.example {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.example-text {
+  font-family: var(--font-read);
+  font-size: 1.2rem;
+  color: var(--heading);
+}
+
+.example-text mark {
+  background: var(--glaze);
+  color: var(--accent);
+  border-radius: 3px;
+  padding: 0 0.1em;
+}
+
+.example-translation {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.link-button {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--ink-muted);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.exercise {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  margin-bottom: 1.25rem;
+}
+
+.exercise-prompt {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.exercise-sentence {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: var(--step-2);
+  line-height: 1.6;
+  color: var(--heading);
+}
+
+.gap {
+  display: inline-block;
+  min-width: 3ch;
+  border-bottom: 2px dashed var(--accent);
+  color: var(--accent);
+}
+
+.gap-input {
+  width: 9ch;
+  margin: 0 0.15em;
+  padding: 0 0.3em;
+  border: 0;
+  border-bottom: 2px solid var(--accent);
+  background: var(--glaze);
+  border-radius: 4px 4px 0 0;
+  color: var(--heading);
+  font: inherit;
+}
+
+.field .gap-input {
+  width: 100%;
+  min-height: 3rem;
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+}
+
+.gap-input[data-verdict="wrong"] {
+  border-bottom-color: var(--danger);
+}
+
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.choice-row .option {
+  font-family: var(--font-read);
+  font-size: 1.1rem;
+}
+
+.build-answer,
+.build-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 3.2rem;
+  width: 100%;
+}
+
+.build-answer {
+  padding: 0.5rem;
+  border: 1px dashed var(--grout);
+  border-radius: var(--radius-control);
+  align-items: center;
+}
+
+.build-placeholder {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  padding-left: 0.25rem;
+}
+
+.tile {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--grout);
+  border-bottom-width: 3px;
+  border-radius: var(--radius-tile);
+  background: var(--porcelain);
+  color: var(--heading);
+  font-family: var(--font-read);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.tile:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.build-pool .tile:disabled {
+  visibility: hidden;
+}
+
+.feedback-answer {
+  font-family: var(--font-read);
+  color: var(--heading);
+}
+
+.done-title {
+  font-size: var(--step-3);
+  margin-bottom: 0.5rem;
+}

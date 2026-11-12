@@ -1,9 +1,11 @@
 import type { Unit } from "./content";
 import type { LanguagePack } from "./language-pack";
 
-/** One thing to do in the course: read a text or do a listening item. */
+export type ActivityKind = "read" | "listen" | "grammar";
+
+/** One thing to do in the course: read a text, listen, or a grammar lesson. */
 export type Activity = {
-  kind: "read" | "listen";
+  kind: ActivityKind;
   id: string;
   title: string;
   titleTranslation: string;
@@ -11,7 +13,12 @@ export type Activity = {
   href: string;
 };
 
-/** All activities in course order: per unit, its texts then its listening. */
+/** Grammar points taught in a unit, in syllabus order. */
+export function unitGrammar(pack: LanguagePack, unit: Unit) {
+  return pack.grammar.filter((g) => g.unit === unit.id && g.lesson);
+}
+
+/** All activities in course order: per unit, texts, then listening, then grammar. */
 export function activities(pack: LanguagePack): Activity[] {
   return pack.units.flatMap((unit) => [
     ...unit.texts.map((t) => ({
@@ -30,8 +37,22 @@ export function activities(pack: LanguagePack): Activity[] {
       unit,
       href: `/listen/${pack.code}/${l.id}`,
     })),
+    ...unitGrammar(pack, unit).map((g) => ({
+      kind: "grammar" as const,
+      id: g.id,
+      title: g.title,
+      titleTranslation: g.summary,
+      unit,
+      href: `/grammar/${pack.code}/${g.id}`,
+    })),
   ]);
 }
+
+export const VERB: Record<ActivityKind, string> = {
+  read: "read",
+  listen: "listen to",
+  grammar: "learn",
+};
 
 export function unitHref(pack: LanguagePack, unit: Unit): string {
   return `/course/${pack.code}/${unit.id}`;

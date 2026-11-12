@@ -5,7 +5,7 @@ import type { GrammarPoint } from "@/core/content";
  * A1 follows the usual NT2 A1 syllabus; every point must be featured by at
  * least one A1 text (checked by tests).
  */
-export const grammar: readonly GrammarPoint[] = [
+export const grammarPoints: readonly GrammarPoint[] = [
   {
     id: "pronouns-subject",
     level: "A1",

@@ -5,6 +5,21 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Grammar sections
+
+**Three grammar points per unit (Claude).** The 23 A1 points are spread
+over the 8 units (about three each), in the order they're needed: unit 1
+pronouns, present tense, zijn/hebben … unit 8 het as 'it', gaan + infinitive.
+In course order a unit goes: texts → listening → grammar.
+
+**Lesson shape (brief).** The pattern shown visually (word order as rows of
+tiles with the key slot glazed, conjugation and de/het tables), then
+examples quoted word for word from the course texts (a test fails if a
+quote isn't found), then 5–6 exercises one at a time: fill the gap, choose,
+rewrite, build the sentence from tiles. Answers are judged like dictation
+(capitals and punctuation ignored, missing accents = almost). "See the
+pattern" is always one tap away during practice.
+
 ## 2026-11-12 — Listening exercises; course and unit pages
 
 **Course → unit → skill (Claude, from the brief).** "Read" became

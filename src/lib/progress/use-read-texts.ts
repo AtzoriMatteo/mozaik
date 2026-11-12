@@ -4,11 +4,12 @@ import { useCallback, useSyncExternalStore } from "react";
 
 /**
  * Which activities the learner has finished, per kind and language
- * ("read" texts, "listen" items). Kept in this browser for now; moves to
+ * ("read" texts, "listen" items, "grammar" lessons). Kept in this browser for now; moves to
  * the account together with other progress later.
  */
 
-export type ActivityKind = "read" | "listen";
+export type { ActivityKind } from "@/core/course";
+import type { ActivityKind } from "@/core/course";
 
 const key = (kind: ActivityKind, language: string) => `mozaik:${kind}:${language}`;
 const listeners = new Set<() => void>();

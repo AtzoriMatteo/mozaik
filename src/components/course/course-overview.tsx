@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { unitHref } from "@/core/course";
+import { activities, unitHref, VERB } from "@/core/course";
 import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
@@ -23,8 +23,8 @@ export function CourseOverview() {
 
       {next ? (
         <Link href={next.href} className="button continue-button">
-          {progress.started ? "Continue" : "Start"}: {next.kind === "read" ? "read" : "listen to"}{" "}
-          <span lang={pack.code}>{next.title}</span>
+          {progress.started ? "Continue" : "Start"}: {VERB[next.kind]}{" "}
+          {next.kind === "grammar" ? next.title : <span lang={pack.code}>{next.title}</span>}
         </Link>
       ) : (
         <p className="lede">You&apos;ve done everything here. More is on the way.</p>
@@ -32,10 +32,9 @@ export function CourseOverview() {
 
       <ol className="unit-list">
         {pack.units.map((unit) => {
-          const total = unit.texts.length + unit.listening.length;
-          const done =
-            unit.texts.filter((t) => progress.isDone({ kind: "read", id: t.id })).length +
-            unit.listening.filter((l) => progress.isDone({ kind: "listen", id: l.id })).length;
+          const items = activities(pack).filter((a) => a.unit.id === unit.id);
+          const total = items.length;
+          const done = items.filter((a) => progress.isDone(a)).length;
           return (
             <li key={unit.id}>
               <Link href={unitHref(pack, unit)} className="unit-card" data-complete={done === total || undefined}>

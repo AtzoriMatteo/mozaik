@@ -93,6 +93,41 @@ export type Unit = {
   listening: ListeningItem[];
 };
 
+/** One tile in a word-order diagram. */
+export type Slot = {
+  text: string;
+  /** Small label under the tile, e.g. "verb". */
+  label?: string;
+  /** Highlights the tile the lesson is about. */
+  focus?: boolean;
+};
+
+/** A building block of a grammar explanation. */
+export type LessonBlock =
+  | { kind: "text"; text: string }
+  /** Sentences as rows of tiles: shows word order at a glance. */
+  | { kind: "slots"; caption?: string; rows: { slots: Slot[]; translation?: string }[] }
+  | { kind: "table"; caption?: string; headers: string[]; rows: string[][] };
+
+/** A sentence quoted from the course, with the words that show the pattern. */
+export type Example = { text: string; translation: string; highlight: string[] };
+
+export type Exercise =
+  /** Type the missing word(s): before + ___ + after. */
+  | { kind: "fill"; before: string; after: string; answers: string[]; translation: string; hint?: string }
+  /** Pick the form that fits the gap. */
+  | { kind: "choice"; before: string; after: string; options: string[]; answer: number; translation: string }
+  /** Rewrite a sentence as instructed. */
+  | { kind: "transform"; instruction: string; from: string; answers: string[]; translation: string }
+  /** Put shuffled tiles in order; `tiles` is the correct order. */
+  | { kind: "build"; tiles: string[]; translation: string; alsoCorrect?: string[] };
+
+export type GrammarLesson = {
+  blocks: LessonBlock[];
+  examples: Example[];
+  exercises: Exercise[];
+};
+
 export type GrammarPoint = {
   id: string;
   level: CefrLevel;
@@ -100,6 +135,9 @@ export type GrammarPoint = {
   title: string;
   /** One-line plain explanation with an example. */
   summary: string;
+  /** The unit where this point is taught. */
+  unit?: string;
+  lesson?: GrammarLesson;
 };
 
 /** Pack-wide word help, keyed by the lower-cased word as it appears in texts. */

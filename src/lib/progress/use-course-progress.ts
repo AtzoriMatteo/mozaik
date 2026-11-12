@@ -8,13 +8,14 @@ import { useProgress } from "./use-read-texts";
 export function useCourseProgress(pack: LanguagePack | null) {
   const read = useProgress("read", pack?.code ?? null);
   const listen = useProgress("listen", pack?.code ?? null);
+  const grammar = useProgress("grammar", pack?.code ?? null);
+  const done = { read: read.doneIds, listen: listen.doneIds, grammar: grammar.doneIds };
 
-  const isDone = (a: Pick<Activity, "kind" | "id">) =>
-    (a.kind === "read" ? read.doneIds : listen.doneIds).has(a.id);
+  const isDone = (a: Pick<Activity, "kind" | "id">) => done[a.kind].has(a.id);
 
   const all = pack ? activities(pack) : [];
   const next = all.find((a) => !isDone(a)) ?? null;
-  const started = read.doneIds.size + listen.doneIds.size > 0;
+  const started = read.doneIds.size + listen.doneIds.size + grammar.doneIds.size > 0;
 
   return {
     isDone,
@@ -22,5 +23,6 @@ export function useCourseProgress(pack: LanguagePack | null) {
     started,
     markRead: read.markDone,
     markListened: listen.markDone,
+    markGrammar: grammar.markDone,
   };
 }

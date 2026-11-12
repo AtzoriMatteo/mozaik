@@ -4,6 +4,7 @@ import Link from "next/link";
 import { minutesToRead } from "@/core/content";
 import { getPack } from "@/core/registry";
 import type { LanguagePack } from "@/core/language-pack";
+import { activities, unitGrammar, VERB } from "@/core/course";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 
 const KIND_LABEL = {
@@ -18,16 +19,8 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
   const pack = getPack(lang) as LanguagePack;
   const unit = pack.units.find((u) => u.id === unitId)!;
   const progress = useCourseProgress(pack);
-  const nextHere =
-    [
-      ...unit.texts.map((t) => ({ kind: "read" as const, id: t.id, title: t.title, href: `/read/${lang}/${t.id}` })),
-      ...unit.listening.map((l) => ({
-        kind: "listen" as const,
-        id: l.id,
-        title: l.title,
-        href: `/listen/${lang}/${l.id}`,
-      })),
-    ].find((a) => !progress.isDone(a)) ?? null;
+  const nextHere = activities(pack).find((a) => a.unit.id === unit.id && !progress.isDone(a)) ?? null;
+  const grammar = unitGrammar(pack, unit);
 
   return (
     <article>
@@ -52,7 +45,8 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
 
       {nextHere ? (
         <Link href={nextHere.href} className="button continue-button">
-          {nextHere.kind === "read" ? "Read" : "Listen to"} <span lang={lang}>{nextHere.title}</span>
+          <span className="capitalize">{VERB[nextHere.kind]}</span>{" "}
+          {nextHere.kind === "grammar" ? nextHere.title : <span lang={lang}>{nextHere.title}</span>}
         </Link>
       ) : null}
 
@@ -97,6 +91,28 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
           })}
         </ol>
       </section>
+
+      {grammar.length > 0 ? (
+        <section className="skill-section" aria-labelledby="grammar-title">
+          <h2 id="grammar-title">Grammar</h2>
+          <ol className="text-list">
+            {grammar.map((g) => {
+              const done = progress.isDone({ kind: "grammar", id: g.id });
+              return (
+                <li key={g.id}>
+                  <Link href={`/grammar/${lang}/${g.id}`} className="text-card" data-read={done || undefined}>
+                    <span className="text-card-title">{g.title}</span>
+                    <span className="text-card-meta">
+                      <span>{g.summary}</span>
+                      {done ? <span className="text-card-done">Done</span> : null}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ) : null}
     </article>
   );
 }
