@@ -5,6 +5,18 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Level exams
+
+**One exam per level, soft gate (Matteo).** Each CEFR level ends with an
+exam on new material, covering every skill. Passing marks the level done
+and opens the next one; the next level can still be opened early ("Open
+anyway"), in line with "never a hard wall". Feedback per part, retake
+anytime; the same exam doubles as a placement test.
+
+**Built once the level is complete (Matteo).** The A1 exam waits until A1
+has all its components (reading, listening, vocabulary, grammar,
+speaking), so it can test all of them.
+
 ## 2026-11-12 — Rating scale
 
 **Again / Hard / Good / Easy (Matteo).** Replaces the two-button review.
