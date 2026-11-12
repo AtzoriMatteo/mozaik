@@ -1,45 +1,10 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { speak, useHasVoice } from "@/lib/speech";
 
-/**
- * Reads text aloud with the browser's built-in voice for the language.
- * Free and private: speech is generated on the device, nothing is sent
- * anywhere. Hidden when the device has no voice for the language.
- */
+export { speak, useHasVoice };
 
-function subscribe(onChange: () => void) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return () => {};
-  window.speechSynthesis.addEventListener("voiceschanged", onChange);
-  return () => window.speechSynthesis.removeEventListener("voiceschanged", onChange);
-}
-
-function findVoice(lang: string): SpeechSynthesisVoice | undefined {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return undefined;
-  const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith(lang));
-  // Prefer a voice from the Netherlands/Belgium etc. that sounds natural.
-  return voices.find((v) => /natural|enhanced|premium|google/i.test(v.name)) ?? voices[0];
-}
-
-export function useHasVoice(lang: string): boolean {
-  return useSyncExternalStore(
-    subscribe,
-    () => !!findVoice(lang),
-    () => false,
-  );
-}
-
-export function speak(lang: string, text: string, rate = 0.9) {
-  const voice = findVoice(lang);
-  if (!voice) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.voice = voice;
-  u.lang = voice.lang;
-  u.rate = rate;
-  window.speechSynthesis.speak(u);
-}
-
+/** Small speaker button: hear a word or sentence. Hidden without a voice. */
 export function SpeakButton({
   lang,
   text,

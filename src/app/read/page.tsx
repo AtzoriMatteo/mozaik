@@ -1,12 +1,6 @@
-import type { Metadata } from "next";
-import { TextList } from "@/components/reader/text-list";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "Read · Mozaik" };
-
+/** The reading list now lives in the course, unit by unit. */
 export default function ReadPage() {
-  return (
-    <main>
-      <TextList />
-    </main>
-  );
+  redirect("/course");
 }

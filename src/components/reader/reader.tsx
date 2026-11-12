@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { helpFor, type WordHelp } from "@/core/content";
 import { allTexts, type LanguagePack } from "@/core/language-pack";
+import { nextActivity } from "@/core/course";
+import { NextActivityLink } from "@/components/course/next-activity-link";
 import { getPack } from "@/core/registry";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
 import { useReadTexts } from "@/lib/progress/use-read-texts";
@@ -25,7 +27,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
   const texts = allTexts(pack);
   const index = texts.findIndex((t) => t.id === textId);
   const text = texts[index];
-  const next = texts[index + 1];
+  const next = nextActivity(pack, { kind: "read", id: textId });
   const unit = pack.units.find((u) => u.texts.some((t) => t.id === textId));
   const saved = useSavedWords(pack.code);
   const { markRead } = useReadTexts(pack.code);
@@ -92,7 +94,9 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
 
   return (
     <article className="reader">
-      <Link href="/read" className="back-link">All texts</Link>
+      <Link href={unit ? `/course/${pack.code}/${unit.id}` : "/course"} className="back-link">
+        {unit ? `Back to ${unit.titleTranslation}` : "Course"}
+      </Link>
       {unit ? (
         <p className="reader-unit">
           <span className="level-tag">{unit.level}</span>
@@ -138,19 +142,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
       </div>
 
       <footer className="reader-end">
-        {next ? (
-          <Link
-            href={`/read/${pack.code}/${next.id}`}
-            className="button"
-            onClick={() => markRead(text.id)}
-          >
-            Next text: <span lang={pack.code}>{next.title}</span>
-          </Link>
-        ) : (
-          <Link href="/read" className="button" onClick={() => markRead(text.id)}>
-            Done: back to all texts
-          </Link>
-        )}
+        <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
       </footer>
 
       {selected ? (

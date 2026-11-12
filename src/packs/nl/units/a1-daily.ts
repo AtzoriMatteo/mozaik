@@ -1,6 +1,6 @@
-import type { Unit } from "@/core/content";
+import type { UnitContent } from "./types";
 
-export const eten: Unit = {
+export const eten: UnitContent = {
   id: "a1-eten",
   level: "A1",
   title: "Eten en boodschappen",
@@ -229,7 +229,7 @@ export const eten: Unit = {
   ],
 };
 
-export const dagEnTijd: Unit = {
+export const dagEnTijd: UnitContent = {
   id: "a1-dag-en-tijd",
   level: "A1",
   title: "Dag en tijd",

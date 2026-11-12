@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { allTexts } from "@/core/language-pack";
 import { isDue, isLearned } from "@/core/srs";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
-import { useReadTexts } from "@/lib/progress/use-read-texts";
+import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { Greeting } from "./greeting";
 import { LanguagePicker } from "./language-picker";
 import { useLearningLanguage } from "./learning-language";
@@ -14,7 +13,7 @@ import { useNow } from "@/lib/use-now";
 export function Home() {
   const { pack } = useLearningLanguage();
   const saved = useSavedWords(pack?.code ?? null);
-  const { readIds } = useReadTexts(pack?.code ?? null);
+  const progress = useCourseProgress(pack);
   const now = useNow();
   if (!pack) return <LanguagePicker />;
 
@@ -23,7 +22,6 @@ export function Home() {
     now !== null && saved.reviewReady
       ? saved.words.filter((w) => isDue(w.dueAt, new Date(now))).length
       : 0;
-  const nextText = allTexts(pack).find((t) => !readIds.has(t.id));
 
   return (
     <>
@@ -50,10 +48,10 @@ export function Home() {
           </Link>
         ) : null}
         <Link
-          href={nextText ? `/read/${pack.code}/${nextText.id}` : "/read"}
+          href={progress.next?.href ?? "/course"}
           className={due > 0 ? "button button-quiet" : "button"}
         >
-          {readIds.size === 0 ? "Start reading" : "Continue reading"}
+          {progress.started ? "Continue the course" : "Start the course"}
         </Link>
       </div>
     </>

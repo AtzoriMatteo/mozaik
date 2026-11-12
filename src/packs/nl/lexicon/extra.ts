@@ -75,5 +75,9 @@ export const lexiconExtra: Lexicon = {
   zij: { meaning: "she; they (stressed)", local: "Unstressed form: ze" },
   "z'n": { meaning: "his; (in met z'n drieën)", local: "Spoken form of zijn: z'n fiets = his bike" },
   zonder: { meaning: "without", closer: "Related to English 'asunder' (apart)" },
+  buiten: { meaning: "outside", closer: "Opposite of binnen (inside)" },
+  helpen: { meaning: "help", local: "Kan ik u helpen? = Can I help you? (in shops)" },
+  vertrekt: { meaning: "leaves, departs", base: "vertrekken" },
+  nieuw: { meaning: "new", closer: "nieuw ~ new" },
   buurman: { meaning: "(male) neighbour", closer: "buur + man" },
 };

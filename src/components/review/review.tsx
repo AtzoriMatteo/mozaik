@@ -48,7 +48,7 @@ export function Review() {
     return (
       <Message title="Nothing to review yet">
         Save words while you read and they&apos;ll come back here, in the sentence you found them in.
-        <Link href="/read" className="button">Start reading</Link>
+        <Link href="/course" className="button">Start the course</Link>
       </Message>
     );
   }
@@ -82,8 +82,8 @@ export function Review() {
               Review {Math.min(due.length, SESSION_SIZE)} more
             </button>
           ) : null}
-          <Link href="/read" className={due.length > 0 ? "button button-quiet" : "button"}>
-            Keep reading
+          <Link href="/course" className={due.length > 0 ? "button button-quiet" : "button"}>
+            Back to the course
           </Link>
         </div>
       </div>

@@ -5,6 +5,31 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Listening exercises; course and unit pages
+
+**Course → unit → skill (Claude, from the brief).** "Read" became
+"Course": an overview of units with progress and one Continue button, and a
+page per unit with its can-do goals and a section per skill (Reading,
+Listening; Grammar and Speaking will slot in). Every activity ends with one
+"Next" button to the following activity in course order.
+
+**Listening material is separate from the texts (brief).** One item per A1
+unit for now: a dialogue at uni, Noor about her family, at the baker's, a
+station announcement, a voicemail from the landlord, the first day at work,
+at the pharmacy, the weather forecast.
+
+**Listening flow (Claude).** One step per screen: listen without text →
+gist question → detail questions (replay anytime) → dictation of two lines
+(forgiving: capitals, punctuation ignored; missing accents = "almost") →
+transcript with tap-for-help, translations toggle and per-line playback.
+Speed: normal/slow. Speakers in a dialogue get different voices when the
+device has several, otherwise a different pitch.
+
+**Device voice for now (Claude).** Free and private, but quality varies by
+device; Mozaik explains how to add a Dutch voice when none is installed and
+offers the transcript instead. Recorded or neural audio can be added later
+per item without changing the exercises.
+
 ## 2026-11-12 — Level exams
 
 **One exam per level, soft gate (Matteo).** Each CEFR level ends with an

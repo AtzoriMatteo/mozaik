@@ -93,3 +93,44 @@ describe("A1 coverage", () => {
     for (const t of texts) for (const g of t.grammar) expect(ids, `${t.id}: ${g}`).toContain(g);
   });
 });
+
+describe("Dutch listening material", () => {
+  const items = dutch.units.flatMap((u) => u.listening);
+
+  it("gives every unit at least one listening item", () => {
+    for (const unit of dutch.units) expect(unit.listening.length, unit.id).toBeGreaterThan(0);
+  });
+
+  it("has unique ids, distinct from text ids", () => {
+    const ids = [...items.map((i) => i.id), ...texts.map((t) => t.id)];
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it.each(items.map((i) => [i.id, i] as const))("%s: every word has help", (_id, item) => {
+    const missing = new Set<string>();
+    for (const line of item.lines) {
+      for (const tok of dutch.tokenize(line.text)) {
+        if (tok.kind === "word" && !helpFor(dutch.lexicon, item, tok.normalized)) missing.add(tok.normalized);
+      }
+    }
+    expect([...missing]).toEqual([]);
+  });
+
+  it("has well-formed questions and dictation lines", () => {
+    for (const item of items) {
+      for (const q of [item.gist, ...item.details]) {
+        expect(q.options.length, `${item.id}: ${q.prompt}`).toBeGreaterThanOrEqual(2);
+        expect(q.answer, `${item.id}: ${q.prompt}`).toBeLessThan(q.options.length);
+      }
+      expect(item.details.length, item.id).toBeGreaterThan(0);
+      expect(item.dictation.length, item.id).toBeGreaterThan(0);
+      for (const i of item.dictation) expect(item.lines[i], `${item.id} line ${i}`).toBeDefined();
+      for (const line of item.lines) expect(line.translation.trim()).not.toBe("");
+    }
+  });
+
+  it("only tags grammar points that exist", () => {
+    const ids = new Set(dutch.grammar.map((g) => g.id));
+    for (const item of items) for (const g of item.grammar) expect(ids, `${item.id}: ${g}`).toContain(g);
+  });
+});

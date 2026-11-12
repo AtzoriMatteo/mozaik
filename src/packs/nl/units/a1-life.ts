@@ -1,6 +1,6 @@
-import type { Unit } from "@/core/content";
+import type { UnitContent } from "./types";
 
-export const gezondheid: Unit = {
+export const gezondheid: UnitContent = {
   id: "a1-gezondheid",
   level: "A1",
   title: "Gezondheid",
@@ -174,7 +174,7 @@ export const gezondheid: Unit = {
   ],
 };
 
-export const vrijeTijd: Unit = {
+export const vrijeTijd: UnitContent = {
   id: "a1-vrije-tijd",
   level: "A1",
   title: "Vrije tijd en weer",

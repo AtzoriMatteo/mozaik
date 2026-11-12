@@ -45,6 +45,42 @@ export type ReadingText = {
   words?: Record<string, WordHelp>;
 };
 
+/** A multiple-choice question; options and prompt in the explanation language. */
+export type Question = {
+  prompt: string;
+  options: string[];
+  /** Index of the correct option. */
+  answer: number;
+};
+
+export type ListeningLine = {
+  /** Who speaks (for dialogues); each speaker gets their own voice. */
+  speaker?: string;
+  text: string;
+  translation: string;
+};
+
+/** Audio material for a unit: heard first, read only afterwards. */
+export type ListeningItem = {
+  id: string;
+  level: CefrLevel;
+  title: string;
+  titleTranslation: string;
+  kind: "dialogue" | "monologue" | "announcement" | "voicemail";
+  /** One line of context before listening, e.g. "You're on the platform…". */
+  situation: string;
+  lines: ListeningLine[];
+  /** What is it about? Answered after the first listen. */
+  gist: Question;
+  /** Specific details; you may replay as often as you like. */
+  details: Question[];
+  /** Indexes of lines to write down. Short, clear lines work best. */
+  dictation: number[];
+  grammar: string[];
+  /** Help that only applies here; overrides the pack lexicon. */
+  words?: Record<string, WordHelp>;
+};
+
 /** A topic unit: several different texts on one theme, with clear goals. */
 export type Unit = {
   id: string;
@@ -54,6 +90,7 @@ export type Unit = {
   /** What you can do after this unit, in plain words. */
   canDo: string[];
   texts: ReadingText[];
+  listening: ListeningItem[];
 };
 
 export type GrammarPoint = {
@@ -70,7 +107,7 @@ export type Lexicon = Record<string, WordHelp>;
 
 export function helpFor(
   lexicon: Lexicon,
-  text: ReadingText,
+  text: { words?: Record<string, WordHelp> },
   normalized: string,
 ): WordHelp | undefined {
   return text.words?.[normalized] ?? lexicon[normalized];

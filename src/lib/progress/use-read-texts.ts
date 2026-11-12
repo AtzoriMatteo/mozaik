@@ -3,23 +3,26 @@
 import { useCallback, useSyncExternalStore } from "react";
 
 /**
- * Which texts the learner has finished, per language. Kept in this browser
- * for now; moves to the account together with other progress later.
+ * Which activities the learner has finished, per kind and language
+ * ("read" texts, "listen" items). Kept in this browser for now; moves to
+ * the account together with other progress later.
  */
 
-const key = (language: string) => `mozaik:read:${language}`;
+export type ActivityKind = "read" | "listen";
+
+const key = (kind: ActivityKind, language: string) => `mozaik:${kind}:${language}`;
 const listeners = new Set<() => void>();
 const cache = new Map<string, { raw: string | null; ids: ReadonlySet<string> }>();
 const EMPTY: ReadonlySet<string> = new Set();
 
-function read(language: string): ReadonlySet<string> {
+function read(storageKey: string): ReadonlySet<string> {
   let raw: string | null = null;
   try {
-    raw = window.localStorage.getItem(key(language));
+    raw = window.localStorage.getItem(storageKey);
   } catch {
     return EMPTY;
   }
-  const hit = cache.get(language);
+  const hit = cache.get(storageKey);
   if (hit && hit.raw === raw) return hit.ids;
   let ids: ReadonlySet<string> = EMPTY;
   try {
@@ -27,7 +30,7 @@ function read(language: string): ReadonlySet<string> {
   } catch {
     ids = EMPTY;
   }
-  cache.set(language, { raw, ids });
+  cache.set(storageKey, { raw, ids });
   return ids;
 }
 
@@ -40,28 +43,35 @@ function subscribe(listener: () => void) {
   };
 }
 
-export function useReadTexts(language: string | null) {
+export function useProgress(kind: ActivityKind, language: string | null) {
+  const storageKey = language ? key(kind, language) : null;
   const ids = useSyncExternalStore(
     subscribe,
-    () => (language ? read(language) : EMPTY),
+    () => (storageKey ? read(storageKey) : EMPTY),
     () => EMPTY,
   );
 
-  const markRead = useCallback(
-    (textId: string) => {
-      if (!language) return;
-      const next = new Set(read(language));
-      if (next.has(textId)) return;
-      next.add(textId);
+  const markDone = useCallback(
+    (id: string) => {
+      if (!storageKey) return;
+      const next = new Set(read(storageKey));
+      if (next.has(id)) return;
+      next.add(id);
       try {
-        window.localStorage.setItem(key(language), JSON.stringify([...next]));
+        window.localStorage.setItem(storageKey, JSON.stringify([...next]));
       } catch {
         // Storage unavailable: progress lasts this visit only.
       }
       listeners.forEach((l) => l());
     },
-    [language],
+    [storageKey],
   );
 
-  return { readIds: ids, markRead };
+  return { doneIds: ids, markDone };
+}
+
+/** Reading progress (kept for existing callers). */
+export function useReadTexts(language: string | null) {
+  const { doneIds, markDone } = useProgress("read", language);
+  return { readIds: doneIds, markRead: markDone };
 }

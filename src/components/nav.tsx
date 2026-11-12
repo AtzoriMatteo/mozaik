@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: "/read", label: "Read" },
-  { href: "/review", label: "Review" },
+  { href: "/course", label: "Course", match: ["/course", "/read", "/listen"] },
+  { href: "/review", label: "Review", match: ["/review"] },
 ];
 
 export function Nav() {
@@ -17,7 +17,7 @@ export function Nav() {
           key={l.href}
           href={l.href}
           className="nav-link"
-          aria-current={path.startsWith(l.href) ? "page" : undefined}
+          aria-current={l.match.some((m) => path.startsWith(m)) ? "page" : undefined}
         >
           {l.label}
         </Link>

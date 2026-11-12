@@ -1,4 +1,4 @@
-import type { Unit } from "@/core/content";
+import type { UnitContent } from "./types";
 
 /**
  * Cast (recurs through A1): Luca, an Italian student new in Leiden; his
@@ -7,7 +7,7 @@ import type { Unit } from "@/core/content";
  * classmate in Dutch class.
  */
 
-export const kennismaken: Unit = {
+export const kennismaken: UnitContent = {
   id: "a1-kennismaken",
   level: "A1",
   title: "Kennismaken",
@@ -170,7 +170,7 @@ export const kennismaken: Unit = {
   ],
 };
 
-export const familie: Unit = {
+export const familie: UnitContent = {
   id: "a1-familie",
   level: "A1",
   title: "Familie",
