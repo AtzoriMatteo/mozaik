@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { LanguagePack } from "@/core/language-pack";
-import { cardKind, isDue, isLearned, type ReviewResult } from "@/core/srs";
+import { cardKind, describeWait, isDue, isLearned, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
 import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
 import { Mosaic } from "@/components/mosaic";
@@ -127,8 +127,8 @@ function Card({
     function onKey(e: KeyboardEvent) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (!revealed && (e.key === " " || e.key === "Enter")) setRevealed(true);
-      else if (revealed && e.key === "1") onAnswer("again");
-      else if (revealed && (e.key === "2" || e.key === " " || e.key === "Enter")) onAnswer("good");
+      else if (revealed && ["1", "2", "3", "4"].includes(e.key)) onAnswer(REVIEW_RESULTS[Number(e.key) - 1]);
+      else if (revealed && (e.key === " " || e.key === "Enter")) onAnswer("good");
       else return;
       e.preventDefault();
     }
@@ -180,21 +180,34 @@ function Card({
             </p>
             <p className="review-meaning">{word.meaning}</p>
           </div>
-          <p className="review-question">Did you know it?</p>
-          <div className="button-row">
-            <button type="button" className="button button-quiet" onClick={() => onAnswer("again")}>
-              Not yet
-            </button>
-            <button type="button" className="button" onClick={() => onAnswer("good")}>
-              Got it
-            </button>
+          <p className="review-question">How well did you know it?</p>
+          <div className="rating-row" role="group" aria-label="Rate how well you knew it">
+            {RATINGS.map((r, i) => (
+              <button
+                key={r.result}
+                type="button"
+                className={r.result === "good" ? "rating rating-main" : "rating"}
+                onClick={() => onAnswer(r.result)}
+                title={`${r.hint} (key ${i + 1})`}
+              >
+                <span className="rating-label">{r.label}</span>
+                <span className="rating-wait">{describeWait(word.stage ?? 0, r.result, new Date())}</span>
+              </button>
+            ))}
           </div>
-          <p className="shortcut-hint">Keys: 1 = Not yet, 2 = Got it</p>
+          <p className="shortcut-hint">Keys 1–4, or Space for Good</p>
         </>
       )}
     </section>
   );
 }
+
+const RATINGS: { result: ReviewResult; label: string; hint: string }[] = [
+  { result: "again", label: "Again", hint: "Didn't know it" },
+  { result: "hard", label: "Hard", hint: "Knew it, with effort" },
+  { result: "good", label: "Good", hint: "Knew it" },
+  { result: "easy", label: "Easy", hint: "Knew it instantly" },
+];
 
 function Message({ title, children }: { title: string; children: React.ReactNode }) {
   return (

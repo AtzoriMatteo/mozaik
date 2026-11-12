@@ -797,3 +797,44 @@ a {
     display: none;
   }
 }
+
+/* ---------- Rating scale ---------- */
+
+.rating-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  max-width: var(--measure);
+}
+
+.rating {
+  display: grid;
+  gap: 0.1rem;
+  justify-items: center;
+  padding: 0.6rem 0.25rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+
+.rating:hover {
+  border-color: var(--accent);
+}
+
+.rating-main {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.rating-label {
+  font-weight: 600;
+}
+
+.rating-wait {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

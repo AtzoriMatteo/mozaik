@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cardKind, isDue, isLearned, MAX_STAGE, schedule } from "./srs";
+import { cardKind, describeWait, isDue, isLearned, MAX_STAGE, schedule } from "./srs";
 
 const now = new Date("2026-11-12T15:30:00");
 
@@ -19,6 +19,29 @@ describe("spaced repetition", () => {
     const { stage, dueAt } = schedule(4, "again", now);
     expect(stage).toBe(0);
     expect(dueAt.getTime() - now.getTime()).toBe(10 * 60 * 1000);
+  });
+
+  it("keeps a hard word on its stage and brings it back sooner", () => {
+    const hard = schedule(3, "hard", now); // stage 3 waits 7 days; hard → 3
+    expect(hard.stage).toBe(3);
+    expect(hard.dueAt.getDate()).toBe(15);
+  });
+
+  it("brings a hard new word back in an hour", () => {
+    const { stage, dueAt } = schedule(0, "hard", now);
+    expect(stage).toBe(0);
+    expect(dueAt.getTime() - now.getTime()).toBe(60 * 60 * 1000);
+  });
+
+  it("jumps two stages when it was easy", () => {
+    expect(schedule(1, "easy", now).stage).toBe(3);
+  });
+
+  it("labels each rating with when the word comes back", () => {
+    expect(describeWait(0, "again", now)).toBe("10 min");
+    expect(describeWait(0, "hard", now)).toBe("1 h");
+    expect(describeWait(0, "good", now)).toBe("1 d");
+    expect(describeWait(0, "easy", now)).toBe("3 d");
   });
 
   it("never goes past the last stage", () => {

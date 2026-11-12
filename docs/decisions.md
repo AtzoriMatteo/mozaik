@@ -5,6 +5,13 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — Rating scale
+
+**Again / Hard / Good / Easy (Matteo).** Replaces the two-button review.
+Again = back to the start, 10 min; Hard = same stage, half the wait (a new
+word: 1 hour); Good = one stage up; Easy = two stages up. Each button shows
+when the word will come back. Keys 1–4, Space = Good.
+
 ## 2026-11-12 — Overnight: A1 course, review, listening
 
 **A1 course structure (Claude, from Matteo's brief).** 8 topic units ×
