@@ -1727,3 +1727,14 @@ a {
 .listen-big {
   margin-bottom: 1.5rem;
 }
+
+.github-button {
+  gap: 0.6rem;
+}
+
+.login-or {
+  max-width: 26rem;
+  margin: 2rem 0 1rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}

@@ -5,6 +5,16 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-12 — GitHub login
+
+**GitHub login next to the email link (Claude, after hitting the limit).**
+Supabase's built-in email sender allows only 2 auth emails per hour for the
+whole project, so magic links run out fast. "Continue with GitHub" sends no
+email, so it has no such limit and costs nothing. Magic links stay as a
+second option. Before other people use Mozaik: add a free custom SMTP
+provider (e.g. Brevo) so email links work for everyone, and possibly
+"Continue with Google".
+
 ## 2026-11-12 — Review for every part, mixed by default
 
 **One button, optional focus, settings tucked away (Matteo: not too much,
