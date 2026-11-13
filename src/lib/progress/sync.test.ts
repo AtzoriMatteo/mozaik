@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+let currentUser = "matteo";
 // A fake account: the rows the `progress` table would hold.
 let table: { language: string; kind: string; item_id: string; done: boolean }[] = [];
 const upsert = vi.fn(async (rows: unknown) => {
@@ -10,7 +11,7 @@ const upsert = vi.fn(async (rows: unknown) => {
   return { error: null };
 });
 const fake = {
-  auth: { getSession: async () => ({ data: { session: { user: {} } } }) },
+  auth: { getSession: async () => ({ data: { session: { user: { id: currentUser } } } }) },
   from: () => ({ select: async () => ({ data: table, error: null }), upsert }),
 };
 vi.mock("@/lib/supabase/browser", () => ({ getBrowserSupabase: () => fake }));
@@ -34,6 +35,7 @@ async function use(d: ReturnType<typeof device>) {
 
 describe("syncProgress", () => {
   beforeEach(() => {
+    currentUser = "matteo";
     table = [];
     upsert.mockClear();
   });
@@ -69,5 +71,19 @@ describe("syncProgress", () => {
     await (await use(phone)).syncProgress();
     expect(phone.store.get("mozaik:writing-draft:nl:x")).toBe("Ik heet Matteo");
     expect(upsert).not.toHaveBeenCalled();
+  });
+
+  it("never puts one person's progress into another's account on a shared browser", async () => {
+    const laptop = device();
+    laptop.store.set("mozaik:read:nl", JSON.stringify(["t1", "t2"]));
+    await (await use(laptop)).syncProgress();
+    expect(table.map((r) => r.item_id).sort()).toEqual(["t1", "t2"]);
+
+    // A friend logs in on the same laptop. Their account starts empty.
+    currentUser = "friend";
+    table = [];
+    await (await use(laptop)).syncProgress();
+    expect(table).toEqual([]);
+    expect(JSON.parse(laptop.store.get("mozaik:read:nl") ?? "[]")).toEqual([]);
   });
 });

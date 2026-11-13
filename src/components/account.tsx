@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { isAuthEnabled } from "@/lib/supabase/config";
 import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { clearLocalProgress } from "@/lib/progress/sync";
+import Link from "next/link";
 
 /**
  * Top-right corner: who is logged in, or a preview-mode notice.
@@ -37,8 +39,9 @@ export function Account() {
 
   return (
     <div className="account">
+      <Link href="/flags" className="account-link">Flags</Link>
       <span className="account-email">{email}</span>
-      <form action="/auth/signout" method="post">
+      <form action="/auth/signout" method="post" onSubmit={() => clearLocalProgress()}>
         <button type="submit" className="button button-quiet button-small">Log out</button>
       </form>
     </div>

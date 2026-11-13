@@ -20,6 +20,34 @@ async function signedInClient() {
   return data.session ? supabase : null;
 }
 
+const OWNER_KEY = "mozaik:progress-owner";
+
+/** Every progress entry kept in this browser. */
+function progressKeys(): string[] {
+  const pattern = new RegExp(`^mozaik:(${PROGRESS_KINDS.join("|")}):`);
+  const keys: string[] = [];
+  for (let i = 0; i < window.localStorage.length; i++) {
+    const k = window.localStorage.key(i);
+    if (k && pattern.test(k)) keys.push(k);
+  }
+  return keys;
+}
+
+/**
+ * Forget this browser's copy of progress (it lives on the account). Used on
+ * logout, and when someone else logs in on the same browser, so one
+ * person's progress never ends up in another's account.
+ */
+export function clearLocalProgress() {
+  try {
+    for (const k of progressKeys()) window.localStorage.removeItem(k);
+    window.localStorage.removeItem(OWNER_KEY);
+  } catch {
+    // Storage unavailable: nothing to clear.
+  }
+  notifyProgress();
+}
+
 /** Save one change to the account. Failures are fine: the next sync uploads it. */
 export function pushProgress(language: string, kind: ProgressKind, itemId: string, done: boolean) {
   void (async () => {
@@ -56,6 +84,10 @@ export function syncProgress(): Promise<void> {
   running ??= (async () => {
     const supabase = await signedInClient();
     if (!supabase) return;
+    const { data: session } = await supabase.auth.getSession();
+    const userId = session.session?.user.id;
+    const owner = window.localStorage.getItem(OWNER_KEY);
+    if (owner && userId && owner !== userId) clearLocalProgress();
     const { data, error } = await supabase.from("progress").select("language, kind, item_id, done");
     if (error) {
       if (error.code !== MISSING_TABLE) console.warn("Mozaik: couldn't sync progress", error.message);
@@ -67,6 +99,7 @@ export function syncProgress(): Promise<void> {
       const [language, kind] = k.split("|");
       window.localStorage.setItem(progressKey(kind as ProgressKind, language), JSON.stringify([...ids]));
     }
+    if (userId) window.localStorage.setItem(OWNER_KEY, userId);
     notifyProgress();
     if (upload.length) {
       const now = new Date().toISOString();

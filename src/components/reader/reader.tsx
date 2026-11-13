@@ -201,6 +201,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           error={saved.error}
           onToggleSave={() => toggleSave(selected)}
           onClose={() => setSelectedKey(null)}
+          flag={{ language: pack.code, itemKind: "text", itemId: text.id }}
         />
       ) : null}
     </article>
