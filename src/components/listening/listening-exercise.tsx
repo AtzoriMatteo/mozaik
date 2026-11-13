@@ -12,12 +12,14 @@ import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
 import { NextActivityLink } from "@/components/course/next-activity-link";
 import { WordPanel } from "@/components/reader/word-panel";
+import { TaskRunner } from "@/components/exercises/task-runner";
 
-type Step = "listen" | "gist" | "details" | "dictation" | "transcript";
-const STEPS: { id: Step; label: string }[] = [
+type Step = "listen" | "gist" | "details" | "practice" | "dictation" | "transcript";
+const ALL_STEPS: { id: Step; label: string }[] = [
   { id: "listen", label: "Listen" },
   { id: "gist", label: "Gist" },
   { id: "details", label: "Details" },
+  { id: "practice", label: "Close listening" },
   { id: "dictation", label: "Dictation" },
   { id: "transcript", label: "Transcript" },
 ];
@@ -33,6 +35,8 @@ export function ListeningExercise({ lang, itemId }: { lang: string; itemId: stri
   const item = unit.listening.find((l) => l.id === itemId)!;
   const hasVoice = useHasVoice(lang);
   const progress = useCourseProgress(pack);
+  const tasks = item.tasks ?? [];
+  const STEPS = ALL_STEPS.filter((s) => s.id !== "practice" || tasks.length > 0);
 
   const [step, setStep] = useState<Step>("listen");
   const [score, setScore] = useState({ right: 0, total: 0 });
@@ -111,6 +115,20 @@ export function ListeningExercise({ lang, itemId }: { lang: string; itemId: stri
           questions={item.details}
           onDone={(right) => {
             addScore(right, item.details.length);
+            setStep(tasks.length > 0 ? "practice" : "dictation");
+          }}
+        />
+      ) : null}
+
+      {step === "practice" ? (
+        <TaskRunner
+          tasks={tasks}
+          lang={lang}
+          seed={item.id}
+          lines={item.lines}
+          rate={slow ? 0.7 : 0.85}
+          onDone={(right, total) => {
+            addScore(right, total);
             setStep("dictation");
           }}
         />

@@ -43,7 +43,27 @@ export type ReadingText = {
   grammar: string[];
   /** Help that only applies in this text; overrides the pack lexicon. */
   words?: Record<string, WordHelp>;
+  /** Comprehension tasks, done after reading. */
+  tasks?: Task[];
 };
+
+/**
+ * A comprehension task, after reading or listening. Prompts and options are
+ * in the explanation language unless the field says otherwise.
+ */
+export type Task =
+  /** Pick the right answer. */
+  | { kind: "choice"; prompt: string; options: string[]; answer: number }
+  /** A statement in the target language: true or false? */
+  | { kind: "truefalse"; statement: string; translation: string; answer: boolean }
+  /** Put events in order; `items` is the correct order. */
+  | { kind: "order"; prompt: string; items: string[]; inTarget?: boolean }
+  /** Connect each left item to its right item; `pairs` lists the right matches. */
+  | { kind: "match"; prompt: string; pairs: [string, string][]; leftInTarget?: boolean; rightInTarget?: boolean }
+  /** Listening only: type the missing words of a line while hearing it. */
+  | { kind: "gaps"; line: number; words: string[] }
+  /** Listening only: which of these words did you hear in the line? */
+  | { kind: "heard"; line: number; options: string[]; answer: number };
 
 /** A multiple-choice question; options and prompt in the explanation language. */
 export type Question = {
@@ -74,6 +94,8 @@ export type ListeningItem = {
   gist: Question;
   /** Specific details; you may replay as often as you like. */
   details: Question[];
+  /** Extra tasks after the detail questions: true/false, gaps, order, heard. */
+  tasks?: Task[];
   /** Indexes of lines to write down. Short, clear lines work best. */
   dictation: number[];
   grammar: string[];
@@ -89,6 +111,14 @@ export type UnitSpeaking = {
   shadowing: Sentence[];
 };
 
+/** Hand-painted tile motifs available to every language pack. */
+export type Motif =
+  | "tulip" | "birds" | "cheese" | "clock" | "gable" | "book"
+  | "herb" | "windmill" | "clog" | "crown";
+
+/** Polychrome Delftware glazes. */
+export type Glaze = "cobalt" | "manganese" | "ochre" | "copper" | "iron";
+
 /** A topic unit: several different texts on one theme, with clear goals. */
 export type Unit = {
   id: string;
@@ -97,6 +127,8 @@ export type Unit = {
   titleTranslation: string;
   /** What you can do after this unit, in plain words. */
   canDo: string[];
+  /** The unit's tile: a motif and a glaze colour (see components/unit-tile). */
+  look?: { motif: Motif; glaze: Glaze };
   texts: ReadingText[];
   listening: ListeningItem[];
   speaking?: UnitSpeaking;
@@ -129,7 +161,13 @@ export type Exercise =
   /** Rewrite a sentence as instructed. */
   | { kind: "transform"; instruction: string; from: string; answers: string[]; translation: string }
   /** Put shuffled tiles in order; `tiles` is the correct order. */
-  | { kind: "build"; tiles: string[]; translation: string; alsoCorrect?: string[] };
+  | { kind: "build"; tiles: string[]; translation: string; alsoCorrect?: string[] }
+  /** One word is wrong: tap it, then type the fix. `correct` is the fixed sentence. */
+  | { kind: "spot"; sentence: string; wrong: string; fix: string[]; correct: string; translation: string }
+  /** Connect pairs, e.g. pronoun ↔ verb form; `pairs` lists the right matches. */
+  | { kind: "match"; prompt: string; pairs: [string, string][]; translation: string }
+  /** Sort words into groups, e.g. de / het. */
+  | { kind: "sort"; prompt: string; groups: string[]; items: [string, number][]; translation: string };
 
 export type GrammarLesson = {
   blocks: LessonBlock[];

@@ -5,6 +5,60 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 — Polychrome tiles, more A1, new exercise types
+
+**Units as numbered Delft tiles (Matteo: less AI-generated, less blue).**
+The course page is a wall of tiles with grout between them. Each unit has
+its own hand-painted motif (tulip, bird, cheese, clock, canal house, book,
+herb, windmill, clog, crown) and one of the five polychrome Delftware
+glazes: cobalt, manganese, ochre, copper green, iron red. The number is
+painted large in the unit's glaze; small squares under each tile fill in as
+activities are done. Lines get a slight brush wobble (an SVG filter), so
+they read as painted, not drawn by a computer.
+
+**Each skill has its own glaze (Claude).** Reading cobalt, Listening ochre,
+Grammar manganese, Speaking copper, Beyond the course iron red: a small
+glazed glyph by each heading and a coloured edge on its list. Cards became
+rows on a glazed strip; a done item gets a small glazed tile.
+
+**Warmer ground (Claude).** Milky tin-glaze `#eceee9` with a faint texture
+instead of cool white, glazed surfaces `#f8f8f4`, lime-mortar grout
+`#cfcdc3`. Corners are sharper (3–4px). Dark mode has its own glazes.
+
+**More A1 (Matteo: mainly more texts and listening).** Two new units:
+9 Kleren en winkels (clothes and shops), 10 Feestdagen (King's Day,
+Sinterklaas, New Year). Every unit now has 3 texts and 3 listening items
+(30 texts, 30 listening items), each text a different kind: a profile, an
+email, a diary, a housing ad, an interview… ~300 new words, all with help.
+Units 9–10 have no grammar lessons of their own; they reuse the A1 points.
+
+**Different exercises (Matteo).**
+- Reading: after each text, 4–5 comprehension tasks mixing multiple
+  choice, true/false (in Dutch), put events in order, and match who-did-what.
+  "Skip the questions" is always there.
+- Listening: a new "Close listening" step between the questions and the
+  dictation: true/false, fill the gaps in a line while hearing it, "which
+  word did you hear?", and put lines in order.
+- Grammar: every lesson gained match-the-pairs, sort into groups (de/het,
+  niet/geen…) and spot-the-mistake exercises. They also come back in review.
+- Tests check every task is well-formed (gap words really are in the line,
+  "heard" options really aren't, every sort group is used).
+
+**No automatic capital mid-sentence (Matteo).** Phones capitalise the first
+letter of an empty field. Gaps that aren't at the start of a sentence now
+switch that off; gaps at the start keep it.
+
+**Beyond the course (Matteo's idea; links only).** A page per language
+with real material for the level (watch, listen, read, practise) and a
+"Beyond the course" section on unit pages for items that fit the topic.
+A1 is short on purpose: Potje Nederlands (a University of Groningen A1
+podcast, episodes matched to units), Easy Dutch, Dutchies to be, Bart de
+Pau, NOS Jeugdjournaal (marked "a bit above A1"), Nijntje books, Taalklas.nl.
+Plain links that open in a new tab; no embedded players, so no third party
+tracks Mozaik visits. "Mark as tried" is kept in the browser.
+`npm run check-links` checks every link (needs the internet, so it's not
+part of the normal tests).
+
 ## 2026-11-12 — GitHub login
 
 **GitHub login next to the email link (Claude, after hitting the limit).**

@@ -10,6 +10,8 @@ import { getPack } from "@/core/registry";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { NextActivityLink } from "@/components/course/next-activity-link";
 import { SpeakButton } from "@/components/speak-button";
+import { MatchBoard, SortBoard, SpotBoard } from "@/components/exercises/boards";
+import { capsFor } from "@/core/caps";
 
 /**
  * A grammar lesson: the pattern (visual), examples quoted from the unit's
@@ -272,6 +274,12 @@ export function correctAnswer(ex: Exercise): string {
       return ex.answers[0];
     case "build":
       return ex.tiles.join(" ");
+    case "spot":
+      return ex.correct;
+    case "match":
+      return ex.pairs.map(([a, b]) => `${a} – ${b}`).join(", ");
+    case "sort":
+      return ex.groups.map((g, gi) => `${g}: ${ex.items.filter(([, i]) => i === gi).map(([w]) => w).join(", ")}`).join(" · ");
   }
 }
 
@@ -317,6 +325,7 @@ export function ExerciseCard({
       readOnly={locked}
       autoComplete="off"
       autoCorrect="off"
+      autoCapitalize={exercise.kind === "fill" ? capsFor(exercise.before) : "sentences"}
       spellCheck={false}
       aria-label="Your answer"
       onChange={(e) => {
@@ -416,8 +425,29 @@ export function ExerciseCard({
         </>
       ) : null}
 
+      {exercise.kind === "spot" ? (
+        <>
+          <p className="exercise-prompt">One word is wrong. Find it and fix it:</p>
+          <SpotBoard sentence={exercise.sentence} wrong={exercise.wrong} fix={exercise.fix} lang={lang} locked={locked} onCheck={onCheck} />
+        </>
+      ) : null}
+
+      {exercise.kind === "match" ? (
+        <>
+          <p className="exercise-prompt">{exercise.prompt}</p>
+          <MatchBoard pairs={exercise.pairs} seed={seed} leftLang={lang} rightLang={lang} locked={locked} onCheck={onCheck} />
+        </>
+      ) : null}
+
+      {exercise.kind === "sort" ? (
+        <>
+          <p className="exercise-prompt">{exercise.prompt}</p>
+          <SortBoard groups={exercise.groups} items={exercise.items} lang={lang} locked={locked} onCheck={onCheck} />
+        </>
+      ) : null}
+
       {error ? <p className="error" role="alert">{error}</p> : null}
-      {!locked && exercise.kind !== "choice" ? (
+      {!locked && (exercise.kind === "fill" || exercise.kind === "transform" || exercise.kind === "build") ? (
         <button type="button" className="button" onClick={check}>
           Check
         </button>

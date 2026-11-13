@@ -43,7 +43,9 @@ describe("what comes back in review", () => {
     const items = eligibleItems(dutch, {
       read: new Set(), listen: new Set(["op-het-perron"]), grammar: new Set(["verb-second"]), speak: new Set(["a1-eten"]),
     }, { courseWords: true });
-    expect(items.filter((i) => i.kind === "grammar").length).toBe(6);
+    expect(items.filter((i) => i.kind === "grammar").length).toBe(
+      dutch.grammar.find((g) => g.id === "verb-second")!.lesson!.exercises.length,
+    );
     expect(items.filter((i) => i.kind === "listen").length).toBeGreaterThan(0);
     expect(items.some((i) => i.kind === "speak" && i.contrast === "hoes")).toBe(true);
   });

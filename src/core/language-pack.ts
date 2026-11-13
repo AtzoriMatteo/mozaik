@@ -8,6 +8,7 @@
 
 import type { GrammarPoint, Lexicon, ReadingText, Unit } from "./content";
 import type { Sound } from "./pronunciation";
+import type { Resource } from "./resources";
 
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export type CefrLevel = (typeof CEFR_LEVELS)[number];
@@ -43,6 +44,8 @@ export interface LanguagePack {
   sounds: readonly Sound[];
   /** Core words (dictionary forms) a learner should meet at each level. */
   coreVocabulary: Partial<Record<CefrLevel, readonly string[]>>;
+  /** Real material outside the course (links only), per level. */
+  resources?: readonly Resource[];
 }
 
 /** Every text in a pack, in course order. */

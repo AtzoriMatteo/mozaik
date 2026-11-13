@@ -73,3 +73,42 @@ export const build = (tiles: string, translation: string, ...alsoCorrect: string
   translation,
   alsoCorrect: alsoCorrect.length ? alsoCorrect : undefined,
 });
+
+/** spot("Ik woont in Leiden.", "woont", "woon", "I live in Leiden.") */
+export const spot = (
+  sentence: string,
+  wrong: string,
+  fix: string | string[],
+  translation: string,
+  correct?: string,
+): Exercise => {
+  const fixes = list(fix);
+  return {
+    kind: "spot",
+    sentence,
+    wrong,
+    fix: fixes,
+    correct: correct ?? sentence.replace(new RegExp(`(^|[^\\p{L}])${wrong}(?![\\p{L}])`, "u"), `$1${fixes[0]}`),
+    translation,
+  };
+};
+
+/** match("Connect…", "ik=woon | jij=woont", "…") */
+export const match = (prompt: string, pairs: string, translation: string): Exercise => ({
+  kind: "match",
+  prompt,
+  pairs: pairs.split("|").map((p) => p.split("=").map((x) => x.trim()) as [string, string]),
+  translation,
+});
+
+/** sort("de or het?", ["de", "het"], "huis=1 | stad=0", "…") */
+export const sort = (prompt: string, groups: string[], items: string, translation: string): Exercise => ({
+  kind: "sort",
+  prompt,
+  groups,
+  items: items.split("|").map((p) => {
+    const [w, g] = p.split("=").map((x) => x.trim());
+    return [w, Number(g)] as [string, number];
+  }),
+  translation,
+});

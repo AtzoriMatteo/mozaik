@@ -1,6 +1,9 @@
 import { Tile } from "./tile";
 
 const ROW = 8;
+
+/** Mostly cobalt, with the other glazes scattered through like a real tile panel. */
+const GLAZES = ["cobalt", "cobalt", "ochre", "cobalt", "manganese", "cobalt", "copper", "cobalt", "iron", "cobalt", "cobalt", "ochre"];
 const MIN_TILES = 32;
 
 /**
@@ -17,7 +20,7 @@ export function Mosaic({ learned }: { learned: number }) {
       aria-label={`Your mosaic: ${learned} ${learned === 1 ? "tile" : "tiles"} filled`}
     >
       {Array.from({ length: total }, (_, i) => (
-        <Tile key={i} glazed={i < glazed} />
+        <Tile key={i} glazed={i < glazed} color={`var(--glaze-${GLAZES[(i * 5) % GLAZES.length]})`} />
       ))}
     </div>
   );

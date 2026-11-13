@@ -11,7 +11,9 @@ import { useCallback, useSyncExternalStore } from "react";
 export type { ActivityKind } from "@/core/course";
 import type { ActivityKind } from "@/core/course";
 
-const key = (kind: ActivityKind, language: string) => `mozaik:${kind}:${language}`;
+type ProgressKind = ActivityKind | "beyond";
+
+const key = (kind: ProgressKind, language: string) => `mozaik:${kind}:${language}`;
 const listeners = new Set<() => void>();
 const cache = new Map<string, { raw: string | null; ids: ReadonlySet<string> }>();
 const EMPTY: ReadonlySet<string> = new Set();
@@ -44,7 +46,7 @@ function subscribe(listener: () => void) {
   };
 }
 
-export function useProgress(kind: ActivityKind, language: string | null) {
+export function useProgress(kind: ProgressKind, language: string | null) {
   const storageKey = language ? key(kind, language) : null;
   const ids = useSyncExternalStore(
     subscribe,
@@ -68,7 +70,23 @@ export function useProgress(kind: ActivityKind, language: string | null) {
     [storageKey],
   );
 
-  return { doneIds: ids, markDone };
+  const toggle = useCallback(
+    (id: string) => {
+      if (!storageKey) return;
+      const next = new Set(read(storageKey));
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      try {
+        window.localStorage.setItem(storageKey, JSON.stringify([...next]));
+      } catch {
+        // Storage unavailable: the mark lasts this visit only.
+      }
+      listeners.forEach((l) => l());
+    },
+    [storageKey],
+  );
+
+  return { doneIds: ids, markDone, toggle };
 }
 
 /** Reading progress (kept for existing callers). */

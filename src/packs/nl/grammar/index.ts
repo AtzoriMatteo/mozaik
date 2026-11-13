@@ -4,6 +4,7 @@ import { lessons1 } from "./lessons-1";
 import { lessons2 } from "./lessons-2";
 import { lessons3 } from "./lessons-3";
 import { lessons4 } from "./lessons-4";
+import { moreExercises } from "./more-exercises";
 
 /** Which unit teaches which grammar point (about three per unit). */
 const UNIT_FOR: Record<string, string> = {
@@ -37,5 +38,8 @@ const lessons = { ...lessons1, ...lessons2, ...lessons3, ...lessons4 };
 export const grammar: readonly GrammarPoint[] = grammarPoints.map((g) => ({
   ...g,
   unit: UNIT_FOR[g.id],
-  lesson: lessons[g.id],
+  lesson: lessons[g.id] && {
+    ...lessons[g.id],
+    exercises: [...lessons[g.id].exercises, ...(moreExercises[g.id] ?? [])],
+  },
 }));
