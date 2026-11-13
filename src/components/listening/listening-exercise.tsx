@@ -521,6 +521,7 @@ function TranscriptStep({
             });
           }}
           onClose={() => setSelected(null)}
+          flag={{ language: pack.code, itemKind: "listening", itemId: item.id }}
         />
       ) : null}
     </section>

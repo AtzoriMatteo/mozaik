@@ -5,6 +5,34 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (night) — "Sounds odd?" flags, ready for friends
+
+**Flagging (Matteo).** Nobody has checked the Dutch with a native speaker,
+so anyone can flag a sentence: tap a word, open "Whole sentence", then
+"Sounds odd?" with an optional note. Flags are stored on the account
+(table `flags`, migration 0005).
+- /flags shows each person their own flags and what happened to them.
+- Admins (Matteo, added once by SQL) see everyone's, press "Copy for
+  Claude" to get a ready-made message listing each sentence, where it is
+  and what people said, paste it to Claude, then mark them fixed (or
+  "it's fine").
+- Privacy: Matteo, as admin, sees what friends wrote in their notes, not
+  who they are on the page.
+
+**Friends with their own accounts (Claude).** Already the case: login per
+person, words, reviews and progress per account. Two problems fixed or
+flagged:
+- Shared browsers: progress stored in a browser now belongs to the person
+  who synced it last; when someone else logs in there, it's cleared first,
+  and logging out clears it. One person's progress can't leak into
+  another's account.
+- Login emails: Supabase's built-in email sends at most 2 login emails per
+  hour for the whole site. Fine for one person, not for friends signing up
+  together. Fix needs Matteo: connect a free email sender (custom SMTP).
+  Decision pending.
+- Privacy: as the project owner Matteo can see friends' emails and their
+  progress in the Supabase dashboard. Worth telling them.
+
 ## 2026-11-13 (late evening) — A1 audit, Dutch culture, a course for everyone, tips
 
 **The audit (Claude).** The course was checked against a full A1 checklist:
