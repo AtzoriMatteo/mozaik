@@ -4,15 +4,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Verdict } from "@/core/answers";
 import { checkDictation, type DictationResult } from "@/core/dictation";
-import type { LanguagePack } from "@/core/language-pack";
+import type { CefrLevel, LanguagePack } from "@/core/language-pack";
 import {
   buildSession, countItems, introducedToday, REVIEW_KINDS, wordCardFor,
   type GrammarItem, type ListenItem, type ReviewItem, type ReviewKind, type SpeakItem, type WordItem,
 } from "@/core/review-items";
-import { describeWait, isLearned, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
+import { describeWait, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
 import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
-import { Mosaic } from "@/components/mosaic";
+import { NewWordsSession, WordStats } from "./new-words";
 import { SpeakButton } from "@/components/speak-button";
 import { ExerciseCard, correctAnswer } from "@/components/grammar/grammar-lesson";
 import { ModelGate, PracticeCard } from "@/components/speaking/speaking-practice";
@@ -23,7 +23,7 @@ import { speak, useHasVoice } from "@/lib/speech";
 import { useNow } from "@/lib/use-now";
 
 export const KIND_LABEL: Record<ReviewKind, string> = {
-  word: "Words",
+  word: "My words",
   grammar: "Grammar",
   listen: "Listening",
   speak: "Speaking",
@@ -37,14 +37,23 @@ export function Review() {
   const review = useReview(pack, settings);
   const clock = useNow();
   const [session, setSession] = useState<Session | null>(null);
+  const [meeting, setMeeting] = useState(false);
 
   if (!pack) return <LanguagePicker />;
   if (!review.loaded || clock === null) return <p className="lede">Loading your reviews…</p>;
 
   const now = new Date(clock);
-  const learned = review.items.filter(
-    (i) => i.kind === "word" && isLearned(review.schedules.get(i.id)?.stage),
-  ).length;
+
+  if (meeting) {
+    return (
+      <NewWordsSession
+        pack={pack}
+        words={review.newWords.slice(0, settings.newWordsSize)}
+        onMeet={review.meet}
+        onEnd={() => setMeeting(false)}
+      />
+    );
+  }
 
   if (session) {
     return (
@@ -53,6 +62,7 @@ export function Review() {
         session={session}
         settings={settings}
         rate={review.rate}
+        graduate={review.graduate}
         stageOf={(id) => review.schedules.get(id)?.stage ?? 0}
         error={review.error}
         onEnd={() => setSession(null)}
@@ -92,13 +102,20 @@ export function Review() {
 
       {!review.ready ? <SetupNeeded /> : null}
 
+      <NewWordsBox
+        count={review.newWords.length}
+        size={settings.newWordsSize}
+        levels={settings.newWordLevels.filter((l) => pack.levels.includes(l))}
+        onStart={() => setMeeting(true)}
+      />
+
       {review.items.length === 0 ? (
         <div className="stack-loose">
           <p className="lede">
-            Things come back here once you&apos;ve done them: words from texts you read, exercises from
-            grammar you learned, lines you listened to.
+            Your review fills up as you go: words you save while reading or don&apos;t know in New words,
+            exercises from grammar you learned, lines you listened to.
           </p>
-          <Link href="/course" className="button">Go to the course</Link>
+          <Link href="/course" className="button button-quiet">Go to the course</Link>
         </div>
       ) : (
         <>
@@ -161,16 +178,18 @@ export function Review() {
             </div>
           </section>
 
-          <div className="mosaic-block">
-            <Mosaic learned={learned} />
-            <p className="mosaic-caption">
-              {learned} {learned === 1 ? "word" : "words"} learned.
-            </p>
-          </div>
         </>
       )}
 
-      <SettingsPanel settings={settings} update={update} reset={reset} />
+      <WordStats
+        pack={pack}
+        items={review.items}
+        schedules={review.schedules}
+        graduated={review.graduated}
+        onUndo={review.ungraduate}
+      />
+
+      <SettingsPanel settings={settings} update={update} reset={reset} levels={pack.levels} />
     </div>
   );
 }
@@ -192,10 +211,12 @@ function SettingsPanel({
   settings,
   update,
   reset,
+  levels,
 }: {
   settings: ReviewSettings;
   update: (p: Partial<ReviewSettings>) => void;
   reset: () => void;
+  levels: readonly CefrLevel[];
 }) {
   return (
     <details className="settings-panel">
@@ -208,7 +229,33 @@ function SettingsPanel({
           onChange={(size) => update({ size })}
         />
         <Segmented
-          label="New cards per day"
+          label="New words per session"
+          value={settings.newWordsSize}
+          options={[10, 20, 30]}
+          onChange={(newWordsSize) => update({ newWordsSize })}
+        />
+        <fieldset className="setting">
+          <legend>New words come from</legend>
+          {levels.map((l) => (
+            <label key={l} className="check">
+              <input
+                type="checkbox"
+                checked={settings.newWordLevels.includes(l)}
+                onChange={(e) =>
+                  update({
+                    newWordLevels: e.target.checked
+                      ? [...settings.newWordLevels, l]
+                      : settings.newWordLevels.filter((x) => x !== l),
+                  })
+                }
+              />
+              {l}
+            </label>
+          ))}
+          {levels.length === 1 ? <small className="setting-note">More levels appear here as they&apos;re added.</small> : null}
+        </fieldset>
+        <Segmented
+          label="New grammar and listening cards per day"
           value={settings.newPerDay}
           options={[0, 5, 10, 20]}
           onChange={(newPerDay) => update({ newPerDay })}
@@ -230,16 +277,7 @@ function SettingsPanel({
         </fieldset>
 
         <fieldset className="setting">
-          <legend>Words</legend>
-          <label className="check">
-            <input
-              type="checkbox"
-              checked={settings.courseWords}
-              onChange={(e) => update({ courseWords: e.target.checked })}
-            />
-            Add each text&apos;s key words automatically
-            <small> (words you save always come back)</small>
-          </label>
+          <legend>Word cards in My words</legend>
           <label className="check">
             <input
               type="checkbox"
@@ -305,6 +343,7 @@ function SessionRunner({
   session,
   settings,
   rate,
+  graduate,
   stageOf,
   error,
   onEnd,
@@ -313,6 +352,7 @@ function SessionRunner({
   session: Session;
   settings: ReviewSettings;
   rate: (item: ReviewItem, r: ReviewResult) => Promise<void>;
+  graduate: (itemId: string) => Promise<void>;
   stageOf: (id: string) => number;
   error: string | null;
   onEnd: () => void;
@@ -324,6 +364,12 @@ function SessionRunner({
   const answer = (r: ReviewResult) => {
     void rate(item, r);
     setTally((t) => ({ good: t.good + (r === "again" ? 0 : 1), total: t.total + 1 }));
+    setIndex((i) => i + 1);
+  };
+
+  const graduateItem = () => {
+    void graduate(item.id);
+    setTally((t) => ({ good: t.good + 1, total: t.total + 1 }));
     setIndex((i) => i + 1);
   };
 
@@ -359,7 +405,15 @@ function SessionRunner({
       </div>
 
       {item.kind === "word" ? (
-        <WordCard key={item.id} pack={pack} item={item} stage={stageOf(item.id)} settings={settings} onAnswer={answer} />
+        <WordCard
+          key={item.id}
+          pack={pack}
+          item={item}
+          stage={stageOf(item.id)}
+          settings={settings}
+          onAnswer={answer}
+          onGraduate={graduateItem}
+        />
       ) : item.kind === "grammar" ? (
         <GrammarCard key={item.id} lang={pack.code} item={item} onAnswer={answer} />
       ) : item.kind === "listen" ? (
@@ -437,12 +491,14 @@ function WordCard({
   stage,
   settings,
   onAnswer,
+  onGraduate,
 }: {
   pack: LanguagePack;
   item: WordItem;
   stage: number;
   settings: ReviewSettings;
   onAnswer: (r: ReviewResult) => void;
+  onGraduate: () => void;
 }) {
   const lang = pack.code;
   const hasVoice = useHasVoice(lang);
@@ -520,8 +576,42 @@ function WordCard({
             {item.translation ? <p className="example-translation">{item.translation}</p> : null}
           </div>
           <RatingRow stage={stage} onAnswer={onAnswer} />
+          <button type="button" className="graduate-button" onClick={onGraduate}>
+            Too easy: I know this one for good
+            <small>It won&apos;t come back. Undo anytime under Graduated words.</small>
+          </button>
         </>
       )}
+    </section>
+  );
+}
+
+function NewWordsBox({
+  count,
+  size,
+  levels,
+  onStart,
+}: {
+  count: number;
+  size: number;
+  levels: readonly CefrLevel[];
+  onStart: () => void;
+}) {
+  return (
+    <section className="new-words-box" aria-labelledby="new-words-title">
+      <div>
+        <h2 id="new-words-title">New words</h2>
+        <p>
+          {count > 0
+            ? `${count} ${levels.join(" + ")} words to meet, most common first. Tap the ones you know; the rest go into My words.`
+            : `You've met every ${levels.join(" + ")} word. Well done.`}
+        </p>
+      </div>
+      {count > 0 ? (
+        <button type="button" className="button" onClick={onStart}>
+          Meet {Math.min(size, count)} new words
+        </button>
+      ) : null}
     </section>
   );
 }

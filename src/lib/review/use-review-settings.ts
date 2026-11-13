@@ -2,6 +2,7 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 import type { ReviewKind } from "@/core/review-items";
+import type { CefrLevel } from "@/core/language-pack";
 
 /**
  * How review works for this learner. Defaults are meant to be good enough
@@ -14,8 +15,10 @@ export type ReviewSettings = {
   newPerDay: number;
   /** Parts included in the mixed review. */
   mix: Record<ReviewKind, boolean>;
-  /** Add each text's core words automatically (saved words always come back). */
-  courseWords: boolean;
+  /** Levels New words draws from (only levels the pack has are used). */
+  newWordLevels: CefrLevel[];
+  /** Cards per New words session. */
+  newWordsSize: number;
   /** Word card directions beyond "what does it mean?". */
   recallCards: boolean;
   listenCards: boolean;
@@ -25,7 +28,8 @@ export const DEFAULT_SETTINGS: ReviewSettings = {
   size: 10,
   newPerDay: 10,
   mix: { word: true, grammar: true, listen: true, speak: false },
-  courseWords: true,
+  newWordLevels: ["A1"],
+  newWordsSize: 20,
   recallCards: true,
   listenCards: true,
 };

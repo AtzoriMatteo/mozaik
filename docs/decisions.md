@@ -5,6 +5,192 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (late night) — Faster clicks, glazed-tile buttons
+
+**Why clicks felt slow (Claude).** Before every page, the login check asked
+Supabase "is this person really logged in?" over the network. Supabase is in
+Stockholm, and Vercel ran that check in the US by default, so each click
+crossed the Atlantic and back before the page could even start.
+- The check now reads the login token and verifies its signature locally
+  (`getClaims`). It only calls Supabase when the token needs refreshing,
+  about once an hour. Security is unchanged: a forged or expired token still
+  fails.
+- The server now runs in Stockholm (`vercel.json`, region `arn1`), next to
+  the database. Trade-off: visitors far from Europe wait a little longer on
+  their first page load. For now the main user (Matteo) is in Europe.
+- The email in the top corner is now read in the browser, so every page is a
+  ready-made static file that Next.js fetches in the background before you
+  click.
+- If a click still takes a moment, the small tile on the button "breathes"
+  instead of nothing happening.
+
+**Buttons (Claude, within Matteo's brief).** The flat blue rectangle with
+bold white sans text read as a generic template.
+- Buttons are now glazed tiles: a cobalt glaze with a soft sheen, a darker
+  fired edge underneath for thickness, and a press that pushes the tile into
+  the wall. Labels are set in Literata, the reading serif.
+- Quiet buttons are white tiles with a lime-mortar edge.
+- The "do the next thing" button (home, course, unit, end of every activity)
+  is a cobalt slab with a small white tile set into it. The tile has painted
+  ochre corners and the glyph of the kind of work that comes next, and a
+  second line says what it is ("At the market", "Unit 4: Food and shopping").
+
+**First tile right away (Claude).** The mosaic rounded down, so finishing
+your first text still showed 0 of 96 tiles. It now rounds up: the first
+activity lays a tile, and the last tile waits until everything is done.
+
+## 2026-11-13 (night) — Writing, checked for free
+
+**Writing per unit (Matteo).** Every unit has three topics (33 at A1): a
+note, a message, an email, a description, a story or a diary entry. You
+choose a length (A1: about 30, 60 or 100 words; later levels go up to
+600), and the prompt grows with it: 2, 4 or 6 things to say. Finishing 2
+of a unit's 3 topics glazes its writing tile, so the A1 picture is now
+reading + listening + grammar + writing. Drafts are kept in the browser.
+A text counts as finished at 80% of the chosen length, after a check.
+
+**Checking without paying anyone (Claude).**
+- Grammar: Mozaik's own rules for the mistakes A1 learners make, each
+  linked to its lesson: verb second (Morgen ik heb → heb ik), -t with jij,
+  subject–verb forms, zijn/hebben, de/het, deze/dit, adjective -e,
+  niet een → geen, ik heb 25 jaar → ik ben, ik ben honger → heb,
+  ik ben koud → heb het koud, in/op/om with days, months and times,
+  groter als → dan, meer mooi → mooier, capitals. Rules stay quiet when
+  unsure: tests check 28 typical mistakes are caught and that no course
+  text or model answer is flagged.
+- Spelling: the OpenTaal Dutch dictionary (free, BSD / CC BY 3.0), checked
+  on the device in a background worker (2.5 MB, downloaded once). Course
+  words, number words and compounds (verjaardag-s-feest) pass; names pass
+  unless they're a known word missing an accent (Italie → Italië).
+- Optional LanguageTool (free public service, open source) for extra
+  grammar and spelling. Off by default: it sends the text to
+  languagetool.org. Limit 20 checks a minute per person.
+- Rejected for now: AI in the browser (1–2 GB, unreliable feedback on
+  Dutch at that size) and free cloud AI (Gemini's free tier uses the text
+  for product improvement and its terms point EU apps to paid services).
+
+**Not yet:** writing mistakes coming back in review (left for later).
+
+## 2026-11-13 (evening) — New words, My words, graduating, level pictures
+
+**Words split into two decks (Matteo).**
+- New words: flashcards through a level's core words, most common first
+  (frequency from the wordfreq dataset, `scripts/word-frequency.py`), 20 per
+  session. "I know this" graduates a word; "New to me" puts it in My words.
+  Levels to draw from are a setting (A1 only for now).
+- My words: spaced review of words you saved or didn't know. Reading a text
+  no longer adds its words to review: that's why unknown-to-you words kept
+  appearing. Old automatic course-word schedules are ignored; those words
+  simply come up in New words, where one tap graduates them.
+- Graduate: on every word card in My words ("Too easy: I know this one for
+  good"). A graduated word never comes back; "Graduated words" in Review
+  lists them with Undo. Stored as a schedule on stage 99, so no database
+  change is needed.
+- "Your words" shows known for good / learned / learning.
+
+**The mosaic is the course, one picture per level (Matteo).** Each level
+hides a Delft tile picture of 12×8 tiles; A1's is a Leiden canal with a
+windmill, gabled houses and a boat. Every reading, listening and grammar
+activity of the level glazes its share of tiles, from the middle outwards;
+the last activity completes the picture. Tiles glazed since your last
+visit shine briefly once. A2–C2 get their own pictures when those levels
+are written. Words no longer fill the mosaic; they have their own counts.
+
+**Speaking is a bonus (Matteo).** It doesn't count towards the picture or
+the unit progress squares, and Continue never waits on it. It stays in each
+unit as "Speaking (bonus)" and in the mixed review if switched on.
+
+## 2026-11-13 (later) — A1 audit: fundamentals, grammar, links, proofreading
+
+**A first unit for the basics (Matteo: cover all the fundamentals).** The
+core word list (enforced by tests) now lists the fundamentals in full, and
+that showed real gaps: six months, autumn, 0, 14, 17, 18, 40, 70, 1000, the
+order words, goedenavond, welterusten, first name/surname, spelling. New
+unit 1 "De basis": greetings and courtesy (text), numbers 0–1000 and the
+alphabet (text), months, seasons, colours, dates and order words (text),
+plus listening: spelling your name at the library, a voicemail with a phone
+number and address, and asking the date. The old units move up by one.
+
+**Grammar checked against the NT2 A1 syllabus (Claude).** Added five
+lessons: spelling and the alphabet (unit 1), reflexive verbs (Health),
+graag/liever/het liefst and comparing (Clothes), dates and order words
+(Holidays); and zullen ("Zullen we…?") inside Modal verbs. 28 points now.
+Deliberately left for A2, as before: the perfect tense (heb gewerkt), omdat
+and other word-order-changing conjunctions, te + infinitive.
+
+**Links rebuilt, and every one says what you'll see (Matteo: some didn't
+work, a reading link landed on a Dutch page with no clue what to do).**
+YouTube links now use the permanent /channel/ and /playlist forms (the old
+/c/ names can break). Removed: Nijntje (no online text; it pointed to an
+encyclopedia page) and Taalklas (couldn't confirm how to start it). Added:
+Storybooks level 1 (picture books read on the page, Dutch sentence with the
+English under it; one per unit topic), and Super Easy Dutch (the beginners'
+playlist). Every resource now has "When it opens": the site's language and
+exactly what to click.
+
+**Proofreading (Claude, all texts, listening lines, tasks, exercises and
+~1,250 word-help lines).** Fixed: a spot-the-mistake whose answer was itself
+wrong (woon u → woont u), a broken choice option, unnatural phrasing
+(geen sport → niet sporten, de vrouw van het gesprek, met de andere artsen),
+two tense slips in listening, King's Day facts (Van Oranje-Nassau; many
+people are off, not "almost nobody works"), story continuity (Fatima's
+address, Noor's birthday on 20 November). Still worth a native check one
+day: Mozaik has no native reviewer yet.
+
+## 2026-11-13 — Polychrome tiles, more A1, new exercise types
+
+**Units as numbered Delft tiles (Matteo: less AI-generated, less blue).**
+The course page is a wall of tiles with grout between them. Each unit has
+its own hand-painted motif (tulip, bird, cheese, clock, canal house, book,
+herb, windmill, clog, crown) and one of the five polychrome Delftware
+glazes: cobalt, manganese, ochre, copper green, iron red. The number is
+painted large in the unit's glaze; small squares under each tile fill in as
+activities are done. Lines get a slight brush wobble (an SVG filter), so
+they read as painted, not drawn by a computer.
+
+**Each skill has its own glaze (Claude).** Reading cobalt, Listening ochre,
+Grammar manganese, Speaking copper, Beyond the course iron red: a small
+glazed glyph by each heading and a coloured edge on its list. Cards became
+rows on a glazed strip; a done item gets a small glazed tile.
+
+**Warmer ground (Claude).** Milky tin-glaze `#eceee9` with a faint texture
+instead of cool white, glazed surfaces `#f8f8f4`, lime-mortar grout
+`#cfcdc3`. Corners are sharper (3–4px). Dark mode has its own glazes.
+
+**More A1 (Matteo: mainly more texts and listening).** Two new units:
+9 Kleren en winkels (clothes and shops), 10 Feestdagen (King's Day,
+Sinterklaas, New Year). Every unit now has 3 texts and 3 listening items
+(30 texts, 30 listening items), each text a different kind: a profile, an
+email, a diary, a housing ad, an interview… ~300 new words, all with help.
+Units 9–10 have no grammar lessons of their own; they reuse the A1 points.
+
+**Different exercises (Matteo).**
+- Reading: after each text, 4–5 comprehension tasks mixing multiple
+  choice, true/false (in Dutch), put events in order, and match who-did-what.
+  "Skip the questions" is always there.
+- Listening: a new "Close listening" step between the questions and the
+  dictation: true/false, fill the gaps in a line while hearing it, "which
+  word did you hear?", and put lines in order.
+- Grammar: every lesson gained match-the-pairs, sort into groups (de/het,
+  niet/geen…) and spot-the-mistake exercises. They also come back in review.
+- Tests check every task is well-formed (gap words really are in the line,
+  "heard" options really aren't, every sort group is used).
+
+**No automatic capital mid-sentence (Matteo).** Phones capitalise the first
+letter of an empty field. Gaps that aren't at the start of a sentence now
+switch that off; gaps at the start keep it.
+
+**Beyond the course (Matteo's idea; links only).** A page per language
+with real material for the level (watch, listen, read, practise) and a
+"Beyond the course" section on unit pages for items that fit the topic.
+A1 is short on purpose: Potje Nederlands (a University of Groningen A1
+podcast, episodes matched to units), Easy Dutch, Dutchies to be, Bart de
+Pau, NOS Jeugdjournaal (marked "a bit above A1"), Nijntje books, Taalklas.nl.
+Plain links that open in a new tab; no embedded players, so no third party
+tracks Mozaik visits. "Mark as tried" is kept in the browser.
+`npm run check-links` checks every link (needs the internet, so it's not
+part of the normal tests).
+
 ## 2026-11-12 — GitHub login
 
 **GitHub login next to the email link (Claude, after hitting the limit).**

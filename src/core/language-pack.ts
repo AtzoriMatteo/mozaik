@@ -8,6 +8,8 @@
 
 import type { GrammarPoint, Lexicon, ReadingText, Unit } from "./content";
 import type { Sound } from "./pronunciation";
+import type { Resource } from "./resources";
+import type { WritingIssue } from "./writing";
 
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export type CefrLevel = (typeof CEFR_LEVELS)[number];
@@ -43,6 +45,16 @@ export interface LanguagePack {
   sounds: readonly Sound[];
   /** Core words (dictionary forms) a learner should meet at each level. */
   coreVocabulary: Partial<Record<CefrLevel, readonly string[]>>;
+  /** How common words are (Zipf scale, dictionary forms): New words shows common words first. */
+  wordFrequency?: Readonly<Record<string, number>>;
+  /** Grammar checks for learner writing (spelling is done separately). */
+  checkWriting?: (text: string) => WritingIssue[];
+  /** Hunspell dictionary for spelling, served from /public; words in the lexicon always pass. */
+  spelling?: { aff: string; dic: string; isWord?: (word: string) => boolean };
+  /** Language code for LanguageTool, if it supports the language. */
+  languageTool?: string;
+  /** Real material outside the course (links only), per level. */
+  resources?: readonly Resource[];
 }
 
 /** Every text in a pack, in course order. */

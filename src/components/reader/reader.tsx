@@ -11,6 +11,7 @@ import { useSavedWords } from "@/lib/saved-words/use-saved-words";
 import { useReadTexts } from "@/lib/progress/use-read-texts";
 import { WordPanel } from "./word-panel";
 import { ListenControls } from "./listen-controls";
+import { TaskRunner } from "@/components/exercises/task-runner";
 
 type WordRef = {
   key: string;
@@ -57,6 +58,8 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
   }, [pack, text]);
 
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [check, setCheck] = useState<"idle" | "running" | { right: number; total: number }>("idle");
+  const tasks = text.tasks ?? [];
   const selected = words.find((w) => w.key === selectedKey) ?? null;
 
   const toggleSave = useCallback(
@@ -142,7 +145,35 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
       </div>
 
       <footer className="reader-end">
-        <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
+        {tasks.length > 0 && check === "idle" ? (
+          <div className="check-invite">
+            <h2>Did you get it?</h2>
+            <p>{tasks.length} quick questions about the text. You can look back at it anytime.</p>
+            <div className="button-row">
+              <button type="button" className="button" onClick={() => setCheck("running")}>
+                Check your understanding
+              </button>
+              <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} quiet />
+            </div>
+          </div>
+        ) : null}
+        {check === "running" ? (
+          <TaskRunner
+            tasks={tasks}
+            lang={pack.code}
+            seed={text.id}
+            onDone={(right, total) => setCheck({ right, total })}
+          />
+        ) : null}
+        {typeof check === "object" ? (
+          <p className="score-line">
+            {check.right} of {check.total} right.
+            {check.right / check.total >= 0.7 ? " You understood this text well." : " Read it once more tomorrow: it gets easier."}
+          </p>
+        ) : null}
+        {tasks.length === 0 || typeof check === "object" ? (
+          <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
+        ) : null}
       </footer>
 
       {selected ? (

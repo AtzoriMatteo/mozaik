@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Suspense } from "react";
 import "@fontsource-variable/literata";
 import "@fontsource-variable/literata/wght-italic.css";
 import "@fontsource-variable/atkinson-hyperlegible-next";
@@ -16,8 +15,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6f8fc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e1524" },
+    { media: "(prefers-color-scheme: light)", color: "#eceee9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f141d" },
   ],
 };
 
@@ -32,9 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Logo />
                 <Nav />
               </div>
-              <Suspense fallback={null}>
-                <Account />
-              </Suspense>
+              <Account />
             </header>
             {children}
           </div>

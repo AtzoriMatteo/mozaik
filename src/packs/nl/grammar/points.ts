@@ -144,4 +144,34 @@ export const grammarPoints: readonly GrammarPoint[] = [
     title: "het as 'it'",
     summary: "Weather, time and general statements: Het regent. Het is half drie. Het is leuk.",
   },
+  {
+    id: "spelling",
+    level: "A1",
+    title: "Spelling and the alphabet",
+    summary: "Long vowels: two letters in a closed syllable (maan), one in an open one (ma-nen).",
+  },
+  {
+    id: "dates-ordinals",
+    level: "A1",
+    title: "Dates and order words",
+    summary: "eerste, tweede, derde, vierde… Dates use plain numbers: op vijf december.",
+  },
+  {
+    id: "reflexive",
+    level: "A1",
+    title: "Reflexive verbs",
+    summary: "Verbs with a self word: ik voel me, jij voelt je, hij voelt zich, wij voelen ons.",
+  },
+  {
+    id: "graag-liever",
+    level: "A1",
+    title: "graag, liever, het liefst",
+    summary: "Say what you like: Ik fiets graag. Ik drink liever thee. Ik eet het liefst pasta.",
+  },
+  {
+    id: "comparatives",
+    level: "A1",
+    title: "Comparing",
+    summary: "groot → groter → het grootst; goed → beter → best; dan = than, te = too.",
+  },
 ];

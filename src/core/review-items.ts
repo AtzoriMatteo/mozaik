@@ -1,12 +1,12 @@
 import { helpFor, lemmaOf, type Exercise } from "./content";
-import { allTexts, type LanguagePack } from "./language-pack";
+import { allTexts, type CefrLevel, type LanguagePack } from "./language-pack";
 import { isDue } from "./srs";
 
 /**
- * Everything that can come back in Review. Items appear on their own once
- * you've done the activity they come from: read a text → its core words;
- * finish a grammar lesson → its exercises; listen → its short lines;
- * speaking practice → its words and sentences. Saved words are added too.
+ * Everything that can come back in Review.
+ * Words: only the ones you chose (saved while reading) or didn't know when
+ * you met them in New words; graduated words never come back.
+ * Grammar, listening and speaking: what you've finished in the course.
  */
 
 export type ReviewKind = "word" | "grammar" | "listen" | "speak";
@@ -35,6 +35,7 @@ export type Done = {
   read: ReadonlySet<string>;
   listen: ReadonlySet<string>;
   grammar: ReadonlySet<string>;
+  write?: ReadonlySet<string>;
   speak: ReadonlySet<string>;
 };
 
@@ -47,44 +48,85 @@ const SKIP = new Set([
 
 const MAX_LINE_WORDS = 12;
 
+/** Where a core word first appears in the course: its sentence and help. */
+export type WordInfo = Omit<WordItem, "kind" | "id" | "source">;
+
+/**
+ * Every drillable core word of a level, keyed by dictionary form, with the
+ * first course sentence it appears in. Tiny words (de, en, ik…) are left out.
+ */
+export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, WordInfo> {
+  const index = new Map<string, WordInfo>();
+  const core = new Set(pack.coreVocabulary[level] ?? []);
+  for (const text of allTexts(pack)) {
+    if (text.level !== level) continue;
+    for (const sentence of text.paragraphs.flat()) {
+      for (const tok of pack.tokenize(sentence.text)) {
+        if (tok.kind !== "word") continue;
+        const help = helpFor(pack.lexicon, text, tok.normalized);
+        const lemma = lemmaOf(help, tok.normalized);
+        if (!help || !core.has(lemma) || SKIP.has(lemma) || index.has(lemma)) continue;
+        index.set(lemma, {
+          word: tok.normalized,
+          surface: tok.text,
+          base: help.base,
+          meaning: help.meaning,
+          sentence: sentence.text,
+          translation: sentence.translation,
+        });
+      }
+    }
+  }
+  return index;
+}
+
+export const courseWordId = (lemma: string) => `w:${lemma}`;
+
+/**
+ * New words to meet, most common first: core words of the chosen levels that
+ * you haven't seen in New words yet and haven't saved.
+ */
+export function newWords(
+  pack: LanguagePack,
+  levels: readonly CefrLevel[],
+  schedules: ReadonlyMap<string, Schedule>,
+  savedForms: ReadonlySet<string> = new Set(),
+): (WordInfo & { lemma: string })[] {
+  const out: (WordInfo & { lemma: string })[] = [];
+  for (const level of levels) {
+    for (const [lemma, info] of wordIndex(pack, level)) {
+      if (schedules.has(courseWordId(lemma)) || savedForms.has(lemma) || savedForms.has(info.word)) continue;
+      out.push({ lemma, ...info });
+    }
+  }
+  const freq = pack.wordFrequency ?? {};
+  return out.sort((a, b) => (freq[b.lemma] ?? 0) - (freq[a.lemma] ?? 0));
+}
+
 export function eligibleItems(
   pack: LanguagePack,
   done: Done,
-  opts: { courseWords: boolean; savedWords?: Omit<WordItem, "kind" | "id" | "source">[] },
+  opts: {
+    savedWords?: Omit<WordItem, "kind" | "id" | "source">[];
+    /** Schedules so far: course words you met in New words are in My words. */
+    schedules?: ReadonlyMap<string, Schedule>;
+  },
 ): ReviewItem[] {
   const items: ReviewItem[] = [];
   const saved = opts.savedWords ?? [];
   const savedForms = new Set(saved.flatMap((w) => [w.word, w.base?.toLowerCase()].filter(Boolean) as string[]));
 
-  // Words: first meeting of each core word in the texts you've read.
-  if (opts.courseWords) {
-    const seen = new Set<string>();
-    for (const text of allTexts(pack)) {
-      if (!done.read.has(text.id)) continue;
-      const core = new Set(pack.coreVocabulary[text.level] ?? []);
-      for (const sentence of text.paragraphs.flat()) {
-        for (const tok of pack.tokenize(sentence.text)) {
-          if (tok.kind !== "word") continue;
-          const help = helpFor(pack.lexicon, text, tok.normalized);
-          const lemma = lemmaOf(help, tok.normalized);
-          if (!help || !core.has(lemma) || SKIP.has(lemma) || seen.has(lemma)) continue;
-          if (savedForms.has(lemma) || savedForms.has(tok.normalized)) continue;
-          seen.add(lemma);
-          items.push({
-            kind: "word",
-            id: `w:${lemma}`,
-            word: tok.normalized,
-            surface: tok.text,
-            base: help.base,
-            meaning: help.meaning,
-            sentence: sentence.text,
-            translation: sentence.translation,
-            source: "course",
-          });
-        }
+  // My words, part 1: course words you didn't know in New words.
+  if (opts.schedules?.size) {
+    for (const level of pack.levels) {
+      for (const [lemma, info] of wordIndex(pack, level)) {
+        const id = courseWordId(lemma);
+        if (!opts.schedules.has(id) || savedForms.has(lemma) || savedForms.has(info.word)) continue;
+        items.push({ kind: "word", id, ...info, source: "course" });
       }
     }
   }
+  // My words, part 2: words you saved while reading.
   for (const w of saved) items.push({ ...w, kind: "word", id: `saved:${w.word}`, source: "saved" });
 
   // Grammar: every exercise of the lessons you've finished.

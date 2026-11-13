@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { countWords, helpFor, lemmaOf } from "@/core/content";
+import { countWords, helpFor, lemmaOf, type Task } from "@/core/content";
+import { splitGaps } from "@/components/exercises/boards";
 import { allTexts } from "@/core/language-pack";
 import { dutch } from ".";
 
@@ -217,6 +218,106 @@ describe("Dutch speaking practice", () => {
         expect(inWord || inOther, `${s.id}: ${word}/${other}`).toBe(true);
         expect(word).not.toBe(other);
       }
+    }
+  });
+});
+
+describe("Comprehension and practice tasks", () => {
+  const words = (s: string) => dutch.tokenize(s).filter((t) => t.kind === "word").map((t) => t.normalized);
+
+  function checkTask(where: string, t: Task, lines?: { text: string }[]) {
+    switch (t.kind) {
+      case "choice":
+        expect(t.answer, where).toBeLessThan(t.options.length);
+        expect(new Set(t.options).size, where).toBe(t.options.length);
+        break;
+      case "truefalse":
+        expect(t.statement.trim(), where).not.toBe("");
+        expect(t.translation.trim(), where).not.toBe("");
+        break;
+      case "order":
+        expect(t.items.length, where).toBeGreaterThanOrEqual(3);
+        expect(new Set(t.items).size, where).toBe(t.items.length);
+        break;
+      case "match":
+        expect(t.pairs.length, where).toBeGreaterThanOrEqual(2);
+        for (const p of t.pairs) expect(p.length, `${where}: ${p}`).toBe(2);
+        break;
+      case "gaps": {
+        expect(lines, where).toBeDefined();
+        const l = lines![t.line];
+        expect(l, `${where} line ${t.line}`).toBeDefined();
+        expect(splitGaps(l.text, t.words).gaps, `${where}: ${l.text}`).toEqual(t.words);
+        break;
+      }
+      case "heard": {
+        expect(lines, where).toBeDefined();
+        const l = lines![t.line];
+        expect(l, `${where} line ${t.line}`).toBeDefined();
+        const inLine = words(l.text);
+        t.options.forEach((o, i) =>
+          expect(inLine.includes(o.toLowerCase()), `${where}: "${o}" in "${l.text}"`).toBe(i === t.answer),
+        );
+        break;
+      }
+    }
+  }
+
+  it.each(texts.map((t) => [t.id, t] as const))("%s: has varied comprehension tasks", (_id, text) => {
+    const tasks = text.tasks ?? [];
+    expect(tasks.length, text.id).toBeGreaterThanOrEqual(4);
+    expect(new Set(tasks.map((t) => t.kind)).size, text.id).toBeGreaterThanOrEqual(2);
+    for (const t of tasks) {
+      expect(["gaps", "heard"], text.id).not.toContain(t.kind);
+      checkTask(text.id, t);
+    }
+  });
+
+  it.each(dutch.units.flatMap((u) => u.listening).map((l) => [l.id, l] as const))(
+    "%s: has close-listening tasks",
+    (_id, item) => {
+      const tasks = item.tasks ?? [];
+      expect(tasks.length, item.id).toBeGreaterThanOrEqual(2);
+      for (const t of tasks) checkTask(item.id, t, item.lines);
+    },
+  );
+
+  it("gives every unit at least three texts and two listening items", () => {
+    for (const u of dutch.units) {
+      expect(u.texts.length, u.id).toBeGreaterThanOrEqual(3);
+      expect(u.listening.length, u.id).toBeGreaterThanOrEqual(2);
+      expect(u.look, u.id).toBeDefined();
+    }
+  });
+
+  it("has well-formed match, sort and spot exercises", () => {
+    for (const g of dutch.grammar) {
+      for (const ex of g.lesson?.exercises ?? []) {
+        if (ex.kind === "spot") {
+          expect(ex.sentence.split(" ").map((w) => w.replace(/[.,!?"]/g, "")), `${g.id}: ${ex.sentence}`).toContain(ex.wrong);
+          expect(ex.correct, g.id).not.toBe(ex.sentence);
+        }
+        if (ex.kind === "sort") {
+          for (const [, i] of ex.items) expect(i, `${g.id}: ${ex.prompt}`).toBeLessThan(ex.groups.length);
+          expect(new Set(ex.items.map(([, i]) => i)).size, `${g.id}: every group used`).toBe(ex.groups.length);
+        }
+        if (ex.kind === "match") expect(ex.pairs.length, g.id).toBeGreaterThanOrEqual(3);
+      }
+      const kinds = new Set((g.lesson?.exercises ?? []).map((e) => e.kind));
+      if (g.lesson) expect(kinds.size, `${g.id}: varied exercise kinds`).toBeGreaterThanOrEqual(3);
+    }
+  });
+});
+
+describe("Beyond the course", () => {
+  const list = dutch.resources ?? [];
+  it("has plain https links with unique ids, for units that exist", () => {
+    const unitIds = new Set(dutch.units.map((u) => u.id));
+    expect(new Set(list.map((r) => r.id)).size).toBe(list.length);
+    for (const r of list) {
+      expect(r.url, r.id).toMatch(/^https:\/\//);
+      expect(r.why.length, r.id).toBeLessThanOrEqual(120);
+      for (const u of r.units ?? []) expect(unitIds, r.id).toContain(u);
     }
   });
 });

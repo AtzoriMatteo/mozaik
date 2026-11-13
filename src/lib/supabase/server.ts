@@ -25,11 +25,3 @@ export async function createSupabaseServerClient() {
     },
   });
 }
-
-/** The signed-in user's email, or null (also null in preview mode). */
-export async function getCurrentUserEmail(): Promise<string | null> {
-  const supabase = await createSupabaseServerClient();
-  if (!supabase) return null;
-  const { data } = await supabase.auth.getUser();
-  return data.user?.email ?? null;
-}

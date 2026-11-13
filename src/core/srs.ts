@@ -75,6 +75,17 @@ export function isLearned(stage: number | undefined): boolean {
   return (stage ?? 0) >= LEARNED_STAGE;
 }
 
+/**
+ * A graduated word is known and never comes back. It's stored as a schedule
+ * on this stage, due in the far future, so no extra table is needed.
+ */
+export const GRADUATED_STAGE = 99;
+export const GRADUATED_DUE = "9999-12-31T00:00:00.000Z";
+
+export function isGraduated(stage: number | undefined): boolean {
+  return (stage ?? 0) >= GRADUATED_STAGE;
+}
+
 /** Which card to show: recognise the word first, then recall it from a gap. */
 export function cardKind(stage: number | undefined): "recognise" | "recall" {
   return (stage ?? 0) < 2 ? "recognise" : "recall";

@@ -137,7 +137,7 @@ export const lessons2: Record<string, GrammarLesson> = {
       build("Op zaterdag | werkt | Bram | in het café", "On Saturdays Bram works in the café."),
       transform("Start with 'Vandaag':", "Ik heb les.", ["Vandaag heb ik les."], "Today I have class."),
       transform("Start with 'Om acht uur':", "Noor drinkt thee.", ["Om acht uur drinkt Noor thee."], "At eight Noor drinks tea."),
-      choice("'s Avonds ", " Luca een film.", ["kijkt", "Luca kijkt"], 0, "In the evening Luca watches a film."),
+      choice("'s Avonds ", " een film.", ["kijkt Luca", "Luca kijkt"], 0, "In the evening Luca watches a film."),
     ],
   },
 

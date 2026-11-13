@@ -74,4 +74,31 @@ export const speakingA1: Record<string, UnitSpeaking> = {
       { text: "Ik vind het hier leuk.", translation: "I like it here." },
     ],
   },
+  "a1-kleren": {
+    sounds: ["w-v", "eu"],
+    shadowing: [
+      { text: "Heeft u deze jas in maat M?", translation: "Do you have this coat in size M?" },
+      { text: "Wat kost deze jas?", translation: "How much is this coat?" },
+      { text: "Dat is te duur.", translation: "That's too expensive." },
+      { text: "Je ziet er goed uit", translation: "You look good" },
+    ],
+  },
+  "a1-feestdagen": {
+    sounds: ["oe-u", "g"],
+    shadowing: [
+      { text: "Gelukkig nieuwjaar!", translation: "Happy new year!" },
+      { text: "Hoeveel kost dit boek?", translation: "How much is this book?" },
+      { text: "Fijne Koningsdag!", translation: "Happy King's Day!" },
+      { text: "Wat is je voornemen?", translation: "What's your resolution?" },
+    ],
+  },
+  "a1-basis": {
+    sounds: ["aa-a", "ij"],
+    shadowing: [
+      { text: "Wat is uw achternaam?", translation: "What's your surname?" },
+      { text: "Hoe spelt u dat?", translation: "How do you spell that?" },
+      { text: "Wat is uw telefoonnummer?", translation: "What's your phone number?" },
+      { text: "Dank u wel.", translation: "Thank you." },
+    ],
+  },
 };
