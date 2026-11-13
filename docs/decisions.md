@@ -5,6 +5,36 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (late night) — Faster clicks, glazed-tile buttons
+
+**Why clicks felt slow (Claude).** Before every page, the login check asked
+Supabase "is this person really logged in?" over the network. Supabase is in
+Stockholm, and Vercel ran that check in the US by default, so each click
+crossed the Atlantic and back before the page could even start.
+- The check now reads the login token and verifies its signature locally
+  (`getClaims`). It only calls Supabase when the token needs refreshing,
+  about once an hour. Security is unchanged: a forged or expired token still
+  fails.
+- The server now runs in Stockholm (`vercel.json`, region `arn1`), next to
+  the database. Trade-off: visitors far from Europe wait a little longer on
+  their first page load. For now the main user (Matteo) is in Europe.
+- The email in the top corner is now read in the browser, so every page is a
+  ready-made static file that Next.js fetches in the background before you
+  click.
+- If a click still takes a moment, the small tile on the button "breathes"
+  instead of nothing happening.
+
+**Buttons (Claude, within Matteo's brief).** The flat blue rectangle with
+bold white sans text read as a generic template.
+- Buttons are now glazed tiles: a cobalt glaze with a soft sheen, a darker
+  fired edge underneath for thickness, and a press that pushes the tile into
+  the wall. Labels are set in Literata, the reading serif.
+- Quiet buttons are white tiles with a lime-mortar edge.
+- The "do the next thing" button (home, course, unit, end of every activity)
+  is a cobalt slab with a small white tile set into it. The tile has painted
+  ochre corners and the glyph of the kind of work that comes next, and a
+  second line says what it is ("At the market", "Unit 4: Food and shopping").
+
 ## 2026-11-13 (night) — Writing, checked for free
 
 **Writing per unit (Matteo).** Every unit has three topics (33 at A1): a

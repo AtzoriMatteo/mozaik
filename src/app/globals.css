@@ -172,40 +172,228 @@ a {
 
 /* ---------- Buttons & fields ---------- */
 
+/*
+ * Buttons are glazed tiles, not flat stickers: a cobalt glaze that is a
+ * shade lighter where the light catches the top, a darker fired edge
+ * underneath that gives the tile its thickness, and a press that pushes the
+ * tile into the wall. Labels are set in the reading serif, like the rest of
+ * the voice of the site.
+ */
 .button {
+  --edge: color-mix(in srgb, var(--accent) 62%, #000);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 3.25rem;
-  padding: 0 1.75rem;
+  min-height: 3rem;
+  padding: 0 1.5rem;
   border: 0;
-  border-radius: var(--radius-control);
-  background: var(--accent);
+  border-radius: 5px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, #fff 7%, transparent), transparent 70%),
+    var(--accent);
   color: var(--accent-ink);
-  font: inherit;
+  font-family: var(--font-read);
+  font-size: 1.05rem;
   font-weight: 600;
+  letter-spacing: 0.005em;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 120ms ease;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
+    0 3px 0 var(--edge);
+  transition: transform 90ms ease, box-shadow 90ms ease, background-color 150ms ease;
+}
+
+.button:hover {
+  background-color: color-mix(in srgb, var(--accent) 88%, #fff);
 }
 
 .button:active {
-  transform: translateY(1px);
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
+    0 0 0 var(--edge);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
+    0 3px 0 var(--edge),
+    var(--focus);
 }
 
 .button[disabled] {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: progress;
+  transform: none;
 }
 
+/* The quiet button is a plain white tile with a lime-mortar edge. */
 .button-quiet {
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid var(--grout);
-  min-height: 2.5rem;
-  padding: 0 1rem;
+  --edge: var(--grout);
+  background: var(--tile);
+  color: var(--heading);
+  min-height: 2.6rem;
+  padding: 0 1.1rem;
   font-weight: 500;
+  box-shadow:
+    inset 0 0 0 1px var(--grout),
+    0 2px 0 var(--edge);
+}
+
+.button-quiet:hover {
+  background: color-mix(in srgb, var(--accent) 7%, var(--tile));
+}
+
+.button-quiet:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 0 0 1px var(--grout), 0 0 0 var(--edge);
+}
+
+.button-quiet:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--grout), 0 2px 0 var(--edge), var(--focus);
+}
+
+.button-small {
+  min-height: 2.2rem;
+  padding: 0 0.85rem;
+  font-size: 0.92rem;
+}
+
+/* ---------- The next step: a small tile set into a glazed slab ---------- */
+
+.next-steps {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.next-step {
+  --edge: color-mix(in srgb, var(--accent) 62%, #000);
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: min(100%, 22rem);
+  max-width: 100%;
+  padding: 0.6rem 1.5rem 0.6rem 0.6rem;
+  border-radius: 6px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, #fff 7%, transparent), transparent 70%),
+    var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
+    0 4px 0 var(--edge);
+  transition: transform 90ms ease, box-shadow 90ms ease, background-color 150ms ease;
+}
+
+.next-step:hover {
+  background-color: color-mix(in srgb, var(--accent) 88%, #fff);
+}
+
+.next-step:active {
+  transform: translateY(4px);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent), 0 0 0 var(--edge);
+}
+
+.next-step:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
+    0 4px 0 var(--edge),
+    var(--focus);
+}
+
+/* The inset tile: white glaze, painted corners, the skill glyph in its colour. */
+.next-step-tile {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 3px;
+  background:
+    radial-gradient(circle at 0 0, var(--glaze-ochre) 0 5px, transparent 5.5px),
+    radial-gradient(circle at 100% 0, var(--glaze-ochre) 0 5px, transparent 5.5px),
+    radial-gradient(circle at 0 100%, var(--glaze-ochre) 0 5px, transparent 5.5px),
+    radial-gradient(circle at 100% 100%, var(--glaze-ochre) 0 5px, transparent 5.5px),
+    var(--tile);
+  box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--grout) 70%, transparent);
+}
+
+.next-step-tile .skill-glyph {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--g, var(--glaze-cobalt));
+  background: none;
+  box-shadow: none;
+}
+
+/* Only shows if a click takes a moment: the tile's glyph breathes. */
+.next-step-tile[data-pending] .skill-glyph {
+  animation: next-step-wait 900ms ease-in-out 120ms infinite;
+}
+
+@keyframes next-step-wait {
+  50% { opacity: 0.35; }
+}
+
+.next-step-text {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.next-step-label {
+  font-family: var(--font-read);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.next-step-detail {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  opacity: 0.82;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* A secondary next step: the same shape in white glaze. */
+.next-step[data-quiet] {
+  --edge: var(--grout);
+  background: var(--tile);
+  color: var(--heading);
+  box-shadow: inset 0 0 0 1px var(--grout), 0 3px 0 var(--edge);
+}
+
+.next-step[data-quiet]:hover {
+  background: color-mix(in srgb, var(--accent) 7%, var(--tile));
+}
+
+.next-step[data-quiet]:active {
+  transform: translateY(3px);
+  box-shadow: inset 0 0 0 1px var(--grout), 0 0 0 var(--edge);
+}
+
+.next-step[data-quiet] .next-step-tile {
+  box-shadow: inset 0 0 0 1px var(--grout);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .next-step {
+    transition: none;
+  }
+  .next-step-tile[data-pending] .skill-glyph {
+    animation: none;
+    opacity: 0.5;
+  }
 }
 
 .field {

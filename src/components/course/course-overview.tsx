@@ -7,6 +7,7 @@ import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { UnitTile } from "@/components/unit-tile";
+import { NextStep } from "@/components/next-step";
 
 /** The course as a wall of tiles: one per unit, numbered, each in its own glaze. */
 export function CourseOverview() {
@@ -25,9 +26,17 @@ export function CourseOverview() {
       </p>
 
       {next ? (
-        <Link href={next.href} className="button continue-button">
-          {progress.started ? "Continue" : "Start"}: <ActivityLabel activity={next} lang={pack.code} />
-        </Link>
+        <div className="continue-button">
+          <NextStep
+            href={next.href}
+            skill={next.kind}
+            detail={`Unit ${pack.units.indexOf(next.unit) + 1}: ${next.unit.titleTranslation}`}
+          >
+            <span className="capitalize">
+              <ActivityLabel activity={next} lang={pack.code} />
+            </span>
+          </NextStep>
+        </div>
       ) : (
         <p className="lede">You&apos;ve done everything here. More is on the way.</p>
       )}

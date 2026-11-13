@@ -11,6 +11,8 @@ import { LanguagePicker } from "./language-picker";
 import { useLearningLanguage } from "./learning-language";
 import { LevelMosaic } from "./level-mosaic";
 import { useNow } from "@/lib/use-now";
+import { NextStep } from "./next-step";
+import { ActivityLabel } from "./course/activity-label";
 
 export function Home() {
   const { pack } = useLearningLanguage();
@@ -23,6 +25,7 @@ export function Home() {
   const level = currentLevel(pack, progress.isDone);
   const list = mosaicActivities(pack, level);
   const done = list.filter((a) => progress.isDone(a)).length;
+  const next = progress.next;
   const due =
     now !== null && review.loaded
       ? buildSession(review.items, review.schedules, {
@@ -43,18 +46,26 @@ export function Home() {
       </section>
 
       {/* One obvious next action: review if cards are waiting, otherwise the course. */}
-      <div className="button-row">
+      <div className="next-steps">
         {due > 0 ? (
-          <Link href="/review" className="button">
-            Review ({due} {due === 1 ? "card" : "cards"})
-          </Link>
+          <NextStep href="/review" skill="review" detail="A few minutes, then back to the course">
+            Review {due} {due === 1 ? "card" : "cards"}
+          </NextStep>
         ) : null}
-        <Link
-          href={progress.next?.href ?? "/course"}
-          className={due > 0 ? "button button-quiet" : "button"}
-        >
-          {progress.started ? "Continue the course" : "Start the course"}
-        </Link>
+        {next ? (
+          <NextStep
+            href={next.href}
+            skill={next.kind}
+            quiet={due > 0}
+            detail={
+              <span className="capitalize">
+                <ActivityLabel activity={next} lang={pack.code} />
+              </span>
+            }
+          >
+            {progress.started ? "Continue the course" : "Start the course"}
+          </NextStep>
+        ) : null}
         {review.loaded && review.newWords.length > 0 ? (
           <Link href="/review" className="button button-quiet">
             Meet new words

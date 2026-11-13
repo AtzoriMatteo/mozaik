@@ -11,6 +11,7 @@ import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { SkillGlyph, UnitTile, type Skill } from "@/components/unit-tile";
 import { resourcesFor } from "@/core/resources";
 import { WRITING_REQUIRED } from "@/core/writing";
+import { NextStep } from "@/components/next-step";
 
 const KIND_LABEL = {
   dialogue: "Dialogue",
@@ -59,11 +60,13 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
       </section>
 
       {nextHere ? (
-        <Link href={nextHere.href} className="button continue-button">
-          <span className="capitalize">
-            <ActivityLabel activity={nextHere} lang={lang} />
-          </span>
-        </Link>
+        <div className="continue-button">
+          <NextStep href={nextHere.href} skill={nextHere.kind} detail={nextHere.titleTranslation}>
+            <span className="capitalize">
+              <ActivityLabel activity={nextHere} lang={lang} />
+            </span>
+          </NextStep>
+        </div>
       ) : null}
 
       <SkillSection skill="read" title="Reading">

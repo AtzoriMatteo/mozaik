@@ -116,7 +116,7 @@ export function UnitTile({
 }
 
 /** Small glyphs for the five kinds of work, each in its own glaze. */
-export type Skill = "read" | "listen" | "grammar" | "write" | "speak" | "beyond";
+export type Skill = "read" | "listen" | "grammar" | "write" | "speak" | "beyond" | "review";
 
 export const SKILL_GLAZE: Record<Skill, Glaze> = {
   read: "cobalt",
@@ -125,6 +125,7 @@ export const SKILL_GLAZE: Record<Skill, Glaze> = {
   write: "iron",
   speak: "copper",
   beyond: "iron",
+  review: "cobalt",
 };
 
 const SKILL_PATH: Record<Skill, string> = {
@@ -134,6 +135,7 @@ const SKILL_PATH: Record<Skill, string> = {
   write: "M5 19 L6.2 14.6 L15.8 5 C16.6 4.2 17.8 4.2 18.6 5 L19 5.4 C19.8 6.2 19.8 7.4 19 8.2 L9.4 17.8 Z M14 6.8 L17.2 10 M5 19 L9.4 17.8",
   speak: "M5 6 L19 6 C20 6 20.5 6.5 20.5 7.5 L20.5 14 C20.5 15 20 15.5 19 15.5 L11 15.5 L7 19 L7 15.5 L5 15.5 C4 15.5 3.5 15 3.5 14 L3.5 7.5 C3.5 6.5 4 6 5 6 Z",
   beyond: "M12 3.5 A8.5 8.5 0 1 1 11.9 3.5 Z M15.5 8.5 L13.3 13.3 L8.5 15.5 L10.7 10.7 Z",
+  review: "M7 8 L18 8 C18.6 8 19 8.4 19 9 L19 18 C19 18.6 18.6 19 18 19 L7 19 C6.4 19 6 18.6 6 18 L6 9 C6 8.4 6.4 8 7 8 Z M9 5 L20 5 C21 5 21.5 5.5 21.5 6.5 L21.5 15",
 };
 
 export function SkillGlyph({ skill }: { skill: Skill }) {

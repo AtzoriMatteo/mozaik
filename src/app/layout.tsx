@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Suspense } from "react";
 import "@fontsource-variable/literata";
 import "@fontsource-variable/literata/wght-italic.css";
 import "@fontsource-variable/atkinson-hyperlegible-next";
@@ -32,9 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Logo />
                 <Nav />
               </div>
-              <Suspense fallback={null}>
-                <Account />
-              </Suspense>
+              <Account />
             </header>
             {children}
           </div>
