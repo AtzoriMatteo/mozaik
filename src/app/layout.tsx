@@ -9,9 +9,23 @@ import { Account } from "@/components/account";
 import { ProgressSync } from "@/components/progress-sync";
 import { LearningLanguageProvider } from "@/components/learning-language";
 
+const DESCRIPTION = "Learn Dutch, tile by tile: real texts, listening, grammar and writing. Free.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mozaik-tau.vercel.app"),
   title: "Mozaik",
-  description: "Learn a language tile by tile: real reading, listening, vocabulary, grammar and speaking.",
+  description: DESCRIPTION,
+  // The card WhatsApp, iMessage and others show for a shared link. The
+  // preview robots aren't logged in, so this sits on every page, login too.
+  openGraph: {
+    title: "Mozaik",
+    description: DESCRIPTION,
+    url: "/",
+    siteName: "Mozaik",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Four Delft tiles: a tulip, a windmill, cheese and a drawbridge" }],
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", title: "Mozaik", description: DESCRIPTION, images: ["/og.png"] },
 };
 
 export const viewport: Viewport = {
