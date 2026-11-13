@@ -5,6 +5,25 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (evening) — Progress synced across devices
+
+**Problem (Matteo).** Phone and laptop showed different progress: finished
+activities and the mosaic lived only in each browser.
+
+**Fix (Claude).** Progress now lives on the account too (table `progress`,
+migration 0004, run once by Matteo in the Supabase SQL editor).
+- Each browser still keeps its own copy, so clicks stay instant and it
+  works offline.
+- Each finished activity is also sent to the account. The site fetches the
+  latest when it opens and whenever you return to its tab.
+- The first sync on each device uploads what that device already had, so
+  phone and laptop progress are combined, not overwritten.
+- Marking something as not done (e.g. a "Beyond" resource) also syncs.
+- Not synced, on purpose: writing drafts, review settings, which mosaic
+  tiles you've already seen shine. These are small per-device things.
+- Privacy: the account now stores which activities you've finished, under
+  the same rules as your saved words (only you can read them).
+
 ## 2026-11-13 (late night) — Faster clicks, glazed-tile buttons
 
 **Why clicks felt slow (Claude).** Before every page, the login check asked

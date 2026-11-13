@@ -6,6 +6,7 @@ import "./globals.css";
 import { Logo } from "@/components/logo";
 import { Nav } from "@/components/nav";
 import { Account } from "@/components/account";
+import { ProgressSync } from "@/components/progress-sync";
 import { LearningLanguageProvider } from "@/components/learning-language";
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Nav />
               </div>
               <Account />
+              <ProgressSync />
             </header>
             {children}
           </div>
