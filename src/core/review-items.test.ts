@@ -1,53 +1,74 @@
 import { describe, expect, it } from "vitest";
 import { dutch } from "@/packs/nl";
 import {
-  buildSession, countItems, eligibleItems, interleave, wordCardFor,
+  buildSession, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor,
   type Done, type ReviewItem, type Schedule,
 } from "./review-items";
+import { GRADUATED_DUE, GRADUATED_STAGE } from "./srs";
 
 const none: Done = { read: new Set(), listen: new Set(), grammar: new Set(), speak: new Set() };
 const now = new Date("2026-11-12T15:00:00");
 
 describe("what comes back in review", () => {
+  const sched = (stage = 0): Schedule => ({ stage, dueAt: "2026-11-12T08:00:00", introducedAt: "2026-11-12T08:00:00" });
+
   it("is empty before you've done anything", () => {
-    expect(eligibleItems(dutch, none, { courseWords: true })).toEqual([]);
+    expect(eligibleItems(dutch, none, {})).toEqual([]);
   });
 
-  it("adds the core words of a text once you've read it, each once", () => {
-    const items = eligibleItems(dutch, { ...none, read: new Set(["nieuw-in-leiden"]) }, { courseWords: true });
-    const words = items.filter((i) => i.kind === "word");
-    expect(words.length).toBeGreaterThan(15);
-    expect(new Set(words.map((w) => w.id)).size).toBe(words.length);
-    expect(words.some((w) => w.id === "w:de")).toBe(false); // too small to drill
-    expect(words.find((w) => w.id === "w:wonen")?.sentence).toContain("woon");
+  it("doesn't add words just because you read a text", () => {
+    const items = eligibleItems(dutch, { ...none, read: new Set(["nieuw-in-leiden"]) }, {});
+    expect(items.filter((i) => i.kind === "word")).toEqual([]);
   });
 
-  it("can leave course words out and keep saved words", () => {
-    const items = eligibleItems(dutch, { ...none, read: new Set(["nieuw-in-leiden"]) }, {
-      courseWords: false,
-      savedWords: [{ word: "fijn", surface: "fijn", meaning: "nice", sentence: "Ik vind het hier fijn." }],
-    });
-    expect(items.map((i) => i.id)).toEqual(["saved:fijn"]);
+  it("brings back course words you didn't know in New words, with their sentence", () => {
+    const items = eligibleItems(dutch, none, { schedules: new Map([[courseWordId("wonen"), sched()]]) });
+    const w = items.find((i) => i.id === "w:wonen");
+    expect(w?.kind).toBe("word");
+    expect(w && w.kind === "word" ? w.sentence : "").toMatch(/woon/i);
   });
 
-  it("doesn't duplicate a course word you also saved", () => {
-    const items = eligibleItems(dutch, { ...none, read: new Set(["nieuw-in-leiden"]) }, {
-      courseWords: true,
+  it("keeps saved words, and doesn't duplicate one you also met in New words", () => {
+    const items = eligibleItems(dutch, none, {
+      schedules: new Map([[courseWordId("wonen"), sched()]]),
       savedWords: [{ word: "woon", surface: "woon", base: "wonen", meaning: "live", sentence: "x" }],
     });
-    expect(items.some((i) => i.id === "w:wonen")).toBe(false);
-    expect(items.some((i) => i.id === "saved:woon")).toBe(true);
+    expect(items.map((i) => i.id)).toEqual(["saved:woon"]);
   });
 
   it("adds grammar exercises, listening lines and speaking items when those are done", () => {
     const items = eligibleItems(dutch, {
       read: new Set(), listen: new Set(["op-het-perron"]), grammar: new Set(["verb-second"]), speak: new Set(["a1-eten"]),
-    }, { courseWords: true });
+    }, {});
     expect(items.filter((i) => i.kind === "grammar").length).toBe(
       dutch.grammar.find((g) => g.id === "verb-second")!.lesson!.exercises.length,
     );
     expect(items.filter((i) => i.kind === "listen").length).toBeGreaterThan(0);
     expect(items.some((i) => i.kind === "speak" && i.contrast === "hoes")).toBe(true);
+  });
+});
+
+describe("New words", () => {
+  it("offers every drillable A1 core word, most common first, without tiny words", () => {
+    const list = newWords(dutch, ["A1"], new Map());
+    expect(list.length).toBeGreaterThan(350);
+    expect(list.some((w) => w.lemma === "de")).toBe(false);
+    const freq = dutch.wordFrequency!;
+    for (let i = 1; i < list.length; i++) {
+      expect(freq[list[i - 1].lemma] ?? 0).toBeGreaterThanOrEqual(freq[list[i].lemma] ?? 0);
+    }
+    expect(list.findIndex((w) => w.lemma === "huis")).toBeLessThan(list.findIndex((w) => w.lemma === "gracht"));
+  });
+
+  it("leaves out words you've met (known, learning or graduated) and words you saved", () => {
+    const met = new Map([[courseWordId("huis"), { stage: GRADUATED_STAGE, dueAt: GRADUATED_DUE, introducedAt: "x" }]]);
+    const list = newWords(dutch, ["A1"], met, new Set(["komen"]));
+    expect(list.some((w) => w.lemma === "huis" || w.lemma === "komen")).toBe(false);
+  });
+
+  it("gives every core word in the frequency table", () => {
+    const missing = (dutch.coreVocabulary.A1 ?? []).filter((w) => dutch.wordFrequency![w] === undefined);
+    expect(missing).toEqual([]);
   });
 });
 
@@ -94,5 +115,13 @@ describe("word card directions", () => {
   });
   it("only uses directions that are switched on", () => {
     for (let st = 2; st < 7; st++) expect(wordCardFor(st, "w:y", { recall: false, listen: false })).toBe("meaning");
+  });
+});
+
+describe("graduated words", () => {
+  it("never come back in a session", () => {
+    const items = [{ kind: "word", id: "w:huis" }] as ReviewItem[];
+    const schedules = new Map([["w:huis", { stage: GRADUATED_STAGE, dueAt: GRADUATED_DUE, introducedAt: "2026-11-01T10:00:00" }]]);
+    expect(buildSession(items, schedules, { kinds: new Set(["word"]), size: 10, newPerDay: 10, now })).toEqual([]);
   });
 });

@@ -19,7 +19,8 @@ export function useCourseProgress(pack: LanguagePack | null) {
   const isDone = (a: Pick<Activity, "kind" | "id">) => done[a.kind].has(a.id);
 
   const all = pack ? activities(pack) : [];
-  const next = all.find((a) => !isDone(a)) ?? null;
+  // Speaking is a bonus: Continue never waits on it.
+  const next = all.find((a) => a.kind !== "speak" && !isDone(a)) ?? null;
   const started = Object.values(done).some((ids) => ids.size > 0);
 
   return {

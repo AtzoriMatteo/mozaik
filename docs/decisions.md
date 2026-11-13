@@ -5,6 +5,35 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (evening) — New words, My words, graduating, level pictures
+
+**Words split into two decks (Matteo).**
+- New words: flashcards through a level's core words, most common first
+  (frequency from the wordfreq dataset, `scripts/word-frequency.py`), 20 per
+  session. "I know this" graduates a word; "New to me" puts it in My words.
+  Levels to draw from are a setting (A1 only for now).
+- My words: spaced review of words you saved or didn't know. Reading a text
+  no longer adds its words to review: that's why unknown-to-you words kept
+  appearing. Old automatic course-word schedules are ignored; those words
+  simply come up in New words, where one tap graduates them.
+- Graduate: on every word card in My words ("Too easy: I know this one for
+  good"). A graduated word never comes back; "Graduated words" in Review
+  lists them with Undo. Stored as a schedule on stage 99, so no database
+  change is needed.
+- "Your words" shows known for good / learned / learning.
+
+**The mosaic is the course, one picture per level (Matteo).** Each level
+hides a Delft tile picture of 12×8 tiles; A1's is a Leiden canal with a
+windmill, gabled houses and a boat. Every reading, listening and grammar
+activity of the level glazes its share of tiles, from the middle outwards;
+the last activity completes the picture. Tiles glazed since your last
+visit shine briefly once. A2–C2 get their own pictures when those levels
+are written. Words no longer fill the mosaic; they have their own counts.
+
+**Speaking is a bonus (Matteo).** It doesn't count towards the picture or
+the unit progress squares, and Continue never waits on it. It stays in each
+unit as "Speaking (bonus)" and in the mixed review if switched on.
+
 ## 2026-11-13 (later) — A1 audit: fundamentals, grammar, links, proofreading
 
 **A first unit for the basics (Matteo: cover all the fundamentals).** The

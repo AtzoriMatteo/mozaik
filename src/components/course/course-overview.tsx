@@ -43,7 +43,7 @@ export function CourseOverview() {
               .filter((u) => u.level === level)
               .map((unit) => {
                 const n = pack.units.indexOf(unit) + 1;
-                const items = activities(pack).filter((a) => a.unit.id === unit.id);
+                const items = activities(pack).filter((a) => a.unit.id === unit.id && a.kind !== "speak");
                 const done = items.filter((a) => progress.isDone(a)).length;
                 const look = unit.look ?? { motif: "tulip", glaze: "cobalt" };
                 return (

@@ -44,6 +44,8 @@ export interface LanguagePack {
   sounds: readonly Sound[];
   /** Core words (dictionary forms) a learner should meet at each level. */
   coreVocabulary: Partial<Record<CefrLevel, readonly string[]>>;
+  /** How common words are (Zipf scale, dictionary forms): New words shows common words first. */
+  wordFrequency?: Readonly<Record<string, number>>;
   /** Real material outside the course (links only), per level. */
   resources?: readonly Resource[];
 }

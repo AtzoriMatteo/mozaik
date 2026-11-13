@@ -23,7 +23,7 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
   const pack = getPack(lang) as LanguagePack;
   const unit = pack.units.find((u) => u.id === unitId)!;
   const progress = useCourseProgress(pack);
-  const nextHere = activities(pack).find((a) => a.unit.id === unit.id && !progress.isDone(a)) ?? null;
+  const nextHere = activities(pack).find((a) => a.unit.id === unit.id && a.kind !== "speak" && !progress.isDone(a)) ?? null;
   const grammar = unitGrammar(pack, unit);
   const look = unit.look ?? { motif: "tulip" as const, glaze: "cobalt" as const };
   const n = pack.units.indexOf(unit) + 1;
@@ -106,7 +106,7 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
       ) : null}
 
       {unit.speaking ? (
-        <SkillSection skill="speak" title="Speaking">
+        <SkillSection skill="speak" title="Speaking (bonus)">
           <Row
             href={`/speak/${lang}/${unit.id}`}
             title="Speaking practice"
