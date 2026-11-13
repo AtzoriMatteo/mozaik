@@ -10,6 +10,7 @@ import { ActivityLabel } from "./activity-label";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { SkillGlyph, UnitTile, type Skill } from "@/components/unit-tile";
 import { resourcesFor } from "@/core/resources";
+import { WRITING_REQUIRED } from "@/core/writing";
 
 const KIND_LABEL = {
   dialogue: "Dialogue",
@@ -102,6 +103,24 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
               done={progress.isDone({ kind: "grammar", id: g.id })}
             />
           ))}
+        </SkillSection>
+      ) : null}
+
+      {unit.writing?.length ? (
+        <SkillSection skill="write" title="Writing">
+          {unit.writing.map((t) => (
+            <Row
+              key={t.id}
+              href={`/write/${lang}/${unit.id}/${t.id}`}
+              title={t.titleTranslation}
+              meta={[t.situation]}
+              done={progress.writingDone.has(t.id)}
+            />
+          ))}
+          <li className="activity-note">
+            Finish {WRITING_REQUIRED} of {unit.writing.length} for this unit&apos;s writing tile.{" "}
+            {unit.writing.filter((t) => progress.writingDone.has(t.id)).length >= WRITING_REQUIRED ? "Done." : ""}
+          </li>
         </SkillSection>
       ) : null}
 

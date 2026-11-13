@@ -35,6 +35,7 @@ export type Done = {
   read: ReadonlySet<string>;
   listen: ReadonlySet<string>;
   grammar: ReadonlySet<string>;
+  write?: ReadonlySet<string>;
   speak: ReadonlySet<string>;
 };
 

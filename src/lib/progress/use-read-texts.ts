@@ -11,7 +11,7 @@ import { useCallback, useSyncExternalStore } from "react";
 export type { ActivityKind } from "@/core/course";
 import type { ActivityKind } from "@/core/course";
 
-type ProgressKind = ActivityKind | "beyond";
+type ProgressKind = ActivityKind | "beyond" | "writing";
 
 const key = (kind: ProgressKind, language: string) => `mozaik:${kind}:${language}`;
 const listeners = new Set<() => void>();

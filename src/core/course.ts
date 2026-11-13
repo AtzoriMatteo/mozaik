@@ -1,7 +1,7 @@
 import type { Unit } from "./content";
 import type { LanguagePack } from "./language-pack";
 
-export type ActivityKind = "read" | "listen" | "grammar" | "speak";
+export type ActivityKind = "read" | "listen" | "grammar" | "write" | "speak";
 
 /** One thing to do in the course: read, listen, a grammar lesson, or speaking practice. */
 export type Activity = {
@@ -18,7 +18,7 @@ export function unitGrammar(pack: LanguagePack, unit: Unit) {
   return pack.grammar.filter((g) => g.unit === unit.id && g.lesson);
 }
 
-/** All activities in course order: per unit, texts, listening, grammar, then speaking. */
+/** All activities in course order: per unit, texts, listening, grammar, writing, then speaking. */
 export function activities(pack: LanguagePack): Activity[] {
   return pack.units.flatMap((unit) => [
     ...unit.texts.map((t) => ({
@@ -45,6 +45,18 @@ export function activities(pack: LanguagePack): Activity[] {
       unit,
       href: `/grammar/${pack.code}/${g.id}`,
     })),
+    ...(unit.writing?.length
+      ? [
+          {
+            kind: "write" as const,
+            id: unit.id,
+            title: "Writing",
+            titleTranslation: "Choose topics and write",
+            unit,
+            href: `/write/${pack.code}/${unit.id}`,
+          },
+        ]
+      : []),
     ...(unit.speaking
       ? [
           {
@@ -64,12 +76,14 @@ export const VERB: Record<ActivityKind, string> = {
   read: "read",
   listen: "listen to",
   grammar: "learn",
+  write: "",
   speak: "",
 };
 
 /** "read Nieuw in Leiden", "learn Verb second", "speaking practice". */
 export function activityLabel(a: Pick<Activity, "kind" | "title">): { verb: string; title: string; inTargetLanguage: boolean } {
   if (a.kind === "speak") return { verb: "", title: "speaking practice", inTargetLanguage: false };
+  if (a.kind === "write") return { verb: "", title: "writing", inTargetLanguage: false };
   return { verb: VERB[a.kind], title: a.title, inTargetLanguage: a.kind !== "grammar" };
 }
 

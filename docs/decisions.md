@@ -5,6 +5,38 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (night) — Writing, checked for free
+
+**Writing per unit (Matteo).** Every unit has three topics (33 at A1): a
+note, a message, an email, a description, a story or a diary entry. You
+choose a length (A1: about 30, 60 or 100 words; later levels go up to
+600), and the prompt grows with it: 2, 4 or 6 things to say. Finishing 2
+of a unit's 3 topics glazes its writing tile, so the A1 picture is now
+reading + listening + grammar + writing. Drafts are kept in the browser.
+A text counts as finished at 80% of the chosen length, after a check.
+
+**Checking without paying anyone (Claude).**
+- Grammar: Mozaik's own rules for the mistakes A1 learners make, each
+  linked to its lesson: verb second (Morgen ik heb → heb ik), -t with jij,
+  subject–verb forms, zijn/hebben, de/het, deze/dit, adjective -e,
+  niet een → geen, ik heb 25 jaar → ik ben, ik ben honger → heb,
+  ik ben koud → heb het koud, in/op/om with days, months and times,
+  groter als → dan, meer mooi → mooier, capitals. Rules stay quiet when
+  unsure: tests check 28 typical mistakes are caught and that no course
+  text or model answer is flagged.
+- Spelling: the OpenTaal Dutch dictionary (free, BSD / CC BY 3.0), checked
+  on the device in a background worker (2.5 MB, downloaded once). Course
+  words, number words and compounds (verjaardag-s-feest) pass; names pass
+  unless they're a known word missing an accent (Italie → Italië).
+- Optional LanguageTool (free public service, open source) for extra
+  grammar and spelling. Off by default: it sends the text to
+  languagetool.org. Limit 20 checks a minute per person.
+- Rejected for now: AI in the browser (1–2 GB, unreliable feedback on
+  Dutch at that size) and free cloud AI (Gemini's free tier uses the text
+  for product improvement and its terms point EU apps to paid services).
+
+**Not yet:** writing mistakes coming back in review (left for later).
+
 ## 2026-11-13 (evening) — New words, My words, graduating, level pictures
 
 **Words split into two decks (Matteo).**

@@ -23,6 +23,7 @@ import { listeningNewUnits } from "../listening/a1-new-units";
 import { listeningBasis } from "../listening/a1-basis";
 import { listeningTasksA1 } from "../listening/tasks-a1";
 import { speakingA1 } from "../speaking/a1";
+import { writingA1 } from "../writing/a1";
 
 /** Each unit's tile: a hand-painted motif and one of the polychrome glazes. */
 const LOOK: Record<string, { motif: Motif; glaze: Glaze }> = {
@@ -61,6 +62,7 @@ function assemble(u: UnitContent): Unit {
     texts: [...u.texts, ...(extra ? [extra] : [])].map((t) => ({ ...t, tasks: t.tasks ?? tasksA1[t.id] })),
     listening: (listening[u.id] ?? []).map((l) => ({ ...l, tasks: l.tasks ?? listeningTasksA1[l.id] })),
     speaking: speakingA1[u.id],
+    writing: writingA1[u.id],
   };
 }
 

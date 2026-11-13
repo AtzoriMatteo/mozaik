@@ -116,12 +116,13 @@ export function UnitTile({
 }
 
 /** Small glyphs for the five kinds of work, each in its own glaze. */
-export type Skill = "read" | "listen" | "grammar" | "speak" | "beyond";
+export type Skill = "read" | "listen" | "grammar" | "write" | "speak" | "beyond";
 
 export const SKILL_GLAZE: Record<Skill, Glaze> = {
   read: "cobalt",
   listen: "ochre",
   grammar: "manganese",
+  write: "iron",
   speak: "copper",
   beyond: "iron",
 };
@@ -130,6 +131,7 @@ const SKILL_PATH: Record<Skill, string> = {
   read: "M12 7 C9.5 5.3 6.5 5 4 6 L4 18 C6.5 17 9.5 17.3 12 19 C14.5 17.3 17.5 17 20 18 L20 6 C17.5 5 14.5 5.3 12 7 Z M12 7 L12 19",
   listen: "M5 10 L5 14 L8 14 L12 17.5 L12 6.5 L8 10 Z M15 9.5 C16.3 10.8 16.3 13.2 15 14.5 M17.5 7.5 C20 10 20 14 17.5 16.5",
   grammar: "M4 5 L10 5 L10 11 L4 11 Z M14 5 L20 5 L20 11 L14 11 Z M4 13 L10 13 L10 19 L4 19 Z M14 13 L20 13 L20 19 L14 19 Z",
+  write: "M5 19 L6.2 14.6 L15.8 5 C16.6 4.2 17.8 4.2 18.6 5 L19 5.4 C19.8 6.2 19.8 7.4 19 8.2 L9.4 17.8 Z M14 6.8 L17.2 10 M5 19 L9.4 17.8",
   speak: "M5 6 L19 6 C20 6 20.5 6.5 20.5 7.5 L20.5 14 C20.5 15 20 15.5 19 15.5 L11 15.5 L7 19 L7 15.5 L5 15.5 C4 15.5 3.5 15 3.5 14 L3.5 7.5 C3.5 6.5 4 6 5 6 Z",
   beyond: "M12 3.5 A8.5 8.5 0 1 1 11.9 3.5 Z M15.5 8.5 L13.3 13.3 L8.5 15.5 L10.7 10.7 Z",
 };

@@ -1,4 +1,5 @@
 import type { CefrLevel } from "./language-pack";
+import type { WritingTask } from "./writing";
 
 /**
  * Help for one word, written by hand for course texts.
@@ -132,6 +133,8 @@ export type Unit = {
   texts: ReadingText[];
   listening: ListeningItem[];
   speaking?: UnitSpeaking;
+  /** Writing topics; finishing WRITING_REQUIRED of them earns the unit's writing tile. */
+  writing?: WritingTask[];
 };
 
 /** One tile in a word-order diagram. */

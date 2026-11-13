@@ -7,6 +7,8 @@ import { coreVocabularyA1 } from "./vocabulary";
 import { sounds } from "./speaking/sounds";
 import { resources } from "./resources";
 import { zipfA1 } from "./frequency";
+import { makeChecker } from "./writing/check";
+import { isNumberWord } from "./writing/data";
 
 /**
  * Dutch uses apostrophes inside words ("auto's", "baby's") and as the start
@@ -65,6 +67,9 @@ function greetingFor(hour: number) {
 }
 
 export const dutch: LanguagePack = {
+  checkWriting: makeChecker(lexicon, tokenizeDutch),
+  spelling: { aff: "/dictionaries/nl/index.aff", dic: "/dictionaries/nl/index.dic", isWord: isNumberWord },
+  languageTool: "nl",
   code: "nl",
   name: "Dutch",
   nativeName: "Nederlands",
