@@ -20,7 +20,10 @@ export function mosaicActivities(pack: LanguagePack, level: CefrLevel): Activity
 export function tilesRevealed(done: number, total: number): number {
   if (total === 0) return 0;
   if (done >= total) return MOSAIC_TILES;
-  return Math.floor((done / total) * MOSAIC_TILES);
+  if (done <= 0) return 0;
+  // Round up, so the very first activity already lays a tile; the last tile
+  // is kept back until everything is done.
+  return Math.min(MOSAIC_TILES - 1, Math.ceil((done / total) * MOSAIC_TILES));
 }
 
 /**

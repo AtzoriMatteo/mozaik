@@ -35,6 +35,10 @@ bold white sans text read as a generic template.
   ochre corners and the glyph of the kind of work that comes next, and a
   second line says what it is ("At the market", "Unit 4: Food and shopping").
 
+**First tile right away (Claude).** The mosaic rounded down, so finishing
+your first text still showed 0 of 96 tiles. It now rounds up: the first
+activity lays a tile, and the last tile waits until everything is done.
+
 ## 2026-11-13 (night) — Writing, checked for free
 
 **Writing per unit (Matteo).** Every unit has three topics (33 at A1): a

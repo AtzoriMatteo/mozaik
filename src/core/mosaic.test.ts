@@ -11,6 +11,8 @@ describe("level mosaic", () => {
 
   it("reveals tiles in proportion, and the whole picture only at the end", () => {
     expect(tilesRevealed(0, 94)).toBe(0);
+    expect(tilesRevealed(1, 105)).toBe(1);
+    expect(tilesRevealed(104, 105)).toBe(MOSAIC_TILES - 1);
     expect(tilesRevealed(47, 94)).toBe(MOSAIC_TILES / 2);
     expect(tilesRevealed(93, 94)).toBeLessThan(MOSAIC_TILES);
     expect(tilesRevealed(94, 94)).toBe(MOSAIC_TILES);
