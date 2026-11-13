@@ -5,6 +5,24 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (night) — Google and password login; flashcards in dictionary form
+
+**Login (Matteo).** Login page order: Continue with Google (main), Continue
+with GitHub (quiet), then email + password with "Create an account" and
+"Forgot password?", and "Email me a login link instead" as a fallback.
+Password resets land on /account/password. Google needs a one-time setup
+in Google Cloud and Supabase (Matteo). Recommended: turn off "Confirm
+email" in Supabase so new accounts don't wait for an email under the
+2-per-hour limit. Trade-off: someone could sign up with an address that
+isn't theirs; low risk for a site shared with friends.
+
+**Flashcards show the dictionary form (Matteo).** New words and My words
+show "de gracht", not "grachten": the base form, with de/het for nouns
+(about 600 nouns listed by hand, plus the rule that every -je word is
+het). The sentence still highlights the form you met, with "In the
+sentence: grachten" under the answer. Saving grachten and gracht counts as
+one word and one card.
+
 ## 2026-11-13 (night) — "Sounds odd?" flags, ready for friends
 
 **Flagging (Matteo).** Nobody has checked the Dutch with a native speaker,

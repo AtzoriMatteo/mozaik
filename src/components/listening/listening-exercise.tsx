@@ -460,7 +460,7 @@ function TranscriptStep({
                           type="button"
                           className="word"
                           data-selected={(selected?.line === li && selected.token === piece.index) || undefined}
-                          data-saved={saved.isSaved(piece.token.normalized) || undefined}
+                          data-saved={saved.isSaved(piece.token.normalized, pack.lexicon[piece.token.normalized]?.base) || undefined}
                           onClick={() =>
                             setSelected(
                               selected?.line === li && selected.token === piece.index ? null : { line: li, token: piece.index },
@@ -506,7 +506,7 @@ function TranscriptStep({
           help={help}
           translation={selectedLine.translation}
           sentence={selectedLine.text}
-          saved={saved.isSaved(selectedToken.kind === "word" ? selectedToken.normalized : "")}
+          saved={selectedToken.kind === "word" && saved.isSaved(selectedToken.normalized, pack.lexicon[selectedToken.normalized]?.base)}
           error={saved.error}
           onToggleSave={() => {
             if (!help || selectedToken.kind !== "word") return;

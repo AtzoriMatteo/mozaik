@@ -137,7 +137,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
                             type="button"
                             className="word"
                             data-selected={ref.key === selectedKey || undefined}
-                            data-saved={saved.isSaved(ref.normalized) || undefined}
+                            data-saved={saved.isSaved(ref.normalized, ref.help?.base) || undefined}
                             aria-pressed={ref.key === selectedKey}
                             onClick={() => setSelectedKey(ref.key === selectedKey ? null : ref.key)}
                           >
@@ -197,7 +197,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           help={selected.help}
           translation={selected.translation}
           sentence={selected.sentence}
-          saved={saved.isSaved(selected.normalized)}
+          saved={saved.isSaved(selected.normalized, selected.help?.base)}
           error={saved.error}
           onToggleSave={() => toggleSave(selected)}
           onClose={() => setSelectedKey(null)}
