@@ -1,5 +1,7 @@
 "use client";
 
+import { LearningTip } from "@/components/learning-tip";
+import { glueTokens } from "@/core/glue";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { helpFor, type WordHelp } from "@/core/content";
@@ -121,21 +123,29 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           <p key={p}>
             {sentences.map((tokens, s) => (
               <span key={s}>
-                {tokens.map(({ tok, ref }, t) =>
-                  ref ? (
-                    <button
-                      key={t}
-                      type="button"
-                      className="word"
-                      data-selected={ref.key === selectedKey || undefined}
-                      data-saved={saved.isSaved(ref.normalized) || undefined}
-                      aria-pressed={ref.key === selectedKey}
-                      onClick={() => setSelectedKey(ref.key === selectedKey ? null : ref.key)}
-                    >
-                      {tok.text}
-                    </button>
+                {glueTokens(tokens.map((x) => x.tok)).map((g, gi) =>
+                  g.kind === "gap" ? (
+                    <span key={gi}>{g.text}</span>
                   ) : (
-                    <span key={t}>{tok.text}</span>
+                    <span key={gi} className="nobr">
+                      {g.pieces.map((piece, pi) => {
+                        const ref = piece.kind === "word" ? tokens[piece.index].ref : null;
+                        if (!ref) return <span key={pi}>{piece.kind === "word" ? piece.token.text : piece.text}</span>;
+                        return (
+                          <button
+                            key={pi}
+                            type="button"
+                            className="word"
+                            data-selected={ref.key === selectedKey || undefined}
+                            data-saved={saved.isSaved(ref.normalized) || undefined}
+                            aria-pressed={ref.key === selectedKey}
+                            onClick={() => setSelectedKey(ref.key === selectedKey ? null : ref.key)}
+                          >
+                            {piece.kind === "word" ? piece.token.text : ""}
+                          </button>
+                        );
+                      })}
+                    </span>
                   ),
                 )}{" "}
               </span>
@@ -172,7 +182,10 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           </p>
         ) : null}
         {tasks.length === 0 || typeof check === "object" ? (
-          <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
+          <>
+            <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
+            <LearningTip pack={pack} place="read" />
+          </>
         ) : null}
       </footer>
 

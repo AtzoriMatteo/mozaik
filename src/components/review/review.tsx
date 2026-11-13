@@ -1,5 +1,6 @@
 "use client";
 
+import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Verdict } from "@/core/answers";
@@ -188,6 +189,8 @@ export function Review() {
         graduated={review.graduated}
         onUndo={review.ungraduate}
       />
+
+      <LearningTip pack={pack} place="review" />
 
       <SettingsPanel settings={settings} update={update} reset={reset} levels={pack.levels} />
     </div>

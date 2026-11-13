@@ -2,6 +2,15 @@ import type { UnitSpeaking } from "@/core/content";
 
 /** A1 speaking: one or two sounds per unit, then short sentences from the unit to shadow. */
 export const speakingA1: Record<string, UnitSpeaking> = {
+  "a1-nederland": {
+    sounds: ["ui", "g"],
+    shadowing: [
+      { text: "Nederland is een klein land in het noordwesten van Europa.", translation: "The Netherlands is a small country in the north-west of Europe." },
+      { text: "Daar mag je niet lopen.", translation: "You can't walk there." },
+      { text: "Hier is Nederland niet plat: er zijn heuvels!", translation: "Here the Netherlands isn't flat: there are hills!" },
+      { text: "Er zijn hier meer schapen dan mensen!", translation: "There are more sheep than people here!" },
+    ],
+  },
   "a1-kennismaken": {
     sounds: ["g"],
     shadowing: [

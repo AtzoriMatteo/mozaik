@@ -1,5 +1,7 @@
 "use client";
 
+import { LearningTip } from "@/components/learning-tip";
+import { glueTokens } from "@/core/glue";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { helpFor, type ListeningItem, type Question } from "@/core/content";
@@ -160,6 +162,7 @@ export function ListeningExercise({ lang, itemId }: { lang: string; itemId: stri
             next={nextActivity(pack, { kind: "listen", id: item.id })}
             onDone={() => progress.markListened(item.id)}
           />
+          <LearningTip pack={pack} place="listen" />
         </TranscriptStep>
       ) : null}
     </article>
@@ -445,22 +448,32 @@ function TranscriptStep({
               <span className="speaker">{line.speaker}</span>
             ) : null}
             <span className="line-text">
-              {pack.tokenize(line.text).map((tok, ti) =>
-                tok.kind === "word" ? (
-                  <button
-                    key={ti}
-                    type="button"
-                    className="word"
-                    data-selected={(selected?.line === li && selected.token === ti) || undefined}
-                    data-saved={saved.isSaved(tok.normalized) || undefined}
-                    onClick={() =>
-                      setSelected(selected?.line === li && selected.token === ti ? null : { line: li, token: ti })
-                    }
-                  >
-                    {tok.text}
-                  </button>
+              {glueTokens(pack.tokenize(line.text)).map((g, gi) =>
+                g.kind === "gap" ? (
+                  <span key={gi}>{g.text}</span>
                 ) : (
-                  <span key={ti}>{tok.text}</span>
+                  <span key={gi} className="nobr">
+                    {g.pieces.map((piece, pi) =>
+                      piece.kind === "word" ? (
+                        <button
+                          key={pi}
+                          type="button"
+                          className="word"
+                          data-selected={(selected?.line === li && selected.token === piece.index) || undefined}
+                          data-saved={saved.isSaved(piece.token.normalized) || undefined}
+                          onClick={() =>
+                            setSelected(
+                              selected?.line === li && selected.token === piece.index ? null : { line: li, token: piece.index },
+                            )
+                          }
+                        >
+                          {piece.token.text}
+                        </button>
+                      ) : (
+                        <span key={pi}>{piece.text}</span>
+                      ),
+                    )}
+                  </span>
                 ),
               )}
               {hasVoice ? (

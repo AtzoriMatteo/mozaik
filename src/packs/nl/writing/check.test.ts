@@ -31,6 +31,7 @@ describe("Dutch writing checker: catches learner mistakes", () => {
     ["Ik werk in maandag.", "in → op"],
     ["Mijn verjaardag is op mei.", "op → in"],
     ["De les begint op acht uur.", "op → om"],
+    ["De les begint in half negen.", "in → om"],
     ["Leiden is kleiner als Amsterdam.", "als → dan"],
     ["Amsterdam is meer groot.", "meer groot → groter"],
     ["Nederlands is meer moeilijk als Engels.", "als → dan"],
@@ -55,6 +56,8 @@ describe("Dutch writing checker: stays quiet on correct Dutch", () => {
     "Het huis is groot en de stad is mooi.",
     "Ik woon in een groot huis met een mooie tuin.",
     "Om half negen fiets ik naar de universiteit.",
+    "Het werk is zwaar.",
+    "Met de trein ben je in drie uur in Parijs.",
     "Op maandag werk ik in het café.",
     "Leiden is kleiner dan Amsterdam.",
     "Ze wonen samen. Zij is student.",
@@ -88,9 +91,9 @@ describe("Dutch writing checker: stays quiet on correct Dutch", () => {
 describe("A1 writing topics", () => {
   const tasks = dutch.units.flatMap((u) => u.writing ?? []);
 
-  it("gives every unit three topics with six points", () => {
+  it("gives every unit at least three topics with six points", () => {
     for (const u of dutch.units) {
-      expect(u.writing?.length, u.id).toBe(3);
+      expect(u.writing?.length, u.id).toBeGreaterThanOrEqual(3);
       for (const t of u.writing!) expect(t.points.length, t.id).toBe(6);
     }
     expect(new Set(tasks.map((t) => t.id)).size).toBe(tasks.length);

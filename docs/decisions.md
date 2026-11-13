@@ -5,6 +5,50 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (late evening) — A1 audit, Dutch culture, a course for everyone, tips
+
+**The audit (Claude).** The course was checked against a full A1 checklist:
+topics, survival phrases, grammar, and how much reading and listening there is.
+- Already solid: 28 grammar points (complete for A1), ~5,600 words of
+  reading, numbers, time, dates, family, food, weather, directions.
+- Gaps found and filled: survival phrases (Kunt u dat herhalen? Langzamer,
+  alstublieft. Wat betekent…? Hoe zeg je…? Waar is de wc?), countries,
+  nationalities and languages, body parts, common jobs, emergencies (112,
+  police, fire brigade), drugstore vs. pharmacy, form words (postcode,
+  woonplaats, signature), airport/metro/taxi, snow/clouds/fog/thunder,
+  houden van, een hekel hebben aan.
+- Listening was too thin (~14 minutes in total). Now ~25 minutes of clips,
+  most of them longer, plus every reading text can be played aloud.
+- Deliberately left for A2: the past tense (perfectum), subordinate-clause
+  word order, om te. Past forms appear only as set phrases (ik ben geboren).
+
+**One new unit, not more (Matteo: "not too many units").** Unit 11,
+Nederland ontdekken: the country in a nutshell, a day in Amsterdam,
+postcards from Texel, Kinderdijk and Maastricht, a canal tour, a train
+ticket to Maastricht, planning a trip. Tile: a drawbridge. Everything else
+went into existing units: 6 new texts, 14 new listening clips, 5 new writing
+topics (units may now have more than three to choose from).
+
+**For everyone, not just Matteo.** The course leaned on one Italian student
+in Leiden. New material has people of all ages and backgrounds: from
+Poland, Morocco, Suriname, Ukraine, Syria, Germany, India, China, Mexico,
+Brazil, Turkey, Ghana, Japan; a bus driver, a cleaner, a retiree, a family
+at a circle birthday. Luca stays as one character among many. The
+university intro-day clip was replaced by the first evening of a Dutch
+course.
+
+**Learning tips (Matteo: "useful, not stuff everyone knows").** One quiet
+tip on the home, course, review and writing pages and after each text and
+clip, the same all day with an "Another tip" link. General tips are about
+how memory works (guess before flipping, a hard review is a good review,
+read under your breath). Dutch tips are patterns that save time: think →
+denken, night → nacht, day → dag; -je is always het, -ing always de,
+plurals always de; how to keep people speaking Dutch with you.
+
+**Also fixed.** The grammar checker no longer flags "Het werk is zwaar" or
+durations like "in drie uur". Punctuation no longer wraps onto a line of
+its own in texts and transcripts.
+
 ## 2026-11-13 (evening) — Progress synced across devices
 
 **Problem (Matteo).** Phone and laptop showed different progress: finished

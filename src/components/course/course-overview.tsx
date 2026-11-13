@@ -1,5 +1,6 @@
 "use client";
 
+import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { activities, unitHref } from "@/core/course";
 import { ActivityLabel } from "./activity-label";
@@ -94,6 +95,7 @@ export function CourseOverview() {
           See what to watch, hear and read
         </Link>
       </section>
+      <LearningTip pack={pack} place="course" />
     </>
   );
 }

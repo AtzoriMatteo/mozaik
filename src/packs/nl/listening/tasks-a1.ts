@@ -3,11 +3,6 @@ import { gaps, heard, orderNl, tf } from "../units/helpers";
 
 /** Close-listening tasks for the first A1 listening items, keyed by item id. */
 export const listeningTasksA1: Record<string, Task[]> = {
-  "de-introductiedag": [
-    tf("Jonas woont in Leiden.", "Jonas lives in Leiden.", false),
-    gaps(4, "Rotterdam", "studeer"),
-    heard(8, ["trein", "tram", "fiets"], 0),
-  ],
   "noor-over-haar-familie": [
     gaps(1, "ouders", "vader"),
     heard(6, ["tien", "twaalf", "twintig"], 1),

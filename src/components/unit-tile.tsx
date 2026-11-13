@@ -64,6 +64,13 @@ const MOTIFS: Record<Motif, { wash: string; line: string; dots?: [number, number
     line: "M50 26 L55 44 L72 36 L60 50 L74 60 L56 59 L50 77 L44 59 L26 60 L40 50 L28 36 L45 44 Z M50 45 L50 58 M44 51 L56 51",
     dots: [[50, 51, 2.2]],
   },
+  bridge: {
+    // A Dutch drawbridge (ophaalbrug): two posts, a double crossbeam, chains
+    // down to the deck, and water below the arch.
+    wash: "M24 67 C30 64 36 70 42 67 C48 64 54 70 60 67 C66 64 72 70 76 67 L76 75 L24 75 Z",
+    line: "M22 56 L78 56 M38 56 L38 33 M62 56 L62 33 M35 33 L65 33 M35 38 L65 38 M38 38 L47 56 M62 38 L53 56 M28 56 C34 63 44 63 50 56 C56 63 66 63 72 56 M26 71 C32 68 38 74 44 71 M54 71 C60 68 66 74 72 71",
+    dots: [[38, 31, 1.8], [62, 31, 1.8]],
+  },
   crown: {
     wash: "M32 64 L29 40 L40 50 L50 33 L60 50 L71 40 L68 64 Z",
     line: "M32 64 L29 40 L40 50 L50 33 L60 50 L71 40 L68 64 Z M31 70 L69 70 M32 64 L31 70 M68 64 L69 70",
