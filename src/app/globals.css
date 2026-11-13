@@ -1222,6 +1222,30 @@ a {
   font-size: 0.95rem;
 }
 
+.resource-site {
+  flex-basis: 100%;
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0.75rem;
+  background: var(--porcelain);
+  border-radius: var(--radius-tile);
+  font-size: 0.92rem;
+}
+
+.resource-lang {
+  margin-left: 0.4rem;
+  color: var(--glaze-iron);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.activity-site {
+  margin-top: 0.3rem;
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  border-left: 2px solid var(--grout);
+  padding-left: 0.6rem;
+}
+
 .resource-done {
   border: 1px solid var(--grout);
   background: transparent;

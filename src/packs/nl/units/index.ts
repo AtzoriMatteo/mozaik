@@ -4,6 +4,7 @@ import { dagEnTijd, eten } from "./a1-daily";
 import { wonen, werkEnStudie } from "./a1-places";
 import { gezondheid, vrijeTijd } from "./a1-life";
 import { feestdagen, kleren } from "./a1-new-units";
+import { basis } from "./a1-basis";
 import {
   fatimasProfiel,
   gezondLeven,
@@ -19,6 +20,7 @@ import type { UnitContent } from "./types";
 import { listeningA1 } from "../listening/a1";
 import { listeningA1More } from "../listening/a1-more";
 import { listeningNewUnits } from "../listening/a1-new-units";
+import { listeningBasis } from "../listening/a1-basis";
 import { listeningTasksA1 } from "../listening/tasks-a1";
 import { speakingA1 } from "../speaking/a1";
 
@@ -47,7 +49,7 @@ const MORE_TEXTS = {
 } as const;
 
 const listening = { ...listeningA1 };
-for (const [id, items] of Object.entries({ ...listeningA1More, ...listeningNewUnits })) {
+for (const [id, items] of Object.entries({ ...listeningA1More, ...listeningNewUnits, ...listeningBasis })) {
   listening[id] = [...(listening[id] ?? []), ...items];
 }
 
@@ -64,6 +66,7 @@ function assemble(u: UnitContent): Unit {
 
 /** The Dutch course, in suggested order. */
 export const units: readonly Unit[] = [
+  basis,
   kennismaken,
   familie,
   eten,

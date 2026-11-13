@@ -18,6 +18,10 @@ export type Resource = {
   why: string;
   /** How to use it, in one line, e.g. "Dutch subtitles on, 10 minutes". */
   how: string;
+  /** What you'll see when the link opens and what to click: no guessing on a foreign site. */
+  onSite: string;
+  /** The language of the site's own buttons and menus. */
+  siteLanguage: "English" | "Dutch" | "English and Dutch";
   /** Units it goes well with (shown on those unit pages). */
   units?: string[];
   /** A little above the level: worth a try, no pressure. */

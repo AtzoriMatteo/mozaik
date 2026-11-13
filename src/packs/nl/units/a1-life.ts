@@ -16,7 +16,7 @@ export const gezondheid: UnitContent = {
       level: "A1",
       title: "Ziek",
       titleTranslation: "Ill",
-      grammar: ["zijn-hebben", "negation", "modal-verbs", "object-pronouns", "conjunctions"],
+      grammar: ["reflexive", "zijn-hebben", "negation", "modal-verbs", "object-pronouns", "conjunctions"],
       paragraphs: [
         [
           {
@@ -230,8 +230,8 @@ export const vrijeTijd: UnitContent = {
             translation: "Today is Saturday and the weather is lovely: a blue sky, little wind and twenty degrees.",
           },
           {
-            text: "Luca speelt op zaterdag meestal voetbal, en Noor gaat graag wandelen. Maar vandaag willen ze geen sport.",
-            translation: "On Saturdays Luca usually plays football, and Noor likes to go walking. But today they don't want any sport.",
+            text: "Luca speelt op zaterdag meestal voetbal, en Noor gaat graag wandelen. Maar vandaag willen ze niet sporten.",
+            translation: "On Saturdays Luca usually plays football, and Noor likes to go walking. But today they don't want to do sport.",
           },
           {
             text: "\"Zullen we naar het strand gaan?\" vraagt Bram. \"Katwijk is maar twintig minuten fietsen.\"",

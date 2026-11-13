@@ -60,7 +60,7 @@ export const lexiconExtra: Lexicon = {
   studie: { meaning: "studies, degree", local: "Wat is je studie? = What are you studying?" },
   suiker: { meaning: "sugar" },
   supermarkt: { meaning: "supermarket" },
-  tachtig: { meaning: "eighty", local: "Not 'achtig': tachtig has an extra t, like twintig" },
+  tachtig: { meaning: "eighty", local: "Starts with a t: tachtig (80), not 'achtig'" },
   tassen: { meaning: "bags", base: "tas" },
   tram: { meaning: "tram", local: "Said 'trem' like English 'trend'" },
   tweede: { meaning: "second" },

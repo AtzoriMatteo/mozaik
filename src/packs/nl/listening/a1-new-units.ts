@@ -72,7 +72,7 @@ export const listeningNewUnits: Record<string, ListeningItem[]> = {
       grammar: ["object-pronouns", "separable-verbs", "time-numbers"],
       lines: [
         line("Buurman", "Hoi Fatima, met Henk, je buurman van nummer negen.", "Hi Fatima, it's Henk, your neighbour from number nine."),
-        line("Buurman", "Ik heb een pakketje voor je. Je bent niet thuis, dus de bezorger geeft het aan mij.", "I have a parcel for you. You're not home, so the delivery man gives it to me."),
+        line("Buurman", "Ik heb een pakketje voor je. Het ligt bij mij.", "I have a parcel for you. It's at my place."),
         line("Buurman", "Het is een grote doos. Schoenen, denk ik?", "It's a big box. Shoes, I think?"),
         line("Buurman", "Ik ben vanavond thuis tot tien uur.", "I'm home tonight until ten."),
         line("Buurman", "Kom het maar ophalen. Tot straks!", "Just come and pick it up. See you later!"),
@@ -161,7 +161,7 @@ export const listeningNewUnits: Record<string, ListeningItem[]> = {
         line("Giulia", "Luca! Gelukkig nieuwjaar!", "Luca! Happy new year!"),
         line("Luca", "Jij ook, Giulia! Hoe was het feest?", "You too, Giulia! How was the party?"),
         line("Giulia", "Leuk, maar ik ben heel moe. En bij jou?", "Fun, but I'm very tired. And yours?"),
-        line("Luca", "Gezellig. Bram bakt oliebollen en er is veel vuurwerk.", "Cosy. Bram makes oliebollen and there are lots of fireworks."),
+        line("Luca", "Gezellig! We hebben nog veel oliebollen.", "Cosy! We still have lots of oliebollen."),
         line("Giulia", "Wat zijn oliebollen?", "What are oliebollen?"),
         line("Luca", "Een soort donuts, maar rond en met poedersuiker.", "A kind of doughnut, but round and with icing sugar."),
         line("Giulia", "Lekker! Wat is je voornemen?", "Yummy! What's your resolution?"),
@@ -174,7 +174,7 @@ export const listeningNewUnits: Record<string, ListeningItem[]> = {
       ],
       tasks: [
         gaps(5, "rond", "poedersuiker"),
-        heard(3, ["vuurwerk", "voetbal", "verjaardag"], 0),
+        heard(3, ["oliebollen", "pannenkoeken", "koekjes"], 0),
         tf("Giulia weet wat oliebollen zijn.", "Giulia knows what oliebollen are.", false),
       ],
       dictation: [0, 6],

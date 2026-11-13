@@ -128,6 +128,7 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
                 <span className="activity-meta">
                   <span>{r.how}</span>
                 </span>
+                <span className="activity-site">{r.onSite}</span>
               </a>
             </li>
           ))}

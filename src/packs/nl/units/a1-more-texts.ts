@@ -226,7 +226,7 @@ export const inHetZiekenhuis: ReadingText = {
     [
       s("Haar dag begint vroeg. Om half zeven staat ze op, en om half acht is ze in het ziekenhuis.", "Her day starts early. At half past six she gets up, and at half past seven she's at the hospital."),
       s("Eerst trekt ze haar witte jas aan.", "First she puts on her white coat."),
-      s("Dan praat ze met de andere artsen over de patiënten.", "Then she talks with the other doctors about the patients."),
+      s("Dan praat ze met de artsen over de patiënten.", "Then she talks with the doctors about the patients."),
     ],
     [
       s("Daarna gaat ze met dokter Visser naar de patiënten.", "After that she goes to the patients with Dr Visser."),
@@ -276,7 +276,7 @@ export const gezondLeven: ReadingText = {
     [
       s("Een maand later gaat het beter.", "A month later things are better."),
       s("Bram fietst elke dag naar zijn werk en hij voetbalt op zaterdag.", "Bram cycles to work every day and he plays football on Saturdays."),
-      s("Hij eet minder friet, maar niet geen friet. \"Eén keer per week mag het,\" lacht hij.", "He eats fewer chips, but not no chips. \"Once a week is allowed,\" he laughs."),
+      s("Hij eet minder friet. Maar helemaal geen friet? Nee! \"Eén keer per week mag het,\" lacht hij.", "He eats fewer chips. But no chips at all? No! \"Once a week is allowed,\" he laughs."),
     ],
   ],
   tasks: [

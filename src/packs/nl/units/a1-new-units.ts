@@ -20,7 +20,7 @@ export const kleren: UnitContent = {
       level: "A1",
       title: "Een winterjas",
       titleTranslation: "A winter coat",
-      grammar: ["adjective-e", "demonstratives", "questions"],
+      grammar: ["comparatives", "adjective-e", "demonstratives", "questions"],
       paragraphs: [
         [
           s("Het is november en het is koud.", "It's November and it's cold."),
@@ -99,7 +99,7 @@ export const kleren: UnitContent = {
       level: "A1",
       title: "Wat trek ik aan?",
       titleTranslation: "What shall I wear?",
-      grammar: ["separable-verbs", "possessives", "adjective-e"],
+      grammar: ["graag-liever", "separable-verbs", "possessives", "adjective-e"],
       paragraphs: [
         [
           s("Morgen heeft Luca een gesprek voor een stage bij een laboratorium.", "Tomorrow Luca has an interview for an internship at a lab."),
@@ -121,14 +121,14 @@ export const kleren: UnitContent = {
         [
           s("De volgende dag fietst Luca in de regen naar het laboratorium.", "The next day Luca cycles to the lab in the rain."),
           s("Zijn broek is nat en zijn haar ook.", "His trousers are wet and so is his hair."),
-          s("Maar de vrouw van het gesprek draagt een spijkerbroek. Ze lacht: \"Welkom! Wil je een handdoek?\"", "But the woman doing the interview is wearing jeans. She laughs: \"Welcome! Would you like a towel?\""),
+          s("Maar de vrouw van het laboratorium draagt een spijkerbroek. Ze lacht: \"Welkom! Wil je een handdoek?\"", "But the woman from the lab is wearing jeans. She laughs: \"Welcome! Would you like a towel?\""),
         ],
       ],
       tasks: [
         mc("Why does Luca need nice clothes?", ["For a party", "For an internship interview", "For a wedding"], 1),
         tf("Bram zegt: draag een stropdas.", "Bram says: wear a tie.", false),
         pairs("What does Luca wear?", "trousers=grey | shirt=white | jumper=blue | shoes=black"),
-        tf("De vrouw van het gesprek draagt een pak.", "The woman doing the interview is wearing a suit.", false),
+        tf("De vrouw van het laboratorium draagt een pak.", "The woman from the lab is wearing a suit.", false),
         mc("Why does Luca arrive wet?", ["He falls in a canal", "He cycles in the rain", "He spills coffee"], 1),
       ],
     },
@@ -157,10 +157,10 @@ export const feestdagen: UnitContent = {
         [
           s("Op zevenentwintig april is het Koningsdag.", "On the twenty-seventh of April it's King's Day."),
           s("Dan is de koning jarig.", "That's the king's birthday."),
-          s("Bijna niemand hoeft te werken en heel Nederland is oranje.", "Almost nobody has to work and the whole country is orange."),
+          s("Veel mensen zijn vrij en heel Nederland is oranje.", "Lots of people have the day off and the whole country is orange."),
         ],
         [
-          s("Waarom oranje? De familie van de koning heet Van Oranje.", "Why orange? The king's family is called Van Oranje (Orange)."),
+          s("Waarom oranje? De familie van de koning heet Van Oranje-Nassau.", "Why orange? The king's family is called Van Oranje-Nassau (of Orange-Nassau)."),
           s("Mensen dragen oranje kleren, oranje hoeden en soms zelfs een oranje pruik.", "People wear orange clothes, orange hats and sometimes even an orange wig."),
         ],
         [
@@ -179,7 +179,7 @@ export const feestdagen: UnitContent = {
       ],
       tasks: [
         mc("When is King's Day?", ["5 December", "27 April", "1 January"], 1),
-        mc("Why is everything orange?", ["The king's family is called Van Oranje", "It's the colour of spring", "Orange is cheap"], 0),
+        mc("Why is everything orange?", ["The king's family is called Van Oranje-Nassau", "It's the colour of spring", "Orange is cheap"], 0),
         tf("Op de vrijmarkt is alles duur.", "At the free market everything is expensive.", false),
         tf("Bram verkoopt veel cd's.", "Bram sells a lot of CDs.", false),
         mc("What does Luca buy?", ["A book", "A lamp", "An orange hat"], 1),

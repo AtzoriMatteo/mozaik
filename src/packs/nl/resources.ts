@@ -1,11 +1,100 @@
 import type { Resource } from "@/core/resources";
 
 /**
- * Real Dutch to watch, hear and read next to the course. Links only, checked
- * by hand in November 2026; `npm run check-links` flags any that stop working.
- * At A1 there isn't much real material yet, so this list is short on purpose.
+ * Real Dutch to watch, hear and read next to the course. Links only. Every
+ * URL was opened and checked on 13 November 2026; YouTube links use the
+ * permanent /channel/ or /playlist form, which doesn't break when a channel
+ * renames itself. `npm run check-links` flags any that stop working.
  */
+
+const STORYBOOKS = "https://global-asp.github.io/storybooks-ireland/stories/nl/level1";
+const STORYBOOKS_SITE =
+  "Menus are in English. You see a grid of picture books: tap a cover to open it. Each page has a picture, a Dutch sentence, and the English under it.";
+
+const POTJE = "https://www.rug.nl/language-centre/develop-yourself/potje-nederlands?lang=en";
+const POTJE_SITE =
+  "An English page from the University of Groningen. Scroll down to the six episodes and press play under the one named here. Spotify and Apple Podcasts links are on the same page.";
+
 export const resources: Resource[] = [
+  /* ---------- Read ---------- */
+  {
+    id: "storybooks-level-1",
+    level: "A1",
+    kind: "read",
+    title: "Storybooks, Dutch level 1",
+    by: "Global Storybooks (free, open licence)",
+    url: STORYBOOKS,
+    why: "Short picture books with one simple Dutch sentence per page: real reading you can do at A1.",
+    how: "Read the Dutch line, cover the English, guess, then check. One book takes five minutes.",
+    onSite: STORYBOOKS_SITE,
+    siteLanguage: "English",
+  },
+  {
+    id: "storybooks-dieren-tellen",
+    level: "A1",
+    kind: "read",
+    title: "Storybook: Dieren tellen",
+    by: "Global Storybooks",
+    url: STORYBOOKS,
+    why: "Counting animals: the numbers from this unit in a picture book.",
+    how: "Read each number out loud before you look at the English.",
+    onSite: `${STORYBOOKS_SITE} Look for the book called "Dieren tellen".`,
+    siteLanguage: "English",
+    units: ["a1-basis"],
+  },
+  {
+    id: "storybooks-koken",
+    level: "A1",
+    kind: "read",
+    title: "Storybook: Koken",
+    by: "Global Storybooks",
+    url: STORYBOOKS,
+    why: "Cooking words in very short sentences.",
+    how: "Find three food words you know from this unit.",
+    onSite: `${STORYBOOKS_SITE} Look for the book called "Koken".`,
+    siteLanguage: "English",
+    units: ["a1-eten"],
+  },
+  {
+    id: "storybooks-mijn-lichaam",
+    level: "A1",
+    kind: "read",
+    title: "Storybook: Mijn lichaam",
+    by: "Global Storybooks",
+    url: STORYBOOKS,
+    why: "Body words, one per page, with a picture.",
+    how: "Point at the body part on yourself as you read it.",
+    onSite: `${STORYBOOKS_SITE} Look for the book called "Mijn lichaam".`,
+    siteLanguage: "English",
+    units: ["a1-gezondheid"],
+  },
+  {
+    id: "storybooks-weerboek",
+    level: "A1",
+    kind: "read",
+    title: "Storybook: Weerboek",
+    by: "Global Storybooks",
+    url: STORYBOOKS,
+    why: "A little book about the weather: sun, rain, wind.",
+    how: "Say what the weather is like today, in Dutch, when you finish.",
+    onSite: `${STORYBOOKS_SITE} Look for the book called "Weerboek".`,
+    siteLanguage: "English",
+    units: ["a1-vrije-tijd"],
+  },
+  {
+    id: "storybooks-school-kleding",
+    level: "A1",
+    kind: "read",
+    title: "Storybook: School kleding",
+    by: "Global Storybooks",
+    url: STORYBOOKS,
+    why: "Clothes words in one-line sentences.",
+    how: "Name what you're wearing today with the words you find.",
+    onSite: `${STORYBOOKS_SITE} Look for the book called "School kleding".`,
+    siteLanguage: "English",
+    units: ["a1-kleren"],
+  },
+
   /* ---------- Listen ---------- */
   {
     id: "potje-nederlands-1",
@@ -13,9 +102,11 @@ export const resources: Resource[] = [
     kind: "listen",
     title: "Potje Nederlands, episode 1: Dit ben ik",
     by: "University of Groningen Language Centre",
-    url: "https://www.rug.nl/language-centre/develop-yourself/potje-nederlands?lang=en",
+    url: POTJE,
     why: "A podcast made for A1: slow, clear Dutch about introducing yourself.",
-    how: "Pause when she asks you something and answer out loud. No transcript, on purpose.",
+    how: "When she asks you something, pause and answer out loud. There's no transcript, on purpose.",
+    onSite: POTJE_SITE,
+    siteLanguage: "English",
     units: ["a1-kennismaken"],
   },
   {
@@ -24,9 +115,11 @@ export const resources: Resource[] = [
     kind: "listen",
     title: "Potje Nederlands, episode 2: Mijn gezin",
     by: "University of Groningen Language Centre",
-    url: "https://www.rug.nl/language-centre/develop-yourself/potje-nederlands?lang=en",
+    url: POTJE,
     why: "Family words you know from this unit, in someone else's voice.",
-    how: "Listen once, then again and answer the questions about your own family.",
+    how: "Listen once, then again, and answer the questions about your own family.",
+    onSite: POTJE_SITE,
+    siteLanguage: "English",
     units: ["a1-familie"],
   },
   {
@@ -35,9 +128,11 @@ export const resources: Resource[] = [
     kind: "listen",
     title: "Potje Nederlands, episode 3: Boodschappen doen",
     by: "University of Groningen Language Centre",
-    url: "https://www.rug.nl/language-centre/develop-yourself/potje-nederlands?lang=en",
+    url: POTJE,
     why: "Shopping at A1 level, with pauses to answer.",
-    how: "Note three words you hear that are also in the unit.",
+    how: "Note three words you hear that are also in this unit.",
+    onSite: POTJE_SITE,
+    siteLanguage: "English",
     units: ["a1-eten"],
   },
   {
@@ -46,44 +141,41 @@ export const resources: Resource[] = [
     kind: "listen",
     title: "Potje Nederlands, episode 4: Mijn kledingkast",
     by: "University of Groningen Language Centre",
-    url: "https://www.rug.nl/language-centre/develop-yourself/potje-nederlands?lang=en",
+    url: POTJE,
     why: "Clothes and colours at A1 level.",
-    how: "Say what you're wearing today, in Dutch, before you listen.",
+    how: "Before you listen, say what you're wearing today, in Dutch.",
+    onSite: POTJE_SITE,
+    siteLanguage: "English",
     units: ["a1-kleren"],
   },
-
   {
     id: "potje-nederlands-5",
     level: "A1",
     kind: "listen",
     title: "Potje Nederlands, episode 5: Mijn favoriete huis",
     by: "University of Groningen Language Centre",
-    url: "https://www.rug.nl/language-centre/develop-yourself/potje-nederlands?lang=en",
+    url: POTJE,
     why: "Rooms and furniture, slowly and clearly.",
-    how: "Describe your own room out loud when she asks.",
+    how: "When she asks, describe your own room out loud.",
+    onSite: POTJE_SITE,
+    siteLanguage: "English",
     units: ["a1-wonen"],
   },
+
   /* ---------- Watch ---------- */
   {
-    id: "easy-dutch",
+    id: "super-easy-dutch",
     level: "A1",
     kind: "watch",
-    title: "Easy Dutch",
-    by: "Easy Languages",
-    url: "https://www.youtube.com/c/EasyDutch",
-    why: "Real people in the street, with Dutch and English subtitles.",
-    how: "Pick a short episode on food or meeting people. Dutch subtitles on, 10 minutes.",
-    units: ["a1-kennismaken", "a1-eten"],
-  },
-  {
-    id: "dutchies-to-be",
-    level: "A1",
-    kind: "watch",
-    title: "Dutchies to be",
-    by: "Kim",
-    url: "https://www.youtube.com/c/DutchiestobeLearnDutchwithKim",
-    why: "Short sketches of everyday situations for beginners.",
-    how: "Watch one sketch, then replay it and say the lines with her.",
+    title: "Super Easy Dutch",
+    by: "Easy Dutch",
+    url: "https://www.youtube.com/playlist?list=PLA5UIoabheFOF-wn5yKE8ZI8rmMQCTbMD",
+    why: "Street interviews made simple for beginners, with Dutch and English subtitles.",
+    how: "One video a day. Read the Dutch subtitles, glance at the English only when you're stuck.",
+    onSite:
+      "A YouTube playlist. Press play on the first video. The Dutch and English subtitles are part of the picture, so there's nothing to switch on.",
+    siteLanguage: "English",
+    units: ["a1-basis", "a1-kennismaken", "a1-eten"],
   },
   {
     id: "bart-de-pau",
@@ -91,9 +183,38 @@ export const resources: Resource[] = [
     kind: "watch",
     title: "Learn Dutch with Bart de Pau",
     by: "Bart de Pau",
-    url: "https://www.youtube.com/c/LearndutchOrg",
+    url: "https://www.youtube.com/channel/UC2IYiaH8iDXjJHblQIYPAyw",
     why: "Grammar and pronunciation explained in English, with humour.",
-    how: "After a grammar lesson here, look for his video on the same point.",
+    how: "After a grammar lesson here, search his channel for the same topic.",
+    onSite:
+      "A YouTube channel. Open the Videos tab, or use the search icon on the channel page and type the topic, e.g. 'de het'.",
+    siteLanguage: "English",
+  },
+  {
+    id: "dutchies-to-be",
+    level: "A1",
+    kind: "watch",
+    title: "Dutchies to be",
+    by: "Kim",
+    url: "https://www.youtube.com/channel/UCWiOWGpwDZbJuSesaxMHkRg",
+    why: "Short lessons and sketches in slow, clear Dutch.",
+    how: "Pick a video whose title you understand. Watch once, then replay and repeat after her.",
+    onSite: "A YouTube channel. Open the Videos tab and scroll for beginner topics.",
+    siteLanguage: "English",
+    stretch: true,
+  },
+  {
+    id: "easy-dutch",
+    level: "A1",
+    kind: "watch",
+    title: "Easy Dutch street interviews",
+    by: "Easy Dutch",
+    url: "https://www.youtube.com/channel/UC1x1Tso1WzjvU7GhcJBVQhg",
+    why: "Real people at real speed, with Dutch and English subtitles.",
+    how: "Try one short video on food or daily life. Catching the topic is already a win.",
+    onSite: "A YouTube channel. Open the Videos tab; the subtitles are part of the picture.",
+    siteLanguage: "English",
+    stretch: true,
   },
   {
     id: "jeugdjournaal",
@@ -101,34 +222,11 @@ export const resources: Resource[] = [
     kind: "watch",
     title: "NOS Jeugdjournaal",
     by: "NOS",
-    url: "https://www.youtube.com/c/jeugdjournaal",
+    url: "https://jeugdjournaal.nl",
     why: "The daily news for children: simple words, clear speech, short items.",
-    how: "Watch one item a day with subtitles. Catching the topic is already a win.",
+    how: "Watch one item a day. If you get what it's about, that's enough for now.",
+    onSite: "The site is in Dutch. The newest news is at the top: tap a picture to open that item and play its video.",
+    siteLanguage: "Dutch",
     stretch: true,
-  },
-
-  /* ---------- Read ---------- */
-  {
-    id: "nijntje",
-    level: "A1",
-    kind: "read",
-    title: "Nijntje (Miffy) picture books",
-    by: "Dick Bruna",
-    url: "https://www.wikiwand.com/nl/Nijntje",
-    why: "Four short lines per page, a picture for every line: real Dutch you can read at A1.",
-    how: "Borrow one from the library and read it aloud. Each book takes ten minutes.",
-    units: ["a1-familie", "a1-vrije-tijd"],
-  },
-
-  /* ---------- Practise ---------- */
-  {
-    id: "taalklas",
-    level: "A1",
-    kind: "practise",
-    title: "Taalklas.nl",
-    by: "Oefenen.nl",
-    url: "https://oefenen.nl/over_ons/english_information/English",
-    why: "Free videos and exercises about daily life in the Netherlands, made for A1.",
-    how: "Use it as a second voice on the same topics: one short lesson after a Mozaik unit.",
   },
 ];

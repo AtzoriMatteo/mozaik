@@ -1,5 +1,5 @@
-import type { Exercise } from "@/core/content";
-import { match, sort, spot } from "./helpers";
+import type { Example, Exercise, LessonBlock } from "@/core/content";
+import { example, fill, match, sort, spot, text } from "./helpers";
 
 /**
  * Extra exercises of other kinds (match, sort, spot the mistake), added to
@@ -8,7 +8,7 @@ import { match, sort, spot } from "./helpers";
 export const moreExercises: Record<string, Exercise[]> = {
   "pronouns-subject": [
     match("Who is it? Connect the English and the Dutch.", "I=ik | you (polite)=u | she=zij | we=wij | they=zij (plural)", "ik, u, zij, wij, zij"),
-    spot("Mevrouw De Vries, woon jij hier al lang?", "jij", "u", "Mrs De Vries, have you lived here long? (polite: u)"),
+    spot("Goedemorgen mevrouw, bent jij de buurvrouw?", "jij", "u", "Good morning madam, are you the neighbour? (a stranger: u)"),
   ],
   "present-regular": [
     match("Connect each subject with its form of werken.", "ik=werk | jij=werkt | wij=werken | Bram en Noor=werken", "ik werk, jij werkt, wij werken, Bram werkt"),
@@ -77,6 +77,7 @@ export const moreExercises: Record<string, Exercise[]> = {
   "modal-verbs": [
     match("Connect the modal verb and its meaning.", "kunnen=can | willen=want | moeten=must | mogen=may", "kunnen, willen, moeten, mogen"),
     spot("Ik wil een koffie drinkt.", "drinkt", "drinken", "I want to drink a coffee. (second verb at the end, infinitive)"),
+    fill("", " we samen koken?", "Zullen", "Shall we cook together?", "shall we"),
   ],
   negation: [
     sort("niet or geen?", ["niet", "geen"], "Ik heb ___ auto.=1 | Ik werk ___.=0 | Dat is ___ mijn fiets.=0 | Er is ___ brood.=1", "geen + a noun without de/het; niet everywhere else."),
@@ -98,4 +99,15 @@ export const moreExercises: Record<string, Exercise[]> = {
     sort("Now or plan?", ["now", "plan"], "Ik fiets naar huis.=0 | Ik ga morgen fietsen.=1 | We gaan zaterdag koken.=1 | We koken.=0", "gaan + infinitive at the end = a plan."),
     spot("Morgen ga ik zwemt.", "zwemt", "zwemmen", "Tomorrow I'm going to swim."),
   ],
+};
+
+/** Extra explanation added to existing lessons after the A1 audit. */
+export const moreBlocks: Record<string, LessonBlock[]> = {
+  "modal-verbs": [
+    text("zullen makes suggestions: Zullen we…? = Shall we…? Forms: ik zal, jij zult/zal, hij zal, wij zullen. Answer with: Goed idee! / Ja, leuk!"),
+  ],
+};
+
+export const moreExamples: Record<string, Example[]> = {
+  "modal-verbs": [example("Zullen we samen Nederlands oefenen?", "Shall we practise Dutch together?", "Zullen", "oefenen")],
 };

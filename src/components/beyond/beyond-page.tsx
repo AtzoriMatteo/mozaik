@@ -7,7 +7,7 @@ import { RESOURCE_KIND_LABEL, resourcesFor, type Resource } from "@/core/resourc
 import { useProgress } from "@/lib/progress/use-read-texts";
 import { SkillGlyph } from "@/components/unit-tile";
 
-const KINDS: Resource["kind"][] = ["watch", "listen", "read", "practise"];
+const KINDS: Resource["kind"][] = ["read", "listen", "watch", "practise"];
 
 /** Real material for the learner's level, grouped by what you do with it. */
 export function BeyondPage({ lang }: { lang: string }) {
@@ -49,11 +49,19 @@ export function BeyondPage({ lang }: { lang: string }) {
                           <div className="resource-main">
                             <a href={r.url} target="_blank" rel="noopener noreferrer" className="resource-title">
                               {r.title}
+                              <span className="sr-only"> (opens in a new tab)</span>
                             </a>
                             {r.by ? <span className="resource-by">{r.by}</span> : null}
                             {r.stretch ? <span className="resource-stretch">A bit above A1</span> : null}
                             <p className="resource-why">{r.why}</p>
-                            <p className="resource-how">{r.how}</p>
+                            <p className="resource-how">
+                              <strong>How:</strong> {r.how}
+                            </p>
+                            <p className="resource-site">
+                              <strong>When it opens</strong> <span className="resource-lang">site in {r.siteLanguage}</span>
+                              <br />
+                              {r.onSite}
+                            </p>
                           </div>
                           <button
                             type="button"

@@ -25,6 +25,34 @@ const numbersAndTime = [
   "weekend", "januari", "zomer", "winter",
 ];
 
+/** The fundamentals every beginner needs, listed in full. */
+const basics = [
+  // numbers
+  "nul", "een", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen", "tien",
+  "elf", "twaalf", "dertien", "veertien", "vijftien", "zestien", "zeventien",
+  "achttien", "negentien", "twintig", "dertig", "veertig", "vijftig", "zestig",
+  "zeventig", "tachtig", "negentig", "honderd", "duizend",
+  // order
+  "eerste", "tweede", "derde", "vierde", "vijfde", "zesde", "zevende", "achtste",
+  "negende", "tiende", "laatste",
+  // days, months, seasons
+  "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag", "zondag",
+  "januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus",
+  "september", "oktober", "november", "december",
+  "lente", "zomer", "herfst", "winter", "seizoen", "datum", "kalender",
+  "gisteren", "vandaag", "morgen", "overmorgen",
+  // colours
+  "wit", "zwart", "rood", "blauw", "groen", "geel", "grijs", "oranje", "bruin",
+  "roze", "paars",
+  // greetings and courtesy
+  "hallo", "hoi", "dag", "doei", "goedemorgen", "goedemiddag", "goedenavond",
+  "welterusten", "ziens", "welkom", "dank", "alsjeblieft", "alstublieft",
+  "sorry", "pardon", "gefeliciteerd", "beterschap", "graag",
+  // personal details
+  "naam", "voornaam", "achternaam", "adres", "nummer", "telefoonnummer",
+  "geboortedatum", "spellen", "letter",
+];
+
 const foodAndShopping = [
   "eten", "drinken", "ontbijt", "lunch", "brood", "boterham", "kaas", "melk",
   "koffie", "thee", "water", "bier", "wijn", "appel", "banaan", "groente",
@@ -90,7 +118,7 @@ const glue = [
 
 export const coreVocabularyA1: readonly string[] = [
   ...new Set([
-    ...people, ...numbersAndTime, ...foodAndShopping, ...homeAndCity,
+    ...people, ...basics, ...numbersAndTime, ...foodAndShopping, ...homeAndCity,
     ...workStudyHealth, ...freeTimeAndWeather, ...verbs, ...describing, ...glue,
   ]),
 ];

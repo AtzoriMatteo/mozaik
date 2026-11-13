@@ -5,6 +5,43 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-13 (later) — A1 audit: fundamentals, grammar, links, proofreading
+
+**A first unit for the basics (Matteo: cover all the fundamentals).** The
+core word list (enforced by tests) now lists the fundamentals in full, and
+that showed real gaps: six months, autumn, 0, 14, 17, 18, 40, 70, 1000, the
+order words, goedenavond, welterusten, first name/surname, spelling. New
+unit 1 "De basis": greetings and courtesy (text), numbers 0–1000 and the
+alphabet (text), months, seasons, colours, dates and order words (text),
+plus listening: spelling your name at the library, a voicemail with a phone
+number and address, and asking the date. The old units move up by one.
+
+**Grammar checked against the NT2 A1 syllabus (Claude).** Added five
+lessons: spelling and the alphabet (unit 1), reflexive verbs (Health),
+graag/liever/het liefst and comparing (Clothes), dates and order words
+(Holidays); and zullen ("Zullen we…?") inside Modal verbs. 28 points now.
+Deliberately left for A2, as before: the perfect tense (heb gewerkt), omdat
+and other word-order-changing conjunctions, te + infinitive.
+
+**Links rebuilt, and every one says what you'll see (Matteo: some didn't
+work, a reading link landed on a Dutch page with no clue what to do).**
+YouTube links now use the permanent /channel/ and /playlist forms (the old
+/c/ names can break). Removed: Nijntje (no online text; it pointed to an
+encyclopedia page) and Taalklas (couldn't confirm how to start it). Added:
+Storybooks level 1 (picture books read on the page, Dutch sentence with the
+English under it; one per unit topic), and Super Easy Dutch (the beginners'
+playlist). Every resource now has "When it opens": the site's language and
+exactly what to click.
+
+**Proofreading (Claude, all texts, listening lines, tasks, exercises and
+~1,250 word-help lines).** Fixed: a spot-the-mistake whose answer was itself
+wrong (woon u → woont u), a broken choice option, unnatural phrasing
+(geen sport → niet sporten, de vrouw van het gesprek, met de andere artsen),
+two tense slips in listening, King's Day facts (Van Oranje-Nassau; many
+people are off, not "almost nobody works"), story continuity (Fatima's
+address, Noor's birthday on 20 November). Still worth a native check one
+day: Mozaik has no native reviewer yet.
+
 ## 2026-11-13 — Polychrome tiles, more A1, new exercise types
 
 **Units as numbered Delft tiles (Matteo: less AI-generated, less blue).**

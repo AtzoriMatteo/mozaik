@@ -92,4 +92,13 @@ export const speakingA1: Record<string, UnitSpeaking> = {
       { text: "Wat is je voornemen?", translation: "What's your resolution?" },
     ],
   },
+  "a1-basis": {
+    sounds: ["aa-a", "ij"],
+    shadowing: [
+      { text: "Wat is uw achternaam?", translation: "What's your surname?" },
+      { text: "Hoe spelt u dat?", translation: "How do you spell that?" },
+      { text: "Wat is uw telefoonnummer?", translation: "What's your phone number?" },
+      { text: "Dank u wel.", translation: "Thank you." },
+    ],
+  },
 };
