@@ -139,6 +139,8 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
         // Only the normal order: subject first (or after en/maar/of/want).
         if (i > 0 && !CONJUNCTIONS.has(s[i - 1].norm) && !(i === 1 && s[0].norm === "dus")) return;
         if (subj.norm === "het" && i > 0) return;
+        // "Het werk is zwaar": het is the article of a het-noun here, not the subject.
+        if (subj.norm === "het" && HET_NOUNS.has(v.norm)) return;
         let want: string | null = null;
         if (ZIJN_FORMS.has(v.norm)) {
           if (person === "3?") want = v.norm === "is" || v.norm === "zijn" ? null : "is";
@@ -218,8 +220,10 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
         // in maandag → op maandag; op mei → in mei; op 8 uur → om 8 uur
         if (w.norm === "in" && DAYS.includes(n1.norm)) add(w, w, { kind: "grammar", message: `Days take op: op ${n1.norm}.`, fix: keepCase(w.text, "op"), lesson: "prepositions" });
         if (w.norm === "op" && MONTHS.includes(n1.norm)) add(w, w, { kind: "grammar", message: `Months take in: in ${n1.norm}.`, fix: keepCase(w.text, "in"), lesson: "prepositions" });
+        // "in drie uur" is a duration (within three hours), so for in only half/kwart is flagged.
         if ((w.norm === "op" || w.norm === "in") && (isNumber(n1.norm) || n1.norm === "half" || n1.norm === "kwart")) {
-          const uur = s.slice(i + 1, i + 5).some((x) => x.norm === "uur") || n1.norm === "half" || n1.norm === "kwart";
+          const clock = n1.norm === "half" || n1.norm === "kwart";
+          const uur = clock || (w.norm === "op" && s.slice(i + 1, i + 5).some((x) => x.norm === "uur"));
           if (uur) add(w, w, { kind: "grammar", message: "Clock times take om: om acht uur, om half negen.", fix: keepCase(w.text, "om"), lesson: "time-numbers" });
         }
 

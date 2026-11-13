@@ -7,53 +7,6 @@ import type { ListeningItem } from "@/core/content";
  */
 export const listeningA1: Record<string, ListeningItem[]> = {
   "a1-kennismaken": [
-    {
-      id: "de-introductiedag",
-      level: "A1",
-      title: "De introductiedag",
-      titleTranslation: "The introduction day",
-      kind: "dialogue",
-      situation: "It's the first day at university. Luca talks to another new student.",
-      grammar: ["questions", "jij-inversion", "pronouns-subject"],
-      lines: [
-        { speaker: "Jonas", text: "Hoi! Ben jij ook nieuw hier?", translation: "Hi! Are you new here too?" },
-        { speaker: "Luca", text: "Ja, ik ben Luca. En jij?", translation: "Yes, I'm Luca. And you?" },
-        { speaker: "Jonas", text: "Ik heet Jonas. Waar kom je vandaan?", translation: "I'm Jonas. Where are you from?" },
-        { speaker: "Luca", text: "Ik kom uit Italië. Uit een dorp bij Turijn.", translation: "I'm from Italy. From a village near Turin." },
-        { speaker: "Jonas", text: "Leuk! Ik kom uit Rotterdam. Wat studeer je?", translation: "Nice! I'm from Rotterdam. What are you studying?" },
-        { speaker: "Luca", text: "Biologie. Jij ook?", translation: "Biology. You too?" },
-        { speaker: "Jonas", text: "Nee, ik studeer geschiedenis. Woon je in Leiden?", translation: "No, I study history. Do you live in Leiden?" },
-        { speaker: "Luca", text: "Ja, in het centrum. Met twee huisgenoten.", translation: "Yes, in the centre. With two housemates." },
-        { speaker: "Jonas", text: "Ik woon nog thuis, in Rotterdam. Ik neem elke dag de trein.", translation: "I still live at home, in Rotterdam. I take the train every day." },
-      ],
-      gist: {
-        prompt: "What are Luca and Jonas doing?",
-        options: [
-          "Getting to know each other",
-          "Looking for a room together",
-          "Buying a train ticket",
-        ],
-        answer: 0,
-      },
-      details: [
-        {
-          prompt: "Where is Jonas from?",
-          options: ["Leiden", "Rotterdam", "Turin"],
-          answer: 1,
-        },
-        {
-          prompt: "What does Jonas study?",
-          options: ["Biology", "History", "Dutch"],
-          answer: 1,
-        },
-        {
-          prompt: "How does Jonas get to Leiden?",
-          options: ["By bike", "By bus", "By train"],
-          answer: 2,
-        },
-      ],
-      dictation: [2, 6],
-    },
   ],
   "a1-familie": [
     {
@@ -347,6 +300,8 @@ export const listeningA1: Record<string, ListeningItem[]> = {
         { speaker: "Weervrouw", text: "Morgen, zaterdag, schijnt de zon en het wordt warmer: achttien graden.", translation: "Tomorrow, Saturday, the sun shines and it gets warmer: eighteen degrees." },
         { speaker: "Weervrouw", text: "Zondag krijgen we veel wind uit het westen.", translation: "On Sunday we get a lot of wind from the west." },
         { speaker: "Weervrouw", text: "Aan de kust kan het stormen. Pas op op de fiets!", translation: "On the coast there may be a storm. Be careful on your bike!" },
+        { speaker: "Weervrouw", text: "Volgende week wordt het kouder. Maandag is het bewolkt, en 's ochtends is er mist.", translation: "Next week it gets colder. On Monday it's cloudy, and in the morning there's fog." },
+        { speaker: "Weervrouw", text: "Op dinsdag kan er onweer komen.", translation: "On Tuesday there may be thunderstorms." },
       ],
       gist: {
         prompt: "What is this about?",

@@ -1,5 +1,6 @@
 "use client";
 
+import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { buildSession, REVIEW_KINDS } from "@/core/review-items";
 import { currentLevel, mosaicActivities } from "@/core/mosaic";
@@ -72,6 +73,8 @@ export function Home() {
           </Link>
         ) : null}
       </div>
+
+      <LearningTip pack={pack} place="home" />
     </>
   );
 }

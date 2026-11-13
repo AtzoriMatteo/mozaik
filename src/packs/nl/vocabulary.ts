@@ -116,9 +116,20 @@ const glue = [
   "dank", "alsjeblieft", "alstublieft", "sorry", "hallo", "doei", "dag",
 ];
 
+/** Added after the A1 audit (November 2026): survival phrases, body, jobs, countries. */
+const auditGaps = [
+  "herhalen", "betekenen", "begrijpen", "wc", "tegenover", "hoelang", "taxi",
+  "arm", "been", "voet", "knie", "schouder", "neus", "rug", "boos",
+  "drogist", "apotheek", "recept", "ongeluk", "politie", "brandweer", "ambulance", "eergisteren",
+  "kapper", "monteur", "schoonmaker", "programmeur", "verkoper", "gepensioneerd", "werkloos", "partner",
+  "schoon", "vies", "slager", "vliegtuig", "vliegveld",
+  "land", "hoofdstad", "noorden", "zuiden", "oosten", "westen",
+  "fietspad", "molen", "eiland", "gracht", "hekel",
+];
+
 export const coreVocabularyA1: readonly string[] = [
   ...new Set([
     ...people, ...basics, ...numbersAndTime, ...foodAndShopping, ...homeAndCity,
-    ...workStudyHealth, ...freeTimeAndWeather, ...verbs, ...describing, ...glue,
+    ...workStudyHealth, ...freeTimeAndWeather, ...verbs, ...describing, ...glue, ...auditGaps,
   ]),
 ];

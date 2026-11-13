@@ -9,6 +9,7 @@
 import type { GrammarPoint, Lexicon, ReadingText, Unit } from "./content";
 import type { Sound } from "./pronunciation";
 import type { Resource } from "./resources";
+import type { LearningTip } from "./tips";
 import type { WritingIssue } from "./writing";
 
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
@@ -55,6 +56,8 @@ export interface LanguagePack {
   languageTool?: string;
   /** Real material outside the course (links only), per level. */
   resources?: readonly Resource[];
+  /** Learning tips about this language, shown around the site. */
+  tips?: readonly LearningTip[];
 }
 
 /** Every text in a pack, in course order. */

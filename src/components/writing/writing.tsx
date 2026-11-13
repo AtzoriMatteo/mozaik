@@ -1,5 +1,6 @@
 "use client";
 
+import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getPack } from "@/core/registry";
@@ -65,6 +66,7 @@ export function WritingHub({ lang, unitId }: { lang: string; unitId: string }) {
           </li>
         ))}
       </ol>
+      <LearningTip pack={pack} place="write" />
     </article>
   );
 }

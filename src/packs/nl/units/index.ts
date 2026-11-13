@@ -5,6 +5,16 @@ import { wonen, werkEnStudie } from "./a1-places";
 import { gezondheid, vrijeTijd } from "./a1-life";
 import { feestdagen, kleren } from "./a1-new-units";
 import { basis } from "./a1-basis";
+import { nederland } from "./a1-nederland";
+import {
+  auMijnKnie,
+  kuntUDatHerhalen,
+  opDeFiets,
+  waarKomJeVandaan,
+  watEtenNederlanders,
+  watVoorWerk,
+} from "./a1-culture-texts";
+import type { ReadingText } from "@/core/content";
 import {
   fatimasProfiel,
   gezondLeven,
@@ -21,9 +31,11 @@ import { listeningA1 } from "../listening/a1";
 import { listeningA1More } from "../listening/a1-more";
 import { listeningNewUnits } from "../listening/a1-new-units";
 import { listeningBasis } from "../listening/a1-basis";
+import { listeningCulture } from "../listening/a1-culture";
 import { listeningTasksA1 } from "../listening/tasks-a1";
 import { speakingA1 } from "../speaking/a1";
 import { writingA1 } from "../writing/a1";
+import { writingCulture } from "../writing/a1-culture";
 
 /** Each unit's tile: a hand-painted motif and one of the polychrome glazes. */
 const LOOK: Record<string, { motif: Motif; glaze: Glaze }> = {
@@ -49,8 +61,21 @@ const MORE_TEXTS = {
   "a1-vrije-tijd": vrijeTijdText,
 } as const;
 
+/** Culture texts added later, after a unit's own texts. */
+const CULTURE_TEXTS: Record<string, ReadingText[]> = {
+  "a1-basis": [kuntUDatHerhalen],
+  "a1-kennismaken": [waarKomJeVandaan],
+  "a1-werk-en-studie": [watVoorWerk],
+  "a1-gezondheid": [auMijnKnie],
+  "a1-eten": [watEtenNederlanders],
+  "a1-vrije-tijd": [opDeFiets],
+};
+
 const listening = { ...listeningA1 };
 for (const [id, items] of Object.entries({ ...listeningA1More, ...listeningNewUnits, ...listeningBasis })) {
+  listening[id] = [...(listening[id] ?? []), ...items];
+}
+for (const [id, items] of Object.entries(listeningCulture)) {
   listening[id] = [...(listening[id] ?? []), ...items];
 }
 
@@ -59,10 +84,10 @@ function assemble(u: UnitContent): Unit {
   return {
     ...u,
     look: u.look ?? LOOK[u.id],
-    texts: [...u.texts, ...(extra ? [extra] : [])].map((t) => ({ ...t, tasks: t.tasks ?? tasksA1[t.id] })),
+    texts: [...u.texts, ...(extra ? [extra] : []), ...(CULTURE_TEXTS[u.id] ?? [])].map((t) => ({ ...t, tasks: t.tasks ?? tasksA1[t.id] })),
     listening: (listening[u.id] ?? []).map((l) => ({ ...l, tasks: l.tasks ?? listeningTasksA1[l.id] })),
     speaking: speakingA1[u.id],
-    writing: writingA1[u.id],
+    writing: [...(writingA1[u.id] ?? []), ...(writingCulture[u.id] ?? [])],
   };
 }
 
@@ -78,5 +103,6 @@ export const units: readonly Unit[] = [
   gezondheid,
   vrijeTijd,
   kleren,
+  nederland,
   feestdagen,
 ].map(assemble);

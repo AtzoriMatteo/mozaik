@@ -115,7 +115,8 @@ export type UnitSpeaking = {
 /** Hand-painted tile motifs available to every language pack. */
 export type Motif =
   | "tulip" | "birds" | "cheese" | "clock" | "gable" | "book"
-  | "herb" | "windmill" | "clog" | "crown" | "star";
+  | "herb" | "windmill" | "clog" | "crown" | "star"
+  | "bridge";
 
 /** Polychrome Delftware glazes. */
 export type Glaze = "cobalt" | "manganese" | "ochre" | "copper" | "iron";
