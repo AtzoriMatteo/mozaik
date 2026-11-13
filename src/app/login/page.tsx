@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { GitHubLogin, LoginForm } from "./login-form";
+import { EmailLogin, ProviderLogin } from "./login-form";
 
 export const metadata: Metadata = { title: "Log in · Mozaik" };
 
 export default function LoginPage() {
   return (
-    <main>
+    <main className="login-page">
       <h1 className="page-title">Log in</h1>
-      <p className="lede">No password needed.</p>
-      <GitHubLogin />
-      <p className="login-or">or get a login link by email</p>
-      <LoginForm />
+      <p className="lede">Your words and progress are kept on your account, on every device.</p>
+      <ProviderLogin />
+      <p className="login-or">or with email</p>
+      <EmailLogin />
     </main>
   );
 }

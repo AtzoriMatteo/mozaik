@@ -1,6 +1,7 @@
 import { helpFor, lemmaOf, type Exercise } from "./content";
 import { allTexts, type CefrLevel, type LanguagePack } from "./language-pack";
 import { isDue } from "./srs";
+import { lemmaFor } from "./dictionary";
 
 /**
  * Everything that can come back in Review.
@@ -127,7 +128,14 @@ export function eligibleItems(
     }
   }
   // My words, part 2: words you saved while reading.
-  for (const w of saved) items.push({ ...w, kind: "word", id: `saved:${w.word}`, source: "saved" });
+  // One card per dictionary form: saving grachten and gracht gives one card.
+  const seen = new Set<string>();
+  for (const w of saved) {
+    const lemma = lemmaFor(w);
+    if (seen.has(lemma)) continue;
+    seen.add(lemma);
+    items.push({ ...w, kind: "word", id: `saved:${w.word}`, source: "saved" });
+  }
 
   // Grammar: every exercise of the lessons you've finished.
   for (const g of pack.grammar) {

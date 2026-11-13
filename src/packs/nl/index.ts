@@ -7,6 +7,7 @@ import { coreVocabularyA1 } from "./vocabulary";
 import { sounds } from "./speaking/sounds";
 import { resources } from "./resources";
 import { tips } from "./tips";
+import { articleFor } from "./articles";
 import { zipfA1 } from "./frequency";
 import { makeChecker } from "./writing/check";
 import { isNumberWord } from "./writing/data";
@@ -85,5 +86,6 @@ export const dutch: LanguagePack = {
   coreVocabulary: { A1: coreVocabularyA1 },
   resources,
   tips,
+  nounArticle: articleFor,
   wordFrequency: zipfA1,
 };

@@ -2521,8 +2521,47 @@ a {
   margin-bottom: 1.5rem;
 }
 
-.github-button {
-  gap: 0.6rem;
+.provider-button {
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 26rem;
+}
+
+/* Google's mark sits on a small white tile so its colours read on cobalt. */
+.provider-button:not(.button-quiet) svg {
+  padding: 3px;
+  border-radius: 3px;
+  background: #fff;
+  box-sizing: content-box;
+}
+
+.login-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.login-switch {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.text-button {
+  padding: 0.2rem 0;
+  border: 0;
+  background: none;
+  color: var(--heading);
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--grout);
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  text-decoration-color: currentColor;
 }
 
 .login-or {
@@ -3174,4 +3213,10 @@ a {
 .flag-note {
   margin: 0.5rem 0 0;
   font-style: italic;
+}
+
+.review-met-as {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
 }

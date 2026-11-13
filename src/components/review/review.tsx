@@ -1,5 +1,6 @@
 "use client";
 
+import { dictionaryLabel, lemmaFor } from "@/core/dictionary";
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -510,6 +511,7 @@ function WordCard({
   const reveal = () => setRevealed(true);
   useRevealKey(revealed, reveal);
   const tokens = pack.tokenize(item.sentence);
+  const dictionary = dictionaryLabel(pack, lemmaFor(item));
 
   return (
     <section className="review-card" aria-label="Word card">
@@ -564,14 +566,14 @@ function WordCard({
         <>
           <div className="review-answer">
             <p className="review-word">
-              <span lang={lang}>{item.surface}</span>
-              {item.base && item.base !== item.word ? (
-                <span className="word-panel-base">
-                  from <span lang={lang}>{item.base}</span>
-                </span>
-              ) : null}
-              <SpeakButton lang={lang} text={item.surface} label={`Hear ${item.surface}`} />
+              <span lang={lang}>{dictionary}</span>
+              <SpeakButton lang={lang} text={dictionary} label={`Hear ${dictionary}`} />
             </p>
+            {item.surface.toLowerCase() !== lemmaFor(item) ? (
+              <p className="review-met-as">
+                In the sentence: <span lang={lang}>{item.surface}</span>
+              </p>
+            ) : null}
             <p className="review-meaning">{item.meaning}</p>
             {direction === "listen" ? (
               <p className="example-translation" lang={lang}>{item.sentence}</p>

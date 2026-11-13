@@ -56,6 +56,8 @@ export interface LanguagePack {
   languageTool?: string;
   /** Real material outside the course (links only), per level. */
   resources?: readonly Resource[];
+  /** The article of a noun (dictionary form), for flashcards: "de", "het"… or null. */
+  nounArticle?: (lemma: string) => string | null;
   /** Learning tips about this language, shown around the site. */
   tips?: readonly LearningTip[];
 }

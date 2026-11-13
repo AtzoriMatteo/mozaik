@@ -1,5 +1,6 @@
 "use client";
 
+import { dictionaryLabel } from "@/core/dictionary";
 import { useEffect, useState } from "react";
 import type { LanguagePack } from "@/core/language-pack";
 import type { ReviewItem, Schedule, WordInfo } from "@/core/review-items";
@@ -67,7 +68,7 @@ export function NewWordsSession({
     );
   }
 
-  const dictionary = word.base ?? word.word;
+  const dictionary = dictionaryLabel(pack, word.lemma);
   return (
     <div>
       <p className="review-progress" aria-live="polite">
