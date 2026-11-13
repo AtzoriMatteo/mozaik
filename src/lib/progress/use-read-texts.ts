@@ -4,16 +4,23 @@ import { useCallback, useSyncExternalStore } from "react";
 
 /**
  * Which activities the learner has finished, per kind and language
- * ("read" texts, "listen" items, "grammar" lessons). Kept in this browser for now; moves to
- * the account together with other progress later.
+ * ("read" texts, "listen" items, "grammar" lessons, ...). Kept in this browser
+ * so clicks stay instant, and mirrored to the account by ./sync so every
+ * device shows the same progress.
  */
 
 export type { ActivityKind } from "@/core/course";
 import type { ActivityKind } from "@/core/course";
 
-type ProgressKind = ActivityKind | "beyond" | "writing";
+import { pushProgress } from "./sync";
 
-const key = (kind: ProgressKind, language: string) => `mozaik:${kind}:${language}`;
+export type ProgressKind = ActivityKind | "beyond" | "writing";
+
+/** Every kind that is stored (and synced). "write" is derived from "writing". */
+export const PROGRESS_KINDS: ProgressKind[] = ["read", "listen", "grammar", "speak", "beyond", "writing"];
+
+export const progressKey = (kind: ProgressKind, language: string) => `mozaik:${kind}:${language}`;
+const key = progressKey;
 const listeners = new Set<() => void>();
 const cache = new Map<string, { raw: string | null; ids: ReadonlySet<string> }>();
 const EMPTY: ReadonlySet<string> = new Set();
@@ -35,6 +42,11 @@ function read(storageKey: string): ReadonlySet<string> {
   }
   cache.set(storageKey, { raw, ids });
   return ids;
+}
+
+/** Tell every open view that stored progress changed (used after a sync). */
+export function notifyProgress() {
+  listeners.forEach((l) => l());
 }
 
 function subscribe(listener: () => void) {
@@ -66,24 +78,27 @@ export function useProgress(kind: ProgressKind, language: string | null) {
         // Storage unavailable: progress lasts this visit only.
       }
       listeners.forEach((l) => l());
+      pushProgress(language!, kind, id, true);
     },
-    [storageKey],
+    [storageKey, language, kind],
   );
 
   const toggle = useCallback(
     (id: string) => {
       if (!storageKey) return;
       const next = new Set(read(storageKey));
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+      const done = !next.has(id);
+      if (done) next.add(id);
+      else next.delete(id);
       try {
         window.localStorage.setItem(storageKey, JSON.stringify([...next]));
       } catch {
         // Storage unavailable: the mark lasts this visit only.
       }
       listeners.forEach((l) => l());
+      pushProgress(language!, kind, id, done);
     },
-    [storageKey],
+    [storageKey, language, kind],
   );
 
   return { doneIds: ids, markDone, toggle };
