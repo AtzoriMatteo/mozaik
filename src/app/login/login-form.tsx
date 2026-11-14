@@ -39,7 +39,7 @@ export function ProviderLogin() {
   const [github, githubAction, githubPending] = useActionState(() => oauthLogin("github"), noMessage);
   const message = google.message ?? github.message;
   return (
-    <div className="stack">
+    <div className="login-providers">
       <form action={googleAction}>
         <button type="submit" className="button provider-button" disabled={googlePending}>
           {GOOGLE}
@@ -82,20 +82,52 @@ export function EmailLogin() {
     login: pending ? "Logging in…" : "Log in",
     signup: pending ? "Creating your account…" : "Create account",
     reset: pending ? "Sending…" : "Send me a reset link",
-    link: pending ? "Sending…" : "Send login link",
+    link: pending ? "Sending…" : "Send me a login link",
   }[mode];
   const withPassword = mode === "login" || mode === "signup";
 
   return (
-    <form action={action} className="stack" noValidate>
+    <form action={action} className="login-form" noValidate>
       <input type="hidden" name="mode" value={mode} />
+      {withPassword ? (
+        <div className="login-tabs" role="tablist" aria-label="Log in or create an account">
+          {(["login", "signup"] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              role="tab"
+              aria-selected={mode === m}
+              className="login-tab"
+              onClick={() => setMode(m)}
+            >
+              {m === "login" ? "Log in" : "Create account"}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <p className="login-mode-note">
+          {mode === "reset"
+            ? "We'll email you a link to choose a new password."
+            : "We'll email you a link that logs you in, no password needed."}
+        </p>
+      )}
+
       <div className="field">
         <label htmlFor="email">Email</label>
         <input id="email" name="email" type="email" autoComplete="email" inputMode="email" required />
       </div>
       {withPassword ? (
         <div className="field">
-          <label htmlFor="password">{mode === "signup" ? `Choose a password (at least ${MIN_PASSWORD} characters)` : "Password"}</label>
+          <div className="field-label-row">
+            <label htmlFor="password">Password</label>
+            {mode === "login" ? (
+              <button type="button" className="text-button login-small" onClick={() => setMode("reset")}>
+                Forgot password?
+              </button>
+            ) : (
+              <span className="login-small">At least {MIN_PASSWORD} characters</span>
+            )}
+          </div>
           <input
             id="password"
             name="password"
@@ -107,37 +139,22 @@ export function EmailLogin() {
         </div>
       ) : null}
       {state.status === "error" ? <p className="error" role="alert">{state.message}</p> : null}
-      <div className="login-row">
-        <button type="submit" className="button" disabled={pending}>
-          {label}
-        </button>
-        {mode === "login" ? (
-          <button type="button" className="text-button" onClick={() => setMode("reset")}>
-            Forgot password?
+
+      <button type="submit" className="button login-submit" disabled={pending}>
+        {label}
+      </button>
+
+      <p className="login-alt">
+        {withPassword ? (
+          <button type="button" className="text-button" onClick={() => setMode("link")}>
+            Email me a login link instead
           </button>
-        ) : null}
-      </div>
-      <p className="login-switch">
-        {mode === "login" ? (
-          <>
-            New here?{" "}
-            <button type="button" className="text-button" onClick={() => setMode("signup")}>
-              Create an account
-            </button>
-          </>
         ) : (
           <button type="button" className="text-button" onClick={() => setMode("login")}>
             Back to log in
           </button>
         )}
       </p>
-      {mode === "login" || mode === "signup" ? (
-        <p className="login-switch">
-          <button type="button" className="text-button" onClick={() => setMode("link")}>
-            Email me a login link instead
-          </button>
-        </p>
-      ) : null}
     </form>
   );
 }

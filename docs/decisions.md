@@ -5,6 +5,27 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-14 — Login page, privacy policy, security headers
+
+**Login page (Matteo: "a lot nicer").** A wall of nine unit tiles beside a
+glazed card on desktop; a strip of five tiles above the card on phones.
+Google is the main button, GitHub quiet, then "Log in | Create account" as
+tabs, one full-width button, and the login-link fallback. Course/Review
+links are hidden on login and privacy pages (they only led back to login).
+
+**Privacy policy (Matteo: "more professional").** /privacy, public, in the
+usual structure: who runs it, what is collected, how it's used (GDPR 6(1)(b)),
+services (Supabase EU, Vercel, Google/GitHub, LanguageTool opt-in, Hugging
+Face model download with speech processed on the device), cookies and
+local storage, security, retention, rights and the Dutch DPA. Contact goes
+through GitHub for now (pending: Matteo may prefer a contact email).
+
+**Security headers (Claude).** Every page now forbids being framed by other
+sites, file-type guessing, full-address referrers, and device access other
+than the microphone. Checked at the same time: all five tables lock rows
+to their owner, no secrets in the code, 0 known vulnerabilities in
+dependencies.
+
 ## 2026-11-13 (night) — Google and password login; flashcards in dictionary form
 
 **Login (Matteo).** Login page order: Continue with Google (main), Continue
