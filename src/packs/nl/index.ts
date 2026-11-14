@@ -10,6 +10,7 @@ import { resources } from "./resources";
 import { tips } from "./tips";
 import { articleFor } from "./articles";
 import { zipf } from "./frequency";
+import { cast } from "./cast";
 import { makeChecker } from "./writing/check";
 import { isNumberWord } from "./writing/data";
 
@@ -89,4 +90,5 @@ export const dutch: LanguagePack = {
   tips,
   nounArticle: articleFor,
   wordFrequency: zipf,
+  cast,
 };

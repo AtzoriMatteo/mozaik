@@ -1,36 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { speak, useHasVoice } from "@/components/speak-button";
+import { useEffect, useRef, useState } from "react";
+import { playLines, useHasVoice } from "@/lib/speech";
 
 /**
- * "Listen" for a whole text, using the device's own voice (free, private).
- * Normal or slow speed; tap again to stop.
+ * "Listen" for a whole text: recorded with a natural voice when available,
+ * otherwise the device's own voice. Normal or slow speed; tap again to stop.
  */
 export function ListenControls({ lang, sentences }: { lang: string; sentences: string[] }) {
   const hasVoice = useHasVoice(lang);
   const [playing, setPlaying] = useState(false);
   const [slow, setSlow] = useState(false);
+  const stop = useRef<(() => void) | null>(null);
 
-  // Stop speaking when leaving the page.
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  // Stop when leaving the page.
+  useEffect(() => () => stop.current?.(), []);
 
   if (!hasVoice) return null;
 
   function play() {
     if (playing) {
-      window.speechSynthesis.cancel();
+      stop.current?.();
+      stop.current = null;
       setPlaying(false);
       return;
     }
     setPlaying(true);
-    speak(lang, sentences.join(" "), slow ? 0.7 : 0.9);
-    const poll = window.setInterval(() => {
-      if (!window.speechSynthesis.speaking) {
-        setPlaying(false);
-        window.clearInterval(poll);
-      }
-    }, 400);
+    stop.current = playLines(
+      lang,
+      sentences.map((text) => ({ text })),
+      {
+        rate: slow ? 0.7 : 0.9,
+        onLine: (i) => {
+          if (i === null) setPlaying(false);
+        },
+      },
+    );
   }
 
   return (

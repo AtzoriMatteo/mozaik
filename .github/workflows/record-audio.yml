@@ -1,0 +1,42 @@
+# Records the course audio with Google Cloud Text-to-Speech and commits the MP3s.
+# Run it from GitHub: Actions → "Record course audio" → Run workflow.
+# Needs the repository secret GOOGLE_TTS_KEY. Only new or changed sentences are
+# recorded, so running it again after adding content is cheap.
+name: Record course audio
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: record-audio
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Record new sentences
+        env:
+          GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
+        run: npx tsx scripts/generate-audio.ts nl
+      - name: Commit the recordings
+        run: |
+          git config user.name "mozaik-audio"
+          git config user.email "mozaik-audio@users.noreply.github.com"
+          git add public/audio
+          if git diff --cached --quiet; then
+            echo "Nothing new to record."
+          else
+            git commit -m "Record course audio"
+            git push
+          fi

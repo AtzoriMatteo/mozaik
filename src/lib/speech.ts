@@ -1,18 +1,69 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { textKey, type AudioManifest } from "@/core/audio";
 
 /**
- * Text-to-speech with the device's built-in voices. Free and private:
- * speech is generated on the device and nothing is sent anywhere.
+ * Speech. Course sentences play from recordings made with natural voices
+ * (one voice per character, see scripts/generate-audio.ts). Anything without
+ * a recording, like a single word, uses the device's built-in voice: free and
+ * private, generated on the device.
  */
 
 const supported = () => typeof window !== "undefined" && "speechSynthesis" in window;
 
+/* ---------- Recorded audio ---------- */
+
+const manifests = new Map<string, AudioManifest | null>();
+const manifestListeners = new Set<() => void>();
+
+/** Starts loading a language's recordings list (once). Until it's there, the device voice is used. */
+function loadManifest(lang: string) {
+  if (typeof window === "undefined" || manifests.has(lang)) return;
+  manifests.set(lang, null);
+  fetch(`/audio/${lang}/manifest.json`)
+    .then((r) => (r.ok ? (r.json() as Promise<AudioManifest>) : null))
+    .then((m) => {
+      if (m?.clips) {
+        manifests.set(lang, m);
+        manifestListeners.forEach((l) => l());
+      }
+    })
+    .catch(() => {});
+}
+
+function recordingFor(lang: string, text: string): string | null {
+  loadManifest(lang);
+  const id = manifests.get(lang)?.clips[textKey(text)];
+  return id ? `/audio/${lang}/${id}.mp3` : null;
+}
+
+const hasRecordings = (lang: string) => Object.keys(manifests.get(lang)?.clips ?? {}).length > 0;
+
+let current: HTMLAudioElement | null = null;
+
+/** Recordings are at natural speed; the device voice's 0.9 counts as normal. */
+const playbackRate = (rate: number) => Math.max(0.5, Math.min(1, rate / 0.9));
+
+function playRecording(url: string, rate: number, onEnd?: () => void, onError?: () => void) {
+  current?.pause();
+  const audio = new Audio(url);
+  audio.playbackRate = playbackRate(rate);
+  audio.onended = () => onEnd?.();
+  audio.onerror = () => onError?.();
+  current = audio;
+  audio.play().catch(() => onError?.());
+  return audio;
+}
+
 function subscribe(onChange: () => void) {
-  if (!supported()) return () => {};
+  manifestListeners.add(onChange);
+  if (!supported()) return () => manifestListeners.delete(onChange);
   window.speechSynthesis.addEventListener("voiceschanged", onChange);
-  return () => window.speechSynthesis.removeEventListener("voiceschanged", onChange);
+  return () => {
+    manifestListeners.delete(onChange);
+    window.speechSynthesis.removeEventListener("voiceschanged", onChange);
+  };
 }
 
 /** Voices for a language, the most natural-sounding first. */
@@ -24,14 +75,27 @@ export function voicesFor(lang: string): SpeechSynthesisVoice[] {
 }
 
 export function useHasVoice(lang: string): boolean {
-  return useSyncExternalStore(subscribe, () => voicesFor(lang).length > 0, () => false);
+  loadManifest(lang);
+  return useSyncExternalStore(subscribe, () => hasRecordings(lang) || voicesFor(lang).length > 0, () => false);
 }
 
 export function stopSpeaking() {
+  current?.pause();
+  current = null;
   if (supported()) window.speechSynthesis.cancel();
 }
 
 export function speak(lang: string, text: string, rate = 0.9) {
+  const url = recordingFor(lang, text);
+  if (url) {
+    stopSpeaking();
+    playRecording(url, rate, undefined, () => speakWithDevice(lang, text, rate));
+    return;
+  }
+  speakWithDevice(lang, text, rate);
+}
+
+function speakWithDevice(lang: string, text: string, rate: number) {
   const [voice] = voicesFor(lang);
   if (!voice) return;
   stopSpeaking();
@@ -58,6 +122,8 @@ export function playLines(
   lines: { speaker?: string; text: string }[],
   { rate, onLine }: PlayOptions,
 ): () => void {
+  const urls = lines.map((l) => recordingFor(lang, l.text));
+  if (urls.every(Boolean)) return playRecordings(urls as string[], { rate, onLine });
   const voices = voicesFor(lang);
   if (voices.length === 0) return () => {};
   stopSpeaking();
@@ -87,6 +153,36 @@ export function playLines(
   sayLine(0);
   return () => {
     cancelled = true;
+    stopSpeaking();
+    onLine?.(null);
+  };
+}
+
+/** Plays recorded lines one after another, with a short pause between them. */
+function playRecordings(urls: string[], { rate, onLine }: PlayOptions): () => void {
+  stopSpeaking();
+  let cancelled = false;
+  let timer = 0;
+  const playLine = (i: number) => {
+    if (cancelled) return;
+    if (i >= urls.length) {
+      onLine?.(null);
+      return;
+    }
+    onLine?.(i);
+    playRecording(
+      urls[i],
+      rate,
+      () => {
+        timer = window.setTimeout(() => playLine(i + 1), 350);
+      },
+      () => onLine?.(null),
+    );
+  };
+  playLine(0);
+  return () => {
+    cancelled = true;
+    window.clearTimeout(timer);
     stopSpeaking();
     onLine?.(null);
   };

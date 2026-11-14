@@ -19,7 +19,11 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      // Recordings are named by their content, so they never change: cache them for good.
+      { source: "/audio/:lang/:file*.mp3", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
+    ];
   },
 };
 

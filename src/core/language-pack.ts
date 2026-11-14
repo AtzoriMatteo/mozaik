@@ -60,15 +60,32 @@ export interface LanguagePack {
   nounArticle?: (lemma: string) => string | null;
   /** Learning tips about this language, shown around the site. */
   tips?: readonly LearningTip[];
+  /** Who speaks in the listening material, so recorded audio gives each character a fitting voice. */
+  cast?: Cast;
 }
 
-/** Every text in a pack, in course order. */
+/**
+ * Voices for recorded audio. Named characters keep one voice across the whole
+ * course; generic roles (a shop assistant, an announcer) get a voice per clip.
+ */
+export type Cast = {
+  /** "f" or "m" per speaker label; "any" lets the generator choose for variety. */
+  gender: Readonly<Record<string, "f" | "m" | "any">>;
+  /** Labels that are roles, not people: each listening item gets its own voice for them. */
+  generic: readonly string[];
+  /** Per-item corrections, keyed "itemId/Speaker". */
+  overrides?: Readonly<Record<string, "f" | "m">>;
+  /** The voice that reads the reading texts. */
+  narrator: "f" | "m";
+};
+
 /** A unit's number within its level (A2 starts again at 1), and how many units the level has. */
 export function unitNumber(pack: LanguagePack, unit: Unit): { n: number; of: number } {
   const level = pack.units.filter((u) => u.level === unit.level);
   return { n: level.indexOf(unit) + 1, of: level.length };
 }
 
+/** Every text in a pack, in course order. */
 export function allTexts(pack: LanguagePack): ReadingText[] {
   return pack.units.flatMap((u) => u.texts);
 }
