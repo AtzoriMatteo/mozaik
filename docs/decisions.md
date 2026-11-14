@@ -5,6 +5,51 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-14 (day) — Natural voices, Handbook, verb tables, smarter cards, expressions
+
+**Natural voices (Matteo chose Google Cloud).** Every course sentence, and
+now every word, flashcard form, expression, verb and Handbook line, is
+recorded once with Google's Chirp 3 HD voices and served as MP3s. Characters
+keep one voice across the course; people in the same dialogue never share a
+voice; texts and words use a narrator. Anything without a recording falls
+back to the device voice. Recording runs as a GitHub Action ("Record course
+audio") with the key as a repository secret, so the key never leaves GitHub;
+only new sentences are sent. Cost: ~146,000 characters in total, inside
+Google's 1M free characters a month. Repo grows by roughly 55 MB of audio.
+
+**Handbook tab (Matteo: "a digitalised textbook", "verb tables accessible at
+any time").** Verbs first: type any verb or form (liep, opbellen, zich
+wassen) for all 8 tenses, participles, imperative, helper verb and notes.
+Regular verbs follow the spelling rules; ~150 irregular roots are listed and
+compounds (begrijpen, opstaan) are built from them. A verb outside the word
+list is flagged as "made by the rules". Then: words by topic (numbers, clock,
+days, family, food, home, places with a picture…), grammar at a glance (every
+lesson's key table), phrases by situation, sounds and spelling. Each page has
+a filter and an A1/A2 switch. Tapping a verb in a text offers "All forms".
+
+**Cards climb a ladder (Matteo's idea).** New words: Dutch in its sentence →
+meaning. Known better (stage 2–3): the Dutch word alone. Well known (4+):
+English → type the Dutch, nouns with de/het. A miss starts the climb again.
+Typed answers: right; "almost" for a missing or wrong article, a missing
+accent or one wrong letter; wrong otherwise. Setting: step by step (default),
+Dutch → English only, English → Dutch only.
+
+**Flashcard English uses the dictionary form (Matteo).** Saving "telt" gives
+"tellen = to count"; saving "getallen" gives "het getal = number".
+
+**Expressions (Matteo).** 80 fixed expressions from the course are recognised
+when you tap one of their words; any phrase can be saved by tapping its first
+and last word, with a meaning you can edit. Phrases become cards like words.
+
+**Smaller fixes.** Finishing a text, clip, lesson or speaking set counts as
+done right away (the plan ticks it even if you leave via the menu). Plan: days
+before minutes, honest minutes per activity, long activities split over short
+days, different minutes on some days. Tips rotate (least recently seen
+first). Grammar exercises keep their place when you look back at the
+pattern. Units numbered per level.
+
+---
+
 ## 2026-11-14 (overnight) — Clearer feedback, visible tips, Plan, the whole of A2
 
 **Right/wrong feedback (Matteo: "should stand out a little more").** Every
