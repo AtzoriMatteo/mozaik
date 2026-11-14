@@ -1,7 +1,7 @@
 "use client";
 
 import { VerdictLine, verdictFromScore } from "@/components/exercises/verdict";
-import { dictionaryLabel, lemmaFor } from "@/core/dictionary";
+import { dictionaryLabel, isVerb, lemmaFor } from "@/core/dictionary";
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import type { Verdict } from "@/core/answers";
 import { checkDictation, type DictationResult } from "@/core/dictation";
 import type { CefrLevel, LanguagePack } from "@/core/language-pack";
 import {
-  buildSession, countItems, introducedToday, REVIEW_KINDS, wordCardFor,
+  buildSession, checkProduced, countItems, introducedToday, REVIEW_KINDS, wordCardFor, type CardDirection, type ProduceVerdict,
   type GrammarItem, type ListenItem, type ReviewItem, type ReviewKind, type SpeakItem, type WordItem,
 } from "@/core/review-items";
 import { describeWait, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
@@ -282,6 +282,17 @@ function SettingsPanel({
         </fieldset>
 
         <fieldset className="setting">
+          <legend>Word cards go</legend>
+          {DIRECTIONS.map((d) => (
+            <label key={d.id} className="check">
+              <input type="radio" name="direction" checked={settings.direction === d.id} onChange={() => update({ direction: d.id })} />
+              {d.label}
+              <small> {d.hint}</small>
+            </label>
+          ))}
+        </fieldset>
+
+        <fieldset className="setting">
           <legend>Word cards in My words</legend>
           <label className="check">
             <input
@@ -308,6 +319,12 @@ function SettingsPanel({
     </details>
   );
 }
+
+const DIRECTIONS: { id: CardDirection; label: string; hint: string }[] = [
+  { id: "mixed", label: "Both ways, step by step", hint: "(Dutch with its sentence, then the word alone, then English → you type the Dutch)" },
+  { id: "nl-en", label: "Dutch → English only", hint: "" },
+  { id: "en-nl", label: "English → Dutch only", hint: "(you type the Dutch)" },
+];
 
 function Segmented({
   label,
@@ -507,16 +524,23 @@ function WordCard({
 }) {
   const lang = pack.code;
   const hasVoice = useHasVoice(lang);
-  const direction = wordCardFor(stage, item.id, { recall: settings.recallCards, listen: settings.listenCards && hasVoice });
+  const kind = wordCardFor(stage, item.id, {
+    direction: settings.direction,
+    recall: settings.recallCards,
+    listen: settings.listenCards && hasVoice,
+  });
   const [revealed, setRevealed] = useState(false);
   const reveal = () => setRevealed(true);
-  useRevealKey(revealed, reveal);
+  useRevealKey(revealed || kind === "produce", reveal);
   const tokens = pack.tokenize(item.sentence);
-  const dictionary = dictionaryLabel(pack, lemmaFor(item));
+  const lemma = lemmaFor(item);
+  const dictionary = dictionaryLabel(pack, lemma);
+
+  if (kind === "produce") return <ProduceCard key={item.id} pack={pack} item={item} onAnswer={onAnswer} onGraduate={onGraduate} />;
 
   return (
     <section className="review-card" aria-label="Word card">
-      {direction === "listen" && !revealed ? (
+      {kind === "listen" && !revealed ? (
         <>
           <p className="review-prompt">Listen. What does the word mean?</p>
           <div className="button-row listen-big">
@@ -528,10 +552,17 @@ function WordCard({
             </button>
           </div>
         </>
+      ) : kind === "word" && !revealed ? (
+        <>
+          <p className="review-prompt">What does this word mean?</p>
+          <p className="review-solo" lang={lang}>
+            {dictionary}
+          </p>
+        </>
       ) : (
         <>
           <p className="review-prompt">
-            {direction === "recall" && !revealed ? (
+            {kind === "recall" && !revealed ? (
               <>
                 Which word means <strong>{item.meaning}</strong>?
               </>
@@ -543,7 +574,7 @@ function WordCard({
             {tokens.map((tok, i) => {
               const isTarget = tok.kind === "word" && tok.normalized === item.word;
               if (!isTarget) return <span key={i}>{tok.text}</span>;
-              if (direction === "recall" && !revealed) {
+              if (kind === "recall" && !revealed) {
                 return (
                   <span
                     key={i}
@@ -565,27 +596,126 @@ function WordCard({
         </button>
       ) : (
         <>
-          <div className="review-answer">
-            <p className="review-word">
-              <span lang={lang}>{dictionary}</span>
-              <SpeakButton lang={lang} text={dictionary} label={`Hear ${dictionary}`} />
-            </p>
-            {item.surface.toLowerCase() !== lemmaFor(item) ? (
-              <p className="review-met-as">
-                In the sentence: <span lang={lang}>{item.surface}</span>
+          <WordAnswer pack={pack} item={item} showSentence={kind === "listen" || kind === "word"} />
+          <RatingRow stage={stage} onAnswer={onAnswer} />
+          <GraduateButton onGraduate={onGraduate} />
+        </>
+      )}
+    </section>
+  );
+}
+
+function WordAnswer({ pack, item, showSentence }: { pack: LanguagePack; item: WordItem; showSentence: boolean }) {
+  const lang = pack.code;
+  const dictionary = dictionaryLabel(pack, lemmaFor(item));
+  return (
+    <div className="review-answer">
+      <p className="review-word">
+        <span lang={lang}>{dictionary}</span>
+        <SpeakButton lang={lang} text={dictionary} label={`Hear ${dictionary}`} />
+      </p>
+      {item.surface.toLowerCase() !== lemmaFor(item) ? (
+        <p className="review-met-as">
+          In the sentence: <span lang={lang}>{item.surface}</span>
+        </p>
+      ) : null}
+      <p className="review-meaning">{item.meaning}</p>
+      {showSentence ? (
+        <p className="example-translation" lang={lang}>
+          {item.sentence}
+        </p>
+      ) : null}
+      {item.translation ? <p className="example-translation">{item.translation}</p> : null}
+    </div>
+  );
+}
+
+function GraduateButton({ onGraduate }: { onGraduate: () => void }) {
+  return (
+    <button type="button" className="graduate-button" onClick={onGraduate}>
+      Too easy: I know this one for good
+      <small>It won&apos;t come back. Undo anytime under Graduated words.</small>
+    </button>
+  );
+}
+
+/** English → type the Dutch. Nouns with their article. */
+function ProduceCard({
+  pack,
+  item,
+  onAnswer,
+  onGraduate,
+}: {
+  pack: LanguagePack;
+  item: WordItem;
+  onAnswer: (r: ReviewResult) => void;
+  onGraduate: () => void;
+}) {
+  const lang = pack.code;
+  const lemma = lemmaFor(item);
+  const article = pack.nounArticle?.(lemma) ?? null;
+  const [typed, setTyped] = useState("");
+  const [result, setResult] = useState<ProduceVerdict | null>(null);
+  const hint = article ? "a noun: give it with de or het" : isVerb(pack, lemma) ? "a verb: give the infinitive" : null;
+
+  const check = (giveUp = false) => {
+    const r = giveUp ? { verdict: "wrong" as const } : checkProduced(typed, lemma, article);
+    setResult(r);
+    speak(lang, dictionaryLabel(pack, lemma), 0.85);
+  };
+
+  return (
+    <section className="review-card" aria-label="Word card: say it in Dutch">
+      <p className="review-prompt">How do you say this in Dutch?</p>
+      <p className="review-solo review-solo-en">{item.meaning}</p>
+      {hint ? <p className="review-hint">{hint}</p> : null}
+      {!result ? (
+        <form
+          className="produce-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            check();
+          }}
+        >
+          <input
+            className="produce-input"
+            lang={lang}
+            autoFocus
+            autoComplete="off"
+            autoCapitalize="none"
+            spellCheck={false}
+            aria-label="Your answer in Dutch"
+            value={typed}
+            onChange={(e) => setTyped(e.target.value)}
+          />
+          <div className="button-row">
+            <button type="submit" className="button" disabled={!typed.trim()}>
+              Check
+            </button>
+            <button type="button" className="button button-quiet" onClick={() => check(true)}>
+              I don&apos;t know
+            </button>
+          </div>
+        </form>
+      ) : (
+        <>
+          <div className="feedback" role="status" data-verdict={result.verdict}>
+            <VerdictLine verdict={result.verdict} label={result.verdict === "wrong" && !typed.trim() ? "Here it is" : undefined} />
+            {result.note ? <p>{result.note}</p> : null}
+            {typed.trim() && result.verdict !== "right" ? (
+              <p className="produce-yours">
+                You wrote: <span lang={lang}>{typed}</span>
               </p>
             ) : null}
-            <p className="review-meaning">{item.meaning}</p>
-            {direction === "listen" ? (
-              <p className="example-translation" lang={lang}>{item.sentence}</p>
-            ) : null}
-            {item.translation ? <p className="example-translation">{item.translation}</p> : null}
           </div>
-          <RatingRow stage={stage} onAnswer={onAnswer} />
-          <button type="button" className="graduate-button" onClick={onGraduate}>
-            Too easy: I know this one for good
-            <small>It won&apos;t come back. Undo anytime under Graduated words.</small>
+          <WordAnswer pack={pack} item={item} showSentence />
+          <button type="button" className="button" autoFocus onClick={() => onAnswer(verdictToResult(result.verdict))}>
+            Continue
           </button>
+          <p className="shortcut-hint">
+            {result.verdict === "right" ? "Comes back in a while." : result.verdict === "almost" ? "Comes back a bit sooner." : "Back to the first step: you'll see it again soon."}
+          </p>
+          <GraduateButton onGraduate={onGraduate} />
         </>
       )}
     </section>

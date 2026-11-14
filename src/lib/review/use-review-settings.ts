@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
-import type { ReviewKind } from "@/core/review-items";
+import type { CardDirection, ReviewKind } from "@/core/review-items";
 import type { CefrLevel } from "@/core/language-pack";
 
 /**
@@ -19,6 +19,8 @@ export type ReviewSettings = {
   newWordLevels: CefrLevel[];
   /** Cards per New words session. */
   newWordsSize: number;
+  /** Which way word cards go: the ladder (mixed), only Dutch → English, or only English → Dutch. */
+  direction: CardDirection;
   /** Word card directions beyond "what does it mean?". */
   recallCards: boolean;
   listenCards: boolean;
@@ -30,6 +32,7 @@ export const DEFAULT_SETTINGS: ReviewSettings = {
   mix: { word: true, grammar: true, listen: true, speak: false },
   newWordLevels: ["A1"],
   newWordsSize: 20,
+  direction: "mixed",
   recallCards: true,
   listenCards: true,
 };
