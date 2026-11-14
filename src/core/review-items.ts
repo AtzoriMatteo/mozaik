@@ -1,7 +1,7 @@
 import { helpFor, lemmaOf, type Exercise } from "./content";
 import { allTexts, type CefrLevel, type LanguagePack } from "./language-pack";
 import { isDue } from "./srs";
-import { lemmaFor } from "./dictionary";
+import { cardMeaning, lemmaFor } from "./dictionary";
 
 /**
  * Everything that can come back in Review.
@@ -71,7 +71,7 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
           word: tok.normalized,
           surface: tok.text,
           base: help.base,
-          meaning: help.meaning,
+          meaning: cardMeaning(pack, lemma, help.meaning),
           sentence: sentence.text,
           translation: sentence.translation,
         });
@@ -134,7 +134,7 @@ export function eligibleItems(
     const lemma = lemmaFor(w);
     if (seen.has(lemma)) continue;
     seen.add(lemma);
-    items.push({ ...w, kind: "word", id: `saved:${w.word}`, source: "saved" });
+    items.push({ ...w, meaning: cardMeaning(pack, lemma, w.meaning), kind: "word", id: `saved:${w.word}`, source: "saved" });
   }
 
   // Grammar: every exercise of the lessons you've finished.
