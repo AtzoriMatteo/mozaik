@@ -177,7 +177,7 @@ export const IRREGULAR_PRESENT: Readonly<Record<string, { ik: string; jij: strin
 };
 
 /** Verbs whose perfect uses zijn by default, even though they're regular. */
-export const ZIJN_REGULAR = new Set(["verhuizen", "opstaan", "aankomen", "weggaan", "meegaan", "uitgaan", "terugkomen", "binnenkomen", "opgroeien", "omvallen", "groeien", "gebeuren", "landen", "trouwen", "verdwijnen", "verschijnen", "slagen", "stijgen", "dalen", "lukken", "mislukken", "vertrekken", "ontstaan", "overlijden", "emigreren", "verhongeren", "sneuvelen", "keren", "terugkeren", "omkomen", "opgroeien", "binnenkomen"]);
+export const ZIJN_REGULAR = new Set(["verhuizen", "opstaan", "aankomen", "weggaan", "meegaan", "uitgaan", "terugkomen", "binnenkomen", "opgroeien", "omvallen", "groeien", "gebeuren", "landen", "trouwen", "verdwijnen", "verschijnen", "slagen", "stijgen", "dalen", "lukken", "mislukken", "vertrekken", "ontstaan", "overlijden", "emigreren", "verhongeren", "sneuvelen", "keren", "terugkeren", "omkomen", "opgroeien", "binnenkomen", "overstappen", "uitstappen", "instappen", "afstappen", "opstappen", "wegrennen", "inslapen", "ontsnappen"]);
 
 /** Regular verbs that take hebben or zijn depending on the meaning (Ik ben veranderd / Ik heb het veranderd). */
 export const BOTH_REGULAR = new Set(["veranderen", "verbeteren", "stoppen", "zakken", "landen", "dalen"]);

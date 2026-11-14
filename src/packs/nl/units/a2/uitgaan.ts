@@ -226,7 +226,7 @@ export const uitgaan: Unit = {
         line("Kofi", "Zullen we naar de bioscoop gaan? Die nieuwe film schijnt de beste van het jaar te zijn.", "Shall we go to the cinema? That new film is supposed to be the best of the year."),
         line("Tim", "Hm, we zitten de hele week al binnen. Ik wil liever naar buiten.", "Hmm, we've been inside all week. I'd rather go outside."),
         line("Kofi", "Oké. Dan gaan we fietsen naar het strand? Het wordt zaterdag de warmste dag van de week.", "OK. Then shall we cycle to the beach? Saturday is going to be the warmest day of the week."),
-        line("Tim", "Goed idee! Maar dan moeten we vroeg vertrekken, anders is het daar het drukst.", "Good idea! But then we have to leave early, otherwise that's when it's busiest there."),
+        line("Tim", "Goed idee! Maar dan moeten we vroeg vertrekken, anders is het er al te druk.", "Good idea! But then we have to leave early, otherwise it'll already be too busy there."),
         line("Kofi", "Om negen uur? En 's avonds eten we patat op de boulevard.", "At nine? And in the evening we'll eat chips on the promenade."),
         line("Tim", "Perfect. De film zien we dan zondag wel, als het regent.", "Perfect. We'll see the film on Sunday then, if it rains."),
       ],

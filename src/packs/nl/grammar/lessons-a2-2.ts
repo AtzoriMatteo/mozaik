@@ -109,7 +109,7 @@ export const lessonsA2b: Record<string, GrammarLesson> = {
       choice("", " begint de cursus?", ["Wanneer", "Toen"], 0, "When does the course start?"),
       choice("Vroeger, ", " ik bij mijn oma was, kreeg ik altijd een koekje.", ["als", "toen"], 0, "In the past, whenever I was at my gran's, I always got a biscuit."),
       fill("", " Femke in Wenen was, stapte ze in de verkeerde trein.", "Toen", "When Femke was in Vienna, she got on the wrong train."),
-      build("Als | je | moe | bent | ga | naar bed", "When you're tired, go to bed."),
+      build("Als | je | moe | bent | ga | dan | naar bed", "When you're tired, go to bed."),
     ],
   },
 

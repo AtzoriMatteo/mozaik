@@ -10,6 +10,7 @@ samenwerken | work together | | samen + werken
 saskia | Saskia (a name)
 saté | satay | | | With peanut sauce: a Dutch snack-bar classic
 sausje | (little) sauce | saus
+speciaals | (something) special | speciaal | | iets speciaals = something special: adjectives after iets get -s
 schaatsers | skaters | schaatser
 schat | treasure; darling | | | Also: schat = sweetheart
 scheepvaartmuseum | Maritime Museum | | scheepvaart (shipping) + museum
@@ -184,6 +185,7 @@ vergadering | meeting
 vergaderingen | meetings | vergadering
 verhaal | story
 verheugden | looked forward | verheugen | | zich verheugen op = look forward to
+verhuisde | moved (house) | verhuizen
 verhuisd | moved (house) | verhuizen
 verhuizen | move (house)
 verhuizing | move (house)

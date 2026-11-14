@@ -107,7 +107,7 @@ export const lessonsA2a: Record<string, GrammarLesson> = {
       build("Ik bel | omdat | ik | een vraag | heb", "I'm calling because I have a question."),
       transform("Join with omdat.", "Ik blijf thuis. Ik ben ziek.", "Ik blijf thuis, omdat ik ziek ben.", "I'm staying at home because I'm ill."),
       transform("Start with Ik denk dat…", "Het plan is goed.", "Ik denk dat het plan goed is.", "I think the plan is good."),
-      choice("Ik weet dat hij morgen ", ".", ["komt", "komt niet"], 0, "I know he's coming tomorrow."),
+      choice("Ik weet dat hij ", ".", ["morgen komt", "komt morgen"], 0, "I know he's coming tomorrow."),
       spot("Ik denk dat hij morgen komen.", "komen", "komt", "I think he's coming tomorrow."),
       fill("Je kunt beginnen als dat jou ", ".", "uitkomt", "You can start if that suits you.", "uitkomen"),
     ],
@@ -129,7 +129,7 @@ export const lessonsA2a: Record<string, GrammarLesson> = {
       example("Omdat ik naast mijn studie geld wil verdienen.", "Because I want to earn money alongside my studies.", "Omdat", "wil verdienen"),
     ],
     exercises: [
-      choice("Ik blijf thuis, want ik ", " ziek.", ["ben", "ziek ben"], 0, "I'm staying home, because I'm ill."),
+      choice("Ik blijf thuis, want ik ", ".", ["ben ziek", "ziek ben"], 0, "I'm staying home, because I'm ill."),
       fill("Ik blijf thuis, omdat ik ziek ", ".", "ben", "I'm staying home because I'm ill."),
       transform("Change want into omdat.", "Ik neem de trein, want het regent.", "Ik neem de trein, omdat het regent.", "I'm taking the train because it's raining."),
       transform("Change omdat into want.", "Ik ga vroeg naar bed, omdat ik moe ben.", "Ik ga vroeg naar bed, want ik ben moe.", "I'm going to bed early because I'm tired."),
@@ -207,7 +207,7 @@ export const lessonsA2a: Record<string, GrammarLesson> = {
       fill("Als kind ", " ik niet laat opblijven.", "mocht", "As a child I wasn't allowed to stay up late.", "mogen"),
       fill("Ze ", " eerst naar de huisarts, niet naar de specialist.", "wilde", "She wanted to go to the GP first, not to the specialist.", "willen"),
       transform("Put it in the past.", "Ik moet thuisblijven.", "Ik moest thuisblijven.", "I had to stay at home."),
-      choice("Sofia ", " niet naar het ziekenhuis.", ["hoefde", "moest niet te"], 0, "Sofia didn't need to go to the hospital."),
+      choice("Sofia ", " niet naar het ziekenhuis.", ["hoefde", "moest"], 0, "Sofia didn't need to go to the hospital."),
     ],
   },
 

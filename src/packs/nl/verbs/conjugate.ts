@@ -14,10 +14,23 @@ const SEPARABLE = [
   "klaar", "vast", "neer", "rond", "tegen", "mee", "weg", "voor", "toe", "uit", "aan", "af", "bij", "in", "na", "op",
 ];
 /** Verbs that only look separable. */
-const NOT_SEPARABLE = new Set(["informeren", "inspireren", "installeren", "interesseren", "instrueren", "openen", "opereren", "aanbidden", "voorspellen", "voorkomen", "inventariseren", "antwoorden", "aarzelen"]);
+const NOT_SEPARABLE = new Set(["achterhalen", "aanvaarden", "toeteren", "informeren", "inspireren", "installeren", "interesseren", "instrueren", "openen", "opereren", "aanbidden", "voorspellen", "voorkomen", "inventariseren", "antwoorden", "aarzelen"]);
 
-/** Unstressed prefixes: no ge- in the participle (bestellen → besteld). */
-const INSEPARABLE = ["ont", "her", "ver", "be", "ge", "er"];
+/** Over, door, onder and om verbs that do split (ik stap over, ik geef door). */
+const ALSO_SEPARABLE: Record<string, string> = {
+  overstappen: "over", overkomen: "over", overnemen: "over", doorgeven: "door", doorgaan: "door", doorbrengen: "door",
+  onderduiken: "onder", onderlopen: "onder", omdraaien: "om", omkleden: "om", omkijken: "om", omrijden: "om",
+};
+
+/** Verbs that only look like prefix + irregular verb: ontmoeten is not ont + moeten. */
+const NOT_PREFIXED = new Set(["ontmoeten"]);
+
+/**
+ * Prefixes that don't split: no ge- in the participle (bestellen → besteld).
+ * Achter, onder, over and door count here unless listed in ALSO_SEPARABLE:
+ * overleggen → overlegd, onderzoeken → onderzocht.
+ */
+const INSEPARABLE = ["achter", "onder", "over", "door", "ont", "her", "ver", "be", "ge", "er"];
 
 const VOWELS = "aeiouy";
 const isVowel = (c: string | undefined) => !!c && VOWELS.includes(c);
@@ -87,12 +100,26 @@ type Parts = { separable?: string; prefix?: string; body: string };
 
 /** Split opbellen → op + bellen, verbinden → ver + binden (when the rest is a verb we know). */
 function split(inf: string, knownVerb: (v: string) => boolean): Parts {
+  const also = ALSO_SEPARABLE[inf];
+  if (also) return { separable: also, body: inf.slice(also.length) };
+  if (NOT_SEPARABLE.has(inf)) return { body: inf };
   for (const p of SEPARABLE) {
     if (inf.startsWith(p) && inf.length > p.length + 3) {
       const body = inf.slice(p.length);
-      if (knownVerb(body) && !NOT_SEPARABLE.has(inf)) return { separable: p, body };
+      if (knownVerb(body)) return { separable: p, body };
     }
   }
+  // A body we don't know can still be a verb (afronden, uitnodigen, inloggen), as long
+  // as it has a vowel before -en and isn't a borrowed -eren verb (inspecteren, opereren).
+  for (const p of SEPARABLE) {
+    if (inf.startsWith(p) && inf.length > p.length + 3) {
+      const body = inf.slice(p.length);
+      const plausible = /^[^aeiouy]*[aeiouy].*[^aeiouy]en$/.test(body) && !/^[aeiouy]/.test(body);
+      const borrowed = /eren$/.test(body) && !NATIVE_EREN.has(body);
+      if (plausible && !borrowed) return { separable: p, body };
+    }
+  }
+  if (NOT_PREFIXED.has(inf)) return { body: inf };
   for (const p of INSEPARABLE) {
     if (inf.startsWith(p) && inf.length > p.length + 3) {
       const body = inf.slice(p.length);

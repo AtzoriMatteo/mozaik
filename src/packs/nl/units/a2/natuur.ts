@@ -32,7 +32,7 @@ export const natuur: Unit = {
           s("Het laatste deel, de Maeslantkering bij Rotterdam, was in 1997 klaar. Bij een zware storm gaan de enorme deuren automatisch dicht.", "The last part, the Maeslant barrier near Rotterdam, was finished in 1997. In a severe storm the enormous gates close automatically."),
         ],
         [
-          s("Maar de zee stijgt, en het zal de komende eeuw nog verder stijgen. Ook de rivieren zullen vaker veel water brengen.", "But the sea is rising, and it will rise even further over the coming century. The rivers too will more often bring a lot of water."),
+          s("Maar de zeespiegel stijgt, en hij zal de komende eeuw nog verder stijgen. Ook de rivieren zullen vaker veel water brengen.", "But the sea level is rising, and it will rise even further over the coming century. The rivers too will more often bring a lot of water."),
           s("Daarom bouwt Nederland niet alleen hogere dijken. Het geeft het water ook meer ruimte. Langs sommige rivieren mogen de weilanden bij hoog water onderlopen.", "That's why the Netherlands isn't only building higher dykes. It's also giving the water more room. Along some rivers the meadows are allowed to flood when the water is high."),
         ],
         [

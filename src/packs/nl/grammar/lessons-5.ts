@@ -88,7 +88,7 @@ export const lessons5: Record<string, GrammarLesson> = {
       match("Connect the number and the order word.", "1=eerste | 3=derde | 8=achtste | 20=twintigste", "eerste, derde, achtste, twintigste"),
       sort("-de or -ste?", ["-de", "-ste"], "vierde=0 | achtste=1 | tiende=0 | twintigste=1 | zevende=0 | eerste=1", "acht, eerste and from twintig: -ste; the rest: -de."),
       transform("Say the date in words (27/4):", "27/4", ["zevenentwintig april", "op zevenentwintig april"], "27 April"),
-      spot("Op vijf December is het Sinterklaas.", "December", "december", "On 5 December it's Sinterklaas. (months: no capital)"),
+      spot("Op vijf December vieren we Sinterklaas.", "December", "december", "On 5 December we celebrate Sinterklaas. (months: no capital)"),
     ],
   },
 

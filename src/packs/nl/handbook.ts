@@ -583,7 +583,7 @@ Ik schrijf u omdat ... | I'm writing to you because ...
 Kunt u mij laten weten of ...? | Could you let me know whether ...?
 Alvast bedankt. | Thanks in advance.
 Met vriendelijke groet, | Kind regards,
-Groetjes, | Bye, love, | Informal
+Groetjes, | Best wishes, / Cheers, | Informal: friends, family, close colleagues
 `,
   }),
   table({

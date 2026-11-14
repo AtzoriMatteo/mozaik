@@ -85,7 +85,7 @@ export const moreExercises: Record<string, Exercise[]> = {
   ],
   "object-pronouns": [
     match("Connect the subject and the object form.", "ik=mij / me | jij=jou / je | hij=hem | wij=ons | zij (they)=hen / ze", "mij, jou, hem, ons, hen"),
-    spot("Bel ik morgen even?", "ik", ["me", "mij"], "Call me tomorrow? (object: me)"),
+    spot("Kun je ik morgen even bellen?", "ik", ["me", "mij"], "Can you call me tomorrow? (object: me)"),
   ],
   conjunctions: [
     match("Connect the halves.", "Ik ben moe=maar ik ga toch. | Noor kookt=en Bram wast af. | Wil je thee=of koffie? | Ik blijf thuis,=want ik ben ziek.", "maar, en, of, want: the word order stays normal."),

@@ -228,7 +228,7 @@ export const werkEnStudie: UnitContent = {
         ],
         [
           {
-            text: "Dan is het de beurt aan Luca. \"Luca, lees de tekst op bladzijde twintig, alsjeblieft.\"",
+            text: "Dan is Luca aan de beurt. \"Luca, lees de tekst op bladzijde twintig, alsjeblieft.\"",
             translation: "Then it's Luca's turn. \"Luca, read the text on page twenty, please.\"",
           },
           {

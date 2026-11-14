@@ -5,6 +5,45 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-14 (evening) — Dutch audit: proofreading and verb-table fixes
+
+Matteo asked for a careful check of the Dutch course before starting Italian.
+
+**Checked:** every page on phone and desktop (no errors, broken links or
+sideways scrolling); every A2 text, dialogue and writing model; all A1 and A2
+grammar exercises; the Handbook, the 80 expressions; the forms of all 212
+common verbs.
+
+**Fixed in the content:**
+- A2 "Een druk weekend": the old friend was called Bram, who is Noor's
+  housemate in A1. Now Joris.
+- Anne Frank text: "verhuisde de familie naar Amsterdam" (simple past fits a
+  story) and "de Duitse politie" (it wasn't the Dutch police on its own).
+- A writing model said "Eerst heb ik de trein naar Leiden genomen, maar ik ben
+  in de verkeerde trein gestapt", which contradicts itself: now "Ik wilde de
+  trein naar Leiden nemen, maar…".
+- Smaller phrasing: a doubled "natuurlijk"; "Zou u daar iets aan kunnen doen?"
+  (that means "fix a problem") → "Zou u er iets speciaals van kunnen maken?";
+  "de zee stijgt, en het zal…" → "de zeespiegel stijgt, en hij zal…";
+  "het is de beurt aan Luca" → "Luca is aan de beurt"; a clumsy recipe line.
+- Grammar exercises with a broken choice ("komt / komt niet" were both right;
+  "moest niet te niet"), a spot-the-error sentence that was actually correct
+  ("Bel ik morgen even?"), and Sinterklaas dated more precisely.
+- Handbook: "Groetjes" means "Best wishes / Cheers", not "Bye, love".
+
+**Fixed in the verb tables (Handbook → Verbs):**
+- ontmoeten was treated as ont + moeten ("ontmoest"): now ontmoette, ontmoet.
+- Separable verbs whose second half isn't in the word list weren't split:
+  afronden, uitnodigen, inloggen, oplossen, voorbereiden, inchecken… now
+  "ik nodig uit, uitgenodigd".
+- over-, onder-, door- and achter- verbs that don't split now drop ge-
+  (overlegd, onderzocht); the common ones that do split are listed
+  (overstappen, doorgeven, onderduiken).
+- overstappen, uitstappen, instappen take zijn.
+
+**Recordings:** sentences that changed play with the device voice until the
+"Record course audio" workflow runs again.
+
 ## 2026-11-14 (day) — Natural voices, Handbook, verb tables, smarter cards, expressions
 
 **Natural voices (Matteo chose Google Cloud).** Every course sentence, and
