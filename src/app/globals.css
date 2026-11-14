@@ -4132,3 +4132,28 @@ a {
   font-size: 1rem;
   color: var(--ink-muted);
 }
+
+/* Plan: different minutes on some days */
+.plan-per-day {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-items: start;
+}
+.plan-per-day-row {
+  display: grid;
+  grid-template-columns: 3.5rem auto;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+}
+.plan-per-day-row select {
+  min-height: 2.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--grout);
+  border-radius: 6px;
+  background: var(--tile);
+  color: inherit;
+  font: inherit;
+  font-weight: 400;
+}
