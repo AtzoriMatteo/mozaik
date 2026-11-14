@@ -3221,25 +3221,334 @@ a {
   color: var(--ink-muted);
 }
 
-/* ---------- Plain text pages (privacy) ---------- */
+/* ---------- Privacy policy ---------- */
 
-.prose-page {
+.policy {
   max-width: 40rem;
+  padding-top: 1rem;
 }
 
-.prose-page h2 {
-  margin-top: 2rem;
-  font-size: 1.2rem;
+.policy-head {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--grout);
 }
 
-.prose-page p,
-.prose-page li {
+.policy-title {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: clamp(2rem, 6vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--heading);
+}
+
+.policy-updated {
+  margin: 0.5rem 0 1.25rem;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.policy-summary {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border-radius: 6px;
+  background: var(--tile);
+  box-shadow: inset 0 0 0 1px var(--grout);
+  font-family: var(--font-read);
+  font-size: 1.08rem;
   line-height: 1.6;
 }
 
-.prose-updated,
-.login-privacy {
-  margin-top: 2rem;
+.policy-toc {
+  margin: 1.75rem 0 0.5rem;
+}
+
+.policy-toc ol {
+  columns: 2 14rem;
+  column-gap: 2rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.policy-toc a {
+  color: var(--ink);
+  text-decoration-color: var(--grout);
+  text-underline-offset: 0.2em;
+}
+
+.policy-section {
+  padding-top: 2rem;
+  scroll-margin-top: 1rem;
+}
+
+.policy-section h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-read);
+  font-size: 1.3rem;
+  color: var(--heading);
+}
+
+.policy-section p,
+.policy-section li,
+.policy-list dd {
+  line-height: 1.65;
+}
+
+.policy-section ul {
+  padding-left: 1.25rem;
+}
+
+.policy-list {
+  display: grid;
+  grid-template-columns: minmax(8rem, auto) 1fr;
+  gap: 0.75rem 1.5rem;
+  margin: 0 0 1rem;
+}
+
+.policy-list dt {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.policy-list dd {
+  margin: 0;
+}
+
+@media (max-width: 36rem) {
+  .policy-list {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .policy-list dd {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.policy-back {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--grout);
+  font-size: 0.95rem;
+}
+
+/* ---------- Login: a tile wall beside a glazed card ---------- */
+
+.login-page {
+  /* Wider than the reading column, centred on the screen. */
+  position: relative;
+  left: 50%;
+  width: min(60rem, calc(100vw - 3rem));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 25rem);
+  gap: 3rem 4rem;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.login-art {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.login-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 6px;
+  max-width: 24rem;
+  border-radius: 6px;
+  background: var(--grout);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--grout) 60%, #000 10%);
+}
+
+.login-wall svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+.login-tagline {
+  margin: 0;
+  max-width: 24rem;
+  font-family: var(--font-read);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  color: var(--heading);
+}
+
+.login-tagline span {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+.login-card {
+  padding: 2.25rem 2rem 1.75rem;
+  border-radius: 8px;
+  background: var(--tile);
+  box-shadow:
+    inset 0 0 0 1px var(--grout),
+    0 3px 0 var(--grout);
+}
+
+.login-title {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: 1.85rem;
+  line-height: 1.2;
+  color: var(--heading);
+}
+
+.login-intro {
+  margin: 0.5rem 0 1.75rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+.login-providers {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.login-providers .provider-button {
+  max-width: none;
+}
+
+/* "or with email", with a rule on each side. */
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.75rem 0 1.25rem;
   font-size: 0.9rem;
   color: var(--ink-muted);
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--grout);
+}
+
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Log in | Create account, as two halves of one tile. */
+.login-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--grout) 45%, transparent);
+}
+
+.login-tab {
+  min-height: 2.4rem;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-tab[aria-selected="true"] {
+  background: var(--tile);
+  color: var(--heading);
+  box-shadow: 0 1px 0 var(--grout), inset 0 0 0 1px var(--grout);
+}
+
+.login-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.login-mode-note {
+  margin: 0;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+.login-card .field input {
+  min-height: 2.9rem;
+  background: var(--surface, transparent);
+}
+
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.login-small {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.login-alt {
+  margin: 0.25rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-card .lede {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.login-footer {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: var(--ink-muted);
+}
+
+/* Phones: a strip of tiles above the card instead of a wall beside it. */
+@media (max-width: 52rem) {
+  .login-page {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .login-wall {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: none;
+  }
+
+  .login-wall svg:nth-child(n + 6) {
+    display: none;
+  }
+
+  .login-tagline {
+    display: none;
+  }
+
+  .login-card {
+    padding: 1.75rem 1.25rem 1.5rem;
+  }
 }

@@ -8,8 +8,12 @@ const LINKS = [
   { href: "/review", label: "Review", match: ["/review"] },
 ];
 
+/** Pages you see before logging in, where the course links only lead back to login. */
+const OUTSIDE = ["/login", "/privacy", "/account"];
+
 export function Nav() {
   const path = usePathname();
+  if (OUTSIDE.some((p) => path.startsWith(p))) return null;
   return (
     <nav className="nav" aria-label="Main">
       {LINKS.map((l) => (
