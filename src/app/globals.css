@@ -173,55 +173,46 @@ a {
 /* ---------- Buttons & fields ---------- */
 
 /*
- * Buttons are glazed tiles, not flat stickers: a cobalt glaze that is a
- * shade lighter where the light catches the top, a darker fired edge
- * underneath that gives the tile its thickness, and a press that pushes the
- * tile into the wall. Labels are set in the reading serif, like the rest of
- * the voice of the site.
+ * Buttons are flat glazed tiles: one solid glaze, no gloss and no drop edge,
+ * with a thin line painted just inside the rim, like the ring around the
+ * picture on a Delft tile. The label is set in the reading serif.
  */
 .button {
-  --edge: color-mix(in srgb, var(--accent) 62%, #000);
+  --bg: var(--accent);
+  --rim: color-mix(in srgb, var(--accent-ink) 28%, transparent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   min-height: 3rem;
-  padding: 0 1.5rem;
+  padding: 0 1.6rem;
   border: 0;
-  border-radius: 5px;
-  background:
-    linear-gradient(180deg, color-mix(in srgb, #fff 7%, transparent), transparent 70%),
-    var(--accent);
+  border-radius: 4px;
+  background: var(--bg);
   color: var(--accent-ink);
   font-family: var(--font-read);
   font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.005em;
+  font-weight: 550;
+  letter-spacing: 0.01em;
   text-decoration: none;
   cursor: pointer;
   box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
-    0 3px 0 var(--edge);
-  transition: transform 90ms ease, box-shadow 90ms ease, background-color 150ms ease;
+    inset 0 0 0 3px var(--bg),
+    inset 0 0 0 4px var(--rim);
+  transition: background-color 120ms ease, transform 80ms ease;
 }
 
 .button:hover {
-  background-color: color-mix(in srgb, var(--accent) 88%, #fff);
+  --bg: color-mix(in srgb, var(--accent) 86%, #000);
 }
 
 .button:active {
-  transform: translateY(3px);
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
-    0 0 0 var(--edge);
+  transform: scale(0.985);
 }
 
 .button:focus-visible {
-  outline: none;
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
-    0 3px 0 var(--edge),
-    var(--focus);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .button[disabled] {
@@ -230,30 +221,19 @@ a {
   transform: none;
 }
 
-/* The quiet button is a plain white tile with a lime-mortar edge. */
+/* The quiet button: plain white tile, a single line of grout around it. */
 .button-quiet {
-  --edge: var(--grout);
-  background: var(--tile);
+  --bg: var(--tile);
   color: var(--heading);
   min-height: 2.6rem;
   padding: 0 1.1rem;
   font-weight: 500;
-  box-shadow:
-    inset 0 0 0 1px var(--grout),
-    0 2px 0 var(--edge);
+  box-shadow: inset 0 0 0 1px var(--grout);
 }
 
 .button-quiet:hover {
-  background: color-mix(in srgb, var(--accent) 7%, var(--tile));
-}
-
-.button-quiet:active {
-  transform: translateY(2px);
-  box-shadow: inset 0 0 0 1px var(--grout), 0 0 0 var(--edge);
-}
-
-.button-quiet:focus-visible {
-  box-shadow: inset 0 0 0 1px var(--grout), 0 2px 0 var(--edge), var(--focus);
+  --bg: var(--tile);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, var(--grout));
 }
 
 .button-small {
@@ -271,7 +251,8 @@ a {
 }
 
 .next-step {
-  --edge: color-mix(in srgb, var(--accent) 62%, #000);
+  --bg: var(--accent);
+  --rim: color-mix(in srgb, var(--accent-ink) 26%, transparent);
   display: inline-flex;
   align-items: center;
   gap: 1rem;
@@ -279,32 +260,26 @@ a {
   max-width: 100%;
   padding: 0.6rem 1.5rem 0.6rem 0.6rem;
   border-radius: 6px;
-  background:
-    linear-gradient(180deg, color-mix(in srgb, #fff 7%, transparent), transparent 70%),
-    var(--accent);
+  background: var(--bg);
   color: var(--accent-ink);
   text-decoration: none;
   box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
-    0 4px 0 var(--edge);
-  transition: transform 90ms ease, box-shadow 90ms ease, background-color 150ms ease;
+    inset 0 0 0 4px var(--bg),
+    inset 0 0 0 5px var(--rim);
+  transition: background-color 120ms ease, transform 80ms ease;
 }
 
 .next-step:hover {
-  background-color: color-mix(in srgb, var(--accent) 88%, #fff);
+  --bg: color-mix(in srgb, var(--accent) 86%, #000);
 }
 
 .next-step:active {
-  transform: translateY(4px);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent), 0 0 0 var(--edge);
+  transform: scale(0.99);
 }
 
 .next-step:focus-visible {
-  outline: none;
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent),
-    0 4px 0 var(--edge),
-    var(--focus);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* The inset tile: white glaze, painted corners, the skill glyph in its colour. */
@@ -322,7 +297,6 @@ a {
     radial-gradient(circle at 0 100%, var(--glaze-ochre) 0 5px, transparent 5.5px),
     radial-gradient(circle at 100% 100%, var(--glaze-ochre) 0 5px, transparent 5.5px),
     var(--tile);
-  box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--grout) 70%, transparent);
 }
 
 .next-step-tile .skill-glyph {
@@ -366,19 +340,14 @@ a {
 
 /* A secondary next step: the same shape in white glaze. */
 .next-step[data-quiet] {
-  --edge: var(--grout);
-  background: var(--tile);
+  --bg: var(--tile);
   color: var(--heading);
-  box-shadow: inset 0 0 0 1px var(--grout), 0 3px 0 var(--edge);
+  box-shadow: inset 0 0 0 1px var(--grout);
 }
 
 .next-step[data-quiet]:hover {
-  background: color-mix(in srgb, var(--accent) 7%, var(--tile));
-}
-
-.next-step[data-quiet]:active {
-  transform: translateY(3px);
-  box-shadow: inset 0 0 0 1px var(--grout), 0 0 0 var(--edge);
+  --bg: var(--tile);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, var(--grout));
 }
 
 .next-step[data-quiet] .next-step-tile {

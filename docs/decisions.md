@@ -20,6 +20,11 @@ Face model download with speech processed on the device), cookies and
 local storage, security, retention, rights and the Dutch DPA. Contact goes
 through GitHub for now (pending: Matteo may prefer a contact email).
 
+**Flat buttons (Matteo: the glossy blue still felt "Facebook 2015").** No
+gradient and no thick drop edge any more: one solid glaze with a thin line
+painted just inside the rim, like the ring around a Delft tile's picture.
+White buttons are a single grout line that warms to blue on hover.
+
 **Security headers (Claude).** Every page now forbids being framed by other
 sites, file-type guessing, full-address referrers, and device access other
 than the microphone. Checked at the same time: all five tables lock rows
