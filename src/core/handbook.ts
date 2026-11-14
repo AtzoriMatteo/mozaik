@@ -19,6 +19,8 @@ export type HandbookTable = {
   articles?: boolean;
   /** A short tip shown under the table. */
   tip?: string;
+  /** Labels for the "places" picture: in, on, under, next to, in front of, behind. */
+  picture?: readonly string[];
 };
 
 export type Handbook = {

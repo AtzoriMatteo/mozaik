@@ -81,6 +81,10 @@ export const dutch: LanguagePack = {
   name: "Dutch",
   nativeName: "Nederlands",
   accent: { light: "#1d3f8c", dark: "#8fb0f0" }, // Delft blue
+  theme: "delft",
+  verbShape: "Dutch infinitives end in -en or -n (werken, gaan).",
+  exams: "Inburgering or NT2",
+  checkerCovers: "Spelling and the A1 grammar Mozaik knows look right: word order, verb forms, de/het, adjective endings, geen/niet and more.",
   levels: ["A1", "A2"],
   tokenize: tokenizeDutch,
   greeting: greetingFor,

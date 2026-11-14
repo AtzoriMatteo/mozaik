@@ -28,7 +28,9 @@ jobs:
       - name: Record new sentences
         env:
           GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
-        run: npx tsx scripts/generate-audio.ts nl
+        run: |
+          npx tsx scripts/generate-audio.ts nl
+          npx tsx scripts/generate-audio.ts it
       - name: Commit the recordings
         run: |
           git config user.name "mozaik-audio"

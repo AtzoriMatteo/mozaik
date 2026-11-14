@@ -17,6 +17,22 @@ export const GLAZE_VAR: Record<Glaze, string> = {
 
 const INK = "var(--glaze-cobalt)";
 
+/** An almond leaf from (x, y), pointing at `deg` (0 = right, 90 = down). */
+function leaf(x: number, y: number, deg: number, len = 9): string {
+  const a = (deg * Math.PI) / 180;
+  const r = (n: number) => Math.round(n * 10) / 10;
+  const tx = x + Math.cos(a) * len, ty = y + Math.sin(a) * len;
+  const mx = (x + tx) / 2, my = (y + ty) / 2;
+  const w = len * 0.32, px = -Math.sin(a) * w, py = Math.cos(a) * w;
+  return `M${r(x)} ${r(y)} Q${r(mx + px)} ${r(my + py)} ${r(tx)} ${r(ty)} Q${r(mx - px)} ${r(my - py)} ${r(x)} ${r(y)} Z`;
+}
+
+const LAUREL_LEAVES: [number, number, number][] = [
+  [31, 40, 240], [29, 48, 205], [30, 56, 190], [34, 64, 165], [40, 70, 140],
+  [69, 40, 300], [71, 48, 335], [70, 56, 350], [66, 64, 15], [60, 70, 40],
+];
+const OLIVE_LEAVES: [number, number, number][] = [[36, 63, 255], [44, 57, 25], [52, 50, 255], [60, 44, 25], [68, 38, 290]];
+
 /** Motif drawings in a 100×100 box, centred on 50,52. `wash` areas take the glaze. */
 const MOTIFS: Record<Motif, { wash: string; line: string; dots?: [number, number, number][] }> = {
   tulip: {
@@ -71,6 +87,33 @@ const MOTIFS: Record<Motif, { wash: string; line: string; dots?: [number, number
     line: "M22 56 L78 56 M38 56 L38 33 M62 56 L62 33 M35 33 L65 33 M35 38 L65 38 M38 38 L47 56 M62 38 L53 56 M28 56 C34 63 44 63 50 56 C56 63 66 63 72 56 M26 71 C32 68 38 74 44 71 M54 71 C60 68 66 74 72 71",
     dots: [[38, 31, 1.8], [62, 31, 1.8]],
   },
+  // Italian motifs, drawn for mosaic but readable in either style.
+  sun: {
+    wash: "M50 40 A12 12 0 1 1 49.9 40 Z",
+    line: "M50 40 A12 12 0 1 1 49.9 40 M50 34 L50 26 M50 70 L50 78 M32 52 L24 52 M68 52 L76 52 M37.3 39.3 L31.6 33.6 M62.7 39.3 L68.4 33.6 M37.3 64.7 L31.6 70.4 M62.7 64.7 L68.4 70.4",
+    dots: [[46, 50, 1.3], [54, 50, 1.3]],
+  },
+  laurel: {
+    wash: LAUREL_LEAVES.map(([x, y, d]) => leaf(x, y, d, 13)).join(" "),
+    line: "M46 76 C32 70 26 56 31 38 M54 76 C68 70 74 56 69 38 M44 76 L56 76",
+  },
+  olive: {
+    wash: OLIVE_LEAVES.map(([x, y, d]) => leaf(x, y, d, 12)).join(" "),
+    line: "M26 72 C40 61 54 49 74 34 M47 58 L47 62 M62 46 L63 50",
+    dots: [[47, 65, 3.4], [63, 53, 3.2]],
+  },
+  moka: {
+    wash: "M38 76 L62 76 L58 58 L42 58 Z M41 56 L59 56 L62 38 L38 38 Z",
+    line: "M38 76 L62 76 L58 58 L42 58 Z M41 56 L59 56 L62 38 L38 38 Z M38 38 L36 34 L64 34 L62 38 M47 34 L48 30 L52 30 L53 34 M38 40 L31 36 M62 41 C71 42 71 53 60 54",
+  },
+  lemon: {
+    wash: "M30 54 C30 42 42 36 52 37 C62 38 70 45 70 54 C70 63 60 69 50 68 C40 67 30 64 30 54 Z M52 37 C54 30 60 27 66 28 C63 33 58 36 52 37 Z",
+    line: "M30 54 C30 42 42 36 52 37 C62 38 70 45 70 54 C70 63 60 69 50 68 C40 67 30 64 30 54 Z M30 54 L26 55 M70 54 L74 53 M52 37 C54 30 60 27 66 28 C63 33 58 36 52 37",
+  },
+  column: {
+    wash: "M42 38 L58 38 L58 72 L42 72 Z",
+    line: "M36 36 L64 36 M38 36 C34 36 34 30 38 30 C41 30 41 33 39 33 M62 36 C66 36 66 30 62 30 C59 30 59 33 61 33 M40 32 L60 32 M42 38 L42 72 M58 38 L58 72 M46 40 L46 70 M50 40 L50 70 M54 40 L54 70 M38 72 L62 72 L64 76 L36 76 Z",
+  },
   crown: {
     wash: "M32 64 L29 40 L40 50 L50 33 L60 50 L71 40 L68 64 Z",
     line: "M32 64 L29 40 L40 50 L50 33 L60 50 L71 40 L68 64 Z M31 70 L69 70 M32 64 L31 70 M68 64 L69 70",
@@ -95,6 +138,10 @@ export function UnitTile({
   const m = MOTIFS[motif];
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true" focusable="false">
+      <g className="look-ravenna">
+        <RavennaTile m={m} color={color} />
+      </g>
+      <g className="look-delft">
       <defs>
         {/* A slight wobble so lines read as brushwork, not vectors. */}
         <filter id={`brush-${id}`} x="-5%" y="-5%" width="110%" height="110%">
@@ -118,7 +165,39 @@ export function UnitTile({
         <path d={m.line} fill="none" stroke={INK} strokeWidth="2.2" />
         {m.dots?.map(([cx, cy, r], i) => <circle key={i} cx={cx} cy={cy} r={r} fill={INK} />)}
       </g>
+      </g>
     </svg>
+  );
+}
+
+/** Border tesserae: eleven a side, alternating the unit's colour and gold. */
+const TESSERAE = Array.from({ length: 44 }, (_, i) => {
+  const side = Math.floor(i / 11), k = i % 11;
+  const [x, y] = side === 0 ? [3 + k * 8, 3] : side === 1 ? [91, 3 + k * 8] : side === 2 ? [91 - k * 8, 91] : [3, 91 - k * 8];
+  return { x, y, gold: i % 2 === 1 };
+});
+
+/**
+ * The same motif as a Roman floor mosaic: a band of tesserae round the edge,
+ * a gold octagon frame, and the motif laid in coloured stone with lapis lines.
+ */
+function RavennaTile({ m, color }: { m: (typeof MOTIFS)[Motif]; color: string }) {
+  const LAPIS = "var(--glaze-cobalt)";
+  const GOLD = "var(--glaze-ochre)";
+  return (
+    <>
+      <rect x="0" y="0" width="100" height="100" fill="var(--tile)" />
+      {TESSERAE.map((t, i) => (
+        <rect key={i} x={t.x} y={t.y} width="6" height="6" rx="0.8" fill={t.gold ? GOLD : color} opacity={t.gold ? 0.9 : 0.8} />
+      ))}
+      <path d="M36 16 L64 16 L84 36 L84 66 L64 86 L36 86 L16 66 L16 36 Z" fill="none" stroke={GOLD} strokeWidth="1.6" />
+      <path d="M37.5 19.5 L62.5 19.5 L80.5 37.5 L80.5 64.5 L62.5 82.5 L37.5 82.5 L19.5 64.5 L19.5 37.5 Z" fill="none" stroke={GOLD} strokeWidth="0.6" opacity="0.6" />
+      <g strokeLinecap="round" strokeLinejoin="round">
+        <path d={m.wash} fill={color} opacity="0.7" />
+        <path d={m.line} fill="none" stroke={LAPIS} strokeWidth="2" />
+        {m.dots?.map(([cx, cy, r], i) => <circle key={i} cx={cx} cy={cy} r={r} fill={LAPIS} />)}
+      </g>
+    </>
   );
 }
 

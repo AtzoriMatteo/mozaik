@@ -100,4 +100,4 @@ export function useAsr(language: string) {
 }
 
 /** Whisper's language names for our pack codes. */
-export const WHISPER_LANGUAGE: Record<string, string> = { nl: "dutch" };
+export const WHISPER_LANGUAGE: Record<string, string> = { nl: "dutch", it: "italian" };

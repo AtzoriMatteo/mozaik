@@ -11,10 +11,13 @@ export function lemmaFor(w: { word: string; base?: string }): string {
   return (w.base ?? w.word).toLowerCase();
 }
 
-/** "de gracht", "het huis", or just "lopen". */
+/** Article and noun together: "de gracht", but "l'amico" with no space after an apostrophe. */
+export const withArticle = (article: string, lemma: string) => (article.endsWith("'") ? `${article}${lemma}` : `${article} ${lemma}`);
+
+/** "de gracht", "het huis", "l'acqua", or just "lopen". */
 export function dictionaryLabel(pack: LanguagePack, lemma: string): string {
   const article = pack.nounArticle?.(lemma);
-  return article ? `${article} ${lemma}` : lemma;
+  return article ? withArticle(article, lemma) : lemma;
 }
 
 const verbCache = new WeakMap<LanguagePack, ReadonlySet<string>>();
@@ -26,6 +29,10 @@ const verbCache = new WeakMap<LanguagePack, ReadonlySet<string>>();
  */
 function verbsOf(pack: LanguagePack): ReadonlySet<string> {
   let verbs = verbCache.get(pack);
+  if (!verbs && pack.verbList) {
+    verbs = pack.verbList();
+    verbCache.set(pack, verbs);
+  }
   if (!verbs) {
     const set = new Set<string>();
     for (const [form, help] of Object.entries(pack.lexicon)) {

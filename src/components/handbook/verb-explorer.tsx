@@ -121,7 +121,7 @@ function VerbView({ pack, input, onGo }: { pack: LanguagePack; input: string; on
   if (!t) {
     return (
       <p className="lede">
-        &ldquo;{input}&rdquo; doesn&apos;t look like a verb. Dutch infinitives end in -en or -n (werken, gaan).
+        &ldquo;{input}&rdquo; doesn&apos;t look like a verb. {pack.verbShape}
       </p>
     );
   }
@@ -152,7 +152,7 @@ function VerbView({ pack, input, onGo }: { pack: LanguagePack; input: string; on
             </dd>
           </div>
           <div>
-            <dt>Present participle</dt>
+            <dt>{t.presentParticipleLabel ?? "Present participle"}</dt>
             <dd lang={lang}>{t.presentParticiple}</dd>
           </div>
         </dl>

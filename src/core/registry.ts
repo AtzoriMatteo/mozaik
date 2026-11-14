@@ -1,5 +1,6 @@
 import type { LanguagePack } from "./language-pack";
 import { dutch } from "@/packs/nl";
+import { italian } from "@/packs/it";
 
 /**
  * All installed language packs. Adding a language = adding a folder under
@@ -8,7 +9,7 @@ import { dutch } from "@/packs/nl";
  * There is deliberately no "default language": which language someone is
  * learning is their choice, stored per learner (see chooseLearningPack).
  */
-const packs: readonly LanguagePack[] = [dutch];
+const packs: readonly LanguagePack[] = [dutch, italian];
 
 export function listPacks(): readonly LanguagePack[] {
   return packs;

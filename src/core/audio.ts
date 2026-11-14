@@ -1,4 +1,5 @@
 import type { LanguagePack } from "./language-pack";
+import { withArticle } from "./dictionary";
 
 /**
  * Recorded audio for course sentences. Every sentence the course reads aloud
@@ -83,7 +84,7 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
     if (/\d/.test(form)) continue;
     const lemma = (help.base ?? form).toLowerCase();
     const article = pack.nounArticle?.(lemma);
-    word(article ? `${article} ${lemma}` : lemma);
+    word(article ? withArticle(article, lemma) : lemma);
   }
   for (const e of pack.expressions ?? []) word(e.phrase);
   for (const v of pack.commonVerbs?.() ?? []) word(v);
@@ -92,7 +93,7 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
     for (const t of [...handbook.topics, ...handbook.phrases, ...handbook.spelling]) {
       for (const e of t.entries) {
         const line = e.nl.replace(/\s*\/.*$/, "").replace(/\.\.\./g, "").trim();
-        if (line && !/^[\d.:\se]+$/.test(line)) word(line);
+        if (line && !/^[\d.:\s°e]+$/.test(line)) word(line);
       }
     }
   }

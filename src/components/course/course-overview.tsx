@@ -89,13 +89,15 @@ export function CourseOverview() {
         </section>
       ))}
 
+      {pack.resources?.length ? (
       <section className="beyond-teaser">
-        <h2>Beyond the course</h2>
-        <p>Real Dutch for your level: videos, shows, podcasts and books, picked to match what you can follow.</p>
-        <Link href={`/beyond/${pack.code}`} className="button button-quiet">
-          See what to watch, hear and read
-        </Link>
-      </section>
+          <h2>Beyond the course</h2>
+          <p>Real {pack.name} for your level: videos, shows, podcasts and books, picked to match what you can follow.</p>
+          <Link href={`/beyond/${pack.code}`} className="button button-quiet">
+            See what to watch, hear and read
+          </Link>
+        </section>
+      ) : null}
       <LearningTip pack={pack} place="course" />
     </>
   );

@@ -29,7 +29,7 @@ export default function LoginPage() {
           ))}
         </div>
         <p className="login-tagline">
-          Learn Dutch, tile by tile.
+          Learn Dutch or Italian, tile by tile.
           <span>Real texts, listening, grammar and writing. Free.</span>
         </p>
       </section>

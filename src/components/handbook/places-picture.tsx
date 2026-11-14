@@ -33,15 +33,16 @@ const SCENES: { word: string; draw: (x: number) => React.ReactNode }[] = [
   { word: "achter", draw: (x) => (<><Cat x={x + 40} y={50} s={0.8} faded /><Box x={x} /></>) },
 ];
 
-export function PlacesPicture() {
+/** `words` labels the six scenes in the language being learned. */
+export function PlacesPicture({ words, lang = "nl" }: { words?: readonly string[]; lang?: string }) {
   return (
     <svg className="places-picture" viewBox="0 0 480 110" role="img" aria-label="A cat in, on, under, next to, in front of and behind a box">
       {SCENES.map((scene, i) => (
         <g key={scene.word}>
           <rect x={i * 80 + 2} y={2} width={76} height={106} rx={3} fill="none" stroke="var(--grout)" />
           {scene.draw(i * 80)}
-          <text x={i * 80 + 40} y={102} textAnchor="middle" fontSize="12" fontWeight="600" fill={INK} lang="nl">
-            {scene.word}
+          <text x={i * 80 + 40} y={102} textAnchor="middle" fontSize="12" fontWeight="600" fill={INK} lang={lang}>
+            {words?.[i] ?? scene.word}
           </text>
         </g>
       ))}

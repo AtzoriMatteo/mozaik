@@ -24,6 +24,8 @@ export type VerbTables = {
   auxiliary: string;
   participle: string;
   presentParticiple: string;
+  /** What to call it, when not "Present participle" (Italian: "Gerund"). */
+  presentParticipleLabel?: string;
   /** Imperative forms: informal and polite. */
   imperative: { informal: string; polite: string };
   tenses: Tense[];

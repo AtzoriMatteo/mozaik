@@ -7,8 +7,8 @@ export const metadata: Metadata = { title: "Handbook · Mozaik" };
 const SECTIONS = [
   { href: "/handbook/words", title: "Words by topic", line: "Numbers, the clock, days, family, food, home, where things are" },
   { href: "/handbook/grammar", title: "Grammar at a glance", line: "Every pattern in the course, with its table" },
-  { href: "/handbook/phrases", title: "Phrases", line: "Shop, café, doctor, phone, emails, emergencies" },
-  { href: "/handbook/spelling", title: "Sounds and spelling", line: "Alphabet, long and short vowels, f/v and s/z" },
+  { href: "/handbook/phrases", title: "Phrases", line: "Greetings, shops, cafés, the doctor, the phone, emails" },
+  { href: "/handbook/spelling", title: "Sounds and spelling", line: "The alphabet, spelling rules and tricky sounds" },
 ];
 
 export default function HandbookPage() {

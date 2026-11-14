@@ -5,14 +5,16 @@ import type { CefrLevel } from "@/core/language-pack";
 import { MOSAIC_COLS, MOSAIC_ROWS, MOSAIC_TILES, revealOrder, tilesRevealed } from "@/core/mosaic";
 import { CanalScene } from "./mosaic-art/canal-scene";
 import { PolderScene } from "./mosaic-art/polder-scene";
+import { VaultScene } from "./mosaic-art/vault-scene";
 
 /** The hidden picture for each language and level. More come with each level. */
 const ART: Record<string, ComponentType> = {
   "nl-A1": CanalScene,
   "nl-A2": PolderScene,
+  "it-A1": VaultScene,
 };
 
-/** A plain Delft pattern for levels whose picture isn't painted yet. */
+/** A plain tile pattern for levels whose picture isn't painted yet. */
 function PatternScene() {
   return (
     <g>

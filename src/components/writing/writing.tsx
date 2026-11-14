@@ -434,8 +434,7 @@ function Feedback({
         </>
       ) : (
         <p>
-          Spelling and the A1 grammar Mozaik knows look right: word order, verb forms, de/het, adjective endings,
-          geen/niet and more. A teacher might still suggest other words, and that&apos;s fine.
+          {pack.checkerCovers ?? "Mozaik found nothing to fix."} A teacher might still suggest other words, and that&apos;s fine.
         </p>
       )}
     </section>

@@ -28,7 +28,7 @@ export function HandbookTables({ lang, tables, filterLabel }: { lang: string; ta
     <div className="handbook-tables">
       <div className="handbook-filter">
         <label htmlFor={id}>{filterLabel}</label>
-        <input id={id} type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Dutch or English" autoComplete="off" />
+        <input id={id} type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Either language" autoComplete="off" />
         <div className="handbook-levels" role="group" aria-label="Level">
           {(["all", "A1", "A2"] as const).map((l) => (
             <button key={l} type="button" className="plan-chip" aria-pressed={level === l} onClick={() => setLevel(l)}>
@@ -56,7 +56,7 @@ export function HandbookTables({ lang, tables, filterLabel }: { lang: string; ta
             {t.title} <span className="level-tag">{t.level}</span>
           </h2>
           {t.intro ? <p className="handbook-intro">{t.intro}</p> : null}
-          {t.id === "places" && !f ? <PlacesPicture /> : null}
+          {t.id === "places" && !f ? <PlacesPicture words={t.picture} lang={lang} /> : null}
           <table>
             <tbody>
               {t.entries.map((e) => (

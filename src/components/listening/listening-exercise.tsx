@@ -84,7 +84,7 @@ export function ListeningExercise({ lang, itemId }: { lang: string; itemId: stri
               </label>
             </>
           ) : (
-            <NoVoiceNotice onSkip={() => setStep("transcript")} />
+            <NoVoiceNotice name={pack.name} onSkip={() => setStep("transcript")} />
           )}
         </div>
       ) : null}
@@ -209,11 +209,11 @@ function usePlayer(lang: string, item: ListeningItem, rate: number) {
 
 type Player = ReturnType<typeof usePlayer>;
 
-function NoVoiceNotice({ onSkip }: { onSkip: () => void }) {
+function NoVoiceNotice({ name, onSkip }: { name: string; onSkip: () => void }) {
   return (
     <div className="notice-box">
       <p>
-        <strong>Your device has no Dutch voice yet.</strong> Mozaik uses the free voice built into
+        <strong>Your device has no {name} voice yet.</strong> Mozaik uses the free voice built into
         your device. Add one in your settings: on Windows, Time &amp; language → Speech; on a Mac,
         Accessibility → Spoken content → System voice; on Android, Google speech services. iPhones
         have one already.
