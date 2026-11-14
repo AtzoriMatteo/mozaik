@@ -243,17 +243,81 @@ export function interleave(items: readonly ReviewItem[]): ReviewItem[] {
   return out;
 }
 
-/** Which way to show a word: meaning first, then recall or listening, varied. */
+export type CardDirection = "mixed" | "nl-en" | "en-nl";
+export type WordCardKind = "context" | "word" | "recall" | "listen" | "produce";
+
+/**
+ * Which way to show a word. In mixed review words climb a ladder as you know
+ * them better:
+ *   stage 0–1  the Dutch word in its sentence → what it means
+ *   stage 2–3  the Dutch word on its own (or a gap in the sentence, or heard)
+ *   stage 4+   the English → type the Dutch yourself
+ * A miss sends the word back to the start, so it climbs again.
+ * "nl-en" never asks you to produce; "en-nl" always does.
+ */
 export function wordCardFor(
   stage: number,
   id: string,
-  enabled: { recall: boolean; listen: boolean },
-): "meaning" | "recall" | "listen" {
-  if (stage < 2) return "meaning";
-  const options: ("meaning" | "recall" | "listen")[] = ["meaning"];
-  if (enabled.recall) options.push("recall");
-  if (enabled.listen) options.push("listen");
+  opts: { direction?: CardDirection; recall: boolean; listen: boolean },
+): WordCardKind {
+  const direction = opts.direction ?? "mixed";
+  if (direction === "en-nl") return "produce";
   let h = stage;
   for (const c of id) h = (h * 31 + c.charCodeAt(0)) >>> 0;
-  return options[h % options.length];
+  const pick = (options: WordCardKind[]) => options[h % options.length];
+  if (stage < 2) return "context";
+  if (stage < 4 || direction === "nl-en") {
+    const options: WordCardKind[] = ["word", "word"];
+    if (opts.recall) options.push("recall");
+    if (opts.listen) options.push("listen");
+    return pick(options);
+  }
+  const options: WordCardKind[] = ["produce", "produce", "produce"];
+  if (opts.listen) options.push("listen");
+  return pick(options);
+}
+
+export type ProduceVerdict = { verdict: "right" | "almost" | "wrong"; note?: string };
+
+const plain = (s: string) =>
+  s
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[.!?,;:]+$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+function distance(a: string, b: string): number {
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++)
+    for (let j = 1; j <= b.length; j++)
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+
+/**
+ * Checks a typed Dutch answer. Nouns want their article (de/het): the word
+ * without it, or with the wrong one, is "almost". One letter off, or a
+ * missing accent, is also "almost". Anything else is wrong.
+ */
+export function checkProduced(typed: string, lemma: string, article: string | null): ProduceVerdict {
+  const answer = typed.trim().toLowerCase().replace(/\s+/g, " ").replace(/[.!?]+$/, "");
+  if (!answer) return { verdict: "wrong" };
+  const target = article ? `${article} ${lemma}` : lemma;
+  if (answer === target) return { verdict: "right" };
+  const [first, ...rest] = answer.split(" ");
+  const bare = ["de", "het", "een"].includes(first) ? rest.join(" ") : answer;
+  const typedArticle = ["de", "het"].includes(first) ? first : null;
+  if (bare === lemma || plain(bare) === plain(lemma)) {
+    if (!article) return plain(answer) === plain(lemma) ? { verdict: "almost", note: "Check the accents." } : { verdict: "right" };
+    if (!typedArticle) return { verdict: "almost", note: `Right word. Learn it with its article: ${article} ${lemma}.` };
+    if (typedArticle !== article) return { verdict: "almost", note: `Right word, but it's ${article} ${lemma}.` };
+    return { verdict: "almost", note: "Check the accents." };
+  }
+  if (distance(plain(bare), plain(lemma)) === 1 && lemma.length > 3) {
+    return { verdict: "almost", note: `Nearly: it's spelled ${target}.` };
+  }
+  return { verdict: "wrong" };
 }

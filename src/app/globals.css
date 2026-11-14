@@ -4328,3 +4328,43 @@ a {
 .verb-more {
   margin-top: 1.5rem;
 }
+
+/* Review: the word alone, and English → type the Dutch */
+.review-solo {
+  margin: 1.25rem 0;
+  font-family: var(--font-read);
+  font-size: var(--step-3);
+  line-height: 1.1;
+  color: var(--heading);
+}
+.review-solo-en {
+  font-size: var(--step-2);
+  font-style: italic;
+}
+.review-hint {
+  margin: -0.5rem 0 1rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+.produce-form {
+  display: grid;
+  gap: 0.75rem;
+}
+.produce-input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  background: var(--tile);
+  color: inherit;
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+}
+.produce-input:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+.produce-yours {
+  color: var(--ink-muted);
+}

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dutch } from "@/packs/nl";
 import {
-  buildSession, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor,
+  buildSession, checkProduced, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor,
   type Done, type ReviewItem, type Schedule,
 } from "./review-items";
 import { GRADUATED_DUE, GRADUATED_STAGE } from "./srs";
@@ -111,10 +111,13 @@ describe("building a session", () => {
 
 describe("word card directions", () => {
   it("shows the meaning card while a word is new", () => {
-    expect(wordCardFor(0, "w:x", { recall: true, listen: true })).toBe("meaning");
+    expect(wordCardFor(0, "w:x", { recall: true, listen: true })).toBe("context");
   });
   it("only uses directions that are switched on", () => {
-    for (let st = 2; st < 7; st++) expect(wordCardFor(st, "w:y", { recall: false, listen: false })).toBe("meaning");
+    for (let st = 2; st < 4; st++) expect(wordCardFor(st, "w:y", { recall: false, listen: false })).toBe("word");
+    for (let st = 4; st < 7; st++) expect(wordCardFor(st, "w:y", { recall: false, listen: false })).toBe("produce");
+    expect(wordCardFor(0, "w:y", { direction: "en-nl", recall: false, listen: false })).toBe("produce");
+    for (let st = 0; st < 7; st++) expect(wordCardFor(st, "w:y", { direction: "nl-en", recall: false, listen: false })).not.toBe("produce");
   });
 });
 
@@ -123,5 +126,17 @@ describe("graduated words", () => {
     const items = [{ kind: "word", id: "w:huis" }] as ReviewItem[];
     const schedules = new Map([["w:huis", { stage: GRADUATED_STAGE, dueAt: GRADUATED_DUE, introducedAt: "2026-11-01T10:00:00" }]]);
     expect(buildSession(items, schedules, { kinds: new Set(["word"]), size: 10, newPerDay: 10, now })).toEqual([]);
+  });
+});
+
+describe("typed answers", () => {
+  it("wants nouns with their article", () => {
+    expect(checkProduced("de keuken", "keuken", "de").verdict).toBe("right");
+    expect(checkProduced("keuken", "keuken", "de").verdict).toBe("almost");
+    expect(checkProduced("het keuken", "keuken", "de").verdict).toBe("almost");
+    expect(checkProduced("tellen", "tellen", null).verdict).toBe("right");
+    expect(checkProduced("telen", "tellen", null).verdict).toBe("almost");
+    expect(checkProduced("drinken", "tellen", null).verdict).toBe("wrong");
+    expect(checkProduced("", "tellen", null).verdict).toBe("wrong");
   });
 });
