@@ -26,6 +26,8 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
   const progress = useCourseProgress(pack);
   const [mode, setMode] = useState<"learn" | "practise" | "done">("learn");
   const [score, setScore] = useState(0);
+  // Once started, the exercises stay where you left them while you look back at the pattern.
+  const [started, setStarted] = useState(false);
 
   return (
     <article className="grammar">
@@ -56,24 +58,34 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
             </ul>
           </section>
 
-          <button type="button" className="button" onClick={() => setMode("practise")}>
-            Practise ({lesson.exercises.length} exercises)
+          <button
+            type="button"
+            className="button"
+            onClick={() => {
+              setStarted(true);
+              setMode("practise");
+            }}
+          >
+            {started ? "Back to the exercises" : `Practise (${lesson.exercises.length} exercises)`}
           </button>
         </>
       ) : null}
 
-      {mode === "practise" ? (
-        <ExerciseRunner
-          lang={lang}
-          seed={point.id}
-          exercises={lesson.exercises}
-          onBack={() => setMode("learn")}
-          onDone={(right) => {
-            setScore(right);
-            setMode("done");
-            progress.markGrammar(point.id);
-          }}
-        />
+      {started && mode !== "done" ? (
+        <div hidden={mode !== "practise"}>
+          <ExerciseRunner
+            lang={lang}
+            seed={point.id}
+            exercises={lesson.exercises}
+            onBack={() => setMode("learn")}
+            onDone={(right) => {
+              setScore(right);
+              setMode("done");
+              setStarted(false);
+              progress.markGrammar(point.id);
+            }}
+          />
+        </div>
       ) : null}
 
       {mode === "done" ? (

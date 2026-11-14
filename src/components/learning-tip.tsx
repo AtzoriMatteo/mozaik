@@ -1,24 +1,47 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
-import { pickTip, tipsFor, type TipPlace } from "@/core/tips";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { tipOrder, tipsFor, type TipPlace } from "@/core/tips";
 import type { LanguagePack } from "@/core/language-pack";
 
 const noop = () => () => {};
-const today = () => Math.floor(Date.now() / 86_400_000);
+const KEY = "mozaik:tips-seen";
+
+function readSeen(): Record<string, number> {
+  try {
+    return JSON.parse(window.localStorage.getItem(KEY) ?? "{}") as Record<string, number>;
+  } catch {
+    return {};
+  }
+}
+
+function markSeen(id: string) {
+  try {
+    window.localStorage.setItem(KEY, JSON.stringify({ ...readSeen(), [id]: Date.now() }));
+  } catch {
+    // Storage unavailable: tips just won't remember what you've seen.
+  }
+}
 
 /**
- * One learning tip, the same all day for a given place, with a way to see
- * another. Rendered in the browser only, so the day can't mismatch the
- * server's.
+ * One learning tip, picked from the ones you haven't seen in the longest
+ * time, so every visit brings something new; "Another tip" moves on.
+ * Rendered in the browser only.
  */
 export function LearningTip({ pack, place }: { pack: LanguagePack | null; place: TipPlace }) {
-  const day = useSyncExternalStore(noop, today, () => -1);
+  const client = useSyncExternalStore(noop, () => true, () => false);
+  // Fixed for this visit: which tips were seen when, and a shuffle seed.
+  const [visit] = useState(() => (typeof window === "undefined" ? null : { seen: readSeen(), seed: Math.random() }));
   const [offset, setOffset] = useState(0);
-  if (day < 0) return null;
   const tips = tipsFor(place, pack?.tips);
-  const tip = pickTip(tips, day, place, offset);
-  if (!tip) return null;
+  const order = visit ? tipOrder(tips, visit.seen, visit.seed) : [];
+  const tip = order.length ? order[offset % order.length] : null;
+
+  useEffect(() => {
+    if (tip) markSeen(tip.id);
+  }, [tip]);
+
+  if (!client || !tip) return null;
   return (
     <aside className="learning-tip" aria-label="Learning tip">
       <span className="learning-tip-mark" aria-hidden="true">i</span>

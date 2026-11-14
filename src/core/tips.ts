@@ -95,3 +95,16 @@ export function pickTip(tips: readonly LearningTip[], day: number, place: TipPla
   for (const c of place) h = (h * 31 + c.charCodeAt(0)) % 997;
   return tips[(day + h + offset) % tips.length];
 }
+
+/**
+ * Tips in the order to show them: the ones seen longest ago (or never) first,
+ * shuffled by `seed` among equals, so each visit brings a different tip.
+ */
+export function tipOrder(tips: readonly LearningTip[], lastSeen: Readonly<Record<string, number>>, seed: number): LearningTip[] {
+  const shuffle = (id: string) => {
+    let h = Math.floor(seed * 2 ** 31);
+    for (const c of id) h = (Math.imul(h ^ c.charCodeAt(0), 0x01000193) >>> 0) % 2 ** 31;
+    return h;
+  };
+  return [...tips].sort((a, b) => (lastSeen[a.id] ?? 0) - (lastSeen[b.id] ?? 0) || shuffle(a.id) - shuffle(b.id));
+}
