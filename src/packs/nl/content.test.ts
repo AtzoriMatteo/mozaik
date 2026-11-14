@@ -26,11 +26,14 @@ describe("Dutch course structure", () => {
     for (const t of texts) expect(dutch.levels).toContain(t.level);
   });
 
-  it("keeps A1 texts substantial but readable (120–320 words)", () => {
-    for (const t of texts.filter((t) => t.level === "A1")) {
+  it.each([
+    ["A1", 120, 320],
+    ["A2", 120, 380],
+  ] as const)("keeps %s texts substantial but readable (%i–%i words)", (level, min, max) => {
+    for (const t of texts.filter((t) => t.level === level)) {
       const n = countWords(t);
-      expect(n, t.id).toBeGreaterThanOrEqual(120);
-      expect(n, t.id).toBeLessThanOrEqual(320);
+      expect(n, t.id).toBeGreaterThanOrEqual(min);
+      expect(n, t.id).toBeLessThanOrEqual(max);
     }
   });
 
@@ -65,10 +68,10 @@ describe("Dutch word help", () => {
   });
 });
 
-describe("A1 coverage", () => {
-  const a1 = texts.filter((t) => t.level === "A1");
+describe.each(["A1", "A2"] as const)("%s coverage", (level) => {
+  const a1 = texts.filter((t) => t.level === level);
 
-  it("every A1 core word appears in at least one A1 text", () => {
+  it(`every ${level} core word appears in at least one ${level} text`, () => {
     const met = new Set<string>();
     for (const t of a1) {
       for (const s of t.paragraphs.flat()) {
@@ -79,13 +82,13 @@ describe("A1 coverage", () => {
         }
       }
     }
-    const missing = (dutch.coreVocabulary.A1 ?? []).filter((w) => !met.has(w));
+    const missing = (dutch.coreVocabulary[level] ?? []).filter((w) => !met.has(w));
     expect(missing).toEqual([]);
   });
 
-  it("every A1 grammar point is featured by at least one A1 text", () => {
+  it(`every ${level} grammar point is featured by at least one ${level} text`, () => {
     const featured = new Set(a1.flatMap((t) => t.grammar));
-    const missing = dutch.grammar.filter((g) => g.level === "A1" && !featured.has(g.id));
+    const missing = dutch.grammar.filter((g) => g.level === level && !featured.has(g.id));
     expect(missing.map((g) => g.id)).toEqual([]);
   });
 
@@ -143,7 +146,7 @@ describe("Dutch grammar lessons", () => {
     ...dutch.units.flatMap((u) => u.listening.flatMap((l) => l.lines.map((x) => x.text))),
   ].map((s) => s.replace(/"/g, ""));
 
-  it.each(dutch.grammar.filter((g) => g.level === "A1").map((g) => [g.id, g] as const))(
+  it.each(dutch.grammar.filter((g) => g.level === "A1" || g.level === "A2").map((g) => [g.id, g] as const))(
     "%s: has a unit and a full lesson",
     (_id, g) => {
       expect(units).toContain(g.unit);

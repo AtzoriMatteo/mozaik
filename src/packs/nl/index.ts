@@ -4,11 +4,12 @@ import { lexicon } from "./lexicon";
 import { grammar } from "./grammar";
 import { units } from "./units";
 import { coreVocabularyA1 } from "./vocabulary";
+import { coreVocabularyA2 } from "./vocabulary-a2";
 import { sounds } from "./speaking/sounds";
 import { resources } from "./resources";
 import { tips } from "./tips";
 import { articleFor } from "./articles";
-import { zipfA1 } from "./frequency";
+import { zipf } from "./frequency";
 import { makeChecker } from "./writing/check";
 import { isNumberWord } from "./writing/data";
 
@@ -83,9 +84,9 @@ export const dutch: LanguagePack = {
   lexicon,
   grammar,
   sounds,
-  coreVocabulary: { A1: coreVocabularyA1 },
+  coreVocabulary: { A1: coreVocabularyA1, A2: coreVocabularyA2 },
   resources,
   tips,
   nounArticle: articleFor,
-  wordFrequency: zipfA1,
+  wordFrequency: zipf,
 };

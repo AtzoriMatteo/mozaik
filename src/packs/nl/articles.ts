@@ -45,6 +45,25 @@ const DE = [
   "wereld", "wijn", "winterjas", "woensdagavond", "woensdagmiddag", "wolk", "woonplaats", "wortel",
   "yoghurt", "zaal", "zak", "zeespiegel", "zelfscan", "zoen", "zondagavond", "zonnebrandcrème",
   "zonsondergang", "zorg", "zwembroek",
+  // A2
+  "afwas", "angst", "bankrekening", "belasting", "beslissing", "bezichtiging", "boer", "borg", "buitenlander", "bushalte",
+  "collectie", "dienstregeling", "droom", "eerlijkheid", "eeuw", "ezel", "fabriek", "file", "fooi", "groei",
+  "groep", "grond", "helft", "hulp", "huurwoning", "inschrijving", "interesse", "jongere", "kaars", "kant",
+  "klantenservice", "kleindochter", "koffer", "kopie", "lift", "maaltijd", "manager", "manier", "medewerker", "mening",
+  "muur", "nederlander", "ober", "oefening", "oorlog", "overheid", "paniek", "paraplu", "plak", "plant",
+  "plek", "rekening", "reden", "rivier", "rugzak", "rust", "ruzie", "saus", "schat", "schilder",
+  "schrijver", "sleutel", "snack", "specialist", "spits", "stap", "storing", "storm", "tandenborstel", "tentoonstelling",
+  "toegang", "toekomst", "tv", "uitnodiging", "vacature", "verf", "vergadering", "verhuizing", "verkoudheid", "verrassing",
+  "verwarming", "verwijzing", "vlag", "vlinder", "vloer", "voedselbank", "vorm", "vrijwilliger", "wandeling", "wedstrijd",
+  "werknemer", "wetenschapper", "worst", "zaak", "zender", "aangifte", "afhaalzaak", "assistente", "bacterie", "bewoner",
+  "bijbaan", "bioscoop", "brievenbus", "buienradar", "buurtapp", "cursist", "dam", "damesfiets", "dijk", "directeur",
+  "emmer", "erwt", "etalage", "finale", "gast", "generatie", "geschiedenis", "gids", "groepsapp", "handelaar",
+  "heide", "huisartsenpost", "kapitein", "ketel", "ketting", "kip", "klant", "knie", "koe", "kolonie",
+  "kou", "kunsthandel", "kust", "mand", "matroos", "modder", "munt", "opstand", "oranjekoorts", "paddenstoel",
+  "parel", "peper", "personeelsmanager", "pindasaus", "poortwachter", "praktijk", "prei", "regering", "riem", "rijsttafel",
+  "rookworst", "salade", "schelp", "schimmel", "schil", "specerij", "spier", "stagiair", "statiegeld", "stiltecoupé",
+  "tegel", "temperatuur", "theorie", "toko", "tompouce", "training", "uitagenda", "verkiezing", "verzorgingshuis", "vouwfiets",
+  "vrachtwagen", "wachtlijst", "waterschap", "wei", "werkdag", "zandbank", "zeehond", "zolder", "zonnebloem", "zorgverzekering",
 ];
 
 const HET = [
@@ -58,6 +77,16 @@ const HET = [
   "recept", "schaap", "scherm", "schilderij", "schrift", "slot", "snoep", "spoor", "strandweer",
   "stuk", "taalmaatje", "tuinafval", "verschil", "vest", "vliegtuig", "vliegveld", "voetbal",
   "voornemen", "vuur", "zout",
+  // A2
+  "abonnement", "appartement", "avontuur", "bedrag", "bedrijf", "budget", "contact", "dagboek", "dak", "dier",
+  "ding", "gebied", "gebouw", "geheim", "gezegde", "huurcontract", "journaal", "middel", "oor", "overleg",
+  "paspoort", "perron", "privéleven", "project", "rijbewijs", "salaris", "schip", "shirt", "sollicitatiegesprek", "spreekuur",
+  "systeem", "teken", "terras", "verhaal", "vertrek", "vervoer", "voordeel", "virus", "vrijwilligerswerk", "achterhuis",
+  "advies", "balkon", "betaalverzoek", "bestuur", "consultatiebureau", "dessert", "elftal", "fietsenrek", "framenummer", "gemaal",
+  "gemeentehuis", "gerecht", "geweld", "herhaalrecept", "hostel", "kampioenschap", "kantoorgebouw", "koffiedik", "kraanwater", "lidmaatschap",
+  "mailadres", "natuurgebied", "nepnieuws", "ongemak", "openbaar", "pad", "programma", "regenwater", "restafval", "riool",
+  "roggebrood", "scheepvaartmuseum", "slot", "sportveld", "toernooi", "touw", "uitje", "vak", "vakantiegeld", "varkensvlees",
+  "wad", "waterplein", "weiland", "wereldkampioenschap",
 ];
 
 export const ARTICLES: ReadonlyMap<string, "de" | "het"> = new Map([

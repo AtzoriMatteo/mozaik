@@ -2,7 +2,7 @@ import type { Lexicon } from "@/core/content";
 import type { Token } from "@/core/language-pack";
 import type { WritingIssue } from "@/core/writing";
 import {
-  ADJECTIVES, ADJECTIVES_E, COMPARATIVES, COMPARE, DAYS, DE_NOUNS, HEBBEN, HEBBEN_FORMS, HET_NOUNS,
+  ADJECTIVES, ADJECTIVES_E, NON_PRESENT, COMPARATIVES, COMPARE, DAYS, DE_NOUNS, HEBBEN, HEBBEN_FORMS, HET_NOUNS,
   IRREGULAR_VERBS, isNumberWord, MONTHS, QUESTION_WORDS, SLOT_ONE_WORDS, SUBJECTS, ZIJN, ZIJN_FORMS,
 } from "./data";
 
@@ -51,8 +51,13 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
   const finiteVerb = (w: string) =>
     IRREGULAR_VERBS.has(w) ||
     (isVerbInf(base(w)) && base(w) !== w && !w.endsWith("en") && w !== `${base(w)}s` && !/^ge/.test(w));
-  const isNoun = (w: string) => HET_NOUNS.has(w) || DE_NOUNS.has(w) || (w.endsWith("je") && !!lexicon[w]);
-  const isHet = (w: string) => HET_NOUNS.has(w) || (w.endsWith("je") && !!lexicon[w] && !DE_NOUNS.has(w));
+  // -je words are diminutives (het-words), except adjective forms like vrije, blije.
+  const isDiminutive = (w: string) => w.endsWith("je") && !!lexicon[w] && !ADJECTIVES_E.has(w);
+  const isNoun = (w: string) => HET_NOUNS.has(w) || DE_NOUNS.has(w) || isDiminutive(w);
+  const isHet = (w: string) => HET_NOUNS.has(w) || (isDiminutive(w) && !DE_NOUNS.has(w));
+  /** Simple past or a participle: werkte, praatten, vond, besteld. Agreement is a present-tense rule. */
+  const isPast = (w: string) =>
+    NON_PRESENT.has(w) || (/(de|te|den|ten)$/.test(w) && isVerbInf(base(w)) && base(w) !== w);
   const isNumber = (w: string) => /^\d+$/.test(w) || isNumberWord(w);
   const comparative = (adj: string) =>
     COMPARE[adj] ?? (adj.endsWith("r") ? `${adj}der` : `${(ADJECTIVES[adj] ?? adj).replace(/e$/, "")}er`);
@@ -64,7 +69,7 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
     if (person === "pl") return inf;
     // Present-tense forms only: no participles (ge…), plurals or past forms.
     const forms = Object.keys(lexicon).filter(
-      (k) => formOf(k, inf) && k !== inf && !k.endsWith("en") && !/(de|te)$/.test(k) && (!k.startsWith("ge") || inf.startsWith("ge")),
+      (k) => formOf(k, inf) && k !== inf && !k.endsWith("en") && !NON_PRESENT.has(k) && !/(de|te)$/.test(k) && (!k.startsWith("ge") || inf.startsWith("ge")),
     );
     // The stem is the form without -t; only verbs like zitten have a stem ending in t.
     const stem = forms.find((f) => !f.endsWith("t")) ?? forms.find((f) => forms.every((g) => g === f || !g.startsWith(f)));
@@ -154,7 +159,7 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
           if (person === "3?") want = v.norm === "heeft" || v.norm === "hebben" ? null : "heeft";
           else if (person === "2f") want = v.norm === "hebt" || v.norm === "heeft" ? null : "hebt";
           else want = HEBBEN[person] === v.norm ? null : HEBBEN[person];
-        } else if (person !== "3?" && !IRREGULAR_VERBS.has(v.norm)) {
+        } else if (person !== "3?" && !IRREGULAR_VERBS.has(v.norm) && !isPast(v.norm)) {
           const p = person === "2f" ? "3s" : person === "2s" ? "3s" : person;
           const right = formFor(v.norm, p);
           if (right && right !== v.norm && finiteOrInf(v.norm)) want = right;
@@ -231,13 +236,15 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
           if (uur) add(w, w, { kind: "grammar", message: "Clock times take om: om acht uur, om half negen.", fix: keepCase(w.text, "om"), lesson: "time-numbers" });
         }
 
+        // "niet meer" / "nooit meer" means "no longer": not a comparison.
+        const noLonger = (k: number) => w.norm === "meer" && k > 0 && ["niet", "nooit", "geen"].includes(s[k - 1].norm);
         // groter als → groter dan
         const afterMeer = i > 0 && s[i - 1].norm === "meer" && (ADJECTIVES[w.norm] || COMPARE[w.norm]);
-        if ((COMPARATIVES.has(w.norm) || afterMeer) && n1.norm === "als") {
+        if ((COMPARATIVES.has(w.norm) || afterMeer) && n1.norm === "als" && !noLonger(i)) {
           add(n1, n1, { kind: "grammar", message: "After a comparing word, 'than' is dan: groter dan.", fix: "dan", lesson: "comparatives" });
         }
         // meer mooi → mooier
-        if (w.norm === "meer" && (ADJECTIVES[n1.norm] || COMPARE[n1.norm]) && !(n2 && isNoun(n2.norm))) {
+        if (w.norm === "meer" && !noLonger(i) && (ADJECTIVES[n1.norm] || COMPARE[n1.norm]) && !(n2 && isNoun(n2.norm))) {
           add(w, n1, { kind: "grammar", message: `Dutch adds -er instead of meer: ${comparative(n1.norm)}.`, fix: comparative(n1.norm), lesson: "comparatives" });
         }
       });
