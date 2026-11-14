@@ -7,6 +7,7 @@ import {
   MINUTE_CHOICES,
   WEEKDAYS,
   WEEKDAY_SHORT,
+  daysLabel,
   addDays,
   finishDate,
   longDate,
@@ -66,12 +67,13 @@ export function PlanSetup({
   const set = (patch: Partial<PlanSettings>) => setS((prev) => ({ ...prev, ...patch }));
 
   const remaining = remainingActivities(pack, s.level, isDone, s.includeSpeaking);
-  const finish = finishDate(schedule(pack, s, remaining, today, 900));
+  const finish = finishDate(schedule(pack, s, remaining, today, 3000));
+  const perWeek = s.minutesPerDay * s.days.length;
   const need = s.strictness === "strict" ? minutesNeeded(pack, s, remaining, today) : null;
 
-  const steps = ["goal", "time", "days", "strictness", "extras"] as const;
+  const steps = ["goal", "days", "time", "strictness", "extras"] as const;
   const last = step === steps.length - 1;
-  const canNext = step !== 2 || s.days.length > 0;
+  const canNext = steps[step] !== "days" || s.days.length > 0;
 
   return (
     <section className="plan-setup" aria-labelledby="plan-setup-title">
@@ -114,12 +116,14 @@ export function PlanSetup({
           <p className="plan-estimate">
             {finish ? (
               <>
-                At {s.minutesPerDay} minutes a day you&apos;d finish {s.level} around <strong>{longDate(finish, today)}</strong>.
+                {s.minutesPerDay} minutes on {daysLabel(s.days)} ({s.days.length} {s.days.length === 1 ? "day" : "days"} a week, about{" "}
+                {perWeek >= 60 ? `${Math.round(perWeek / 6) / 10} hours` : `${perWeek} minutes`} in total): you&apos;d finish {s.level} around{" "}
+                <strong>{longDate(finish, today)}</strong>.
               </>
             ) : (
               `You've done everything in ${s.level}.`
             )}{" "}
-            Short and regular beats long and rare.
+            Short and regular beats long and rare. Times are estimates; the plan re-plans from whatever you actually finish.
           </p>
         </>
       ) : null}
@@ -151,7 +155,13 @@ export function PlanSetup({
               Three days a week
             </button>
           </p>
-          {s.days.length === 0 ? <p className="error">Pick at least one day.</p> : null}
+          {s.days.length === 0 ? (
+            <p className="error">Pick at least one day.</p>
+          ) : (
+            <p className="plan-estimate">
+              {s.days.length} {s.days.length === 1 ? "day" : "days"} a week. Next: how long on each of those days.
+            </p>
+          )}
         </>
       ) : null}
 

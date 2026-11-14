@@ -132,7 +132,7 @@ function PlanView({
     !(a.kind === "write" && (a.unit.writing ?? []).some((t) => todayKeys.has(`writing:${t.id}`)));
   const from = settings.startDate > today ? settings.startDate : today;
   const remaining = remainingActivities(pack, settings.level, doneBeforeToday, settings.includeSpeaking);
-  const days = schedule(pack, settings, remaining, from, 400);
+  const days = schedule(pack, settings, remaining, from, 3000);
   const finish = finishDate(days);
   const todayPlan = days.find((d) => d.date === today);
   const nextStudy = days.find((d) => d.date > today && d.items.length);
@@ -284,7 +284,7 @@ function PlanRow({ pack, item, done }: { pack: LanguagePack; item: PlanItem; don
           </span>
           <span className="plan-row-sub">{sub}</span>
         </span>
-        <span className="plan-row-min">{item.minutes} min</span>
+        <span className="plan-row-min">{item.kind !== "review" && item.total ? `${item.minutes} of ${item.total} min` : `${item.minutes} min`}</span>
         {done ? <span className="sr-only">Done</span> : null}
       </Link>
     </li>

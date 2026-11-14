@@ -1,4 +1,4 @@
-import { minutesToRead } from "./content";
+import { countWords } from "./content";
 import { activities, type Activity } from "./course";
 import type { CefrLevel, LanguagePack } from "./language-pack";
 
@@ -51,28 +51,51 @@ export function defaultSettings(today: string, level: CefrLevel = "A1"): PlanSet
 
 export type PlanItem =
   | { kind: "review"; key: string; minutes: number }
-  | { kind: Activity["kind"]; key: string; minutes: number; activity: Activity };
+  | {
+      kind: Activity["kind"];
+      key: string;
+      /** Minutes planned for this day. */
+      minutes: number;
+      activity: Activity;
+      /** Set when an activity is longer than a study day and spreads over several days. */
+      total?: number;
+    };
 
 export type PlanDay = { date: string; weekday: number; studyDay: boolean; items: PlanItem[]; minutes: number };
 
-/** Rough minutes for one activity, including its questions. */
+/**
+ * Rough minutes for one activity at a learner's pace, including its questions.
+ * Reading: a learner reads about 40 words a minute while tapping words, plus
+ * about a minute per question. Listening: two or three plays, the questions
+ * and the dictation. Writing: the medium length, with time to fix mistakes.
+ */
 export function minutesFor(pack: LanguagePack, a: Activity): number {
   switch (a.kind) {
     case "read": {
       const text = a.unit.texts.find((t) => t.id === a.id);
-      return (text ? minutesToRead(text) : 3) + (text?.tasks?.length ? 3 : 1) + 2;
+      if (!text) return 10;
+      return Math.ceil(countWords(text) / 40) + (text.tasks?.length ?? 0) + 2;
     }
     case "listen":
-      return 7;
+      return 12;
     case "grammar":
-      return 10;
+      return 15;
     case "write":
-      return 20;
+      return a.unit.level === "A1" ? 25 : 30;
     case "speak":
-      return 8;
+      return 10;
     default:
-      return 8;
+      return 10;
   }
+}
+
+/** "weekdays", "every day", "Mon, Wed, Fri". */
+export function daysLabel(days: number[]): string {
+  const set = new Set(days);
+  if (set.size === 7) return "every day";
+  if (set.size === 5 && [1, 2, 3, 4, 5].every((d) => set.has(d))) return "weekdays";
+  if (set.size === 2 && set.has(0) && set.has(6)) return "weekends";
+  return WEEKDAYS.filter((d) => set.has(d)).map((d) => WEEKDAY_SHORT[d]).join(", ");
 }
 
 /**
@@ -113,13 +136,16 @@ export function reviewMinutes(s: PlanSettings): number {
 
 /**
  * Lays the remaining activities over the coming study days. A day takes
- * activities while they fit; an empty day always takes at least one, so a
- * long activity never blocks the plan.
+ * activities while they fit (a couple of minutes over is fine). An activity
+ * longer than the time left on an empty day is spread over several days, so
+ * a 10-minute plan really means about 10 minutes a day.
  */
 export function schedule(pack: LanguagePack, s: PlanSettings, remaining: Activity[], from: string, horizonDays = 120): PlanDay[] {
   const queue = [...remaining];
   const days: PlanDay[] = [];
   const studyDays = new Set(s.days.length ? s.days : [1, 2, 3, 4, 5]);
+  /** Minutes still left of the first activity in the queue, when it was split. */
+  let carry: number | null = null;
   for (let i = 0; i < horizonDays && (queue.length || days.length < 7); i++) {
     const date = addDays(from, i);
     const weekday = weekdayOf(date);
@@ -127,19 +153,32 @@ export function schedule(pack: LanguagePack, s: PlanSettings, remaining: Activit
     const items: PlanItem[] = [];
     let used = 0;
     if (studyDay) {
+      const day = s.minutesPerDay;
       const r = reviewMinutes(s);
       if (r) {
         items.push({ kind: "review", key: `review:${date}`, minutes: r });
         used += r;
       }
       while (queue.length) {
-        const m = minutesFor(pack, queue[0]);
-        const fits = used + m <= s.minutesPerDay + 2;
-        const nothingYet = items.every((x) => x.kind === "review");
-        if (!fits && !nothingYet) break;
-        const a = queue.shift()!;
-        items.push({ kind: a.kind, key: `${a.kind}:${a.id}`, minutes: m, activity: a });
-        used += m;
+        const a = queue[0];
+        const total = minutesFor(pack, a);
+        const m: number = carry ?? total;
+        if (used + m <= day + 2) {
+          queue.shift();
+          items.push({ kind: a.kind, key: `${a.kind}:${a.id}`, minutes: m, activity: a, ...(carry !== null ? { total } : {}) });
+          used += m;
+          carry = null;
+          continue;
+        }
+        const nothingYet = !items.some((x) => x.kind !== "review");
+        if (!nothingYet) break;
+        // Too long for today: do part of it now, the rest on the next study day(s).
+        const part = Math.max(5, day - used);
+        const piece: PlanItem = { kind: a.kind, key: `${a.kind}:${a.id}`, minutes: part, activity: a, total };
+        items.push(piece);
+        used += part;
+        carry = m - part;
+        break;
       }
     }
     days.push({ date, weekday, studyDay, items, minutes: used });
