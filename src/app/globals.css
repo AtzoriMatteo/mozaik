@@ -3220,3 +3220,26 @@ a {
   font-size: 0.9rem;
   color: var(--ink-muted);
 }
+
+/* ---------- Plain text pages (privacy) ---------- */
+
+.prose-page {
+  max-width: 40rem;
+}
+
+.prose-page h2 {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.prose-page p,
+.prose-page li {
+  line-height: 1.6;
+}
+
+.prose-updated,
+.login-privacy {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
