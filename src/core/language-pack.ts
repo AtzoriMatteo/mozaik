@@ -63,6 +63,12 @@ export interface LanguagePack {
 }
 
 /** Every text in a pack, in course order. */
+/** A unit's number within its level (A2 starts again at 1), and how many units the level has. */
+export function unitNumber(pack: LanguagePack, unit: Unit): { n: number; of: number } {
+  const level = pack.units.filter((u) => u.level === unit.level);
+  return { n: level.indexOf(unit) + 1, of: level.length };
+}
+
 export function allTexts(pack: LanguagePack): ReadingText[] {
   return pack.units.flatMap((u) => u.texts);
 }

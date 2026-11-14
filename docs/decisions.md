@@ -5,6 +5,64 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-14 (overnight) — Clearer feedback, visible tips, Plan, the whole of A2
+
+**Right/wrong feedback (Matteo: "should stand out a little more").** Every
+check now ends in a coloured banner with a mark: green ✓ for right, amber
+for almost, red ✗ for wrong, with a short fade-in. Answer options turn green
+or red (wrong ones struck through). Same look in reading, listening,
+grammar and review. The colours are calm tints, not alarms, and the mark
+means it never depends on colour alone.
+
+**Tips (Matteo: "a bit too hidden").** Tips sit in their own tinted card
+with an "i" tile and a "Tip" label, instead of grey small print.
+
+**Plan (Matteo's idea; Claude's design).** A new Plan tab. Five short
+questions (goal, minutes a day, which days, how strict, extras: level,
+review, speaking, week or month view, start date), each with a good
+default, so it takes under a minute. The plan is built from the real
+course: review first, then the next texts, listening, grammar and writing
+in course order, mixed within a unit, fitted into each day's minutes. Today
+is a checklist that ticks itself as you study; the week strip or month
+calendar shows what's coming; strict mode adds a finish date and tells you
+honestly whether you're on track, without guilt. Change or remove the plan
+anytime: it always re-plans from what you've actually done.
+Cost: one new table (`plans`, migration 0006) so the plan follows you
+between devices; until it's run, the plan lives on this device only.
+
+**A2, complete (Matteo: "same depth or even better").** Ten units, kept to
+A2 (no B1 grammar), each with four texts, four listening items, three
+writing topics, two sounds and four shadowing lines, plus 22 grammar
+lessons with examples quoted from the course:
+1 Wat heb je gedaan? (perfect) · 2 Werk zoeken (omdat/want, word order) ·
+3 Een huis zoeken (die/dat, er + preposition) · 4 Zorg in Nederland (kon,
+moest, te + infinitive) · 5 Op reis (simple past) · 6 Nieuws en media
+(indirect questions, als/toen) · 7 Meedoen (om … te, separable past) ·
+8 Uit en cultuur (superlatives, van) · 9 Koken en uit eten (er + number,
+zou) · 10 Water, weer en natuur (zullen, time-manner-place).
+Culture is woven in for everyone, not just for Matteo: the huisarts as
+gatekeeper, the VOC told from both sides, Anne Frank, Van Gogh and his
+sister-in-law Jo, Oranjekoorts, the rijsttafel and Surinamese food, the
+1953 flood and the Delta Works, wadlopen, polderen, the gemeente and BSN,
+recycling, Tikkie. People in the stories come from Portugal, Syria, Ghana,
+Brazil, Japan, Poland, Mexico, Turkey and more.
+- Every A2 word has tap help (about 1,150 new entries); numbers say how
+  they're pronounced (1985 → negentien vijfentachtig, 16.40 → tien over
+  half vijf).
+- A2 core vocabulary (~550 words) feeds New words, sorted by frequency;
+  nouns show de/het on cards. New words still draws from A1 only by
+  default; tick A2 in its settings to add A2 words.
+- Units are numbered per level (A2 starts again at 1).
+- A2 mosaic picture: a polder with windmills, cows and a cyclist.
+- Four A2 links (Jeugdjournaal, Easy Dutch, Dutchies to be, NOS). The new
+  NOS link couldn't be opened from here; it's NOS's homepage.
+
+**Writing checker (Claude).** It no longer flags past forms as wrong
+present forms (ik vond, ik wilde, hij werkte), "niet meer" as a comparison,
+or adjective forms ending in -je (de vrije sector) as diminutives.
+
+---
+
 ## 2026-11-14 — Login page, privacy policy, security headers
 
 **Login page (Matteo: "a lot nicer").** A wall of nine unit tiles beside a

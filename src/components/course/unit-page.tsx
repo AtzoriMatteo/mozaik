@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { minutesToRead } from "@/core/content";
 import { getPack } from "@/core/registry";
-import type { LanguagePack } from "@/core/language-pack";
+import { unitNumber, type LanguagePack } from "@/core/language-pack";
 import { activities, unitGrammar } from "@/core/course";
 import { ActivityLabel } from "./activity-label";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
@@ -28,7 +28,7 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
   const nextHere = activities(pack).find((a) => a.unit.id === unit.id && a.kind !== "speak" && !progress.isDone(a)) ?? null;
   const grammar = unitGrammar(pack, unit);
   const look = unit.look ?? { motif: "tulip" as const, glaze: "cobalt" as const };
-  const n = pack.units.indexOf(unit) + 1;
+  const { n, of } = unitNumber(pack, unit);
   const beyond = resourcesFor(pack, unit.level).filter((r) => r.units?.includes(unit.id));
 
   return (
@@ -40,7 +40,7 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
         <div className="unit-hero-text">
           <p className="reader-unit">
             <span className="level-tag">{unit.level}</span>
-            Unit {n} of {pack.units.length}
+            Unit {n} of {of}
           </p>
           <h1 className="page-title unit-title" lang={lang}>
             <span className="unit-num unit-num-big" aria-hidden="true">{n}</span>
