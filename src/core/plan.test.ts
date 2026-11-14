@@ -7,6 +7,7 @@ import {
   minutesFor,
   minutesNeeded,
   remainingActivities,
+  reviewMinutes,
   schedule,
   weekStart,
   weekdayOf,
@@ -43,13 +44,25 @@ describe("plans", () => {
     }
   });
 
-  it("schedules every remaining activity exactly once", () => {
+  it("schedules every remaining activity, splitting long ones over days", () => {
     const s = defaultSettings(MONDAY);
     const remaining = remainingActivities(dutch, "A1", none, false);
-    const days = schedule(dutch, s, remaining, MONDAY, 400);
+    const days = schedule(dutch, s, remaining, MONDAY, 3000);
     const keys = days.flatMap((d) => d.items.filter((x) => x.kind !== "review").map((x) => x.key));
-    expect(keys.length).toBe(remaining.length);
-    expect(new Set(keys).size).toBe(keys.length);
+    expect(new Set(keys).size).toBe(remaining.length);
+    // A split activity's pieces add up to the whole activity.
+    const first = remaining.find((a) => minutesFor(dutch, a) > s.minutesPerDay)!;
+    const pieces = days.flatMap((d) => d.items).filter((x) => x.key === `${first.kind}:${first.id}`);
+    expect(pieces.length).toBeGreaterThan(1);
+    expect(pieces.reduce((n, x) => n + x.minutes, 0)).toBe(minutesFor(dutch, first));
+  });
+
+  it("keeps each study day close to the minutes chosen", () => {
+    for (const minutesPerDay of [5, 10, 15, 30, 60]) {
+      const s = { ...defaultSettings(MONDAY), minutesPerDay };
+      const days = schedule(dutch, s, remainingActivities(dutch, "A1", none, false), MONDAY, 3000);
+      for (const d of days) expect(d.minutes, `${minutesPerDay} min on ${d.date}`).toBeLessThanOrEqual(Math.max(minutesPerDay, 5 + reviewMinutes(s)) + 2);
+    }
   });
 
   it("finishes sooner with more time, and adapts to what's done", () => {
