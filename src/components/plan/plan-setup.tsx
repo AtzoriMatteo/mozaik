@@ -7,13 +7,17 @@ import {
   MINUTE_CHOICES,
   WEEKDAYS,
   WEEKDAY_SHORT,
-  daysLabel,
   addDays,
+  averageMinutes,
   finishDate,
   longDate,
   minutesNeeded,
   remainingActivities,
+  minutesOn,
+  minutesPerWeek,
   schedule,
+  timeLabel,
+  variesByDay,
   type Goal,
   type PlanSettings,
   type Strictness,
@@ -26,6 +30,9 @@ const GOALS: { id: Goal; label: string; hint: string }[] = [
   { id: "exam", label: "An exam", hint: "Inburgering or NT2: a fixed finish date and a strict plan." },
   { id: "fun", label: "Just for fun", hint: "No pressure. A gentle plan you can drop any day." },
 ];
+
+/** Per-day choices go a bit longer than the usual ones, for a long weekend session. */
+const DAY_CHOICES = [5, 10, 15, 20, 30, 45, 60, 90, 120] as const;
 
 const STRICTNESS: { id: Strictness; label: string; hint: string }[] = [
   { id: "relaxed", label: "Relaxed", hint: "Suggestions for each day. Skip a day and it simply moves on." },
@@ -68,7 +75,15 @@ export function PlanSetup({
 
   const remaining = remainingActivities(pack, s.level, isDone, s.includeSpeaking);
   const finish = finishDate(schedule(pack, s, remaining, today, 3000));
-  const perWeek = s.minutesPerDay * s.days.length;
+  const perWeek = minutesPerWeek(s);
+  const [perDay, setPerDay] = useState(variesByDay(initial));
+  /** Set one weekday's minutes; the same as the usual time clears the exception. */
+  const setDayMinutes = (d: number, m: number) => {
+    const rest = { ...(s.minutesByDay ?? {}) };
+    if (m === s.minutesPerDay) delete rest[d];
+    else rest[d] = m;
+    set({ minutesByDay: Object.keys(rest).length ? rest : undefined });
+  };
   const need = s.strictness === "strict" ? minutesNeeded(pack, s, remaining, today) : null;
 
   const steps = ["goal", "days", "time", "strictness", "extras"] as const;
@@ -113,10 +128,42 @@ export function PlanSetup({
               </button>
             ))}
           </div>
+          {perDay ? (
+            <div className="plan-per-day">
+              {WEEKDAYS.filter((d) => s.days.includes(d)).map((d) => (
+                <label key={d} className="plan-per-day-row">
+                  <span>{WEEKDAY_SHORT[d]}</span>
+                  <select value={minutesOn(s, d)} onChange={(e) => setDayMinutes(d, Number(e.target.value))}>
+                    {DAY_CHOICES.map((m) => (
+                      <option key={m} value={m}>
+                        {m} min{m === s.minutesPerDay ? " (usual)" : ""}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ))}
+              <button
+                type="button"
+                className="text-button"
+                onClick={() => {
+                  set({ minutesByDay: undefined });
+                  setPerDay(false);
+                }}
+              >
+                Same time every day
+              </button>
+            </div>
+          ) : (
+            <p className="plan-shortcuts">
+              <button type="button" className="text-button" onClick={() => setPerDay(true)}>
+                Different time on some days
+              </button>
+            </p>
+          )}
           <p className="plan-estimate">
             {finish ? (
               <>
-                {s.minutesPerDay} minutes on {daysLabel(s.days)} ({s.days.length} {s.days.length === 1 ? "day" : "days"} a week, about{" "}
+                {timeLabel(s)} ({s.days.length} {s.days.length === 1 ? "day" : "days"} a week, about{" "}
                 {perWeek >= 60 ? `${Math.round(perWeek / 6) / 10} hours` : `${perWeek} minutes`} in total): you&apos;d finish {s.level} around{" "}
                 <strong>{longDate(finish, today)}</strong>.
               </>
@@ -194,8 +241,10 @@ export function PlanSetup({
               />
               {need !== null ? (
                 <p className="plan-estimate">
-                  That needs about <strong>{need} minutes</strong> on each study day.
-                  {need > s.minutesPerDay + 2 ? ` That's more than the ${s.minutesPerDay} you picked: add time or a day, or choose a later date.` : " That fits your time."}
+                  That needs about <strong>{need} minutes</strong> on each study day{variesByDay(s) ? ", on average" : ""}.
+                  {need > averageMinutes(s) + 2
+                    ? ` That's more than the ${averageMinutes(s)} you picked${variesByDay(s) ? " on average" : ""}: add time or a day, or choose a later date.`
+                    : " That fits your time."}
                 </p>
               ) : null}
             </div>

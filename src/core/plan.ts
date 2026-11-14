@@ -16,6 +16,8 @@ export type PlanView = "week" | "calendar";
 export type PlanSettings = {
   goal: Goal;
   minutesPerDay: number;
+  /** Optional: different minutes on some weekdays (0 = Sunday), e.g. a long Saturday. */
+  minutesByDay?: Partial<Record<number, number>>;
   /** 0 = Sunday … 6 = Saturday. */
   days: number[];
   strictness: Strictness;
@@ -95,7 +97,17 @@ export function daysLabel(days: number[]): string {
   if (set.size === 7) return "every day";
   if (set.size === 5 && [1, 2, 3, 4, 5].every((d) => set.has(d))) return "weekdays";
   if (set.size === 2 && set.has(0) && set.has(6)) return "weekends";
-  return WEEKDAYS.filter((d) => set.has(d)).map((d) => WEEKDAY_SHORT[d]).join(", ");
+  // Runs of three or more days read as a range: Mon–Thu, Sat.
+  const order = WEEKDAYS.filter((d) => set.has(d));
+  const runs: number[][] = [];
+  for (const d of order) {
+    const run = runs.at(-1);
+    if (run && WEEKDAYS.indexOf(d as (typeof WEEKDAYS)[number]) === WEEKDAYS.indexOf(run.at(-1) as (typeof WEEKDAYS)[number]) + 1) run.push(d);
+    else runs.push([d]);
+  }
+  return runs
+    .flatMap((r) => (r.length >= 3 ? [`${WEEKDAY_SHORT[r[0]]}–${WEEKDAY_SHORT[r.at(-1)!]}`] : r.map((d) => WEEKDAY_SHORT[d])))
+    .join(", ");
 }
 
 /**
@@ -129,9 +141,36 @@ export const isoDate = (d: Date) => d.toISOString().slice(0, 10);
 export const addDays = (iso: string, n: number) => isoDate(new Date(Date.parse(`${iso}T12:00:00Z`) + n * DAY_MS));
 export const weekdayOf = (iso: string) => new Date(`${iso}T12:00:00Z`).getUTCDay();
 
+/** Minutes planned on a weekday (0 = Sunday). */
+export function minutesOn(s: PlanSettings, weekday: number): number {
+  return s.minutesByDay?.[weekday] ?? s.minutesPerDay;
+}
+
+/** Minutes a week across all study days. */
+export function minutesPerWeek(s: PlanSettings): number {
+  return s.days.reduce((sum, d) => sum + minutesOn(s, d), 0);
+}
+
+/** Average minutes on a study day. */
+export function averageMinutes(s: PlanSettings): number {
+  return s.days.length ? Math.round(minutesPerWeek(s) / s.days.length) : s.minutesPerDay;
+}
+
+/** True when not every study day has the same minutes. */
+export function variesByDay(s: PlanSettings): boolean {
+  return new Set(s.days.map((d) => minutesOn(s, d))).size > 1;
+}
+
+/** "20 min on weekdays, 60 min on Sat" or "30 min on Mon, Wed, Fri". */
+export function timeLabel(s: PlanSettings): string {
+  const groups = new Map<number, number[]>();
+  for (const d of WEEKDAYS) if (s.days.includes(d)) groups.set(minutesOn(s, d), [...(groups.get(minutesOn(s, d)) ?? []), d]);
+  return [...groups].map(([m, days]) => `${m} min on ${daysLabel(days)}`).join(", ");
+}
+
 /** Minutes of review on a study day: about a quarter of the time, 3 to 10 minutes. */
-export function reviewMinutes(s: PlanSettings): number {
-  return s.dailyReview ? Math.max(3, Math.min(10, Math.round(s.minutesPerDay / 4))) : 0;
+export function reviewMinutes(s: PlanSettings, minutes = averageMinutes(s)): number {
+  return s.dailyReview ? Math.max(3, Math.min(10, Math.round(minutes / 4))) : 0;
 }
 
 /**
@@ -153,8 +192,8 @@ export function schedule(pack: LanguagePack, s: PlanSettings, remaining: Activit
     const items: PlanItem[] = [];
     let used = 0;
     if (studyDay) {
-      const day = s.minutesPerDay;
-      const r = reviewMinutes(s);
+      const day = minutesOn(s, weekday);
+      const r = reviewMinutes(s, day);
       if (r) {
         items.push({ kind: "review", key: `review:${date}`, minutes: r });
         used += r;
@@ -199,6 +238,7 @@ export function minutesNeeded(pack: LanguagePack, s: PlanSettings, remaining: Ac
   for (let d = from; d <= s.targetDate; d = addDays(d, 1)) if (s.days.includes(weekdayOf(d))) studyDays++;
   if (studyDays === 0) return null;
   const work = remaining.reduce((sum, a) => sum + minutesFor(pack, a), 0);
+  // Average minutes per study day; compare with averageMinutes(s).
   return Math.ceil(work / studyDays) + reviewMinutes(s);
 }
 

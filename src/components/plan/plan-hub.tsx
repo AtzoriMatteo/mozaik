@@ -15,6 +15,9 @@ import {
   minutesNeeded,
   remainingActivities,
   reviewMinutes,
+  averageMinutes,
+  timeLabel,
+  variesByDay,
   schedule,
   shortDate,
   weekStart,
@@ -44,13 +47,6 @@ const GOAL_LABEL: Record<Goal, string> = {
 };
 
 const SKILL: Record<string, Skill> = { read: "read", listen: "listen", grammar: "grammar", write: "write", speak: "speak", review: "review" };
-
-function daysLabel(days: number[]): string {
-  const sorted = [1, 2, 3, 4, 5, 6, 0].filter((d) => days.includes(d));
-  if (sorted.length === 7) return "every day";
-  if (sorted.join() === "1,2,3,4,5") return "Monday to Friday";
-  return sorted.map((d) => WEEKDAY_SHORT[d]).join(", ");
-}
 
 /** Plan: set it up once, then see today, the week and how it's going. */
 export function PlanHub() {
@@ -151,7 +147,7 @@ function PlanView({
       <header className="plan-head">
         <h1 className="page-title">Your plan</h1>
         <p className="plan-summary">
-          {settings.minutesPerDay} minutes, {daysLabel(settings.days)}, for {GOAL_LABEL[settings.goal]}.{" "}
+          {timeLabel(settings)}, for {GOAL_LABEL[settings.goal]}.{" "}
           {settings.strictness !== "relaxed" && finish ? (
             <>
               {settings.level} done around <strong>{longDate(finish, today)}</strong>.
@@ -487,14 +483,16 @@ function StudyDaysSince({ log, since, today }: { log: StudyLog; since: string; t
 /** Strict plans: on track or not, said calmly, with ways to catch up. */
 function StrictStatus({ need, settings, today, finish }: { need: number; settings: PlanSettings; today: string; finish: string | null }) {
   const target = settings.targetDate!;
-  const onTrack = need <= settings.minutesPerDay + 2;
+  const planned = averageMinutes(settings);
+  const avg = variesByDay(settings) ? " on average" : "";
+  const onTrack = need <= planned + 2;
   return (
     <section className="plan-status" data-state={onTrack ? "ok" : "behind"}>
       <p className="plan-status-title">{onTrack ? "On track" : "A little behind"}</p>
       <p>
         {onTrack
-          ? `To finish ${settings.level} by ${longDate(target, today)} you need about ${need} minutes on each study day. You've planned ${settings.minutesPerDay}.`
-          : `To finish ${settings.level} by ${longDate(target, today)} you'd need about ${need} minutes on each study day; you've planned ${settings.minutesPerDay}. ${finish ? `At this pace you'd finish around ${longDate(finish, today)}.` : ""} Add a few minutes or a day, or move the date: all fine.`}
+          ? `To finish ${settings.level} by ${longDate(target, today)} you need about ${need} minutes on each study day${avg}. You've planned ${planned}${avg}.`
+          : `To finish ${settings.level} by ${longDate(target, today)} you'd need about ${need} minutes on each study day${avg}; you've planned ${planned}${avg}. ${finish ? `At this pace you'd finish around ${longDate(finish, today)}.` : ""} Add a few minutes or a day, or move the date: all fine.`}
       </p>
     </section>
   );

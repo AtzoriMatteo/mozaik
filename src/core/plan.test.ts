@@ -8,6 +8,7 @@ import {
   minutesNeeded,
   remainingActivities,
   reviewMinutes,
+  timeLabel,
   schedule,
   weekStart,
   weekdayOf,
@@ -82,5 +83,18 @@ describe("plans", () => {
     const total = remaining.reduce((n, a) => n + minutesFor(dutch, a), 0);
     expect(need).toBeGreaterThan(total / 50);
     expect(need).toBeLessThan(total / 40 + 15);
+  });
+});
+
+describe("different minutes on some days", () => {
+  it("plans longer days where asked, and labels the time", () => {
+    const s = { ...defaultSettings(MONDAY), minutesPerDay: 20, days: [1, 2, 3, 4, 5, 6], minutesByDay: { 6: 90 } };
+    expect(timeLabel(s)).toBe("20 min on weekdays, 90 min on Sat");
+    expect(timeLabel({ ...s, minutesByDay: { 5: 90 } })).toBe("20 min on Mon–Thu, Sat, 90 min on Fri");
+    const days = schedule(dutch, s, remainingActivities(dutch, "A1", none, false), MONDAY, 14);
+    const saturday = days.find((d) => d.weekday === 6)!;
+    const monday = days.find((d) => d.weekday === 1)!;
+    expect(saturday.minutes).toBeGreaterThan(60);
+    expect(monday.minutes).toBeLessThanOrEqual(22);
   });
 });
