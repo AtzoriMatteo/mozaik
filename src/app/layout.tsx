@@ -2,14 +2,16 @@ import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/literata";
 import "@fontsource-variable/literata/wght-italic.css";
 import "@fontsource-variable/atkinson-hyperlegible-next";
+import "@fontsource-variable/bodoni-moda";
 import "./globals.css";
 import { Logo } from "@/components/logo";
 import { Nav } from "@/components/nav";
 import { Account } from "@/components/account";
+import { LanguageSwitch } from "@/components/language-switch";
 import { ProgressSync } from "@/components/progress-sync";
 import { LearningLanguageProvider } from "@/components/learning-language";
 
-const DESCRIPTION = "Learn Dutch, tile by tile: real texts, listening, grammar and writing. Free.";
+const DESCRIPTION = "Learn Dutch or Italian, tile by tile: real texts, listening, grammar and writing. Free.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mozaik-tau.vercel.app"),
@@ -46,7 +48,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Logo />
                 <Nav />
               </div>
-              <Account />
+              <div className="topbar-right">
+                <LanguageSwitch />
+                <Account />
+              </div>
               <ProgressSync />
             </header>
             {children}

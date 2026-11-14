@@ -2,6 +2,8 @@
 
 import { listPacks } from "@/core/registry";
 import { useLearningLanguage } from "./learning-language";
+import { LANGUAGE_TILE } from "./language-switch";
+import { UnitTile } from "./unit-tile";
 
 /** Shown when several languages are installed and the learner hasn't picked one. */
 export function LanguagePicker() {
@@ -17,10 +19,16 @@ export function LanguagePicker() {
             <button
               type="button"
               className="button language-option"
+              data-theme={pack.theme ?? "delft"}
               onClick={() => setLanguage(pack.code)}
             >
-              <span lang={pack.code}>{pack.nativeName}</span>
-              <small>{pack.name}</small>
+              <span className="language-option-tile">
+                <UnitTile {...(LANGUAGE_TILE[pack.code] ?? { motif: "star", glaze: "cobalt" })} />
+              </span>
+              <span className="language-option-name">
+                <span lang={pack.code}>{pack.nativeName}</span>
+                <small>{pack.name}</small>
+              </span>
             </button>
           </li>
         ))}

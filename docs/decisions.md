@@ -5,6 +5,48 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-14 (afternoon) — Italian A1, batch 1: the pack, the Ravenna look, units 1–4
+
+Matteo: Italian A1 for other learners, explanations in English, as many units
+as a solid A1 needs (12, in three batches), and art connected to Italy.
+
+**Look (Claude, within the brief).** Each language now brings its own theme.
+Italian is "Ravenna": Roman and Byzantine mosaic instead of Delft tiles.
+Carrara-marble ground, lapis headings, gold tesserae, Pompeian red accent,
+Bodoni (from Parma) for headings, Literata kept for reading. Unit tiles become
+small floor mosaics (border of tesserae, gold octagon). The A1 picture is the
+starry vault of the Mausoleum of Galla Placidia, with two doves at a fountain.
+Dutch is unchanged.
+
+**Choosing a language.** With two courses, new visitors pick one (each with its
+tile); a small switch in the top bar changes it at any time. Progress is kept
+per language.
+
+**The Italian pack.**
+- Tokeniser splits elisions (l'amico → l' + amico) but keeps c'è, dov'è, po'.
+- Articles for flashcards (il, lo, la, l'), and the answer checker accepts them.
+- Verb tables for every tense, from a rule engine plus ~100 irregular verbs;
+  prefixed verbs (sorprendere, ottenere, tradurre) inherit their base. Reflexive
+  verbs (alzarsi) and the essere agreement (andato/a) are shown.
+- Handbook: numbers, time, days, colours, family, body, food, home, weather,
+  jobs, countries, question words, places, articles, prepositions + article,
+  phrases by situation, alphabet (with the city spelling), c/g, gli/gn/sc,
+  double consonants, stress.
+- Italian spelling dictionary (Hunspell, GPL data file) and LanguageTool.
+- Recordings: the "Record course audio" workflow now records Italian too
+  (about 23,000 characters, well inside the free allowance).
+
+**Units 1–4** (Ciao!, Piacere!, La famiglia, Al bar): 3 texts, 3 listening
+items, 2 writing topics and speaking per unit; 13 grammar lessons. Story:
+Emma (Irish) moves into a flat in Via del Pratello, Bologna, with Giulia and
+Karim; Marco runs the bar downstairs. Culture: tu/Lei, spelling with city
+names, dialects and Dante, gestures, Sunday lunch, living with parents, the
+rules of the Italian bar.
+
+**Still to come.** Batch 2 (units 5–8) and 3 (9–12), "Beyond the course"
+links for Italian (hidden until there are some), Italian content checked by a
+native speaker (Matteo).
+
 ## 2026-11-14 (evening) — Dutch audit: proofreading and verb-table fixes
 
 Matteo asked for a careful check of the Dutch course before starting Italian.

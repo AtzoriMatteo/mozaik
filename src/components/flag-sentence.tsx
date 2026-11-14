@@ -40,7 +40,7 @@ export function FlagSentence({ target, sentence }: { target: FlagTarget; sentenc
         className="flag-input"
         value={note}
         maxLength={300}
-        placeholder="e.g. a Dutch friend says nobody says this"
+        placeholder="e.g. a native-speaker friend says nobody says this"
         onChange={(e) => setNote(e.target.value)}
       />
       <div className="flag-buttons">

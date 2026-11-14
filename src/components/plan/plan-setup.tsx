@@ -23,11 +23,11 @@ import {
   type Strictness,
 } from "@/core/plan";
 
-const GOALS: { id: Goal; label: string; hint: string }[] = [
-  { id: "living", label: "I live here, or will soon", hint: "Everyday Dutch: shops, neighbours, the doctor, the town hall." },
+const goals = (pack: LanguagePack): { id: Goal; label: string; hint: string }[] => [
+  { id: "living", label: "I live in the country, or will soon", hint: `Everyday ${pack.name}: shops, neighbours, the doctor, the town hall.` },
   { id: "travel", label: "Travel", hint: "Getting around, ordering, small talk. Speaking practice switched on." },
   { id: "work", label: "Work or study", hint: "Steady progress, with writing kept in." },
-  { id: "exam", label: "An exam", hint: "Inburgering or NT2: a fixed finish date and a strict plan." },
+  { id: "exam", label: "An exam", hint: `${pack.exams ? pack.exams + ": a" : "A"} fixed finish date and a strict plan.` },
   { id: "fun", label: "Just for fun", hint: "No pressure. A gentle plan you can drop any day." },
 ];
 
@@ -100,9 +100,9 @@ export function PlanSetup({
 
       {steps[step] === "goal" ? (
         <>
-          <h1 id="plan-setup-title" className="plan-question">Why are you learning Dutch?</h1>
+          <h1 id="plan-setup-title" className="plan-question">Why are you learning {pack.name}?</h1>
           <div className="plan-options">
-            {GOALS.map((g) => (
+            {goals(pack).map((g) => (
               <button
                 key={g.id}
                 type="button"

@@ -32,6 +32,17 @@ export interface LanguagePack {
   nativeName: string;
   /** Accent colour for this language, for light and dark mode. */
   accent: { light: string; dark: string };
+  /**
+   * The look: "delft" (blue-and-white tiles) or "ravenna" (Roman and Byzantine
+   * mosaic: marble, lapis, gold). Sets colours, heading type and the tiles.
+   */
+  theme?: "delft" | "ravenna";
+  /** One line on what an infinitive looks like, for the verb tables. */
+  verbShape?: string;
+  /** Official exams learners may be aiming for, e.g. "CILS or CELI". */
+  exams?: string;
+  /** What the writing checker looks at, for its "all good" line. */
+  checkerCovers?: string;
   /** Levels this pack currently has content for. */
   levels: readonly CefrLevel[];
   /** Split a text into words, spaces and punctuation. */
@@ -58,8 +69,12 @@ export interface LanguagePack {
   languageTool?: string;
   /** Real material outside the course (links only), per level. */
   resources?: readonly Resource[];
-  /** The article of a noun (dictionary form), for flashcards: "de", "het"… or null. */
+  /** The article of a noun (dictionary form), for flashcards: "de", "het", "l'"… or null. */
   nounArticle?: (lemma: string) => string | null;
+  /** Articles a learner might type before a noun, to check flashcard answers. */
+  articles?: { definite: readonly string[]; indefinite: readonly string[] };
+  /** Infinitives the pack knows, when it can list them better than the core can guess. */
+  verbList?: () => ReadonlySet<string>;
   /** Learning tips about this language, shown around the site. */
   tips?: readonly LearningTip[];
   /** All forms of a verb, for the Handbook: give an infinitive ("zich wassen" for reflexive). */

@@ -81,6 +81,169 @@
   }
 }
 
+
+/*
+ * Ravenna: the look for Italian. Roman and Byzantine mosaic instead of Delft
+ * tiles: Carrara marble ground, lapis headings, gold tesserae, Pompeian red.
+ * The glaze names stay the same so content can say "ochre" and get gold.
+ */
+[data-theme="ravenna"] {
+  --porcelain: #efeeea;
+  --tile: #fbfaf7;
+  --glaze: #f1e7cf;
+  --grout: #d4cfc3;
+  --ink: #1f1c24;
+  --ink-muted: #5c5766;
+  --heading: #1f2a5a;
+  --glaze-cobalt: #263774;
+  --glaze-manganese: #6e2f5e;
+  --glaze-ochre: #a87b1c;
+  --glaze-copper: #3c6a53;
+  --glaze-iron: #9e2b25;
+  --font-head: "Bodoni Moda Variable", "Bodoni 72", Didot, Georgia, serif;
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.accent-scope[data-theme="ravenna"] {
+  min-height: 100dvh;
+  background: var(--texture), var(--porcelain);
+  color: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="ravenna"] {
+    --porcelain: #121119;
+    --tile: #1b1a24;
+    --glaze: #2a2416;
+    --grout: #2f2d39;
+    --ink: #ece9e3;
+    --ink-muted: #a9a3ae;
+    --heading: #ead9a6;
+    --glaze-cobalt: #9fb0ee;
+    --glaze-manganese: #d39cc4;
+    --glaze-ochre: #e2bb5c;
+    --glaze-copper: #86c3a2;
+    --glaze-iron: #ec8f80;
+  }
+}
+
+
+/* Delft inside a Ravenna page (the language picker shows both): restore the Delft colours. */
+[data-theme="delft"] {
+  --tile: #f8f8f4;
+  --grout: #cfcdc3;
+  --glaze-cobalt: #1f3e8c;
+  --glaze-manganese: #6d3a5d;
+  --glaze-ochre: #b7811a;
+  --glaze-copper: #3c7656;
+  --glaze-iron: #a5432c;
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="delft"] {
+    --tile: #161d29;
+    --grout: #2b3342;
+    --glaze-cobalt: #8fb0f0;
+    --glaze-manganese: #c99bbc;
+    --glaze-ochre: #e0b456;
+    --glaze-copper: #7fbf9a;
+    --glaze-iron: #e78c71;
+  }
+}
+
+/* Bodoni wants a touch more air and a lighter weight at display sizes. */
+[data-theme="ravenna"] h1,
+[data-theme="ravenna"] h2,
+[data-theme="ravenna"] h3 {
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+
+/* Each tile is drawn in both styles; the theme shows one. */
+/* Custom properties inherit from the nearest theme, so a Ravenna tile inside a Delft page works. */
+[data-theme="delft"] { --show-delft: inline; --show-ravenna: none; }
+[data-theme="ravenna"] { --show-delft: none; --show-ravenna: inline; }
+.look-delft { display: var(--show-delft, inline); }
+.look-ravenna { display: var(--show-ravenna, none); }
+
+/* ---------- Choosing a language ---------- */
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-switch {
+  position: relative;
+}
+
+.lang-switch summary {
+  list-style: none;
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  font-family: var(--font-head, var(--font-read));
+  color: var(--heading);
+  font-size: 0.95rem;
+}
+
+.lang-switch summary::-webkit-details-marker { display: none; }
+.lang-switch summary::after { content: " ▾"; color: var(--ink-muted); font-size: 0.8em; }
+
+.lang-switch ul {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  z-index: 20;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  background: var(--tile);
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  min-width: 13rem;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+}
+
+.lang-switch button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.45rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--radius-control);
+}
+
+.lang-switch button:hover { background: var(--glaze); }
+.lang-switch button[aria-pressed="true"] { font-weight: 600; }
+.lang-switch small { margin-left: auto; color: var(--ink-muted); }
+.lang-switch-short { display: none; }
+@media (max-width: 560px) {
+  .lang-switch-long { display: none; }
+  .lang-switch-short { display: inline; }
+  .lang-switch summary { padding: 0.25rem 0.35rem; font-size: 0.8rem; }
+  .lang-switch summary::after { content: ""; }
+  .topbar-right { gap: 0.25rem; }
+}
+.lang-switch-tile { width: 32px; height: 32px; flex: none; }
+.lang-switch-tile svg, .language-option-tile svg { width: 100%; height: 100%; display: block; }
+
+.language-option {
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--tile) !important;
+}
+.language-option-tile { width: 56px; height: 56px; flex: none; }
+.language-option-name { display: grid; flex: 1; text-align: left; font-family: var(--font-head, var(--font-read)); }
+
 *,
 *::before,
 *::after {
@@ -105,7 +268,7 @@ body {
 
 h1, h2, h3 {
   color: var(--heading);
-  font-family: var(--font-read);
+  font-family: var(--font-head, var(--font-read));
   font-weight: 500;
   line-height: 1.15;
   margin: 0;
@@ -848,6 +1011,13 @@ a {
   .nav {
     gap: 0.8rem;
   }
+}
+
+/* Narrow phones with the language switch: a little tighter still. */
+@media (max-width: 380px) {
+  .topbar { gap: 0.5rem; }
+  .topbar-left { gap: 0.6rem; }
+  .nav { gap: 0.6rem; font-size: 0.95rem; }
 }
 
 /* ---------- Review ---------- */

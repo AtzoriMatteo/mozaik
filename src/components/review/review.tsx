@@ -194,7 +194,7 @@ export function Review() {
 
       <LearningTip pack={pack} place="review" />
 
-      <SettingsPanel settings={settings} update={update} reset={reset} levels={pack.levels} />
+      <SettingsPanel settings={settings} update={update} reset={reset} levels={pack.levels} name={pack.name} />
     </div>
   );
 }
@@ -217,11 +217,13 @@ function SettingsPanel({
   update,
   reset,
   levels,
+  name,
 }: {
   settings: ReviewSettings;
   update: (p: Partial<ReviewSettings>) => void;
   reset: () => void;
   levels: readonly CefrLevel[];
+  name: string;
 }) {
   return (
     <details className="settings-panel">
@@ -283,7 +285,7 @@ function SettingsPanel({
 
         <fieldset className="setting">
           <legend>Word cards go</legend>
-          {DIRECTIONS.map((d) => (
+          {directions(name).map((d) => (
             <label key={d.id} className="check">
               <input type="radio" name="direction" checked={settings.direction === d.id} onChange={() => update({ direction: d.id })} />
               {d.label}
@@ -320,10 +322,10 @@ function SettingsPanel({
   );
 }
 
-const DIRECTIONS: { id: CardDirection; label: string; hint: string }[] = [
-  { id: "mixed", label: "Both ways, step by step", hint: "(Dutch with its sentence, then the word alone, then English → you type the Dutch)" },
-  { id: "nl-en", label: "Dutch → English only", hint: "" },
-  { id: "en-nl", label: "English → Dutch only", hint: "(you type the Dutch)" },
+const directions = (name: string): { id: CardDirection; label: string; hint: string }[] => [
+  { id: "mixed", label: "Both ways, step by step", hint: `(${name} with its sentence, then the word alone, then English → you type the ${name})` },
+  { id: "nl-en", label: `${name} → English only`, hint: "" },
+  { id: "en-nl", label: `English → ${name} only`, hint: `(you type the ${name})` },
 ];
 
 function Segmented({
@@ -657,7 +659,7 @@ function GraduateButton({ onGraduate }: { onGraduate: () => void }) {
   );
 }
 
-/** English → type the Dutch. Nouns with their article. */
+/** English → type the target word. Nouns with their article. */
 function ProduceCard({
   pack,
   item,
@@ -674,17 +676,17 @@ function ProduceCard({
   const article = pack.nounArticle?.(lemma) ?? null;
   const [typed, setTyped] = useState("");
   const [result, setResult] = useState<ProduceVerdict | null>(null);
-  const hint = article ? "a noun: give it with de or het" : isVerb(pack, lemma) ? "a verb: give the infinitive" : null;
+  const hint = article ? "a noun: give it with its article" : isVerb(pack, lemma) ? "a verb: give the infinitive" : null;
 
   const check = (giveUp = false) => {
-    const r = giveUp ? { verdict: "wrong" as const } : checkProduced(typed, lemma, article);
+    const r = giveUp ? { verdict: "wrong" as const } : checkProduced(typed, lemma, article, pack.articles);
     setResult(r);
     speak(lang, dictionaryLabel(pack, lemma), 0.85);
   };
 
   return (
-    <section className="review-card" aria-label="Word card: say it in Dutch">
-      <p className="review-prompt">How do you say this in Dutch?</p>
+    <section className="review-card" aria-label={`Word card: say it in ${pack.name}`}>
+      <p className="review-prompt">How do you say this in {pack.name}?</p>
       <p className="review-solo review-solo-en">{item.meaning}</p>
       {hint ? <p className="review-hint">{hint}</p> : null}
       {!result ? (
@@ -702,7 +704,7 @@ function ProduceCard({
             autoComplete="off"
             autoCapitalize="none"
             spellCheck={false}
-            aria-label="Your answer in Dutch"
+            aria-label={`Your answer in ${pack.name}`}
             value={typed}
             onChange={(e) => setTyped(e.target.value)}
           />

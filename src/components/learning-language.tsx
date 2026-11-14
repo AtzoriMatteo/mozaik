@@ -63,7 +63,7 @@ export function LearningLanguageProvider({ children }: { children: ReactNode }) 
 
   return (
     <Ctx value={{ pack, setLanguage }}>
-      <div className="accent-scope" style={style}>
+      <div className="accent-scope" style={style} data-theme={pack?.theme ?? "delft"} data-lang={pack?.code}>
         {children}
       </div>
     </Ctx>

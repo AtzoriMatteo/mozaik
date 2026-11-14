@@ -12,7 +12,7 @@ export default function Page() {
       </Link>
       <header className="unit-page-head">
         <h1 className="page-title">Words by topic</h1>
-        <p className="lede">Numbers, the clock, days, family, food, home and more, with de or het.</p>
+        <p className="lede">Numbers, the clock, days, family, food, home and more, with their articles.</p>
       </header>
       <HandbookSection section="topics" filterLabel="Find a word" />
     </main>

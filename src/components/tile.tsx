@@ -18,6 +18,19 @@ export function Tile({ glazed, title, color = "var(--accent)" }: { glazed: boole
   return (
     <svg viewBox="0 0 40 40" role={title ? "img" : undefined} aria-hidden={title ? undefined : true}>
       {title ? <title>{title}</title> : null}
+      {/* Ravenna: a little mosaic, tesserae round a diamond. */}
+      <g className="look-ravenna">
+        <rect x="1" y="1" width="38" height="38" rx="3" fill="var(--tile)" stroke={color} strokeWidth="1.25" />
+        {[[5, 5], [29, 5], [5, 29], [29, 29]].map(([x, y]) => (
+          <rect key={`${x}-${y}`} x={x} y={y} width="6" height="6" rx="0.8" fill={color} />
+        ))}
+        {[[17, 4], [4, 17], [30, 17], [17, 30]].map(([x, y]) => (
+          <rect key={`g${x}-${y}`} x={x} y={y} width="6" height="6" rx="0.8" fill="var(--glaze-ochre)" />
+        ))}
+        <polygon points="20,12 28,20 20,28 12,20" fill={color} />
+        <polygon points="20,16 24,20 20,24 16,20" fill="var(--glaze-ochre)" />
+      </g>
+      <g className="look-delft">
       <rect x="1" y="1" width="38" height="38" rx="4" fill="var(--tile)" stroke={color} strokeWidth="1.25" />
       {/* corner quarter-circles */}
       <path d="M1 9 A8 8 0 0 0 9 1" fill="none" stroke={color} strokeWidth="1.5" />
@@ -30,6 +43,7 @@ export function Tile({ glazed, title, color = "var(--accent)" }: { glazed: boole
       <ellipse cx="13.5" cy="20" rx="5" ry="3.2" fill={color} />
       <ellipse cx="26.5" cy="20" rx="5" ry="3.2" fill={color} />
       <circle cx="20" cy="20" r="2.4" fill="var(--tile)" />
+      </g>
     </svg>
   );
 }

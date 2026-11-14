@@ -16,7 +16,7 @@ import { join } from "node:path";
 import { assignVoices, clipSpecs, hash, textKey, type AudioManifest, type ClipSpec, type VoiceCast } from "../src/core/audio";
 import { getPack } from "../src/core/registry";
 
-const LOCALE: Record<string, string> = { nl: "nl-NL" };
+const LOCALE: Record<string, string> = { nl: "nl-NL", it: "it-IT" };
 const API = "https://texttospeech.googleapis.com/v1";
 
 type Voice = { name: string; ssmlGender: "FEMALE" | "MALE" | "NEUTRAL" };

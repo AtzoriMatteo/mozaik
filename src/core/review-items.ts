@@ -1,7 +1,7 @@
 import { helpFor, lemmaOf, type Exercise } from "./content";
 import { allTexts, type CefrLevel, type LanguagePack } from "./language-pack";
 import { isDue } from "./srs";
-import { cardMeaning, lemmaFor } from "./dictionary";
+import { cardMeaning, lemmaFor, withArticle } from "./dictionary";
 
 /**
  * Everything that can come back in Review.
@@ -302,21 +302,31 @@ function distance(a: string, b: string): number {
  * without it, or with the wrong one, is "almost". One letter off, or a
  * missing accent, is also "almost". Anything else is wrong.
  */
-export function checkProduced(typed: string, lemma: string, article: string | null): ProduceVerdict {
-  const answer = typed.trim().toLowerCase().replace(/\s+/g, " ").replace(/[.!?]+$/, "");
+const DUTCH_ARTICLES = { definite: ["de", "het"], indefinite: ["een"] } as const;
+
+export function checkProduced(
+  typed: string,
+  lemma: string,
+  article: string | null,
+  articles: { definite: readonly string[]; indefinite: readonly string[] } = DUTCH_ARTICLES,
+): ProduceVerdict {
+  // An apostrophe ends a word on its own: "l'acqua" and "l' acqua" are both "l' acqua".
+  const tidy = (s: string) => s.trim().toLowerCase().replace(/’/g, "'").replace(/'\s*/g, "' ").replace(/\s+/g, " ").replace(/[.!?]+$/, "");
+  const answer = tidy(typed);
   if (!answer) return { verdict: "wrong" };
-  const target = article ? `${article} ${lemma}` : lemma;
-  if (answer === target) return { verdict: "right" };
+  const target = article ? withArticle(article, lemma) : lemma;
+  if (answer === tidy(target)) return { verdict: "right" };
   const [first, ...rest] = answer.split(" ");
-  const bare = ["de", "het", "een"].includes(first) ? rest.join(" ") : answer;
-  const typedArticle = ["de", "het"].includes(first) ? first : null;
-  if (bare === lemma || plain(bare) === plain(lemma)) {
+  const bare = [...articles.definite, ...articles.indefinite].includes(first) ? rest.join(" ") : answer;
+  const typedArticle = articles.definite.includes(first) ? first : null;
+  const word = tidy(lemma);
+  if (bare === word || plain(bare) === plain(word)) {
     if (!article) return plain(answer) === plain(lemma) ? { verdict: "almost", note: "Check the accents." } : { verdict: "right" };
-    if (!typedArticle) return { verdict: "almost", note: `Right word. Learn it with its article: ${article} ${lemma}.` };
-    if (typedArticle !== article) return { verdict: "almost", note: `Right word, but it's ${article} ${lemma}.` };
+    if (!typedArticle) return { verdict: "almost", note: `Right word. Learn it with its article: ${target}.` };
+    if (typedArticle !== article) return { verdict: "almost", note: `Right word, but it's ${target}.` };
     return { verdict: "almost", note: "Check the accents." };
   }
-  if (distance(plain(bare), plain(lemma)) === 1 && lemma.length > 3) {
+  if (distance(plain(bare), plain(word)) === 1 && lemma.length > 3) {
     return { verdict: "almost", note: `Nearly: it's spelled ${target}.` };
   }
   return { verdict: "wrong" };
