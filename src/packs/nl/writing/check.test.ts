@@ -57,6 +57,16 @@ describe("Dutch writing checker: stays quiet on correct Dutch", () => {
     "Ik woon in een groot huis met een mooie tuin.",
     "Om half negen fiets ik naar de universiteit.",
     "Het werk is zwaar.",
+    "Er zijn ook huizen in de vrije sector.",
+    "Ik kon niet meer goed nadenken.",
+    "Ik vond het een leuke dag.",
+    "Ik wilde naar huis gaan.",
+    "Hij werkte in een winkel.",
+    "Wij vonden het museum mooi.",
+    "Ik zou graag de vis willen.",
+    "Het werkt niet meer als je moe bent.",
+    "Ik heb een blije hond.",
+    "Beste Marloes, Ik wil je iets vragen.",
     "Met de trein ben je in drie uur in Parijs.",
     "Op maandag werk ik in het café.",
     "Leiden is kleiner dan Amsterdam.",
@@ -100,7 +110,7 @@ describe("A1 writing topics", () => {
   });
 
   it.each(tasks.map((t) => [t.id, t] as const))("%s: model answer is long enough, covers every point and passes the checker", (_id, t) => {
-    expect(countWords(t.model), t.id).toBeGreaterThanOrEqual(WRITING_LENGTHS.A1[2] * LONG_ENOUGH);
+    expect(countWords(t.model), t.id).toBeGreaterThanOrEqual(WRITING_LENGTHS[t.level][2] * LONG_ENOUGH);
     const covered = coveredPoints(dutch, t.model, t.points);
     expect(t.points.filter((_, i) => !covered[i]).map((pt) => pt.prompt)).toEqual([]);
     const issues = check(t.model).map((i) => `${t.model.slice(i.start, i.end)}: ${i.message}`);

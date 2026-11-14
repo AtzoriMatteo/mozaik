@@ -1,5 +1,6 @@
 "use client";
 
+import { VerdictLine } from "@/components/exercises/verdict";
 import { useState } from "react";
 import type { Verdict } from "@/core/answers";
 import type { Task } from "@/core/content";
@@ -82,11 +83,9 @@ export function TaskRunner({
       />
 
       {verdict ? (
-        <div className="feedback" role="status">
-          <p>
-            {verdict === "right" ? "Right." : verdict === "almost" ? "Almost: check the accents." : "Not quite."}{" "}
-            {explain(task)}
-          </p>
+        <div className="feedback" role="status" data-verdict={verdict}>
+          <VerdictLine verdict={verdict} label={verdict === "almost" ? "Almost: check the accents" : undefined} />
+          <p>{explain(task)}</p>
           {line ? <p className="example-translation"><span lang={lang}>{line.text}</span> · {line.translation}</p> : null}
           <button type="button" className="button" onClick={next} autoFocus>
             Continue
@@ -102,7 +101,10 @@ function explain(task: Task): string {
     case "choice":
       return `It's "${task.options[task.answer]}".`;
     case "truefalse":
-      return `It's ${task.answer ? "true" : "false"}: ${task.translation}`;
+      // The translation is of the statement itself, so a false one needs framing.
+      return task.answer
+        ? `It's true: ${task.translation}`
+        : `It's false. The statement means "${task.translation.replace(/\.$/, "")}", but that's not what happens.`;
     case "heard":
       return `You heard "${task.options[task.answer]}".`;
     default:

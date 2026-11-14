@@ -43,7 +43,7 @@ export const ADJECTIVES: Record<string, string> = {
   moeilijk: "moeilijke", makkelijk: "makkelijke", ziek: "zieke", gezond: "gezonde", blij: "blije",
   vies: "vieze", schoon: "schone", vol: "volle", leeg: "lege", snel: "snelle", heel: "hele",
   slecht: "slechte", nat: "natte", lelijk: "lelijke", vriendelijk: "vriendelijke",
-  belangrijk: "belangrijke", saai: "saaie", stil: "stille", sterk: "sterke", zwak: "zwakke",
+  belangrijk: "belangrijke", saai: "saaie", stil: "stille", sterk: "sterke", zwak: "zwakke", vrij: "vrije",
 };
 export const ADJECTIVES_E = new Map(Object.entries(ADJECTIVES).map(([bare, e]) => [e, bare]));
 
@@ -105,3 +105,25 @@ export function isNumberWord(w: string): boolean {
 
 /** Linking letters between parts of a compound: huis-deur, verjaardag-s-feest, boek-en-kast. */
 export const COMPOUND_LINKS = ["", "s", "e", "en"];
+
+/**
+ * Past forms and participles without ge- (begon, vond, besteld): never present
+ * tense, so the agreement rule leaves them alone and they never count as a stem.
+ */
+export const NON_PRESENT = new Set([
+  "at", "aten", "begon", "begonnen", "begreep", "belde", "beschermden", "besloot", "besteld", "bezet",
+  "bleef", "bleven", "bouwden", "bracht", "brachten", "braken", "dacht", "dachten", "deden", "deed",
+  "dichtgedaan", "dronken", "duurde", "gaf", "gaven", "ging", "gingen", "grapte", "groeide", "haalden",
+  "had", "hadden", "handelde", "hield", "hielden", "hoefde", "ingepakt", "kocht", "kochten", "kon", "konden",
+  "kreeg", "kregen", "kwam", "kwamen", "lachte", "lagen", "landden", "las", "lazen", "leerde", "leidde",
+  "liep", "liepen", "luisterde", "lukte", "merkte", "mislukt", "mocht", "mochten", "moest", "moesten", "nam",
+  "namen", "nodigde", "onderhield", "onderzocht", "ontbeten", "ontsnapt", "ontstond", "openden", "opgehaald",
+  "opgelost", "opgeruimd", "organiseerde", "overleefd", "praatten", "probeerde", "reisde", "reisden", "riep",
+  "schilderde", "schreef", "schreven", "schrok", "sliep", "sliepen", "sprak", "stapte", "stelde", "stierf",
+  "stierven", "stond", "stonden", "stopte", "stormde", "stroomde", "thuisgebleven", "uitgeslapen",
+  "verbonden", "verdiend", "verheugden", "verhuisd", "verkocht", "verloren", "verscheen", "verstond",
+  "vertaald", "vertaalde", "vertelde", "vertrok", "vertrokken", "viel", "vierden", "volgde", "vond",
+  "vonden", "vroegen", "wachtten", "waren", "was", "werd", "werden", "werkte", "wilde", "wilden", "wist",
+  "wisten", "won", "woonde", "zag", "zagen", "zakten", "zat", "zaten", "zei", "zeiden", "zocht", "zochten",
+  "zongen", "zou", "zouden",
+]);

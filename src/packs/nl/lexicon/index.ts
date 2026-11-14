@@ -6,6 +6,9 @@ import { lexiconExtra } from "./extra";
 import { lexiconListening } from "./listening";
 import { lexiconMore } from "./more";
 import { lexiconCulture } from "./culture";
+import { lexiconA2AG, lexiconA2Numbers } from "./a2-a-g";
+import { lexiconA2HR } from "./a2-h-r";
+import { lexiconA2SZ } from "./a2-s-z";
 
 /**
  * Word help for the Dutch pack, keyed by the lower-cased word as it appears.
@@ -13,4 +16,4 @@ import { lexiconCulture } from "./culture";
  * local) only exist when there's something genuinely useful to say: literal
  * parts, a sound rule linking to English, a set phrase, a pronunciation trap.
  */
-export const lexicon: Lexicon = { ...lexiconCulture, ...lexiconMore, ...lexiconAG, ...lexiconHO, ...lexiconPZ, ...lexiconExtra, ...lexiconListening };
+export const lexicon: Lexicon = { ...lexiconA2Numbers, ...lexiconA2AG, ...lexiconA2HR, ...lexiconA2SZ, ...lexiconCulture, ...lexiconMore, ...lexiconAG, ...lexiconHO, ...lexiconPZ, ...lexiconExtra, ...lexiconListening };

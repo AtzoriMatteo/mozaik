@@ -3,6 +3,7 @@
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { activities, unitHref } from "@/core/course";
+import { unitNumber } from "@/core/language-pack";
 import { ActivityLabel } from "./activity-label";
 import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
@@ -31,7 +32,7 @@ export function CourseOverview() {
           <NextStep
             href={next.href}
             skill={next.kind}
-            detail={`Unit ${pack.units.indexOf(next.unit) + 1}: ${next.unit.titleTranslation}`}
+            detail={`${next.unit.level} unit ${unitNumber(pack, next.unit).n}: ${next.unit.titleTranslation}`}
           >
             <span className="capitalize">
               <ActivityLabel activity={next} lang={pack.code} />
@@ -52,7 +53,7 @@ export function CourseOverview() {
             {pack.units
               .filter((u) => u.level === level)
               .map((unit) => {
-                const n = pack.units.indexOf(unit) + 1;
+                const { n } = unitNumber(pack, unit);
                 const items = activities(pack).filter((a) => a.unit.id === unit.id && a.kind !== "speak");
                 const done = items.filter((a) => progress.isDone(a)).length;
                 const look = unit.look ?? { motif: "tulip", glaze: "cobalt" };

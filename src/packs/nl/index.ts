@@ -4,11 +4,12 @@ import { lexicon } from "./lexicon";
 import { grammar } from "./grammar";
 import { units } from "./units";
 import { coreVocabularyA1 } from "./vocabulary";
+import { coreVocabularyA2 } from "./vocabulary-a2";
 import { sounds } from "./speaking/sounds";
 import { resources } from "./resources";
 import { tips } from "./tips";
 import { articleFor } from "./articles";
-import { zipfA1 } from "./frequency";
+import { zipf } from "./frequency";
 import { makeChecker } from "./writing/check";
 import { isNumberWord } from "./writing/data";
 
@@ -76,16 +77,16 @@ export const dutch: LanguagePack = {
   name: "Dutch",
   nativeName: "Nederlands",
   accent: { light: "#1d3f8c", dark: "#8fb0f0" }, // Delft blue
-  levels: ["A1"],
+  levels: ["A1", "A2"],
   tokenize: tokenizeDutch,
   greeting: greetingFor,
   units,
   lexicon,
   grammar,
   sounds,
-  coreVocabulary: { A1: coreVocabularyA1 },
+  coreVocabulary: { A1: coreVocabularyA1, A2: coreVocabularyA2 },
   resources,
   tips,
   nounArticle: articleFor,
-  wordFrequency: zipfA1,
+  wordFrequency: zipf,
 };

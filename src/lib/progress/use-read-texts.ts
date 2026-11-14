@@ -13,6 +13,7 @@ export type { ActivityKind } from "@/core/course";
 import type { ActivityKind } from "@/core/course";
 
 import { pushProgress } from "./sync";
+import { logStudy } from "@/lib/plan/log";
 
 export type ProgressKind = ActivityKind | "beyond" | "writing";
 
@@ -79,6 +80,7 @@ export function useProgress(kind: ProgressKind, language: string | null) {
       }
       listeners.forEach((l) => l());
       pushProgress(language!, kind, id, true);
+      logStudy(`${kind}:${id}`);
     },
     [storageKey, language, kind],
   );

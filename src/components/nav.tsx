@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const LINKS = [
   { href: "/course", label: "Course", match: ["/course", "/read", "/listen", "/grammar", "/speak"] },
   { href: "/review", label: "Review", match: ["/review"] },
+  { href: "/plan", label: "Plan", match: ["/plan"] },
 ];
 
 /** Pages you see before logging in, where the course links only lead back to login. */

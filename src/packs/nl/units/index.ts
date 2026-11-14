@@ -5,6 +5,7 @@ import { wonen, werkEnStudie } from "./a1-places";
 import { gezondheid, vrijeTijd } from "./a1-life";
 import { feestdagen, kleren } from "./a1-new-units";
 import { basis } from "./a1-basis";
+import { unitsA2 } from "./a2";
 import { nederland } from "./a1-nederland";
 import {
   auMijnKnie,
@@ -105,4 +106,6 @@ export const units: readonly Unit[] = [
   kleren,
   nederland,
   feestdagen,
-].map(assemble);
+]
+  .map(assemble)
+  .concat(unitsA2);

@@ -1,0 +1,353 @@
+import type { Unit } from "@/core/content";
+import { a2, gaps, heard, line, mc, order, p, pairs, s, tf } from "./helpers";
+
+/** A2 unit 9: cooking and eating out. er + a number, polite zou. */
+export const koken: Unit = {
+  id: "a2-koken",
+  level: "A2",
+  title: "Koken en uit eten",
+  titleTranslation: "Cooking and eating out",
+  look: { motif: "cheese", glaze: "copper" },
+  canDo: [
+    "Book a table, order and pay in a restaurant",
+    "Ask and answer politely with zou: Zou ik … mogen?",
+    "Follow and write a simple recipe, with er: Je hebt er drie nodig",
+    "Say something isn't right, without being rude",
+  ],
+  texts: [
+    {
+      id: "uit-eten-in-nederland",
+      level: "A2",
+      title: "Uit eten in Nederland",
+      titleTranslation: "Eating out in the Netherlands",
+      grammar: ["zou-polite", "time-numbers", "separable-verbs"],
+      paragraphs: [
+        [
+          s("Wie in Nederland uit eten gaat, merkt een paar dingen op. Het eerste: Nederlanders eten vroeg. Om zes uur zitten veel restaurants al vol.", "Anyone who goes out to eat in the Netherlands notices a few things. The first: the Dutch eat early. At six o'clock many restaurants are already full."),
+          s("In het weekend is het slim om van tevoren te reserveren, vaak online.", "At weekends it's smart to book in advance, often online."),
+        ],
+        [
+          s("De ober geeft je eerst de kaart en vraagt: \"Wat wilt u drinken?\" Als je water wilt, krijg je meestal een fles. Kraanwater kun je ook vragen, maar niet elk restaurant geeft het gratis.", "The waiter first gives you the menu and asks: \"What would you like to drink?\" If you want water, you usually get a bottle. You can ask for tap water too, but not every restaurant gives it for free."),
+          s("Een beleefde manier om te bestellen is: \"Ik zou graag de vis willen.\" Of nog korter: \"Voor mij de vis, graag.\"", "A polite way to order is: \"I'd like the fish, please.\" Or even shorter: \"The fish for me, please.\""),
+        ],
+        [
+          s("Na het eten moet je zelf om de rekening vragen. De ober brengt hem niet vanzelf, want hij wil je niet wegjagen.", "After the meal you have to ask for the bill yourself. The waiter doesn't bring it automatically, because he doesn't want to chase you away."),
+          s("Fooi is in Nederland niet verplicht. Veel mensen ronden het bedrag af, of geven ongeveer vijf tot tien procent als ze tevreden zijn.", "Tipping isn't compulsory in the Netherlands. Many people round up the amount, or give about five to ten per cent if they're happy."),
+        ],
+        [
+          s("En dan het beroemde Nederlandse betalen. Met vrienden betaalt vaak één persoon, en daarna stuurt hij iedereen een Tikkie: een betaalverzoek via de telefoon.", "And then the famous Dutch way of paying. With friends one person often pays, and then sends everyone a Tikkie: a payment request by phone."),
+          s("Sommige buitenlanders vinden dat raar. Maar voor Nederlanders is het gewoon eerlijk: iedereen betaalt wat hij heeft gegeten.", "Some foreigners find that strange. But for the Dutch it's simply fair: everyone pays for what they ate."),
+        ],
+      ],
+      tasks: [
+        tf("Om zes uur zijn veel restaurants al vol.", "At six o'clock many restaurants are already full.", true),
+        mc("Why doesn't the waiter bring the bill automatically?", ["He doesn't want to chase you away", "He forgets", "You pay at the door"], 0),
+        mc("What is a Tikkie?", ["A payment request by phone", "A small tip", "A Dutch dessert"], 0),
+        pairs("Match.", "de kaart=the menu | de rekening=the bill | fooi=tip | kraanwater=tap water", true),
+        tf("In Nederland moet je altijd vijftien procent fooi geven.", "In the Netherlands you always have to give a fifteen per cent tip.", false),
+      ],
+    },
+    {
+      id: "een-pan-erwtensoep",
+      level: "A2",
+      title: "Een pan erwtensoep",
+      titleTranslation: "A pan of pea soup",
+      grammar: ["er-quantity", "imperative", "separable-verbs"],
+      paragraphs: [
+        [
+          s("Erwtensoep, of snert, is de bekendste Nederlandse wintersoep. Hij is zo dik dat je lepel erin kan blijven staan. Dat zeggen Nederlanders tenminste!", "Pea soup, or snert, is the best-known Dutch winter soup. It's so thick that your spoon can stand up in it. At least, that's what the Dutch say!"),
+          s("Je eet hem op een koude dag, na het schaatsen of na een lange wandeling. Dit recept is voor zes personen.", "You eat it on a cold day, after skating or after a long walk. This recipe is for six people."),
+        ],
+        [
+          s("Wat heb je nodig? Een pak spliterwten van 500 gram, een stuk prei en een knolselderij. Wortels heb je ook nodig, je hebt er twee nodig.", "What do you need? A 500-gram pack of split peas, a leek and a celeriac. You need carrots too, you need two of them."),
+          s("Uien? Daar heb je er ook twee van nodig. En natuurlijk een rookworst.", "Onions? You need two of those as well. And of course a smoked sausage."),
+        ],
+        [
+          s("Spoel de erwten af en doe ze met twee liter water in een grote pan. Laat ze een uur zachtjes koken.", "Rinse the peas and put them in a big pan with two litres of water. Let them simmer gently for an hour."),
+          s("Snijd intussen de groente in kleine stukjes. Doe alles bij de erwten en kook het nog een uur.", "Meanwhile cut the vegetables into small pieces. Add everything to the peas and cook it for another hour."),
+          s("Roer regelmatig, want de soep brandt snel aan. Doe de rookworst er de laatste tien minuten bij.", "Stir regularly, because the soup burns easily. Add the smoked sausage for the last ten minutes."),
+        ],
+        [
+          s("Erwtensoep is de volgende dag nog lekkerder. Veel mensen maken er daarom een grote pan van en eten er twee dagen van.", "Pea soup is even tastier the next day. That's why many people make a big pan of it and eat from it for two days."),
+          s("Eet de soep met roggebrood en katenspek. Eet je geen vlees? Laat de worst dan weg. Ook zonder vlees is het een stevige maaltijd.", "Eat the soup with rye bread and smoked bacon. Don't eat meat? Then leave out the sausage. Even without meat it's a hearty meal."),
+        ],
+      ],
+      tasks: [
+        order("Put the steps in order.", "Rinse the peas", "Cook the peas for an hour", "Cut the vegetables", "Cook everything for another hour", "Add the sausage"),
+        mc("How many carrots do you need?", ["Two", "Three", "Six"], 0),
+        tf("Erwtensoep is de volgende dag minder lekker.", "Pea soup is less tasty the next day.", false),
+        pairs("Match.", "spliterwten=split peas | prei=leek | wortel=carrot | rookworst=smoked sausage", true),
+        mc("What do you eat with the soup?", ["Rye bread and smoked bacon", "Rice", "Chips"], 0),
+      ],
+    },
+    {
+      id: "de-rijsttafel",
+      level: "A2",
+      title: "De rijsttafel",
+      titleTranslation: "The rice table",
+      grammar: ["er-quantity", "imperfect-irregular", "relative-clauses"],
+      paragraphs: [
+        [
+          s("In bijna elke Nederlandse stad vind je een Indonesisch restaurant. Wie er voor het eerst komt, bestelt vaak een rijsttafel.", "In almost every Dutch town you'll find an Indonesian restaurant. Anyone who goes there for the first time often orders a rice table."),
+          s("Een rijsttafel is geen tafel, maar een maaltijd: rijst met heel veel kleine gerechten. Soms zijn het er wel twintig.", "A rice table isn't a table, but a meal: rice with lots of small dishes. Sometimes there are as many as twenty."),
+        ],
+        [
+          s("Er is iets bijzonders aan de rijsttafel: in Indonesië kennen de meeste mensen hem niet.", "There's something special about the rice table: in Indonesia most people don't know it."),
+          s("Hij ontstond in de koloniale tijd, toen Indonesië een kolonie van Nederland was. Nederlanders wilden alle gerechten van de eilanden tegelijk proeven.", "It came about in colonial times, when Indonesia was a colony of the Netherlands. The Dutch wanted to taste all the dishes of the islands at once."),
+          s("Na 1945 kwamen veel Indische Nederlanders naar Nederland. Zij brachten hun keuken mee en openden restaurants en toko's.", "After 1945 many Indo-Dutch people came to the Netherlands. They brought their cuisine with them and opened restaurants and Asian grocery shops."),
+        ],
+        [
+          s("Daardoor zijn veel Indonesische woorden nu gewoon Nederlands. Je eet saté met pindasaus, nasi of bami.", "Because of that, many Indonesian words are now just Dutch. You eat satay with peanut sauce, nasi or bami."),
+          s("Ook de Surinaamse keuken is populair. Een broodje pom of een roti haal je bij een Surinaamse afhaalzaak.", "Surinamese food is popular too. You get a pom sandwich or a roti from a Surinamese takeaway."),
+        ],
+        [
+          s("Een tip voor je eerste rijsttafel: neem van elk gerecht een klein beetje. Sommige zijn heel scherp!", "A tip for your first rice table: take a little of every dish. Some are very spicy!"),
+          s("Het rode sausje dat op tafel staat, heet sambal. Begin met een heel klein beetje. Je kunt er altijd meer bij doen, maar niet minder.", "The red sauce on the table is called sambal. Start with a very little. You can always add more, but not less."),
+        ],
+      ],
+      tasks: [
+        mc("What is a rijsttafel?", ["Rice with many small dishes", "A big wooden table", "A type of rice"], 0),
+        tf("De meeste mensen in Indonesië eten vaak een rijsttafel.", "Most people in Indonesia often eat a rice table.", false),
+        mc("Who opened many Indonesian restaurants after 1945?", ["Indo-Dutch people who came to the Netherlands", "Dutch chefs", "Tourists"], 0),
+        pairs("Match.", "sambal=spicy red sauce | toko=Asian grocery shop | roti=a Surinamese dish | saté=satay", true),
+        mc("What is the tip about sambal?", ["Start with a very little", "Use a lot", "Never eat it"], 0),
+      ],
+    },
+    {
+      id: "dit-heb-ik-niet-besteld",
+      level: "A2",
+      title: "Dit heb ik niet besteld",
+      titleTranslation: "This isn't what I ordered",
+      grammar: ["zou-polite", "perfect-or-past", "er-quantity"],
+      paragraphs: [
+        [
+          s("Fatou en haar collega's vierden vrijdag dat hun project klaar was. Ze gingen met z'n zessen naar een Italiaans restaurant in Eindhoven.", "On Friday Fatou and her colleagues celebrated that their project was finished. The six of them went to an Italian restaurant in Eindhoven."),
+          s("Het was druk, en de ober had het duidelijk heel zwaar.", "It was busy, and the waiter was clearly having a very hard time."),
+        ],
+        [
+          s("Fatou had een pizza zonder vlees besteld, want ze eet geen varkensvlees. Maar op haar pizza lagen plakken salami.", "Fatou had ordered a pizza without meat, because she doesn't eat pork. But there were slices of salami on her pizza."),
+          s("Ze riep vriendelijk de ober. \"Sorry, ik denk dat er iets misgegaan is. Ik heb een pizza zonder vlees besteld.\"", "She called the waiter in a friendly way. \"Sorry, I think something has gone wrong. I ordered a pizza without meat.\""),
+          s("\"Zou u er een nieuwe voor me willen maken?\"", "\"Would you mind making a new one for me?\""),
+        ],
+        [
+          s("De ober schrok. \"O, wat stom van mij! Natuurlijk. Over tien minuten heeft u een nieuwe.\"", "The waiter was shocked. \"Oh, how silly of me! Of course. You'll have a new one in ten minutes.\""),
+          s("Haar collega's kregen hun eten wel goed. Ze hadden zes pizza's besteld, en er kwamen er vijf goed aan.", "Her colleagues did get their food right. They had ordered six pizzas, and five of them arrived right."),
+        ],
+        [
+          s("Na het eten kwam de ober terug met een groot bord tiramisu. \"Voor de hele tafel, van het huis,\" zei hij. \"Sorry voor het wachten.\"", "After the meal the waiter came back with a big plate of tiramisu. \"For the whole table, on the house,\" he said. \"Sorry for the wait.\""),
+          s("\"Misschien moet ik vaker de verkeerde pizza krijgen,\" grapte Fatou.", "\"Maybe I should get the wrong pizza more often,\" Fatou joked."),
+        ],
+      ],
+      tasks: [
+        mc("What was wrong with Fatou's pizza?", ["There was salami on it", "It was cold", "It was the wrong size"], 0),
+        mc("How did Fatou ask for a new pizza?", ["Politely, with zou", "Angrily", "She didn't ask"], 0),
+        tf("Alle zes pizza's waren fout.", "All six pizzas were wrong.", false),
+        tf("De ober gaf de hele tafel gratis tiramisu.", "The waiter gave the whole table free tiramisu.", true),
+        pairs("Match.", "van het huis=on the house | wat stom van mij=how silly of me | met z'n zessen=the six of them", true),
+      ],
+    },
+  ],
+  listening: [
+    {
+      id: "een-tafel-reserveren",
+      level: "A2",
+      title: "Een tafel reserveren",
+      titleTranslation: "Booking a table",
+      kind: "dialogue",
+      situation: "Pieter calls a restaurant to book a table for his parents' anniversary.",
+      grammar: ["zou-polite", "time-numbers", "questions"],
+      lines: [
+        line("Restaurant", "Restaurant De Vork, goedemiddag.", "De Vork restaurant, good afternoon."),
+        line("Pieter", "Goedemiddag. Ik zou graag een tafel willen reserveren voor zaterdagavond.", "Good afternoon. I'd like to book a table for Saturday evening."),
+        line("Restaurant", "Voor hoeveel personen?", "For how many people?"),
+        line("Pieter", "Voor vier personen, om half acht.", "For four people, at half past seven."),
+        line("Restaurant", "Half acht is helaas vol. Om zeven uur hebben we er nog een, of om negen uur.", "Half past seven is unfortunately full. At seven we still have one, or at nine."),
+        line("Pieter", "Dan neem ik zeven uur. Mijn ouders zijn veertig jaar getrouwd. Zou u daar iets aan kunnen doen?", "Then I'll take seven. My parents have been married for forty years. Could you do something for that?"),
+        line("Restaurant", "Wat leuk! We kunnen een kaarsje op het dessert zetten. Zijn er ook allergieën?", "How nice! We can put a candle on the dessert. Are there any allergies?"),
+        line("Pieter", "Mijn moeder kan geen noten eten.", "My mother can't eat nuts."),
+        line("Restaurant", "Ik zet het erbij. Op welke naam mag ik het noteren?", "I'll make a note of it. In what name can I put it down?"),
+        line("Pieter", "Op naam van Visser.", "In the name of Visser."),
+      ],
+      gist: { prompt: "Why does Pieter call?", options: ["To book a table for an anniversary", "To order takeaway", "To complain about a meal"], answer: 0 },
+      details: [
+        { prompt: "What time does he book?", options: ["Seven o'clock", "Half past seven", "Nine o'clock"], answer: 0 },
+        { prompt: "What can't his mother eat?", options: ["Nuts", "Fish", "Milk"], answer: 0 },
+      ],
+      tasks: [
+        heard(6, ["kaarsje", "taartje", "kaartje"], 0),
+        tf("Pieter reserveert voor zes personen.", "Pieter books for six people.", false),
+        gaps(1, "tafel", "reserveren"),
+      ],
+      dictation: [1, 7],
+      words: {
+        noteren: { meaning: "note down", closer: "noteren ~ to note" },
+      },
+    },
+    {
+      id: "wat-mag-het-zijn",
+      level: "A2",
+      title: "Wat mag het zijn?",
+      titleTranslation: "What can I get you?",
+      kind: "dialogue",
+      situation: "Pieter and his family order at the restaurant on Saturday evening.",
+      grammar: ["zou-polite", "er-quantity", "graag-liever"],
+      lines: [
+        line("Ober", "Goedenavond. Weten jullie al wat jullie willen?", "Good evening. Do you already know what you'd like?"),
+        line("Moeder", "Ik zou graag de zalm willen, met salade in plaats van friet.", "I'd like the salmon, with salad instead of chips."),
+        line("Ober", "Dat kan. En voor meneer?", "That's fine. And for you, sir?"),
+        line("Vader", "Voor mij de biefstuk, graag. Medium.", "The steak for me, please. Medium."),
+        line("Pieter", "Wij nemen allebei de pasta met paddenstoelen.", "We'll both have the pasta with mushrooms."),
+        line("Ober", "En wat willen jullie drinken?", "And what would you like to drink?"),
+        line("Pieter", "Een fles rode wijn, en water. Zou u er ook een fles bruiswater bij willen brengen?", "A bottle of red wine, and water. Could you bring a bottle of sparkling water with it too?"),
+        line("Ober", "Natuurlijk. Wilt u er nog brood bij?", "Of course. Would you like some bread with it?"),
+        line("Vader", "Ja, graag. Doe er maar twee mandjes.", "Yes, please. Make it two baskets."),
+      ],
+      gist: { prompt: "What is happening?", options: ["The family is ordering food and drinks", "They're paying the bill", "They're asking for the menu"], answer: 0 },
+      details: [
+        { prompt: "What does the mother want instead of chips?", options: ["Salad", "Rice", "Potatoes"], answer: 0 },
+        { prompt: "How many baskets of bread do they order?", options: ["One", "Two", "Four"], answer: 1 },
+      ],
+      tasks: [
+        heard(4, ["paddenstoelen", "pannenkoeken", "pinda's"], 0),
+        tf("De vader neemt de zalm.", "The father has the salmon.", false),
+        gaps(8, "maar", "mandjes"),
+      ],
+      dictation: [1, 5],
+      words: {
+        bruiswater: { meaning: "sparkling water", closer: "bruisen = to fizz" },
+        mandjes: { meaning: "(little) baskets", base: "mandje" },
+      },
+    },
+    {
+      id: "krentenbollen-voor-het-werk",
+      level: "A2",
+      title: "Bij de bakker",
+      titleTranslation: "At the baker's",
+      kind: "dialogue",
+      situation: "Zainab buys bread for a birthday breakfast at work.",
+      grammar: ["er-quantity", "time-numbers", "demonstratives"],
+      lines: [
+        line("Bakker", "Goedemorgen! Zegt u het maar.", "Good morning! What can I get you?"),
+        line("Zainab", "Goedemorgen. Ik wil graag een volkoren brood, gesneden.", "Good morning. I'd like a wholemeal loaf, sliced."),
+        line("Bakker", "Alstublieft. Verder nog iets?", "Here you are. Anything else?"),
+        line("Zainab", "Ja, krentenbollen. Hoeveel zitten er in een zak?", "Yes, currant buns. How many are there in a bag?"),
+        line("Bakker", "Er zitten er zes in een zak.", "There are six in a bag."),
+        line("Zainab", "Dan wil ik er twee zakken. We zijn met twaalf mensen op mijn werk.", "Then I'd like two bags. There are twelve of us at work."),
+        line("Bakker", "Een feestje? Dan heb ik ook nog appelflappen. Die zijn vandaag in de aanbieding: vier voor vijf euro.", "A party? Then I also have apple turnovers. They're on offer today: four for five euros."),
+        line("Zainab", "Lekker! Doe er dan maar acht.", "Delicious! Make it eight, then."),
+        line("Bakker", "Dat is dan bij elkaar 26 euro 40. Pinnen of contant?", "That comes to 26 euros 40 altogether. Card or cash?"),
+        line("Zainab", "Pinnen, graag.", "Card, please."),
+      ],
+      gist: { prompt: "What is Zainab buying?", options: ["Bread and pastries for a work breakfast", "A birthday cake", "Bread for herself"], answer: 0 },
+      details: [
+        { prompt: "How many currant buns are in a bag?", options: ["Four", "Six", "Twelve"], answer: 1 },
+        { prompt: "How many apple turnovers does she buy?", options: ["Four", "Eight", "Twelve"], answer: 1 },
+      ],
+      tasks: [
+        heard(6, ["aanbieding", "afspraak", "avond"], 0),
+        tf("Zainab betaalt contant.", "Zainab pays cash.", false),
+        gaps(4, "zitten", "zak"),
+      ],
+      dictation: [1, 7],
+      words: {
+        krentenbollen: { meaning: "currant buns", base: "krentenbol", closer: "krent (currant) + bol (ball, bun)" },
+        appelflappen: { meaning: "apple turnovers", base: "appelflap" },
+      },
+    },
+    {
+      id: "ik-stuur-wel-een-tikkie",
+      level: "A2",
+      title: "Ik stuur wel een Tikkie",
+      titleTranslation: "I'll send a Tikkie",
+      kind: "dialogue",
+      situation: "Four friends have had dinner together. Now it's time to pay.",
+      grammar: ["er-quantity", "zou-polite", "separable-verbs"],
+      lines: [
+        line("Mila", "Zullen we de rekening vragen? Ik moet de laatste trein halen.", "Shall we ask for the bill? I have to catch the last train."),
+        line("Ruben", "Ik betaal wel even, dan stuur ik jullie straks een Tikkie.", "I'll just pay, then I'll send you all a Tikkie later."),
+        line("Mila", "Top. Maar ik heb alleen een salade gehad en geen wijn. Zou je dat er even bij willen zetten?", "Great. But I only had a salad and no wine. Would you mind taking that into account?"),
+        line("Ruben", "Natuurlijk. Wie heeft er nog meer wijn gedronken?", "Of course. Who else drank wine?"),
+        line("Hugo", "Ik. Twee glazen. Nee, wacht: ik heb er drie gehad.", "Me. Two glasses. No, wait: I had three."),
+        line("Ruben", "Oké. Dan reken ik het per persoon uit. Mila, jij betaalt 19 euro, Hugo 34.", "OK. Then I'll work it out per person. Mila, you pay 19 euros, Hugo 34."),
+        line("Hugo", "Prima. En de fooi? Zullen we het afronden op honderd?", "Fine. And the tip? Shall we round it up to a hundred?"),
+        line("Ruben", "Goed idee. Ik zet de fooi er gelijk bij.", "Good idea. I'll add the tip straight away."),
+      ],
+      gist: { prompt: "How do the friends pay?", options: ["Ruben pays and sends a payment request", "Everyone pays separately at the table", "Mila pays for everyone"], answer: 0 },
+      details: [
+        { prompt: "How many glasses of wine did Hugo have?", options: ["Two", "Three", "None"], answer: 1 },
+        { prompt: "Why is Mila in a hurry?", options: ["She has to catch the last train", "She has to work", "She's tired"], answer: 0 },
+      ],
+      tasks: [
+        heard(0, ["trein", "tram", "taxi"], 0),
+        tf("Mila heeft wijn gedronken.", "Mila drank wine.", false),
+        gaps(1, "betaal", "straks"),
+      ],
+      dictation: [1, 6],
+      words: {
+        tikkie: { meaning: "a payment request by phone", local: "Ik stuur je een Tikkie = I'll send you a payment link" },
+      },
+    },
+  ],
+  writing: [
+    a2({
+      id: "w-mijn-recept",
+      title: "Een recept uit mijn land",
+      titleTranslation: "A recipe from my country",
+      form: "description",
+      situation: "Your Dutch class is making a cookbook. Write a simple recipe from your country or family.",
+      points: [
+        p("Say what the dish is and where it comes from", "komt", "uit", "gerecht", "land", "familie"),
+        p("Say how many people it's for", "personen", "voor", "mensen"),
+        p("List the ingredients, using er for a number", "er", "nodig"),
+        p("Give the steps, with imperatives", "snijd", "doe", "kook", "bak", "roer", "laat"),
+        p("Say how long it takes", "minuten", "uur", "duurt"),
+        p("Say when you eat it, and give a tip", "eet", "eten", "tip", "lekker", "feest"),
+      ],
+      model:
+        "Shakshuka is een gerecht uit Noord-Afrika, en mijn familie in Tunesië eet het bijna elke week. Dit recept is voor vier personen. Je hebt twee uien en één rode paprika nodig. Tomaten heb je ook nodig: je hebt er zes nodig, of één blik. Eieren? Daar heb je er acht van nodig. Verder heb je knoflook, olijfolie, komijn en een beetje peper nodig. Snijd eerst de ui en de paprika in kleine stukjes. Bak ze vijf minuten in de olie, op een laag vuur. Doe dan de knoflook, de komijn en de tomaten erbij. Laat alles twintig minuten zachtjes koken en roer af en toe. Maak dan acht kleine kuiltjes in de saus en doe in elk kuiltje een ei. Doe de deksel op de pan en wacht nog zeven minuten. Wij eten het op zondagochtend, met vers brood. Een tip: eet het direct uit de pan!",
+    }),
+    a2({
+      id: "w-klacht-bezorging",
+      title: "Een klacht over een bestelling",
+      titleTranslation: "A complaint about an order",
+      form: "email",
+      situation: "You ordered food or groceries online, but something went wrong. Write an email to the company.",
+      points: [
+        p("Greet the company", "beste", "geachte", "goedendag"),
+        p("Say what and when you ordered", "besteld", "bestelling", "bestelde", "gisteren", "vorige"),
+        p("Say what went wrong", "kwam", "te", "laat", "koud", "kapot", "ontbrak", "verkeerde", "miste"),
+        p("Use er with a number", "er"),
+        p("Ask politely for a solution, with zou", "zou", "zouden"),
+        p("Close politely", "groet", "groeten", "alvast", "bedankt"),
+      ],
+      model:
+        "Geachte heer of mevrouw, Gisteren heb ik bij u boodschappen besteld voor een feestje bij mij thuis. De bestelling zou tussen vijf en zes uur komen, maar de bezorger kwam pas om half acht. Toen waren mijn gasten er al. Ook was niet alles goed. Ik had twaalf flessen fris besteld, maar er zaten er maar acht in de doos. Van de zes bakjes aardbeien waren er twee helemaal kapot. Het ijs was gesmolten, omdat het niet in een koude tas zat. Ik heb de foto's als bijlage bij deze mail gedaan. Zou u het geld voor de ontbrekende flessen, de aardbeien en het ijs willen terugbetalen? En zou u ervoor kunnen zorgen dat de bezorging de volgende keer op tijd is? Ik ben normaal heel tevreden over uw winkel. Alvast bedankt voor uw antwoord. Met vriendelijke groet, Leila Bouzid",
+    }),
+    a2({
+      id: "w-eten-bij-ons",
+      title: "Eten bij ons thuis",
+      titleTranslation: "Food at our place",
+      form: "description",
+      situation: "Compare eating habits in your country or family with what you've seen in the Netherlands.",
+      points: [
+        p("Say what and when people eat in your country or family", "eten", "eet", "ontbijt", "lunch", "avondeten", "uur"),
+        p("Say how it's different in the Netherlands", "nederland", "nederlanders", "anders", "maar"),
+        p("Compare, with a comparative or superlative", "vroeger", "later", "meer", "minder", "langer", "warmer", "belangrijkste", "lekkerste"),
+        p("Say how a meal goes when you eat out or with guests", "restaurant", "gasten", "samen", "betalen", "rekening"),
+        p("Give your opinion, with omdat or want", "omdat", "want", "vind"),
+        p("Say what you've taken over from the Dutch, or not", "nu", "ook", "nooit", "inmiddels", "sinds"),
+      ],
+      model:
+        "In Spanje eten we veel later dan in Nederland. Bij mijn ouders thuis is de lunch om half drie, en het avondeten pas om half tien. In Nederland eten de meeste mensen om zes uur. Toen ik hier net woonde, had ik om zes uur nog helemaal geen honger! Ook de lunch is anders. Nederlanders eten bij de lunch vaak brood met kaas, en ze zijn in een kwartier klaar. In Spanje is de lunch de belangrijkste maaltijd van de dag, met warm eten. Als we uit eten gaan, betaalt bij ons vaak één persoon voor iedereen. De volgende keer betaalt een ander. In Nederland betaalt iedereen zijn eigen deel. Eerst vond ik dat raar, maar nu vind ik het eigenlijk wel handig, omdat het eerlijk is. Inmiddels eet ik zelf ook om half zeven. Maar brood bij de lunch? Dat nooit!",
+    }),
+  ],
+  speaking: {
+    sounds: ["oe-u", "ui"],
+    shadowing: [
+      { text: "Ik zou graag een tafel willen reserveren voor zaterdagavond.", translation: "I'd like to book a table for Saturday evening." },
+      { text: "Er zitten er zes in een zak.", translation: "There are six in a bag." },
+      { text: "Lekker! Doe er dan maar acht.", translation: "Delicious! Make it eight, then." },
+      { text: "Ik betaal wel even, dan stuur ik jullie straks een Tikkie.", translation: "I'll just pay, then I'll send you all a Tikkie later." },
+    ],
+  },
+};

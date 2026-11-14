@@ -4,10 +4,12 @@ import { useEffect, useId, useMemo, useState, type ComponentType } from "react";
 import type { CefrLevel } from "@/core/language-pack";
 import { MOSAIC_COLS, MOSAIC_ROWS, MOSAIC_TILES, revealOrder, tilesRevealed } from "@/core/mosaic";
 import { CanalScene } from "./mosaic-art/canal-scene";
+import { PolderScene } from "./mosaic-art/polder-scene";
 
 /** The hidden picture for each language and level. More come with each level. */
 const ART: Record<string, ComponentType> = {
   "nl-A1": CanalScene,
+  "nl-A2": PolderScene,
 };
 
 /** A plain Delft pattern for levels whose picture isn't painted yet. */

@@ -21,10 +21,11 @@ export function LearningTip({ pack, place }: { pack: LanguagePack | null; place:
   if (!tip) return null;
   return (
     <aside className="learning-tip" aria-label="Learning tip">
-      <p className="learning-tip-text">
-        <span className="learning-tip-mark" aria-hidden="true" />
-        {tip.text}
-      </p>
+      <span className="learning-tip-mark" aria-hidden="true">i</span>
+      <div>
+        <p className="learning-tip-label">Tip</p>
+        <p className="learning-tip-text">{tip.text}</p>
+      </div>
       {tips.length > 1 ? (
         <button type="button" className="learning-tip-more" onClick={() => setOffset((o) => o + 1)}>
           Another tip

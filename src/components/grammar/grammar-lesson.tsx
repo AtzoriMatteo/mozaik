@@ -1,5 +1,6 @@
 "use client";
 
+import { VerdictLine } from "@/components/exercises/verdict";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { judge, shuffleTiles, type Verdict } from "@/core/answers";
@@ -249,9 +250,9 @@ function ExerciseRunner({
       </p>
       <ExerciseCard key={index} lang={lang} seed={`${seed}-${index}`} exercise={ex} verdict={verdict} onCheck={setVerdict} />
       {verdict ? (
-        <div className="feedback" role="status">
+        <div className="feedback" role="status" data-verdict={verdict}>
+          <VerdictLine verdict={verdict} label={verdict === "almost" ? "Almost: check the accents" : undefined} />
           <p>
-            {verdict === "right" ? "Right." : verdict === "almost" ? "Almost: check the accents." : "Not quite."}{" "}
             <span className="feedback-answer" lang={lang}>{correctAnswer(ex)}</span>
           </p>
           <p className="example-translation">{ex.translation}</p>

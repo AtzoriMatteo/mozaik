@@ -1,5 +1,6 @@
 "use client";
 
+import { logStudy } from "@/lib/plan/log";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   courseWordId, eligibleItems, newWords, type ReviewItem, type Schedule,
@@ -134,6 +135,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
   const rate = useCallback(
     async (item: ReviewItem, result: ReviewResult) => {
       if (!lang) return;
+      logStudy("review");
       if (item.kind === "word" && item.source === "saved") {
         await saved.review(item.word, result);
         return;
@@ -172,8 +174,10 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
 
   /** A word met in New words: known → graduated; not known → into My words, due now. */
   const meet = useCallback(
-    (lemma: string, known: boolean) =>
-      known ? graduate(courseWordId(lemma)) : ungraduate(courseWordId(lemma)),
+    (lemma: string, known: boolean) => {
+      logStudy("review");
+      return known ? graduate(courseWordId(lemma)) : ungraduate(courseWordId(lemma));
+    },
     [graduate, ungraduate],
   );
 
