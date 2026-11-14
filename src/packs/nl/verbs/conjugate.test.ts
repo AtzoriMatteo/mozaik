@@ -23,6 +23,17 @@ describe("Dutch verb tables", () => {
     ["opstaan", "stond op", "ben opgestaan"],
     ["informeren", "informeerde", "heb geïnformeerd"],
     ["komen", "kwam", "ben gekomen"],
+    // Found in the audit: not ont + moeten; separable verbs whose second half isn't a known verb;
+    // over/onder verbs that don't split.
+    ["ontmoeten", "ontmoette", "heb ontmoet"],
+    ["afronden", "rondde af", "heb afgerond"],
+    ["uitnodigen", "nodigde uit", "heb uitgenodigd"],
+    ["inloggen", "logde in", "heb ingelogd"],
+    ["voorbereiden", "bereidde voor", "heb voorbereid"],
+    ["overleggen", "overlegde", "heb overlegd"],
+    ["onderzoeken", "onderzocht", "heb onderzocht"],
+    ["overstappen", "stapte over", "ben overgestapt"],
+    ["inspecteren", "inspecteerde", "heb geïnspecteerd"],
   ])("%s: %s, %s", (inf, past, perfect) => {
     expect(form(inf, "past", 0)).toBe(past);
     expect(form(inf, "perfect", 0)).toBe(perfect);

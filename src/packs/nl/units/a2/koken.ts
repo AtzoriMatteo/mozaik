@@ -59,7 +59,7 @@ export const koken: Unit = {
           s("Je eet hem op een koude dag, na het schaatsen of na een lange wandeling. Dit recept is voor zes personen.", "You eat it on a cold day, after skating or after a long walk. This recipe is for six people."),
         ],
         [
-          s("Wat heb je nodig? Een pak spliterwten van 500 gram, een stuk prei en een knolselderij. Wortels heb je ook nodig, je hebt er twee nodig.", "What do you need? A 500-gram pack of split peas, a leek and a celeriac. You need carrots too, you need two of them."),
+          s("Wat heb je nodig? Een pak spliterwten van 500 gram, een stuk prei en een knolselderij. Neem ook wortels: je hebt er twee nodig.", "What do you need? A 500-gram pack of split peas, a leek and a celeriac. Take carrots too: you need two."),
           s("Uien? Daar heb je er ook twee van nodig. En natuurlijk een rookworst.", "Onions? You need two of those as well. And of course a smoked sausage."),
         ],
         [
@@ -162,7 +162,7 @@ export const koken: Unit = {
         line("Restaurant", "Voor hoeveel personen?", "For how many people?"),
         line("Pieter", "Voor vier personen, om half acht.", "For four people, at half past seven."),
         line("Restaurant", "Half acht is helaas vol. Om zeven uur hebben we er nog een, of om negen uur.", "Half past seven is unfortunately full. At seven we still have one, or at nine."),
-        line("Pieter", "Dan neem ik zeven uur. Mijn ouders zijn veertig jaar getrouwd. Zou u daar iets aan kunnen doen?", "Then I'll take seven. My parents have been married for forty years. Could you do something for that?"),
+        line("Pieter", "Dan neem ik zeven uur. Mijn ouders zijn veertig jaar getrouwd. Zou u er iets speciaals van kunnen maken?", "Then I'll take seven. My parents have been married for forty years. Could you make it something special?"),
         line("Restaurant", "Wat leuk! We kunnen een kaarsje op het dessert zetten. Zijn er ook allergieën?", "How nice! We can put a candle on the dessert. Are there any allergies?"),
         line("Pieter", "Mijn moeder kan geen noten eten.", "My mother can't eat nuts."),
         line("Restaurant", "Ik zet het erbij. Op welke naam mag ik het noteren?", "I'll make a note of it. In what name can I put it down?"),

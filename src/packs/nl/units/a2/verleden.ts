@@ -28,7 +28,7 @@ export const verleden: Unit = {
         ],
         [
           s("\"Op zaterdag heb ik eerst lekker uitgeslapen. Om elf uur heb ik ontbeten en daarna ben ik naar de markt gefietst.", "\"On Saturday I had a nice lie-in first. At eleven I had breakfast and then I cycled to the market."),
-          s("Ik heb vis, kaas en bloemen gekocht. Bij de kaaskraam heb ik een oude vriend gezien: Bram, uit mijn studietijd!", "I bought fish, cheese and flowers. At the cheese stall I saw an old friend: Bram, from my student days!"),
+          s("Ik heb vis, kaas en bloemen gekocht. Bij de kaaskraam heb ik een oude vriend gezien: Joris, uit mijn studietijd!", "I bought fish, cheese and flowers. At the cheese stall I saw an old friend: Joris, from my student days!"),
           s("We hebben samen koffie gedronken en heel lang gepraat.", "We had coffee together and talked for ages."),
         ],
         [
@@ -47,13 +47,13 @@ export const verleden: Unit = {
           "Put Noor's weekend in order.",
           "She slept in",
           "She cycled to the market",
-          "She had coffee with Bram",
+          "She had coffee with Joris",
           "She tidied up her house",
           "She went to the beach with her sister",
         ),
-        tf("Noor heeft Bram in de supermarkt gezien.", "Noor saw Bram in the supermarket.", false),
+        tf("Noor heeft Joris in de supermarkt gezien.", "Noor saw Joris in the supermarket.", false),
         mc("What happened to the lasagne?", ["It burned completely", "It went a bit wrong, but they ate it all", "Her parents didn't like it"], 1),
-        pairs("Who did what?", "Noor=went to the beach | Esther=stayed at home | Bram=had coffee at the market | Noor's parents=came for dinner"),
+        pairs("Who did what?", "Noor=went to the beach | Esther=stayed at home | Joris=had coffee at the market | Noor's parents=came for dinner"),
         tf("Esther heeft pizza besteld.", "Esther ordered pizza.", true),
       ],
     },
@@ -136,7 +136,7 @@ export const verleden: Unit = {
       paragraphs: [
         [
           s("Anne Frank is in 1929 in Frankfurt geboren, in Duitsland.", "Anne Frank was born in 1929 in Frankfurt, in Germany."),
-          s("Haar familie was Joods. Toen de nazi's in Duitsland aan de macht kwamen, is de familie naar Amsterdam verhuisd.", "Her family was Jewish. When the Nazis came to power in Germany, the family moved to Amsterdam."),
+          s("Haar familie was Joods. Toen de nazi's in Duitsland aan de macht kwamen, verhuisde de familie naar Amsterdam.", "Her family was Jewish. When the Nazis came to power in Germany, the family moved to Amsterdam."),
         ],
         [
           s("In 1940 heeft Duitsland ook Nederland bezet. Voor Joodse mensen werd het leven steeds gevaarlijker.", "In 1940 Germany occupied the Netherlands too. For Jewish people life became more and more dangerous."),
@@ -145,7 +145,7 @@ export const verleden: Unit = {
         ],
         [
           s("Anne heeft in die tijd een dagboek geschreven. Ze heeft over haar leven, haar angst en haar dromen geschreven.", "During that time Anne wrote a diary. She wrote about her life, her fear and her dreams."),
-          s("In augustus 1944 heeft de politie de onderduikers gevonden en gearresteerd. Hoe dat kon, weet niemand zeker.", "In August 1944 the police found the people in hiding and arrested them. How that happened, nobody knows for sure."),
+          s("In augustus 1944 heeft de Duitse politie de onderduikers gevonden en gearresteerd. Hoe dat kon, weet niemand zeker.", "In August 1944 the German police found the people in hiding and arrested them. How that happened, nobody knows for sure."),
           s("Anne is in 1945 in een concentratiekamp gestorven. Ze was vijftien jaar oud.", "Anne died in a concentration camp in 1945. She was fifteen years old."),
         ],
         [
@@ -341,7 +341,7 @@ export const verleden: Unit = {
         p("Say why you won't forget it", "omdat", "want", "nooit", "vergeten"),
       ],
       model:
-        "Drie jaar geleden ben ik voor het eerst naar Nederland gekomen. Het was een koude dag in januari. Ik ben op Schiphol aangekomen, helemaal alleen, met twee grote koffers. Eerst heb ik de trein naar Leiden genomen, maar ik ben in de verkeerde trein gestapt! Ik was heel zenuwachtig. Toen heeft een oudere vrouw mij geholpen. Ze heeft mij naar het goede perron gebracht en ze heeft zelfs mijn koffer gedragen. Later die dag heb ik in Leiden mijn eerste echte stroopwafel gegeten, op de markt. Ik heb de vrouw nooit meer gezien, maar ik denk nog vaak aan haar. Nu help ik zelf ook altijd toeristen op het station. Ik vergeet die dag nooit, omdat een onbekende mij zo vriendelijk heeft geholpen.",
+        "Drie jaar geleden ben ik voor het eerst naar Nederland gekomen. Het was een koude dag in januari. Ik ben op Schiphol aangekomen, helemaal alleen, met twee grote koffers. Ik wilde de trein naar Leiden nemen, maar ik ben in de verkeerde trein gestapt! Ik was heel zenuwachtig. Toen heeft een oudere vrouw mij geholpen. Ze heeft mij naar het goede perron gebracht en ze heeft zelfs mijn koffer gedragen. Later die dag heb ik in Leiden mijn eerste echte stroopwafel gegeten, op de markt. Ik heb de vrouw nooit meer gezien, maar ik denk nog vaak aan haar. Nu help ik zelf ook altijd toeristen op het station. Ik vergeet die dag nooit, omdat een onbekende mij zo vriendelijk heeft geholpen.",
     }),
   ],
   speaking: {

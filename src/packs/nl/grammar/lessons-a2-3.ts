@@ -111,7 +111,7 @@ export const lessonsA2c: Record<string, GrammarLesson> = {
     examples: [
       example("Ik zal een datum in de groepsapp zetten.", "I'll put a date in the group chat.", "zal", "zetten"),
       example("Wat zullen we zaterdag doen?", "What shall we do on Saturday?", "zullen", "doen"),
-      example("en het zal de komende eeuw nog verder stijgen", "and it will rise even further over the coming century", "zal", "stijgen"),
+      example("en hij zal de komende eeuw nog verder stijgen", "and it will rise even further over the coming century", "zal", "stijgen"),
       example("Dat zal je zeker lukken.", "You'll definitely manage that.", "zal", "lukken"),
     ],
     exercises: [

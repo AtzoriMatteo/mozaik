@@ -69,6 +69,7 @@ jelle | Jelle (a Frisian name)
 jeugd | youth, young people
 jeugdjournaal | children's news (on TV) | | jeugd (youth) + journaal (news)
 jezelf | yourself | | je + zelf
+joris | Joris (a name)
 jo | Jo (a name)
 jonge | young | jong
 jongeren | young people | jongere

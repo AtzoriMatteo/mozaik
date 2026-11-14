@@ -330,7 +330,7 @@ export const werk: Unit = {
         p("Thank them and close", "dank", "bedankt", "groet", "groeten"),
       ],
       model:
-        "Beste Marloes, Ik wil je iets vragen. Zou ik volgende week vrijdag een dag vrij kunnen nemen? Mijn ouders komen uit India naar Nederland, en ze landen op vrijdagochtend op Schiphol. Ik wil ze graag zelf ophalen, omdat het hun eerste reis naar Europa is en ze geen Nederlands of Engels spreken. Mijn werk voor het project is bijna klaar. Ik kan op donderdag langer blijven, en mijn collega Sophie wil mijn telefoon op vrijdag overnemen. Ik heb het al met haar besproken. Als het niet kan, begrijp ik dat natuurlijk, want het is een drukke maand. Natuurlijk neem ik mijn laptop mee naar huis, voor het geval er iets dringends is. Laat je het me weten? Alvast bedankt! Met vriendelijke groet, Arjun",
+        "Beste Marloes, Ik wil je iets vragen. Zou ik volgende week vrijdag een dag vrij kunnen nemen? Mijn ouders komen uit India naar Nederland, en ze landen op vrijdagochtend op Schiphol. Ik wil ze graag zelf ophalen, omdat het hun eerste reis naar Europa is en ze geen Nederlands of Engels spreken. Mijn werk voor het project is bijna klaar. Ik kan op donderdag langer blijven, en mijn collega Sophie wil mijn telefoon op vrijdag overnemen. Ik heb het al met haar besproken. Als het niet kan, begrijp ik dat natuurlijk, want het is een drukke maand. Ik neem wel mijn laptop mee naar huis, voor het geval er iets dringends is. Laat je het me weten? Alvast bedankt! Met vriendelijke groet, Arjun",
     }),
   ],
   speaking: {
