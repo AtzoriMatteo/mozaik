@@ -3603,3 +3603,532 @@ a {
     padding: 1.75rem 1.25rem 1.5rem;
   }
 }
+
+/* ---------- Plan ---------- */
+
+.plan-setup {
+  max-width: 36rem;
+}
+
+.plan-steps {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.75rem;
+}
+
+.plan-steps span {
+  width: 2.25rem;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--grout);
+}
+
+.plan-steps span[data-state="done"] {
+  background: color-mix(in srgb, var(--accent) 55%, var(--grout));
+}
+
+.plan-steps span[data-state="current"] {
+  background: var(--accent);
+}
+
+.plan-question {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-read);
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--heading);
+}
+
+.plan-options {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.plan-option {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--tile);
+  box-shadow: inset 0 0 0 1px var(--grout);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.plan-option:hover {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, var(--grout));
+}
+
+.plan-option[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 9%, var(--tile));
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.plan-option-label {
+  font-family: var(--font-read);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.plan-option-hint {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
+}
+
+.plan-chips,
+.plan-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.plan-chip,
+.plan-day-toggle {
+  min-width: 4.5rem;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--tile);
+  box-shadow: inset 0 0 0 1px var(--grout);
+  color: var(--heading);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.plan-day-toggle {
+  min-width: 3.6rem;
+}
+
+.plan-chip[aria-pressed="true"],
+.plan-day-toggle[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: inset 0 0 0 3px var(--accent), inset 0 0 0 4px color-mix(in srgb, var(--accent-ink) 28%, transparent);
+}
+
+.plan-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+}
+
+.plan-estimate {
+  margin: 1.25rem 0 0;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.plan-estimate strong {
+  color: var(--heading);
+}
+
+.plan-date {
+  margin-top: 1.25rem;
+  max-width: 20rem;
+}
+
+.plan-extras {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.plan-check {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.plan-check input[type="checkbox"],
+.plan-check input[type="radio"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--accent);
+}
+
+.plan-check select,
+.plan-check input[type="date"],
+.plan-date input {
+  min-height: 2.6rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--grout);
+  border-radius: 4px;
+  background: var(--tile);
+  color: var(--ink);
+  font: inherit;
+}
+
+.plan-view-choice {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  gap: 1.25rem;
+}
+
+.plan-view-choice legend {
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.plan-view-choice label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.plan-nav {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* The plan itself */
+
+.plan-head {
+  margin-bottom: 1.5rem;
+}
+
+.plan-summary {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-read);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.plan-summary strong {
+  color: var(--heading);
+}
+
+.plan-today,
+.plan-week,
+.plan-progress {
+  margin-top: 2rem;
+}
+
+.plan-today h2,
+.plan-week h2,
+.plan-progress h2 {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-read);
+  font-size: 1.35rem;
+  color: var(--heading);
+}
+
+.plan-date-label {
+  margin-left: 0.5rem;
+  font-family: var(--font-ui, inherit);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.plan-start {
+  margin-bottom: 1rem;
+}
+
+.plan-rest,
+.plan-done-today,
+.plan-hint {
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+.plan-done-today {
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ok) 11%, var(--tile));
+  box-shadow: inset 4px 0 0 var(--ok);
+  color: var(--ink);
+}
+
+.plan-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 6px;
+  background: var(--tile);
+  box-shadow: inset 0 0 0 1px var(--grout);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.plan-row:hover {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, var(--grout));
+}
+
+.plan-check-box {
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1.5px var(--grout);
+}
+
+.plan-row[data-done] .plan-check-box {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5 6.8 11.5 12.5 4.5' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      center / 80% no-repeat,
+    var(--ok);
+  box-shadow: none;
+}
+
+.plan-row[data-done] .plan-row-title {
+  color: var(--ink-muted);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--ink-muted) 50%, transparent);
+}
+
+.plan-row-text {
+  display: grid;
+  min-width: 0;
+}
+
+.plan-row-title {
+  font-weight: 600;
+  color: var(--heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plan-row-sub {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plan-row-min {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.plan-week-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.plan-week-nav {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.plan-week-days,
+.plan-month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border-radius: 6px;
+  background: var(--grout);
+}
+
+.plan-month-labels {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 0 6px 4px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+/* A day is a small tile; it fills with glaze from the bottom as you study. */
+.plan-day {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.1rem;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 0;
+  border-radius: 3px;
+  background: var(--tile);
+  color: var(--heading);
+  font: inherit;
+  cursor: pointer;
+}
+
+.plan-day[data-compact] {
+  aspect-ratio: 1;
+}
+
+.plan-day > span:not(.plan-day-fill) {
+  position: relative;
+}
+
+.plan-day-fill {
+  position: absolute;
+  inset: auto 0 0 0;
+  background: color-mix(in srgb, var(--ok) 30%, var(--tile));
+}
+
+.plan-day[data-state="done"] .plan-day-fill {
+  background: color-mix(in srgb, var(--ok) 34%, var(--tile));
+}
+
+.plan-day[data-state="today"],
+.plan-day[data-state="done"]:where([aria-pressed]) {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.plan-day[data-state="rest"],
+.plan-day[data-outside] {
+  background: color-mix(in srgb, var(--tile) 55%, var(--grout));
+  color: var(--ink-muted);
+}
+
+.plan-day[data-state="missed"] {
+  color: var(--ink-muted);
+}
+
+.plan-day[aria-pressed="true"] {
+  outline: 2px solid var(--heading);
+  outline-offset: -4px;
+}
+
+.plan-day-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.plan-day-date {
+  font-family: var(--font-read);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.plan-day-min {
+  min-height: 1em;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.plan-day[data-compact] .plan-day-name {
+  font-family: var(--font-read);
+  font-size: 1rem;
+}
+
+.plan-detail {
+  margin-top: 1rem;
+}
+
+.plan-detail h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+}
+
+.plan-detail ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.plan-list-compact .plan-row {
+  padding: 0.5rem 0.75rem;
+}
+
+.plan-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--grout);
+  overflow: hidden;
+}
+
+.plan-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+.plan-progress p {
+  margin: 0.6rem 0 0;
+  line-height: 1.55;
+}
+
+.plan-status {
+  --v: var(--ok);
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--v) 10%, var(--tile));
+  box-shadow: inset 4px 0 0 var(--v);
+}
+
+.plan-status[data-state="behind"] {
+  --v: var(--glaze-ochre);
+}
+
+.plan-status p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.plan-status-title {
+  margin-bottom: 0.25rem !important;
+  font-family: var(--font-read);
+  font-size: 1.15rem;
+  font-weight: 650;
+  color: var(--heading);
+}
+
+.plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--grout);
+}
+
+.plan-confirm {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 30rem) {
+  .plan-row {
+    grid-template-columns: auto 1fr auto;
+  }
+  .plan-row .skill-glyph {
+    display: none;
+  }
+  .plan-day-name {
+    font-size: 0.7rem;
+  }
+}
+
+.plan-next-title {
+  margin: 1.25rem 0 0.6rem;
+  font-size: 1rem;
+  color: var(--ink-muted);
+}
