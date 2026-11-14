@@ -74,6 +74,8 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
     return forms.includes(withT) ? withT : null;
   }
 
+  const GREETINGS = new Set(["beste", "geachte", "hoi", "hallo", "lieve", "dag", "hey", "hé", "goedemorgen", "goedemiddag", "goedenavond"]);
+
   return function check(text: string): WritingIssue[] {
     const issues: WritingIssue[] = [];
     const add = (a: W, b: W, i: Omit<WritingIssue, "start" | "end" | "source">) =>
@@ -91,7 +93,9 @@ export function makeChecker(lexicon: Lexicon, tokenize: (text: string) => Token[
         if ((DAYS.includes(w.norm) || MONTHS.includes(w.norm)) && /^\p{Lu}/u.test(w.text)) {
           add(w, w, { kind: "spelling", message: "Days and months have no capital letter in Dutch.", fix: w.norm, lesson: "dates-ordinals" });
         }
-        if (w.text === "Ik") add(w, w, { kind: "spelling", message: "ik only has a capital at the start of a sentence (not like English I).", fix: "ik", lesson: "pronouns-subject" });
+        // "Beste Marloes, Ik wil…": in a letter the line after the greeting starts with a capital.
+        const afterGreeting = GREETINGS.has(first.norm) && i <= 4 && text.slice(s[i - 1].end, w.start).includes(",");
+        if (w.text === "Ik" && !afterGreeting) add(w, w, { kind: "spelling", message: "ik only has a capital at the start of a sentence (not like English I).", fix: "ik", lesson: "pronouns-subject" });
       });
 
       /* ---------- word order: verb second ---------- */

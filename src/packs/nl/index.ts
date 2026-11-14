@@ -76,7 +76,7 @@ export const dutch: LanguagePack = {
   name: "Dutch",
   nativeName: "Nederlands",
   accent: { light: "#1d3f8c", dark: "#8fb0f0" }, // Delft blue
-  levels: ["A1"],
+  levels: ["A1", "A2"],
   tokenize: tokenizeDutch,
   greeting: greetingFor,
   units,
