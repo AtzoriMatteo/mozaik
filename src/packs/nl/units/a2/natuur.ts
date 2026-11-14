@@ -97,7 +97,7 @@ export const natuur: Unit = {
           s("Nederlanders zeggen soms dat ze vier seizoenen op één dag hebben.", "The Dutch sometimes say they have four seasons in one day."),
         ],
         [
-          s("Daarom kijkt bijna iedereen voor hij op de fiets stapt op Buienradar. Die app laat precies zien waar de regen is en waar hij straks zal zijn.", "That's why almost everyone looks at Buienradar before getting on their bike. That app shows exactly where the rain is and where it will be soon."),
+          s("Daarom kijkt bijna iedereen op Buienradar voordat hij op de fiets stapt. Die app laat precies zien waar de regen is en waar hij straks zal zijn.", "That's why almost everyone looks at Buienradar before getting on their bike. That app shows exactly where the rain is and where it will be soon."),
           s("\"Over tien minuten gaat het regenen,\" zegt je collega dan. \"Ik wacht nog even.\"", "\"It's going to rain in ten minutes,\" your colleague then says. \"I'll wait a bit.\""),
         ],
         [
