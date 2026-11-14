@@ -115,7 +115,10 @@ export function SpeakingPractice({ lang, unitId }: { lang: string; unitId: strin
               step={step}
               sounds={pack.sounds}
               transcribe={asr.transcribe}
-              onNext={() => setIndex(index + 1)}
+              onNext={() => {
+                if (index + 1 >= steps.length) progress.markSpoken(unit.id);
+                setIndex(index + 1);
+              }}
             />
           )}
         </>

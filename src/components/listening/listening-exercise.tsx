@@ -146,6 +146,8 @@ export function ListeningExercise({ lang, itemId }: { lang: string; itemId: stri
           onDone={(right, total) => {
             addScore(right, total);
             setStep("transcript");
+            // Reaching the end counts as done, wherever you go next.
+            progress.markListened(item.id);
           }}
         />
       ) : null}
