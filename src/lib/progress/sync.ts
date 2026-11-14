@@ -24,7 +24,8 @@ const OWNER_KEY = "mozaik:progress-owner";
 
 /** Every progress entry kept in this browser. */
 function progressKeys(): string[] {
-  const pattern = new RegExp(`^mozaik:(${PROGRESS_KINDS.join("|")}):`);
+  // Course progress, plus reviews kept here before the database was ready.
+  const pattern = new RegExp(`^mozaik:(${PROGRESS_KINDS.join("|")}|review):`);
   const keys: string[] = [];
   for (let i = 0; i < window.localStorage.length; i++) {
     const k = window.localStorage.key(i);
