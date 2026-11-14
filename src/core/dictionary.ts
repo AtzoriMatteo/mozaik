@@ -30,7 +30,9 @@ function verbsOf(pack: LanguagePack): ReadonlySet<string> {
     const set = new Set<string>();
     for (const [form, help] of Object.entries(pack.lexicon)) {
       const base = help.base?.toLowerCase();
-      if (!base || base === form || !/(en|n)$/.test(base)) continue;
+      if (!base || base === form || !/(en|^(gaan|staan|slaan|doen|zien))$/.test(base)) continue;
+      // Ordinals (tiende, zevende) look like past forms but aren't: they're the base + de.
+      if (form === `${base}de` || form === `${base}ste`) continue;
       if (form.startsWith("ge") || /(t|de|te|den|ten)$/.test(form)) set.add(base);
     }
     verbs = set;

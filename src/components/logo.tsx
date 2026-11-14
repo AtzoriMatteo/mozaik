@@ -8,7 +8,7 @@ export function Logo() {
       <span style={{ width: 30, display: "inline-block" }}>
         <Tile glazed />
       </span>
-      Mozaik
+      <span className="wordmark-name">Mozaik</span>
     </Link>
   );
 }

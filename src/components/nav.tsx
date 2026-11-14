@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/course", label: "Course", match: ["/course", "/read", "/listen", "/grammar", "/speak"] },
   { href: "/review", label: "Review", match: ["/review"] },
   { href: "/plan", label: "Plan", match: ["/plan"] },
+  { href: "/handbook", label: "Handbook", match: ["/handbook"] },
 ];
 
 /** Pages you see before logging in, where the course links only lead back to login. */
