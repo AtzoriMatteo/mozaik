@@ -4425,3 +4425,141 @@ a {
   font: inherit;
   font-size: 1rem;
 }
+
+/* Handbook: sections and tables */
+.handbook-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+.handbook-card {
+  display: grid;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-tile);
+  background: var(--tile);
+  color: var(--ink);
+  text-decoration: none;
+}
+.handbook-card:hover,
+.handbook-card:focus-visible {
+  border-color: var(--accent);
+}
+.handbook-card-title {
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+  color: var(--heading);
+}
+.handbook-card-line {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+.handbook-filter {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.handbook-filter label {
+  font-weight: 600;
+}
+.handbook-filter input {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  background: var(--tile);
+  color: inherit;
+  font: inherit;
+}
+.handbook-levels {
+  display: flex;
+  gap: 0.4rem;
+}
+.handbook-contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+.handbook-table {
+  margin-top: 2rem;
+  scroll-margin-top: 1rem;
+}
+.handbook-table h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.4rem;
+}
+.handbook-intro {
+  margin: 0 0 0.75rem;
+  color: var(--ink-muted);
+}
+.handbook-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--tile);
+  border: 1px solid var(--grout);
+}
+.handbook-table th,
+.handbook-table td {
+  padding: 0.45rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid color-mix(in srgb, var(--grout) 60%, transparent);
+}
+.handbook-table th {
+  width: 45%;
+  font-family: var(--font-read);
+  font-weight: 600;
+  color: var(--heading);
+}
+.handbook-table th > span {
+  margin-right: 0.3rem;
+}
+.handbook-table th .speak-button {
+  vertical-align: middle;
+}
+.handbook-table td small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+.handbook-tip {
+  margin: 0.6rem 0 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--accent);
+  font-size: 0.95rem;
+}
+.places-picture {
+  display: block;
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
+  margin: 0 0 0.75rem;
+}
+.grammar-glance > p:last-child {
+  margin-top: 0.6rem;
+}
+@media (max-width: 480px) {
+  .handbook-sections {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .handbook-card {
+    padding: 0.7rem 0.8rem;
+  }
+  .handbook-card-title {
+    font-size: 1.05rem;
+  }
+  .handbook-card-line {
+    display: none;
+  }
+}
