@@ -6,6 +6,7 @@
  * course content, grammar notes, pronunciation data) comes from a pack.
  */
 
+import type { VerbTables } from "./verbs";
 import type { GrammarPoint, Lexicon, ReadingText, Unit } from "./content";
 import type { Sound } from "./pronunciation";
 import type { Resource } from "./resources";
@@ -60,6 +61,12 @@ export interface LanguagePack {
   nounArticle?: (lemma: string) => string | null;
   /** Learning tips about this language, shown around the site. */
   tips?: readonly LearningTip[];
+  /** All forms of a verb, for the Handbook: give an infinitive ("zich wassen" for reflexive). */
+  conjugate?: (infinitive: string) => VerbTables | null;
+  /** The infinitive for any form a learner types or taps (telde → tellen), or null if it isn't a verb. */
+  verbFor?: (word: string) => string | null;
+  /** Verbs to browse in the Handbook, most common first. */
+  commonVerbs?: () => readonly string[];
   /** Who speaks in the listening material, so recorded audio gives each character a fitting voice. */
   cast?: Cast;
 }

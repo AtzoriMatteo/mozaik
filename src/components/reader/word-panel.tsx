@@ -5,6 +5,8 @@ import type { WordHelp } from "@/core/content";
 import { SpeakButton } from "@/components/speak-button";
 import { FlagSentence } from "@/components/flag-sentence";
 import type { FlagTarget } from "@/lib/flags/flags";
+import Link from "next/link";
+import { getPack } from "@/core/registry";
 
 type Layer = "closer" | "local" | "sentence";
 
@@ -27,6 +29,8 @@ export function WordPanel(props: {
 }) {
   const { lang, surface, help, translation, saved, error } = props;
   const [open, setOpen] = useState<Layer | null>(null);
+  const pack = getPack(lang);
+  const verb = pack?.verbFor?.(help?.base ?? surface) ?? pack?.verbFor?.(surface) ?? null;
 
   const layers: { id: Layer; label: string; line: string | undefined }[] = [
     { id: "closer", label: "Look closer", line: help?.closer },
@@ -71,6 +75,11 @@ export function WordPanel(props: {
                 {l.label}
               </button>
             ))}
+          {verb ? (
+            <Link href={`/handbook#${encodeURIComponent(verb)}`} className="chip">
+              All forms
+            </Link>
+          ) : null}
           {help ? (
             <button
               type="button"

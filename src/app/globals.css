@@ -835,6 +835,21 @@ a {
   }
 }
 
+/* Small phones: four tabs need the room, so the tile alone stands for Mozaik. */
+@media (max-width: 440px) {
+  .wordmark-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .nav {
+    gap: 0.8rem;
+  }
+}
+
 /* ---------- Review ---------- */
 
 .button-row {
@@ -4156,4 +4171,160 @@ a {
   color: inherit;
   font: inherit;
   font-weight: 400;
+}
+
+/* Handbook: verbs */
+.handbook-section > h2 {
+  margin-top: 1.5rem;
+}
+.verb-search label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.verb-search-row {
+  display: flex;
+  gap: 0.5rem;
+}
+.verb-search input {
+  flex: 1;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  background: var(--tile);
+  color: inherit;
+  font: inherit;
+  font-size: 1.1rem;
+}
+.verb-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  list-style: none;
+}
+.verb-list h2 {
+  font-size: 1rem;
+  margin: 1.5rem 0 0.6rem;
+}
+.verb-chip {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--grout);
+  border-radius: 999px;
+  background: var(--tile);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.verb-chip:hover,
+.verb-chip:focus-visible {
+  border-color: var(--accent);
+}
+.verb-view {
+  margin-top: 1.5rem;
+}
+.verb-inf {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-read);
+  font-size: 2rem;
+  margin: 0;
+}
+.verb-meaning {
+  margin: 0.2rem 0 1rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+.verb-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem 1.5rem;
+  margin: 0;
+}
+.verb-facts dt {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+.verb-facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+.verb-tags {
+  display: flex;
+  gap: 0.4rem;
+  margin: 1rem 0 0;
+}
+.verb-tag {
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.verb-tag-quiet {
+  background: color-mix(in srgb, var(--grout) 40%, transparent);
+}
+.verb-warning {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--glaze-ochre);
+  background: color-mix(in srgb, var(--glaze-ochre) 10%, transparent);
+}
+.verb-notes {
+  margin: 1.25rem 0 0;
+  padding-left: 1.2rem;
+}
+.verb-notes li + li {
+  margin-top: 0.35rem;
+}
+.verb-tenses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.verb-tense {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-tile);
+  background: var(--tile);
+}
+.verb-tense h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+.verb-tense-name {
+  margin: 0.1rem 0 0.6rem;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+.verb-tense table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.verb-tense th,
+.verb-tense td {
+  padding: 0.25rem 0;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid color-mix(in srgb, var(--grout) 50%, transparent);
+}
+.verb-tense th {
+  width: 7.5rem;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+.verb-tense td {
+  font-weight: 600;
+}
+.verb-tense-use {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+.verb-more {
+  margin-top: 1.5rem;
 }
