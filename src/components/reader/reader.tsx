@@ -172,7 +172,11 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
             tasks={tasks}
             lang={pack.code}
             seed={text.id}
-            onDone={(right, total) => setCheck({ right, total })}
+            onDone={(right, total) => {
+              setCheck({ right, total });
+              // Finishing the questions counts as reading it, wherever you go next.
+              markRead(text.id);
+            }}
           />
         ) : null}
         {typeof check === "object" ? (

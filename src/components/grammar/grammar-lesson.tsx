@@ -71,6 +71,7 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
           onDone={(right) => {
             setScore(right);
             setMode("done");
+            progress.markGrammar(point.id);
           }}
         />
       ) : null}
