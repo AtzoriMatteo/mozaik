@@ -1,5 +1,6 @@
 "use client";
 
+import { VerdictLine, verdictFromScore } from "@/components/exercises/verdict";
 import { dictionaryLabel, lemmaFor } from "@/core/dictionary";
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
@@ -630,9 +631,9 @@ function GrammarCard({ lang, item, onAnswer }: { lang: string; item: GrammarItem
       <p className="review-prompt">Grammar: {item.pointTitle}</p>
       <ExerciseCard lang={lang} seed={item.id} exercise={item.exercise} verdict={verdict} onCheck={setVerdict} />
       {verdict ? (
-        <div className="feedback" role="status">
+        <div className="feedback" role="status" data-verdict={verdict}>
+          <VerdictLine verdict={verdict} label={verdict === "almost" ? "Almost: check the accents" : undefined} />
           <p>
-            {verdict === "right" ? "Right." : verdict === "almost" ? "Almost: check the accents." : "Not quite."}{" "}
             <span className="feedback-answer" lang={lang}>{correctAnswer(item.exercise)}</span>
           </p>
           <p className="example-translation">{item.exercise.translation}</p>
@@ -707,7 +708,8 @@ function ListenCard({
       ) : null}
 
       {result ? (
-        <div className="feedback" role="status">
+        <div className="feedback" role="status" data-verdict={verdictFromScore(result.score)}>
+          <VerdictLine verdict={verdictFromScore(result.score)} />
           <p className="diff" lang={lang}>
             {result.parts.map((p, i) => (
               <span key={i} className={`diff-${p.kind}`}>

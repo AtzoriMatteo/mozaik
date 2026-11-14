@@ -1,5 +1,6 @@
 "use client";
 
+import { VerdictLine, verdictFromScore } from "@/components/exercises/verdict";
 import { LearningTip } from "@/components/learning-tip";
 import { glueTokens } from "@/core/glue";
 import Link from "next/link";
@@ -271,8 +272,9 @@ function QuestionStep({
         ))}
       </fieldset>
       {answered ? (
-        <div className="feedback" role="status">
-          <p>{correct ? "Right." : `Not quite: it's "${q.options[q.answer]}".`}</p>
+        <div className="feedback" role="status" data-verdict={correct ? "right" : "wrong"}>
+          <VerdictLine verdict={correct ? "right" : "wrong"} />
+          {correct ? null : <p>It&apos;s &ldquo;{q.options[q.answer]}&rdquo;.</p>}
           <button type="button" className="button" onClick={next}>
             Continue
           </button>
@@ -358,7 +360,8 @@ function DictationStep({
       </div>
 
       {result ? (
-        <div className="feedback" role="status">
+        <div className="feedback" role="status" data-verdict={result.perfect ? "right" : verdictFromScore(result.score)}>
+          <VerdictLine verdict={result.perfect ? "right" : verdictFromScore(result.score)} label={result.perfect ? "Perfect" : undefined} />
           <p className="diff" lang={lang}>
             {result.parts.map((p, i) => (
               <span key={i} className={`diff-${p.kind}`}>

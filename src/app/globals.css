@@ -15,6 +15,7 @@
   --accent: #4a5878;      /* neutral until a language pack sets its own */
   --accent-ink: #ffffff;
   --danger: #a3262a;
+  --ok: #2f6d4c;
 
   /* The five polychrome Delftware glazes. */
   --glaze-cobalt: #1f3e8c;
@@ -52,6 +53,7 @@
     --accent: #a9b6cf;
     --accent-ink: #0e1524;
     --danger: #f08a8d;
+    --ok: #7cc79b;
     --glaze-cobalt: #8fb0f0;
     --glaze-manganese: #c99bbc;
     --glaze-ochre: #e0b456;
@@ -1781,15 +1783,20 @@ a {
 }
 
 .option[data-state="right"] {
-  border-color: var(--accent);
-  background: var(--glaze);
+  border-color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 14%, var(--tile));
   color: var(--heading);
   font-weight: 600;
+  box-shadow: inset 4px 0 0 var(--ok);
 }
 
 .option[data-state="wrong"] {
   border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 10%, var(--tile));
   color: var(--danger);
+  box-shadow: inset 4px 0 0 var(--danger);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
 }
 
 .question:disabled .option {
@@ -1800,6 +1807,62 @@ a {
   display: grid;
   gap: 0.75rem;
   justify-items: start;
+}
+
+/* A verdict banner: a tinted tile with a band of glaze down the left. */
+.feedback[data-verdict] {
+  --v: var(--ok);
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem 1.15rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--v) 11%, var(--tile));
+  box-shadow:
+    inset 5px 0 0 var(--v),
+    inset 0 0 0 1px color-mix(in srgb, var(--v) 35%, transparent);
+  animation: verdict-in 180ms ease-out;
+}
+
+.feedback[data-verdict="almost"] {
+  --v: var(--glaze-ochre);
+}
+
+.feedback[data-verdict="wrong"] {
+  --v: var(--danger);
+}
+
+.feedback-verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: 1.4rem;
+  font-weight: 650;
+  line-height: 1.2;
+  color: color-mix(in srgb, var(--v, var(--ok)) 80%, var(--heading));
+}
+
+.verdict-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 5px;
+  background: var(--v, var(--ok));
+  color: var(--tile);
+}
+
+.feedback-verdict[data-verdict="almost"] { --v: var(--glaze-ochre); }
+.feedback-verdict[data-verdict="wrong"] { --v: var(--danger); }
+
+@keyframes verdict-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedback[data-verdict] { animation: none; }
 }
 
 .feedback p {
@@ -3002,40 +3065,59 @@ a {
   background: var(--tile);
 }
 
-/* ---------- Learning tips: a quiet note, never the loudest thing ---------- */
+/* ---------- Learning tips: a small manganese tile and a tinted card ---------- */
 
 .learning-tip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
   max-width: 38rem;
   margin-block: 2rem 0;
-  padding: 0.85rem 1rem 0.75rem;
+  padding: 1rem 1.15rem 0.9rem 1rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--glaze-manganese) 9%, var(--tile));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--glaze-manganese) 30%, var(--grout));
+}
+
+/* A tiny tile with painted corners, like the ones in the course. */
+.learning-tip-mark {
+  grid-row: span 2;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 4px;
-  background: var(--tile);
-  box-shadow: inset 0 0 0 1px var(--grout);
+  background:
+    radial-gradient(circle at 0 0, var(--tile) 0 4px, transparent 4.5px),
+    radial-gradient(circle at 100% 0, var(--tile) 0 4px, transparent 4.5px),
+    radial-gradient(circle at 0 100%, var(--tile) 0 4px, transparent 4.5px),
+    radial-gradient(circle at 100% 100%, var(--tile) 0 4px, transparent 4.5px),
+    var(--glaze-manganese);
+  display: grid;
+  place-items: center;
+  color: var(--tile);
+  font-family: var(--font-read);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.learning-tip-label {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--glaze-manganese);
 }
 
 .learning-tip-text {
   margin: 0;
-  display: flex;
-  gap: 0.75rem;
-  align-items: baseline;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-family: var(--font-read);
+  font-size: 1.05rem;
+  line-height: 1.55;
   color: var(--ink);
 }
 
-/* A small glazed diamond, like the corner of a tile. */
-.learning-tip-mark {
-  flex: none;
-  width: 0.6rem;
-  height: 0.6rem;
-  transform: rotate(45deg) translateY(-0.1rem);
-  border-radius: 1px;
-  background: var(--glaze-manganese);
-  opacity: 0.85;
-}
-
 .learning-tip-more {
-  margin: 0.4rem 0 0 1.35rem;
+  grid-column: 2;
+  justify-self: start;
+  margin: 0.35rem 0 0;
   padding: 0.2rem 0;
   border: 0;
   background: none;
