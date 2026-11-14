@@ -13,6 +13,7 @@ import { useLearningLanguage } from "./learning-language";
 import { LevelMosaic } from "./level-mosaic";
 import { useNow } from "@/lib/use-now";
 import { NextStep } from "./next-step";
+import { listPacks } from "@/core/registry";
 import { ActivityLabel } from "./course/activity-label";
 
 export function Home() {
@@ -40,6 +41,12 @@ export function Home() {
   return (
     <>
       <Greeting pack={pack} />
+      {listPacks().length > 1 ? (
+        <p className="home-language">
+          You&apos;re learning <span lang={pack.code}>{pack.nativeName}</span>.{" "}
+          <Link href="/language">Switch language</Link>
+        </p>
+      ) : null}
 
       <section className="mosaic-block" aria-labelledby="mosaic-heading">
         <h2 id="mosaic-heading" className="sr-only">Your {level} mosaic</h2>
