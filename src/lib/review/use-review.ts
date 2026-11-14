@@ -20,6 +20,14 @@ import type { ReviewSettings } from "./use-review-settings";
 /** introducedAt for words that came in through New words or an undo. */
 const OUTSIDE_ALLOWANCE = "1970-01-01T00:00:00.000Z";
 
+/** The review kind from an item id (see core/review-items). */
+function kindOfId(id: string): string {
+  if (id.startsWith("g:")) return "grammar";
+  if (id.startsWith("l:")) return "listen";
+  if (id.startsWith("s:") || id.startsWith("sp:")) return "speak";
+  return "word";
+}
+
 const localKey = (lang: string) => `mozaik:review:${lang}`;
 
 function readLocal(lang: string): [string, Schedule][] {
@@ -46,10 +54,27 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
     let cancelled = false;
     const load = remote ? listSchedules(lang) : Promise.resolve({ schedules: readLocal(lang), ready: true });
     load
-      .then((r) => {
+      .then(async (r) => {
         if (cancelled) return;
         // Until the database is set up, keep progress on this device.
-        setOwn(new Map(r.ready ? r.schedules : readLocal(lang)));
+        if (!r.ready) {
+          setOwn(new Map(readLocal(lang)));
+        } else {
+          // Once it is: upload what this device kept meanwhile, then forget it.
+          const server = new Map(r.schedules);
+          const pending = readLocal(lang).filter(([id]) => !server.has(id));
+          for (const [id, sch] of pending) {
+            server.set(id, sch);
+            await saveSchedule(lang, id, kindOfId(id), sch).catch(() => {});
+          }
+          try {
+            window.localStorage.removeItem(localKey(lang));
+          } catch {
+            // Nothing to clear.
+          }
+          if (cancelled) return;
+          setOwn(server);
+        }
         setReady(r.ready);
         setLoaded(true);
       })
