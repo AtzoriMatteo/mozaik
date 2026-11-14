@@ -217,3 +217,40 @@ export function countWords(text: ReadingText): number {
 export function minutesToRead(text: ReadingText): number {
   return Math.max(1, Math.round(countWords(text) / 60));
 }
+
+/** A fixed expression: several words that mean one thing together. */
+export type Expression = {
+  /** Its dictionary form: "op tijd", "er een nachtje over slapen". */
+  phrase: string;
+  meaning: string;
+  /** Shapes it takes in sentences (lower-case words), the phrase first. */
+  forms: readonly string[];
+  /** How natives use it. */
+  local?: string;
+};
+
+/**
+ * The expressions in a sentence that include the word at `index` (an index
+ * into the sentence's words, lower-cased). Returns the matched word range.
+ */
+export function expressionsAt(
+  list: readonly Expression[],
+  words: readonly string[],
+  index: number,
+): { expression: Expression; from: number; to: number }[] {
+  const out: { expression: Expression; from: number; to: number }[] = [];
+  for (const expression of list) {
+    for (const form of expression.forms) {
+      const parts = form.toLowerCase().split(" ");
+      for (let start = Math.max(0, index - parts.length + 1); start <= index; start++) {
+        if (parts.every((p, k) => words[start + k] === p)) {
+          out.push({ expression, from: start, to: start + parts.length - 1 });
+          break;
+        }
+      }
+      if (out.at(-1)?.expression === expression) break;
+    }
+  }
+  // Longest first: "er een nachtje over slapen" before "een".
+  return out.sort((a, b) => b.to - b.from - (a.to - a.from));
+}

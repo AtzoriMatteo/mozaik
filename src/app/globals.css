@@ -4368,3 +4368,60 @@ a {
 .produce-yours {
   color: var(--ink-muted);
 }
+
+/* Word panel: expressions and phrases */
+.expression-box {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--grout) 60%, transparent);
+  display: grid;
+  gap: 0.35rem;
+  justify-items: start;
+}
+.expression-known {
+  display: grid;
+  gap: 0.3rem;
+  justify-items: start;
+  margin-bottom: 0.5rem;
+}
+.expression-label {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+.expression-phrase {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: var(--step-1);
+  color: var(--heading);
+}
+.expression-meaning {
+  margin: 0;
+}
+.expression-local {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+.expression-hint {
+  margin: 0;
+  font-weight: 600;
+  color: var(--accent);
+}
+.expression-meaning-field {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+.expression-meaning-field input {
+  min-height: 2.4rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-control);
+  background: var(--tile);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+}

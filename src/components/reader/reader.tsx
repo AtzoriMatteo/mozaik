@@ -4,7 +4,7 @@ import { LearningTip } from "@/components/learning-tip";
 import { glueTokens } from "@/core/glue";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { helpFor, type WordHelp } from "@/core/content";
+import { expressionsAt, helpFor, type WordHelp } from "@/core/content";
 import { allTexts, type LanguagePack } from "@/core/language-pack";
 import { nextActivity } from "@/core/course";
 import { NextActivityLink } from "@/components/course/next-activity-link";
@@ -12,11 +12,15 @@ import { getPack } from "@/core/registry";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
 import { useReadTexts } from "@/lib/progress/use-read-texts";
 import { WordPanel } from "./word-panel";
+import { ExpressionBox, type Phrase } from "./expression-box";
 import { ListenControls } from "./listen-controls";
 import { TaskRunner } from "@/components/exercises/task-runner";
 
 type WordRef = {
   key: string;
+  /** Which sentence (paragraph.sentence) and which word in it. */
+  sentenceKey: string;
+  wordIndex: number;
   surface: string;
   normalized: string;
   sentence: string;
@@ -40,11 +44,14 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
   const { paragraphs, words } = useMemo(() => {
     const words: WordRef[] = [];
     const paragraphs = text.paragraphs.map((sentences, p) =>
-      sentences.map((sentence, s) =>
-        pack.tokenize(sentence.text).map((tok, t) => {
+      sentences.map((sentence, s) => {
+        let w = 0;
+        return pack.tokenize(sentence.text).map((tok, t) => {
           if (tok.kind !== "word") return { tok, ref: null };
           const ref: WordRef = {
             key: `${p}.${s}.${t}`,
+            sentenceKey: `${p}.${s}`,
+            wordIndex: w++,
             surface: tok.text,
             normalized: tok.normalized,
             sentence: sentence.text,
@@ -53,8 +60,8 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           };
           words.push(ref);
           return { tok, ref };
-        }),
-      ),
+        });
+      }),
     );
     return { paragraphs, words };
   }, [pack, text]);
@@ -63,6 +70,52 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
   const [check, setCheck] = useState<"idle" | "running" | { right: number; total: number }>("idle");
   const tasks = text.tasks ?? [];
   const selected = words.find((w) => w.key === selectedKey) ?? null;
+  // A phrase: picked by tapping its first and last word (or a known expression).
+  const [picking, setPicking] = useState(false);
+  const [range, setRange] = useState<{ sentenceKey: string; from: number; to: number } | null>(null);
+  const inRange = (ref: WordRef) =>
+    !!range && ref.sentenceKey === range.sentenceKey && ref.wordIndex >= range.from && ref.wordIndex <= range.to;
+
+  const sentenceWords = (sentenceKey: string) => words.filter((w) => w.sentenceKey === sentenceKey);
+  const known = selected
+    ? expressionsAt(pack.expressions ?? [], sentenceWords(selected.sentenceKey).map((w) => w.normalized), selected.wordIndex)
+    : [];
+  const phrase: Phrase | null = (() => {
+    if (!range) return null;
+    const ws = sentenceWords(range.sentenceKey).slice(range.from, range.to + 1);
+    if (ws.length < 2) return null;
+    const sentence = ws[0].sentence;
+    const start = sentence.indexOf(ws[0].surface);
+    const lastAt = sentence.indexOf(ws.at(-1)!.surface, start + 1);
+    const surface = start >= 0 && lastAt > start ? sentence.slice(start, lastAt + ws.at(-1)!.surface.length) : ws.map((w) => w.surface).join(" ");
+    const normalized = ws.map((w) => w.normalized).join(" ");
+    const match = known.find((k) => k.from === range.from && k.to === range.to)?.expression;
+    return { normalized, surface, sentence, base: match?.phrase, meaning: match?.meaning ?? "" };
+  })();
+
+  const clickWord = (ref: WordRef) => {
+    if (picking && selected && ref.sentenceKey === selected.sentenceKey) {
+      const a = selected.wordIndex;
+      setRange({ sentenceKey: ref.sentenceKey, from: Math.min(a, ref.wordIndex), to: Math.max(a, ref.wordIndex) });
+      setPicking(false);
+      return;
+    }
+    setPicking(false);
+    setRange(null);
+    setSelectedKey(ref.key === selectedKey ? null : ref.key);
+  };
+
+  const savePhrase = (p: Phrase, meaning: string) => {
+    void saved.toggle({
+      language: pack.code,
+      word: p.normalized,
+      surface: p.surface,
+      base: p.base,
+      meaning,
+      sentence: p.sentence,
+      textId: text.id,
+    });
+  };
 
   const toggleSave = useCallback(
     (w: WordRef) => {
@@ -136,10 +189,10 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
                             key={pi}
                             type="button"
                             className="word"
-                            data-selected={ref.key === selectedKey || undefined}
+                            data-selected={ref.key === selectedKey || inRange(ref) || undefined}
                             data-saved={saved.isSaved(ref.normalized, ref.help?.base) || undefined}
                             aria-pressed={ref.key === selectedKey}
-                            onClick={() => setSelectedKey(ref.key === selectedKey ? null : ref.key)}
+                            onClick={() => clickWord(ref)}
                           >
                             {piece.kind === "word" ? piece.token.text : ""}
                           </button>
@@ -204,9 +257,28 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           saved={saved.isSaved(selected.normalized, selected.help?.base)}
           error={saved.error}
           onToggleSave={() => toggleSave(selected)}
-          onClose={() => setSelectedKey(null)}
+          onClose={() => {
+            setSelectedKey(null);
+            setRange(null);
+            setPicking(false);
+          }}
           flag={{ language: pack.code, itemKind: "text", itemId: text.id }}
-        />
+        >
+          <ExpressionBox
+            key={`${selected.key}-${range?.from}-${range?.to}`}
+            lang={pack.code}
+            known={known.map((k) => k.expression)}
+            phrase={phrase}
+            picking={picking}
+            isSaved={(w, base) => saved.isSaved(w, base)}
+            onPick={() => {
+              setRange(null);
+              setPicking(true);
+            }}
+            onShowKnown={(i) => setRange({ sentenceKey: selected.sentenceKey, from: known[i].from, to: known[i].to })}
+            onSave={savePhrase}
+          />
+        </WordPanel>
       ) : null}
     </article>
   );
