@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { WordHelp } from "@/core/content";
 import { SpeakButton } from "@/components/speak-button";
 import { FlagSentence } from "@/components/flag-sentence";
@@ -26,6 +26,8 @@ export function WordPanel(props: {
   onClose: () => void;
   /** Where the sentence is, so it can be flagged as sounding odd. */
   flag?: FlagTarget;
+  /** Extra parts under the actions (expressions). */
+  children?: ReactNode;
 }) {
   const { lang, surface, help, translation, saved, error } = props;
   const [open, setOpen] = useState<Layer | null>(null);
@@ -102,6 +104,7 @@ export function WordPanel(props: {
           </p>
         ) : null}
         {open === "sentence" && props.flag ? <FlagSentence key={props.sentence} target={props.flag} sentence={props.sentence} /> : null}
+        {props.children}
         {error ? <p className="error" role="alert">{error}</p> : null}
       </div>
     </aside>

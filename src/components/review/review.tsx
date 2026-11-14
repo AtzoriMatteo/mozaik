@@ -533,6 +533,9 @@ function WordCard({
   const reveal = () => setRevealed(true);
   useRevealKey(revealed || kind === "produce", reveal);
   const tokens = pack.tokenize(item.sentence);
+  const target = targetTokens(tokens, item.word);
+  const first = Math.min(...target);
+  const targetText = tokens.filter((_, i) => target.has(i)).map((t) => t.text).join("");
   const lemma = lemmaFor(item);
   const dictionary = dictionaryLabel(pack, lemma);
 
@@ -572,15 +575,16 @@ function WordCard({
           </p>
           <p className="review-sentence" lang={lang}>
             {tokens.map((tok, i) => {
-              const isTarget = tok.kind === "word" && tok.normalized === item.word;
-              if (!isTarget) return <span key={i}>{tok.text}</span>;
+              if (!target.has(i)) return <span key={i}>{tok.text}</span>;
               if (kind === "recall" && !revealed) {
+                // One gap for the whole word or phrase.
+                if (i !== first) return null;
                 return (
                   <span
                     key={i}
                     className="review-gap"
                     aria-label="missing word"
-                    style={{ width: `${Math.max(3, tok.text.length) * 0.62}em` }}
+                    style={{ width: `${Math.max(3, targetText.length) * 0.62}em` }}
                   />
                 );
               }
@@ -603,6 +607,20 @@ function WordCard({
       )}
     </section>
   );
+}
+
+/** Which tokens of the sentence are the card's word, or all the tokens of a saved phrase. */
+function targetTokens(tokens: { kind: string; normalized?: string }[], word: string): Set<number> {
+  const parts = word.split(" ");
+  const out = new Set<number>();
+  const wordAt = tokens.map((t, i) => (t.kind === "word" ? i : -1)).filter((i) => i >= 0);
+  for (let w = 0; w + parts.length <= wordAt.length; w++) {
+    if (parts.every((p, k) => tokens[wordAt[w + k]].normalized === p)) {
+      for (let i = wordAt[w]; i <= wordAt[w + parts.length - 1]; i++) out.add(i);
+      if (parts.length > 1) break;
+    }
+  }
+  return out;
 }
 
 function WordAnswer({ pack, item, showSentence }: { pack: LanguagePack; item: WordItem; showSentence: boolean }) {

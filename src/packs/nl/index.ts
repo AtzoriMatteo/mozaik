@@ -11,6 +11,7 @@ import { tips } from "./tips";
 import { articleFor } from "./articles";
 import { zipf } from "./frequency";
 import { cast } from "./cast";
+import { expressions } from "./expressions";
 import { verbTools } from "./verbs";
 import { makeChecker } from "./writing/check";
 import { isNumberWord } from "./writing/data";
@@ -92,5 +93,6 @@ export const dutch: LanguagePack = {
   nounArticle: articleFor,
   wordFrequency: zipf,
   cast,
+  expressions,
   ...verbTools(() => dutch),
 };
