@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { EmailLogin, ProviderLogin } from "./login-form";
 
 export const metadata: Metadata = { title: "Log in · Mozaik" };
@@ -11,6 +12,9 @@ export default function LoginPage() {
       <ProviderLogin />
       <p className="login-or">or with email</p>
       <EmailLogin />
+      <p className="login-privacy">
+        <Link href="/privacy">Privacy</Link>: what Mozaik stores and why.
+      </p>
     </main>
   );
 }
