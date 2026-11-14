@@ -7,6 +7,7 @@
  */
 
 import type { VerbTables } from "./verbs";
+import type { Handbook } from "./handbook";
 import type { Expression, GrammarPoint, Lexicon, ReadingText, Unit } from "./content";
 import type { Sound } from "./pronunciation";
 import type { Resource } from "./resources";
@@ -67,6 +68,8 @@ export interface LanguagePack {
   verbFor?: (word: string) => string | null;
   /** Verbs to browse in the Handbook, most common first. */
   commonVerbs?: () => readonly string[];
+  /** Reference tables for the Handbook: words by topic, phrases, spelling. */
+  handbook?: Handbook;
   /** Fixed expressions (op tijd, er een nachtje over slapen) to recognise in texts and save as one card. */
   expressions?: readonly Expression[];
   /** Who speaks in the listening material, so recorded audio gives each character a fitting voice. */

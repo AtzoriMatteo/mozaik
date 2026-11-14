@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { textKey, type AudioManifest } from "@/core/audio";
+import { legacyTextKey, textKey, type AudioManifest } from "@/core/audio";
 
 /**
  * Speech. Course sentences play from recordings made with natural voices
@@ -34,7 +34,8 @@ function loadManifest(lang: string) {
 
 function recordingFor(lang: string, text: string): string | null {
   loadManifest(lang);
-  const id = manifests.get(lang)?.clips[textKey(text)];
+  const clips = manifests.get(lang)?.clips;
+  const id = clips?.[textKey(text)] ?? clips?.[legacyTextKey(text)];
   return id ? `/audio/${lang}/${id}.mp3` : null;
 }
 

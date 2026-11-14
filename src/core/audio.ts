@@ -18,8 +18,11 @@ export function hash(s: string): string {
   return (h >>> 0).toString(36);
 }
 
-/** The key a sentence is looked up by: its text, with spacing tidied. */
-export const textKey = (text: string) => hash(text.trim().replace(/\s+/g, " "));
+/** The key a sentence or word is looked up by: its text, lower-cased, with spacing tidied. */
+export const textKey = (text: string) => hash(text.trim().replace(/\s+/g, " ").toLowerCase());
+
+/** Before recordings were keyed in lower case: kept so older manifests keep working. */
+export const legacyTextKey = (text: string) => hash(text.trim().replace(/\s+/g, " "));
 
 export type AudioManifest = {
   version: 1;
@@ -66,6 +69,31 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
   for (const unit of pack.units) {
     for (const text of unit.texts) {
       for (const s of text.paragraphs.flat()) add({ text: s.text, role: "narrator", gender: cast?.narrator ?? "f", group: text.id });
+    }
+  }
+  // Single words and short lines, in the narrator's voice: every word in the
+  // texts (as written), dictionary forms with de/het for flashcards,
+  // expressions, verbs and the Handbook tables.
+  const word = (text: string) => add({ text, role: "narrator", gender: cast?.narrator ?? "f", group: "words" });
+  for (const unit of pack.units) {
+    const sentences = [...unit.texts.flatMap((t) => t.paragraphs.flat().map((s) => s.text)), ...unit.listening.flatMap((l) => l.lines.map((x) => x.text))];
+    for (const sentence of sentences) for (const tok of pack.tokenize(sentence)) if (tok.kind === "word" && !/\d/.test(tok.text)) word(tok.normalized);
+  }
+  for (const [form, help] of Object.entries(pack.lexicon)) {
+    if (/\d/.test(form)) continue;
+    const lemma = (help.base ?? form).toLowerCase();
+    const article = pack.nounArticle?.(lemma);
+    word(article ? `${article} ${lemma}` : lemma);
+  }
+  for (const e of pack.expressions ?? []) word(e.phrase);
+  for (const v of pack.commonVerbs?.() ?? []) word(v);
+  const handbook = pack.handbook;
+  if (handbook) {
+    for (const t of [...handbook.topics, ...handbook.phrases, ...handbook.spelling]) {
+      for (const e of t.entries) {
+        const line = e.nl.replace(/\s*\/.*$/, "").replace(/\.\.\./g, "").trim();
+        if (line && !/^[\d.:\se]+$/.test(line)) word(line);
+      }
     }
   }
   return out;

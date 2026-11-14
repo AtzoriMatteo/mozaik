@@ -123,7 +123,7 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
 
 /* ---------------------------------------------------------------- */
 
-function Block({ block, lang }: { block: LessonBlock; lang: string }) {
+export function Block({ block, lang }: { block: LessonBlock; lang: string }) {
   if (block.kind === "text") return <p className="lesson-text">{block.text}</p>;
 
   if (block.kind === "table") {

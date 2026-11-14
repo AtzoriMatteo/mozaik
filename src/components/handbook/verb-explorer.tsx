@@ -87,8 +87,9 @@ function VerbSearch({
 
 function CommonVerbs({ pack, filter, onGo }: { pack: LanguagePack; filter: string; onGo: (v: string) => void }) {
   const all = useMemo(() => pack.commonVerbs?.() ?? [], [pack]);
+  const [more, setMore] = useState(false);
   const f = filter.trim().toLowerCase();
-  const list = (f ? all.filter((v) => v.startsWith(f) || v.includes(f)) : all).slice(0, f ? 40 : 60);
+  const list = (f ? all.filter((v) => v.startsWith(f) || v.includes(f)) : all).slice(0, f ? 40 : more ? 120 : 24);
   return (
     <section className="verb-list" aria-labelledby="common-verbs">
       <h2 id="common-verbs">{f ? "Matching verbs" : "Common verbs"}</h2>
@@ -105,6 +106,11 @@ function CommonVerbs({ pack, filter, onGo }: { pack: LanguagePack; filter: strin
       ) : (
         <p>No verb in the list starts like that. Press Show to see its forms anyway.</p>
       )}
+      {!f && !more ? (
+        <button type="button" className="link-button" onClick={() => setMore(true)}>
+          More verbs
+        </button>
+      ) : null}
     </section>
   );
 }
