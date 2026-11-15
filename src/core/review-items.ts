@@ -1,5 +1,5 @@
 import { helpFor, lemmaOf, type Exercise } from "./content";
-import { allTexts, type CefrLevel, type LanguagePack } from "./language-pack";
+import type { CefrLevel, LanguagePack } from "./language-pack";
 import { isDue } from "./srs";
 import { cardMeaning, lemmaFor, withArticle } from "./dictionary";
 
@@ -24,6 +24,8 @@ export type WordItem = {
   sentence: string;
   translation?: string;
   source: "course" | "saved";
+  /** The unit where the course first uses this word. */
+  unitId?: string;
 };
 export type GrammarItem = { kind: "grammar"; id: string; pointId: string; pointTitle: string; exercise: Exercise };
 export type ListenItem = { kind: "listen"; id: string; text: string; translation: string };
@@ -41,7 +43,7 @@ export type Done = {
 };
 
 /** Words too small or too common to be worth a flashcard. */
-const SKIP = new Set([
+export const SKIP = new Set([
   "de", "het", "een", "en", "of", "maar", "want", "dus", "ik", "jij", "je", "u", "hij", "zij", "ze",
   "wij", "we", "jullie", "die", "dat", "dit", "deze", "er", "is", "zijn", "ben", "niet", "ook",
   "al", "nog", "in", "op", "aan", "van", "om", "te", "me", "mij", "mijn", "ja", "nee",
@@ -59,7 +61,7 @@ export type WordInfo = Omit<WordItem, "kind" | "id" | "source">;
 export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, WordInfo> {
   const index = new Map<string, WordInfo>();
   const core = new Set(pack.coreVocabulary[level] ?? []);
-  for (const text of allTexts(pack)) {
+  for (const unit of pack.units) for (const text of unit.texts) {
     if (text.level !== level) continue;
     for (const sentence of text.paragraphs.flat()) {
       for (const tok of pack.tokenize(sentence.text)) {
@@ -74,6 +76,7 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
           meaning: cardMeaning(pack, lemma, help.meaning),
           sentence: sentence.text,
           translation: sentence.translation,
+          unitId: unit.id,
         });
       }
     }

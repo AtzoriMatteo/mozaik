@@ -28,6 +28,27 @@ export function verbTools(getPack: () => LanguagePack) {
       if (base && known(pack, base)) return base;
       return FORMS.get(w) ?? null;
     },
+    couldBeVerb(word: string): boolean {
+      const pack = getPack();
+      const w = word.toLowerCase();
+      if (pack.verbFor?.(w)) return true;
+      // The lexicon points to an infinitive (mis → missen) even when the verb has no other forms in the course.
+      const base = pack.lexicon[w]?.base?.toLowerCase();
+      if (base && base !== w && /en$/.test(base) && !pack.nounArticle?.(base)) return true;
+      // Plural verb forms are the infinitive (ze noemen, we verbeteren): any -en word that isn't a noun might be one.
+      if (!base && /[^e]en$/.test(w) && pack.lexicon[w] && !pack.nounArticle?.(w)) return true;
+      // Present forms of verbs the lexicon only knows as nouns or not at all:
+      // fiets → fietsen, zwem → zwemmen, woon → wonen, geef → geven, lees → lezen.
+      const stems = new Set([w, w.replace(/t$/, ""), w.replace(/(de|te|den|ten)$/, "")]);
+      for (const st of stems) {
+        if (st.length < 2) continue;
+        const soft = st.replace(/f$/, "v").replace(/s$/, "z");
+        const single = (x: string) => x.replace(/(aa|ee|oo|uu)([^aeiou])$/, (_, v: string, c: string) => v[0] + c);
+        const tries = [`${st}en`, `${st}${st.at(-1)}en`, `${single(st)}en`, `${single(soft)}en`, `${soft}en`, `${st}n`];
+        if (tries.some((inf) => known(pack, inf))) return true;
+      }
+      return false;
+    },
     commonVerbs(): readonly string[] {
       const pack = getPack();
       const freq = pack.wordFrequency ?? {};

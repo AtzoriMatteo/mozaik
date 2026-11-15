@@ -75,6 +75,12 @@ function greetingFor(hour: number) {
 
 export const dutch: LanguagePack = {
   checkWriting: makeChecker(lexicon, tokenizeDutch),
+  formulas: new Set([
+    "hallo", "hoi", "hey", "hé", "dag", "doei", "beste", "lieve", "geachte", "goedemorgen", "goedemiddag", "goedenavond",
+    "goedenacht", "welterusten", "groeten", "groetjes", "ziens", "straks", "snel", "dank", "bedankt", "sorry", "pardon",
+    "ja", "nee", "succes", "gefeliciteerd", "proost", "fijne", "prettige", "veel", "liefs", "hartelijk", "nogmaals",
+    "alstublieft", "alsjeblieft", "graag", "welkom", "gauw", "oké", "prima",
+  ]),
   spelling: { aff: "/dictionaries/nl/index.aff", dic: "/dictionaries/nl/index.dic", isWord: isNumberWord },
   languageTool: "nl",
   code: "nl",

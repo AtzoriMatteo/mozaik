@@ -2,14 +2,17 @@
 
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getPack } from "@/core/registry";
 import type { LanguagePack } from "@/core/language-pack";
 import { nextActivity } from "@/core/course";
 import {
-  countWords, coveredPoints, LONG_ENOUGH, mergeIssues, POINTS_PER_LENGTH, WRITING_LENGTHS, WRITING_REQUIRED,
-  type WritingIssue, type WritingTask,
+  countWords, cueHints, LONG_ENOUGH, mergeIssues, noVerbIssues, pointExamples, pointStatus, POINTS_PER_LENGTH,
+  WRITING_LENGTHS, WRITING_REQUIRED, type PointStatus, type WritingIssue, type WritingTask,
 } from "@/core/writing";
+import { unitWords } from "@/core/unit-words";
+import { askForFeedback, AI_KEY_STORAGE, type AiCorrection, type AiFeedback } from "@/lib/writing/ai-feedback";
+import { SpeakButton } from "@/components/speak-button";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { useSpelling } from "@/lib/writing/use-spelling";
 import { checkWithLanguageTool } from "@/lib/writing/languagetool";
@@ -46,7 +49,8 @@ export function WritingHub({ lang, unitId }: { lang: string; unitId: string }) {
         </p>
         <h1 className="page-title">Write about…</h1>
         <p className="lede">
-          Pick a topic and how long you want to write. Finish {WRITING_REQUIRED} of these {tasks.length} to glaze this
+          Pick a topic and how long you want to write. Each topic shows you an example and useful words first, then you
+          write one point at a time. Finish {WRITING_REQUIRED} of these {tasks.length} to glaze this
           unit&apos;s writing tile. {done >= WRITING_REQUIRED ? "Done: the tile is yours." : `${done} of ${WRITING_REQUIRED} so far.`}
         </p>
       </header>
@@ -72,11 +76,13 @@ export function WritingHub({ lang, unitId }: { lang: string; unitId: string }) {
 }
 
 /* ---------------------------------------------------------------- */
-/* One writing task                                                  */
+/* One writing task: get ready, write point by point, check, compare */
 /* ---------------------------------------------------------------- */
 
 const draftKey = (lang: string, id: string) => `mozaik:writing-draft:${lang}:${id}`;
+const namesKey = (lang: string) => `mozaik:writing-names:${lang}`;
 const LT_KEY = "mozaik:writing-languagetool";
+const AI_ON_KEY = "mozaik:writing-ai";
 const LENGTH_KEY = "mozaik:writing-length";
 
 function readLocal(key: string): string | null {
@@ -86,13 +92,46 @@ function readLocal(key: string): string | null {
     return null;
   }
 }
-function writeLocal(key: string, value: string) {
+function writeLocal(key: string, value: string | null) {
   try {
-    window.localStorage.setItem(key, value);
+    if (value === null) window.localStorage.removeItem(key);
+    else window.localStorage.setItem(key, value);
   } catch {
-    // Storage unavailable: drafts last this visit only.
+    // Storage unavailable: settings last this visit only.
   }
 }
+
+const POINTS = 6;
+const blank = () => Array.from({ length: POINTS }, () => "");
+
+/** Names in the task itself (capitals mid-sentence): never spelling mistakes. */
+function taskNames(pack: LanguagePack, task: WritingTask): Set<string> {
+  const out = new Set<string>();
+  for (const text of [task.situation, task.model]) {
+    let start = true;
+    for (const t of pack.tokenize(text)) {
+      if (t.kind === "punctuation" && /[.!?:]/.test(t.text)) start = true;
+      if (t.kind !== "word") continue;
+      if (!start && /^\p{Lu}/u.test(t.text)) out.add(t.normalized);
+      start = false;
+    }
+  }
+  return out;
+}
+
+type Checked = {
+  parts: string[];
+  issues: WritingIssue[][];
+  status: PointStatus[];
+  ai: AiFeedback | null;
+};
+
+const STATUS_NOTE: Record<Exclude<PointStatus, "ok">, string> = {
+  empty: "Nothing here yet.",
+  "no-sentence": "This point needs at least one full sentence: who does what?",
+  missing: "Mozaik can't see this point in your sentence yet.",
+  copied: "That's the example word for word. Keep the pattern, but make it about you.",
+};
 
 export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId: string; taskId: string }) {
   const pack = getPack(lang) as LanguagePack;
@@ -101,83 +140,149 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
   const progress = useCourseProgress(pack);
   const spelling = useSpelling(pack);
   const lengths = WRITING_LENGTHS[task.level];
+  const examples = useMemo(() => pointExamples(pack, task), [pack, task]);
+  const keyWords = useMemo(() => unitWords(pack, unit).filter((w) => w.core), [pack, unit]);
+  const fromTask = useMemo(() => taskNames(pack, task), [pack, task]);
 
   const [lengthIndex, setLengthIndex] = useState<number | null>(null);
-  const [text, setText] = useState("");
-  const [issues, setIssues] = useState<WritingIssue[] | null>(null);
+  const [parts, setParts] = useState<string[]>(blank);
+  const [checked, setChecked] = useState<Checked | null>(null);
   const [checking, setChecking] = useState(false);
-  const [ltError, setLtError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<string[]>([]);
   const [useLt, setUseLt] = useState(false);
-  const [selected, setSelected] = useState<number | null>(null);
-  const [ticked, setTicked] = useState<Set<number>>(new Set());
+  const [useAi, setUseAi] = useState(false);
+  const [aiKey, setAiKey] = useState("");
+  const [names, setNames] = useState<Set<string>>(new Set());
+  const [shown, setShown] = useState<Set<number>>(new Set());
+  const [override, setOverride] = useState<Set<number>>(new Set());
   const [finished, setFinished] = useState(false);
-  const [showModel, setShowModel] = useState(false);
-  const [checkedText, setCheckedText] = useState<string | null>(null);
 
-  // Restore the draft, the length and the LanguageTool choice (browser storage, after mount).
+  // Restore the draft and settings (browser storage, after mount).
   useEffect(() => {
     const saved = readLocal(draftKey(lang, task.id));
     const len = readLocal(LENGTH_KEY);
     /* eslint-disable react-hooks/set-state-in-effect */
     if (saved) {
       try {
-        const d = JSON.parse(saved) as { text: string; length: number };
-        setText(d.text);
+        const d = JSON.parse(saved) as { parts?: string[]; text?: string; length: number };
+        // Drafts from before point-by-point writing: the whole text goes into the first box.
+        setParts(d.parts ? [...d.parts, ...blank()].slice(0, POINTS) : [d.text ?? "", ...blank()].slice(0, POINTS));
         setLengthIndex(d.length);
       } catch {
         // ignore a broken draft
       }
     } else if (len !== null) setLengthIndex(Number(len));
     setUseLt(readLocal(LT_KEY) === "on");
+    const key = readLocal(AI_KEY_STORAGE) ?? "";
+    setAiKey(key);
+    setUseAi(!!key && readLocal(AI_ON_KEY) !== "off");
+    try {
+      setNames(new Set(JSON.parse(readLocal(namesKey(lang)) ?? "[]") as string[]));
+    } catch {
+      // ignore
+    }
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [lang, task.id]);
 
   useEffect(() => {
     if (lengthIndex === null) return;
-    writeLocal(draftKey(lang, task.id), JSON.stringify({ text, length: lengthIndex }));
-  }, [lang, task.id, text, lengthIndex]);
+    writeLocal(draftKey(lang, task.id), JSON.stringify({ parts, length: lengthIndex }));
+  }, [lang, task.id, parts, lengthIndex]);
 
   const target = lengthIndex === null ? 0 : lengths[lengthIndex];
-  const points = lengthIndex === null ? [] : task.points.slice(0, POINTS_PER_LENGTH[lengthIndex]);
-  const words = countWords(text);
+  const count = lengthIndex === null ? 0 : POINTS_PER_LENGTH[lengthIndex];
+  const points = task.points.slice(0, count);
+  const mine = parts.slice(0, count);
+  const words = mine.reduce((n, p) => n + countWords(p), 0);
   const longEnough = words >= Math.round(target * LONG_ENOUGH);
-  const auto = coveredPoints(pack, text, points);
-  const covered = points.map((_, i) => auto[i] || ticked.has(i));
-  const stale = checkedText !== text;
+  const stale = !checked || checked.parts.slice(0, count).join("\u0000") !== mine.join("\u0000") || checked.status.length !== count;
+  const covered = points.map((_, i) => {
+    if (!checked || stale) return false;
+    if (override.has(i)) return true;
+    if (checked.status[i] === "copied") return false;
+    return checked.ai ? checked.ai.points[i]?.said : checked.status[i] === "ok";
+  });
+  const allCovered = covered.every(Boolean);
 
-  async function runCheck(value: string) {
+  async function runCheck(values: string[], extraNames = names) {
     setChecking(true);
-    setLtError(null);
-    setSelected(null);
-    const own = pack.checkWriting?.(value) ?? [];
-    const spell = await spelling.check(value);
+    setErrors([]);
+    const boxes = values.slice(0, count);
+    // One text for the checkers, each box ending in a full stop, then the issues go back to their boxes.
+    const offsets: number[] = [];
+    let joined = "";
+    for (const b of boxes) {
+      offsets.push(joined.length);
+      joined += b + (b.trim() && !/[.!?]\s*$/.test(b) ? "." : "") + "\n";
+    }
+    const ignore = new Set([...fromTask, ...extraNames]);
+    const errs: string[] = [];
+    // A missing verb matters more than a capital letter in the same place, so it comes first.
+    const own = [...noVerbIssues(pack, joined), ...(pack.checkWriting?.(joined) ?? [])];
+    const spell = await spelling.check(joined, ignore);
     let lt: WritingIssue[] = [];
     if (useLt && pack.languageTool) {
       try {
-        lt = await checkWithLanguageTool(value, pack.languageTool);
+        lt = await checkWithLanguageTool(joined, pack.languageTool);
       } catch (e) {
-        setLtError((e as Error).message);
+        errs.push((e as Error).message);
       }
     }
-    setCheckedText(value);
-    setIssues(mergeIssues(own, spell, lt));
+    // A name the learner marked shouldn't come back from LanguageTool either.
+    const isName = (i: WritingIssue) => i.kind === "spelling" && ignore.has(joined.slice(i.start, i.end).toLowerCase());
+    const all = mergeIssues(own, spell, lt.filter((i) => !isName(i)));
+    const issues = boxes.map((b, k) =>
+      all
+        // An issue may reach into the full stop added after the box: cut it at the box's end.
+        .filter((i) => i.start >= offsets[k] && i.start < offsets[k] + b.length)
+        .map((i) => ({ ...i, start: i.start - offsets[k], end: Math.min(i.end, offsets[k] + b.length) - offsets[k] })),
+    );
+    const status = boxes.map((b, k) => pointStatus(pack, b, task.points[k], examples[k]));
+    let ai: AiFeedback | null = null;
+    if (useAi && aiKey) {
+      try {
+        ai = await askForFeedback(aiKey, pack, task, task.points.slice(0, count).map((p) => p.prompt), boxes);
+      } catch (e) {
+        errs.push((e as Error).message);
+      }
+    }
+    setChecked({ parts: [...values], issues, status, ai });
+    setErrors(errs);
     setChecking(false);
   }
 
-  function applyFix(i: WritingIssue) {
-    if (i.fix === undefined) return;
-    const next = text.slice(0, i.start) + i.fix + text.slice(i.end);
-    setText(next);
+  function edit(i: number, value: string) {
+    setParts((p) => p.map((x, k) => (k === i ? value : x)));
+    setOverride((o) => {
+      if (!o.has(i)) return o;
+      const next = new Set(o);
+      next.delete(i);
+      return next;
+    });
+  }
+
+  function applyFix(k: number, issue: WritingIssue) {
+    if (issue.fix === undefined) return;
+    const next = parts.map((p, i) => (i === k ? p.slice(0, issue.start) + issue.fix + p.slice(issue.end) : p));
+    setParts(next);
     void runCheck(next);
+  }
+
+  function markName(word: string) {
+    const next = new Set(names).add(word.toLowerCase());
+    setNames(next);
+    writeLocal(namesKey(lang), JSON.stringify([...next]));
+    void runCheck(parts, next);
   }
 
   function finish() {
     progress.markWritten(task.id);
     setFinished(true);
-    setShowModel(true);
   }
 
   const others = (unit.writing ?? []).filter((t) => t.id !== task.id && !progress.writingDone.has(t.id));
+  const issueCount = checked && !stale ? checked.issues.reduce((n, l) => n + l.length, 0) : 0;
+  const todo = points.map((p, i) => (covered[i] ? null : i + 1)).filter((x): x is number => x !== null);
 
   return (
     <article className="writing">
@@ -213,134 +318,225 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
 
       {lengthIndex !== null ? (
         <>
-          <section className="write-points" aria-labelledby="points-title">
-            <h2 id="points-title">In your text</h2>
-            <ul>
-              {points.map((pt, i) => (
-                <li key={i} data-covered={covered[i] || undefined}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={covered[i]}
-                      disabled={auto[i]}
-                      onChange={(e) => {
-                        const next = new Set(ticked);
-                        if (e.target.checked) next.add(i);
-                        else next.delete(i);
-                        setTicked(next);
-                      }}
-                    />
-                    {pt.prompt}
-                  </label>
-                </li>
-              ))}
-            </ul>
-            <p className="setting-note">Ticks itself when Mozaik spots it; tick it yourself if you said it another way.</p>
+          <section className="write-ready" aria-labelledby="ready-title">
+            <h2 id="ready-title">Get ready</h2>
+            <p>
+              Write a sentence or two for each point below. Stuck? Open its example, keep the pattern and make it about you.
+            </p>
+            {keyWords.length > 0 ? (
+              <details>
+                <summary>Words for this topic ({keyWords.length})</summary>
+                <ul className="ready-words">
+                  {keyWords.map((w) => (
+                    <li key={w.lemma}>
+                      <span lang={lang}>{w.label}</span> <small>{w.meaning}</small>
+                    </li>
+                  ))}
+                </ul>
+                <Link href={`/words/${lang}/${unit.id}`} className="link-button" target="_blank">
+                  All words of this unit
+                </Link>
+              </details>
+            ) : null}
+            <details>
+              <summary>Read a whole example text first</summary>
+              <p lang={lang} className="ready-model">{task.model}</p>
+              <p className="setting-note">The long version. Read it, then close it and write your own.</p>
+            </details>
           </section>
 
-          <div className="field write-field">
-            <label htmlFor="write-text">Your text</label>
-            <textarea
-              id="write-text"
-              lang={lang}
-              value={text}
-              rows={Math.max(6, Math.round(target / 12))}
-              spellCheck={false}
-              autoCapitalize="sentences"
-              readOnly={finished}
-              onChange={(e) => setText(e.target.value)}
-            />
-            <p className="word-count" data-enough={longEnough || undefined}>
-              {words} of about {target} words
-              {!longEnough && words > 0 ? `: ${Math.round(target * LONG_ENOUGH) - words} more to go` : ""}
-            </p>
-          </div>
+          <ol className="write-points">
+            {points.map((pt, i) => {
+              const status = checked && !stale ? checked.status[i] : null;
+              const ai = checked && !stale ? checked.ai?.points[i] : undefined;
+              const open = shown.has(i);
+              const hints = cueHints(pt).map((c) => ({ c, m: pack.lexicon[c]?.meaning }));
+              return (
+                <li key={i} className="write-point" data-covered={covered[i] || undefined} data-status={status ?? undefined}>
+                  <label htmlFor={`point-${i}`} className="write-point-prompt">
+                    <span className="write-point-num" aria-hidden="true">{i + 1}</span>
+                    {pt.prompt}
+                    {covered[i] ? <span className="sr-only"> (done)</span> : null}
+                  </label>
+                  <textarea
+                    id={`point-${i}`}
+                    lang={lang}
+                    value={parts[i]}
+                    rows={2}
+                    spellCheck={false}
+                    autoCapitalize="sentences"
+                    readOnly={finished}
+                    onChange={(e) => edit(i, e.target.value)}
+                  />
+                  {examples[i] ? (
+                    <button
+                      type="button"
+                      className="link-button write-hint-toggle"
+                      aria-expanded={open}
+                      onClick={() => setShown((s) => { const n = new Set(s); if (open) n.delete(i); else n.add(i); return n; })}
+                    >
+                      {open ? "Hide the example" : "Show an example"}
+                    </button>
+                  ) : null}
+                  {open ? (
+                    <div className="write-example">
+                      <p lang={lang}>
+                        {examples[i]} <SpeakButton lang={lang} text={examples[i]} label="Hear the example" />
+                      </p>
+                      {hints.length ? (
+                        <p className="setting-note">
+                          Useful words:{" "}
+                          {hints.map((h, k) => (
+                            <span key={h.c}>
+                              {k ? " · " : ""}
+                              <span lang={lang}>{h.c}</span>
+                              {h.m ? ` (${h.m})` : ""}
+                            </span>
+                          ))}
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
+
+                  {status && status !== "ok" && !override.has(i) && !(ai?.said && status !== "copied") ? (
+                    <p className="write-point-note">
+                      {STATUS_NOTE[status]}
+                      {status === "missing" && hints.length ? (
+                        <> Words like <span lang={lang}>{hints.map((h) => h.c).join(", ")}</span> would show it.</>
+                      ) : null}
+                      {(status === "missing" || status === "no-sentence") && !finished ? (
+                        <>
+                          {" "}
+                          <button type="button" className="link-button" onClick={() => setOverride((o) => new Set(o).add(i))}>
+                            I did say it
+                          </button>
+                        </>
+                      ) : null}
+                    </p>
+                  ) : null}
+                  {ai && ai.note ? <p className="write-point-note ai-note" data-said={ai.said || undefined}><span className="issue-kind">AI</span>{ai.note}</p> : null}
+                  {checked && !stale && checked.issues[i].length ? (
+                    <Marks
+                      pack={pack}
+                      text={checked.parts[i]}
+                      issues={checked.issues[i]}
+                      onFix={(iss) => applyFix(i, iss)}
+                      onName={markName}
+                      readOnly={finished}
+                    />
+                  ) : null}
+                </li>
+              );
+            })}
+          </ol>
+
+          <p className="word-count" data-enough={longEnough || undefined}>
+            {words} of about {target} words
+            {!longEnough && words > 0 ? `: ${Math.round(target * LONG_ENOUGH) - words} more to go` : ""}
+          </p>
 
           {!finished ? (
-            <div className="button-row">
-              <button type="button" className="button" disabled={checking || words === 0} onClick={() => void runCheck(text)}>
-                {checking ? "Checking…" : issues && !stale ? "Check again" : "Check my text"}
+            <div className="check-row">
+              <button type="button" className="button" disabled={checking || words === 0} onClick={() => void runCheck(parts)}>
+                {checking ? "Checking…" : checked && !stale ? "Check again" : "Check my text"}
               </button>
-              <label className="check lt-toggle">
-                <input
-                  type="checkbox"
-                  checked={useLt}
-                  onChange={(e) => {
-                    setUseLt(e.target.checked);
-                    writeLocal(LT_KEY, e.target.checked ? "on" : "off");
-                  }}
-                />
-                Also check with{" "}
-                <a href="https://languagetool.org" target="_blank" rel="noopener">LanguageTool</a>
-                <small> (sends your text to languagetool.org)</small>
-              </label>
+              {pack.languageTool ? (
+                <label className="check lt-toggle">
+                  <input
+                    type="checkbox"
+                    checked={useLt}
+                    onChange={(e) => {
+                      setUseLt(e.target.checked);
+                      writeLocal(LT_KEY, e.target.checked ? "on" : "off");
+                    }}
+                  />
+                  Also check with{" "}
+                  <a href="https://languagetool.org" target="_blank" rel="noopener">LanguageTool</a>
+                  <small> (sends your text to languagetool.org)</small>
+                </label>
+              ) : null}
+              {aiKey ? (
+                <label className="check lt-toggle">
+                  <input
+                    type="checkbox"
+                    checked={useAi}
+                    onChange={(e) => {
+                      setUseAi(e.target.checked);
+                      writeLocal(AI_ON_KEY, e.target.checked ? "on" : "off");
+                    }}
+                  />
+                  Also ask the AI teacher
+                  <small> (meaning and naturalness, with your own key)</small>
+                </label>
+              ) : null}
             </div>
           ) : null}
 
-          {spelling.state === "loading" ? <p className="setting-note">Loading the spelling dictionary (once, about 2.5 MB)…</p> : null}
+          {spelling.state === "loading" ? <p className="setting-note">Loading the spelling dictionary (once)…</p> : null}
           {spelling.state === "error" ? <p className="error">The spelling dictionary couldn&apos;t load; grammar is still checked.</p> : null}
-          {ltError ? <p className="error" role="alert">{ltError}</p> : null}
+          {errors.map((e) => <p key={e} className="error" role="alert">{e}</p>)}
 
-          {issues ? (
-            <Feedback
-              pack={pack}
-              text={checkedText ?? ""}
-              issues={issues}
-              stale={stale}
-              selected={selected}
-              onSelect={setSelected}
-              onFix={applyFix}
-            />
-          ) : null}
+          {checked && !stale && checked.ai ? <AiPanel lang={lang} ai={checked.ai} /> : null}
 
-          {!finished && issues && !stale ? (
+          {!finished && checked && !stale ? (
             <div className="finish-box">
-              {longEnough ? (
+              {allCovered && longEnough ? (
                 <>
                   <p>
-                    {issues.length === 0 ? "Clean text." : `${issues.length} ${issues.length === 1 ? "thing" : "things"} to look at: fix what you agree with.`}{" "}
+                    Every point is there.{" "}
+                    {issueCount === 0 ? "No mistakes found." : `${issueCount} ${issueCount === 1 ? "thing" : "things"} marked: fix what you agree with.`}{" "}
                     When you&apos;re happy, finish it.
                   </p>
                   <button type="button" className="button" onClick={finish}>Finish this text</button>
                 </>
               ) : (
-                <p>Write a little more ({Math.round(target * LONG_ENOUGH)} words or more) to finish this text.</p>
+                <p>
+                  {todo.length ? `Still to do: point ${todo.join(", ")}. ` : ""}
+                  {!longEnough ? `Write a little more (${Math.round(target * LONG_ENOUGH)} words or more). ` : ""}
+                  {issueCount ? `${issueCount} ${issueCount === 1 ? "thing" : "things"} marked in your sentences.` : ""}
+                </p>
               )}
             </div>
           ) : null}
 
           {finished ? (
-            <div className="finish-box">
-              <p>
-                <strong>Done.</strong>{" "}
-                {(unit.writing ?? []).filter((t) => progress.writingDone.has(t.id)).length >= WRITING_REQUIRED
-                  ? "This unit's writing tile is glazed."
-                  : `One more topic in this unit glazes its writing tile.`}
-              </p>
-              <div className="button-row">
-                {others[0] ? (
-                  <Link href={`/write/${lang}/${unit.id}/${others[0].id}`} className="button">
-                    Next topic: {others[0].titleTranslation}
-                  </Link>
-                ) : (
-                  <NextActivityLink pack={pack} next={nextActivity(pack, { kind: "write", id: unit.id })} onDone={() => {}} />
-                )}
+            <>
+              <Compare lang={lang} points={points.map((p) => p.prompt)} mine={checked?.parts ?? parts} examples={examples} />
+              <div className="finish-box">
+                <p>
+                  <strong>Done.</strong>{" "}
+                  {(unit.writing ?? []).filter((t) => progress.writingDone.has(t.id)).length >= WRITING_REQUIRED
+                    ? "This unit's writing tile is glazed."
+                    : `One more topic in this unit glazes its writing tile.`}
+                </p>
+                <div className="button-row">
+                  {others[0] ? (
+                    <Link href={`/write/${lang}/${unit.id}/${others[0].id}`} className="button">
+                      Next topic: {others[0].titleTranslation}
+                    </Link>
+                  ) : (
+                    <NextActivityLink pack={pack} next={nextActivity(pack, { kind: "write", id: unit.id })} onDone={() => {}} />
+                  )}
+                </div>
               </div>
-            </div>
+            </>
           ) : null}
+
+          <AiSettings
+            aiKey={aiKey}
+            onSave={(k) => {
+              setAiKey(k);
+              writeLocal(AI_KEY_STORAGE, k || null);
+              setUseAi(!!k);
+              writeLocal(AI_ON_KEY, k ? "on" : null);
+            }}
+          />
 
           <p className="setting-note credits">
-            Spelling uses the free <a href="https://www.opentaal.org" target="_blank" rel="noopener">OpenTaal</a> word list
-            (BSD / CC BY 3.0), right on your device.
+            Grammar rules are Mozaik&apos;s own; spelling uses a free dictionary, right on your device. Rules check that each
+            point is said in a real sentence, not whether it sounds natural: for that, use the AI teacher or ask a native
+            speaker.
           </p>
-
-          {issues ? (
-            <details className="model-answer" open={showModel}>
-              <summary>See an example text</summary>
-              <p lang={lang}>{task.model}</p>
-              <p className="setting-note">One way to do it, for the long version. Yours can be completely different.</p>
-            </details>
-          ) : null}
         </>
       ) : null}
     </article>
@@ -349,23 +545,23 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
 
 /* ---------------------------------------------------------------- */
 
-function Feedback({
+/** One box's text with its mistakes marked, and the list of them. */
+function Marks({
   pack,
   text,
   issues,
-  stale,
-  selected,
-  onSelect,
   onFix,
+  onName,
+  readOnly,
 }: {
   pack: LanguagePack;
   text: string;
   issues: WritingIssue[];
-  stale: boolean;
-  selected: number | null;
-  onSelect: (i: number | null) => void;
   onFix: (i: WritingIssue) => void;
+  onName: (word: string) => void;
+  readOnly: boolean;
 }) {
+  const [selected, setSelected] = useState<number | null>(null);
   const parts: { text: string; issue?: number }[] = [];
   let pos = 0;
   issues.forEach((iss, n) => {
@@ -379,64 +575,170 @@ function Feedback({
     id && pack.grammar.some((g) => g.id === id && g.lesson) ? `/grammar/${pack.code}/${id}` : null;
 
   return (
-    <section className="feedback-panel" aria-labelledby="feedback-title" data-stale={stale || undefined}>
-      <h2 id="feedback-title">
-        {issues.length === 0 ? "No mistakes found" : `${issues.length} to look at`}
-      </h2>
-      {stale ? <p className="setting-note">You changed the text since this check. Check again to update.</p> : null}
-      {issues.length > 0 ? (
-        <>
-          <p className="marked-text" lang={pack.code}>
-            {parts.map((p, i) =>
-              p.issue === undefined ? (
-                <span key={i}>{p.text}</span>
-              ) : (
-                <button
-                  key={i}
-                  type="button"
-                  className="mark"
-                  data-kind={issues[p.issue].kind}
-                  aria-pressed={selected === p.issue}
-                  onClick={() => onSelect(selected === p.issue ? null : p.issue!)}
-                >
-                  {p.text}
-                </button>
-              ),
-            )}
+    <div className="point-marks">
+      <p className="marked-text" lang={pack.code}>
+        {parts.map((p, i) =>
+          p.issue === undefined ? (
+            <span key={i}>{p.text}</span>
+          ) : (
+            <button
+              key={i}
+              type="button"
+              className="mark"
+              data-kind={issues[p.issue].kind}
+              aria-pressed={selected === p.issue}
+              onClick={() => setSelected(selected === p.issue ? null : p.issue!)}
+            >
+              {p.text}
+            </button>
+          ),
+        )}
+      </p>
+      <ol className="issue-list">
+        {issues.map((iss, n) => {
+          const href = lessonHref(iss.lesson);
+          const word = text.slice(iss.start, iss.end);
+          return (
+            <li key={n} data-kind={iss.kind} data-selected={selected === n || undefined}>
+              <p>
+                <span className="issue-kind">{iss.kind === "spelling" ? "Spelling" : iss.kind === "grammar" ? "Grammar" : "Style"}</span>
+                {iss.rule === "no-verb" ? null : <span lang={pack.code} className="issue-word">{word}</span>}
+                {iss.fix !== undefined ? (
+                  <>
+                    {" → "}
+                    <span lang={pack.code} className="issue-fix">{iss.fix}</span>
+                  </>
+                ) : null}
+              </p>
+              <p className="issue-message">{iss.message}</p>
+              <div className="issue-actions">
+                {iss.fix !== undefined && !readOnly ? (
+                  <button type="button" className="chip" onClick={() => onFix(iss)}>Use this fix</button>
+                ) : null}
+                {iss.kind === "spelling" && !readOnly && !/\s/.test(word) ? (
+                  <button type="button" className="chip" onClick={() => onName(word)}>It&apos;s a name</button>
+                ) : null}
+                {href ? <Link href={href} className="link-button" target="_blank">See the lesson</Link> : null}
+                {iss.source === "languagetool" ? <small>from LanguageTool</small> : null}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
+const AI_KIND: Record<AiCorrection["kind"], string> = {
+  grammar: "Grammar",
+  word: "Word choice",
+  meaning: "Meaning",
+  natural: "Sounds more natural",
+};
+
+function AiPanel({ lang, ai }: { lang: string; ai: AiFeedback }) {
+  return (
+    <section className="feedback-panel ai-panel" aria-labelledby="ai-title">
+      <h2 id="ai-title">AI teacher</h2>
+      {ai.summary ? <p>{ai.summary}</p> : null}
+      {ai.corrections.length ? (
+        <ol className="issue-list">
+          {ai.corrections.map((c, i) => (
+            <li key={i} data-kind={c.kind === "natural" ? "style" : "grammar"}>
+              <p>
+                <span className="issue-kind">{AI_KIND[c.kind]}</span>
+                <span lang={lang} className="issue-word">{c.original}</span>
+                {" → "}
+                <span lang={lang} className="issue-fix">{c.corrected}</span>
+              </p>
+              {c.why ? <p className="issue-message">{c.why}</p> : null}
+            </li>
+          ))}
+        </ol>
+      ) : null}
+      {ai.natural ? (
+        <details>
+          <summary>Your text as a native speaker might write it</summary>
+          <p lang={lang} className="ready-model">
+            {ai.natural} <SpeakButton lang={lang} text={ai.natural} label="Hear it" />
           </p>
-          <ol className="issue-list">
-            {issues.map((iss, n) => {
-              const href = lessonHref(iss.lesson);
-              return (
-                <li key={n} data-kind={iss.kind} data-selected={selected === n || undefined}>
-                  <p>
-                    <span className="issue-kind">{iss.kind === "spelling" ? "Spelling" : iss.kind === "grammar" ? "Grammar" : "Style"}</span>
-                    <span lang={pack.code} className="issue-word">{text.slice(iss.start, iss.end)}</span>
-                    {iss.fix !== undefined ? (
-                      <>
-                        {" → "}
-                        <span lang={pack.code} className="issue-fix">{iss.fix}</span>
-                      </>
-                    ) : null}
-                  </p>
-                  <p className="issue-message">{iss.message}</p>
-                  <div className="issue-actions">
-                    {iss.fix !== undefined && !stale ? (
-                      <button type="button" className="chip" onClick={() => onFix(iss)}>Use this fix</button>
-                    ) : null}
-                    {href ? <Link href={href} className="link-button" target="_blank">See the lesson</Link> : null}
-                    {iss.source === "languagetool" ? <small>from LanguageTool</small> : null}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </>
-      ) : (
-        <p>
-          {pack.checkerCovers ?? "Mozaik found nothing to fix."} A teacher might still suggest other words, and that&apos;s fine.
-        </p>
-      )}
+        </details>
+      ) : null}
+      <p className="setting-note">AI can be wrong too. If something looks odd, check the lesson or ask a native speaker.</p>
     </section>
+  );
+}
+
+function Compare({ lang, points, mine, examples }: { lang: string; points: string[]; mine: string[]; examples: string[] }) {
+  return (
+    <section className="compare" aria-labelledby="compare-title">
+      <h2 id="compare-title">Compare with the example</h2>
+      <ol>
+        {points.map((p, i) => (
+          <li key={i}>
+            <p className="compare-prompt">{p}</p>
+            <div className="compare-pair">
+              <div>
+                <span className="compare-label">You</span>
+                <p lang={lang}>{mine[i]?.trim() || "—"}</p>
+              </div>
+              {examples[i] ? (
+                <div>
+                  <span className="compare-label">Example</span>
+                  <p lang={lang}>{examples[i]}</p>
+                </div>
+              ) : null}
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p className="setting-note">One way to say each point. Yours can be completely different and still right.</p>
+    </section>
+  );
+}
+
+function AiSettings({ aiKey, onSave }: { aiKey: string; onSave: (key: string) => void }) {
+  const [draft, setDraft] = useState("");
+  return (
+    <details className="ai-settings">
+      <summary>AI teacher (optional){aiKey ? ": on" : ""}</summary>
+      <p>
+        Mozaik&apos;s own rules check the shape of your sentences. An AI teacher can also tell you whether they mean what
+        you wanted and sound natural. It uses your own{" "}
+        <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Anthropic API key</a>, so
+        Mozaik stays free: a check costs you a fraction of a cent.
+      </p>
+      <ul className="setting-note">
+        <li>Your key is kept in this browser only. It never goes to Mozaik&apos;s servers or your account.</li>
+        <li>When you check, your text goes straight from this browser to Anthropic (Claude Haiku).</li>
+      </ul>
+      {aiKey ? (
+        <div className="button-row">
+          <span className="setting-note">Key saved: …{aiKey.slice(-4)}</span>
+          <button type="button" className="button button-quiet" onClick={() => onSave("")}>Remove the key</button>
+        </div>
+      ) : (
+        <form
+          className="ai-key-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (draft.trim()) onSave(draft.trim());
+            setDraft("");
+          }}
+        >
+          <label htmlFor="ai-key">API key</label>
+          <input
+            id="ai-key"
+            type="password"
+            autoComplete="off"
+            spellCheck={false}
+            placeholder="sk-ant-…"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+          />
+          <button type="submit" className="button" disabled={!draft.trim().startsWith("sk-")}>Save</button>
+        </form>
+      )}
+    </details>
   );
 }

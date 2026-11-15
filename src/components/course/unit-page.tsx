@@ -12,6 +12,7 @@ import { SkillGlyph, UnitTile, type Skill } from "@/components/unit-tile";
 import { resourcesFor } from "@/core/resources";
 import { WRITING_REQUIRED } from "@/core/writing";
 import { NextStep } from "@/components/next-step";
+import { unitWords } from "@/core/unit-words";
 
 const KIND_LABEL = {
   dialogue: "Dialogue",
@@ -29,6 +30,8 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
   const grammar = unitGrammar(pack, unit);
   const look = unit.look ?? { motif: "tulip" as const, glaze: "cobalt" as const };
   const { n, of } = unitNumber(pack, unit);
+  const words = unitWords(pack, unit);
+  const keyWords = words.filter((w) => w.core);
   const beyond = resourcesFor(pack, unit.level).filter((r) => r.units?.includes(unit.id));
 
   return (
@@ -94,6 +97,20 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
           />
         ))}
       </SkillSection>
+
+      {words.length > 0 ? (
+        <SkillSection skill="words" title="Words">
+          <Row
+            href={`/words/${lang}/${unit.id}`}
+            title="Words in this unit"
+            meta={[
+              keyWords.length ? `${keyWords.length} key words` : `${words.length} words`,
+              keyWords.slice(0, 4).map((w) => w.label).join(", ") + (keyWords.length > 4 ? "…" : ""),
+            ]}
+            done={false}
+          />
+        </SkillSection>
+      ) : null}
 
       {grammar.length > 0 ? (
         <SkillSection skill="grammar" title="Grammar">

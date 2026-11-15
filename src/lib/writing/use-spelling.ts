@@ -8,7 +8,8 @@ type Result = { word: string; ok: boolean; suggestions: string[] };
 
 /**
  * Spelling for a pack's dictionary, checked in a worker. Words the course
- * knows always pass, and so do names (a capital letter mid-sentence).
+ * knows always pass, and so do names (a capital letter mid-sentence) and
+ * words in `ignore` (names from the task, words the learner marked as names).
  */
 export function useSpelling(pack: LanguagePack) {
   const workerRef = useRef<Worker | null>(null);
@@ -37,7 +38,7 @@ export function useSpelling(pack: LanguagePack) {
   }, [pack.spelling]);
 
   const check = useCallback(
-    async (text: string): Promise<WritingIssue[]> => {
+    async (text: string, ignore: ReadonlySet<string> = new Set()): Promise<WritingIssue[]> => {
       const worker = workerRef.current;
       if (!worker || state !== "ready") return [];
       // Collect words with their places; skip known words, numbers and names.
@@ -51,7 +52,7 @@ export function useSpelling(pack: LanguagePack) {
         if (t.kind !== "word") continue;
         const atStart = sentenceStart;
         sentenceStart = false;
-        if (/\d/.test(t.text) || pack.lexicon[t.normalized]) continue;
+        if (/\d/.test(t.text) || pack.lexicon[t.normalized] || ignore.has(t.normalized)) continue;
         const name = !atStart && /^\p{Lu}/u.test(t.text);
         if (pack.spelling?.isWord?.(t.normalized)) continue;
         words.push({ text: t.text, start, end: pos, name });
@@ -81,6 +82,7 @@ export function useSpelling(pack: LanguagePack) {
                 ? `Not in the dictionary. Did you mean ${r.suggestions.slice(0, 3).map((s) => `"${s}"`).join(" or ")}?`
                 : "Not in the dictionary: check the spelling.",
               fix: r.suggestions[0],
+              rule: "spelling",
               lesson: "spelling",
               source: "mozaik" as const,
             }],

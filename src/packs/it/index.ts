@@ -31,6 +31,11 @@ export const italian: LanguagePack = {
   checkerCovers: "Spelling looks right, and LanguageTool found no grammar problems.",
   spelling: { aff: "/dictionaries/it/index.aff", dic: "/dictionaries/it/index.dic" },
   languageTool: "it",
+  formulas: new Set([
+    "ciao", "salve", "buongiorno", "buonasera", "buonanotte", "arrivederci", "arrivederla", "presto", "grazie", "prego",
+    "scusa", "scusi", "sì", "no", "caro", "cara", "cari", "care", "gentile", "saluti", "baci", "abbracci", "auguri",
+    "complimenti", "benvenuto", "benvenuta", "piacere", "buon", "buona", "tanti", "mille",
+  ]),
   levels: ["A1"],
   tokenize: tokenizeItalian,
   greeting: greetingFor,
@@ -47,4 +52,6 @@ export const italian: LanguagePack = {
   expressions,
   handbook,
   ...verbTools(() => italian),
+  // c'è, dov'è, com'è and ecco do a verb's job.
+  couldBeVerb: (w) => /'(è|era|erano|sono)$/.test(w) || w === "ecco" || !!italian.verbFor?.(w),
 };
