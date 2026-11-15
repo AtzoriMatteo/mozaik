@@ -51,6 +51,8 @@ anziana | elderly (feminine) | anziano | | Politer than vecchia for people
 anziane | elderly (feminine plural) | anziano
 anziano | elderly, old (of people) | | | Use anziano for people, vecchio for things
 aosta | Aosta, a town in the Alps | | | Valle d'Aosta: the smallest region, French and Italian
+appoggi | you rest, you put (lightly) | appoggiare
+appoggiare | to lean, to rest something on
 aperitivo | aperitif, pre-dinner drinks | | Latin aperire 'to open': it opens the appetite | From about 6 to 9 pm: a drink with snacks
 arabo | Arabic; Arab
 arriva | arrives | arrivare
@@ -279,6 +281,8 @@ fine | end | | ~ final | alla fine = at the end
 finisce | finishes, ends | finire
 finisco | I finish | finire | | -isc- verb: finisco, finisci, finisce
 finire | to finish, to end | | ~ finish, finite
+finiti | finished; gone (plural) | finire
+fila | row, queue | | | fare la fila = to queue
 finito | finished; gone, sold out | finire | | È finito = It's gone (sold out)
 fino | (fino a) until, up to | | | fino a trent'anni = until thirty
 fiorentino | Florentine; from Florence
@@ -348,6 +352,8 @@ ingrid | Ingrid (a name)
 insegna | teaches | insegnare | ~ sign (in-signare: to mark)
 insegnare | to teach
 insegnante | teacher | | | Same for men and women: l'insegnante
+insieme | together | | ~ ensemble | insieme alla lingua = along with the language
+integrali | wholemeal (plural) | integrale
 integrale | wholemeal | | ~ integral, whole
 internazionale | international
 invece | instead; on the other hand | | | Io invece… = I, on the other hand…
@@ -366,6 +372,7 @@ karim | Karim (an Arabic name)
 kevin | Kevin (a name)
 kiwi | kiwi
 l | the letter L
+li | them | | | i bambini li imparano = children learn them
 l' | the (before a vowel) | il | lo/la + vowel = l' | l'autobus, l'acqua, l'insegnante
 la | the (feminine singular) | | | la casa, la mamma. Before a vowel: l'
 lasagne | lasagne | lasagna | | Bologna's pride, with ragù and béchamel

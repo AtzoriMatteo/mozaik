@@ -25,7 +25,7 @@ export const ciao: Unit = {
         [
           s("Emma è irlandese.", "Emma is Irish."),
           s("È di Dublino, ma adesso abita a Bologna.", "She's from Dublin, but now she lives in Bologna."),
-          s("Oggi è il primo giorno in Italia, e Emma è molto contenta.", "Today is her first day in Italy, and Emma is very happy."),
+          s("Oggi è il primo giorno in Italia, ed Emma è molto contenta.", "Today is her first day in Italy, and Emma is very happy."),
           s("Il viaggio è lungo, ma Bologna è bella!", "The journey is long, but Bologna is beautiful!"),
           s("Alla stazione c'è Giulia, la nuova coinquilina.", "At the station there's Giulia, her new flatmate."),
         ],
@@ -47,7 +47,7 @@ export const ciao: Unit = {
           s("\"Mi chiamo Emma. Piacere!\"", "\"My name's Emma. Nice to meet you!\""),
           s("\"Piacere mio! Sei inglese?\"", "\"The pleasure's mine! Are you English?\""),
           s("\"No, non sono inglese, sono irlandese!\"", "\"No, I'm not English, I'm Irish!\""),
-          s("Karim ride: \"Scusa! Allora, benvenuta in Italia, Emma irlandese!\"", "Karim laughs: \"Sorry! Well then, welcome to Italy, Irish Emma!\""),
+          s("Karim ride: \"Scusa! Allora, benvenuta in Italia, Emma l'irlandese!\"", "Karim laughs: \"Sorry! Well then, welcome to Italy, Emma the Irishwoman!\""),
         ],
       ],
       tasks: [
@@ -69,19 +69,19 @@ export const ciao: Unit = {
           s("In italiano ci sono due modi per parlare con una persona: tu e Lei.", "In Italian there are two ways to talk to someone: tu and Lei."),
           s("Con gli amici, con la famiglia e con i bambini usiamo il tu: \"Ciao, come stai?\"", "With friends, family and children we use tu: \"Hi, how are you?\""),
           s("Con una persona che non conosciamo, con un professore o in un negozio usiamo il Lei: \"Buongiorno, come sta?\"", "With someone we don't know, with a teacher or in a shop we use Lei: \"Good morning, how are you?\""),
-          s("Lei con la L maiuscola è formale, ed è per un uomo e per una donna.", "Lei with a capital L is formal, and it's for a man and for a woman."),
+          s("Lei con la L maiuscola è formale, e va bene sia per un uomo che per una donna.", "Lei with a capital L is formal, and it works for both a man and a woman."),
         ],
         [
           s("Anche i saluti sono diversi.", "Greetings are different too."),
-          s("Ciao è informale: è per il tu.", "Ciao is informal: it goes with tu."),
+          s("Ciao è informale: si usa con il tu.", "Ciao is informal: it goes with tu."),
           s("Si dice quando arrivi e quando vai via.", "You say it when you arrive and when you leave."),
           s("Buongiorno e buonasera vanno bene con tutti.", "Buongiorno and buonasera are fine with everyone."),
-          s("Buongiorno è per la mattina, buonasera è per il pomeriggio e la sera.", "Buongiorno is for the morning, buonasera for the afternoon and evening."),
-          s("Arrivederci è per il Lei.", "Arrivederci goes with Lei."),
+          s("Buongiorno si usa la mattina, buonasera il pomeriggio e la sera.", "Buongiorno is for the morning, buonasera for the afternoon and evening."),
+          s("Arrivederci si usa con il Lei.", "Arrivederci goes with Lei."),
           s("E salve? Salve è una via di mezzo: non è troppo formale e non è troppo informale.", "And salve? Salve is in between: not too formal and not too informal."),
         ],
         [
-          s("Tra amici ci sono anche i baci: due, uno su ogni guancia.", "Between friends there are kisses too: two, one on each cheek."),
+          s("Tra amici ci si saluta con due baci, uno per guancia.", "Friends greet each other with two kisses, one on each cheek."),
           s("Con il Lei, invece, si dà la mano.", "With Lei, on the other hand, you shake hands."),
           s("Un consiglio: con i ragazzi usa il tu, con le persone anziane comincia con il Lei.", "A tip: use tu with young people, and start with Lei with older people."),
           s("Se una persona dice \"Diamoci del tu!\", allora va bene il tu.", "If someone says \"Let's use tu!\", then tu is fine."),
@@ -103,9 +103,9 @@ export const ciao: Unit = {
       grammar: ["gender", "essere"],
       paragraphs: [
         [
-          s("L'italiano è facile da leggere: si scrive come si dice.", "Italian is easy to read: it's written the way it's said."),
+          s("L'italiano è facile da leggere: si scrive come si pronuncia.", "Italian is easy to read: it's written the way it's pronounced."),
           s("L'alfabeto italiano ha ventuno lettere.", "The Italian alphabet has twenty-one letters."),
-          s("Le lettere j, k, w, x e y non sono italiane: sono nelle parole straniere, come jeans, kiwi, taxi e yogurt.", "The letters j, k, w, x and y aren't Italian: they're in foreign words, like jeans, kiwi, taxi and yogurt."),
+          s("Le lettere j, k, w, x e y non sono italiane: si trovano solo nelle parole straniere, come jeans, kiwi, taxi e yogurt.", "The letters j, k, w, x and y aren't Italian: you only find them in foreign words, like jeans, kiwi, taxi and yogurt."),
         ],
         [
           s("Quando una parola non è chiara, gli italiani usano i nomi delle città.", "When a word isn't clear, Italians use the names of cities."),
@@ -117,7 +117,7 @@ export const ciao: Unit = {
           s("Attenzione alle doppie!", "Watch out for double letters!"),
           s("Pala e palla, caro e carro, nono e nonno non sono le stesse parole.", "Pala and palla, caro and carro, nono and nonno aren't the same words."),
           s("Una pala è per la terra, una palla è per giocare.", "A pala (spade) is for soil, a palla (ball) is for playing."),
-          s("Il nono è il numero nove, e il nonno è il papà della mamma o del papà.", "Nono is ninth, and the nonno is your mum's or dad's dad."),
+          s("Nono vuol dire \"numero nove\" in una fila, e il nonno è il papà della mamma o del papà.", "Nono means ninth in a row, and the nonno is your mum's or dad's dad."),
           s("Allora, come si scrive il tuo nome?", "So, how do you spell your name?"),
         ],
       ],

@@ -5,7 +5,7 @@ import "@fontsource-variable/atkinson-hyperlegible-next";
 import "@fontsource-variable/bodoni-moda";
 import "./globals.css";
 import { Logo } from "@/components/logo";
-import { Nav } from "@/components/nav";
+import { Nav, TabBar } from "@/components/nav";
 import { Account } from "@/components/account";
 import { LanguageSwitch } from "@/components/language-switch";
 import { ProgressSync } from "@/components/progress-sync";
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#eceee9" },
     { media: "(prefers-color-scheme: dark)", color: "#0f141d" },
@@ -55,6 +56,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <ProgressSync />
             </header>
             {children}
+            {/* On phones the account controls live here instead of the crowded top bar. */}
+            <footer className="phone-footer">
+              <Account />
+            </footer>
+            <TabBar />
           </div>
         </LearningLanguageProvider>
       </body>

@@ -74,7 +74,7 @@ export const piacere: Unit = {
         [
           s("Ma perché oggi c'è una lingua per tutti?", "But why is there one language for everyone today?"),
           s("Una ragione è Dante: nel Trecento scrive la Divina Commedia in fiorentino, non in latino.", "One reason is Dante: in the 1300s he writes the Divine Comedy in Florentine, not in Latin."),
-          s("L'italiano di oggi viene da quel fiorentino.", "Today's Italian comes from that Florentine."),
+          s("L'italiano di oggi nasce da quel fiorentino.", "Today's Italian grew out of that Florentine."),
           s("Un'altra ragione è la televisione: negli anni Cinquanta tutta l'Italia guarda la stessa televisione e impara la stessa lingua.", "Another reason is television: in the 1950s the whole of Italy watches the same television and learns the same language."),
         ],
       ],
@@ -99,13 +99,13 @@ export const piacere: Unit = {
           s("Vuol dire: \"Ma che cosa vuoi?\" oppure \"Ma che dici?\"", "It means: \"What do you want?\" or \"What are you on about?\""),
         ],
         [
-          s("Per dire che un piatto è buono, tocchi la guancia con un dito e giri il dito.", "To say a dish is good, you touch your cheek with a finger and twist it."),
+          s("Per dire che un piatto è buono, appoggi un dito sulla guancia e lo giri.", "To say a dish is good, you press a finger into your cheek and twist it."),
           s("Se una persona alza le spalle, vuol dire: \"Non lo so.\"", "If someone shrugs, it means: \"I don't know.\""),
           s("E se una persona mette la mano sulla pancia? Ha fame!", "And if someone puts a hand on their stomach? They're hungry!"),
         ],
         [
           s("Non tutti usano gli stessi gesti: al Sud le persone usano più gesti che al Nord.", "Not everyone uses the same gestures: in the south people use more gestures than in the north."),
-          s("I gesti sono una lingua senza parole, e i bambini imparano i gesti con la lingua.", "Gestures are a language without words, and children learn the gestures along with the language."),
+          s("I gesti sono una lingua senza parole, e i bambini li imparano insieme alla lingua.", "Gestures are a language without words, and children learn them along with the language."),
           s("Un consiglio: quando parli con un italiano, guarda le mani.", "A tip: when you talk with an Italian, watch their hands."),
           s("Spesso capisci tutto, anche senza parole!", "You often understand everything, even without words!"),
         ],
