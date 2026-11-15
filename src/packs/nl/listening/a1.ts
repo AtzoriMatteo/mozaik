@@ -160,7 +160,7 @@ export const listeningA1: Record<string, ListeningItem[]> = {
         { speaker: "Verhuurder", text: "De loodgieter komt donderdag om half tien.", translation: "The plumber is coming on Thursday at half past nine." },
         { speaker: "Verhuurder", text: "Is er iemand thuis? Hij moet in het huis kunnen.", translation: "Will someone be home? He needs to be able to get into the house." },
         { speaker: "Verhuurder", text: "Tussen tien en twaalf is er geen water.", translation: "Between ten and twelve there's no water." },
-        { speaker: "Verhuurder", text: "Kunt u mij even terugbellen? Mijn nummer is zes, twaalf, vierendertig, zesenvijftig, achtenzeventig.", translation: "Could you call me back? My number is six, twelve, thirty-four, fifty-six, seventy-eight." },
+        { speaker: "Verhuurder", text: "Kunt u mij even terugbellen? Mijn nummer is nul zes, twaalf, vierendertig, zesenvijftig, achtenzeventig.", translation: "Could you call me back? My number is zero six, twelve, thirty-four, fifty-six, seventy-eight." },
         { speaker: "Verhuurder", text: "Dank u wel, tot ziens.", translation: "Thank you, goodbye." },
       ],
       gist: {

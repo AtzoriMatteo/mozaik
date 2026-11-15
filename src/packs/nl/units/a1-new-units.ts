@@ -66,7 +66,7 @@ export const kleren: UnitContent = {
           s("Fatima heeft nieuwe schoenen nodig voor haar werk.", "Fatima needs new shoes for her work."),
           s("Ze heeft geen tijd om naar de winkel te gaan, dus ze bestelt ze online.", "She has no time to go to the shop, so she orders them online."),
           s("Op een website ziet ze bruine schoenen van vijfenveertig euro.", "On a website she sees brown shoes for forty-five euros."),
-          s("Ze kiest maat achtendertig en betaalt met haar pinpas.", "She chooses size thirty-eight and pays with her bank card."),
+          s("Ze kiest maat achtendertig en betaalt meteen online.", "She chooses size thirty-eight and pays online straight away."),
         ],
         [
           s("De volgende dag krijgt ze een berichtje: \"Uw pakket komt vandaag tussen twee en vier uur.\"", "The next day she gets a message: \"Your parcel is coming today between two and four.\""),

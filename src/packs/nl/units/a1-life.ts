@@ -283,8 +283,8 @@ export const vrijeTijd: UnitContent = {
             translation: "Next week it's Noor's birthday. On her birthday she's turning twenty-two.",
           },
           {
-            text: "Ze geeft een feestje bij hen thuis, op vrijdagavond om acht uur.",
-            translation: "She's having a little party at their house, on Friday evening at eight.",
+            text: "Ze geeft een feestje thuis, op vrijdagavond om acht uur.",
+            translation: "She's having a little party at home, on Friday evening at eight.",
           },
           {
             text: "Luca wil een cadeau voor haar kopen, maar wat?",
@@ -297,8 +297,8 @@ export const vrijeTijd: UnitContent = {
         ],
         [
           {
-            text: "Het feest begint om acht uur. De familie van Noor komt uit Groningen: haar ouders, haar opa en haar tante.",
-            translation: "The party starts at eight. Noor's family comes from Groningen: her parents, her grandpa and her aunt.",
+            text: "Om acht uur is het huis al vol. De familie van Noor komt uit Groningen: haar ouders, haar opa en haar tante.",
+            translation: "At eight the house is already full. Noor's family comes from Groningen: her parents, her grandpa and her aunt.",
           },
           {
             text: "Alle gasten zitten in een grote kring in de woonkamer.",

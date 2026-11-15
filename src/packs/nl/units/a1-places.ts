@@ -103,8 +103,8 @@ export const wonen: UnitContent = {
             translation: "Luca has to go to the town hall today. He has an appointment there at ten.",
           },
           {
-            text: "Alle nieuwe mensen in Leiden moeten hun adres doorgeven.",
-            translation: "All new people in Leiden have to register their address.",
+            text: "Wie nieuw is in Leiden, moet zijn adres doorgeven.",
+            translation: "Anyone new in Leiden has to register their address.",
           },
           {
             text: "Maar waar is het stadhuis? Luca weet het niet.",
@@ -326,8 +326,8 @@ export const werkEnStudie: UnitContent = {
             translation: "\"Yes, good. See you tomorrow!\"",
           },
           {
-            text: "De volgende dag zit Luca in het kantoor van Kees, achter de bar. Op zondag is het café dicht, dus hij werkt alleen op zaterdag en één zondag per maand.",
-            translation: "The next day Luca is sitting in Kees's office, behind the bar. On Sundays the café is closed, so he only works Saturdays and one Sunday a month.",
+            text: "De volgende dag zit Luca in het kantoor van Kees, achter de bar. Op zondag is het café vaak rustig, dus hij werkt elke zaterdag en één zondag per maand.",
+            translation: "The next day Luca is sitting in Kees's office, behind the bar. On Sundays the café is often quiet, so he works every Saturday and one Sunday a month.",
           },
           {
             text: "Luca is blij. Een baan in een café, met Bram als collega! Dat wordt leuk.",

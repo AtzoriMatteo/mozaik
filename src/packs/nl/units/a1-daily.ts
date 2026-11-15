@@ -100,8 +100,8 @@ export const eten: UnitContent = {
             translation: "\"That'll be six euros twenty. Would you like to pay by card?\" \"Yes, please.\"",
           },
           {
-            text: "Op de markt is er geen kassa: je kunt betalen met je pinpas of met geld.",
-            translation: "At the market there's no checkout: you can pay with your bank card or with cash.",
+            text: "Op de markt is er geen kassa: je kunt betalen met je pinpas of contant.",
+            translation: "At the market there's no checkout: you can pay with your bank card or in cash.",
           },
         ],
         [
@@ -253,7 +253,7 @@ export const dagEnTijd: UnitContent = {
             translation: "Luca gets up at seven every day. Getting up isn't easy, because he isn't a morning person.",
           },
           {
-            text: "Eerst gaat hij douchen. Daarna eet hij ontbijt: brood met boter en kaas, een ei en een kopje koffie met melk, zonder suiker.",
+            text: "Eerst gaat hij douchen. Daarna ontbijt hij: brood met boter en kaas, een ei en een kopje koffie met melk, zonder suiker.",
             translation: "First he has a shower. Then he has breakfast: bread with butter and cheese, an egg and a cup of coffee with milk, no sugar.",
           },
           {
@@ -372,8 +372,8 @@ export const dagEnTijd: UnitContent = {
             translation: "\"In the library? It's quiet there.\"",
           },
           {
-            text: "\"Welke bibliotheek? Er zijn er twee.\" \"De grote, bij het station. Ik kom met de tram uit Den Haag. Ik heb een kaartje voor de hele maand.\"",
-            translation: "\"Which library? There are two.\" \"The big one, by the station. I'm coming by tram from The Hague. I have a ticket for the whole month.\"",
+            text: "\"Welke bibliotheek? Er zijn er twee.\" \"De grote, bij het station. Ik kom met de trein uit Den Haag. Ik heb een kaartje voor de hele maand.\"",
+            translation: "\"Which library? There are two.\" \"The big one, by the station. I'm coming by train from The Hague. I have a ticket for the whole month.\"",
           },
           { text: "\"Oké, tot dinsdag dan!\"", translation: "\"Okay, see you Tuesday then!\"" },
         ],

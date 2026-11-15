@@ -29,7 +29,7 @@ export const nederland: UnitContent = {
       paragraphs: [
         [
           s("Nederland is een klein land in het noordwesten van Europa.", "The Netherlands is a small country in the north-west of Europe."),
-          s("Er wonen bijna achttien miljoen mensen.", "Almost eighteen million people live there."),
+          s("Er wonen ongeveer achttien miljoen mensen.", "About eighteen million people live there."),
           s("In het zuiden ligt België en in het oosten ligt Duitsland.", "Belgium lies to the south and Germany to the east."),
           s("In het noorden en het westen ligt de Noordzee.", "To the north and west lies the North Sea."),
         ],
@@ -127,7 +127,7 @@ export const nederland: UnitContent = {
         [
           s("Lieve oma,", "Dear Grandma,"),
           s("Groeten van Texel! Texel is een eiland in het noorden.", "Greetings from Texel! Texel is an island in the north."),
-          s("We gaan met de boot van Den Helder naar Texel. Dat duurt maar twintig minuten.", "We take the boat from Den Helder to Texel. That only takes twenty minutes."),
+          s("De boot van Den Helder naar Texel duurt maar twintig minuten.", "The boat from Den Helder to Texel only takes twenty minutes."),
           s("Er zijn hier meer schapen dan mensen!", "There are more sheep than people here!"),
           s("Elke dag fietsen we naar het strand. Het waait altijd.", "Every day we cycle to the beach. It's always windy."),
           s("Veel liefs, Sem en Lotte", "Lots of love, Sem and Lotte"),
@@ -136,7 +136,7 @@ export const nederland: UnitContent = {
           s("Hoi Ahmed,", "Hi Ahmed,"),
           s("Vandaag zijn we in Kinderdijk, vlak bij Rotterdam.", "Today we're in Kinderdijk, close to Rotterdam."),
           s("Hier staan negentien oude molens naast elkaar.", "Nineteen old windmills stand here side by side."),
-          s("Ze pompen al bijna driehonderd jaar water uit de polder.", "They've been pumping water out of the polder for almost three hundred years."),
+          s("Ze zijn bijna driehonderd jaar oud en ze kunnen nog steeds water uit de polder pompen.", "They're almost three hundred years old and can still pump water out of the polder."),
           s("In een paar molens wonen nog mensen. Twee molens kun je van binnen bekijken.", "People still live in a few of the mills. You can look inside two of them."),
           s("Tot gauw, Youssef", "See you soon, Youssef"),
         ],
