@@ -178,7 +178,7 @@ export const listeningA1More: Record<string, ListeningItem[]> = {
         line("Omroep", "Goedemiddag, beste klanten!", "Good afternoon, dear customers!"),
         line("Omroep", "Deze week zijn de aardbeien in de aanbieding: twee bakjes voor drie euro.", "This week the strawberries are on offer: two punnets for three euros."),
         line("Omroep", "Al het brood van onze bakkerij is na vier uur half geld.", "All the bread from our bakery is half price after four o'clock."),
-        line("Omroep", "En er is koffie: proef gratis bij de ingang.", "And there's coffee: taste it for free at the entrance."),
+        line("Omroep", "Proef ook onze koffie: gratis, bij de ingang.", "Try our coffee too: free, at the entrance."),
         line("Omroep", "De winkel sluit vandaag om tien uur.", "The shop closes at ten today."),
         line("Omroep", "Dank u wel en nog een fijne dag!", "Thank you and have a nice day!"),
       ],

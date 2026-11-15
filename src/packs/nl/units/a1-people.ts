@@ -277,8 +277,8 @@ export const familie: UnitContent = {
         [
           { text: "Het is zondagavond.", translation: "It's Sunday evening." },
           {
-            text: "Luca belt zijn moeder met de telefoon op zijn kamer.",
-            translation: "Luca calls his mother on the phone in his room.",
+            text: "Luca belt zijn moeder vanuit zijn kamer.",
+            translation: "Luca calls his mother from his room.",
           },
         ],
         [

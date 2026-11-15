@@ -33,7 +33,7 @@ export const waarKomJeVandaan: ReadingText = {
     [
       s("Dan komen Wei en Lin, twee studenten uit China. Ze wonen boven de bakker.", "Then Wei and Lin arrive, two students from China. They live above the baker's."),
       s("En Diego is Mexicaan. Hij kookt vandaag voor de hele straat.", "And Diego is Mexican. Today he's cooking for the whole street."),
-      s("Mevrouw De Vries lacht. \"Zoveel landen in één straat! Dit is de hele wereld.\"", "Mrs De Vries laughs. \"So many countries in one street! This is the whole world.\""),
+      s("Mevrouw De Vries lacht. \"Zoveel landen in één straat! Hier woont de hele wereld!\"", "Mrs De Vries laughs. \"So many countries in one street! The whole world lives here!\""),
     ],
     [
       s("Dan vraagt Diego: \"En u, mevrouw De Vries? Waar komt u vandaan?\"", "Then Diego asks: \"And you, Mrs De Vries? Where are you from?\""),
@@ -166,7 +166,7 @@ export const kuntUDatHerhalen: ReadingText = {
     ],
     [
       s("Daarna moet hij naar het station, maar hij weet de weg niet. Een taxi is te duur.", "After that he has to go to the station, but he doesn't know the way. A taxi is too expensive."),
-      s("\"Excuseer, spreekt u Engels?\" vraagt hij aan een vrouw.", "\"Excuse me, do you speak English?\" he asks a woman."),
+      s("\"Pardon, spreekt u Engels?\" vraagt hij aan een vrouw.", "\"Excuse me, do you speak English?\" he asks a woman."),
       s("\"Ja, natuurlijk. Maar zullen we het in het Nederlands proberen?\"", "\"Yes, of course. But shall we try it in Dutch?\""),
       s("\"Graag! Waar is het station?\" \"Rechtdoor en dan links, tegenover de kerk.\"", "\"I'd like that! Where's the station?\" \"Straight on and then left, opposite the church.\""),
     ],

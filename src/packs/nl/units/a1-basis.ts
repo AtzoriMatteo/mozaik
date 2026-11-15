@@ -80,11 +80,11 @@ export const basis: UnitContent = {
           s("Ze lijken op het Engels: dertien en thirteen, veertien en fourteen.", "They look like English: dertien and thirteen, veertien and fourteen."),
         ],
         [
-          s("Dan tellen ze met tien tegelijk: twintig, dertig, veertig, vijftig, zestig, zeventig, tachtig, negentig, honderd.", "Then they count in tens: twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety, a hundred."),
+          s("Dan tellen ze in sprongen van tien: twintig, dertig, veertig, vijftig, zestig, zeventig, tachtig, negentig, honderd.", "Then they count in tens: twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety, a hundred."),
           s("Fatima telt verder: \"Tweehonderd, driehonderd… duizend!\"", "Fatima keeps counting: \"Two hundred, three hundred… a thousand!\""),
         ],
         [
-          s("Het moeilijkste deel komt nu: de getallen tussen twintig en honderd.", "The hardest part comes now: the numbers between twenty and a hundred."),
+          s("Nu komt het moeilijkste deel: de getallen tussen twintig en honderd.", "Now comes the hardest part: the numbers between twenty and a hundred."),
           s("In het Nederlands zeg je eerst de één en dan de tien.", "In Dutch you say the one first and then the ten."),
           s("Vierentwintig is dus vier-en-twintig, en vijfennegentig is vijf-en-negentig.", "So vierentwintig is four-and-twenty, and vijfennegentig is five-and-ninety."),
           s("Luca denkt even na en zegt: \"Mijn huisnummer is twaalf en mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig.\"", "Luca thinks for a moment and says: \"My house number is twelve and my phone number is zero six, thirty-eight, fifteen, forty-seven.\""),
@@ -122,7 +122,7 @@ export const basis: UnitContent = {
       grammar: ["dates-ordinals", "het-subject", "adjective-e"],
       paragraphs: [
         [
-          s("Een jaar heeft twaalf maanden, vier seizoenen en ongeveer vijftig weken.", "A year has twelve months, four seasons and about fifty weeks."),
+          s("Een jaar heeft twaalf maanden, vier seizoenen en tweeënvijftig weken.", "A year has twelve months, four seasons and fifty-two weeks."),
           s("In de keuken van Luca, Noor en Bram hangt een grote kalender.", "In Luca, Noor and Bram's kitchen hangs a big calendar."),
           s("Noor schrijft daar alle verjaardagen en feesten op.", "Noor writes all the birthdays and parties on it."),
         ],
