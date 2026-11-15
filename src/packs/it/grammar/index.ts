@@ -87,7 +87,7 @@ export const grammar: readonly GrammarPoint[] = [
       examples: [
         example("Giulia è alta e simpatica.", "Giulia is tall and friendly.", "alta", "simpatica"),
         example("una strada vecchia e bella, con tanti bar", "an old, pretty street with lots of bars", "strada", "vecchia", "bella"),
-        example("Il nono è il numero nove", "Nono is ninth", "il numero"),
+        example("La casa è in via del Pratello", "The flat is in Via del Pratello", "La casa"),
       ],
       exercises: [
         sort("Masculine or feminine?", ["masculine", "feminine"], "ragazzo=0 | casa=1 | strada=1 | giorno=0 | stazione=1 | città=1 | caffè=0 | numero=0", "Look at the ending."),

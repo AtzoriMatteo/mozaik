@@ -26,7 +26,7 @@ import { speak, useHasVoice } from "@/lib/speech";
 import { useNow } from "@/lib/use-now";
 
 export const KIND_LABEL: Record<ReviewKind, string> = {
-  word: "My words",
+  word: "Words and expressions",
   grammar: "Grammar",
   listen: "Listening",
   speak: "Speaking",
@@ -123,19 +123,19 @@ export function Review() {
       ) : (
         <>
           <section className="review-main" aria-labelledby="start-title">
-            <h2 id="start-title" className="sr-only">Mixed review</h2>
+            <h2 id="start-title" className="sr-only">Your review</h2>
             {mixed.length > 0 ? (
               <>
                 <button
                   type="button"
                   className="button review-start"
-                  onClick={() => setSession({ items: mixed, label: "Mixed review" })}
+                  onClick={() => setSession({ items: mixed, label: mixKinds.length === 1 ? KIND_LABEL[mixKinds[0]] : "Mixed review" })}
                 >
                   Start review
                 </button>
                 <p className="review-main-meta">
                   {mixed.length} {mixed.length === 1 ? "card" : "cards"}, about {Math.max(1, Math.round(mixed.length * 0.4))} min.
-                  Mixes {mixKinds.map((k) => KIND_LABEL[k].toLowerCase()).join(", ")}.
+                  {mixKinds.length === 1 ? KIND_LABEL[mixKinds[0]] : `Mixes ${mixKinds.map((k) => KIND_LABEL[k].toLowerCase()).join(", ")}`}.
                 </p>
               </>
             ) : (
@@ -153,8 +153,23 @@ export function Review() {
           </section>
 
           <section className="focus-modes" aria-labelledby="focus-title">
-            <h2 id="focus-title">Or focus on one part</h2>
+            <h2 id="focus-title">Or review something else</h2>
             <div className="focus-row">
+              {(() => {
+                const all: ReviewKind[] = ["word", "grammar", "listen"];
+                const available = all.reduce((n, k) => n + counts[k].due + Math.min(counts[k].fresh, allowanceLeft), 0);
+                return (
+                  <button
+                    type="button"
+                    className="focus-chip focus-chip-all"
+                    disabled={available === 0}
+                    onClick={() => start(all, "Everything")}
+                  >
+                    <span>Everything</span>
+                    <span className="focus-count">words, grammar and listening</span>
+                  </button>
+                );
+              })()}
               {REVIEW_KINDS.map((k) => {
                 const available = counts[k].due + Math.min(counts[k].fresh, allowanceLeft);
                 return (
@@ -269,7 +284,7 @@ function SettingsPanel({
         />
 
         <fieldset className="setting">
-          <legend>Mixed review includes</legend>
+          <legend>Start review includes</legend>
           {REVIEW_KINDS.map((k) => (
             <label key={k} className="check">
               <input

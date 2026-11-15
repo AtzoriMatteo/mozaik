@@ -13,8 +13,10 @@ export type ReviewSettings = {
   size: number;
   /** New items per day, across all parts. */
   newPerDay: number;
-  /** Parts included in the mixed review. */
+  /** Parts included in the main review. By default only words and expressions. */
   mix: Record<ReviewKind, boolean>;
+  /** Bumped when the default mix changes, so older saved settings pick it up once. */
+  mixVersion?: number;
   /** Levels New words draws from (only levels the pack has are used). */
   newWordLevels: CefrLevel[];
   /** Cards per New words session. */
@@ -29,7 +31,8 @@ export type ReviewSettings = {
 export const DEFAULT_SETTINGS: ReviewSettings = {
   size: 10,
   newPerDay: 10,
-  mix: { word: true, grammar: true, listen: true, speak: false },
+  mix: { word: true, grammar: false, listen: false, speak: false },
+  mixVersion: 2,
   newWordLevels: ["A1"],
   newWordsSize: 20,
   direction: "mixed",
@@ -52,7 +55,10 @@ function read(): ReviewSettings {
   let value = DEFAULT_SETTINGS;
   try {
     const parsed = JSON.parse(raw ?? "{}") as Partial<ReviewSettings>;
-    value = { ...DEFAULT_SETTINGS, ...parsed, mix: { ...DEFAULT_SETTINGS.mix, ...parsed.mix } };
+    // Before version 2 the main review mixed in grammar and listening; now it's
+    // words and expressions unless the learner chooses more.
+    const mix = parsed.mixVersion === DEFAULT_SETTINGS.mixVersion ? { ...DEFAULT_SETTINGS.mix, ...parsed.mix } : DEFAULT_SETTINGS.mix;
+    value = { ...DEFAULT_SETTINGS, ...parsed, mix, mixVersion: DEFAULT_SETTINGS.mixVersion };
   } catch {
     value = DEFAULT_SETTINGS;
   }

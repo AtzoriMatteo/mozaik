@@ -61,6 +61,7 @@ moto | motorbike | | | Short for motocicletta. Invariable: le moto
 napoletano | Neapolitan; from Naples
 napoli | Naples | | | The home of pizza and very serious coffee
 natale | Christmas | | 'birth (day)' ~ natal | Buon Natale!
+nasce | is born; grows out of | nascere
 nato | born | nascere | ~ native | Sono nato a Torino = I was born in Turin
 nascere | to be born
 nazionalità | nationality | | | Invariable, stress on the end: nazionalità
@@ -181,6 +182,8 @@ presto | early; soon | | ~ presto (music: quickly) | A presto! = See you soon!
 prima | first; before | | | prima del lavoro = before work
 primo | first | | ~ primary | il primo = first course (pasta)
 professore | teacher (secondary school), professor
+pronuncia | (si pronuncia) is pronounced; pronunciation | pronunciare
+pronunciare | to pronounce
 pronto | hello? (on the phone); ready | | | Pronto? only on the phone
 prossimo | next | | ~ proximity | l'anno prossimo = next year
 qua | here | | | Ecco qua = here you are
@@ -194,6 +197,7 @@ quartiere | neighbourhood | | ~ quarter
 quasi | almost | | | quasi sempre = almost always
 quattro | four | | ~ quatro, quartet
 quel | that | quello | | quel fiorentino = that Florentine
+quelli | those, the ones | quello
 quello | that
 questa | this (feminine) | questo | | Questa è mia madre = This is my mother
 questi | these | questo
@@ -227,6 +231,8 @@ rumorose | noisy, loud (feminine plural) | rumoroso | rumore (noise) + -oso
 rumoroso | noisy
 s | the letter S
 sabato | Saturday | | ~ Sabbath
+saluta | greets | salutare | | ci si saluta = people greet each other
+salutare | to greet, to say hello or goodbye
 saluti | greetings | saluto | ~ salute
 saluto | greeting
 salve | hello (neutral) | | Latin salve, 'be well' | Between ciao and buongiorno
@@ -259,6 +265,7 @@ serio | serious
 settanta | seventy | | sette + -anta
 sette | seven | | ~ September | Double t: sette (7) vs sete (thirst)
 si | oneself; one, you, people (impersonal) | | | Come si dice? = How do you say? Si chiama = is called
+sia | (sia… che…) both… and…; be (subjunctive) | | | sia per un uomo che per una donna = for both a man and a woman
 siamo | we are | essere
 siciliano | Sicilian
 signor | Mr (before a name) | signore | | il signor Bassi
@@ -347,6 +354,8 @@ torni | you come back | tornare | | Quando torni? = When are you coming back?
 tornare | to come back, to return | | ~ return
 tortellino | a small filled pasta from Bologna; the dog's name | | 'little cake' (torta) | Bologna's pride: tortellini in brodo
 tra | between, among | | | tra amici = between friends
+trovano | (si trovano) are found | trovare
+trovare | to find
 tre | three | | ~ three, trio
 trecento | three hundred; the 1300s (Trecento) | | | il Trecento = the 14th century
 trent' | thirty (before a vowel) | trenta
@@ -421,6 +430,7 @@ vu | the letter V | | | doppia vu = W
 vuoi | you want | volere | | Che cosa vuoi? = What do you want?
 vuol | (vuol dire) means | volere | short for vuole | Che cosa vuol dire? = What does it mean?
 vuole | wants; you want (Lei) | volere | | Vuole lo scontrino? = Do you want the receipt?
+vuoti | plain (plural); empty | vuoto
 vuoto | plain (croissant); empty | | ~ void
 w | the letter W (doppia vu)
 walsh | Walsh (an Irish surname)

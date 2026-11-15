@@ -133,7 +133,7 @@ export const alBar: Unit = {
         line("Emma", "Io vorrei un cappuccino.", "I'd like a cappuccino."),
         line("Marco", "Qualcosa da mangiare?", "Anything to eat?"),
         line("Emma", "Sì, un cornetto integrale, se c'è.", "Yes, a wholemeal croissant, if there is one."),
-        line("Marco", "Integrale è finito. Ho alla crema, alla marmellata o vuoto.", "The wholemeal ones are gone. I've got custard, jam or plain."),
+        line("Marco", "Quelli integrali sono finiti. Ho alla crema, alla marmellata o vuoti.", "The wholemeal ones are gone. I've got custard, jam or plain."),
         line("Emma", "Allora alla marmellata.", "Jam, then."),
         line("Karim", "E per me niente, grazie. Sono a dieta!", "And nothing for me, thanks. I'm on a diet!"),
         line("Marco", "A dieta? Al bar? Ma dai!", "On a diet? At the bar? Come on!"),
