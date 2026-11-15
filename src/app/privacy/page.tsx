@@ -100,6 +100,12 @@ export default function PrivacyPage() {
             Only if you switch on the extra grammar check in Writing. The text you wrote is then sent to LanguageTool to be checked. It is
             off by default.
           </dd>
+          <dt>Anthropic</dt>
+          <dd>
+            Only if you add your own Anthropic API key for the AI teacher in Writing. When you check a text, your browser sends that text
+            and your key straight to Anthropic, under your own agreement with them. Neither passes through Mozaik&apos;s servers. It is
+            off by default.
+          </dd>
           <dt>Hugging Face</dt>
           <dd>
             In Speaking practice, your browser downloads a speech-recognition model from Hugging Face. Your voice is processed on your own
@@ -113,7 +119,7 @@ export default function PrivacyPage() {
         <h2>5. What stays on your device</h2>
         <p>
           Mozaik uses only the cookies needed to keep you logged in. Your browser also keeps a few things locally, such as writing drafts,
-          display settings and a copy of your progress so pages load quickly. Logging out clears that copy of your progress.
+          words you marked as names, your AI key if you added one, display settings and a copy of your progress so pages load quickly. Logging out clears that copy of your progress.
         </p>
       </section>
 

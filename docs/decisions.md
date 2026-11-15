@@ -5,6 +5,59 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-15 (evening) — Writing you can trust, unit words, centred pages
+
+Matteo: the writing check ticked a point off for one word, never looked at
+whether sentences were sentences or meant anything, sometimes "corrected"
+names, and the topics came with no preparation.
+
+**Writing, point by point (Matteo's brief; Claude's design).**
+- Get ready: each topic opens with the unit's key words for the topic and a
+  whole example text (folded away, so you read it, then write your own).
+- One box per point. Each has "Show an example": the model sentence for that
+  point, with its sound and a few useful words.
+- A point now counts only when it's said in a real sentence. A lone word
+  ("jaar") or a sentence with no verb ("Ik 25 jaar") doesn't count; copying
+  the example word for word doesn't either ("make it about you"). "I did say
+  it" is still there for when the rules miss something.
+- Missing verbs are a new rule for every language. It stays quiet for
+  greetings, questions, short exclamations, two-word replies, signatures and
+  "Name: …" lines. Tested: it flags none of the 76 model answers and ~1% of
+  the course's own sentences (elliptical dialogue lines).
+- Names: names from the topic never count as spelling mistakes, and every
+  spelling mark has "It's a name", remembered on the device.
+- Mistakes are shown under the box they're in. Finishing needs every point
+  said and the length reached.
+- After finishing: your sentence next to the example, point by point.
+
+**AI teacher, with your own key (Matteo said yes).** Optional, in Writing.
+You paste an Anthropic API key once; when you check, Claude Haiku 5.5 says
+for each point whether you really said it, lists mistakes in grammar, word
+choice, meaning and naturalness, and shows your text as a native would write
+it. When it's on, its verdict on each point counts.
+- Cost: paid by the learner, roughly $0.10 per million words in and $0.50
+  per million out, so far below a cent per check. Mozaik pays nothing.
+- Privacy (Claude): the request goes straight from the browser to Anthropic.
+  The key lives in that browser only and never reaches Mozaik's server or
+  database. Privacy policy updated.
+- Not yet tried with a real key: tested with a simulated reply only.
+
+**Words in each unit (Matteo's idea).** A new "Words" section on every unit
+page, like the word list at the end of a textbook chapter: key words first
+(the level's core words), grouped into things and people, doing words, and
+describing/linking words; then expressions from the unit; then "Also in this
+unit" folded away. Tap a word for its sentence and translation; every word
+can be heard. Each word belongs to the one unit that uses it most, so kaas
+lands in Food and every word appears once per level. "Practise these words"
+runs the unit's new key words as New words cards (known ones graduate, the
+rest go into My words); each word shows Learning / Learned / Known for good.
+
+**Centred pages (Matteo).** Reading, listening, grammar, speaking, writing
+and word pages sit in the middle of the screen instead of against the left.
+
+**Parked (Matteo):** one simple picture per reading text, in the same painted
+tile style as the unit tiles (mosaic style for Italian). Not now.
+
 ## 2026-11-15 — Phones, review defaults, naturalness from flags
 
 - **Phones:** below 640px the links move to a tab bar at the bottom (Home,

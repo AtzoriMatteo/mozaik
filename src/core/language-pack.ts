@@ -63,6 +63,10 @@ export interface LanguagePack {
   wordFrequency?: Readonly<Record<string, number>>;
   /** Grammar checks for learner writing (spelling is done separately). */
   checkWriting?: (text: string) => WritingIssue[];
+  /** Greetings, thanks and goodbyes (lower case): short sentences with one of these need no verb. */
+  formulas?: ReadonlySet<string>;
+  /** Could this word (lower case) be a form of a verb? Defaults to verbFor. Generous: used to stay quiet. */
+  couldBeVerb?: (word: string) => boolean;
   /** Hunspell dictionary for spelling, served from /public; words in the lexicon always pass. */
   spelling?: { aff: string; dic: string; isWord?: (word: string) => boolean };
   /** Language code for LanguageTool, if it supports the language. */
