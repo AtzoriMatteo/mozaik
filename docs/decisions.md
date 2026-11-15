@@ -5,6 +5,27 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-15 — Phones, review defaults, naturalness from flags
+
+- **Phones:** below 640px the links move to a tab bar at the bottom (Home,
+  Course, Review, Plan, Handbook), the top bar keeps only the logo and the
+  language, account controls go to the foot of the page, spacing is tighter,
+  tap targets are at least 44px and form fields 16px (no iOS zoom). Checked
+  from 320px to desktop with no sideways scrolling.
+- **Review (Matteo):** "Start review" is words and expressions only by default.
+  "Everything" (words, grammar, listening) and each single part are one tap
+  away; the mix can still be changed in Customise review. Older saved
+  settings switch to the new default once.
+- **Italian flags (Matteo):** all four applied (si scrive come si pronuncia;
+  si trovano solo nelle parole straniere; va bene sia per un uomo che per una
+  donna; Emma l'irlandese), plus a pass on the same kind of phrasing
+  elsewhere (si usa con il tu, ci si saluta con due baci, ed Emma…).
+- **Dutch A1 naturalness pass:** 18 sentences reworded (Pardon instead of the
+  Flemish Excuseer, contant betalen, Daarna ontbijt hij, Nu komt het
+  moeilijkste deel…) and facts fixed: 52 weeks in a year, Fatima comes by
+  train not tram, a phone number with its 0, online payment, a café that was
+  both closed and open on Sundays.
+
 ## 2026-11-14 (afternoon) — Italian A1, batch 1: the pack, the Ravenna look, units 1–4
 
 Matteo: Italian A1 for other learners, explanations in English, as many units
