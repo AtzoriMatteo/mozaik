@@ -392,7 +392,7 @@ export const listeningCulture: Record<string, ListeningItem[]> = {
       ],
       tasks: [
         heard(3, ["Keizersgracht", "Koningsgracht", "Kerkgracht"], 0),
-        tf("De trappen in de oude huizen zijn breed.", "The stairs in the old houses are wide.", false),
+        tf("De trappen in de oude huizen zijn smal en steil.", "The stairs in the old houses are narrow and steep.", true),
         gaps(5, "smal", "hoog"),
       ],
       dictation: [2, 4],

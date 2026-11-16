@@ -205,7 +205,7 @@ export const kamerTeHuur: ReadingText = {
   ],
   tasks: [
     mc("Why does Fatima want a room in Leiden?", ["Her house in The Hague is too small", "She doesn't want to take the train every day", "She has a new job"], 1),
-    tf("De kamer is op de begane grond.", "The room is on the ground floor.", false),
+    tf("De kamer is op de eerste verdieping.", "The room is on the first floor.", false),
     tf("Fatima mag een kat meenemen.", "Fatima may bring a cat.", false),
     pairs("The ad: connect.", "size=15 square metres | rent=€550 a month | free from=1 March | view=the canal"),
     mc("What does Fatima think of the dirty kitchen?", ["She doesn't want the room", "You can clean it", "She wants a lower rent"], 1),

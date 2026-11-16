@@ -250,7 +250,7 @@ export const listeningA1More: Record<string, ListeningItem[]> = {
       ],
       tasks: [
         gaps(2, "maandag", "vrijdag"),
-        tf("De praktijk is op zaterdag open.", "The practice is open on Saturday.", false),
+        tf("De Witte Tand is op zaterdag open.", "De Witte Tand is open on Saturday.", false),
         heard(5, ["morgen", "vandaag", "maandag"], 0),
       ],
       dictation: [1, 3],

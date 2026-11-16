@@ -89,7 +89,7 @@ export const lessons1: Record<string, GrammarLesson> = {
       fill("Wij ", " in Leiden.", "zijn", "We're in Leiden.", "zijn"),
       fill("", " jij een fiets?", "Heb", "Do you have a bike?", "hebben"),
       choice("Ik ", " honger.", ["ben", "heb"], 1, "I'm hungry."),
-      choice("Mijn oma ", " tachtig jaar.", ["is", "heeft"], 0, "My grandma is eighty."),
+      choice("Mevrouw De Vries ", " zeventig jaar.", ["is", "heeft"], 0, "Mrs De Vries is seventy."),
     ],
   },
 
@@ -118,7 +118,7 @@ export const lessons1: Record<string, GrammarLesson> = {
     ],
     exercises: [
       fill("Luca belt ", " moeder.", "zijn", "Luca calls his mother."),
-      fill("Noor opent ", " cadeautjes.", "haar", "Noor opens her presents."),
+      fill("Noor belt ", " moeder.", "haar", "Noor calls her mother."),
       choice("Dit is ", " huis.", ["onze", "ons"], 1, "This is our house."),
       choice("Dat is ", " buurvrouw.", ["onze", "ons"], 0, "That's our neighbour."),
       choice("Leo en Sofia zijn de kinderen van Paolo. ", " oma kookt elke zondag.", ["Hun", "Haar", "Zijn"], 0, "Leo and Sofia are Paolo's children. Their grandma cooks every Sunday."),
@@ -176,7 +176,7 @@ export const lessons1: Record<string, GrammarLesson> = {
       choice("", " meisje fietst naar school.", ["De", "Het"], 1, "The girl cycles to school (-je words are het)."),
       choice("", " kamer is klein.", ["De", "Het"], 0, "The room is small."),
       choice("", " fietsen staan bij het station.", ["De", "Het"], 0, "The bikes are by the station (plurals take de)."),
-      choice("", " eten is klaar.", ["De", "Het"], 1, "Dinner is ready (verbs as nouns are het)."),
+      choice("", " eten is goed.", ["De", "Het"], 1, "The food is good (verbs used as nouns are het)."),
       choice("Ik heb ", " broer en één zus.", ["de", "een"], 1, "I have a brother and one sister."),
     ],
   },

@@ -59,7 +59,7 @@ export const lessons3: Record<string, GrammarLesson> = {
       fill("Leiden is een ", " stad.", "mooie", "Leiden is a beautiful city.", "mooi"),
       fill("Ze wonen in een ", " huis.", "oud", "They live in an old house (een + het-word: no -e).", "oud"),
       fill("Het ", " huis staat aan de gracht.", "oude", "The old house is on the canal.", "oud"),
-      fill("Luca draagt een ", " trui.", "dikke", "Luca wears a thick jumper.", "dik"),
+      fill("Luca heeft een ", " kamer.", "kleine", "Luca has a small room.", "klein"),
       choice("De keuken is ", ".", ["klein", "kleine"], 0, "The kitchen is small (after the verb: no -e)."),
       fill("Ik wil graag een glas ", " wijn.", "rode", "I'd like a glass of red wine.", "rood"),
     ],
@@ -180,12 +180,12 @@ export const lessons3: Record<string, GrammarLesson> = {
       example("Kun je op zaterdag en zondag werken?", "Can you work on Saturdays and Sundays?", "Kun", "werken"),
     ],
     exercises: [
-      build("Ik | wil | graag | een biertje | bestellen", "I'd like to order a beer."),
+      build("Ik | wil | graag | een biertje | drinken", "I'd like to have a beer."),
       build("Luca | moet | morgen | vroeg | opstaan", "Luca has to get up early tomorrow."),
       fill("", " ik een stukje proeven?", "Mag", "May I taste a little piece?", "mogen"),
       fill("Noor ", " heel goed koken.", "kan", "Noor can cook really well.", "kunnen"),
       fill("Wij ", " vandaag boodschappen doen.", "moeten", "We have to do the shopping today.", "moeten"),
-      transform("Add 'willen' (I want to…):", "Ik ga naar het strand.", ["Ik wil naar het strand gaan.", "Ik wil naar het strand."], "I want to go to the beach."),
+      transform("Add 'willen' (I want to…):", "Ik ga naar de markt.", ["Ik wil naar de markt gaan.", "Ik wil naar de markt."], "I want to go to the market."),
     ],
   },
 };

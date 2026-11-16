@@ -83,10 +83,10 @@ export const lessons4: Record<string, GrammarLesson> = {
     ],
     exercises: [
       choice("Ik ga naar bed, ", " ik ben moe.", ["want", "maar"], 0, "I'm going to bed, because I'm tired."),
-      choice("Het regent, ", " we gaan toch naar het strand.", ["want", "maar"], 1, "It's raining, but we're going to the beach anyway."),
+      choice("Het regent, ", " we gaan toch naar de markt.", ["want", "maar"], 1, "It's raining, but we're going to the market anyway."),
       choice("Wil je koffie ", " thee?", ["of", "en"], 0, "Do you want coffee or tea?"),
       build("Luca blijft thuis, | want | hij | is | ziek", "Luca stays home, because he's ill."),
-      build("Noor werkt vandaag, | maar | morgen | heeft | ze | vrij", "Noor is working today, but tomorrow she's off."),
+      build("Noor werkt vandaag, | maar | morgen | heeft | ze | geen werk", "Noor is working today, but tomorrow she has no work."),
       transform("Join with 'want':", "Ik neem de fiets. Het is mooi weer.", ["Ik neem de fiets, want het is mooi weer."], "I'll take the bike, because the weather is nice."),
     ],
   },
