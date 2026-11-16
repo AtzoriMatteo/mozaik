@@ -2,13 +2,13 @@
 
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { getPack } from "@/core/registry";
 import type { LanguagePack } from "@/core/language-pack";
 import { nextActivity } from "@/core/course";
 import {
-  countWords, cueHints, LONG_ENOUGH, mergeIssues, noVerbIssues, pointExamples, pointStatus, POINTS_PER_LENGTH,
-  WRITING_LENGTHS, WRITING_REQUIRED, type PointStatus, type WritingIssue, type WritingTask,
+  countWords, cueHints, guidanceFor, lengthsFor, LONG_ENOUGH, mergeIssues, noVerbIssues, pointExamples, pointStatus, POINTS_PER_LENGTH,
+  WRITING_REQUIRED, type PointStatus, type WritingIssue, type WritingTask,
 } from "@/core/writing";
 import { unitWords } from "@/core/unit-words";
 import { askForFeedback, AI_KEY_STORAGE, type AiCorrection, type AiFeedback } from "@/lib/writing/ai-feedback";
@@ -139,10 +139,13 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
   const task = unit.writing!.find((t) => t.id === taskId)!;
   const progress = useCourseProgress(pack);
   const spelling = useSpelling(pack);
-  const lengths = WRITING_LENGTHS[task.level];
-  const examples = useMemo(() => pointExamples(pack, task), [pack, task]);
-  const keyWords = useMemo(() => unitWords(pack, unit).filter((w) => w.core), [pack, unit]);
-  const fromTask = useMemo(() => taskNames(pack, task), [pack, task]);
+  const lengths = lengthsFor(pack, task);
+  // Cheap to work out (unit words are cached), so plain calls rather than memos.
+  const examples = pointExamples(pack, task);
+  const keyWords = unitWords(pack, unit).filter((w) => w.core);
+  const fromTask = taskNames(pack, task);
+  const guide = guidanceFor(pack, task);
+  const [showEnglish, setShowEnglish] = useState(false);
 
   const [lengthIndex, setLengthIndex] = useState<number | null>(null);
   const [parts, setParts] = useState<string[]>(blank);
@@ -293,7 +296,19 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
           {FORM_LABEL[task.form]}
         </p>
         <h1 className="page-title">{task.titleTranslation}</h1>
-        <p className="lede">{task.situation}</p>
+        {guide.instructions !== "en" && task.situationTarget ? (
+          <>
+            <p className="lede" lang={lang}>{task.situationTarget}</p>
+            {guide.instructions === "both" || showEnglish ? <p className="lede-translation">{task.situation}</p> : null}
+            {guide.instructions === "target" ? (
+              <button type="button" className="link-button" onClick={() => setShowEnglish((v) => !v)}>
+                {showEnglish ? "Hide the English" : "Show in English"}
+              </button>
+            ) : null}
+          </>
+        ) : (
+          <p className="lede">{task.situation}</p>
+        )}
       </header>
 
       <fieldset className="length-picker">
@@ -355,9 +370,19 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
                 <li key={i} className="write-point" data-covered={covered[i] || undefined} data-status={status ?? undefined}>
                   <label htmlFor={`point-${i}`} className="write-point-prompt">
                     <span className="write-point-num" aria-hidden="true">{i + 1}</span>
-                    {pt.prompt}
+                    {guide.instructions !== "en" && pt.promptTarget ? (
+                      <span>
+                        <span lang={lang}>{pt.promptTarget}</span>
+                        {guide.instructions === "both" || showEnglish ? <small className="prompt-translation">{pt.prompt}</small> : null}
+                      </span>
+                    ) : (
+                      pt.prompt
+                    )}
                     {covered[i] ? <span className="sr-only"> (done)</span> : null}
                   </label>
+                  {pt.frame && guide.frames === "shown" && !finished ? (
+                    <Frame lang={lang} frame={pt.frame} onUse={parts[i].trim() ? undefined : () => edit(i, pt.frame!)} />
+                  ) : null}
                   <textarea
                     id={`point-${i}`}
                     lang={lang}
@@ -368,21 +393,26 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
                     readOnly={finished}
                     onChange={(e) => edit(i, e.target.value)}
                   />
-                  {examples[i] ? (
+                  {examples[i] && (guide.examples || (pt.frame && guide.frames === "tap")) ? (
                     <button
                       type="button"
                       className="link-button write-hint-toggle"
                       aria-expanded={open}
                       onClick={() => setShown((s) => { const n = new Set(s); if (open) n.delete(i); else n.add(i); return n; })}
                     >
-                      {open ? "Hide the example" : "Show an example"}
+                      {open ? "Hide the help" : guide.examples ? "Show an example" : "Show a frame"}
                     </button>
                   ) : null}
                   {open ? (
                     <div className="write-example">
-                      <p lang={lang}>
-                        {examples[i]} <SpeakButton lang={lang} text={examples[i]} label="Hear the example" />
-                      </p>
+                      {pt.frame && guide.frames === "tap" ? (
+                        <Frame lang={lang} frame={pt.frame} onUse={parts[i].trim() || finished ? undefined : () => edit(i, pt.frame!)} />
+                      ) : null}
+                      {guide.examples ? (
+                        <p lang={lang}>
+                          {examples[i]} <SpeakButton lang={lang} text={examples[i]} label="Hear the example" />
+                        </p>
+                      ) : null}
                       {hints.length ? (
                         <p className="setting-note">
                           Useful words:{" "}
@@ -544,6 +574,28 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
 }
 
 /* ---------------------------------------------------------------- */
+
+/** A sentence frame: the learner's own parts shown as blanks. */
+function Frame({ lang, frame, onUse }: { lang: string; frame: string; onUse?: () => void }) {
+  const parts = frame.split("…");
+  return (
+    <div className="write-frame">
+      <p lang={lang}>
+        {parts.map((p, i) => (
+          <span key={i}>
+            {p}
+            {i < parts.length - 1 ? <span className="frame-gap" aria-label="your words">…</span> : null}
+          </span>
+        ))}
+      </p>
+      {onUse ? (
+        <button type="button" className="chip" onClick={onUse}>
+          Start from this
+        </button>
+      ) : null}
+    </div>
+  );
+}
 
 /** One box's text with its mistakes marked, and the list of them. */
 function Marks({

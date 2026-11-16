@@ -4,13 +4,14 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { getPack } from "@/core/registry";
 import { unitNumber, type LanguagePack } from "@/core/language-pack";
-import { courseWordId } from "@/core/review-items";
-import { isGraduated, isLearned } from "@/core/srs";
 import { unitExpressions, unitWords, WORD_GROUPS, type UnitWord } from "@/core/unit-words";
 import { useReview } from "@/lib/review/use-review";
 import { useReviewSettings } from "@/lib/review/use-review-settings";
 import { SpeakButton } from "@/components/speak-button";
 import { NewWordsSession } from "@/components/review/new-words";
+import { NextActivityLink } from "@/components/course/next-activity-link";
+import { nextActivity } from "@/core/course";
+import { useCourseProgress } from "@/lib/progress/use-course-progress";
 
 type Status = "known" | "learned" | "learning" | "new";
 const STATUS_LABEL: Record<Status, string> = {
@@ -31,6 +32,8 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
   const { settings } = useReviewSettings();
   const review = useReview(pack, settings);
   const [practising, setPractising] = useState(false);
+  const progress = useCourseProgress(pack);
+  const done = progress.isDone({ kind: "words", id: unit.id });
   const [open, setOpen] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
   const { n } = unitNumber(pack, unit);
@@ -40,17 +43,21 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
   const key = words.filter((w) => w.core);
   const more = words.filter((w) => !w.core);
 
-  const status = (w: UnitWord): Status => {
-    const stage = review.schedules.get(courseWordId(w.lemma))?.stage;
-    if (stage === undefined) return "new";
-    if (isGraduated(stage)) return "known";
-    return isLearned(stage) ? "learned" : "learning";
-  };
+  // Same card whether the word was met here, in New words, or saved while reading.
+  const status = (w: UnitWord): Status => review.wordState(w.lemma, w.word);
   const fresh = key.filter((w) => status(w) === "new");
 
   if (practising) {
     return (
-      <NewWordsSession pack={pack} words={fresh.slice(0, 20)} onMeet={review.meet} onEnd={() => setPractising(false)} />
+      <NewWordsSession
+        pack={pack}
+        words={fresh.slice(0, 20)}
+        onMeet={review.meet}
+        onEnd={() => {
+          setPractising(false);
+          progress.markWords(unit.id);
+        }}
+      />
     );
   }
 
@@ -111,8 +118,8 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
         </p>
         <h1 className="page-title" lang={lang}>{unit.title}</h1>
         <p className="lede">
-          The words this unit uses most. Key words come first: those are the ones worth knowing for the level. Tap a word to
-          see it in its sentence.
+          The words this unit brings in, before you meet them in its texts. Key words come first: you&apos;ll need them for
+          the unit&apos;s writing and speaking. Tap a word to see it in a sentence.
         </p>
       </header>
 
@@ -161,6 +168,7 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
       ) : null}
 
       {more.length > 0 ? (
+
         <section className="skill-section" data-skill="words" aria-labelledby="more-words">
           <h2 id="more-words">Also in this unit <small className="count">{more.length}</small></h2>
           {showAll ? (
@@ -172,6 +180,20 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
           )}
         </section>
       ) : null}
+      <div className="finish-box">
+        {done ? (
+          <p>You&apos;ve been through this unit&apos;s words. Come back any time: they stay here.</p>
+        ) : (
+          <p>Looked through them? Practise the new ones above, or mark this step done and go on to the texts.</p>
+        )}
+        <div className="button-row">
+          <NextActivityLink
+            pack={pack}
+            next={nextActivity(pack, { kind: "words", id: unit.id })}
+            onDone={() => progress.markWords(unit.id)}
+          />
+        </div>
+      </div>
     </article>
   );
 }

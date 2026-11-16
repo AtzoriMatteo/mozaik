@@ -81,6 +81,16 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
       }
     }
   }
+  // Words units teach directly (for their writing and speaking) are drillable too.
+  for (const unit of pack.units) {
+    if (unit.level !== level) continue;
+    for (const t of unit.teach ?? []) {
+      const w = t.word.toLowerCase();
+      const lemma = (pack.lexicon[w]?.base ?? w).toLowerCase();
+      if (index.has(lemma) || lemma.includes(" ")) continue;
+      index.set(lemma, { word: w, surface: t.word, meaning: t.meaning, sentence: t.text, translation: t.translation, unitId: unit.id });
+    }
+  }
   return index;
 }
 
@@ -118,14 +128,14 @@ export function eligibleItems(
 ): ReviewItem[] {
   const items: ReviewItem[] = [];
   const saved = opts.savedWords ?? [];
-  const savedForms = new Set(saved.flatMap((w) => [w.word, w.base?.toLowerCase()].filter(Boolean) as string[]));
 
   // My words, part 1: course words you didn't know in New words.
   if (opts.schedules?.size) {
     for (const level of pack.levels) {
       for (const [lemma, info] of wordIndex(pack, level)) {
         const id = courseWordId(lemma);
-        if (!opts.schedules.has(id) || savedForms.has(lemma) || savedForms.has(info.word)) continue;
+        // A course card you already have wins over saving the same word later: its progress stays.
+        if (!opts.schedules.has(id)) continue;
         items.push({ kind: "word", id, ...info, source: "course" });
       }
     }
@@ -135,7 +145,7 @@ export function eligibleItems(
   const seen = new Set<string>();
   for (const w of saved) {
     const lemma = lemmaFor(w);
-    if (seen.has(lemma)) continue;
+    if (seen.has(lemma) || opts.schedules?.has(courseWordId(lemma))) continue;
     seen.add(lemma);
     items.push({ ...w, meaning: cardMeaning(pack, lemma, w.meaning), kind: "word", id: `saved:${w.word}`, source: "saved" });
   }

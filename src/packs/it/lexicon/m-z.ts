@@ -54,7 +54,7 @@ molti | many (masculine); many people | molto
 molto | very; a lot; much | | | molto bene = very well; molti amici = many friends
 momento | moment
 monaco | Munich; monk | | | Monaco di Baviera = Munich
-montagna | mountains; mountain | | | in montagna = in the mountains
+montagna | mountain; the mountains | | | in montagna = in the mountains
 mostra | shows (he/she); exhibition | mostrare | ~ demonstrate
 mostrare | to show
 moto | motorbike | | | Short for motocicletta. Invariable: le moto
@@ -417,7 +417,7 @@ vicino | near; neighbour | | ~ vicinity | vicino a = near
 viene | comes | venire | | viene da Torino = he comes from Turin
 venire | to come | | Latin venire ~ venue
 vino | wine | | ~ wine, vine
-vivere | to live; living | | ~ vivid, survive
+vivere | to live | | ~ vivid, survive
 voce | voice | | Latin vox ~ vocal
 vogliono | they want | volere
 volere | to want

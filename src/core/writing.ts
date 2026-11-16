@@ -7,7 +7,19 @@ import type { CefrLevel, LanguagePack } from "./language-pack";
  */
 
 /** One thing the text should cover. `cues` are words that show it's there. */
-export type WritingPoint = { prompt: string; cues?: string[] };
+export type WritingPoint = {
+  /** What to say, in the explanation language. */
+  prompt: string;
+  /** Words that show the point is covered (also shown as hints). */
+  cues?: string[];
+  /**
+   * A sentence frame to complete, "…" marking the learner's own part:
+   * "Mijn lievelingsseizoen is … ." Shown at A1, where writing is most guided.
+   */
+  frame?: string;
+  /** The prompt in the target language: from late A2 on, instructions move into the language. */
+  promptTarget?: string;
+};
 
 export type WritingTask = {
   id: string;
@@ -18,6 +30,8 @@ export type WritingTask = {
   form: "message" | "email" | "form" | "description" | "story" | "opinion" | "diary";
   /** The situation, in the explanation language. */
   situation: string;
+  /** The situation in the target language (late A2 on). */
+  situationTarget?: string;
   /** Up to six points; shorter lengths ask for the first few. */
   points: WritingPoint[];
   /** A model answer for the longest length, in the target language. */
@@ -224,4 +238,56 @@ export function joinPoints(parts: readonly string[]): string {
     .filter(Boolean)
     .map((p) => (/[.!?]$/.test(p) ? p : `${p}.`))
     .join(" ");
+}
+
+/* ---------------------------------------------------------------- */
+/* How much help a task gives                                        */
+/* ---------------------------------------------------------------- */
+
+export type Guidance = {
+  /** Sentence frames: shown with each point, one tap away, or not given. */
+  frames: "shown" | "tap" | "none";
+  /** "Show an example" for each point. */
+  examples: boolean;
+  /** Instructions in English, in both languages, or in the target language only. */
+  instructions: "en" | "both" | "target";
+  /** Words or phrases to borrow, before writing. */
+  wordBank: boolean;
+};
+
+/**
+ * Help fades slowly, the way a textbook's exercises do: A1 gives a frame for
+ * every sentence; later A1 keeps them one tap away; A2 drops frames but keeps
+ * examples, and its second half gives the instructions in the language with
+ * English underneath; from B1 the task is in the language only, with phrases
+ * to borrow; from B2 there's just the task.
+ */
+export function guidanceFor(pack: LanguagePack, task: WritingTask): Guidance {
+  const levelUnits = pack.units.filter((u) => u.level === task.level);
+  const unitIndex = levelUnits.findIndex((u) => (u.writing ?? []).some((t) => t.id === task.id));
+  const through = levelUnits.length > 1 && unitIndex >= 0 ? unitIndex / (levelUnits.length - 1) : 0;
+  const hasTarget = !!task.situationTarget;
+  switch (task.level) {
+    case "A1":
+      return { frames: through < 0.65 ? "shown" : "tap", examples: true, instructions: "en", wordBank: true };
+    case "A2":
+      return { frames: "tap", examples: true, instructions: through >= 0.5 && hasTarget ? "both" : "en", wordBank: true };
+    case "B1":
+      return { frames: "none", examples: false, instructions: hasTarget ? "target" : "en", wordBank: true };
+    default:
+      return { frames: "none", examples: false, instructions: hasTarget ? "target" : "en", wordBank: false };
+  }
+}
+
+/**
+ * Word counts for a task: the level's lengths, but a little shorter early in
+ * a level, so the first texts are small (a unit-1 note is 20–60 words).
+ */
+export function lengthsFor(pack: LanguagePack, task: WritingTask): readonly [number, number, number] {
+  const base = WRITING_LENGTHS[task.level];
+  const levelUnits = pack.units.filter((u) => u.level === task.level);
+  const i = levelUnits.findIndex((u) => (u.writing ?? []).some((t) => t.id === task.id));
+  const through = levelUnits.length > 1 && i >= 0 ? i / (levelUnits.length - 1) : 1;
+  const scale = through < 1 / 3 ? 0.6 : through < 2 / 3 ? 0.8 : 1;
+  return base.map((n) => Math.round((n * scale) / 5) * 5) as unknown as readonly [number, number, number];
 }

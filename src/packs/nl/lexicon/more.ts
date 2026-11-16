@@ -141,7 +141,7 @@ export const lexiconMore: Lexicon = {
   last: { meaning: "trouble, bother", local: "Waar heeft u last van? = What's bothering you?" },
   laboratorium: { meaning: "laboratory, lab" },
   lampen: { meaning: "lamps", base: "lamp" },
-  lawaaiig: { meaning: "noisy", base: "lawaai" },
+  lawaaiig: { meaning: "noisy", closer: "lawaai (noise) + -ig, like noise → noisy" },
   leert: { meaning: "learns", base: "leren" },
   leggen: { meaning: "lay, put (lying down)", local: "leggen = put flat; zetten = put upright" },
   lenen: { meaning: "borrow; lend", closer: "lenen ~ lend, loan" },

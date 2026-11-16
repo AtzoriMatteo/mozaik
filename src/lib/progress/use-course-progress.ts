@@ -8,6 +8,7 @@ import { WRITING_REQUIRED } from "@/core/writing";
 
 /** What's done across the course, and the one obvious next thing to do. */
 export function useCourseProgress(pack: LanguagePack | null) {
+  const words = useProgress("words", pack?.code ?? null);
   const read = useProgress("read", pack?.code ?? null);
   const listen = useProgress("listen", pack?.code ?? null);
   const grammar = useProgress("grammar", pack?.code ?? null);
@@ -20,8 +21,8 @@ export function useCourseProgress(pack: LanguagePack | null) {
         .filter((u) => (u.writing ?? []).filter((t) => writing.doneIds.has(t.id)).length >= WRITING_REQUIRED)
         .map((u) => u.id),
     );
-    return { read: read.doneIds, listen: listen.doneIds, grammar: grammar.doneIds, write, speak: speak.doneIds };
-  }, [pack, read.doneIds, listen.doneIds, grammar.doneIds, writing.doneIds, speak.doneIds]);
+    return { words: words.doneIds, read: read.doneIds, listen: listen.doneIds, grammar: grammar.doneIds, write, speak: speak.doneIds };
+  }, [pack, words.doneIds, read.doneIds, listen.doneIds, grammar.doneIds, writing.doneIds, speak.doneIds]);
 
   const isDone = (a: Pick<Activity, "kind" | "id">) => done[a.kind].has(a.id);
 
@@ -35,6 +36,7 @@ export function useCourseProgress(pack: LanguagePack | null) {
     isDone,
     next,
     started,
+    markWords: words.markDone,
     markRead: read.markDone,
     markListened: listen.markDone,
     markGrammar: grammar.markDone,

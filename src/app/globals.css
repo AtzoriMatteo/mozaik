@@ -3161,6 +3161,41 @@ a {
   resize: vertical;
 }
 
+.write-frame {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.write-frame p {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+}
+
+.frame-gap {
+  display: inline-block;
+  min-width: 3.5em;
+  margin: 0 0.15em;
+  border-bottom: 2px dotted var(--glaze-iron);
+  color: transparent;
+}
+
+.lede-translation,
+.prompt-translation {
+  display: block;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.lede-translation {
+  margin-top: -0.4rem;
+  font-size: 1rem;
+}
+
 .write-hint-toggle {
   margin-top: 0.3rem;
   min-height: 44px;

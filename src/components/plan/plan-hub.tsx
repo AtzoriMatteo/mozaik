@@ -46,7 +46,7 @@ const GOAL_LABEL: Record<Goal, string> = {
   fun: "fun",
 };
 
-const SKILL: Record<string, Skill> = { read: "read", listen: "listen", grammar: "grammar", write: "write", speak: "speak", review: "review" };
+const SKILL: Record<string, Skill> = { words: "words", read: "read", listen: "listen", grammar: "grammar", write: "write", speak: "speak", review: "review" };
 
 /** Plan: set it up once, then see today, the week and how it's going. */
 export function PlanHub() {
@@ -262,7 +262,8 @@ function itemHref(pack: LanguagePack, item: PlanItem): string {
 function itemLabel(item: PlanItem): { title: string; sub: string } {
   if (item.kind === "review") return { title: "Review", sub: "Your cards for today" };
   const a = item.activity;
-  const verb = { read: "Read", listen: "Listen", grammar: "Grammar", write: "Write", speak: "Speak" }[a.kind];
+  const verb = { words: "Words", read: "Read", listen: "Listen", grammar: "Grammar", write: "Write", speak: "Speak" }[a.kind];
+  if (a.kind === "words") return { title: `Words: ${a.unit.title}`, sub: "The unit's new words, before its texts" };
   if (a.kind === "write") return { title: `Write: ${a.unit.title}`, sub: "Two short topics of your choice" };
   return { title: `${verb}: ${a.title}`, sub: a.kind === "grammar" ? a.unit.title : a.titleTranslation };
 }
