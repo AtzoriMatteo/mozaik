@@ -7,8 +7,8 @@ import { getPack } from "@/core/registry";
 import type { LanguagePack } from "@/core/language-pack";
 import { nextActivity } from "@/core/course";
 import {
-  countWords, cueHints, guidanceFor, LONG_ENOUGH, mergeIssues, noVerbIssues, pointExamples, pointStatus, POINTS_PER_LENGTH,
-  WRITING_LENGTHS, WRITING_REQUIRED, type PointStatus, type WritingIssue, type WritingTask,
+  countWords, cueHints, guidanceFor, lengthsFor, LONG_ENOUGH, mergeIssues, noVerbIssues, pointExamples, pointStatus, POINTS_PER_LENGTH,
+  WRITING_REQUIRED, type PointStatus, type WritingIssue, type WritingTask,
 } from "@/core/writing";
 import { unitWords } from "@/core/unit-words";
 import { askForFeedback, AI_KEY_STORAGE, type AiCorrection, type AiFeedback } from "@/lib/writing/ai-feedback";
@@ -139,7 +139,7 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
   const task = unit.writing!.find((t) => t.id === taskId)!;
   const progress = useCourseProgress(pack);
   const spelling = useSpelling(pack);
-  const lengths = WRITING_LENGTHS[task.level];
+  const lengths = lengthsFor(pack, task);
   const examples = useMemo(() => pointExamples(pack, task), [pack, task]);
   const keyWords = useMemo(() => unitWords(pack, unit).filter((w) => w.core), [pack, unit]);
   const fromTask = useMemo(() => taskNames(pack, task), [pack, task]);

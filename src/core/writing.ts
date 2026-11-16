@@ -278,3 +278,16 @@ export function guidanceFor(pack: LanguagePack, task: WritingTask): Guidance {
       return { frames: "none", examples: false, instructions: hasTarget ? "target" : "en", wordBank: false };
   }
 }
+
+/**
+ * Word counts for a task: the level's lengths, but a little shorter early in
+ * a level, so the first texts are small (a unit-1 note is 20–60 words).
+ */
+export function lengthsFor(pack: LanguagePack, task: WritingTask): readonly [number, number, number] {
+  const base = WRITING_LENGTHS[task.level];
+  const levelUnits = pack.units.filter((u) => u.level === task.level);
+  const i = levelUnits.findIndex((u) => (u.writing ?? []).some((t) => t.id === task.id));
+  const through = levelUnits.length > 1 && i >= 0 ? i / (levelUnits.length - 1) : 1;
+  const scale = through < 1 / 3 ? 0.6 : through < 2 / 3 ? 0.8 : 1;
+  return base.map((n) => Math.round((n * scale) / 5) * 5) as unknown as readonly [number, number, number];
+}

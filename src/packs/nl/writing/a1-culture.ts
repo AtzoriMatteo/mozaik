@@ -7,6 +7,7 @@ import type { WritingPoint, WritingTask } from "@/core/writing";
  */
 
 const p = (prompt: string, ...cues: string[]): WritingPoint => ({ prompt, cues });
+const pf = (prompt: string, frame: string, ...cues: string[]): WritingPoint => ({ prompt, frame, cues });
 const a1 = (t: Omit<WritingTask, "level">): WritingTask => ({ ...t, level: "A1" });
 
 const DIRECTIONS = ["noorden", "zuiden", "oosten", "westen", "noordwesten", "noordoosten", "zuidwesten", "zuidoosten", "midden"];
@@ -21,15 +22,15 @@ export const writingCulture: Record<string, WritingTask[]> = {
       form: "description",
       situation: "Your Dutch course has a wall where everyone introduces themselves. Write about where you come from.",
       points: [
-        p("Say which country and city you come from", "kom", "vandaan"),
-        p("Say which languages you speak", "spreek", "taal", "talen"),
-        p("Say where your country lies", "ligt", ...DIRECTIONS, ...CONTINENTS),
-        p("Say why you're learning Dutch", "leer", "omdat", "want", "daarom"),
-        p("Say how long you've been in the Netherlands, or when you'd like to go", "sinds", "maanden", "jaar", "graag", "wil"),
-        p("Say what you miss from home, or what you like here", "mis", "vind", "leuk", "lekker", "mooi"),
+        pf("Say which country and city you come from", "Ik kom uit …, uit … .", "kom", "uit", "vandaan"),
+        pf("Say which languages you speak", "Ik spreek … .", "spreek", "taal"),
+        pf("Say which country is next to yours", "… ligt naast … .", "ligt", "naast"),
+        pf("Say why you're learning Dutch", "Nu leer ik Nederlands, want … .", "leer", "want"),
+        pf("Say how long you've been in the Netherlands", "Ik woon sinds … in … .", "sinds", "maanden", "jaar", "weken"),
+        pf("Say what you like here", "Ik vind … heel mooi.", "vind", "leuk", "mooi", "fijn"),
       ],
       model:
-        "Hallo! Ik ben Ana en ik kom uit Portugal, uit Porto. Ik ben Portugese. Portugal ligt in het zuidwesten van Europa, naast Spanje. Ik spreek Portugees, Engels en een beetje Spaans. Nu leer ik Nederlands, want ik woon sinds januari in Rotterdam. Mijn man werkt hier in de haven. Rotterdam is een mooie stad, maar het weer is anders. Hier regent het veel en het waait vaak. Ik mis de zon, de zee en de koffie van mijn moeder. Maar ik vind de Nederlandse stroopwafels heel lekker! Groetjes, Ana",
+        "Hallo! Ik ben Ana en ik kom uit Portugal, uit Porto. Ik ben Portugese. Ik spreek Portugees, Engels en een beetje Spaans. Portugal ligt naast Spanje. Nu leer ik Nederlands, want ik woon en werk hier. Ik woon sinds januari in Rotterdam, met mijn man. Hier is het vaak koud en het waait veel. Maar ik vind Rotterdam heel mooi, en de mensen zijn aardig. Groeten, Ana",
     }),
   ],
   "a1-eten": [

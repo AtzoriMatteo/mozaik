@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { dutch } from "..";
 import { allTexts } from "@/core/language-pack";
 import { isNumberWord } from "./data";
-import { countWords, coveredPoints, LONG_ENOUGH, WRITING_LENGTHS } from "@/core/writing";
+import { countWords, coveredPoints, LONG_ENOUGH, lengthsFor } from "@/core/writing";
 
 const check = dutch.checkWriting!;
 const fixes = (text: string) => check(text).map((i) => `${text.slice(i.start, i.end)} → ${i.fix ?? "?"}`);
@@ -110,7 +110,7 @@ describe("A1 writing topics", () => {
   });
 
   it.each(tasks.map((t) => [t.id, t] as const))("%s: model answer is long enough, covers every point and passes the checker", (_id, t) => {
-    expect(countWords(t.model), t.id).toBeGreaterThanOrEqual(WRITING_LENGTHS[t.level][2] * LONG_ENOUGH);
+    expect(countWords(t.model), t.id).toBeGreaterThanOrEqual(lengthsFor(dutch, t)[2] * LONG_ENOUGH);
     const covered = coveredPoints(dutch, t.model, t.points);
     expect(t.points.filter((_, i) => !covered[i]).map((pt) => pt.prompt)).toEqual([]);
     const issues = check(t.model).map((i) => `${t.model.slice(i.start, i.end)}: ${i.message}`);

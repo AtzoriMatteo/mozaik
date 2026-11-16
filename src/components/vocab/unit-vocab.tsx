@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { getPack } from "@/core/registry";
 import { unitNumber, type LanguagePack } from "@/core/language-pack";
-import { courseWordId } from "@/core/review-items";
-import { isGraduated, isLearned } from "@/core/srs";
 import { unitExpressions, unitWords, WORD_GROUPS, type UnitWord } from "@/core/unit-words";
 import { useReview } from "@/lib/review/use-review";
 import { useReviewSettings } from "@/lib/review/use-review-settings";
@@ -45,12 +43,8 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
   const key = words.filter((w) => w.core);
   const more = words.filter((w) => !w.core);
 
-  const status = (w: UnitWord): Status => {
-    const stage = review.schedules.get(courseWordId(w.lemma))?.stage;
-    if (stage === undefined) return "new";
-    if (isGraduated(stage)) return "known";
-    return isLearned(stage) ? "learned" : "learning";
-  };
+  // Same card whether the word was met here, in New words, or saved while reading.
+  const status = (w: UnitWord): Status => review.wordState(w.lemma, w.word);
   const fresh = key.filter((w) => status(w) === "new");
 
   if (practising) {

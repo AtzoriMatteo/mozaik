@@ -37,6 +37,7 @@ import { listeningTasksA1 } from "../listening/tasks-a1";
 import { speakingA1 } from "../speaking/a1";
 import { writingA1 } from "../writing/a1";
 import { writingCulture } from "../writing/a1-culture";
+import { teachNl } from "../teach";
 
 /** Each unit's tile: a hand-painted motif and one of the polychrome glazes. */
 const LOOK: Record<string, { motif: Motif; glaze: Glaze }> = {
@@ -108,4 +109,5 @@ export const units: readonly Unit[] = [
   feestdagen,
 ]
   .map(assemble)
-  .concat(unitsA2);
+  .concat(unitsA2)
+  .map((u) => (teachNl[u.id] ? { ...u, teach: [...(u.teach ?? []), ...teachNl[u.id]] } : u));

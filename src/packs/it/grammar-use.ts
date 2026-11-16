@@ -66,3 +66,14 @@ export function isItalianNumber(w: string): boolean {
   numberSet ??= new Set(Array.from({ length: 3000 }, (_, i) => italianNumber(i)));
   return numberSet.has(w);
 }
+
+/** Possible dictionary forms of an inflected Italian noun or adjective: vicina → vicino, amiche → amica, occhi → occhio. */
+export function italianStems(word: string): string[] {
+  const w = word.toLowerCase();
+  const out = new Set<string>();
+  const stem = w.slice(0, -1);
+  if (/[aeio]$/.test(w)) for (const e of ["o", "a", "e", "io"]) out.add(stem + e);
+  if (/(ch|gh)[ei]$/.test(w)) for (const e of ["o", "a"]) out.add(w.slice(0, -2) + e);
+  out.delete(w);
+  return [...out];
+}

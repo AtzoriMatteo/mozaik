@@ -102,7 +102,7 @@ export const listeningBasis: Record<string, ListeningItem[]> = {
       tasks: [
         heard(5, ["maart", "mei", "november"], 0),
         gaps(1, "dertien", "november"),
-        tf("Bram gelooft dat vrijdag de dertiende een slechte dag is.", "Bram believes Friday the thirteenth is a bad day.", false),
+        tf("Voor Bram is vrijdag de dertiende geen goede dag.", "For Bram, Friday the thirteenth isn't a good day.", false),
       ],
       dictation: [0, 4],
     },

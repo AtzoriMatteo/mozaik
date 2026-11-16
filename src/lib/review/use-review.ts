@@ -6,7 +6,8 @@ import {
   courseWordId, eligibleItems, newWords, type ReviewItem, type Schedule,
 } from "@/core/review-items";
 import type { LanguagePack } from "@/core/language-pack";
-import { GRADUATED_DUE, GRADUATED_STAGE, isGraduated, schedule, type ReviewResult } from "@/core/srs";
+import { GRADUATED_DUE, GRADUATED_STAGE, isGraduated, isLearned, schedule, type ReviewResult } from "@/core/srs";
+import { lemmaFor } from "@/core/dictionary";
 import { isAuthEnabled } from "@/lib/supabase/config";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
@@ -182,8 +183,25 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
   );
 
   const savedForms = useMemo(
-    () => new Set(saved.words.flatMap((w) => [w.word, w.base?.toLowerCase()].filter(Boolean) as string[])),
+    () => new Set(saved.words.flatMap((w) => [w.word, lemmaFor(w)].filter(Boolean) as string[])),
     [saved.words],
+  );
+
+  /**
+   * One word, one card, wherever it came from: a course word met in New words
+   * or a unit's Words, or a word saved while reading. Where does it stand?
+   */
+  const savedByLemma = useMemo(() => new Map(saved.words.map((w) => [lemmaFor(w), w])), [saved.words]);
+  const wordState = useCallback(
+    (lemma: string, form?: string): "new" | "learning" | "learned" | "known" => {
+      const course = own.get(courseWordId(lemma));
+      const sw = savedByLemma.get(lemma) ?? (form ? saved.words.find((w) => w.word === form) : undefined);
+      const stage = course ? course.stage : sw ? (schedules.get(`saved:${sw.word}`)?.stage ?? sw.stage ?? 0) : undefined;
+      if (stage === undefined) return "new";
+      if (isGraduated(stage)) return "known";
+      return isLearned(stage) ? "learned" : "learning";
+    },
+    [savedByLemma, saved.words, schedules, own],
   );
   const fresh = useMemo(
     () => (pack ? newWords(pack, settings.newWordLevels.filter((l) => pack.levels.includes(l)), own, savedForms) : []),
@@ -207,6 +225,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
     ungraduate,
     meet,
     newWords: fresh,
+    wordState,
     graduated,
     savedWords: saved.words,
   };

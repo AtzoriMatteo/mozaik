@@ -155,6 +155,7 @@ export function isTaught(pack: LanguagePack, taught: Set<string>, w: string): bo
   if (base && taught.has(base)) return true;
   const inf = pack.verbFor?.(w);
   if (inf && taught.has(inf)) return true;
+  if (pack.stems?.(w).some((s) => taught.has(s) || taught.has(pack.lexicon[s]?.base?.toLowerCase() ?? ""))) return true;
   // Compounds of two taught words: verjaardagsfeest = verjaardag + s + feest.
   for (let i = 3; i <= w.length - 3; i++) {
     const right = w.slice(i);

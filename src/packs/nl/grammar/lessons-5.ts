@@ -41,11 +41,11 @@ export const lessons5: Record<string, GrammarLesson> = {
     ],
     exercises: [
       fill("één boom, twee ", "", "bomen", "one tree, two trees", "open syllable: one o"),
-      fill("één kat, twee ", "", "katten", "one cat, two cats", "keep the a short"),
+      fill("één les, twee ", "", "lessen", "one lesson, two lessons", "keep the e short"),
       choice("Ik ", " in Leiden.", ["won", "woon"], 1, "I live in Leiden."),
       sort("Long or short a?", ["long", "short"], "maan=0 | man=1 | manen=0 | mannen=1 | kaas=0 | kazen=0", "maan, manen, kaas, kazen: long; man, mannen: short."),
       match("How do you say the letter?", "A=aa | E=ee | I=ie | J=jee | G=gee", "Letters as Dutch speakers say them."),
-      spot("Wij woonen in Leiden.", "woonen", "wonen", "We live in Leiden. (open syllable: one o)"),
+      spot("Noor en Bram woonen in Leiden.", "woonen", "wonen", "Noor and Bram live in Leiden. (open syllable: one o)"),
       spot("Er zijn twee huisen aan de gracht.", "huisen", "huizen", "There are two houses on the canal. (s becomes z)"),
       fill("één brief, twee ", "", "brieven", "one letter, two letters", "f becomes v"),
     ],

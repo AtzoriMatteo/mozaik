@@ -17,6 +17,7 @@ import { verbTools } from "./verbs";
 import { makeChecker } from "./writing/check";
 import { isNumberWord } from "./writing/data";
 import { dutchGrammarIn } from "./grammar-use";
+import { dutchStems } from "./stems";
 
 /**
  * Dutch uses apostrophes inside words ("auto's", "baby's") and as the start
@@ -77,6 +78,7 @@ function greetingFor(hour: number) {
 export const dutch: LanguagePack = {
   checkWriting: makeChecker(lexicon, tokenizeDutch),
   isNumberWord,
+  stems: dutchStems,
   grammarIn: (text) => dutchGrammarIn(dutch, text),
   formulas: new Set([
     "hallo", "hoi", "hey", "hé", "dag", "doei", "beste", "lieve", "geachte", "goedemorgen", "goedemiddag", "goedenavond",

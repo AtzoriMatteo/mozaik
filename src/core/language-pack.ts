@@ -63,6 +63,8 @@ export interface LanguagePack {
   wordFrequency?: Readonly<Record<string, number>>;
   /** Grammar checks for learner writing (spelling is done separately). */
   checkWriting?: (text: string) => WritingIssue[];
+  /** Possible dictionary forms of an inflected word the lexicon doesn't list (groter → groot, katten → kat). */
+  stems?: (word: string) => string[];
   /** Number words (drieëntwintig): taught as a system, never "untaught" one by one. */
   isNumberWord?: (word: string) => boolean;
   /** Grammar used in a text, as grammar point ids (perfect tense, superlative…), for the "taught so far" check. */

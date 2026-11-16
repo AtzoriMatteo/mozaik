@@ -1,4 +1,4 @@
-import { isItalianNumber, italianGrammarIn } from "./grammar-use";
+import { isItalianNumber, italianGrammarIn, italianStems } from "./grammar-use";
 import type { LanguagePack } from "@/core/language-pack";
 import { lexicon } from "./lexicon";
 import { grammar } from "./grammar";
@@ -33,6 +33,7 @@ export const italian: LanguagePack = {
   spelling: { aff: "/dictionaries/it/index.aff", dic: "/dictionaries/it/index.dic" },
   languageTool: "it",
   isNumberWord: isItalianNumber,
+  stems: italianStems,
   grammarIn: (text) => italianGrammarIn(italian, text),
   formulas: new Set([
     "ciao", "salve", "buongiorno", "buonasera", "buonanotte", "arrivederci", "arrivederla", "presto", "grazie", "prego",

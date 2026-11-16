@@ -28,12 +28,12 @@ describe("what comes back in review", () => {
     expect(w && w.kind === "word" ? w.sentence : "").toMatch(/woon/i);
   });
 
-  it("keeps saved words, and doesn't duplicate one you also met in New words", () => {
+  it("keeps one card per word: a course card you already have keeps its progress when you save the word too", () => {
     const items = eligibleItems(dutch, none, {
       schedules: new Map([[courseWordId("wonen"), sched()]]),
       savedWords: [{ word: "woon", surface: "woon", base: "wonen", meaning: "live", sentence: "x" }],
     });
-    expect(items.map((i) => i.id)).toEqual(["saved:woon"]);
+    expect(items.map((i) => i.id)).toEqual(["w:wonen"]);
   });
 
   it("adds grammar exercises, listening lines and speaking items when those are done", () => {
