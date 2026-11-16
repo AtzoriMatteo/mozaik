@@ -33,7 +33,7 @@ asks for your favourite season, month and colour, with "lievelings-",
 "vinden" and the days of the week taught in unit 1; the A2 illness story
 is told in the perfect tense (the simple past comes in unit 5); recipes,
 reviews and complaints lost words like komijn, bijlage and erboven.
-About 60 grammar exercises and questions were reworded the same way.
+About 30 grammar exercises and comprehension questions were reworded the same way.
 
 **Words first (Claude, Matteo's brief).** Each unit now starts with its
 Words step (Continue and the Plan go there first): the words the unit
