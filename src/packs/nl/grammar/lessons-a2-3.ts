@@ -39,7 +39,7 @@ export const lessonsA2c: Record<string, GrammarLesson> = {
       example("Toen kwam de vrouw van Theo, Jo van Gogh-Bonger.", "Then came Theo's wife, Jo van Gogh-Bonger.", "van Theo"),
     ],
     exercises: [
-      fill("Is deze tas van ", "? (you)", "jou", "Is this bag yours?"),
+      fill("Is deze tas van ", "?", "jou", "Is this bag yours?", "you (informal)"),
       fill("Nee, die ", " mij is zwart.", "van", "No, mine is black."),
       choice("Dit is de fiets ", " mijn zus.", ["van", "of"], 0, "This is my sister's bike."),
       transform("Say it with van.", "Theo's brieven", "de brieven van Theo", "Theo's letters"),

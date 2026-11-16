@@ -97,12 +97,22 @@ export function productionItems(pack: LanguagePack, unit: Unit): { where: string
     if (g.unit !== unit.id) continue;
     g.lesson?.exercises.forEach((ex, i) =>
       grammarStrings(ex)
-        .filter((text) => ex.kind !== "sort" || words(pack, text).some((t) => pack.lexicon[t.normalized] || pack.verbFor?.(t.normalized)))
+        // Notes in brackets are in the explanation language: "(to your flatmate)".
+        .map((text) => text.replace(/\([^)]*\)/g, " "))
+        // A string with no word the dictionary knows is in the explanation language too ("I'm hungry.").
+        .filter((text) => words(pack, text).some((t) => pack.lexicon[t.normalized] || pack.verbFor?.(t.normalized)))
         .forEach((text) => out.push({ where: `grammar ${g.id} exercise ${i + 1}`, text })),
     );
   }
-  for (const t of unit.texts) (t.tasks ?? []).forEach((task, i) => taskStrings(task).forEach((text) => out.push({ where: `reading ${t.id} task ${i + 1}`, text })));
-  for (const l of unit.listening) (l.tasks ?? []).forEach((task, i) => taskStrings(task).forEach((text) => out.push({ where: `listening ${l.id} task ${i + 1}`, text })));
+  // Task lines quoted word for word from their own text or clip are that text, not something new.
+  for (const t of unit.texts) {
+    const own = t.paragraphs.flat().map((s) => s.text).join(" ");
+    (t.tasks ?? []).forEach((task, i) => taskStrings(task).filter((x) => !own.includes(x)).forEach((text) => out.push({ where: `reading ${t.id} task ${i + 1}`, text })));
+  }
+  for (const l of unit.listening) {
+    const own = l.lines.map((s) => s.text).join(" ");
+    (l.tasks ?? []).forEach((task, i) => taskStrings(task).filter((x) => !own.includes(x)).forEach((text) => out.push({ where: `listening ${l.id} task ${i + 1}`, text })));
+  }
   return out;
 }
 
@@ -186,10 +196,12 @@ export function coherenceGaps(pack: LanguagePack): Gap[] {
       words(pack, text).forEach((t, i) => {
         if (names.has(i) || /\d/.test(t.text) || !/\p{L}/u.test(t.text)) return;
         // A capitalised word the dictionary doesn't know is a name, even first in a sentence (Luca's, Rotterdam).
-        if (/^\p{Lu}/u.test(t.text) && !pack.lexicon[t.normalized] && !pack.lexicon[t.normalized.replace(/'s$/, "")]) return;
+        const known = pack.lexicon[t.normalized] ?? pack.lexicon[t.normalized.replace(/'s$/, "")];
+        if (/^\p{Lu}/u.test(t.text) && (!known || /^\p{Lu}/u.test(known.meaning))) return;
         if (!isTaught(pack, taught, t.normalized)) gaps.push({ unitId: unit.id, where, kind: "word", item: t.normalized, word: t.text, text });
       });
-      for (const use of pack.grammarIn?.(text) ?? []) {
+      // A cue is a single word to look for, not a sentence: only its spelling counts.
+      for (const use of where.endsWith("cue") ? [] : (pack.grammarIn?.(text) ?? [])) {
         if (grammarIndex(pack, use.grammar) > u && !chunks.has(use.word.toLowerCase())) gaps.push({ unitId: unit.id, where, kind: "grammar", item: use.grammar, word: use.word, text });
       }
     }

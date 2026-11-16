@@ -11,6 +11,7 @@ import {
   WRITING_REQUIRED, type PointStatus, type WritingIssue, type WritingTask,
 } from "@/core/writing";
 import { unitWords } from "@/core/unit-words";
+import type { Unit } from "@/core/content";
 import { askForFeedback, AI_KEY_STORAGE, type AiCorrection, type AiFeedback } from "@/lib/writing/ai-feedback";
 import { SpeakButton } from "@/components/speak-button";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
@@ -104,6 +105,25 @@ function writeLocal(key: string, value: string | null) {
 const POINTS = 6;
 const blank = () => Array.from({ length: POINTS }, () => "");
 
+/**
+ * The words this topic needs: the ones its example text and frames use,
+ * from this unit and the units before (this unit's first). Skips tiny words.
+ */
+function topicWords(pack: LanguagePack, unit: Unit, task: WritingTask) {
+  const text = [task.model, ...task.points.map((p) => p.frame ?? "")].join(" ");
+  const used = new Set(
+    pack
+      .tokenize(text)
+      .filter((t) => t.kind === "word")
+      .flatMap((t) => [t.normalized, (pack.lexicon[t.normalized]?.base ?? "").toLowerCase(), pack.verbFor?.(t.normalized) ?? ""]),
+  );
+  const upTo = pack.units.slice(0, pack.units.indexOf(unit) + 1).reverse();
+  return upTo
+    .flatMap((u) => unitWords(pack, u))
+    .filter((w) => used.has(w.lemma) && (w.group !== "other" || w.unitId === unit.id))
+    .slice(0, 24);
+}
+
 /** Names in the task itself (capitals mid-sentence): never spelling mistakes. */
 function taskNames(pack: LanguagePack, task: WritingTask): Set<string> {
   const out = new Set<string>();
@@ -142,7 +162,7 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
   const lengths = lengthsFor(pack, task);
   // Cheap to work out (unit words are cached), so plain calls rather than memos.
   const examples = pointExamples(pack, task);
-  const keyWords = unitWords(pack, unit).filter((w) => w.core);
+  const keyWords = topicWords(pack, unit, task);
   const fromTask = taskNames(pack, task);
   const guide = guidanceFor(pack, task);
   const [showEnglish, setShowEnglish] = useState(false);

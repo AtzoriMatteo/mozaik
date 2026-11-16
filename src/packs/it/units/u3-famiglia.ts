@@ -1,5 +1,5 @@
 import type { Unit } from "@/core/content";
-import { a1, gaps, heard, line, mc, p, pairs, s, tf } from "./helpers";
+import { a1, gaps, heard, line, mc, p, pairs, pf, s, tf } from "./helpers";
 
 /** A1 unit 3: family. Possessives, adjective endings, plurals. */
 export const famiglia: Unit = {
@@ -76,7 +76,7 @@ export const famiglia: Unit = {
         ],
       ],
       tasks: [
-        tf("Il pranzo della domenica è veloce.", "Sunday lunch is quick.", false),
+        tf("Il pranzo della domenica finisce all'una.", "Sunday lunch finishes at one.", false),
         mc("Where does the family go?", ["To the grandparents' house", "To a restaurant", "To the beach"], 0),
         mc("What's the first course usually?", ["Pasta", "Meat", "Fruit"], 0),
         pairs("Match.", "il primo=pasta | il secondo=carne o pesce | il contorno=verdure o patate | il dolce=dessert", true),
@@ -230,15 +230,15 @@ export const famiglia: Unit = {
       form: "description",
       situation: "Your Italian teacher asks everyone to write a few lines about their family.",
       points: [
-        p("Say how big your family is", "famiglia", "piccola", "grande", "siamo"),
-        p("Say who your parents are, without the article", "mio padre", "mia madre", "i miei genitori"),
-        p("Say if you have brothers or sisters", "fratello", "sorella", "fratelli", "sorelle", "figlio", "figlia"),
-        p("Give someone's age and job", "anni", "fa", "lavora", "studia"),
-        p("Describe someone, with the right endings", "alto", "alta", "simpatico", "simpatica", "giovane", "capelli"),
-        p("Say where they live", "abita", "abitano", "vive"),
+        pf("Say how big your family is", "La mia famiglia è … .", "famiglia", "piccola", "grande", "siamo"),
+        pf("Say who your parents are, without the article", "Mio padre si chiama … e mia madre si chiama … .", "mio padre", "mia madre", "i miei genitori"),
+        pf("Say if you have brothers or sisters", "Ho un fratello / una sorella, … .", "fratello", "sorella", "fratelli", "sorelle", "figlio", "figlia"),
+        pf("Give someone's age and job", "… ha … anni e fa … .", "anni", "fa", "lavora", "studia"),
+        pf("Describe someone, with the right endings", "… è alto/alta e molto simpatico/simpatica.", "alto", "alta", "simpatico", "simpatica", "giovane", "capelli"),
+        pf("Say where they live", "I miei genitori abitano a … .", "abita", "abitano", "vive"),
       ],
       model:
-        "La mia famiglia è piccola. Mio padre si chiama Kevin, ha cinquantotto anni e lavora in banca. È alto e molto simpatico. Mia madre si chiama Mary e fa l'infermiera. Ho una sorella, Siobhan: ha trent'anni e ha i capelli rossi. I miei genitori abitano a Dublino, mia sorella abita a Londra con il suo ragazzo. Non ho fratelli, ma ho due cugini molto simpatici.",
+        "La mia famiglia è piccola. Mio padre si chiama Kevin, ha cinquantotto anni e fa il medico. È alto e molto simpatico. Mia madre si chiama Mary e fa l'infermiera. Ho una sorella, Siobhan: ha trent'anni e ha i capelli rossi. I miei genitori abitano a Dublino, mia sorella abita a Londra con il suo ragazzo. Non ho fratelli, ma ho due cugini molto simpatici.",
     }),
     a1({
       id: "w-una-foto",
@@ -247,15 +247,15 @@ export const famiglia: Unit = {
       form: "message",
       situation: "You send a friend a photo of people you love. Write a message to go with it.",
       points: [
-        p("Say what the photo is", "foto", "questa", "ecco"),
-        p("Say who the people are", "è", "sono", "mio", "mia", "miei"),
-        p("Describe them", "alto", "alta", "biondo", "bionda", "simpatico", "simpatica", "capelli", "occhi"),
-        p("Say where you are in the photo", "siamo", "in", "a"),
-        p("Use plurals", "amici", "sorelle", "fratelli", "cugini", "nonni"),
-        p("Ask about your friend's family", "e tu", "la tua", "i tuoi"),
+        pf("Say what the photo is", "Ecco una foto di … !", "foto", "questa", "ecco"),
+        pf("Say who the people are", "Il signore con … è mio … .", "è", "sono", "mio", "mia", "miei"),
+        pf("Describe them", "… ha i capelli … ed è molto … .", "alto", "alta", "biondo", "bionda", "simpatico", "simpatica", "capelli"),
+        pf("Say where you are in the photo", "Siamo a … .", "siamo", "in", "a"),
+        pf("Use plurals", "I miei … sono … .", "amici", "sorelle", "fratelli", "cugini", "nonni"),
+        pf("Ask about your friend's family", "E tu? Hai una foto dei tuoi … ?", "e tu", "la tua", "i tuoi"),
       ],
       model:
-        "Ciao Sofia! Ecco una foto dei miei nonni. Siamo al mare, in Sardegna. Il signore con il cappello è mio nonno Franco: ha ottantadue anni ed è molto simpatico. La signora con i capelli bianchi è mia nonna Maria. I miei nonni sono piccoli, ma molto attivi. E tu? Hai una foto dei tuoi nonni?",
+        "Ciao Sofia! Ecco una foto dei miei nonni. Siamo in Sardegna, a casa dei nonni. Il signore con la barba è mio nonno Franco: ha ottantadue anni ed è molto simpatico. La signora con i capelli bianchi è mia nonna Maria. I miei nonni sono piccoli, ma molto attivi. E tu? Hai una foto dei tuoi nonni?",
     }),
   ],
   speaking: {

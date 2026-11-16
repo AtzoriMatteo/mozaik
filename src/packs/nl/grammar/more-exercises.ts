@@ -17,7 +17,7 @@ export const moreExercises: Record<string, Exercise[]> = {
   ],
   "zijn-hebben": [
     match("Connect each subject with its form of zijn.", "ik=ben | jij=bent | hij=is | wij=zijn", "ik ben, jij bent, hij is, wij zijn"),
-    spot("Noor heb een broer en een hond.", "heb", "heeft", "Noor has a brother and a dog."),
+    spot("Sanne heb een kat.", "heb", "heeft", "Sanne has a cat."),
   ],
   possessives: [
     match("Connect the English and the Dutch.", "my=mijn | your=jouw | his=zijn | her=haar | our (house)=ons", "mijn, jouw, zijn, haar, ons huis"),
@@ -29,19 +29,19 @@ export const moreExercises: Record<string, Exercise[]> = {
   ],
   articles: [
     sort("de or het?", ["de", "het"], "huis=1 | stad=0 | kind=1 | moeder=0 | brood=1 | fiets=0", "het huis, de stad, het kind, de moeder, het brood, de fiets"),
-    spot("Het kinderen spelen buiten.", "Het", "De", "The children are playing outside. (every plural takes de)"),
+    spot("Het kinderen spelen in de tuin.", "Het", "De", "The children are playing in the garden. (every plural takes de)"),
   ],
   "er-is": [
     match("Connect the halves.", "Er is=een markt | Er zijn=veel fietsen | Is er=nog brood? | Zijn er=nog appels?", "Er is een markt. Er zijn veel fietsen. Is er nog brood? Zijn er nog appels?"),
     spot("Er is veel mensen op de markt.", "is", "zijn", "There are a lot of people at the market."),
   ],
   demonstratives: [
-    sort("deze or dit?", ["deze", "dit"], "appel=0 | brood=1 | kaas=0 | huis=1 | tomaten=0 | boek=1", "deze appel, dit brood, deze kaas, dit huis, deze tomaten, dit boek"),
-    spot("Dit appels zijn lekker.", "Dit", "Deze", "These apples are tasty."),
+    sort("deze or dit?", ["deze", "dit"], "tomaat=0 | brood=1 | kaas=0 | huis=1 | tomaten=0 | boek=1", "deze tomaat, dit brood, deze kaas, dit huis, deze tomaten, dit boek"),
+    spot("Dit tomaten zijn lekker.", "Dit", "Deze", "These tomatoes are tasty."),
   ],
   diminutives: [
     match("Connect the word and its small form.", "huis=huisje | boom=boompje | kop=kopje | vrouw=vrouwtje", "huisje, boompje, kopje, vrouwtje"),
-    sort("de or het? (careful: small words)", ["de", "het"], "kop=0 | kopje=1 | tafel=0 | tafeltje=1 | boek=1 | boekje=1", "Every -je word is a het-word."),
+    sort("de or het? (careful: small words)", ["de", "het"], "tas=0 | tasje=1 | tafel=0 | tafeltje=1 | boek=1 | boekje=1", "Every -je word is a het-word."),
   ],
   "time-numbers": [
     match("Connect the clock and the Dutch.", "8:30=half negen | 9:15=kwart over negen | 9:45=kwart voor tien | 7:00=zeven uur", "half negen, kwart over negen, kwart voor tien, zeven uur"),
@@ -64,7 +64,7 @@ export const moreExercises: Record<string, Exercise[]> = {
   ],
   imperative: [
     match("Connect the verb and the instruction.", "lopen=Loop rechtdoor. | nemen=Neem de tweede straat. | gaan=Ga linksaf. | komen=Kom binnen!", "Loop, Neem, Ga, Kom: the stem on its own."),
-    spot("Gaat hier rechtsaf.", "Gaat", "Ga", "Turn right here. (imperative = stem)"),
+    spot("Gaat hier rechts.", "Gaat", "Ga", "Turn right here. (imperative = stem)"),
   ],
   questions: [
     match("Connect the question word and its meaning.", "wie=who | wat=what | waar=where | wanneer=when | hoe=how", "wie, wat, waar, wanneer, hoe"),

@@ -304,7 +304,7 @@ export const koken: Unit = {
         p("Say when you eat it, and give a tip", "eet", "eten", "tip", "lekker", "feest"),
       ],
       model:
-        "Shakshuka is een gerecht uit Noord-Afrika, en mijn familie in Tunesië eet het bijna elke week. Dit recept is voor vier personen. Je hebt twee uien en één rode paprika nodig. Tomaten heb je ook nodig: je hebt er zes nodig, of één blik. Eieren? Daar heb je er acht van nodig. Verder heb je knoflook, olijfolie, komijn en een beetje peper nodig. Snijd eerst de ui en de paprika in kleine stukjes. Bak ze vijf minuten in de olie, op een laag vuur. Doe dan de knoflook, de komijn en de tomaten erbij. Laat alles twintig minuten zachtjes koken en roer af en toe. Maak dan acht kleine kuiltjes in de saus en doe in elk kuiltje een ei. Doe de deksel op de pan en wacht nog zeven minuten. Wij eten het op zondagochtend, met vers brood. Een tip: eet het direct uit de pan!",
+        "Shakshuka is een gerecht uit Noord-Afrika, en mijn familie in Tunesië eet het bijna elke week. Dit recept is voor vier personen. Je hebt twee uien en één rode paprika nodig. Tomaten heb je ook nodig: je hebt er zes nodig, of één pak tomaten. Eieren? Daar heb je er acht van nodig. Verder heb je knoflook, olie, peper en zout nodig. Snijd eerst de ui en de paprika in kleine stukjes. Bak ze vijf minuten in de olie, op een laag vuur. Doe dan de knoflook en de tomaten erbij. Laat alles twintig minuten zachtjes koken en roer af en toe. Doe dan de eieren één voor één in de saus. Doe de pan dicht en wacht nog zeven minuten. Wij eten het op zondagochtend, met vers brood. Een tip: eet het direct uit de pan!",
     }),
     a2({
       id: "w-klacht-bezorging",
@@ -315,13 +315,13 @@ export const koken: Unit = {
       points: [
         p("Greet the company", "beste", "geachte", "goedendag"),
         p("Say what and when you ordered", "besteld", "bestelling", "bestelde", "gisteren", "vorige"),
-        p("Say what went wrong", "kwam", "te", "laat", "koud", "kapot", "ontbrak", "verkeerde", "miste"),
+        p("Say what went wrong", "kwam", "te", "laat", "koud", "kapot", "verkeerde", "miste"),
         p("Use er with a number", "er"),
         p("Ask politely for a solution, with zou", "zou", "zouden"),
         p("Close politely", "groet", "groeten", "alvast", "bedankt"),
       ],
       model:
-        "Geachte heer of mevrouw, Gisteren heb ik bij u boodschappen besteld voor een feestje bij mij thuis. De bestelling zou tussen vijf en zes uur komen, maar de bezorger kwam pas om half acht. Toen waren mijn gasten er al. Ook was niet alles goed. Ik had twaalf flessen fris besteld, maar er zaten er maar acht in de doos. Van de zes bakjes aardbeien waren er twee helemaal kapot. Het ijs was gesmolten, omdat het niet in een koude tas zat. Ik heb de foto's als bijlage bij deze mail gedaan. Zou u het geld voor de ontbrekende flessen, de aardbeien en het ijs willen terugbetalen? En zou u ervoor kunnen zorgen dat de bezorging de volgende keer op tijd is? Ik ben normaal heel tevreden over uw winkel. Alvast bedankt voor uw antwoord. Met vriendelijke groet, Leila Bouzid",
+        "Geachte heer of mevrouw, Gisteren heb ik bij u boodschappen besteld voor een feestje bij mij thuis. De bestelling zou tussen vijf en zes uur komen, maar de bezorger kwam pas om half acht. Toen waren mijn gasten er al. Ook was niet alles goed. Ik had twaalf flessen cola besteld, maar er zaten er maar acht in de doos. Van de zes bakjes aardbeien waren er twee helemaal kapot. Het ijs was niet meer koud, omdat het niet in een koude tas zat. Ik stuur de foto's mee met deze mail. Zou u het geld voor de vier flessen, de aardbeien en het ijs willen terugbetalen? En zou u ervoor kunnen zorgen dat u de volgende keer op tijd bent? Ik ben normaal heel tevreden over uw winkel. Alvast bedankt voor uw antwoord. Met vriendelijke groet, Leila Bouzid",
     }),
     a2({
       id: "w-eten-bij-ons",
@@ -335,10 +335,10 @@ export const koken: Unit = {
         p("Compare, with a comparative or superlative", "vroeger", "later", "meer", "minder", "langer", "warmer", "belangrijkste", "lekkerste"),
         p("Say how a meal goes when you eat out or with guests", "restaurant", "gasten", "samen", "betalen", "rekening"),
         p("Give your opinion, with omdat or want", "omdat", "want", "vind"),
-        p("Say what you've taken over from the Dutch, or not", "nu", "ook", "nooit", "inmiddels", "sinds"),
+        p("Say what you've taken over from the Dutch, or not", "nu", "ook", "nooit", "sinds"),
       ],
       model:
-        "In Spanje eten we veel later dan in Nederland. Bij mijn ouders thuis is de lunch om half drie, en het avondeten pas om half tien. In Nederland eten de meeste mensen om zes uur. Toen ik hier net woonde, had ik om zes uur nog helemaal geen honger! Ook de lunch is anders. Nederlanders eten bij de lunch vaak brood met kaas, en ze zijn in een kwartier klaar. In Spanje is de lunch de belangrijkste maaltijd van de dag, met warm eten. Als we uit eten gaan, betaalt bij ons vaak één persoon voor iedereen. De volgende keer betaalt een ander. In Nederland betaalt iedereen zijn eigen deel. Eerst vond ik dat raar, maar nu vind ik het eigenlijk wel handig, omdat het eerlijk is. Inmiddels eet ik zelf ook om half zeven. Maar brood bij de lunch? Dat nooit!",
+        "In Spanje eten we veel later dan in Nederland. Bij mijn ouders thuis is de lunch om half drie, en het avondeten pas om half tien. In Nederland eten de meeste mensen om zes uur. Toen ik hier net woonde, had ik om zes uur nog helemaal geen honger! Ook de lunch is anders. Nederlanders eten bij de lunch vaak brood met kaas, en ze zijn in een kwartier klaar. In Spanje is de lunch de belangrijkste maaltijd van de dag, met warm eten. Als we uit eten gaan, betaalt bij ons vaak één persoon voor iedereen. De volgende keer betaalt een ander. In Nederland betaalt iedereen zijn eigen deel. Eerst vond ik dat raar, maar nu vind ik het eigenlijk wel handig, omdat het eerlijk is. Nu eet ik zelf ook om half zeven. Maar brood bij de lunch? Dat nooit!",
     }),
   ],
   speaking: {

@@ -38,5 +38,8 @@ export const heard = (n: number, options: string[], answer: number): Task => ({ 
 /** A writing point: what to cover, and words that show you covered it. */
 export const p = (prompt: string, ...cues: string[]): WritingPoint => ({ prompt, cues });
 
+/** A point with a sentence frame: "…" marks the learner's own words. */
+export const pf = (prompt: string, frame: string, ...cues: string[]): WritingPoint => ({ prompt, frame, cues });
+
 /** An A1 writing topic. */
 export const a1 = (t: Omit<WritingTask, "level">): WritingTask => ({ ...t, level: "A1" });

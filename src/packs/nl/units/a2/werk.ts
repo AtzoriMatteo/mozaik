@@ -116,7 +116,7 @@ export const werk: Unit = {
       ],
       tasks: [
         mc("Who helps Agnieszka prepare?", ["Her sister", "Her neighbour Henk", "Her old boss"], 1),
-        tf("Volgens Henk zijn sollicitatiegesprekken in Nederland heel formeel.", "According to Henk, job interviews in the Netherlands are very formal.", false),
+        tf("Volgens Henk zijn sollicitatiegesprekken in Nederland niet informeel.", "According to Henk, job interviews in the Netherlands aren't informal.", false),
         mc("What is her weak point?", ["She's often late", "She sometimes wants to do too much at once", "Her Dutch"], 1),
         order("Put it in order.", "She gets an email", "She practises with Henk", "They talk about the hotel and bikes", "She asks about working from home", "The manager calls"),
         tf("Ze kan op vrijdag thuis werken.", "She can work from home on Fridays.", true),
@@ -274,7 +274,7 @@ export const werk: Unit = {
       ],
       tasks: [
         heard(4, ["melk", "koffie", "thee"], 0),
-        tf("Arjun heeft alle namen onthouden.", "Arjun remembered all the names.", false),
+        tf("Arjun kent alle namen al.", "Arjun already knows all the names.", false),
         gaps(3, "hand", "vergeten"),
       ],
       dictation: [0, 2],
@@ -296,7 +296,7 @@ export const werk: Unit = {
         p("Close formally and ask for an interview", "gesprek", "groet", "graag"),
       ],
       model:
-        "Geachte heer of mevrouw, Met interesse heb ik uw vacature voor medewerker in uw café gelezen. Ik wil graag reageren. Ik ben Lucas, ik ben 27 jaar en ik woon sinds vorig jaar in Delft. In Spanje heb ik drie jaar in een restaurant gewerkt, eerst in de keuken en later in de bediening. Ik heb dus veel ervaring met gasten. Ik wil graag bij u werken, omdat uw café gezellig is en omdat ik graag met mensen praat. Ik spreek Spaans, Engels en een beetje Nederlands, want ik volg nu een cursus. Ik kan in de avond en in het weekend werken. Ik ben altijd op tijd en ik blijf rustig, ook als het heel druk is. Ik vertel u graag meer in een gesprek. Met vriendelijke groet, Lucas Moreno",
+        "Geachte heer of mevrouw, Met interesse heb ik uw vacature voor medewerker in uw café gelezen. Ik wil graag reageren. Ik ben Lucas, ik ben 27 jaar en ik woon sinds vorig jaar in Delft. In Spanje heb ik drie jaar in een restaurant gewerkt, eerst in de keuken en later achter de bar. Ik heb dus veel ervaring met gasten. Ik wil graag bij u werken, want uw café is gezellig en ik praat graag met mensen. Ik spreek Spaans, Engels en een beetje Nederlands, want ik volg nu een cursus. Ik kan in de avond en in het weekend werken. Ik ben altijd op tijd en ik blijf rustig, ook op drukke dagen. Ik vertel u graag meer in een gesprek. Met vriendelijke groet, Lucas Moreno",
     }),
     a2({
       id: "w-mijn-ideale-baan",
@@ -308,12 +308,12 @@ export const werk: Unit = {
         p("Name the job", "baan", "werk", "worden"),
         p("Say what you would do every day", "elke", "dag", "doen", "werken"),
         p("Say where you would work", "kantoor", "thuis", "buiten", "bij", "in"),
-        p("Say how many hours and which days", "uur", "dagen", "week", "parttime", "fulltime"),
+        p("Say how many hours and which days", "uur", "dagen", "week", "parttime"),
         p("Say why it's your ideal job, with omdat or want", "omdat", "want"),
         p("Say what you need to get there", "moet", "nodig", "leren", "cursus", "studie"),
       ],
       model:
-        "Mijn ideale baan is gids in een museum, bijvoorbeeld in het Rijksmuseum in Amsterdam. Elke dag zou ik groepen toeristen rondleiden en vertellen over de schilderijen van Rembrandt en Vermeer. Ik werk het liefst binnen, in een mooi oud gebouw. Ik zou graag vier dagen per week werken, ongeveer dertig uur, want ik wil ook tijd hebben voor mijn familie. Het is mijn ideale baan, omdat ik heel veel van kunst houd en omdat ik graag met mensen uit andere landen praat. Ik spreek al Engels en Frans. Maar ik moet nog veel Nederlands leren, en ik wil een cursus over kunstgeschiedenis volgen. Misschien kan ik eerst als vrijwilliger beginnen. Dan leer ik het museum goed kennen, en de collega's ook. Dat lijkt me een goed plan.",
+        "Mijn ideale baan is gids in een museum, in het Rijksmuseum in Amsterdam. Elke dag vertel ik dan toeristen over de schilderijen van Rembrandt en Vermeer. Ik werk het liefst binnen, in een mooi oud museum. Ik wil graag vier dagen per week werken, ongeveer dertig uur, want ik wil ook tijd hebben voor mijn familie. Het is mijn ideale baan, want ik houd heel veel van kunst en ik praat graag met mensen uit andere landen. Ik spreek al Engels en Frans. Maar ik moet nog veel Nederlands leren, en ik wil een cursus over kunst volgen. Misschien kan ik eerst een paar uur per week in een museum helpen. Dan leer ik het museum goed kennen, en de collega's ook. Dat lijkt me een goed plan.",
     }),
     a2({
       id: "w-mail-aan-je-baas",
@@ -325,12 +325,12 @@ export const werk: Unit = {
         p("Greet your manager", "beste", "hoi", "hallo"),
         p("Say which day you'd like off", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "dag"),
         p("Explain why, with omdat or want", "omdat", "want"),
-        p("Offer a solution for your work", "ruilen", "collega", "eerder", "later", "thuis", "zorgen"),
+        p("Offer a solution for your work", "collega", "later", "thuis", "laptop"),
         p("Ask politely if it's OK", "mag", "kan", "zou", "goed"),
         p("Thank them and close", "dank", "bedankt", "groet", "groeten"),
       ],
       model:
-        "Beste Marloes, Ik wil je iets vragen. Zou ik volgende week vrijdag een dag vrij kunnen nemen? Mijn ouders komen uit India naar Nederland, en ze landen op vrijdagochtend op Schiphol. Ik wil ze graag zelf ophalen, omdat het hun eerste reis naar Europa is en ze geen Nederlands of Engels spreken. Mijn werk voor het project is bijna klaar. Ik kan op donderdag langer blijven, en mijn collega Sophie wil mijn telefoon op vrijdag overnemen. Ik heb het al met haar besproken. Als het niet kan, begrijp ik dat natuurlijk, want het is een drukke maand. Ik neem wel mijn laptop mee naar huis, voor het geval er iets dringends is. Laat je het me weten? Alvast bedankt! Met vriendelijke groet, Arjun",
+        "Beste Marloes, Ik wil je iets vragen. Mag ik volgende week vrijdag een dag vrij nemen? Mijn ouders komen uit India naar Nederland, en ze landen op vrijdagochtend op Schiphol. Ik wil ze graag zelf ophalen, want het is hun eerste reis naar Europa en ze spreken geen Nederlands of Engels. Mijn werk voor het project is bijna klaar. Ik kan op donderdag langer blijven, en mijn collega Sophie wil mijn telefoon op vrijdag overnemen. Sophie weet het al. Kan het niet? Dat begrijp ik natuurlijk, want het is een drukke maand. Ik neem wel mijn laptop mee naar huis. Laat je het me weten? Dank je wel! Met vriendelijke groet, Arjun",
     }),
   ],
   speaking: {

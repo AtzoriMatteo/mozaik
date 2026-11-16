@@ -303,11 +303,11 @@ export const verleden: Unit = {
         p("Say what you did on Saturday", "zaterdag"),
         p("Say what you did on Sunday", "zondag"),
         p("Say who you were with", "met", "samen", "alleen"),
-        p("Mention something that went wrong, or something funny", "maar", "helaas", "jammer", "grappig"),
+        p("Mention something that went wrong, or something funny", "maar", "helaas", "grappig"),
         p("Ask about their weekend", "jij", "jouw", "je"),
       ],
       model:
-        "Hoi Sanne! Mijn weekend was heel gezellig, maar ook druk. Op zaterdag heb ik eerst lang geslapen. Daarna ben ik met mijn broer naar de markt gegaan. We hebben verse vis en brood gekocht, en 's avonds hebben we samen gekookt. Op zondag ben ik naar een verjaardag van een collega geweest. Ik heb een taart gemaakt, maar die is helaas van mijn fiets gevallen! Gelukkig vond iedereen het grappig, en we hebben hem toch opgegeten. Daarna ben ik vroeg naar bed gegaan, want ik was heel moe. Vanochtend heb ik nog een stuk taart als ontbijt gegeten. Dat smaakte nog steeds lekker! En jij? Wat heb jij gedaan? Ben je nog naar dat concert in de stad geweest? Ik hoor het graag. Groetjes!",
+        "Hoi Sanne! Mijn weekend was heel gezellig, maar ook druk. Op zaterdag heb ik eerst lang geslapen. Daarna ben ik met mijn broer naar de markt gegaan. We hebben vis en brood gekocht, en 's avonds hebben we samen gekookt. Op zondag ben ik naar een verjaardag van een collega geweest. Ik heb een taart gemaakt, maar die is helaas van mijn fiets gevallen! Gelukkig vond iedereen het grappig, en we hebben hem toch opgegeten. Daarna ben ik vroeg naar bed gegaan, want ik was heel moe. Vanochtend heb ik nog een stuk taart als ontbijt gegeten. Die was nog steeds lekker! En jij? Wat heb jij gedaan? Ben je nog naar dat concert in de stad geweest? Ik hoor het graag. Groetjes!",
     }),
     a2({
       id: "w-mijn-levensverhaal",
@@ -317,14 +317,14 @@ export const verleden: Unit = {
       situation: "Your Dutch course is making a book with everyone's story. Write the short story of your life.",
       points: [
         p("Say where and when you were born", "geboren"),
-        p("Say where you grew up or went to school", "school", "opgegroeid", "gewoond", "dorp", "stad"),
+        p("Say where you grew up or went to school", "school", "gewoond", "dorp", "stad"),
         p("Say what you studied or what work you did", "gestudeerd", "gewerkt", "werk", "studie", "baan"),
-        p("Say when and why you came to the Netherlands, or started learning Dutch", "gekomen", "verhuisd", "begonnen", "omdat", "want"),
-        p("Mention an important moment", "belangrijk", "mooiste", "nooit", "toen"),
-        p("Say how your life is now", "nu", "tegenwoordig"),
+        p("Say when and why you came to the Netherlands, or started learning Dutch", "gekomen", "verhuisd", "begonnen", "want"),
+        p("Mention an important moment", "ontmoet", "geboren", "getrouwd", "begonnen"),
+        p("Say how your life is now", "nu"),
       ],
       model:
-        "Ik ben in 1994 geboren in Wrocław, een mooie stad in Polen. Ik heb daar op school gezeten en daarna heb ik economie gestudeerd. Na mijn studie heb ik twee jaar bij een bank gewerkt. In 2019 heb ik mijn vriend Tom ontmoet, op vakantie in Kroatië. Hij is Nederlander. Een jaar later ben ik naar Nederland verhuisd, want we wilden samen wonen. Het eerste jaar was moeilijk, omdat ik niemand kende. Toen ben ik begonnen met een cursus Nederlands. Dat was belangrijk voor mij. Nu werk ik bij een groot bedrijf in Utrecht, en ik spreek elke dag Nederlands. In het weekend fietsen Tom en ik vaak langs de rivier. Mijn familie woont nog in Polen, maar ik bel elke zondag met mijn moeder. Ik ben blij met mijn leven hier.",
+        "Ik ben in 1994 geboren in Wrocław, een mooie stad in Polen. Ik heb daar op school gezeten en daarna heb ik daar gestudeerd. Na mijn studie heb ik twee jaar bij een bank gewerkt. In 2019 heb ik mijn vriend Tom ontmoet, op vakantie in Kroatië. Hij is Nederlander. Een jaar later ben ik naar Nederland verhuisd, want Tom woont in Utrecht. Het eerste jaar was moeilijk, want ik had hier nog geen vrienden. Daarna ben ik begonnen met een cursus Nederlands. Dat heeft mij veel geholpen. Nu werk ik in een groot kantoor in Utrecht, en ik spreek elke dag Nederlands. In het weekend fietsen Tom en ik vaak langs de grachten. Mijn familie woont nog in Polen, maar ik bel elke zondag met mijn moeder. Ik ben blij met mijn leven hier.",
     }),
     a2({
       id: "w-een-dag-die-ik-niet-vergeet",
@@ -337,11 +337,11 @@ export const verleden: Unit = {
         p("Say where you were", "in", "op", "bij"),
         p("Say who was there", "met", "familie", "vrienden", "alleen"),
         p("Tell what happened, step by step", "eerst", "daarna", "toen", "later"),
-        p("Say how you felt", "blij", "bang", "verdrietig", "trots", "zenuwachtig", "gelukkig"),
-        p("Say why you won't forget it", "omdat", "want", "nooit", "vergeten"),
+        p("Say how you felt", "blij", "bang", "verdrietig", "zenuwachtig", "gelukkig"),
+        p("Say why you won't forget it", "want", "nooit", "vergeten", "vergeet"),
       ],
       model:
-        "Drie jaar geleden ben ik voor het eerst naar Nederland gekomen. Het was een koude dag in januari. Ik ben op Schiphol aangekomen, helemaal alleen, met twee grote koffers. Ik wilde de trein naar Leiden nemen, maar ik ben in de verkeerde trein gestapt! Ik was heel zenuwachtig. Toen heeft een oudere vrouw mij geholpen. Ze heeft mij naar het goede perron gebracht en ze heeft zelfs mijn koffer gedragen. Later die dag heb ik in Leiden mijn eerste echte stroopwafel gegeten, op de markt. Ik heb de vrouw nooit meer gezien, maar ik denk nog vaak aan haar. Nu help ik zelf ook altijd toeristen op het station. Ik vergeet die dag nooit, omdat een onbekende mij zo vriendelijk heeft geholpen.",
+        "Drie jaar geleden ben ik voor het eerst naar Nederland gekomen. Het was een koude dag in januari. Ik ben op Schiphol aangekomen, helemaal alleen, met twee grote tassen. Ik heb een kaartje naar Leiden gekocht, maar ik ben in de verkeerde trein gestapt! Ik was heel zenuwachtig. Gelukkig heeft een oudere vrouw mij geholpen. Ze heeft mij naar het goede spoor gebracht en ze heeft zelfs mijn tas gedragen. Later die dag heb ik in Leiden mijn eerste echte stroopwafel gegeten, op de markt. Ik heb de vrouw nooit meer gezien, maar ik denk nog vaak aan haar. Nu help ik zelf ook altijd toeristen op het station. Ik vergeet die dag nooit, want die vrouw was heel lief voor mij.",
     }),
   ],
   speaking: {

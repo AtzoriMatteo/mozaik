@@ -9,9 +9,10 @@ import { tenseUses } from "@/core/coherence";
 const HELPERS = new Set(["heb", "hebt", "heeft", "hebben", "ben", "bent", "is", "zijn"]);
 /** Participles that work as plain adjectives or set phrases at A1. */
 const FIXED = new Set(["geboren", "getrouwd", "gescheiden", "gesloten", "geopend", "bekend", "verkouden", "geïnteresseerd", "gezellig"]);
-const MODALS = new Set(["kunnen", "moeten", "willen", "mogen"]);
+const MODALS = new Set(["kunnen", "moeten", "willen", "mogen", "hoeven"]);
 const SUBORDINATORS = new Set(["omdat", "terwijl", "nadat", "voordat", "zodat", "hoewel", "zodra", "totdat"]);
 const ER_PREP = /^er(in|op|van|mee|over|bij|aan|voor|na|uit|achter|naast|onder|boven|tegen|door|om|af|heen|toe)$/;
+const SUBJECTS = new Set(["ik", "je", "jij", "u", "hij", "ze", "zij", "het", "we", "wij", "jullie", "er", "de", "mijn", "zijn", "haar", "onze", "ons"]);
 const IRREGULAR_SUPERLATIVE: Record<string, string> = { best: "goed", beste: "goed", meest: "veel", meeste: "veel" };
 const IRREGULAR_COMPARATIVE = new Set(["beter"]);
 
@@ -43,6 +44,10 @@ export function dutchGrammarIn(pack: LanguagePack, text: string): { grammar: str
       if (w === "zou" || w === "zouden") out.push({ grammar: "zou-polite", word });
       if ((w === "zal" || w === "zult" || (w === "zullen" && ws[i + 1] !== "we")) && !(i === 0 && question)) out.push({ grammar: "zullen-future", word });
       if (SUBORDINATORS.has(w) || (w === "wanneer" && !question)) out.push({ grammar: "subordinate-order", word });
+      // dat after a verb of saying or thinking, before a subject: "ik denk dat hij komt".
+      if (w === "dat" && i > 0 && pack.verbFor?.(ws[i - 1]) && SUBJECTS.has(ws[i + 1] ?? "")) out.push({ grammar: "subordinate-order", word });
+      // als opening a clause: "Als het regent, neem ik de bus" (not "als lunch").
+      if (w === "als" && i === 0 && SUBJECTS.has(ws[1] ?? "")) out.push({ grammar: "als-wanneer-toen", word });
       if (w === "toen") out.push({ grammar: "als-wanneer-toen", word });
       if (ER_PREP.test(w)) out.push({ grammar: "er-preposition", word });
       if (w === "zich") out.push({ grammar: "reflexive", word });

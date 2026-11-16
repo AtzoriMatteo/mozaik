@@ -51,7 +51,7 @@ export const lessonsA2b: Record<string, GrammarLesson> = {
     ],
     exercises: [
       choice("Hé, wat ", "?", ["heb je gedaan", "deed je"], 0, "Hey, what have you done? (one event, now)"),
-      choice("Toen ik klein was, ", " we elke zomer naar zee.", ["gingen", "zijn gegaan"], 0, "When I was little, we went to the seaside every summer (a habit in a story)."),
+      choice("Vroeger ", " we elke zomer naar zee.", ["gingen", "zijn gegaan"], 0, "We used to go to the seaside every summer (a habit in a story)."),
       choice("Gisteren ", " ik heel moe.", ["was", "ben geweest"], 0, "Yesterday I was very tired."),
       choice("Kijk! Ik ", " een nieuwe fiets gekocht.", ["heb", "had"], 0, "Look! I've bought a new bike."),
       fill("Het ", " de hele dag, dus we bleven binnen.", "regende", "It rained all day, so we stayed in.", "regenen"),
@@ -128,7 +128,7 @@ export const lessonsA2b: Record<string, GrammarLesson> = {
     ],
     exercises: [
       transform("Join with om … te.", "Ik ga naar de gemeente. Ik wil een paspoort aanvragen.", "Ik ga naar de gemeente om een paspoort aan te vragen.", "I'm going to the town hall to apply for a passport."),
-      fill("Ik spaar geld om een nieuwe fiets ", " kopen.", "te", "I'm saving money to buy a new bike."),
+      fill("Ik werk in het weekend om een nieuwe fiets ", " kopen.", "te", "I work at weekends to buy a new bike."),
       fill("Ze belt de gemeente ", " een afspraak te maken.", "om", "She calls the council to make an appointment."),
       build("Het is | belangrijk | om | goed | te slapen", "It's important to sleep well."),
       choice("Hij komt om zijn pakket ", ".", ["op te halen", "te ophalen"], 0, "He's coming to collect his parcel."),

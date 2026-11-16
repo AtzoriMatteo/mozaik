@@ -1,5 +1,5 @@
 import type { Unit } from "@/core/content";
-import { a1, gaps, heard, line, mc, p, pairs, s, tf } from "./helpers";
+import { a1, gaps, heard, line, mc, p, pairs, pf, s, tf } from "./helpers";
 
 /** A1 unit 2: about you. avere, articles, numbers to 100, non. */
 export const piacere: Unit = {
@@ -208,7 +208,7 @@ export const piacere: Unit = {
         { prompt: "How does Emma pay?", options: ["By card", "In cash", "She doesn't pay"], answer: 0 },
       ],
       tasks: [
-        tf("La receptionist usa il tu.", "The receptionist uses tu.", false),
+        tf("Con Emma usano il tu.", "They use tu with Emma.", false),
         heard(8, ["quaranta", "quattordici", "quattro"], 0),
         gaps(9, "pagare", "carta"),
       ],
@@ -223,15 +223,15 @@ export const piacere: Unit = {
       form: "form",
       situation: "A language exchange website asks you to describe yourself for your profile.",
       points: [
-        p("Say your name and age", "mi chiamo", "anni", "ho"),
-        p("Say your nationality and where you're from", "sono", "di"),
-        p("Say what you do", "lavoro", "studio", "sono"),
-        p("Say which languages you speak", "parlo", "lingue", "inglese", "italiano"),
-        p("Say something you don't do, with non", "non"),
-        p("Say who you'd like to meet", "vorrei", "cerco", "amici", "persone"),
+        pf("Say your name and age", "Mi chiamo … e ho … anni.", "chiamo", "anni", "ho"),
+        pf("Say your nationality and where you're from", "Sono … , di … .", "sono", "di"),
+        pf("Say what you do", "Lavoro … . / Studio … .", "lavoro", "studio", "sono"),
+        pf("Say which languages you speak", "Parlo … , … e un po' di italiano.", "parlo", "lingue", "inglese", "italiano"),
+        pf("Say something you don't do, with non", "Non … .", "non"),
+        pf("Say who you're looking for", "Cerco … per parlare italiano.", "cerco", "amici", "persone"),
       ],
       model:
-        "Mi chiamo Ana e ho quarantacinque anni. Sono brasiliana, di San Paolo, ma adesso abito a Bologna con mio marito e i miei tre figli. Non lavoro, ma studio l'italiano tutti i giorni. Parlo portoghese, spagnolo e un po' di inglese. Non parlo bene l'italiano, ma imparo piano piano. Cerco amici italiani per parlare e prendere un caffè insieme!",
+        "Mi chiamo Ana e ho quarantacinque anni. Sono brasiliana, di San Paolo, ma adesso abito a Bologna. Ho tre figli. Non lavoro, ma studio l'italiano tutti i giorni. Parlo portoghese, spagnolo e un po' di inglese. Non parlo bene l'italiano, ma imparo piano piano. Cerco amici italiani per parlare e prendere un caffè insieme!",
     }),
     a1({
       id: "w-un-compagno",
@@ -240,15 +240,15 @@ export const piacere: Unit = {
       form: "description",
       situation: "Your teacher asks you to introduce a classmate to the group.",
       points: [
-        p("Say their name", "si chiama"),
-        p("Say their age", "ha", "anni"),
-        p("Say their nationality", "è"),
-        p("Say what they do", "lavora", "studia"),
-        p("Say which languages they speak", "parla"),
-        p("Say something they don't do, with non", "non"),
+        pf("Say their name", "Lui / Lei si chiama … .", "chiama"),
+        pf("Say their age", "Ha … anni.", "ha", "anni"),
+        pf("Say their nationality", "È … , di … .", "è"),
+        pf("Say what they do", "Lavora … . / Studia … .", "lavora", "studia"),
+        pf("Say which languages they speak", "Parla … .", "parla"),
+        pf("Say something they don't do, with non", "Non … .", "non"),
       ],
       model:
-        "Il mio compagno si chiama Hiro. Ha trentun anni ed è giapponese, di Osaka. È ingegnere e lavora per una ditta di moto. Parla giapponese, inglese e un po' di italiano. Non ha figli, ma ha un gatto. Hiro è molto simpatico!",
+        "Lui si chiama Hiro. Ha trentun anni ed è giapponese, di Osaka. È ingegnere e lavora per una ditta di moto. Parla giapponese, inglese e un po' di italiano. Non ha figli e non parla tedesco. Hiro è molto simpatico!",
     }),
   ],
   speaking: {

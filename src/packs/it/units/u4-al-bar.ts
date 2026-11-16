@@ -1,5 +1,5 @@
 import type { Unit } from "@/core/content";
-import { a1, gaps, heard, line, mc, order, p, pairs, s, tf } from "./helpers";
+import { a1, gaps, heard, line, mc, order, p, pairs, pf, s, tf } from "./helpers";
 
 /** A1 unit 4: at the bar. Present of -are verbs, vorrei, questions. */
 export const alBar: Unit = {
@@ -221,12 +221,12 @@ export const alBar: Unit = {
       form: "story",
       situation: "Write a short scene: you and a friend go to a bar. Say what you order and what you pay.",
       points: [
-        p("Say where and when you go", "andiamo", "al bar", "mattina", "pomeriggio", "sera"),
-        p("Greet the barista", "buongiorno", "ciao", "buonasera"),
-        p("Order politely with vorrei", "vorrei", "per favore", "per me"),
-        p("Ask a question", "quanto", "c'è", "avete", "posso"),
-        p("Say how much it is", "euro", "costa", "in tutto"),
-        p("Say goodbye", "grazie", "a domani", "arrivederci", "ciao"),
+        pf("Say where and when you go", "… mattina io e … andiamo al bar.", "andiamo", "bar", "mattina", "pomeriggio", "sera"),
+        pf("Greet the barista", "Buongiorno!", "buongiorno", "ciao", "buonasera"),
+        pf("Order politely with vorrei", "Io vorrei … , per favore.", "vorrei", "favore"),
+        pf("Ask a question", "Avete anche … ?", "quanto", "c'è", "avete", "posso"),
+        pf("Say how much it is", "In tutto … euro.", "euro", "costa", "tutto"),
+        pf("Say goodbye", "Grazie e arrivederci!", "grazie", "domani", "arrivederci", "ciao"),
       ],
       model:
         "Sabato mattina io e la mia amica Sara andiamo al bar sotto casa. \"Buongiorno!\" dice il barista. \"Buongiorno! Io vorrei un cappuccino e un cornetto alla crema, per favore.\" Sara ordina un caffè macchiato. \"Avete anche le spremute?\" \"Sì, certo.\" \"Allora una spremuta d'arancia, grazie.\" Mangiamo al banco e parliamo un po'. Alla cassa pago io: in tutto sei euro e cinquanta. \"Grazie e arrivederci!\"",
@@ -238,15 +238,15 @@ export const alBar: Unit = {
       form: "description",
       situation: "An Italian friend asks what breakfast is like for you. Describe your mornings.",
       points: [
-        p("Say what time you have breakfast", "alle", "ore", "mattina", "faccio colazione"),
-        p("Say what you eat and drink", "mangio", "bevo", "prendo", "caffè", "tè", "pane", "latte"),
-        p("Say where you have it", "a casa", "al bar", "in cucina", "in ufficio"),
-        p("Use -are verbs about your habits", "mangio", "preparo", "compro", "ascolto", "guardo"),
-        p("Compare with an Italian breakfast", "in italia", "gli italiani", "dolce", "cornetto"),
-        p("Say what you like best", "preferisco", "mi piace", "il mio preferito"),
+        pf("Say what time you have breakfast", "Di solito faccio colazione alle … .", "alle", "mattina", "colazione"),
+        pf("Say what you eat and drink", "Mangio … e bevo … .", "mangio", "bevo", "prendo", "caffè", "tè", "pane", "latte"),
+        pf("Say where you have it", "Faccio colazione a … .", "casa", "bar", "cucina", "ufficio"),
+        pf("Use -are verbs about your habits", "Preparo … e guardo … .", "mangio", "preparo", "compro", "guardo"),
+        pf("Compare with an Italian breakfast", "In Italia la colazione è diversa: gli italiani … .", "italia", "italiani", "dolce", "cornetto"),
+        pf("Say what you like best", "Mi piace molto … !", "piace", "buono", "buona"),
       ],
       model:
-        "Di solito faccio colazione alle sette e mezza, a casa. Preparo un tè con il latte e mangio pane tostato con burro e marmellata. A volte mangio anche un uovo. Mentre mangio, ascolto la radio. In Italia la colazione è diversa: gli italiani mangiano dolce, un cornetto o dei biscotti, e bevono un caffè o un cappuccino. Il sabato vado al bar e prendo un cappuccino e un cornetto alla crema: mi piace molto!",
+        "Di solito faccio colazione alle sette e mezza, a casa. Preparo un tè con il latte e mangio pane con burro e marmellata. A colazione guardo il telefono. In Italia la colazione è diversa: gli italiani mangiano dolce, per esempio un cornetto, e bevono un caffè o un cappuccino. Il sabato vado al bar e prendo un cappuccino e un cornetto alla crema: mi piace molto!",
     }),
   ],
   speaking: {

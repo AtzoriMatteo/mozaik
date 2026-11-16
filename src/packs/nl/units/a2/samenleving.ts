@@ -140,7 +140,7 @@ export const samenleving: Unit = {
         ],
       ],
       tasks: [
-        pairs("Where does it go?", "schillen=de groene bak | een lege jampot=de glasbak | een blikje=terug naar de supermarkt | een oude bank=een afspraak voor grof afval", true, true),
+        pairs("Where does it go?", "schillen=de groene bak | een lege fles=de glasbak | een blikje=terug naar de supermarkt | een oude bank=een afspraak voor grof afval", true, true),
         tf("Elke gemeente heeft dezelfde regels voor afval.", "Every council has the same rules for rubbish.", false),
         mc("Why do the Dutch sort their rubbish?", ["To reuse raw materials", "Because bins are small", "To pay less rent"], 0),
         mc("What is statiegeld?", ["A deposit you get back for bottles and cans", "A fine for wrong sorting", "The price of a bin"], 0),
@@ -300,7 +300,7 @@ export const samenleving: Unit = {
         p("Ask what the next step is, and close", "vraag", "graag", "hoor", "groet", "groeten"),
       ],
       model:
-        "Beste mevrouw Hendriks, Mijn naam is Arash Karimi. Ik kom uit Iran en ik woon sinds een jaar in Leiden. Ik las op uw website dat de bibliotheek vrijwilligers zoekt voor het taalcafé. Ik wil graag komen helpen. Ik doe vrijwilligerswerk om nieuwe mensen te ontmoeten en om mijn Nederlands te verbeteren. Ik wil ook graag iets terugdoen, want toen ik hier net woonde, hebben veel mensen mij geholpen. In Iran was ik leraar op een basisschool. Ik kan dus goed met groepen werken, en ik ben geduldig. Ik spreek Perzisch, Engels en een beetje Arabisch. Ik heb op dinsdagavond en op zaterdagochtend tijd. Wat is de volgende stap? Moet ik een formulier invullen of kan ik een keer langskomen? Ik hoor graag van u. Met vriendelijke groet, Arash Karimi",
+        "Beste mevrouw Hendriks, Mijn naam is Arash Karimi. Ik kom uit Iran en ik woon sinds een jaar in Leiden. Ik las op uw website dat de bibliotheek vrijwilligers zoekt voor het taalcafé. Ik wil graag komen helpen. Ik doe vrijwilligerswerk om nieuwe mensen te ontmoeten en om mijn Nederlands te verbeteren. Ik wil ook graag iets terugdoen, want toen ik hier net woonde, hebben veel mensen mij geholpen. In Iran was ik leraar op een basisschool. Ik kan dus goed met groepen werken, en ik ben geduldig. Ik spreek Perzisch, Engels en een beetje Arabisch. Ik heb op dinsdagavond en op zaterdagochtend tijd. Wat is de volgende stap? Kan ik een keer langskomen? Ik hoor graag van u. Met vriendelijke groet, Arash Karimi",
     }),
     a2({
       id: "w-mijn-eerste-weken",
@@ -311,13 +311,13 @@ export const samenleving: Unit = {
       points: [
         p("Say when and where you arrived", "kwam", "aan", "aangekomen", "verhuisd", "geleden"),
         p("Say what you had to arrange", "moest", "regelen", "inschrijven", "gemeente", "bank", "huisarts"),
-        p("Use separable verbs in the past", "ingeschreven", "opgebeld", "belde", "aangevraagd", "vroeg", "uitgepakt", "opgehaald"),
-        p("Say what was difficult", "moeilijk", "lastig", "begreep", "probleem"),
+        p("Use separable verbs in the past", "ingeschreven", "opgebeld", "belde", "opgehaald", "nodigde"),
+        p("Say what was difficult", "moeilijk", "begreep", "probleem"),
         p("Say who helped you", "hielp", "geholpen", "buurman", "buurvrouw", "collega", "vriend"),
         p("Say how you feel about it now", "nu", "voel", "thuis", "blij"),
       ],
       model:
-        "Twee jaar geleden kwam ik in Groningen aan, met twee koffers en een fiets. De eerste weken moest ik heel veel regelen. Eerst heb ik me bij de gemeente ingeschreven. Daarna heb ik een bankrekening geopend en een DigiD aangevraagd. Een huisarts vinden was het moeilijkst. Ik heb wel tien praktijken opgebeld, maar ze waren allemaal vol. Ook begreep ik de brieven van de belastingdienst niet. Gelukkig hielp mijn buurvrouw Ria me. Zij las de brieven met mij, en ze belde haar eigen huisarts op. Die had nog plek voor mij. Ria nodigde me ook uit voor koffie, en ze legde uit hoe de afvalkalender werkt. Nu voel ik me echt thuis in Groningen. Ik heb nog steeds elke week koffie met Ria, maar nu lees ik de brieven zelf.",
+        "Twee jaar geleden kwam ik in Groningen aan, met twee koffers en een fiets. De eerste weken moest ik heel veel regelen. Eerst heb ik me bij de gemeente ingeschreven. Daarna heb ik een bankrekening geopend. Een huisarts vinden was heel moeilijk. Ik heb wel tien praktijken opgebeld, maar ze waren allemaal vol. Ook begreep ik de brieven van de belastingdienst niet. Gelukkig hielp mijn buurvrouw Ria me. Zij las de brieven met mij, en ze belde haar eigen huisarts op. Die had nog plek voor mij. Ria nodigde me ook uit voor koffie, en ze legde uit hoe de afvalkalender werkt. Nu voel ik me echt thuis in Groningen. Ik heb nog steeds elke week koffie met Ria, maar nu lees ik de brieven zelf.",
     }),
     a2({
       id: "w-lid-worden",
@@ -327,14 +327,14 @@ export const samenleving: Unit = {
       situation: "You want to join a club: sports, music, a choir or something else. Write an email with your questions.",
       points: [
         p("Greet the club", "beste", "hallo", "geachte"),
-        p("Say who you are and which club or group you mean", "ben", "heet", "club", "vereniging", "koor", "team"),
+        p("Say who you are and which club or group you mean", "ben", "heet", "koor", "team"),
         p("Say why you want to join, with om … te or omdat", "om", "te", "omdat", "want"),
         p("Say what experience you have", "ervaring", "vroeger", "jaar", "speelde", "zong", "nooit"),
-        p("Ask about times and costs", "wanneer", "hoe", "laat", "kost", "kosten", "contributie", "lidmaatschap"),
+        p("Ask about times and costs", "wanneer", "hoe", "laat", "kost", "kosten", "lidmaatschap"),
         p("Ask whether you can try it first, and close", "proberen", "proefles", "meedoen", "groet", "groeten"),
       ],
       model:
-        "Beste mensen van zangkoor De Lijster, Mijn naam is Sarah Okafor en ik woon sinds kort in Amersfoort. Op de markt zag ik jullie folder, en ik wil graag lid worden van het koor. Ik zoek een koor om weer te zingen en om mensen in mijn nieuwe stad te leren kennen. In Nigeria zong ik tien jaar in het koor van onze kerk, dus ik heb wel wat ervaring. Noten lezen kan ik helaas niet zo goed. Ik heb een paar vragen. Op welke avond repeteren jullie, en hoe laat begint de repetitie? Hoeveel kost het lidmaatschap per jaar? En moet ik eerst een auditie doen? Ik zou graag een keer komen meezingen om te kijken of het koor bij mij past. Kan dat volgende week al? Ik hoor graag van jullie. Hartelijke groeten, Sarah Okafor",
+        "Beste mensen van koor De Lijster, Mijn naam is Sarah Okafor en ik woon sinds kort in Amersfoort. Op de markt zag ik jullie folder, en ik wil graag lid worden van het koor. Ik zoek een koor om weer te zingen en om mensen in mijn nieuwe stad te leren kennen. In Nigeria zong ik tien jaar in het koor van onze kerk, dus ik heb wel wat ervaring. Muziek lezen kan ik helaas niet zo goed. Ik heb een paar vragen. Op welke avond oefenen jullie, en hoe laat begint het? Hoeveel kost het lidmaatschap per jaar? En moet ik eerst alleen voor jullie zingen? Ik wil graag een keer komen meezingen om te kijken of het koor bij mij past. Kan dat volgende week al? Ik hoor graag van jullie. Hartelijke groeten, Sarah Okafor",
     }),
   ],
   speaking: {

@@ -38,6 +38,7 @@ import { speakingA1 } from "../speaking/a1";
 import { writingA1 } from "../writing/a1";
 import { writingCulture } from "../writing/a1-culture";
 import { teachNl } from "../teach";
+import { writingTargetA2 } from "../writing/a2-target";
 
 /** Each unit's tile: a hand-painted motif and one of the polychrome glazes. */
 const LOOK: Record<string, { motif: Motif; glaze: Glaze }> = {
@@ -110,4 +111,16 @@ export const units: readonly Unit[] = [
 ]
   .map(assemble)
   .concat(unitsA2)
-  .map((u) => (teachNl[u.id] ? { ...u, teach: [...(u.teach ?? []), ...teachNl[u.id]] } : u));
+  .map((u) => (teachNl[u.id] ? { ...u, teach: [...(u.teach ?? []), ...teachNl[u.id]] } : u))
+  .map((u) => ({
+    ...u,
+    writing: u.writing?.map((t) => {
+      const target = writingTargetA2[t.id];
+      if (!target) return t;
+      return {
+        ...t,
+        situationTarget: target.situation,
+        points: t.points.map((p, i) => ({ ...p, promptTarget: target.prompts[i] })),
+      };
+    }),
+  }));

@@ -29,7 +29,7 @@ export const tasksA1: Record<string, Task[]> = {
   ],
   "bellen-met-mama": [
     mc("What is Luca making tonight?", ["Pasta", "Soup", "Cake"], 1),
-    tf("Luca gaat met het vliegtuig naar huis.", "Luca is going home by plane.", false),
+    tf("Luca gaat in de zomer naar huis.", "Luca is going home in the summer.", false),
     mc("When is Luca going home?", ["In the spring", "Next week", "In December, in the holidays"], 2),
     tf("Noor helpt Luca met zijn Nederlands.", "Noor helps Luca with his Dutch.", true),
     mc("Where is Luca's father?", ["At work", "With grandpa", "At the shop"], 1),
