@@ -1,5 +1,5 @@
 import type { Unit } from "@/core/content";
-import { a1, gaps, heard, line, mc, p, pairs, s, tf } from "./helpers";
+import { a1, gaps, heard, line, mc, p, pairs, pf, s, tf } from "./helpers";
 
 /** A1 unit 1: hello. essere, tu and Lei, masculine and feminine. */
 export const ciao: Unit = {
@@ -232,32 +232,32 @@ export const ciao: Unit = {
       form: "message",
       situation: "Your Italian class has a group chat. Write your first message to say who you are.",
       points: [
-        p("Say hello to everyone", "ciao", "salve", "buongiorno", "tutti"),
-        p("Say your name", "mi chiamo", "sono"),
-        p("Say where you're from", "di", "sono"),
-        p("Say where you live now", "abito", "adesso", "qui"),
-        p("Say what you do", "studio", "lavoro", "sono"),
-        p("Say goodbye", "a presto", "ciao", "a lunedì"),
+        pf("Say hello to everyone", "Ciao a tutti!", "ciao", "salve", "buongiorno", "tutti"),
+        pf("Say your name", "Mi chiamo … .", "chiamo", "sono"),
+        pf("Say where you're from", "Sono … , di … .", "di", "sono"),
+        pf("Say where you live now", "Adesso abito a … .", "abito", "adesso", "qui"),
+        pf("Say what you do", "Studio … . / Lavoro in … .", "studio", "lavoro", "sono"),
+        pf("Say goodbye", "A presto, …", "presto", "ciao"),
       ],
       model:
-        "Ciao a tutti! Mi chiamo Hiro e sono giapponese. Sono di Osaka, ma adesso abito a Bologna, vicino alla stazione. Sono ingegnere e lavoro per una ditta di moto. Sono molto contento di studiare l'italiano con voi! A presto, Hiro",
+        "Ciao a tutti! Mi chiamo Tom e sono inglese. Sono di Londra, ma adesso abito a Bologna, in via del Pratello. Studio ingegneria all'università e lavoro in un bar la sera. Sono molto contento di essere qui! A presto, Tom",
     }),
     a1({
       id: "w-gentile-signora",
-      title: "Un biglietto per la vicina",
-      titleTranslation: "A note for the neighbour",
+      title: "Gentile signora",
+      titleTranslation: "Dear madam",
       form: "message",
       situation: "You've just moved in. Leave a short, polite note (with Lei) for the neighbour downstairs.",
       points: [
-        p("Greet her politely", "gentile", "buongiorno", "signora"),
-        p("Say who you are", "mi chiamo", "sono"),
-        p("Say where you're from", "di", "sono"),
-        p("Say which floor you live on", "piano", "abito"),
-        p("Offer something, or say you're happy to meet her", "piacere", "contento", "contenta"),
-        p("Close politely", "arrivederci", "cordiali saluti", "buona giornata"),
+        pf("Greet her politely", "Gentile signora, buongiorno!", "gentile", "buongiorno", "signora"),
+        pf("Say who you are", "Mi chiamo … e sono la nuova ragazza / il nuovo ragazzo del … piano.", "chiamo", "sono"),
+        pf("Say where you're from", "Sono … , di … .", "di", "sono"),
+        pf("Say which floor you live on and with whom", "Abito al … piano con … .", "piano", "abito"),
+        pf("Say you're happy to live here", "Sono molto contenta / contento di abitare qui.", "piacere", "contento", "contenta"),
+        pf("Close politely", "Buona giornata! …", "arrivederci", "giornata"),
       ],
       model:
-        "Gentile signora, buongiorno! Mi chiamo Emma e sono la nuova ragazza del terzo piano. Sono irlandese, di Dublino, e sono a Bologna per lavoro. Abito qui con Giulia e Karim. Sono molto contenta di essere Sua vicina. Buona giornata! Emma",
+        "Gentile signora, buongiorno! Mi chiamo Emma e sono la nuova ragazza del terzo piano. Sono irlandese, di Dublino. Abito al terzo piano con Giulia e Karim. Sono molto contenta di abitare qui: la casa è bella e la strada è molto simpatica. Buona giornata! Emma",
     }),
   ],
   speaking: {

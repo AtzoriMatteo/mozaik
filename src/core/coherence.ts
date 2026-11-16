@@ -97,7 +97,10 @@ export function productionItems(pack: LanguagePack, unit: Unit): { where: string
     if (g.unit !== unit.id) continue;
     g.lesson?.exercises.forEach((ex, i) =>
       grammarStrings(ex)
-        .filter((text) => ex.kind !== "sort" || words(pack, text).some((t) => pack.lexicon[t.normalized] || pack.verbFor?.(t.normalized)))
+        // Notes in brackets are in the explanation language: "(to your flatmate)".
+        .map((text) => text.replace(/\([^)]*\)/g, " "))
+        // A string with no word the dictionary knows is in the explanation language too ("I'm hungry.").
+        .filter((text) => words(pack, text).some((t) => pack.lexicon[t.normalized] || pack.verbFor?.(t.normalized)))
         .forEach((text) => out.push({ where: `grammar ${g.id} exercise ${i + 1}`, text })),
     );
   }
