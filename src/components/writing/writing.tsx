@@ -2,7 +2,7 @@
 
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { getPack } from "@/core/registry";
 import type { LanguagePack } from "@/core/language-pack";
 import { nextActivity } from "@/core/course";
@@ -140,9 +140,10 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
   const progress = useCourseProgress(pack);
   const spelling = useSpelling(pack);
   const lengths = lengthsFor(pack, task);
-  const examples = useMemo(() => pointExamples(pack, task), [pack, task]);
-  const keyWords = useMemo(() => unitWords(pack, unit).filter((w) => w.core), [pack, unit]);
-  const fromTask = useMemo(() => taskNames(pack, task), [pack, task]);
+  // Cheap to work out (unit words are cached), so plain calls rather than memos.
+  const examples = pointExamples(pack, task);
+  const keyWords = unitWords(pack, unit).filter((w) => w.core);
+  const fromTask = taskNames(pack, task);
   const guide = guidanceFor(pack, task);
   const [showEnglish, setShowEnglish] = useState(false);
 
