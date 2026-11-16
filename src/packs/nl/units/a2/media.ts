@@ -108,7 +108,7 @@ export const media: Unit = {
       ],
       tasks: [
         order("Put the checks in the order of the text.", "Who wrote it?", "When was it written?", "Do other news sites have it?", "How does it make you feel?"),
-        tf("Als geen andere site het bericht heeft, is dat een goed teken.", "If no other site has the story, that's a good sign.", false),
+        tf("Als geen andere website het bericht heeft, is dat een goed teken.", "If no other website has the story, that's a good sign.", false),
         mc("What should you do if you're still in doubt?", ["Don't share it", "Share it with a warning", "Send it to a newspaper"], 0),
         pairs("Match.", "nepnieuws=fake news | delen=to share | verzonnen=made up | twijfelen=to be in doubt", true),
         mc("Why do some writers want you to feel angry or scared?", ["Then you share the message faster", "Then you buy a newspaper", "The text doesn't say"], 0),
@@ -294,7 +294,7 @@ export const media: Unit = {
         p("Give a suggestion and close", "beter", "moet", "zou", "hoop"),
       ],
       model:
-        "De gemeente wil het centrum vanaf volgend jaar autovrij maken. Ik vind het eigenlijk een goed plan. Ik fiets elke dag door de stad, en de drukke straten zijn soms echt gevaarlijk. Ook is de lucht in het centrum niet schoon, omdat er zo veel auto's rijden. Maar ik vraag me wel af hoe oudere mensen dan in de stad komen. Mijn buurvrouw is tachtig en kan niet meer fietsen. Ik weet ook niet of de winkels er blij mee zijn. Toen ik in Gent woonde, werd het centrum daar ook autovrij. In het begin was iedereen boos, maar na een jaar vond bijna iedereen het fijn. Als je nu door Gent loopt, hoor je vogels in plaats van auto's. Ik hoop dat de gemeente een gratis busje regelt voor mensen die slecht ter been zijn.",
+        "De gemeente wil het centrum vanaf volgend jaar autovrij maken. Ik vind het eigenlijk een goed plan. Ik fiets elke dag door de stad, en de drukke straten zijn soms echt gevaarlijk. Ook is de lucht in het centrum niet schoon, omdat er zo veel auto's rijden. Maar ik vraag me wel af hoe oudere mensen dan in de stad komen. Mijn buurvrouw is tachtig en kan niet meer fietsen. Ik weet ook niet of de winkels er blij mee zijn. Toen ik in Gent woonde, werd het centrum daar ook autovrij. In het begin was iedereen boos, maar na een jaar vond bijna iedereen het fijn. Als je nu door Gent loopt, is het heel rustig. Ik hoop dat de gemeente een gratis busje regelt voor mensen die slecht ter been zijn.",
     }),
     a2({
       id: "w-hoe-volg-ik-het-nieuws",
@@ -307,11 +307,11 @@ export const media: Unit = {
         p("Say when and how often", "elke", "ochtend", "avond", "dag", "vaak", "soms"),
         p("Say how it was when you were younger, with toen", "toen", "vroeger"),
         p("Say what you do when you don't understand something, with als", "als", "wanneer"),
-        p("Say what kind of news you like, with omdat or want", "omdat", "want", "sport", "cultuur", "wetenschap"),
-        p("Say whether you follow Dutch news, and how", "nederlandse", "nederlands", "journaal", "nos"),
+        p("Say what kind of news you like, with omdat or want", "omdat", "want", "sport", "muziek"),
+        p("Say whether you follow Dutch news, and how", "nederlandse", "nederlands", "journaal"),
       ],
       model:
-        "Ik volg het nieuws vooral op mijn telefoon. Elke ochtend lees ik in de trein een paar artikelen in een nieuwsapp, en 's avonds luister ik soms naar een podcast. Een papieren krant heb ik niet. Toen ik jong was, was dat heel anders. Mijn ouders hadden een krant, en om acht uur keken we samen naar het journaal. Toen vond ik het nieuws saai, want het ging alleen over politiek. Nu lees ik het liefst over wetenschap en cultuur, omdat ik graag nieuwe dingen leer. Sinds ik in Nederland woon, kijk ik ook naar het Nederlandse nieuws. Ik begin meestal met het Jeugdjournaal, want dat is makkelijker. Als ik een woord niet begrijp, zoek ik het meteen op. Daarna lees ik hetzelfde nieuws nog een keer op de website van de NOS.",
+        "Ik volg het nieuws vooral op mijn telefoon. Elke ochtend lees ik in de trein het nieuws in een app, en 's avonds luister ik soms naar de radio. Een papieren krant heb ik niet. Toen ik jong was, was dat heel anders. Mijn ouders hadden een krant, en om acht uur keken we samen naar het journaal. Toen vond ik het nieuws saai, want het ging alleen over de regering. Nu lees ik het liefst over sport en muziek, omdat ik graag nieuwe dingen leer. Sinds ik in Nederland woon, kijk ik ook naar het Nederlandse nieuws. Ik begin meestal met het Jeugdjournaal, want dat is makkelijker. Als ik een woord niet begrijp, zoek ik het meteen op. Daarna lees ik hetzelfde nieuws nog een keer op de website van de NOS.",
     }),
     a2({
       id: "w-bericht-in-de-buurtapp",
@@ -328,7 +328,7 @@ export const media: Unit = {
         p("Thank your neighbours", "bedankt", "dank", "alvast"),
       ],
       model:
-        "Hoi allemaal! Ik ben Noura, en ik woon sinds twee maanden op nummer 23. Gisteravond vond ik een zwarte kat in onze tuin. Hij is heel lief, maar hij is erg mager en hij heeft geen halsband. Ik denk dat hij al een paar dagen buiten is. Weet iemand van wie de kat is? Of heeft iemand gehoord dat er een kat kwijt is? Ik vraag me ook af of er een dierenarts in de buurt is die kan kijken of hij een chip heeft. Ik heb hem vannacht binnen gehouden en hem wat water en eten gegeven. Mijn kinderen willen hem natuurlijk graag houden, maar hij heeft vast een eigenaar die hem mist. Is het jouw kat? Bel dan even aan op nummer 23, of stuur me een berichtje. Alvast bedankt!",
+        "Hoi allemaal! Ik ben Noura, en ik woon sinds twee maanden op nummer 23. Gisteravond vond ik een zwarte kat in onze tuin. Hij is heel lief, maar hij is erg mager. Ik denk dat hij al een paar dagen buiten is. Weet iemand van wie de kat is? Of heeft iemand gehoord dat er een kat kwijt is? Ik vraag me ook af of er een dierenarts in de buurt is. Ik heb hem vannacht binnen gehouden en hem wat water en eten gegeven. Mijn kinderen willen hem natuurlijk graag houden, maar er is vast een familie die hem mist. Is het jouw kat? Bel dan even aan op nummer 23, of stuur me een berichtje. Alvast bedankt!",
     }),
   ],
   speaking: {

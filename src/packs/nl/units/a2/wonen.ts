@@ -105,7 +105,7 @@ export const wonen: Unit = {
         [
           s("Daarnaast doet de bel het niet. Pakketjes komen daardoor vaak niet aan, omdat de bezorger denkt dat ik niet thuis ben.", "Also, the doorbell doesn't work. Because of that, parcels often don't arrive, because the delivery person thinks I'm not home."),
           s("Kunt u een monteur sturen die naar allebei kan kijken? Ik ben na vijf uur altijd thuis, en op woensdag de hele dag.", "Could you send a repairman who can look at both? I'm always home after five, and all day on Wednesday."),
-          s("Ik hoop dat u er snel iets aan kunt doen. Alvast bedankt.", "I hope you can do something about it soon. Thanks in advance."),
+          s("Ik hoop dat u er snel iets aan kunt doen. Bedankt!", "I hope you can do something about it soon. Thanks in advance."),
           s("Met vriendelijke groet, Kwame Mensah", "Kind regards, Kwame Mensah"),
         ],
       ],
@@ -296,11 +296,11 @@ export const wonen: Unit = {
         p("Introduce yourself: name, age, work or study", "ben", "werk", "studeer", "jaar"),
         p("Describe yourself as a tenant", "rustig", "netjes", "rook", "huisdieren", "schoon"),
         p("Say why this home suits you, with omdat or want", "omdat", "want"),
-        p("Say when you can come to look", "kan", "kijken", "bezichtiging", "langskomen"),
+        p("Say when you can come to look", "kan", "kijken", "langskomen"),
         p("Close politely", "groet", "groeten", "graag"),
       ],
       model:
-        "Beste meneer Jansen, Ik reageer op uw advertentie voor het appartement aan de Oudegracht. Ik ben Elena, ik ben 29 jaar en ik werk als lerares Engels op een middelbare school in Utrecht. Ik ben een rustige huurder: ik rook niet, ik heb geen huisdieren en ik houd het huis netjes. In het weekend lees ik graag of ga ik wandelen. Het appartement is perfect voor mij, omdat het dicht bij mijn school ligt en omdat ik graag in het centrum wil wonen. Ik heb een vast contract, dus de huur is geen probleem. Ik kan elke dag na vier uur komen kijken, en op woensdag de hele middag. Ik hoop dat ik het appartement mag bekijken. Met vriendelijke groet, Elena Rossi",
+        "Beste meneer Jansen, Ik reageer op uw advertentie voor het appartement aan de Oudegracht. Ik ben Elena, ik ben 29 jaar en ik werk als lerares Engels op een school in Utrecht. Ik ben een rustige huurder: ik rook niet, ik heb geen huisdieren en ik houd het huis netjes. In het weekend lees ik graag of ga ik wandelen. Het appartement is perfect voor mij, omdat het dicht bij mijn school ligt en omdat ik graag in het centrum wil wonen. Ik heb een vast contract, dus de huur is geen probleem. Ik kan elke dag na vier uur komen kijken, en op woensdag de hele middag. Ik hoop dat ik het appartement mag bekijken. Met vriendelijke groet, Elena Rossi",
     }),
     a2({
       id: "w-klacht-verhuurder",
@@ -310,14 +310,14 @@ export const wonen: Unit = {
       situation: "Something in your home is broken and nobody has fixed it yet. Write an email to your landlord.",
       points: [
         p("Greet the landlord", "beste", "geachte"),
-        p("Say what the problem is", "kapot", "werkt", "probleem", "lekt", "schimmel"),
-        p("Say since when, and what you already did", "sinds", "al", "gebeld", "gemaild"),
+        p("Say what the problem is", "kapot", "werkt", "probleem", "lekt", "lekken"),
+        p("Say since when, and what you already did", "sinds", "al", "gebeld"),
         p("Explain why it's a problem for you, with omdat", "omdat", "want"),
         p("Ask for a repair and say when you're home", "monteur", "maken", "repareren", "thuis"),
         p("Close politely", "groet", "groeten", "bedankt"),
       ],
       model:
-        "Beste mevrouw De Wit, Ik schrijf u omdat de kraan in de keuken al twee weken lekt. Ik heb er vorige week al over gebeld, maar er is nog niemand geweest. Het lekt nu steeds meer: elke nacht staat er een kleine plas water op de vloer. Dat is een probleem, omdat het water onder het keukenkastje loopt en het hout nat wordt. Ik ben ook bang dat er schimmel komt. Daarnaast doet de lamp in de gang het niet meer. Ik denk dat er iets mis is met de schakelaar. Kunt u deze week een monteur sturen die naar allebei kan kijken? Ik ben elke dag na half zes thuis, en op vrijdag de hele dag. Ik hoop dat u er snel iets aan kunt doen. Alvast bedankt. Met vriendelijke groet, Tomasz Kowalski",
+        "Beste mevrouw De Wit, Ik schrijf u omdat de kraan in de keuken al twee weken lekt. Ik heb er vorige week al over gebeld, maar er is nog niemand geweest. Het lekt nu steeds meer: elke nacht staat er water op de vloer. Dat is een probleem, omdat de kast in de keuken nat wordt. Ik ben ook bang dat er schimmel komt. Daarnaast doet de lamp in de gang het niet meer. Kunt u deze week een monteur sturen die naar allebei kan kijken? Ik ben elke dag na half zes thuis, en op vrijdag de hele dag. Ik hoop dat u er snel iets aan kunt doen. Bedankt! Met vriendelijke groet, Tomasz Kowalski",
     }),
     a2({
       id: "w-mijn-droomhuis",
@@ -329,12 +329,12 @@ export const wonen: Unit = {
         p("Say where your dream home is", "ligt", "staat", "in", "aan", "bij"),
         p("Describe the house with die or dat", "die", "dat"),
         p("Describe the rooms", "kamer", "kamers", "keuken", "badkamer", "woonkamer", "slaapkamer"),
-        p("Describe the outside: garden, balcony, view", "tuin", "balkon", "uitzicht", "terras"),
+        p("Describe the outside: garden, balcony, view", "tuin", "balkon", "uitzicht"),
         p("Say who lives there with you", "met", "samen", "alleen", "familie"),
         p("Say why it's your dream, with omdat or want", "omdat", "want"),
       ],
       model:
-        "Mijn droomhuis is een oud huis dat aan een rivier ligt, niet ver van een kleine stad. Het is een huis dat al honderd jaar oud is, met dikke muren en grote ramen. Beneden is er een grote keuken met een lange houten tafel, waar al mijn vrienden kunnen eten. Naast de keuken is een woonkamer met een open haard en een kast vol boeken. Boven zijn er drie slaapkamers en een badkamer met een bad. Achter het huis is er een tuin die tot aan het water loopt. Daar staat een kleine boot, die ik zelf heb geverfd. Ik woon er samen met mijn partner en onze twee katten. Het is mijn droomhuis, omdat ik van rust en water houd, en omdat ik graag mensen uitnodig voor een lange, gezellige avond.",
+        "Mijn droomhuis is een oud huis dat aan het water ligt, niet ver van een kleine stad. Het is een huis dat al honderd jaar oud is, met dikke muren en grote ramen. Beneden is er een grote keuken met een lange oude tafel, waar al mijn vrienden kunnen eten. Naast de keuken is een woonkamer met een grote bank en een kast vol boeken. Boven zijn er drie slaapkamers en een grote badkamer. Achter het huis is er een tuin die tot aan het water loopt. Daar ligt een kleine boot, die ik zelf blauw heb gemaakt. Ik woon er samen met mijn partner en onze twee katten. Het is mijn droomhuis, omdat ik van rust en water houd, en omdat ik graag mensen uitnodig voor een lange, gezellige avond.",
     }),
   ],
   speaking: {

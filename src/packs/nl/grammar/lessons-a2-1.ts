@@ -154,7 +154,7 @@ export const lessonsA2a: Record<string, GrammarLesson> = {
     ],
     exercises: [
       choice("De ketel? Ik heb ", " al naar gekeken.", ["er", "het"], 0, "The boiler? I've already looked at it."),
-      fill("Wat vind je ", "? (of it)", "ervan", "What do you think of it?"),
+      fill("Wat vind je ", "?", "ervan", "What do you think of it?", "er + van"),
       fill("Ik heb een foto. Ik ben er blij ", ".", "mee", "I have a photo. I'm happy with it."),
       transform("Use er.", "Ik denk niet aan het probleem.", "Ik denk er niet aan.", "I'm not thinking about it."),
       build("Ik | heb | er | al | over | gebeld", "I've already called about it."),
@@ -181,7 +181,7 @@ export const lessonsA2a: Record<string, GrammarLesson> = {
     exercises: [
       choice("Het huis ", " ik heb gezien, is te duur.", ["die", "dat"], 1, "The house I saw is too expensive."),
       choice("De buurvrouw ", " naast ons woont, is heel aardig.", ["die", "dat"], 0, "The neighbour who lives next to us is very nice."),
-      choice("De kamers ", " ik heb bekeken, waren klein.", ["die", "dat"], 0, "The rooms I looked at were small (plural: die)."),
+      choice("De kamers ", " ik heb gezien, waren klein.", ["die", "dat"], 0, "The rooms I saw were small (plural: die)."),
       transform("Join with die or dat.", "Ik zoek een kamer. De kamer is niet te duur.", "Ik zoek een kamer die niet te duur is.", "I'm looking for a room that isn't too expensive."),
       build("Ik heb een vriend | die | in Utrecht | woont", "I have a friend who lives in Utrecht."),
       spot("Het appartement die ik wil, heeft een balkon.", "die", "dat", "The flat I want has a balcony."),
@@ -204,7 +204,7 @@ export const lessonsA2a: Record<string, GrammarLesson> = {
     exercises: [
       fill("Gisteren ", " ik niet komen, want ik was ziek.", "kon", "Yesterday I couldn't come, because I was ill.", "kunnen"),
       fill("We ", " een uur wachten bij de huisarts.", "moesten", "We had to wait an hour at the GP's.", "moeten"),
-      fill("Als kind ", " ik niet laat opblijven.", "mocht", "As a child I wasn't allowed to stay up late.", "mogen"),
+      fill("Als kind ", " ik niet laat naar bed.", "mocht", "As a child I wasn't allowed to go to bed late.", "mogen"),
       fill("Ze ", " eerst naar de huisarts, niet naar de specialist.", "wilde", "She wanted to go to the GP first, not to the specialist.", "willen"),
       transform("Put it in the past.", "Ik moet thuisblijven.", "Ik moest thuisblijven.", "I had to stay at home."),
       choice("Sofia ", " niet naar het ziekenhuis.", ["hoefde", "moest"], 0, "Sofia didn't need to go to the hospital."),

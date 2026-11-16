@@ -24,7 +24,12 @@ export function dutchStems(word: string): string[] {
     if (w.endsWith(dim) && w.length > dim.length + 1) fix(w.slice(0, -dim.length));
   }
   // Verb forms: wandelt → wandelen, woon → wonen, fiets → fietsen.
-  for (const stem of [w, w.replace(/t$/, "")]) {
+  // Participles: gekookt → kook → koken, gestudeerd → studeer → studeren.
+  const participle = /^ge.+[dt]$/.test(w) ? [w.slice(2, -1)] : [];
+  // Simple past: regende → regen, werkten → werk.
+  const past = w.match(/^(.+?)(de|te|den|ten)$/)?.[1];
+  if (past) participle.push(past);
+  for (const stem of [w, w.replace(/t$/, ""), ...participle]) {
     if (stem.length < 2) continue;
     out.add(`${stem}en`);
     out.add(`${stem}${stem.at(-1)}en`);

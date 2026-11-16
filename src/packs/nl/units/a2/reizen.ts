@@ -77,7 +77,7 @@ export const reizen: Unit = {
       ],
       tasks: [
         mc("How can you pay on Dutch public transport?", ["Check in with your bank card or phone", "Only with a paper ticket", "Only with cash on the bus"], 0),
-        tf("Als je vergeet uit te checken, betaal je te veel.", "If you forget to check out, you pay too much.", true),
+        tf("Vergeet je uit te checken? Dan betaal je te veel.", "Do you forget to check out? Then you pay too much.", true),
         tf("In een stiltecoupé mag je bellen.", "You're allowed to make calls in a quiet carriage.", false),
         pairs("Match.", "ov=public transport | spits=rush hour | storing=fault, breakdown | vertraging=delay", true),
         mc("When can't you take a normal bike on the train?", ["In rush hour", "At weekends", "After eight in the evening"], 0),
@@ -299,13 +299,13 @@ export const reizen: Unit = {
       points: [
         p("Say when and where you went, and with whom", "ging", "gingen", "reisde", "reisden", "met"),
         p("Say how you travelled", "trein", "vliegtuig", "auto", "bus", "fiets", "boot"),
-        p("Say where you slept", "sliep", "sliepen", "hotel", "hostel", "camping", "huis"),
-        p("Describe what you did and saw, in the simple past", "zag", "zagen", "bezocht", "bezochten", "liep", "liepen", "aten"),
+        p("Say where you slept", "sliep", "sliepen", "hotel", "hostel", "huis"),
+        p("Describe what you did and saw, in the simple past", "zag", "zagen", "liep", "liepen", "aten", "dronken"),
         p("Say what went wrong, or what was special", "mis", "bijzonder", "probleem", "opeens", "toen"),
         p("Say why you'll never forget it, with omdat or want", "omdat", "want"),
       ],
       model:
-        "Drie jaar geleden ging ik met mijn broer naar Schotland. We reisden met de boot van Rotterdam naar Engeland, en daarna met de trein naar Edinburgh. De eerste nachten sliepen we in een hostel in het centrum. Overdag liepen we door de oude straten en bezochten we het kasteel. Daarna huurden we een auto en reden we naar het noorden. We zagen bergen, meren en heel veel schapen. Op de vierde dag ging het mis: de auto stopte opeens midden in de bergen. Er was geen bereik, dus we konden niemand bellen. Na een uur stopte er een boer met een tractor. Hij sleepte de auto naar zijn huis, en zijn vrouw gaf ons soep en thee. Ik vergeet die reis nooit, omdat we zo veel aardige mensen ontmoetten.",
+        "Drie jaar geleden ging ik met mijn broer naar Schotland. We reisden met de boot van Rotterdam naar Engeland, en daarna met de trein naar Edinburgh. De eerste nachten sliepen we in een hostel in het centrum. Overdag liepen we door de oude straten en dronken we koffie op mooie pleinen. Daarna huurden we een auto en reden we naar het noorden. We zagen veel water, bossen en heel veel schapen. Op de vierde dag ging het mis: de auto stopte opeens op een kleine weg, ver van de stad. Mijn telefoon deed het niet, dus we konden niemand bellen. Na een uur stopte er een man met een grote auto. Hij bracht ons naar zijn huis, en zijn vrouw gaf ons soep en thee. Ik vergeet die reis nooit, omdat we zo veel aardige mensen ontmoetten.",
     }),
     a2({
       id: "w-een-hotel-boeken",
@@ -317,12 +317,12 @@ export const reizen: Unit = {
         p("Greet the hotel", "beste", "geachte", "goedendag"),
         p("Say which dates and how many people", "nacht", "nachten", "personen", "van", "tot"),
         p("Say what kind of room you'd like", "kamer", "eenpersoonskamer", "tweepersoonskamer", "bed"),
-        p("Ask about breakfast or parking, with a polite question", "ontbijt", "parkeren", "zou", "kunt"),
+        p("Ask about breakfast or parking, with a polite question", "ontbijt", "parkeren", "kunnen", "kunt"),
         p("Say when you'll arrive", "aankomen", "kom", "komen", "laat", "uur"),
         p("Close politely", "groet", "groeten", "alvast", "bedankt"),
       ],
       model:
-        "Geachte heer of mevrouw, Ik wil graag een kamer bij u reserveren voor twee personen. We komen van vrijdag 14 juni tot zondag 16 juni, dus voor twee nachten. We willen graag een tweepersoonskamer met een eigen badkamer, als het kan met uitzicht op de tuin. Ik heb een paar vragen. Is het ontbijt bij de prijs inbegrepen, en hoe laat begint het? We komen met de auto. Zou ik bij het hotel kunnen parkeren, en wat kost dat per nacht? Op vrijdag werken we allebei tot vijf uur, dus we komen pas om ongeveer negen uur 's avonds aan. Is de receptie dan nog open? Als dat niet kan, hoor ik graag hoe we de sleutel kunnen krijgen. Ik hoor graag van u. Alvast bedankt. Met vriendelijke groet, Paulina Nowak",
+        "Geachte heer of mevrouw, Ik wil graag een kamer bij u reserveren voor twee personen. We komen van vrijdag 14 juni tot zondag 16 juni, dus voor twee nachten. We willen graag een tweepersoonskamer met een eigen badkamer en uitzicht op de tuin. Ik heb een paar vragen. Is het ontbijt bij de prijs inbegrepen, en hoe laat begint het? We komen met de auto. Kunnen we bij het hotel parkeren, en wat kost dat per nacht? Op vrijdag werken we allebei tot vijf uur, dus we komen pas om ongeveer negen uur 's avonds aan. Is de receptie dan nog open? Zo niet, hoe kunnen we de sleutel dan krijgen? Ik hoor graag van u. Alvast bedankt. Met vriendelijke groet, Paulina Nowak",
     }),
     a2({
       id: "w-reisadvies",
@@ -334,12 +334,12 @@ export const reizen: Unit = {
         p("Greet your friend and react to the plan", "hoi", "hallo", "leuk", "goed"),
         p("Say the best time to go, with omdat or want", "omdat", "want", "zomer", "winter", "lente", "herfst"),
         p("Say how to travel there and around", "trein", "vliegtuig", "bus", "auto", "fiets", "metro"),
-        p("Recommend places to see", "moet", "zeker", "bezoeken", "bekijken", "mooiste"),
+        p("Recommend places to see", "moet", "zeker", "bezoeken", "bekijken"),
         p("Recommend food to try", "eten", "proberen", "lekker", "restaurant"),
         p("Give one warning and close", "pas", "let", "op", "niet", "groet", "groetjes", "liefs"),
       ],
       model:
-        "Hoi Daan, Wat leuk dat je naar Napels wilt gaan! Ga het liefst in mei of in oktober, want in de zomer is het daar echt te heet en te druk. Je kunt het beste naar Rome vliegen en dan de snelle trein nemen. Die doet er maar een uur over. In de stad kun je goed lopen, en voor verder weg neem je de metro. Je moet zeker de oude stad bekijken, en Pompeii is ook niet ver. Het mooiste vind ik een boottocht naar Procida, een klein eiland met gekleurde huizen. Over eten hoef ik niet veel te zeggen: probeer de pizza! De beste pizza van de wereld vind je in Napels, in kleine, simpele restaurants. Let wel op je telefoon in de drukke straten, en betaal liever niet te veel in de toeristische cafés. Veel plezier! Groetjes, Giulia",
+        "Hoi Daan, Wat leuk dat je naar Napels wilt gaan! Ga het liefst in mei of in oktober, want in de zomer is het daar echt te heet en te druk. Neem het vliegtuig naar Rome en dan de snelle trein. Die doet er maar een uur over. In de stad kun je goed lopen, en voor verder weg neem je de metro. Je moet zeker de oude stad bekijken, en Pompeii is ook niet ver. Heel mooi is ook een boot naar Procida, een klein eiland met huizen in alle kleuren. Over eten hoef ik niet veel te zeggen: probeer de pizza! Echt goede pizza vind je in kleine, simpele restaurants. Let wel op je telefoon in de drukke straten, en betaal niet te veel in de cafés voor toeristen. Veel plezier! Groetjes, Giulia",
     }),
   ],
   speaking: {
@@ -347,7 +347,7 @@ export const reizen: Unit = {
     shadowing: [
       { text: "Van welk spoor vertrekt de trein?", translation: "Which platform does the train leave from?" },
       { text: "Retour, graag. Ik kom vanavond terug.", translation: "Return, please. I'm coming back this evening." },
-      { text: "Zou ik morgen mijn koffer hier kunnen laten?", translation: "Could I leave my suitcase here tomorrow?" },
+      { text: "Hoe laat is het ontbijt?", translation: "What time is breakfast?" },
       { text: "Vergeet niet uit te checken!", translation: "Don't forget to check out!" },
     ],
   },

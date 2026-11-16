@@ -9,7 +9,7 @@ import { tenseUses } from "@/core/coherence";
 const HELPERS = new Set(["heb", "hebt", "heeft", "hebben", "ben", "bent", "is", "zijn"]);
 /** Participles that work as plain adjectives or set phrases at A1. */
 const FIXED = new Set(["geboren", "getrouwd", "gescheiden", "gesloten", "geopend", "bekend", "verkouden", "geïnteresseerd", "gezellig"]);
-const MODALS = new Set(["kunnen", "moeten", "willen", "mogen"]);
+const MODALS = new Set(["kunnen", "moeten", "willen", "mogen", "hoeven"]);
 const SUBORDINATORS = new Set(["omdat", "terwijl", "nadat", "voordat", "zodat", "hoewel", "zodra", "totdat"]);
 const ER_PREP = /^er(in|op|van|mee|over|bij|aan|voor|na|uit|achter|naast|onder|boven|tegen|door|om|af|heen|toe)$/;
 const SUBJECTS = new Set(["ik", "je", "jij", "u", "hij", "ze", "zij", "het", "we", "wij", "jullie", "er", "de", "mijn", "zijn", "haar", "onze", "ons"]);

@@ -77,7 +77,7 @@ export const natuur: Unit = {
         mc("What is wadlopen?", ["Walking across the sea bottom at low tide", "Swimming in the Wadden Sea", "Sailing between the islands"], 0),
         tf("Je mag alleen het wad op gaan als je goed kunt zwemmen.", "You may go onto the mudflats alone if you can swim well.", false),
         order("Put the walk in order.", "They leave at six in the morning", "The guide explains the rules", "They walk through soft mud", "They see seals", "They arrive on Schiermonnikoog"),
-        pairs("Match.", "eb=low tide | vloed=high tide | modder=mud | zeehond=seal", true),
+        pairs("Match.", "eb=low tide | gids=guide | modder=mud | zeehond=seal", true),
         mc("How did they get back?", ["By boat", "They walked back", "By bus"], 0),
       ],
     },
@@ -298,7 +298,7 @@ export const natuur: Unit = {
         p("Say what you're most looking forward to, and why", "verheug", "zin", "omdat", "want"),
       ],
       model:
-        "Volgend jaar wordt een belangrijk jaar voor mij. Na de zomer ga ik met de B1-cursus beginnen, want ik wil mijn Nederlands nog veel beter maken. Ik ga ook elke week een uur met een taalmaatje praten. In het voorjaar ga ik solliciteren. In mijn eigen land was ik verpleegkundige, en ik wil dat werk hier ook graag doen. Eerst moet mijn diploma erkend worden, en dat zal wel een paar maanden duren. Mijn vriendin heeft gezegd dat ze me zal helpen met mijn brief. In mijn vrije tijd ga ik eindelijk leren zwemmen. In juli gaan we met de trein naar Texel, met de hele familie. Ik verheug me het meest op mijn eerste werkdag, omdat ik dan weer zal doen wat ik het liefst doe: mensen helpen.",
+        "Volgend jaar wordt een belangrijk jaar voor mij. Na de zomer ga ik met de B1-cursus beginnen, want ik wil mijn Nederlands nog veel beter maken. Ik ga ook elke week een uur met een taalmaatje praten. In het voorjaar ga ik solliciteren. In mijn eigen land was ik verpleegkundige, en ik wil dat werk hier ook graag doen. Eerst moet ik nog veel papieren regelen, en dat zal wel een paar maanden duren. Mijn vriendin heeft gezegd dat ze me zal helpen met mijn brief. In mijn vrije tijd ga ik eindelijk leren zwemmen. In juli gaan we met de trein naar Texel, met de hele familie. Ik verheug me het meest op mijn eerste werkdag, omdat ik dan weer zal doen wat ik het liefst doe: mensen helpen.",
     }),
     a2({
       id: "w-een-dag-in-de-natuur",
@@ -315,7 +315,7 @@ export const natuur: Unit = {
         p("Say how the day ended, and how you felt", "moe", "blij", "eind", "daarna", "thuis"),
       ],
       model:
-        "Vorige maand ben ik met twee vrienden naar de Hoge Veluwe gegaan. We vertrokken om acht uur met de trein naar Ede, en daar hebben we fietsen gehuurd. In het park kun je gratis witte fietsen gebruiken, maar die waren al allemaal weg. Het was een koude, heldere ochtend, en er hing nog mist boven de heide. Na een uur fietsen zagen we opeens drie reeën tussen de bomen. We stopten en waren heel stil. Ze keken ons even aan en renden toen weg. 's Middags gingen we naar het museum in het park, want daar hangen veel schilderijen van Van Gogh. Daarna begon het te regenen, dus we fietsten snel terug naar het station. In de trein dronken we warme chocolademelk. We waren moe en nat, maar heel blij. Het was een van de mooiste dagen van de herfst.",
+        "Vorige maand ben ik met twee vrienden naar de Hoge Veluwe gegaan. We vertrokken om acht uur met de trein naar Ede, en daar hebben we fietsen gehuurd. In het park kun je gratis witte fietsen gebruiken, maar die waren al allemaal weg. Het was een koude, heldere ochtend, en er hing nog mist boven de heide. Na een uur fietsen zagen we opeens drie reeën tussen de bomen. We stopten en waren heel stil. Ze keken ons even aan en liepen toen snel weg. 's Middags gingen we naar het museum in het park, want daar hangen veel schilderijen van Van Gogh. Daarna begon het te regenen, dus we fietsten snel terug naar het station. In de trein dronken we warme thee. We waren moe en nat, maar heel blij. Het was een van de mooiste dagen van de herfst.",
     }),
     a2({
       id: "w-het-weer-bij-ons",
@@ -332,7 +332,7 @@ export const natuur: Unit = {
         p("Say when is the best time to visit, and close", "beste", "tijd", "kom", "groetjes", "liefs"),
       ],
       model:
-        "Hoi Merel, Je vroeg hoe het weer in Mexico-Stad is. Het is daar heel anders dan in Nederland! We hebben eigenlijk maar twee seizoenen: een droge tijd en een regentijd. Van november tot april is het droog en zonnig. Overdag is het ongeveer vijfentwintig graden, maar 's nachts kan het koud zijn, want de stad ligt hoog in de bergen. Van juni tot september regent het bijna elke middag. Het regent dan heel hard, maar na een uur is het weer droog. Mensen blijven dan even binnen en wachten. In Nederland regent het minder hard, maar wel veel vaker. Ik vind het Nederlandse weer soms moeilijk, omdat het in de winter zo lang donker is. De beste tijd om te komen is maart: dan is het droog en warm, en overal bloeien de paarse bomen. Groetjes, Diego",
+        "Hoi Merel, Je vroeg hoe het weer in Mexico-Stad is. Het is daar heel anders dan in Nederland! We hebben eigenlijk maar twee seizoenen: een droge tijd en een regentijd. Van november tot april is het droog en er is veel zon. Overdag is het ongeveer vijfentwintig graden, maar 's nachts kan het koud zijn, want de stad ligt heel hoog. Van juni tot september regent het bijna elke middag. Het regent dan heel hard, maar na een uur is het weer droog. Mensen blijven dan even binnen en wachten. In Nederland regent het minder hard, maar wel veel vaker. Ik vind het Nederlandse weer soms moeilijk, omdat het in de winter zo lang donker is. De beste tijd om te komen is maart: dan is het droog en warm, en overal zijn de bomen paars. Groetjes, Diego",
     }),
   ],
   speaking: {

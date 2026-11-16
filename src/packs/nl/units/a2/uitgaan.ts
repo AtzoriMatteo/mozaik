@@ -288,15 +288,15 @@ export const uitgaan: Unit = {
       form: "opinion",
       situation: "You went to a museum, a concert, a film or a festival. Write a short review for a website.",
       points: [
-        p("Say what you went to, where and with whom", "ging", "gingen", "naar", "met", "museum", "concert", "film", "festival"),
+        p("Say what you went to, where and with whom", "ging", "gingen", "naar", "met", "museum", "concert", "film"),
         p("Describe what it was like", "was", "zag", "zagen", "hoorde", "hoorden"),
         p("Say what was the best part, with a superlative", "mooiste", "beste", "leukste", "grappigste", "spannendste", "interessantste"),
-        p("Say what was less good", "minder", "jammer", "helaas", "niet"),
+        p("Say what was less good", "minder", "helaas", "niet"),
         p("Give practical tips: price, time, getting there", "kost", "euro", "kaartje", "tip", "vroeg", "trein", "fiets"),
         p("Give a score or a recommendation, with omdat or want", "omdat", "want", "aanraden", "sterren", "punten"),
       ],
       model:
-        "Vorige week ging ik met mijn zus naar het Van Gogh Museum in Amsterdam. Ik had het museum nog nooit gezien, en ik was heel benieuwd. Het museum was groter dan ik dacht. We zagen schilderijen uit alle jaren van Van Gogh, van de donkere boeren in Brabant tot de felle kleuren in Frankrijk. Het mooiste vond ik de zonnebloemen. In het echt zijn de kleuren nog veel sterker dan op een foto. Ook de brieven van Vincent aan zijn broer waren erg interessant. Wat minder was: het was erg druk, en bij de bekendste schilderijen kon je bijna niets zien. Een tip: koop je kaartje online, want het museum is vaak uitverkocht. Een kaartje kost ongeveer 25 euro. Ga zo vroeg mogelijk, om negen uur. Ik geef het museum vier sterren, omdat het prachtig is, maar te druk.",
+        "Vorige week ging ik met mijn zus naar het Van Gogh Museum in Amsterdam. Ik had het museum nog nooit gezien, en ik had er veel zin in. Het museum was groter dan ik dacht. We zagen schilderijen uit alle jaren van Van Gogh, van donkere schilderijen in Brabant tot de kleuren van Frankrijk. Het mooiste vond ik de zonnebloemen. In het echt zijn de kleuren nog veel sterker dan op een foto. Ook de brieven van Vincent aan zijn broer waren erg interessant. Wat minder was: het was erg druk, en bij de bekendste schilderijen kon je bijna niets zien. Een tip: koop je kaartje online, want het museum is vaak uitverkocht. Een kaartje kost ongeveer 25 euro. Ga zo vroeg mogelijk, om negen uur. Ik geef het museum vier sterren, omdat het heel mooi is, maar te druk.",
     }),
     a2({
       id: "w-samen-op-stap",
@@ -313,7 +313,7 @@ export const uitgaan: Unit = {
         p("Ask people to let you know, and close", "laat", "weten", "voor", "groetjes", "liefs"),
       ],
       model:
-        "Hoi allemaal! Het is alweer drie maanden geleden dat we met z'n allen iets hebben gedaan. Daarom heb ik een idee: zullen we op zaterdag 12 oktober samen naar de Markthal in Rotterdam gaan? Daar kun je eten uit de hele wereld proeven, en het is ook nog gezellig. Ik heb ook andere opties bekeken. Een rondvaart was leuk, maar het goedkoopste is de markt, want de toegang is gratis. En als het regent, zitten we lekker binnen. We kunnen om twaalf uur afspreken bij de ingang aan de kant van het station. Neem genoeg geld mee voor eten, ik denk ongeveer twintig euro per persoon. 's Avonds kunnen we nog iets drinken in een café aan de haven. Laat je me voor woensdag weten of je meegaat? Dan kan ik een tafel reserveren. Groetjes, Lina",
+        "Hoi allemaal! We hebben al drie maanden niets met z'n allen gedaan. Daarom heb ik een idee: zullen we op zaterdag 12 oktober samen naar de Markthal in Rotterdam gaan? Daar kun je eten uit de hele wereld proeven, en het is ook nog gezellig. Ik heb ook naar andere dingen gekeken. Een rondvaart was leuk, maar het goedkoopste is de markt, want de toegang is gratis. En als het regent, zitten we lekker binnen. We kunnen om twaalf uur afspreken bij de ingang aan de kant van het station. Neem genoeg geld mee voor eten, ik denk ongeveer twintig euro per persoon. 's Avonds kunnen we nog iets drinken in een café aan de haven. Laat je me voor woensdag weten of je meegaat? Dan kan ik een tafel reserveren. Groetjes, Lina",
     }),
     a2({
       id: "w-mijn-favoriete-plek",
@@ -330,7 +330,7 @@ export const uitgaan: Unit = {
         p("Give a tip for visitors", "tip", "moet", "zeker", "kom", "probeer"),
       ],
       model:
-        "Mijn favoriete plek in Utrecht is een klein café aan de Oudegracht. Het ligt beneden, vlak bij het water, in een oude kelder van wel zevenhonderd jaar oud. Binnen zijn de muren dik en de lampen warm, en buiten staan een paar tafeltjes direct aan de gracht. Voor mij is het de fijnste plek van de stad, omdat het er zo rustig is, terwijl de straat erboven altijd druk is. Op zondagochtend zit ik er vaak met een boek en een kop koffie. Ik kijk dan naar de bootjes en naar de mensen op de fiets. Soms ga ik er met de broer van mijn vriendin heen, want hij woont om de hoek. Hij bestelt altijd de appeltaart, en die is echt de beste van Utrecht. Mijn tip: kom op een doordeweekse ochtend, en neem zeker een stuk appeltaart.",
+        "Mijn favoriete plek in Utrecht is een klein café aan de Oudegracht. Het ligt beneden, vlak bij het water, en het is wel zevenhonderd jaar oud. Binnen zijn de muren dik en de lampen warm, en buiten staan een paar tafeltjes direct aan de gracht. Voor mij is het de fijnste plek van de stad, omdat het er zo rustig is. De straat boven het café is altijd druk. Op zondagochtend zit ik er vaak met een boek en een kop koffie. Ik kijk dan naar de bootjes en naar de mensen op de fiets. Soms ga ik er met de broer van mijn vriendin heen, want hij woont om de hoek. Hij bestelt altijd de appeltaart, en die is echt de beste van Utrecht. Mijn tip: kom op een doordeweekse ochtend, en neem zeker een stuk appeltaart.",
     }),
   ],
   speaking: {
