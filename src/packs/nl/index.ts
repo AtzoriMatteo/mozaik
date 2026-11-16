@@ -18,6 +18,9 @@ import { makeChecker } from "./writing/check";
 import { isNumberWord } from "./writing/data";
 import { dutchGrammarIn } from "./grammar-use";
 import { dutchStems } from "./stems";
+import { homographs } from "./homographs";
+import { makeDisplayCase } from "./case";
+import { dutchPosInContext } from "./pos";
 
 /**
  * Dutch uses apostrophes inside words ("auto's", "baby's") and as the start
@@ -79,6 +82,15 @@ export const dutch: LanguagePack = {
   checkWriting: makeChecker(lexicon, tokenizeDutch),
   isNumberWord,
   stems: dutchStems,
+  homographs,
+  displayCase: makeDisplayCase(lexicon),
+  posInContext: (form, sentence) =>
+    dutchPosInContext(
+      form,
+      tokenizeDutch(sentence)
+        .filter((t) => t.kind === "word")
+        .map((t) => t.normalized),
+    ),
   grammarIn: (text) => dutchGrammarIn(dutch, text),
   formulas: new Set([
     "hallo", "hoi", "hey", "hé", "dag", "doei", "beste", "lieve", "geachte", "goedemorgen", "goedemiddag", "goedenavond",

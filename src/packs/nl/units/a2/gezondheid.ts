@@ -189,7 +189,7 @@ export const gezondheid: Unit = {
       ],
       dictation: [1, 9],
       words: {
-        traplopen: { meaning: "climbing stairs", closer: "trap (stairs) + lopen (walk)" },
+        traplopen: { meaning: "to climb stairs", closer: "trap (stairs) + lopen (walk)" },
       },
     },
     {

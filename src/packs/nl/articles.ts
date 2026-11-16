@@ -7,6 +7,8 @@ import { DE_NOUNS, HET_NOUNS } from "./writing/data";
  */
 
 const DE = [
+  "post", "bedrijfskunde", "linkerkant", "lol", "snert", "jazz", "enkel",
+  "bestelling", "lievelingsmaand", "lievelingskleur", "huurder", "tweepersoonskamer", "recensie", "reactie", "paprika", "knoflook", "ster", "long", "sprong", "erwtensoep", "shampoo", "pruik", "macht", "laptop", "reservesleutel", "ijssalon", "kookcursus", "studietijd", "lasagne", "nazi", "onderduiker", "sector", "ventilator", "vensterbank", "kuur", "alcohol", "oorontsteking", "kop", "spijt", "oordop", "moeite", "kraan", "presentator", "ondertitel", "nieuwssite", "strip", "windkracht", "serie", "aflevering", "sportclub", "partij", "nieuwkomer", "compost", "folder", "grondstof", "jeugd", "bardienst", "klomp", "dominee", "prediker", "filmnacht", "filmliefhebber", "voetbalherinnering", "sjerp", "luitenant", "nachtscène", "boulevard", "sjaal", "wintersoep", "spliterwt", "gram", "knolselderij", "saté", "nasi", "bami", "sambal", "salami", "tiramisu", "allergie", "noot", "zalm", "biefstuk", "appelflap", "geul", "kelder", "sok", "bodem", "eb", "ingenieur", "slaaf", "reiziger", "oostkant", "eenpersoonskamer", "code", "sleutelkaart", "fado", "schaatser", "ree", "fietser", "voetganger", "afvaldienst", "calvinist", "reiskosten", "fietsonderdelen", "servicekosten", "vakantiedag", "mat", "kaneel", "nootmuskaat", "pom", "kilometer", "uitwedstrijden", "schutters", "wifi", "werkende", "bel", "groet", "fout", "personeelsmanager",
   "informatie", "korting", "mist",
   "aanbieding", "aardbei", "achternaam", "advertentie", "afvalkalender", "ambulance", "apotheek",
   "app", "appeltaart", "arm", "arts", "baard", "baas", "bak", "bakker", "bakkerij", "bal", "balie",
@@ -61,12 +63,14 @@ const DE = [
   "heide", "huisartsenpost", "kapitein", "ketel", "ketting", "kip", "klant", "knie", "koe", "kolonie",
   "kou", "kunsthandel", "kust", "mand", "matroos", "modder", "munt", "opstand", "oranjekoorts", "paddenstoel",
   "parel", "peper", "personeelsmanager", "pindasaus", "poortwachter", "praktijk", "prei", "regering", "riem", "rijsttafel",
-  "rookworst", "salade", "schelp", "schimmel", "schil", "specerij", "spier", "stagiair", "statiegeld", "stiltecoupé",
-  "tegel", "temperatuur", "theorie", "toko", "tompouce", "training", "uitagenda", "verkiezing", "verzorgingshuis", "vouwfiets",
-  "vrachtwagen", "wachtlijst", "waterschap", "wei", "werkdag", "zandbank", "zeehond", "zolder", "zonnebloem", "zorgverzekering",
+  "rookworst", "salade", "schelp", "schimmel", "schil", "specerij", "spier", "stagiair", "stiltecoupé",
+  "tegel", "temperatuur", "theorie", "toko", "tompouce", "training", "uitagenda", "verkiezing", "vouwfiets",
+  "vrachtwagen", "wachtlijst", "wei", "werkdag", "zandbank", "zeehond", "zolder", "zonnebloem", "zorgverzekering",
 ];
 
 const HET = [
+  "midden", "tiental", "ov", "retour",
+  "lievelingsseizoen", "veld", "burgerservicenummer", "zuiden", "oosten", "noorden", "westen", "noordwesten", "verzorgingshuis", "statiegeld", "waterschap", "team", "mannenteam", "contract", "gordijn", "poldermodel", "concentratiekamp", "hart", "item", "katenspek", "bruiswater", "gft", "podium", "kunstmuseum", "edelhert", "zwijn", "geluk", "vasteland", "rotweer", "basketbal", "onweer", "gebruik", "cv", "excuus", "hockey", "lot",
   "buitenland",
   "toilet", "nieuwjaar", "stationsplein",
   "afval", "avondeten", "been", "bezoek", "blad", "boord", "bord", "bos", "buurtfeest", "deel",
@@ -84,7 +88,7 @@ const HET = [
   "systeem", "teken", "terras", "verhaal", "vertrek", "vervoer", "voordeel", "virus", "vrijwilligerswerk", "achterhuis",
   "advies", "balkon", "betaalverzoek", "bestuur", "consultatiebureau", "dessert", "elftal", "fietsenrek", "framenummer", "gemaal",
   "gemeentehuis", "gerecht", "geweld", "herhaalrecept", "hostel", "kampioenschap", "kantoorgebouw", "koffiedik", "kraanwater", "lidmaatschap",
-  "mailadres", "natuurgebied", "nepnieuws", "ongemak", "openbaar", "pad", "programma", "regenwater", "restafval", "riool",
+  "mailadres", "natuurgebied", "nepnieuws", "ongemak", "pad", "programma", "regenwater", "restafval", "riool",
   "roggebrood", "scheepvaartmuseum", "slot", "sportveld", "toernooi", "touw", "uitje", "vak", "vakantiegeld", "varkensvlees",
   "wad", "waterplein", "weiland", "wereldkampioenschap",
 ];

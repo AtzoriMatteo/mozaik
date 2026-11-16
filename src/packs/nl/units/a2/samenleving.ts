@@ -213,7 +213,7 @@ export const samenleving: Unit = {
       dictation: [2, 4],
       words: {
         "coördineer": { meaning: "coordinate", base: "coördineren" },
-        schamen: { meaning: "be ashamed", local: "zich schamen = to be ashamed; Schaam je! = Shame on you!" },
+        schamen: { meaning: "to be ashamed", local: "zich schamen = to be ashamed; Schaam je! = Shame on you!" },
       },
     },
     {
@@ -280,7 +280,7 @@ export const samenleving: Unit = {
       words: {
         bardienst: { meaning: "bar shift (at a club)", local: "At Dutch sports clubs volunteers, often parents, run the bar" },
         uitwedstrijden: { meaning: "away matches", closer: "uit (away) + wedstrijden (matches)" },
-        meetrainen: { meaning: "join in training", closer: "mee (along) + trainen" },
+        meetrainen: { meaning: "to join in training", closer: "mee (along) + trainen" },
       },
     },
   ],

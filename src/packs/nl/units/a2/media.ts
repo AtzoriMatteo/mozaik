@@ -242,7 +242,7 @@ export const media: Unit = {
       ],
       dictation: [2, 6],
       words: {
-        omfietsen: { meaning: "cycle the long way round", closer: "om (around) + fietsen" },
+        omfietsen: { meaning: "to cycle the long way round", closer: "om (around) + fietsen" },
         pontje: { meaning: "small ferry", local: "The pont: free little ferries cross canals and rivers all over the country" },
       },
     },

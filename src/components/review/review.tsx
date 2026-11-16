@@ -1,7 +1,7 @@
 "use client";
 
 import { VerdictLine, verdictFromScore } from "@/components/exercises/verdict";
-import { dictionaryLabel, isVerb, lemmaFor } from "@/core/dictionary";
+import { cardArticle, dictionaryLabel, isVerb, lemmaFor } from "@/core/dictionary";
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -554,7 +554,7 @@ function WordCard({
   const first = Math.min(...target);
   const targetText = tokens.filter((_, i) => target.has(i)).map((t) => t.text).join("");
   const lemma = lemmaFor(item);
-  const dictionary = dictionaryLabel(pack, lemma);
+  const dictionary = dictionaryLabel(pack, lemma, item.meaning);
 
   if (kind === "produce") return <ProduceCard key={item.id} pack={pack} item={item} onAnswer={onAnswer} onGraduate={onGraduate} />;
 
@@ -642,7 +642,7 @@ function targetTokens(tokens: { kind: string; normalized?: string }[], word: str
 
 function WordAnswer({ pack, item, showSentence }: { pack: LanguagePack; item: WordItem; showSentence: boolean }) {
   const lang = pack.code;
-  const dictionary = dictionaryLabel(pack, lemmaFor(item));
+  const dictionary = dictionaryLabel(pack, lemmaFor(item), item.meaning);
   return (
     <div className="review-answer">
       <p className="review-word">
@@ -688,15 +688,15 @@ function ProduceCard({
 }) {
   const lang = pack.code;
   const lemma = lemmaFor(item);
-  const article = pack.nounArticle?.(lemma) ?? null;
+  const article = cardArticle(pack, lemma, item.meaning);
   const [typed, setTyped] = useState("");
   const [result, setResult] = useState<ProduceVerdict | null>(null);
-  const hint = article ? "a noun: give it with its article" : isVerb(pack, lemma) ? "a verb: give the infinitive" : null;
+  const hint = article ? "a noun: give it with its article" : /^to /.test(item.meaning) ? "a verb: give the infinitive" : null;
 
   const check = (giveUp = false) => {
     const r = giveUp ? { verdict: "wrong" as const } : checkProduced(typed, lemma, article, pack.articles);
     setResult(r);
-    speak(lang, dictionaryLabel(pack, lemma), 0.85);
+    speak(lang, dictionaryLabel(pack, lemma, item.meaning), 0.85);
   };
 
   return (

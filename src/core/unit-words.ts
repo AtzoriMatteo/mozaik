@@ -1,7 +1,8 @@
 import type { Expression, Unit } from "./content";
 import type { LanguagePack } from "./language-pack";
-import { helpFor, lemmaOf } from "./content";
-import { cardMeaning, dictionaryLabel, isVerb } from "./dictionary";
+import { helpFor } from "./content";
+import { cardArticle, cardSense, dictionaryLabel, isVerb } from "./dictionary";
+import { formInSentence } from "./coherence";
 import { SKIP, type WordInfo } from "./review-items";
 
 /**
@@ -25,6 +26,23 @@ export const WORD_GROUPS: readonly { id: UnitWord["group"]; title: string }[] = 
   { id: "other", title: "Describing and linking words" },
 ];
 
+/** Sounds and fillers (eh, haha, hè): understood in a text, never worth a card. */
+const INTERJECTIONS = new Set(["eh", "o", "oh", "ah", "ach", "au", "mmm", "mm", "aaa", "haha", "hm", "hmm", "joh", "jee", "hé", "hè", "'s", "oké", "ok", "ten", "ene"]);
+
+/**
+ * Not a word to learn: a name (Pieter, Delft, the Herengracht), a letter
+ * said aloud, an English word used as is, or a sound like "eh".
+ */
+export function notAWordToLearn(lemma: string, meaning: string): boolean {
+  if (INTERJECTIONS.has(lemma) || [...lemma].length === 1) return true;
+  // "(Giulia's first try at Siobhan)", "the letter V": about the word, not a meaning to learn.
+  if (/^\(.*\)$/.test(meaning) || /\bthe letter\b/.test(meaning)) return true;
+  if (/\((a |an )?(name|surname|street|city|town|village|province|island|shop|website|square|canal|museum)\b/i.test(meaning)) return true;
+  if (/\((English|Portuguese|French|Italian|Spanish|German)\b/.test(meaning) || /\(the letter\)/.test(meaning)) return true;
+  // "Rotterdam", "Funda (a website…)": the meaning just repeats the word with a capital.
+  return /^\p{Lu}/u.test(meaning) && meaning.toLowerCase().startsWith(lemma) && !/\p{L}/u.test(meaning[lemma.length] ?? "");
+}
+
 const cache = new WeakMap<LanguagePack, Map<string, UnitWord[]>>();
 
 /**
@@ -39,16 +57,18 @@ function build(pack: LanguagePack): Map<string, UnitWord[]> {
     const core = new Set(pack.coreVocabulary[unit.level] ?? []);
     const list = out.get(unit.id)!;
     const add = (lemma: string, info: WordInfo, key: boolean) => {
-      if (seen.has(lemma)) return;
+      if (seen.has(lemma) || notAWordToLearn(lemma, info.meaning)) return;
       seen.add(lemma);
-      const group = pack.nounArticle?.(lemma) ? "noun" : isVerb(pack, lemma) || pack.verbFor?.(lemma) === lemma ? "verb" : "other";
-      list.push({ ...info, unitId: unit.id, lemma, label: dictionaryLabel(pack, lemma), group, core: key });
+      const group = cardArticle(pack, lemma, info.meaning) ? "noun" : isVerb(pack, lemma) || pack.verbFor?.(lemma) === lemma ? "verb" : "other";
+      const verbHere = /^to /.test(info.meaning);
+      list.push({ ...info, unitId: unit.id, lemma, label: dictionaryLabel(pack, lemma, info.meaning), group: verbHere ? "verb" : group, core: key });
     };
     // Words taught on purpose come first: the unit's tasks rely on them.
     for (const t of unit.teach ?? []) {
-      const w = t.word.toLowerCase();
-      const lemma = (pack.lexicon[w]?.base ?? w).toLowerCase();
-      add(lemma, { word: w, surface: t.word, meaning: t.meaning, sentence: t.text, translation: t.translation }, true);
+      if (t.phrase) continue;
+      const lemma = t.word.toLowerCase();
+      const form = formInSentence(pack, t);
+      add(lemma, { word: form, surface: form, base: form === lemma ? undefined : lemma, meaning: t.meaning, sentence: t.text, translation: t.translation }, true);
     }
     const sources = [
       ...unit.texts.map((t) => ({ owner: t, lines: t.paragraphs.flat() })),
@@ -65,15 +85,15 @@ function build(pack: LanguagePack): Map<string, UnitWord[]> {
           if (/\d/.test(tok.text) || (!start && /^\p{Lu}/u.test(tok.text))) continue;
           const help = helpFor(pack.lexicon, owner, tok.normalized);
           if (!help) continue;
-          const lemma = lemmaOf(help, tok.normalized);
+          const { lemma, meaning } = cardSense(pack, tok.normalized, help, line.text);
           if (SKIP.has(lemma) || lemma.includes(" ") || pack.isNumberWord?.(lemma)) continue;
           add(
             lemma,
             {
               word: tok.normalized,
               surface: tok.text,
-              base: help.base,
-              meaning: cardMeaning(pack, lemma, help.meaning),
+              base: lemma === tok.normalized ? undefined : lemma,
+              meaning,
               sentence: line.text,
               translation: line.translation,
             },
@@ -119,6 +139,10 @@ export function unitExpressions(pack: LanguagePack, unit: Unit): { expression: E
   for (const expression of pack.expressions ?? []) {
     const line = lines.find((l) => expression.forms.some((f) => l.words.includes(` ${f.toLowerCase()} `)));
     if (line) out.push({ expression, sentence: line.s.text, translation: line.s.translation });
+  }
+  // Set phrases the unit teaches directly ("Het was leuk").
+  for (const t of unit.teach ?? []) {
+    if (t.phrase) out.push({ expression: { phrase: t.word, meaning: t.meaning, forms: [t.word.toLowerCase()] } as Expression, sentence: t.text, translation: t.translation });
   }
   return out;
 }

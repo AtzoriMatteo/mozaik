@@ -51,6 +51,10 @@ export const italian: LanguagePack = {
   resources,
   tips,
   nounArticle: articleFor,
+  homographs: {
+    // "Sì, piacere!" is a greeting; "mi piace" is the verb. One card for both.
+    piacere: { noun: "pleasure; nice to meet you", other: "nice to meet you; pleasure; to please (mi piace = I like it)" },
+  },
   articles: { definite: ["il", "lo", "la", "l'", "i", "gli", "le"], indefinite: ["un", "uno", "una", "un'"] },
   cast,
   expressions,

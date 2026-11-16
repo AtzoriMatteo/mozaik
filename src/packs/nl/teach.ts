@@ -6,6 +6,8 @@ import type { TaughtWord } from "@/core/coherence";
  * comes with an example sentence, so it's taught, not just listed.
  */
 const t = (word: string, meaning: string, text: string, translation: string): TaughtWord => ({ word, meaning, text, translation });
+/** A set phrase or a form taught ahead of its grammar: listed under Expressions, not a flashcard. */
+const ph = (word: string, meaning: string, text: string, translation: string): TaughtWord => ({ word, meaning, text, translation, phrase: true });
 
 export const teachNl: Record<string, TaughtWord[]> = {
   "a1-basis": [
@@ -16,7 +18,7 @@ export const teachNl: Record<string, TaughtWord[]> = {
     t("vrijdag", "Friday", "Vandaag is het vrijdag.", "Today is Friday."),
     t("zaterdag", "Saturday", "Zaterdag en zondag zijn het weekend.", "Saturday and Sunday are the weekend."),
     t("zondag", "Sunday", "Op zondag ben ik jarig.", "My birthday is on Sunday."),
-    t("lievelings-", "favourite (before a noun)", "Mijn lievelingseten is pasta.", "My favourite food is pasta."),
+    ph("lievelings-", "favourite (before a noun)", "Mijn lievelingseten is pasta.", "My favourite food is pasta."),
     t("lievelingsseizoen", "favourite season", "Mijn lievelingsseizoen is de zomer.", "My favourite season is summer."),
     t("lievelingsmaand", "favourite month", "Mijn lievelingsmaand is mei.", "My favourite month is May."),
     t("lievelingskleur", "favourite colour", "Mijn lievelingskleur is blauw.", "My favourite colour is blue."),
@@ -36,12 +38,12 @@ export const teachNl: Record<string, TaughtWord[]> = {
     t("zoals", "like, as", "Ik kook pasta, zoals mijn oma.", "I'm cooking pasta, like my grandma."),
   ],
   "a1-dag-en-tijd": [
-    t("zin", "zin hebben in = to look forward to; to feel like", "Ik heb zin in het weekend!", "I'm looking forward to the weekend!"),
+    ph("zin hebben in", "to look forward to; to feel like", "Ik heb zin in het weekend!", "I'm looking forward to the weekend!"),
   ],
   "a1-wonen": [
     t("beste", "dear (to start a letter or email)", "Beste meneer De Groot,", "Dear Mr De Groot,"),
     t("vriendelijk", "friendly, kind", "Met vriendelijke groet, Luca Bianchi", "Kind regards, Luca Bianchi"),
-    t("groet", "greeting, regards", "Met vriendelijke groet,", "Kind regards,"),
+    ph("Met vriendelijke groet", "Kind regards (to end a formal letter)", "Met vriendelijke groet,", "Kind regards,"),
   ],
   "a1-kleren": [
     t("kleren", "clothes", "Ik koop mijn kleren meestal op de markt.", "I usually buy my clothes at the market."),
@@ -49,10 +51,10 @@ export const teachNl: Record<string, TaughtWord[]> = {
     t("klantenservice", "customer service", "Beste klantenservice, ik heb een probleem.", "Dear customer service, I have a problem."),
   ],
   "a2-verleden": [
-    t("was", "was (past of zijn: ik/hij/zij was)", "Het weekend was heel leuk.", "The weekend was really nice."),
-    t("waren", "were (past of zijn: wij/jullie/zij waren)", "De mensen waren heel aardig.", "The people were very kind."),
-    t("had", "had (past of hebben: ik/hij/zij had)", "Ik had geen tijd.", "I didn't have time."),
-    t("vond", "found; thought (past of vinden: ik vond het leuk)", "Ik vond het een mooie dag.", "I thought it was a lovely day."),
+    ph("was", "was (past of zijn: ik/hij/zij was)", "Het weekend was heel leuk.", "The weekend was really nice."),
+    ph("waren", "were (past of zijn: wij/jullie/zij waren)", "De mensen waren heel aardig.", "The people were very kind."),
+    ph("had", "had (past of hebben: ik/hij/zij had)", "Ik had geen tijd.", "I didn't have time."),
+    ph("vond", "found; thought (past of vinden: ik vond het leuk)", "Ik vond het een mooie dag.", "I thought it was a lovely day."),
     t("geleden", "ago", "Drie jaar geleden ben ik naar Nederland gekomen.", "Three years ago I came to the Netherlands."),
     t("verkeerd", "wrong", "Ik ben in de verkeerde trein gestapt.", "I got on the wrong train."),
   ],
