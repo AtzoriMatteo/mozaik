@@ -1,3 +1,4 @@
+import { isItalianNumber, italianGrammarIn } from "./grammar-use";
 import type { LanguagePack } from "@/core/language-pack";
 import { lexicon } from "./lexicon";
 import { grammar } from "./grammar";
@@ -31,6 +32,8 @@ export const italian: LanguagePack = {
   checkerCovers: "Spelling looks right, and LanguageTool found no grammar problems.",
   spelling: { aff: "/dictionaries/it/index.aff", dic: "/dictionaries/it/index.dic" },
   languageTool: "it",
+  isNumberWord: isItalianNumber,
+  grammarIn: (text) => italianGrammarIn(italian, text),
   formulas: new Set([
     "ciao", "salve", "buongiorno", "buonasera", "buonanotte", "arrivederci", "arrivederla", "presto", "grazie", "prego",
     "scusa", "scusi", "sì", "no", "caro", "cara", "cari", "care", "gentile", "saluti", "baci", "abbracci", "auguri",

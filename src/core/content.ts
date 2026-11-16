@@ -1,5 +1,6 @@
 import type { CefrLevel } from "./language-pack";
 import type { WritingTask } from "./writing";
+import type { TaughtWord } from "./coherence";
 
 /**
  * Help for one word, written by hand for course texts.
@@ -12,6 +13,12 @@ export type WordHelp = {
   meaning: string;
   /** Dictionary form when the word in the text is inflected, e.g. "wonen". */
   base?: string;
+  /**
+   * The meaning to show on a card for this dictionary form, when `meaning`
+   * also covers another use of the same spelling (vragen = "questions" in a
+   * text, but "to ask" on a card).
+   */
+  dictionary?: string;
   /**
    * "Look closer": something that makes the word click or stick — literal
    * parts, a cognate plus the sound rule behind it, a memorable link.
@@ -138,6 +145,11 @@ export type Unit = {
   speaking?: UnitSpeaking;
   /** Writing topics; finishing WRITING_REQUIRED of them earns the unit's writing tile. */
   writing?: WritingTask[];
+  /**
+   * Words the unit teaches directly (in its Words section) because its tasks
+   * need them and its texts don't happen to use them: "lievelings-", "omdat".
+   */
+  teach?: TaughtWord[];
 };
 
 /** One tile in a word-order diagram. */

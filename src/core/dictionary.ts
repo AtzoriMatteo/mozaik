@@ -56,7 +56,7 @@ export const isVerb = (pack: LanguagePack, lemma: string) => verbsOf(pack).has(l
  * "number", even though the sentence keeps the form you read.
  */
 export function cardMeaning(pack: LanguagePack, lemma: string, formMeaning: string): string {
-  const own = pack.lexicon[lemma]?.meaning;
+  const own = pack.lexicon[lemma]?.dictionary ?? pack.lexicon[lemma]?.meaning;
   // A plural met in a text, with no entry for the singular: make the English singular too.
   const meaning = own ?? (pack.nounArticle?.(lemma) ? formMeaning.split(/([;,]\s*)/).map(singular).join("") : formMeaning);
   if (isVerb(pack, lemma) && !/^to /.test(meaning)) {

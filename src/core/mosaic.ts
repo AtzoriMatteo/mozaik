@@ -13,7 +13,7 @@ export const MOSAIC_TILES = MOSAIC_COLS * MOSAIC_ROWS;
 
 /** The activities that build a level's picture. */
 export function mosaicActivities(pack: LanguagePack, level: CefrLevel): Activity[] {
-  return activities(pack).filter((a) => a.unit.level === level && a.kind !== "speak");
+  return activities(pack).filter((a) => a.unit.level === level && a.kind !== "speak" && a.kind !== "words");
 }
 
 /** How many tiles are glazed: proportional, and all of them only when everything is done. */

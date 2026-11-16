@@ -86,6 +86,8 @@ export function minutesFor(pack: LanguagePack, a: Activity): number {
       return a.unit.level === "A1" ? 25 : 30;
     case "speak":
       return 10;
+    case "words":
+      return 8;
     default:
       return 10;
   }
@@ -129,6 +131,8 @@ export function remainingActivities(
   }
   const out: Activity[] = [];
   for (const list of byUnit.values()) {
+    // The unit's words come first: everything after builds on them.
+    out.push(...list.filter((a) => a.kind === "words"));
     const lanes = ["read", "listen", "grammar", "speak"].map((k) => list.filter((a) => a.kind === k));
     while (lanes.some((l) => l.length)) for (const lane of lanes) if (lane.length) out.push(lane.shift()!);
     out.push(...list.filter((a) => a.kind === "write"));

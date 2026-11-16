@@ -81,6 +81,16 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
       }
     }
   }
+  // Words units teach directly (for their writing and speaking) are drillable too.
+  for (const unit of pack.units) {
+    if (unit.level !== level) continue;
+    for (const t of unit.teach ?? []) {
+      const w = t.word.toLowerCase();
+      const lemma = (pack.lexicon[w]?.base ?? w).toLowerCase();
+      if (index.has(lemma) || lemma.includes(" ")) continue;
+      index.set(lemma, { word: w, surface: t.word, meaning: t.meaning, sentence: t.text, translation: t.translation, unitId: unit.id });
+    }
+  }
   return index;
 }
 

@@ -350,7 +350,7 @@ goedkoopste | cheapest | goedkoop
 gogh | Gogh (as in Van Gogh) | | | Dutch say it with two throaty g's: 'fan CHOCH'
 gooi | throw | gooien | | weggooien = throw away
 gordijnen | curtains | gordijn
-gouden | golden | goud | | de Gouden Eeuw = the Golden Age (the 1600s)
+gouden | golden | | goud (gold) + -en, like wood → wooden | de Gouden Eeuw = the Golden Age (the 1600s)
 grace | Grace (a name)
 gram | gram(s)
 grappen | jokes | grap

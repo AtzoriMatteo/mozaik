@@ -72,6 +72,20 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
         </div>
       ) : null}
 
+      {words.length > 0 ? (
+        <SkillSection skill="words" title="Words">
+          <Row
+            href={`/words/${lang}/${unit.id}`}
+            title="Words in this unit"
+            meta={[
+              keyWords.length ? `${keyWords.length} key words` : `${words.length} words`,
+              keyWords.slice(0, 4).map((w) => w.label).join(", ") + (keyWords.length > 4 ? "…" : ""),
+            ]}
+            done={progress.isDone({ kind: "words", id: unit.id })}
+          />
+        </SkillSection>
+      ) : null}
+
       <SkillSection skill="read" title="Reading">
         {unit.texts.map((t) => (
           <Row
@@ -97,20 +111,6 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
           />
         ))}
       </SkillSection>
-
-      {words.length > 0 ? (
-        <SkillSection skill="words" title="Words">
-          <Row
-            href={`/words/${lang}/${unit.id}`}
-            title="Words in this unit"
-            meta={[
-              keyWords.length ? `${keyWords.length} key words` : `${words.length} words`,
-              keyWords.slice(0, 4).map((w) => w.label).join(", ") + (keyWords.length > 4 ? "…" : ""),
-            ]}
-            done={false}
-          />
-        </SkillSection>
-      ) : null}
 
       {grammar.length > 0 ? (
         <SkillSection skill="grammar" title="Grammar">

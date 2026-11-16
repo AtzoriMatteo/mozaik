@@ -54,7 +54,7 @@ export function CourseOverview() {
               .filter((u) => u.level === level)
               .map((unit) => {
                 const { n } = unitNumber(pack, unit);
-                const items = activities(pack).filter((a) => a.unit.id === unit.id && a.kind !== "speak");
+                const items = activities(pack).filter((a) => a.unit.id === unit.id && a.kind !== "speak" && a.kind !== "words");
                 const done = items.filter((a) => progress.isDone(a)).length;
                 const look = unit.look ?? { motif: "tulip", glaze: "cobalt" };
                 return (

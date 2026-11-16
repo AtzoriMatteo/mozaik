@@ -24,10 +24,10 @@ describe("plans", () => {
     expect(addDays(MONDAY, 7)).toBe("2026-11-23");
   });
 
-  it("mixes kinds within a unit and keeps writing last", () => {
+  it("starts each unit with its words, mixes kinds within it and keeps writing last", () => {
     const list = remainingActivities(dutch, "A1", none, false);
     const firstUnit = list.filter((a) => a.unit.id === list[0].unit.id);
-    expect(firstUnit.slice(0, 3).map((a) => a.kind)).toEqual(["read", "listen", "grammar"]);
+    expect(firstUnit.slice(0, 4).map((a) => a.kind)).toEqual(["words", "read", "listen", "grammar"]);
     expect(firstUnit.at(-1)!.kind).toBe("write");
     expect(list.some((a) => a.kind === "speak")).toBe(false);
   });

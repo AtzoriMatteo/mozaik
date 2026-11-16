@@ -1,7 +1,8 @@
 import type { Unit } from "./content";
 import type { LanguagePack } from "./language-pack";
+import { unitWords } from "./unit-words";
 
-export type ActivityKind = "read" | "listen" | "grammar" | "write" | "speak";
+export type ActivityKind = "words" | "read" | "listen" | "grammar" | "write" | "speak";
 
 /** One thing to do in the course: read, listen, a grammar lesson, or speaking practice. */
 export type Activity = {
@@ -18,9 +19,24 @@ export function unitGrammar(pack: LanguagePack, unit: Unit) {
   return pack.grammar.filter((g) => g.unit === unit.id && g.lesson);
 }
 
-/** All activities in course order: per unit, texts, listening, grammar, writing, then speaking. */
+/**
+ * All activities in course order, like a textbook chapter: the unit's words
+ * first, then texts, listening, grammar, writing, and speaking.
+ */
 export function activities(pack: LanguagePack): Activity[] {
   return pack.units.flatMap((unit) => [
+    ...(unitWords(pack, unit).length
+      ? [
+          {
+            kind: "words" as const,
+            id: unit.id,
+            title: "Words",
+            titleTranslation: "The unit's new words",
+            unit,
+            href: `/words/${pack.code}/${unit.id}`,
+          },
+        ]
+      : []),
     ...unit.texts.map((t) => ({
       kind: "read" as const,
       id: t.id,
@@ -73,6 +89,7 @@ export function activities(pack: LanguagePack): Activity[] {
 }
 
 export const VERB: Record<ActivityKind, string> = {
+  words: "",
   read: "read",
   listen: "listen to",
   grammar: "learn",
@@ -84,6 +101,7 @@ export const VERB: Record<ActivityKind, string> = {
 export function activityLabel(a: Pick<Activity, "kind" | "title">): { verb: string; title: string; inTargetLanguage: boolean } {
   if (a.kind === "speak") return { verb: "", title: "speaking practice", inTargetLanguage: false };
   if (a.kind === "write") return { verb: "", title: "writing", inTargetLanguage: false };
+  if (a.kind === "words") return { verb: "", title: "the unit's words", inTargetLanguage: false };
   return { verb: VERB[a.kind], title: a.title, inTargetLanguage: a.kind !== "grammar" };
 }
 

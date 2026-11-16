@@ -18,7 +18,7 @@ import { logStudy } from "@/lib/plan/log";
 export type ProgressKind = ActivityKind | "beyond" | "writing";
 
 /** Every kind that is stored (and synced). "write" is derived from "writing". */
-export const PROGRESS_KINDS: ProgressKind[] = ["read", "listen", "grammar", "speak", "beyond", "writing"];
+export const PROGRESS_KINDS: ProgressKind[] = ["words", "read", "listen", "grammar", "speak", "beyond", "writing"];
 
 export const progressKey = (kind: ProgressKind, language: string) => `mozaik:${kind}:${language}`;
 const key = progressKey;

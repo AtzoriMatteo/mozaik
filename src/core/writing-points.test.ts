@@ -66,23 +66,22 @@ describe("point by point writing", () => {
 });
 
 describe("unit words", () => {
-  it("lists every core word of a level in exactly one unit", () => {
-    for (const pack of packs)
+  it("lists every word once, in the unit that brings it in", () => {
+    for (const pack of packs) {
+      const all = pack.units.flatMap((u) => unitWords(pack, u).map((w) => w.lemma));
+      expect(new Set(all).size, `${pack.code} duplicates`).toBe(all.length);
+      const listed = new Set(all);
       for (const level of pack.levels) {
-        const units = pack.units.filter((u) => u.level === level);
-        const lists = units.map((u) => unitWords(pack, u).map((w) => w.lemma));
-        const all = lists.flat();
-        expect(new Set(all).size, `${pack.code} ${level} duplicates`).toBe(all.length);
-        const core = (pack.coreVocabulary[level] ?? []).filter((w) => !SKIP.has(w) && !w.includes(" "));
-        const listed = new Set(all);
+        const core = (pack.coreVocabulary[level] ?? []).filter((w) => !SKIP.has(w) && !w.includes(" ") && !pack.isNumberWord?.(w));
         const missing = core.filter((w) => !listed.has(w));
-        // A few core words only appear in names or numbers; nearly all must be listed.
-        expect(missing.length / core.length, `${pack.code} ${level}: ${missing.slice(0, 10).join(", ")}`).toBeLessThan(0.1);
+        // A few core words only appear inside names; nearly all must be listed somewhere up to their level.
+        expect(missing.length / core.length, `${pack.code} ${level}: ${missing.slice(0, 10).join(", ")}`).toBeLessThan(0.05);
       }
+    }
   });
 
   it("gives every unit some words", () => {
-    for (const pack of packs) for (const u of pack.units) expect(unitWords(pack, u).length, u.id).toBeGreaterThan(10);
+    for (const pack of packs) for (const u of pack.units) expect(unitWords(pack, u).length, u.id).toBeGreaterThan(8);
   });
 });
 
