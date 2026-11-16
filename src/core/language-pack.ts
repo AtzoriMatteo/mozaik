@@ -63,6 +63,15 @@ export interface LanguagePack {
   wordFrequency?: Readonly<Record<string, number>>;
   /** Grammar checks for learner writing (spelling is done separately). */
   checkWriting?: (text: string) => WritingIssue[];
+  /** Is this word form used as a noun or a verb in this sentence? null when the sentence doesn't say. */
+  posInContext?: (form: string, sentence: string) => "noun" | "verb" | null;
+  /**
+   * Words with a noun sense and another sense (weg = road / away, boeken = books / to book).
+   * The sentence decides which one a card shows; with no clear noun use, the other sense.
+   */
+  homographs?: Readonly<Record<string, Homograph>>;
+  /** How a dictionary form is written on a card (Nederland, Duits); defaults to as is. */
+  displayCase?: (lemma: string) => string;
   /** Possible dictionary forms of an inflected word the lexicon doesn't list (groter → groot, katten → kat). */
   stems?: (word: string) => string[];
   /** Number words (drieëntwintig): taught as a system, never "untaught" one by one. */
@@ -125,4 +134,16 @@ export function unitNumber(pack: LanguagePack, unit: Unit): { n: number; of: num
 /** Every text in a pack, in course order. */
 export function allTexts(pack: LanguagePack): ReadingText[] {
   return pack.units.flatMap((u) => u.texts);
+}
+
+/** A word form with a noun sense and another one. */
+export interface Homograph {
+  /** The noun's meaning, as its dictionary card shows it. */
+  noun: string;
+  /** The noun's dictionary form, when the form is a plural (boeken → boek). */
+  nounLemma?: string;
+  /** The other sense (an adverb, an interjection, a verb). */
+  other: string;
+  /** The other sense's dictionary form, when it differs (reden → rijden). */
+  otherLemma?: string;
 }

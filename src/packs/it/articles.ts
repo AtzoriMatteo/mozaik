@@ -10,8 +10,8 @@ consiglio contorno cornetto corso cugino cuore cuscus dialetto dito dolce espres
 gemello genitore gesto giardino giorno ingegnere infermiere impiegato latte lavoro liceo limone medico mese minuto
 modo momento negozio nome nonno nord numero ospite padre paese panino papà pensionato pesce piatto piede posto pranzo
 professore quartiere ragazzo rito sabato saluto scontrino secondo signore spritz stipendio studente sud tavolo
-telefono tempo tesoro tipo tè uomo vino zio natale primo mammone insegnante pomeriggio ufficio taxi kiwi yogurt
-lunedì estero mezzo`;
+telefono tempo tesoro tipo tè uomo vino zio natale mammone insegnante pomeriggio ufficio taxi kiwi yogurt
+lunedì estero mezzo pane burro viaggio favore tortellino euro`;
 
 const F = `acqua amica arte attenzione avventura barba borsa bottiglia calma camera carne carta casa cassa città classe
 colazione commedia crema cucina cugina dieta ditta domenica donna età famiglia fame fine foto frutta giornata grafica
@@ -19,7 +19,7 @@ grappa guancia iscrizione infermiera lasagna lettera lingua macchina madre mamma
 medicina montagna moto nazionalità nonna oliva palla pala pancia parola pasta patata pausa persona piazza politica
 ragazza ragione regione scuola sera sorella spalla stazione storia strada studentessa tabaccheria tavola televisione
 terra tessera università verdura verità via voce volta zona coinquilina vicina zia figlia schiuma metà doppia
-maiuscola`;
+maiuscola spremuta arancia fila signora ingegneria`;
 
 /** Nouns the course uses in the plural only. */
 const PLURAL: Record<string, string> = { tagliatelle: "le", occhiali: "gli", jeans: "i", patatine: "le", lasagne: "le", capelli: "i" };

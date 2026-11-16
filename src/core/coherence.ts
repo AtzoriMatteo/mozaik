@@ -25,10 +25,31 @@ export type Gap = {
 
 /** Words a unit teaches outside its texts: listed in its Words section, with an example. */
 export type TaughtWord = Sentence & {
-  /** The word as it appears in the sentence (dictionary form when possible). */
+  /** The word in its dictionary form ("beloven"); the sentence may use another form ("beloof"). */
   word: string;
   meaning: string;
+  /** A set phrase or a form taught ahead of its grammar ("was", "Met vriendelijke groet"): listed, not a flashcard. */
+  phrase?: boolean;
 };
+
+/** The form of a taught word that its example sentence uses: beloven → "beloof", ster → "sterren". */
+export function formInSentence(pack: LanguagePack, t: TaughtWord): string {
+  const lemma = t.word.toLowerCase().replace(/-$/, "");
+  for (const tok of words(pack, t.text)) {
+    const w = tok.normalized;
+    if (w === lemma || w.startsWith(lemma)) return w;
+    if (pack.lexicon[w]?.base?.toLowerCase() === lemma || pack.verbFor?.(w) === lemma || pack.stems?.(w).includes(lemma)) return w;
+  }
+  // Otherwise the word sharing the longest start with it (ideale for ideaal, opgebeld for opbellen).
+  let best = "";
+  let bestLen = 1;
+  for (const tok of words(pack, t.text)) {
+    let n = 0;
+    while (n < lemma.length && tok.normalized[n] === lemma[n]) n++;
+    if (n > bestLen) [best, bestLen] = [tok.normalized, n];
+  }
+  return best || lemma;
+}
 
 const words = (pack: LanguagePack, text: string) => pack.tokenize(text).filter((t): t is Extract<Token, { kind: "word" }> => t.kind === "word");
 

@@ -5,6 +5,31 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-16 (evening) — Cards: the right sense, article and spelling
+
+Matteo saw "het eten" on a card whose sentence used eten as a verb. Every
+Dutch (1,776) and Italian (477) card was dumped and checked by hand.
+- One pile of flashcards: course words, unit words and saved words share
+  progress; a word saved twice is one card.
+- The sentence picks the sense. After de/het/een/mijn (or "een goede …")
+  a word is a noun; after ik/we/te/om or a helper verb it's a verb.
+  "Het eten is klaar" gives het eten = food, meal; "Wat eten we?" gives
+  eten = to eat.
+- Homographs are listed per language: weg (road / away), weer (weather /
+  again), boeken (books / to book), zorgen, landen, bakken, reden… With no
+  clear noun use, the card shows the other sense, without an article.
+- A verb used as a noun ("bij het uitstappen") keeps its verb card.
+- Verb cards always read "to …" (about 60 verbs fixed); noun cards never do,
+  and lose verb-form senses ("il telefono = phone", not "phone; I phone").
+- Articles: about 130 nouns given their de/het; statiegeld, verzorgingshuis
+  and waterschap corrected to het.
+- Dutch capitals on cards: Nederland, Nederlands, Duits, NS; maandag,
+  januari and tv stay lower case.
+- Unit word lists leave out names, places, letters, foreign words and
+  sounds (eh, haha, joh).
+- Tests guard all of this: no noun card with a verb meaning, no "to" on a
+  non-verb, no names in word lists, and the eten/weg/weer/boeken cases.
+
 ## 2026-11-16 — Textbook order: never ask for what hasn't been taught
 
 Matteo: a unit-1 writing task asked for "your favourite season" before the

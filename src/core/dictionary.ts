@@ -15,9 +15,101 @@ export function lemmaFor(w: { word: string; base?: string }): string {
 export const withArticle = (article: string, lemma: string) => (article.endsWith("'") ? `${article}${lemma}` : `${article} ${lemma}`);
 
 /** "de gracht", "het huis", "l'acqua", or just "lopen". */
-export function dictionaryLabel(pack: LanguagePack, lemma: string): string {
-  const article = pack.nounArticle?.(lemma);
-  return article ? withArticle(article, lemma) : lemma;
+/**
+ * The word as a card shows it: nouns with their article ("de gracht"),
+ * everything else bare. A word that is both a noun and a verb (eten) gets
+ * the article only in its noun sense: pass the card's meaning to decide.
+ */
+export function dictionaryLabel(pack: LanguagePack, lemma: string, meaning?: string): string {
+  const article = cardArticle(pack, lemma, meaning);
+  // leiden = to lead stays lower case; Leiden the city doesn't get a card.
+  const written = meaning && /^to /.test(meaning) ? lemma : (pack.displayCase?.(lemma) ?? lemma);
+  return article ? withArticle(article, written) : written;
+}
+
+/** The article a card's noun takes, or null (not a noun, or used as a verb or adverb here). */
+export function cardArticle(pack: LanguagePack, lemma: string, meaning?: string): string | null {
+  const article = pack.nounArticle?.(lemma) ?? null;
+  if (!article || (meaning && /^to /.test(meaning))) return null;
+  const homograph = pack.homographs?.[lemma];
+  if (homograph && meaning !== undefined && meaning === homograph.other) return null;
+  return article;
+}
+
+/** "walk, stroll" → "to walk, to stroll"; leaves "can, …", "(in 'tot ziens')" and parts already with to. */
+export function asVerbMeaning(meaning: string): string {
+  return meaning
+    .split(/;\s*/)
+    .map((part) =>
+      part
+        .split(/,\s*(?![^(]*\))/)
+        .map((m) => (/^(be |get |have )?\(|^(shall|will|can|could|may|might|must|to)\b/.test(m) ? m : `to ${m}`))
+        .join(", "),
+    )
+    .join("; ");
+}
+
+/** Keep the verb parts ("to eat") or the other parts ("food, meal") of a mixed meaning. */
+export function pickSense(meaning: string, pos: "noun" | "verb" | null): string {
+  if (!pos) return meaning;
+  const parts = meaning.split(/;\s*|,\s*(?![^(]*\))/);
+  const verb = parts.filter((p) => /^to /.test(p));
+  const other = parts.filter((p) => !/^to /.test(p));
+  if (!verb.length || !other.length) return meaning;
+  return (pos === "verb" ? verb : other).join(", ");
+}
+
+/**
+ * What a card says about a word met in a sentence: its dictionary form and
+ * the meaning of that form in this sentence. "iets te eten" gives
+ * eten = to eat; "het eten is klaar" gives het eten = food, meal; "we
+ * fietsen" gives fietsen = to cycle, not de fiets.
+ */
+export function cardSense(
+  pack: LanguagePack,
+  form: string,
+  help: { meaning: string; base?: string },
+  sentence: string,
+): { lemma: string; meaning: string } {
+  // The sentence's hint counts only when the word can be that: "te duur" is "too expensive", not a verb.
+  const hint = pack.posInContext?.(form, sentence) ?? null;
+  const base = (help.base ?? form).toLowerCase();
+  const homograph = pack.homographs?.[base] ?? pack.homographs?.[form.toLowerCase()];
+  if (homograph) {
+    // "twee dagen": a plural of the noun is the noun, whatever comes before it.
+    const plural = form.toLowerCase() !== base && form.toLowerCase().startsWith(base) && /(en|s)$/.test(form) && !homograph.nounLemma;
+    // "twee boeken": the lexicon reads the form as the plural, unless the sentence says verb.
+    // "een enkele keer": an inflected adjective, never the noun.
+    const adjective = form.toLowerCase() !== base && form.toLowerCase() === `${base}e`;
+    const asNoun = (hint === "noun" && !adjective) || (hint !== "verb" && (plural || (!!homograph.nounLemma && base === homograph.nounLemma)));
+    return asNoun
+      ? { lemma: homograph.nounLemma ?? base, meaning: homograph.noun }
+      : { lemma: homograph.otherLemma ?? base, meaning: homograph.other };
+  }
+  const canBeVerb = !!pack.verbFor?.(form) || isVerb(pack, (help.base ?? form).toLowerCase());
+  let lemma = (help.base ?? form).toLowerCase();
+  // "het schaatsen" is the verb used as a noun: with no article of its own, its card is the verb.
+  const pos = (hint === "verb" && !canBeVerb) || (hint === "noun" && !pack.nounArticle?.(lemma)) ? null : hint;
+  const inf = pack.verbFor?.(form);
+  if (pos === "verb" && inf && inf !== lemma && pack.nounArticle?.(lemma)) lemma = inf;
+  // Met in its dictionary form: the sentence's own meaning is the right sense.
+  // Met inflected (lacht): the dictionary form's own entry ("to laugh").
+  const dictionary = pack.lexicon[lemma]?.dictionary;
+  const own = form === lemma ? (dictionary && pos !== "noun" ? dictionary : help.meaning) : cardMeaning(pack, lemma, help.meaning);
+  let meaning = pickSense(own, pos);
+  const verb =
+    pos === "verb" || (pos === null && !pack.nounArticle?.(lemma) && (isVerb(pack, lemma) || pack.verbFor?.(lemma) === lemma));
+  if (verb) meaning = asVerbMeaning(meaning);
+  // "il telefono = phone; I phone": a noun card keeps only the noun's senses.
+  if (cardArticle(pack, lemma, meaning)) meaning = withoutVerbForms(meaning);
+  return { lemma, meaning };
+}
+
+/** Drops senses that are a conjugated verb ("I phone", "(they) work") from a noun's meaning. */
+function withoutVerbForms(meaning: string): string {
+  const parts = meaning.split(/;\s*/);
+  const kept = parts.filter((p) => !/^(I|you|he|she|we|they|\((I|you|he|she|it|we|they)\)) /.test(p));
+  return kept.length && kept.length < parts.length ? kept.join("; ") : meaning;
 }
 
 const verbCache = new WeakMap<LanguagePack, ReadonlySet<string>>();
@@ -59,12 +151,7 @@ export function cardMeaning(pack: LanguagePack, lemma: string, formMeaning: stri
   const own = pack.lexicon[lemma]?.dictionary ?? pack.lexicon[lemma]?.meaning;
   // A plural met in a text, with no entry for the singular: make the English singular too.
   const meaning = own ?? (pack.nounArticle?.(lemma) ? formMeaning.split(/([;,]\s*)/).map(singular).join("") : formMeaning);
-  if (isVerb(pack, lemma) && !/^to /.test(meaning)) {
-    return meaning
-      .split(/;\s*/)
-      .map((part) => part.split(/,\s*/).map((m) => (/^(be |get |have )?\(/.test(m) ? m : `to ${m.replace(/^to /, "")}`)).join(", "))
-      .join("; ");
-  }
+  if (isVerb(pack, lemma)) return asVerbMeaning(meaning);
   return meaning;
 }
 

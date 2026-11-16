@@ -153,7 +153,7 @@ export const lexiconAG: Lexicon = {
   ermee: { meaning: "with it/them", closer: "er + mee = there-with (cf. 'therewith')" },
   ernstigs: { meaning: "serious", base: "ernstig", closer: "ernstig ~ earnest", local: "niets ernstigs = nothing serious" },
   ervaring: { meaning: "experience" },
-  eten: { meaning: "eat; food, meal", local: "Het eten is klaar = dinner's ready" },
+  eten: { meaning: "to eat; food, meal", local: "Het eten is klaar = dinner's ready" },
   euro: { meaning: "euro", local: "Prices: 2,50 = twee euro vijftig (no 'and', no plural 'euros')" },
   even: { meaning: "just, for a moment", local: "even softens requests: Wacht even = hang on a sec" },
   extra: { meaning: "extra" },

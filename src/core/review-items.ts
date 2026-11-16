@@ -1,7 +1,8 @@
 import { helpFor, lemmaOf, type Exercise } from "./content";
 import type { CefrLevel, LanguagePack } from "./language-pack";
 import { isDue } from "./srs";
-import { cardMeaning, lemmaFor, withArticle } from "./dictionary";
+import { cardMeaning, cardSense, lemmaFor, withArticle } from "./dictionary";
+import { formInSentence } from "./coherence";
 
 /**
  * Everything that can come back in Review.
@@ -67,13 +68,15 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
       for (const tok of pack.tokenize(sentence.text)) {
         if (tok.kind !== "word") continue;
         const help = helpFor(pack.lexicon, text, tok.normalized);
-        const lemma = lemmaOf(help, tok.normalized);
-        if (!help || !core.has(lemma) || SKIP.has(lemma) || index.has(lemma)) continue;
+        if (!help) continue;
+        // The sense of the word in this very sentence: "iets te eten" is the verb, "het eten" the noun.
+        const { lemma, meaning } = cardSense(pack, tok.normalized, help, sentence.text);
+        if (!core.has(lemma) || SKIP.has(lemma) || index.has(lemma)) continue;
         index.set(lemma, {
           word: tok.normalized,
           surface: tok.text,
-          base: help.base,
-          meaning: cardMeaning(pack, lemma, help.meaning),
+          base: lemma === tok.normalized ? undefined : lemma,
+          meaning,
           sentence: sentence.text,
           translation: sentence.translation,
           unitId: unit.id,
@@ -85,10 +88,19 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
   for (const unit of pack.units) {
     if (unit.level !== level) continue;
     for (const t of unit.teach ?? []) {
-      const w = t.word.toLowerCase();
-      const lemma = (pack.lexicon[w]?.base ?? w).toLowerCase();
-      if (index.has(lemma) || lemma.includes(" ")) continue;
-      index.set(lemma, { word: w, surface: t.word, meaning: t.meaning, sentence: t.text, translation: t.translation, unitId: unit.id });
+      if (t.phrase) continue;
+      const lemma = t.word.toLowerCase();
+      if (index.has(lemma) || lemma.includes(" ") || lemma.endsWith("-")) continue;
+      const form = formInSentence(pack, t);
+      index.set(lemma, {
+        word: form,
+        surface: form,
+        base: form === lemma ? undefined : lemma,
+        meaning: t.meaning,
+        sentence: t.text,
+        translation: t.translation,
+        unitId: unit.id,
+      });
     }
   }
   return index;
@@ -147,7 +159,9 @@ export function eligibleItems(
     const lemma = lemmaFor(w);
     if (seen.has(lemma) || opts.schedules?.has(courseWordId(lemma))) continue;
     seen.add(lemma);
-    items.push({ ...w, meaning: cardMeaning(pack, lemma, w.meaning), kind: "word", id: `saved:${w.word}`, source: "saved" });
+    // The sense the word had where it was saved; a word saved inflected gets its dictionary form's meaning.
+    const meaning = w.word.includes(" ") ? w.meaning : cardSense(pack, w.word, { meaning: w.meaning, base: w.base ?? undefined }, w.sentence).meaning;
+    items.push({ ...w, meaning, kind: "word", id: `saved:${w.word}`, source: "saved" });
   }
 
   // Grammar: every exercise of the lessons you've finished.

@@ -30,7 +30,8 @@ describe("card meanings", () => {
     it(`${pack.code}: verb cards read "to …"`, () => {
       const bad: string[] = [];
       for (const [w, h] of Object.entries(pack.lexicon)) {
-        if (h.base || !(isVerb(pack, w) || pack.verbFor?.(w) === w)) continue;
+        // Homographs (eten = to eat / food) take their sense from the sentence: see card-sense.test.ts.
+        if (h.base || pack.homographs?.[w] || !(isVerb(pack, w) || pack.verbFor?.(w) === w)) continue;
         const m = cardMeaning(pack, w, h.meaning);
         for (const part of m.split(/;\s*|,\s*(?![^(]*\))/)) {
           const head = part.replace(/^to /, "").split(/[ (]/)[0];

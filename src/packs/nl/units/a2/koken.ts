@@ -180,7 +180,7 @@ export const koken: Unit = {
       ],
       dictation: [1, 7],
       words: {
-        noteren: { meaning: "note down", closer: "noteren ~ to note" },
+        noteren: { meaning: "to note down", closer: "noteren ~ to note" },
       },
     },
     {

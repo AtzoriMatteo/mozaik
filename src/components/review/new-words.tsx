@@ -68,7 +68,7 @@ export function NewWordsSession({
     );
   }
 
-  const dictionary = dictionaryLabel(pack, word.lemma);
+  const dictionary = dictionaryLabel(pack, word.lemma, word.meaning);
   return (
     <div>
       <p className="review-progress" aria-live="polite">

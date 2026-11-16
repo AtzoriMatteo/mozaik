@@ -3,7 +3,7 @@ import { parseLexicon } from "./parse";
 /** Word help, m–z. word | meaning | base | look closer | like a local */
 export const lexiconMZ = parseLexicon(`
 ma | but | | | Ma dai! = Come on! Ma che dici? = What are you saying?
-macchiato | 'stained': with a drop of milk | macchiare | macchia = stain, spot | caffè macchiato vs latte macchiato
+macchiato | 'stained': with a drop of milk (of coffee) | | macchia = stain, spot | caffè macchiato vs latte macchiato
 macchiare | to stain
 macchina | machine; car | | ~ machine | la macchina del caffè = coffee machine
 madre | mother | | Latin mater ~ maternal | Spoken: la mamma
@@ -352,7 +352,7 @@ tocchi | you touch | toccare
 torino | Turin
 torni | you come back | tornare | | Quando torni? = When are you coming back?
 tornare | to come back, to return | | ~ return
-tortellino | a small filled pasta from Bologna; the dog's name | | 'little cake' (torta) | Bologna's pride: tortellini in brodo
+tortellino | a small filled pasta from Bologna | | 'little cake' (torta) | Bologna's pride: tortellini in brodo
 tra | between, among | | | tra amici = between friends
 trovano | (si trovano) are found | trovare
 trovare | to find
