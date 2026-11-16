@@ -5,6 +5,25 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-16 (evening) — Review ladder: every step, gentler waits
+
+Matteo: he reached "English → type the Dutch" without ever getting the
+"de lente → ?" card, and the buttons jumped from 10 hours to 6 days.
+
+- **No step is skipped (Matteo).** Easy used to move a card up two rungs, so
+  it could skip a card type. Now every rating moves one rung at a time:
+  the word in its sentence (rungs 0–2), then the word on its own, always
+  (rung 3), then on its own, as a gap or heard (rung 4), then typing the
+  Dutch (rung 5+).
+- **Gentler waits (Matteo).** 1, 2, 4, 7, 12, 21, 40, 90 days. Hard repeats
+  the same wait, Good goes one rung up, Easy goes one rung up with half as
+  long again. Example on rung 3: Again 10 min · Hard 4 d · Good 7 d ·
+  Easy 11 d. "Tomorrow morning" shows as 1 d, not 10 h.
+- **Learned** (a glazed tile): from rung 4, about a week, as before.
+- **No migration (Claude).** New rungs are stored as 10 + rung; schedules
+  saved on the old ladder are read on the rung with the closest wait, so
+  everyone's cards keep their progress and due dates.
+
 ## 2026-11-16 (evening) — Cards: the right sense, article and spelling
 
 Matteo saw "het eten" on a card whose sentence used eten as a verb. Every

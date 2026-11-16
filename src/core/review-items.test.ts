@@ -4,7 +4,7 @@ import {
   buildSession, checkProduced, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor,
   type Done, type ReviewItem, type Schedule,
 } from "./review-items";
-import { GRADUATED_DUE, GRADUATED_STAGE } from "./srs";
+import { GRADUATED_DUE, GRADUATED_STAGE, storedStage } from "./srs";
 
 const none: Done = { read: new Set(), listen: new Set(), grammar: new Set(), speak: new Set() };
 const now = new Date("2026-11-12T15:00:00");
@@ -110,14 +110,18 @@ describe("building a session", () => {
 });
 
 describe("word card directions", () => {
+  const at = (r: number) => storedStage(r);
   it("shows the meaning card while a word is new", () => {
     expect(wordCardFor(0, "w:x", { recall: true, listen: true })).toBe("context");
   });
+  it("always shows the word on its own once, before any gap, sound or typing", () => {
+    for (const id of ["w:lente", "w:huis", "w:fiets", "w:a", "w:b"]) expect(wordCardFor(at(3), id, { recall: true, listen: true })).toBe("word");
+  });
   it("only uses directions that are switched on", () => {
-    for (let st = 2; st < 4; st++) expect(wordCardFor(st, "w:y", { recall: false, listen: false })).toBe("word");
-    for (let st = 4; st < 7; st++) expect(wordCardFor(st, "w:y", { recall: false, listen: false })).toBe("produce");
+    for (let r = 3; r < 5; r++) expect(wordCardFor(at(r), "w:y", { recall: false, listen: false })).toBe("word");
+    for (let r = 5; r < 9; r++) expect(wordCardFor(at(r), "w:y", { recall: false, listen: false })).toBe("produce");
     expect(wordCardFor(0, "w:y", { direction: "en-nl", recall: false, listen: false })).toBe("produce");
-    for (let st = 0; st < 7; st++) expect(wordCardFor(st, "w:y", { direction: "nl-en", recall: false, listen: false })).not.toBe("produce");
+    for (let r = 0; r < 9; r++) expect(wordCardFor(at(r), "w:y", { direction: "nl-en", recall: false, listen: false })).not.toBe("produce");
   });
 });
 

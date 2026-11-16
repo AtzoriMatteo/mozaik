@@ -1,6 +1,6 @@
 import { helpFor, lemmaOf, type Exercise } from "./content";
 import type { CefrLevel, LanguagePack } from "./language-pack";
-import { isDue } from "./srs";
+import { isDue, rungOf } from "./srs";
 import { cardMeaning, cardSense, lemmaFor, withArticle } from "./dictionary";
 import { formInSentence } from "./coherence";
 
@@ -275,12 +275,14 @@ export type WordCardKind = "context" | "word" | "recall" | "listen" | "produce";
 
 /**
  * Which way to show a word. In mixed review words climb a ladder as you know
- * them better:
- *   stage 0–1  the Dutch word in its sentence → what it means
- *   stage 2–3  the Dutch word on its own (or a gap in the sentence, or heard)
- *   stage 4+   the English → type the Dutch yourself
+ * them better, one rung at a time, so no step is ever skipped:
+ *   rungs 0–2  the Dutch word in its sentence → what it means
+ *   rung 3     the Dutch word on its own → what it means ("de lente")
+ *   rung 4     on its own, a gap in the sentence, or heard
+ *   rung 5+    the English → type the Dutch yourself
  * A miss sends the word back to the start, so it climbs again.
  * "nl-en" never asks you to produce; "en-nl" always does.
+ * stage is the stored stage (see srs.rungOf).
  */
 export function wordCardFor(
   stage: number,
@@ -289,11 +291,13 @@ export function wordCardFor(
 ): WordCardKind {
   const direction = opts.direction ?? "mixed";
   if (direction === "en-nl") return "produce";
-  let h = stage;
+  const rung = rungOf(stage);
+  let h = rung;
   for (const c of id) h = (h * 31 + c.charCodeAt(0)) >>> 0;
   const pick = (options: WordCardKind[]) => options[h % options.length];
-  if (stage < 2) return "context";
-  if (stage < 4 || direction === "nl-en") {
+  if (rung < 3) return "context";
+  if (rung === 3) return "word";
+  if (rung === 4 || direction === "nl-en") {
     const options: WordCardKind[] = ["word", "word"];
     if (opts.recall) options.push("recall");
     if (opts.listen) options.push("listen");
