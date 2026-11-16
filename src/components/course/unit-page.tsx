@@ -79,7 +79,10 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
             title="Words in this unit"
             meta={[
               keyWords.length ? `${keyWords.length} key words` : `${words.length} words`,
-              keyWords.slice(0, 4).map((w) => w.label).join(", ") + (keyWords.length > 4 ? "…" : ""),
+              [...keyWords.filter((w) => w.group === "noun"), ...keyWords.filter((w) => w.group !== "noun")]
+                .slice(0, 3)
+                .map((w) => w.label)
+                .join(", ") + "…",
             ]}
             done={progress.isDone({ kind: "words", id: unit.id })}
           />

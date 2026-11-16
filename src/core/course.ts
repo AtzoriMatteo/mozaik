@@ -31,7 +31,7 @@ export function activities(pack: LanguagePack): Activity[] {
             kind: "words" as const,
             id: unit.id,
             title: "Words",
-            titleTranslation: "The unit's new words",
+            titleTranslation: "Meet them before the texts",
             unit,
             href: `/words/${pack.code}/${unit.id}`,
           },
