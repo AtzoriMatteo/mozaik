@@ -5,6 +5,64 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-16 — Textbook order: never ask for what hasn't been taught
+
+Matteo: a unit-1 writing task asked for "your favourite season" before the
+course had taught "favourite"; the whole course, every language, must give
+all the pieces first, like a textbook, with help fading slowly by level.
+Also: flashcards said things like "to blows", and saved words, New words
+and unit words didn't share progress.
+
+**The rule (Matteo), checked in code (Claude).** Reading and listening may
+bring new words with tap help, as textbooks do. Everything a learner must
+produce or answer in the language may only use words met in that unit or
+an earlier one, and grammar taught by then: writing models, frames and
+hint words, speaking lines, grammar exercises, true/false statements,
+Dutch instructions. A test lists every gap; it is now empty for Dutch A1,
+Dutch A2 and Italian A1, and new content can't add gaps.
+- Grammar is checked too: past tenses, perfect, comparatives and
+  superlatives, omdat/dat/als clauses, om te, zou, zullen, er + preposition.
+- Some forms are taught early as fixed phrases, as textbooks do: was, waren,
+  had and vond at the start of A2 (in the Words section), before the simple
+  past lesson.
+
+**Fixing the content.** Every Dutch A1 and A2 and Italian A1 writing task
+was rewritten or given its missing words; nothing moved between units, so
+each unit's story stays the same. Examples: the unit-1 season task now
+asks for your favourite season, month and colour, with "lievelings-",
+"vinden" and the days of the week taught in unit 1; the A2 illness story
+is told in the perfect tense (the simple past comes in unit 5); recipes,
+reviews and complaints lost words like komijn, bijlage and erboven.
+About 60 grammar exercises and questions were reworded the same way.
+
+**Words first (Claude, Matteo's brief).** Each unit now starts with its
+Words step (Continue and the Plan go there first): the words the unit
+brings in for the first time, plus the ones it teaches on purpose for its
+tasks, each with an example sentence. "Done" on the Words page, or
+practising them, ticks the step. Words don't fill the mosaic.
+
+**Help fades slowly (Claude, Matteo's brief).**
+- A1 units 1–8: a sentence frame shown with every point ("Mijn
+  lievelingsseizoen is … ."), "Start from this", examples one tap away.
+- A1 units 9–12: frames one tap away.
+- A2: no frames; examples one tap away. From unit 6 the instructions are
+  in Dutch with the English underneath.
+- B1 (when written): instructions in the language only, phrases to borrow.
+- Texts are shorter early in a level: unit-1 notes are 20–60 words, A1
+  reaches 30–100 by its last third.
+
+**Cards (Claude).** 270 Dutch dictionary forms that only appeared inflected
+got their own meaning, so cards read "lachen = to laugh", not "to laughs";
+words like vragen and zijn show the verb meaning on cards. Tests check
+every inflected word has a proper dictionary entry and every verb card
+reads "to …".
+
+**One card per word (Matteo).** A word has one card wherever it comes
+from: New words, a unit's Words, or saving it while reading. A course card
+you already have keeps its progress if you save the same word later; the
+Words page shows Learning / Learned / Known for good from that one card.
+Separate decks you make yourself: not yet (Matteo: "a plus").
+
 ## 2026-11-15 (evening) — Writing you can trust, unit words, centred pages
 
 Matteo: the writing check ticked a point off for one word, never looked at
