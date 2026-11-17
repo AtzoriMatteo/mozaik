@@ -75,3 +75,14 @@ describe("story episodes (trial shape)", () => {
     expect(sessionSteps(null).steps).toContain("more");
   });
 });
+
+describe("gap exercises read as sentences", () => {
+  it("has a space on each side of every gap (Matteo: words ran together)", () => {
+    const all = [...dutch.grammar.flatMap((g) => g.lesson?.exercises ?? []), ...allEpisodes(dutch).flatMap((e) => e.notice.exercises)];
+    const bad = all
+      .filter((ex) => ex.kind === "fill" || ex.kind === "choice")
+      .filter((ex) => (ex.before !== "" && !/[\s(]$/.test(ex.before)) || (ex.after !== "" && !/^[\s.,!?:;)…]/.test(ex.after)))
+      .map((ex) => `${ex.before}___${ex.after}`);
+    expect(bad).toEqual([]);
+  });
+});
