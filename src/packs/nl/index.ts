@@ -1,4 +1,5 @@
 import type { LanguagePack, Token } from "@/core/language-pack";
+import { speakers } from "./speakers";
 import { segmentText } from "@/core/tokenize";
 import { lexicon } from "./lexicon";
 import { grammar } from "./grammar";
@@ -123,6 +124,7 @@ export const dutch: LanguagePack = {
   wordFrequency: zipf,
   cast,
   expressions,
+  speakers,
   slang,
   handbook,
   ...verbTools(() => dutch),

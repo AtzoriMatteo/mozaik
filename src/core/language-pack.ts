@@ -106,6 +106,8 @@ export interface LanguagePack {
   handbook?: Handbook;
   /** Fixed expressions (op tijd, er een nachtje over slapen) to recognise in texts and save as one card. */
   expressions?: readonly Expression[];
+  /** Who says each quoted turn in each reading text (see core/dialogue). */
+  speakers?: Readonly<Record<string, string>>;
   /** Bonus parts with real-life spoken and chat language, by unit. */
   slang?: readonly SlangPart[];
   /** Who speaks in the listening material, so recorded audio gives each character a fitting voice. */

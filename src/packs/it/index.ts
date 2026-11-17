@@ -1,4 +1,5 @@
 import { isItalianNumber, italianGrammarIn, italianStems } from "./grammar-use";
+import { speakers } from "./speakers";
 import type { LanguagePack } from "@/core/language-pack";
 import { lexicon } from "./lexicon";
 import { grammar } from "./grammar";
@@ -58,6 +59,7 @@ export const italian: LanguagePack = {
   articles: { definite: ["il", "lo", "la", "l'", "i", "gli", "le"], indefinite: ["un", "uno", "una", "un'"] },
   cast,
   expressions,
+  speakers,
   handbook,
   ...verbTools(() => italian),
   // c'è, dov'è, com'è and ecco do a verb's job.
