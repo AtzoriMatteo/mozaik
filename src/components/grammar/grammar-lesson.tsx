@@ -224,7 +224,7 @@ function ExampleLine({ example, lang }: { example: Example; lang: string }) {
 
 /* ---------------------------------------------------------------- */
 
-function ExerciseRunner({
+export function ExerciseRunner({
   lang,
   seed,
   exercises,

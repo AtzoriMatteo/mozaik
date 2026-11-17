@@ -5350,6 +5350,7 @@ button.vocab-word:hover {
 .reader-body .turn[data-speaker="1"] { --sp: var(--glaze-copper); }
 .reader-body .turn[data-speaker="2"] { --sp: var(--glaze-manganese); }
 .reader-body .turn[data-speaker="3"] { --sp: var(--glaze-ochre); }
+.reader-body .turn[data-speaker="4"] { --sp: var(--glaze-iron); }
 .turn-speaker {
   display: block;
   font-family: var(--font-ui);
@@ -5361,3 +5362,94 @@ button.vocab-word:hover {
   padding-top: 0.25em;
 }
 .reader-body .turn-narration { color: var(--ink); }
+
+/* The sentence being heard lights up softly while a text plays. */
+.reader-body .sentence[data-active] {
+  background: color-mix(in srgb, var(--glaze-ochre) 18%, transparent);
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ---------------------------------------------------------------
+ * Trial: Today and story episodes.
+ * ------------------------------------------------------------- */
+.trial-card {
+  display: grid;
+  gap: 0.15rem;
+  max-width: 34rem;
+  margin: 1.5rem auto 0;
+  padding: 0.9rem 1.1rem;
+  background: var(--tile);
+  border: 1px solid var(--grout);
+  border-left: 3px solid var(--glaze-ochre);
+  color: var(--ink);
+  text-decoration: none;
+}
+.trial-card:hover { border-color: var(--accent); }
+.trial-card-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--glaze-ochre);
+  margin: 0;
+}
+.trial-card-title { font-family: var(--font-read); font-size: 1.15rem; color: var(--heading, var(--ink)); }
+.trial-card-detail { font-size: 0.9rem; color: var(--ink-muted); }
+
+.story-section {
+  margin: 0 0 2rem;
+  padding: 1rem 1.1rem;
+  background: var(--tile);
+  border-left: 3px solid var(--glaze-ochre);
+}
+.story-section h2 { margin: 0.1rem 0 0.4rem; }
+.story-episodes { margin: 0.5rem 0 1rem; padding-left: 0; list-style: none; display: grid; gap: 0.35rem; }
+.story-episodes a { font-family: var(--font-read); font-size: 1.05rem; }
+.story-episode-en { font-family: var(--font-ui); font-size: 0.85rem; color: var(--ink-muted); }
+.story-episode-done { color: var(--ok); }
+
+.today { max-width: 34rem; margin: 0 auto; }
+.today-trial { font-size: 0.85rem; color: var(--ink-muted); margin: 0 0 0.25rem; }
+.today-length { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 0.35rem; }
+.today-meta { font-size: 0.9rem; color: var(--ink-muted); margin: 0 0 1.25rem; }
+.today-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.today-steps li { padding: 0.8rem 1rem; background: var(--tile); border: 1px solid var(--grout); }
+.today-steps li[data-state="now"] { border-color: var(--accent); border-left: 3px solid var(--accent); }
+.today-steps li[data-state="done"] { opacity: 0.7; }
+.today-steps p { margin: 0.2rem 0 0.6rem; color: var(--ink-muted); font-size: 0.95rem; }
+.today-step-head { display: flex; align-items: baseline; gap: 0.5rem; }
+.today-step-head h2 { font-size: 1.05rem; margin: 0; flex: 1; }
+.today-tick { width: 1.1rem; color: var(--ok); font-weight: 700; }
+.today-min { font-size: 0.85rem; color: var(--ink-muted); white-space: nowrap; }
+.today-later .button { background: transparent; color: var(--accent); }
+.today-later { opacity: 0.85; }
+.today-done { margin-top: 1.5rem; }
+
+.story-step { max-width: var(--measure); }
+.step-dots { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; padding: 0; margin: 0 0 1rem; font-size: 0.78rem; }
+.step-dots li { padding: 0.1rem 0.5rem; border: 1px solid var(--grout); border-radius: 3px; color: var(--ink-muted); }
+.step-dots li[data-state="now"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.step-dots li[data-state="done"] { background: var(--glaze); color: var(--ink); }
+.story-skip { display: block; margin-top: 0.75rem; }
+.notice-kicker { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--glaze-manganese); margin: 0; }
+.story-notice h2, .say-back h2, .story-words h2 { margin: 0.2rem 0 0.5rem; font-size: 1.2rem; }
+.notice-examples { list-style: none; padding: 0; margin: 0.75rem 0 1rem; display: grid; gap: 0.35rem; font-family: var(--font-read); font-size: 1.15rem; }
+.notice-examples li { padding-left: 0.75rem; border-left: 3px solid var(--glaze-manganese); }
+.say-frame { font-family: var(--font-read); font-size: 1.2rem; margin: 0.5rem 0; }
+.say-hint { font-size: 0.9rem; color: var(--ink-muted); }
+.say-model { margin-top: 0.5rem; padding: 0.75rem 1rem; background: var(--glaze); }
+.say-model p { margin: 0 0 0.35rem; }
+.say-model strong { font-family: var(--font-read); font-size: 1.15rem; font-weight: 600; }
+.story-words ul { list-style: none; padding: 0; margin: 0.75rem 0 1rem; display: grid; gap: 0.4rem; }
+.story-words li { display: flex; align-items: center; gap: 0.6rem; padding: 0.45rem 0.7rem; background: var(--tile); }
+.story-word { font-family: var(--font-read); font-size: 1.1rem; font-weight: 600; }
+.story-word-meaning { flex: 1; color: var(--ink-muted); font-size: 0.92rem; }
+
+/* A chip that's switched on (session length, Textbook Dutch, English…). */
+.chip[aria-pressed="true"]:not(.chip-save) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--tile);
+}

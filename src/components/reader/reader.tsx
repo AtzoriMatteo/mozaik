@@ -3,8 +3,8 @@
 import { LearningTip } from "@/components/learning-tip";
 import { glueTokens } from "@/core/glue";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { expressionsAt, helpFor, type WordHelp } from "@/core/content";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { expressionsAt, helpFor, type ReadingText, type Unit, type WordHelp } from "@/core/content";
 import { allTexts, type LanguagePack, type Token } from "@/core/language-pack";
 import { layoutDialogue, parseSpeakers } from "@/core/dialogue";
 import { nextActivity } from "@/core/course";
@@ -29,16 +29,100 @@ type WordRef = {
   help: WordHelp | undefined;
 };
 
-/** The reading screen: a text where every word can be tapped for help. */
+/** The reading screen for a course text: the text, then its questions and the way on. */
 export function Reader({ lang, textId }: { lang: string; textId: string }) {
   const pack = getPack(lang) as LanguagePack;
   const texts = allTexts(pack);
-  const index = texts.findIndex((t) => t.id === textId);
-  const text = texts[index];
+  const text = texts.find((t) => t.id === textId)!;
   const next = nextActivity(pack, { kind: "read", id: textId });
   const unit = pack.units.find((u) => u.texts.some((t) => t.id === textId));
-  const saved = useSavedWords(pack.code);
   const { markRead } = useReadTexts(pack.code);
+  const [check, setCheck] = useState<"idle" | "running" | { right: number; total: number }>("idle");
+  const tasks = text.tasks ?? [];
+  return (
+    <ReaderView pack={pack} text={text} unit={unit} flagKind="text">
+      <footer className="reader-end">
+        {tasks.length > 0 && check === "idle" ? (
+          <div className="check-invite">
+            <h2>Did you get it?</h2>
+            <p>{tasks.length} quick questions about the text. You can look back at it anytime.</p>
+            <div className="button-row">
+              <button type="button" className="button" onClick={() => setCheck("running")}>
+                Check your understanding
+              </button>
+              <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} quiet />
+            </div>
+          </div>
+        ) : null}
+        {check === "running" ? (
+          <TaskRunner
+            tasks={tasks}
+            lang={pack.code}
+            seed={text.id}
+            onDone={(right, total) => {
+              setCheck({ right, total });
+              // Finishing the questions counts as reading it, wherever you go next.
+              markRead(text.id);
+            }}
+          />
+        ) : null}
+        {typeof check === "object" ? (
+          <p className="score-line">
+            {check.right} of {check.total} right.
+            {check.right / check.total >= 0.7 ? " You understood this text well." : " Read it once more tomorrow: it gets easier."}
+          </p>
+        ) : null}
+        {tasks.length === 0 || typeof check === "object" ? (
+          <>
+            <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
+            <LearningTip pack={pack} place="read" />
+          </>
+        ) : null}
+      </footer>
+    </ReaderView>
+  );
+}
+
+/**
+ * A text where every word can be tapped for help, dialogue laid out by
+ * speaker, and the whole text playable while the sentence being read lights
+ * up. Used by course texts and story episodes; `children` is what follows.
+ */
+export function ReaderView({
+  pack,
+  text,
+  unit,
+  flagKind,
+  back,
+  kicker,
+  flow = false,
+  onListenEnd,
+  children,
+}: {
+  pack: LanguagePack;
+  text: ReadingText;
+  unit?: Unit;
+  flagKind: "text" | "story";
+  /** Where the back link goes, when not the unit page. */
+  back?: { href: string; label: string };
+  /** Small line above the title, when not the unit's name. */
+  kicker?: ReactNode;
+  /** Fluency replay: listen straight through, no help panel hints. */
+  flow?: boolean;
+  onListenEnd?: () => void;
+  children?: ReactNode;
+}) {
+  const saved = useSavedWords(pack.code);
+  const [active, setActive] = useState<number | null>(null);
+  const sentenceStart = useMemo(() => {
+    const out: number[] = [];
+    let n = 0;
+    for (const p of text.paragraphs) {
+      out.push(n);
+      n += p.length;
+    }
+    return out;
+  }, [text]);
 
   // Tokenise once and give every word a stable key, so the arrow keys can
   // move through them in reading order.
@@ -68,8 +152,6 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
   }, [pack, text]);
 
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
-  const [check, setCheck] = useState<"idle" | "running" | { right: number; total: number }>("idle");
-  const tasks = text.tasks ?? [];
   const selected = words.find((w) => w.key === selectedKey) ?? null;
   // A phrase: picked by tapping its first and last word (or a known expression).
   const [picking, setPicking] = useState(false);
@@ -195,23 +277,32 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
 
   return (
     <article className="reader">
-      <Link href={unit ? `/course/${pack.code}/${unit.id}` : "/course"} className="back-link">
-        {unit ? `Back to ${unit.titleTranslation}` : "Course"}
+      <Link href={back?.href ?? (unit ? `/course/${pack.code}/${unit.id}` : "/course")} className="back-link">
+        {back?.label ?? (unit ? `Back to ${unit.titleTranslation}` : "Course")}
       </Link>
-      {unit ? (
+      {kicker ?? (unit ? (
         <p className="reader-unit">
           <span className="level-tag">{unit.level}</span>
           <span lang={pack.code}>{unit.title}</span>
         </p>
-      ) : null}
+      ) : null)}
       <header className="reader-head">
         <h1 lang={pack.code}>{text.title}</h1>
         <p className="reader-subtitle">{text.titleTranslation}</p>
       </header>
 
       <div className="reader-tools">
-        <p className="reader-hint">Tap any word for help.</p>
-        <ListenControls lang={pack.code} sentences={text.paragraphs.flat().map((s) => s.text)} />
+        <p className="reader-hint">{flow ? "Listen and read along. Don't stop for words you don't know." : "Tap any word for help."}</p>
+        <ListenControls
+          lang={pack.code}
+          sentences={text.paragraphs.flat().map((s) => s.text)}
+          label={flow ? "Play, no stopping" : undefined}
+          onLine={(i) => {
+            // Heard to the end (not stopped halfway): that's a finished replay.
+            if (i === null && active === text.paragraphs.flat().length - 1) onListenEnd?.();
+            setActive(i);
+          }}
+        />
       </div>
 
       <div className="reader-body" lang={pack.code}>
@@ -221,7 +312,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
             return (
               <p key={p}>
                 {sentences.map((tokens, s) => (
-                  <span key={s}>
+                  <span key={s} className="sentence" data-active={active === sentenceStart[p] + s || undefined}>
                     {renderRun(tokens, 0, tokens.length)}{" "}
                   </span>
                 ))}
@@ -232,11 +323,11 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
           return (
             <div key={p} className="dialogue">
               {blocks.map((b, bi) => (
-                <p key={bi} className={b.speaker ? "turn" : "turn-narration"} data-speaker={b.speaker ? castIndex(b.speaker) % 4 : undefined}>
+                <p key={bi} className={b.speaker ? "turn" : "turn-narration"} data-speaker={b.speaker ? castIndex(b.speaker) % 5 : undefined}>
                   {b.speaker ? <span className="turn-speaker">{b.speaker}</span> : null}
                   <span className="turn-text">
                     {b.parts.map((part, pi) => (
-                      <span key={pi}>
+                      <span key={pi} className="sentence" data-active={active === sentenceStart[p] + part.sentence || undefined}>
                         {renderRun(sentences[part.sentence], part.from, part.to)}
                         {part.to === sentences[part.sentence].length ? " " : null}
                       </span>
@@ -249,44 +340,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
         })}
       </div>
 
-      <footer className="reader-end">
-        {tasks.length > 0 && check === "idle" ? (
-          <div className="check-invite">
-            <h2>Did you get it?</h2>
-            <p>{tasks.length} quick questions about the text. You can look back at it anytime.</p>
-            <div className="button-row">
-              <button type="button" className="button" onClick={() => setCheck("running")}>
-                Check your understanding
-              </button>
-              <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} quiet />
-            </div>
-          </div>
-        ) : null}
-        {check === "running" ? (
-          <TaskRunner
-            tasks={tasks}
-            lang={pack.code}
-            seed={text.id}
-            onDone={(right, total) => {
-              setCheck({ right, total });
-              // Finishing the questions counts as reading it, wherever you go next.
-              markRead(text.id);
-            }}
-          />
-        ) : null}
-        {typeof check === "object" ? (
-          <p className="score-line">
-            {check.right} of {check.total} right.
-            {check.right / check.total >= 0.7 ? " You understood this text well." : " Read it once more tomorrow: it gets easier."}
-          </p>
-        ) : null}
-        {tasks.length === 0 || typeof check === "object" ? (
-          <>
-            <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
-            <LearningTip pack={pack} place="read" />
-          </>
-        ) : null}
-      </footer>
+      {children}
 
       {selected ? (
         <WordPanel
@@ -304,7 +358,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
             setRange(null);
             setPicking(false);
           }}
-          flag={{ language: pack.code, itemKind: "text", itemId: text.id }}
+          flag={{ language: pack.code, itemKind: flagKind, itemId: text.id }}
         >
           <ExpressionBox
             key={`${selected.key}-${range?.from}-${range?.to}`}

@@ -130,6 +130,21 @@ export function productionItems(pack: LanguagePack, unit: Unit): { where: string
     const own = t.paragraphs.flat().map((s) => s.text).join(" ");
     (t.tasks ?? []).forEach((task, i) => taskStrings(task).filter((x) => !own.includes(x)).forEach((text) => out.push({ where: `reading ${t.id} task ${i + 1}`, text })));
   }
+  // The story: what the learner says back, and the noticing exercises.
+  for (const e of unit.story?.episodes ?? []) {
+    e.say.forEach((x, i) => {
+      out.push({ where: `story ${e.id} say ${i + 1}`, text: x.model });
+      if (x.frame) out.push({ where: `story ${e.id} say ${i + 1} frame`, text: x.frame.replace(/…/g, " ") });
+    });
+    e.notice.exercises.forEach((ex, i) =>
+      grammarStrings(ex)
+        .map((text) => text.replace(/\([^)]*\)/g, " "))
+        .filter((text) => words(pack, text).some((t) => pack.lexicon[t.normalized] || pack.verbFor?.(t.normalized)))
+        .forEach((text) => out.push({ where: `story ${e.id} notice ${i + 1}`, text })),
+    );
+    const own = e.paragraphs.flat().map((s) => s.text).join(" ");
+    (e.tasks ?? []).forEach((task, i) => taskStrings(task).filter((x) => !own.includes(x)).forEach((text) => out.push({ where: `story ${e.id} task ${i + 1}`, text })));
+  }
   for (const l of unit.listening) {
     const own = l.lines.map((s) => s.text).join(" ");
     (l.tasks ?? []).forEach((task, i) => taskStrings(task).filter((x) => !own.includes(x)).forEach((text) => out.push({ where: `listening ${l.id} task ${i + 1}`, text })));
@@ -143,6 +158,7 @@ function unitInput(pack: LanguagePack, unit: Unit): string[] {
     ...unit.texts.flatMap((t) => t.paragraphs.flat().map((s) => s.text)),
     ...unit.listening.flatMap((l) => l.lines.map((s) => s.text)),
     ...(unit.teach ?? []).flatMap((w) => [w.text, w.word]),
+    ...(unit.story?.episodes ?? []).flatMap((e) => e.paragraphs.flat().map((s) => s.text)),
   ];
   for (const g of pack.grammar) {
     if (g.unit !== unit.id || !g.lesson) continue;

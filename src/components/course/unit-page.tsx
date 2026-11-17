@@ -36,6 +36,7 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
   const keyWords = words.filter((w) => w.core);
   const slang = slangForUnit(pack, unit.id);
   const slangDone = useProgress("slang", pack.code).doneIds;
+  const storyDone = useProgress("story", pack.code).doneIds;
   const beyond = resourcesFor(pack, unit.level).filter((r) => r.units?.includes(unit.id));
 
   return (
@@ -74,6 +75,27 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
             </span>
           </NextStep>
         </div>
+      ) : null}
+
+      {unit.story ? (
+        <section className="story-section" aria-labelledby="story-title">
+          <p className="trial-card-kicker">Trial</p>
+          <h2 id="story-title">
+            Story: <span lang={lang}>{unit.story.title}</span>
+          </h2>
+          <p>{unit.story.intro}</p>
+          <ol className="story-episodes">
+            {unit.story.episodes.map((e, i) => (
+              <li key={e.id}>
+                <Link href={`/story/${lang}/${e.id}`}>
+                  <span lang={lang}>{i + 1}. {e.title}</span> <span className="story-episode-en">{e.titleTranslation}</span>
+                </Link>
+                {storyDone.has(e.id) ? <span className="story-episode-done" aria-label="done"> ✓</span> : null}
+              </li>
+            ))}
+          </ol>
+          <Link href="/today" className="button button-quiet">Today&apos;s session</Link>
+        </section>
       ) : null}
 
       {words.length > 0 ? (

@@ -7,7 +7,18 @@ import { playLines, useHasVoice } from "@/lib/speech";
  * "Listen" for a whole text: recorded with a natural voice when available,
  * otherwise the device's own voice. Normal or slow speed; tap again to stop.
  */
-export function ListenControls({ lang, sentences }: { lang: string; sentences: string[] }) {
+export function ListenControls({
+  lang,
+  sentences,
+  label = "Listen to the text",
+  onLine,
+}: {
+  lang: string;
+  sentences: string[];
+  label?: string;
+  /** The sentence being heard (its index), or null when playback ends. */
+  onLine?: (i: number | null) => void;
+}) {
   const hasVoice = useHasVoice(lang);
   const [playing, setPlaying] = useState(false);
   const [slow, setSlow] = useState(false);
@@ -15,6 +26,10 @@ export function ListenControls({ lang, sentences }: { lang: string; sentences: s
 
   // Stop when leaving the page.
   useEffect(() => () => stop.current?.(), []);
+  const lineRef = useRef(onLine);
+  useEffect(() => {
+    lineRef.current = onLine;
+  });
 
   if (!hasVoice) return null;
 
@@ -23,6 +38,7 @@ export function ListenControls({ lang, sentences }: { lang: string; sentences: s
       stop.current?.();
       stop.current = null;
       setPlaying(false);
+      lineRef.current?.(null);
       return;
     }
     setPlaying(true);
@@ -33,6 +49,7 @@ export function ListenControls({ lang, sentences }: { lang: string; sentences: s
         rate: slow ? 0.7 : 0.9,
         onLine: (i) => {
           if (i === null) setPlaying(false);
+          lineRef.current?.(i);
         },
       },
     );
@@ -41,7 +58,7 @@ export function ListenControls({ lang, sentences }: { lang: string; sentences: s
   return (
     <div className="listen-controls">
       <button type="button" className="chip" onClick={play} aria-pressed={playing}>
-        {playing ? "Stop" : "Listen to the text"}
+        {playing ? "Stop" : label}
       </button>
       <label className="slow-toggle">
         <input type="checkbox" checked={slow} onChange={(e) => setSlow(e.target.checked)} />

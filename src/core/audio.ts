@@ -77,7 +77,7 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
     }
   }
   for (const unit of pack.units) {
-    for (const text of unit.texts) {
+    for (const text of [...unit.texts, ...(unit.story?.episodes ?? [])]) {
       for (const s of text.paragraphs.flat()) add({ text: s.text, role: "narrator", gender: cast?.narrator ?? "f", group: text.id });
     }
   }

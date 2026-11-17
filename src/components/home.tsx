@@ -2,6 +2,7 @@
 
 import { LearningTip } from "@/components/learning-tip";
 import Link from "next/link";
+import { allEpisodes } from "@/core/story";
 import { buildSession, REVIEW_KINDS } from "@/core/review-items";
 import { currentLevel, mosaicActivities } from "@/core/mosaic";
 import { useReview } from "@/lib/review/use-review";
@@ -80,6 +81,14 @@ export function Home() {
           </Link>
         ) : null}
       </div>
+
+      {allEpisodes(pack).length > 0 ? (
+        <Link href="/today" className="trial-card">
+          <span className="trial-card-kicker">Trial</span>
+          <span className="trial-card-title">Today: learn through a story</span>
+          <span className="trial-card-detail">Review, then an episode you read while you hear it. You choose how long.</span>
+        </Link>
+      ) : null}
 
       <LearningTip pack={pack} place="home" />
     </>
