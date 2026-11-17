@@ -29,9 +29,9 @@ describe("spaced repetition", () => {
   });
 
   it("keeps a hard word on its rung, with the same wait again", () => {
-    const hard = schedule(rung(3), "hard", now); // rung 3 waits 4 days
-    expect(rungOf(hard.stage)).toBe(3);
-    expect(hard.dueAt.getDate()).toBe(16);
+    const hard = schedule(rung(2), "hard", now); // rung 2: Hard is 2 days
+    expect(rungOf(hard.stage)).toBe(2);
+    expect(hard.dueAt.getDate()).toBe(14);
   });
 
   it("brings a hard new word back in an hour", () => {
@@ -43,10 +43,22 @@ describe("spaced repetition", () => {
   it("gives the four buttons growing, close waits", () => {
     expect(REVIEW_RESULTS.map((r) => describeWait(0, r, now))).toEqual(["10 min", "1 h", "1 d", "2 d"]);
     expect(REVIEW_RESULTS.map((r) => describeWait(rung(1), r, now))).toEqual(["10 min", "1 d", "2 d", "3 d"]);
-    expect(REVIEW_RESULTS.map((r) => describeWait(rung(3), r, now))).toEqual(["10 min", "4 d", "7 d", "11 d"]);
+    expect(REVIEW_RESULTS.map((r) => describeWait(rung(9), r, now))).toEqual(["10 min", "7 d", "12 d", "18 d"]);
     for (let r = 0; r <= MAX_STAGE; r++) {
       const ms = REVIEW_RESULTS.map((res) => schedule(rung(r), res, now).dueAt.getTime());
-      for (let i = 1; i < ms.length; i++) expect(ms[i]).toBeGreaterThan(ms[i - 1]);
+      for (let i = 1; i < ms.length; i++) expect(ms[i]).toBeGreaterThanOrEqual(ms[i - 1]);
+      expect(ms[3]).toBeGreaterThan(ms[1]);
+    }
+  });
+
+  it("starts the waits small again whenever a word moves to a new kind of card (Matteo)", () => {
+    // Rung 3: on its own. Rung 4: on its own, a gap or heard. Rung 5: typing.
+    for (const r of [3, 4, 5]) {
+      expect(REVIEW_RESULTS.map((res) => describeWait(rung(r), res, now)), `rung ${r}`).toEqual(["10 min", "1 d", "1 d", "2 d"]);
+    }
+    for (let r = 0; r <= MAX_STAGE; r++) {
+      const easy = schedule(rung(r), "easy", now).dueAt.getTime() - now.getTime();
+      if (r < 6) expect(easy, `rung ${r}`).toBeLessThan(6.5 * 24 * 3600 * 1000);
     }
   });
 
@@ -59,7 +71,11 @@ describe("spaced repetition", () => {
   });
 
   it("reads schedules saved on the old ladder on the rung with the closest wait", () => {
-    expect([0, 1, 2, 3, 4, 5, 6].map(rungOf)).toEqual([0, 1, 3, 4, 5, 7, 8]);
+    expect([0, 1, 2, 3, 4, 5, 6].map(rungOf)).toEqual([0, 1, 3, 4, 10, 11, 12]);
+    // 16 Nov ladder (10 + rung): same card, closest wait. The word Matteo saw
+    // on "just the Dutch word" (rung 3) stays there, now with 1 d / 1 d / 2 d.
+    expect([10, 11, 12, 13, 14, 15, 16, 17, 18].map(rungOf)).toEqual([0, 1, 2, 3, 4, 10, 11, 12, 12]);
+    expect(describeWait(13, "hard", now)).toBe("1 d");
     expect(rungOf(GRADUATED_STAGE)).toBe(0);
   });
 
