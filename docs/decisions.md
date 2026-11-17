@@ -5,6 +5,20 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 — Vercel: only the live site deploys
+
+Vercel warned that the free plan's 10 GB of deployment storage is 75% used.
+Each deployment is about 90 MB (82 MB of it recorded audio), and every PR
+made a preview deployment as well as the real one.
+
+- **Preview deployments are off (Claude).** Only `main` deploys; PR branches
+  are checked by the tests in GitHub Actions instead. Roughly halves the
+  storage used per change.
+- No upgrade needed: above the limit, Vercel deletes old deployments, but
+  always keeps the 10 most recent production ones and the live site.
+- If storage keeps growing (more audio as the course grows): move the audio
+  out of the deployment into Supabase Storage. Matteo to decide.
+
 ## 2026-11-17 (late) — One street, a different lead each unit
 
 Matteo: roll the story units out to the whole course, but keep the variety
