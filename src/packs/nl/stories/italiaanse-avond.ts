@@ -113,9 +113,9 @@ export const italiaanseAvond: Story = {
         explain: "To say something is there (or isn't), Dutch starts with er: er is + one thing, er zijn + more than one. Geen makes it 'no'.",
         examples: ["Er is geen melk en er zijn geen eieren meer.", "Er is één probleem"],
         exercises: [
-          { kind: "fill", before: "Er", after: "geen melk.", answers: ["is"], translation: "There's no milk." },
-          { kind: "fill", before: "Er", after: "geen eieren.", answers: ["zijn"], translation: "There are no eggs." },
-          { kind: "choice", before: "Er", after: "drie tomaten in de koelkast.", options: ["is", "zijn"], answer: 1, translation: "There are three tomatoes in the fridge." },
+          { kind: "fill", before: "Er ", after: " geen melk.", answers: ["is"], translation: "There's no milk." },
+          { kind: "fill", before: "Er ", after: " geen eieren.", answers: ["zijn"], translation: "There are no eggs." },
+          { kind: "choice", before: "Er ", after: " drie tomaten in de koelkast.", options: ["is", "zijn"], answer: 1, translation: "There are three tomatoes in the fridge." },
         ],
       },
       say: [
@@ -201,9 +201,9 @@ export const italiaanseAvond: Story = {
         explain: "This and that: deze (here) and die (there) go with de-words and plurals; dit (here) and dat (there) go with het-words.",
         examples: ["Die tomaten in het bakje zijn niet lekker.", "dit stuk kost zes euro", "Dat pak is groter"],
         exercises: [
-          { kind: "choice", before: "", after: "kaas is in de aanbieding. (here)", options: ["Deze", "Dit"], answer: 0, translation: "This cheese is on offer." },
-          { kind: "choice", before: "", after: "pak is groter. (there)", options: ["Die", "Dat"], answer: 1, translation: "That pack is bigger." },
-          { kind: "fill", before: "Neem", after: "tomaten. (there)", answers: ["die"], translation: "Take those tomatoes." },
+          { kind: "choice", before: "", after: " kaas is in de aanbieding. (here)", options: ["Deze", "Dit"], answer: 0, translation: "This cheese is on offer." },
+          { kind: "choice", before: "", after: " pak is groter. (there)", options: ["Die", "Dat"], answer: 1, translation: "That pack is bigger." },
+          { kind: "fill", before: "Neem ", after: " tomaten. (there)", answers: ["die"], translation: "Take those tomatoes." },
         ],
       },
       say: [
@@ -285,9 +285,9 @@ export const italiaanseAvond: Story = {
         explain: "Add -je to make something small, or a small portion: een stuk → een stukje, een koek → een koekje. Every -je word is a het-word.",
         examples: ["Fatima neemt een stukje.", "een plakje ham", "een gratis zakje koekjes"],
         exercises: [
-          { kind: "fill", before: "een stuk → een", after: "", answers: ["stukje"], translation: "a piece → a little piece" },
-          { kind: "choice", before: "", after: "broodje is lekker.", options: ["De", "Het"], answer: 1, translation: "The roll is tasty." },
-          { kind: "fill", before: "Wil je een", after: "? (koek, a small one)", answers: ["koekje"], translation: "Would you like a biscuit?" },
+          { kind: "fill", before: "een stuk → een ", after: "", answers: ["stukje"], translation: "a piece → a little piece" },
+          { kind: "choice", before: "", after: " broodje is lekker.", options: ["De", "Het"], answer: 1, translation: "The roll is tasty." },
+          { kind: "fill", before: "Wil je een ", after: "? (koek, a small one)", answers: ["koekje"], translation: "Would you like a biscuit?" },
         ],
       },
       say: [
@@ -369,9 +369,9 @@ export const italiaanseAvond: Story = {
         explain: "Most plurals add -en: bord → borden, glas → glazen (the s becomes z between vowels). Words on -el, -er and -je take -s: stroopwafel → stroopwafels.",
         examples: ["vijf borden, vijf glazen, vijf vorken en vijf messen", "Het zijn stroopwafels.", "alle pannen"],
         exercises: [
-          { kind: "fill", before: "één bord, twee", after: "", answers: ["borden"], translation: "one plate, two plates" },
-          { kind: "fill", before: "één glas, vijf", after: "", answers: ["glazen"], translation: "one glass, five glasses" },
-          { kind: "fill", before: "één stroopwafel, tien", after: "", answers: ["stroopwafels"], translation: "one stroopwafel, ten stroopwafels" },
+          { kind: "fill", before: "één bord, twee ", after: "", answers: ["borden"], translation: "one plate, two plates" },
+          { kind: "fill", before: "één glas, vijf ", after: "", answers: ["glazen"], translation: "one glass, five glasses" },
+          { kind: "fill", before: "één stroopwafel, tien ", after: "", answers: ["stroopwafels"], translation: "one stroopwafel, ten stroopwafels" },
         ],
       },
       say: [
