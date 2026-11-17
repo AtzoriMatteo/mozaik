@@ -5,6 +5,20 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (later) — Justified texts; Words-section cards marked in texts
+
+- **Texts fill the whole line (Matteo).** Reading texts, story episodes and
+  listening transcripts are justified, with hyphenation (Dutch hyphenation
+  works on iPhone and Android browsers). To make hyphenation possible, the
+  tappable words in the reader are now text spans with a button role instead
+  of real buttons: they still work with taps, Tab, Enter and Space.
+- **A word you met in a unit's Words (or New words) shows as saved in every
+  text (Matteo).** Same dotted underline as a word saved while reading, for
+  any form of it (blijven → blijft). Its help panel says "In your cards"
+  instead of offering Save.
+- **Fixed (Claude):** in preview mode (no accounts), review cards kept on the
+  device were cleared on every page load. Live accounts weren't affected.
+
 ## 2026-11-17 (afternoon) — Trial: learning through a story (A1 unit 4)
 
 Matteo: the course feels like a textbook (word batches, dozens of cards,

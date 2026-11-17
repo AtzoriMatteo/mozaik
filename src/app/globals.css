@@ -5453,3 +5453,17 @@ button.vocab-word:hover {
   border-color: var(--accent);
   color: var(--tile);
 }
+
+/* Matteo: texts should fill the whole line, not stop ragged on the right.
+   Justified, with hyphenation so phones don't get wide gaps between words. */
+.reader-body p,
+.transcript li {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+}
+.chip-static { cursor: default; background: transparent; color: var(--accent); }
+/* Reader words are inline spans: they hyphenate and never leave punctuation alone on a line. */
+.reader-body .word { -webkit-tap-highlight-color: transparent; }
+.reader-body .word:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
