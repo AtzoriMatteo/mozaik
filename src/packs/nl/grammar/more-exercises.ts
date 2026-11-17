@@ -109,5 +109,5 @@ export const moreBlocks: Record<string, LessonBlock[]> = {
 };
 
 export const moreExamples: Record<string, Example[]> = {
-  "modal-verbs": [example("Zullen we samen Nederlands oefenen?", "Shall we practise Dutch together?", "Zullen", "oefenen")],
+  "modal-verbs": [example("Zullen we om drie uur afspreken?", "Shall we say three o'clock?", "Zullen", "afspreken")],
 };

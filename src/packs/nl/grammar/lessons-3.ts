@@ -141,7 +141,7 @@ export const lessons3: Record<string, GrammarLesson> = {
     examples: [
       example("Ben jij altijd zo vroeg wakker?", "Are you always up this early?", "Ben jij"),
       example("Wil je ook koffie?", "Do you want coffee too?", "Wil je"),
-      example("Wanneer kun jij?", "When can you do it?", "kun jij"),
+      example("Kun jij donderdag?", "Can you do Thursday?", "Kun jij"),
       example("Wat doe je vandaag?", "What are you doing today?", "doe je"),
     ],
     exercises: [
@@ -174,8 +174,8 @@ export const lessons3: Record<string, GrammarLesson> = {
       text("Ik wil graag… is the polite 'I'd like'. Mag ik…? is how you ask for things in shops."),
     ],
     examples: [
-      example("Ik kan op dinsdag of donderdag.", "I can do Tuesday or Thursday.", "kan"),
-      example("Op maandag en woensdag moet ik werken.", "On Mondays and Wednesdays I have to work.", "moet", "werken"),
+      example("Maar ik moet tot vier uur werken.", "But I have to work until four.", "moet", "werken"),
+      example("Moeten we niet gaan?", "Shouldn't we go?", "Moeten", "gaan"),
       example("Mag ik een stuk van deze kaas, alstublieft?", "Could I have a piece of this cheese, please?", "Mag"),
       example("Kun je op zaterdag en zondag werken?", "Can you work on Saturdays and Sundays?", "Kun", "werken"),
     ],

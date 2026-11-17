@@ -76,10 +76,10 @@ export const lessons4: Record<string, GrammarLesson> = {
       text("Careful with omdat: it also means 'because', but it sends the verb to the end (that's A2). With want, nothing moves. dus (so) is different again: it counts as slot 1, so the verb comes right after: …, dus heeft hij geen geld."),
     ],
     examples: [
-      example("Opstaan is niet makkelijk, want hij is geen ochtendmens.", "Getting up isn't easy, because he isn't a morning person.", "want"),
+      example("Vroeg opstaan is niet moeilijk voor Ruth, want ze is een echt ochtendmens.", "Getting up early isn't hard for Ruth, because she's a real morning person.", "want"),
       example("Ik spreek nog niet veel Nederlands, maar ik leer elke dag een beetje.", "I don't speak much Dutch yet, but I learn a bit every day.", "maar"),
       example("Hij wil wat extra geld verdienen, want Leiden is duur.", "He wants to earn some extra money, because Leiden is expensive.", "want"),
-      example("'s Avonds kookt hij, kijkt hij een film of belt hij met zijn familie.", "In the evening he cooks, watches a film or calls his family.", "of"),
+      example("In het Engels is het anders, en in het Italiaans ook.", "In English it's different, and in Italian too.", "en"),
     ],
     exercises: [
       choice("Ik ga naar bed, ", " ik ben moe.", ["want", "maar"], 0, "I'm going to bed, because I'm tired."),
@@ -102,13 +102,13 @@ export const lessons4: Record<string, GrammarLesson> = {
         ["Het is half drie.", "It's half past two."],
         ["Het is druk.", "It's busy."],
         ["Hoe gaat het?", "How are you?"],
-        ["Het is tien minuten fietsen.", "It's a ten-minute bike ride."],
+        ["Het is een kwartier fietsen.", "It's a quarter of an hour by bike."],
       ),
       text("In Dutch it often moves behind the verb when something else comes first: Vandaag regent het. Morgen wordt het warm."),
     ],
     examples: [
       example("In de winter is het koud en donker.", "In winter it's cold and dark.", "het"),
-      example("Het is tien minuten fietsen.", "It's a ten-minute bike ride.", "Het"),
+      example("Het is een kwartier fietsen.", "It's a quarter of an hour by bike.", "Het"),
       example("Het gaat zo regenen.", "It's about to rain.", "Het"),
       example("Op het strand is het druk.", "The beach is busy.", "het"),
     ],

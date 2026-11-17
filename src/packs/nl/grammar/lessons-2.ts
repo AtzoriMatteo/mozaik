@@ -101,8 +101,8 @@ export const lessons2: Record<string, GrammarLesson> = {
       text("om = at: om half negen. Days and months have no capital letter: op maandag, in januari."),
     ],
     examples: [
-      example("Om half negen fietst hij naar de universiteit.", "At half past eight he cycles to the university.", "half negen"),
-      example("Om kwart over vier? Na mijn werk.", "At quarter past four? After my work.", "kwart over vier"),
+      example("Om half acht staat hij eindelijk onder de douche.", "At half past seven he's finally under the shower.", "half acht"),
+      example("Om kwart over zeven belt ze weer", "At quarter past seven she calls again", "kwart over zeven"),
       example("Mijn vader is zesenvijftig.", "My father is fifty-six.", "zesenvijftig"),
     ],
     exercises: [
@@ -124,11 +124,11 @@ export const lessons2: Record<string, GrammarLesson> = {
         ["Morgen:1 | gaat:verb* | Luca | naar Utrecht", "Tomorrow Luca is going to Utrecht."],
         ["Naar Utrecht:1 | gaat:verb* | Luca | morgen", "To Utrecht Luca goes tomorrow."],
       ),
-      text("Starting with time is very natural in Dutch: 's Ochtends heeft hij les. Om vijf uur komt hij thuis. Just remember: verb, then subject."),
+      text("Starting with time is very natural in Dutch: Om acht uur fietst hij naar school. Om vier uur komt Ruth thuis. Just remember: verb, then subject."),
     ],
     examples: [
-      example("Om half negen fietst hij naar de universiteit.", "At half past eight he cycles to the university.", "fietst", "hij"),
-      example("'s Ochtends heeft hij les.", "In the morning he has class.", "heeft", "hij"),
+      example("Om acht uur fietst hij naar school.", "At eight he cycles to school.", "fietst", "hij"),
+      example("Donderdag heb ik 's ochtends les", "On Thursday I have class in the morning", "heb", "ik"),
       example("Op maandag en woensdag heb ik les.", "On Mondays and Wednesdays I have class.", "heb", "ik"),
       example("Dan gaat de bel.", "Then the doorbell rings.", "gaat"),
     ],
@@ -154,7 +154,7 @@ export const lessons2: Record<string, GrammarLesson> = {
       text("Common ones: opstaan (get up), meenemen (bring along), afwassen (wash up), afspreken (arrange to meet), langskomen (drop by), terugbellen (call back). In the dictionary and after a modal verb they stay together: Ik moet opstaan."),
     ],
     examples: [
-      example("Luca staat elke dag om zeven uur op.", "Luca gets up at seven every day.", "staat", "op"),
+      example("Om vijf uur staat ze op", "At five she gets up", "staat", "op"),
       example("Ik neem iets lekkers mee.", "I'll bring something nice.", "neem", "mee"),
       example("En Bram neemt soms taart mee uit het café.", "And Bram sometimes brings cake home from the café.", "neemt", "mee"),
     ],
