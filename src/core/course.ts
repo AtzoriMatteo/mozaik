@@ -2,7 +2,7 @@ import type { Unit } from "./content";
 import type { LanguagePack } from "./language-pack";
 import { unitWords } from "./unit-words";
 
-export type ActivityKind = "words" | "read" | "listen" | "grammar" | "write" | "speak";
+export type ActivityKind = "words" | "read" | "listen" | "grammar" | "write" | "speak" | "check";
 
 /** One thing to do in the course: read, listen, a grammar lesson, or speaking practice. */
 export type Activity = {
@@ -20,61 +20,41 @@ export function unitGrammar(pack: LanguagePack, unit: Unit) {
 }
 
 /**
- * All activities in course order, like a textbook chapter: the unit's words
- * first, then texts, listening, grammar, writing, and speaking.
+ * All activities in course order. A unit with a `sequence` (a story unit)
+ * follows it, so its texts, clips, lessons and writing come in the story's
+ * order. Other units start with their words, then mix texts, grammar and
+ * listening (never three of the same kind in a row), then writing.
+ * A unit with a checkpoint ends with it.
  */
 export function activities(pack: LanguagePack): Activity[] {
-  return pack.units.flatMap((unit) => [
-    ...(unitWords(pack, unit).length
-      ? [
-          {
-            kind: "words" as const,
-            id: unit.id,
-            title: "Words",
-            titleTranslation: "Meet them before the texts",
-            unit,
-            href: `/words/${pack.code}/${unit.id}`,
-          },
-        ]
-      : []),
-    ...unit.texts.map((t) => ({
-      kind: "read" as const,
-      id: t.id,
-      title: t.title,
-      titleTranslation: t.titleTranslation,
-      unit,
-      href: `/read/${pack.code}/${t.id}`,
-    })),
-    ...unit.listening.map((l) => ({
-      kind: "listen" as const,
-      id: l.id,
-      title: l.title,
-      titleTranslation: l.titleTranslation,
-      unit,
-      href: `/listen/${pack.code}/${l.id}`,
-    })),
-    ...unitGrammar(pack, unit).map((g) => ({
-      kind: "grammar" as const,
-      id: g.id,
-      title: g.title,
-      titleTranslation: g.summary,
-      unit,
-      href: `/grammar/${pack.code}/${g.id}`,
-    })),
-    ...(unit.writing?.length
-      ? [
-          {
-            kind: "write" as const,
-            id: unit.id,
-            title: "Writing",
-            titleTranslation: "Choose topics and write",
-            unit,
-            href: `/write/${pack.code}/${unit.id}`,
-          },
-        ]
-      : []),
-    // Speaking practice was taken out (Matteo, 17 Nov 2026); its data stays in the packs.
-  ]);
+  return pack.units.flatMap((unit) => unitActivities(pack, unit));
+}
+
+function unitActivities(pack: LanguagePack, unit: Unit): Activity[] {
+  const words: Activity[] = unitWords(pack, unit).length
+    ? [{ kind: "words", id: unit.id, title: "Words", titleTranslation: unit.story ? "The unit's words, all together" : "Meet them before the texts", unit, href: `/words/${pack.code}/${unit.id}` }]
+    : [];
+  const read: Activity[] = unit.texts.map((t) => ({ kind: "read", id: t.id, title: t.title, titleTranslation: t.titleTranslation, unit, href: `/read/${pack.code}/${t.id}` }));
+  const listen: Activity[] = unit.listening.map((l) => ({ kind: "listen", id: l.id, title: l.title, titleTranslation: l.titleTranslation, unit, href: `/listen/${pack.code}/${l.id}` }));
+  const grammar: Activity[] = unitGrammar(pack, unit).map((g) => ({ kind: "grammar", id: g.id, title: g.title, titleTranslation: g.summary, unit, href: `/grammar/${pack.code}/${g.id}` }));
+  const write: Activity[] = unit.writing?.length
+    ? [{ kind: "write", id: unit.id, title: "Writing", titleTranslation: "Choose topics and write", unit, href: `/write/${pack.code}/${unit.id}` }]
+    : [];
+  const check: Activity[] = unit.checkpoint
+    ? [{ kind: "check", id: unit.id, title: unit.checkpoint.title, titleTranslation: `Checkpoint: ${unit.checkpoint.titleTranslation}`, unit, href: `/check/${pack.code}/${unit.id}` }]
+    : [];
+  // Speaking practice was taken out (Matteo, 17 Nov 2026); its data stays in the packs.
+
+  if (unit.sequence) {
+    const pool = [...words, ...read, ...listen, ...grammar, ...write, ...check];
+    const key = (a: Activity) => (a.kind === "write" ? "write" : a.kind === "words" ? "words" : a.kind === "check" ? "check" : a.id);
+    const ordered = unit.sequence.map((id) => pool.find((a) => key(a) === id)).filter((a): a is Activity => !!a);
+    return [...ordered, ...pool.filter((a) => !ordered.includes(a))];
+  }
+  const mixed: Activity[] = [];
+  const lanes = [read, grammar, listen].map((l) => [...l]);
+  while (lanes.some((l) => l.length)) for (const lane of lanes) if (lane.length) mixed.push(lane.shift()!);
+  return [...words, ...mixed, ...write, ...check];
 }
 
 export const VERB: Record<ActivityKind, string> = {
@@ -84,6 +64,7 @@ export const VERB: Record<ActivityKind, string> = {
   grammar: "learn",
   write: "",
   speak: "",
+  check: "",
 };
 
 /** "read Nieuw in Leiden", "learn Verb second", "speaking practice". */
@@ -91,6 +72,7 @@ export function activityLabel(a: Pick<Activity, "kind" | "title">): { verb: stri
   if (a.kind === "speak") return { verb: "", title: "speaking practice", inTargetLanguage: false };
   if (a.kind === "write") return { verb: "", title: "writing", inTargetLanguage: false };
   if (a.kind === "words") return { verb: "", title: "the unit's words", inTargetLanguage: false };
+  if (a.kind === "check") return { verb: "", title: `the checkpoint: ${a.title}`, inTargetLanguage: false };
   return { verb: VERB[a.kind], title: a.title, inTargetLanguage: a.kind !== "grammar" };
 }
 

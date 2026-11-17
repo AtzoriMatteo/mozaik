@@ -12,14 +12,14 @@ import {
   kuntUDatHerhalen,
   opDeFiets,
   waarKomJeVandaan,
-  watEtenNederlanders,
   watVoorWerk,
 } from "./a1-culture-texts";
-import type { ReadingText } from "@/core/content";
+import type { ListeningItem, ReadingText } from "@/core/content";
+import type { WritingTask } from "@/core/writing";
+import { avondListening, avondWriting } from "../stories/italiaanse-avond-more";
 import {
   fatimasProfiel,
   gezondLeven,
-  inDeSupermarkt,
   inHetZiekenhuis,
   kamerTeHuur,
   lucasWeek,
@@ -56,7 +56,6 @@ const LOOK: Record<string, { motif: Motif; glaze: Glaze }> = {
 const MORE_TEXTS = {
   "a1-kennismaken": fatimasProfiel,
   "a1-familie": mailVanGiulia,
-  "a1-eten": inDeSupermarkt,
   "a1-dag-en-tijd": lucasWeek,
   "a1-wonen": kamerTeHuur,
   "a1-werk-en-studie": inHetZiekenhuis,
@@ -70,7 +69,6 @@ const CULTURE_TEXTS: Record<string, ReadingText[]> = {
   "a1-kennismaken": [waarKomJeVandaan],
   "a1-werk-en-studie": [watVoorWerk],
   "a1-gezondheid": [auMijnKnie],
-  "a1-eten": [watEtenNederlanders],
   "a1-vrije-tijd": [opDeFiets],
 };
 
@@ -82,15 +80,21 @@ for (const [id, items] of Object.entries(listeningCulture)) {
   listening[id] = [...(listening[id] ?? []), ...items];
 }
 
+/** Story units: their listening and a writing topic come from the story too. */
+const STORY: Record<string, { listening: ListeningItem[]; writing: WritingTask[] }> = {
+  "a1-eten": { listening: avondListening, writing: [avondWriting] },
+};
+
 function assemble(u: UnitContent): Unit {
-  const extra = MORE_TEXTS[u.id as keyof typeof MORE_TEXTS];
+  const story = STORY[u.id];
+  const extra = story ? undefined : MORE_TEXTS[u.id as keyof typeof MORE_TEXTS];
   return {
     ...u,
     look: u.look ?? LOOK[u.id],
-    texts: [...u.texts, ...(extra ? [extra] : []), ...(CULTURE_TEXTS[u.id] ?? [])].map((t) => ({ ...t, tasks: t.tasks ?? tasksA1[t.id] })),
-    listening: (listening[u.id] ?? []).map((l) => ({ ...l, tasks: l.tasks ?? listeningTasksA1[l.id] })),
+    texts: [...u.texts, ...(extra ? [extra] : []), ...(story ? [] : (CULTURE_TEXTS[u.id] ?? []))].map((t) => ({ ...t, tasks: t.tasks ?? tasksA1[t.id] })),
+    listening: (story?.listening ?? listening[u.id] ?? []).map((l) => ({ ...l, tasks: l.tasks ?? listeningTasksA1[l.id] })),
     speaking: speakingA1[u.id],
-    writing: [...(writingA1[u.id] ?? []), ...(writingCulture[u.id] ?? [])],
+    writing: [...(story?.writing ?? []), ...(writingA1[u.id] ?? []), ...(writingCulture[u.id] ?? [])],
   };
 }
 

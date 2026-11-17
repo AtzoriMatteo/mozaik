@@ -14,8 +14,8 @@ export const lessons2: Record<string, GrammarLesson> = {
       text("Dutch often picks a more precise verb instead of 'is': staan for upright things, liggen for flat things, zitten for things inside. Er staat een bank. Er liggen kazen op de tafel."),
     ],
     examples: [
-      example("Op zaterdag is er markt in Leiden.", "On Saturdays there's a market in Leiden.", "is er"),
-      example("Er zijn kramen met groente, fruit, vis, kaas, brood en bloemen.", "There are stalls with vegetables, fruit, fish, cheese, bread and flowers.", "Er zijn"),
+      example("Er is geen melk en er zijn geen eieren meer.", "There's no milk and there are no eggs left.", "Er is", "er zijn"),
+      example("Er zijn kramen met groente, fruit, vis, kaas en bloemen.", "There are stalls with vegetables, fruit, fish, cheese and flowers.", "Er zijn"),
       example("Er liggen grote, gele kazen op de tafel.", "There are big yellow cheeses on the table.", "Er liggen"),
     ],
     exercises: [
@@ -40,8 +40,9 @@ export const lessons2: Record<string, GrammarLesson> = {
       text("On their own, dit and dat also mean 'this/that is': Dit is mijn huis. Dat ben ik. And die often means 'they / those ones': Die zijn duur."),
     ],
     examples: [
-      example("Hoeveel kosten deze tomaten?", "How much are these tomatoes?", "deze"),
-      example("En die tomaten daar?", "And those tomatoes over there?", "die"),
+      example("Deze pasta komt uit Italië. Die pasta komt uit Nederland.", "This pasta comes from Italy. That pasta comes from the Netherlands.", "Deze", "Die"),
+      example("Die tomaten in het bakje zijn niet lekker.", "Those tomatoes in the tub aren't nice.", "Die"),
+      example("Dat pak is groter", "That pack is bigger", "Dat"),
       example("Mag ik een stuk van deze kaas, alstublieft?", "Could I have a piece of this cheese, please?", "deze"),
       example("Ja, dat ben ik.", "Yes, that's me.", "dat"),
     ],
@@ -69,8 +70,8 @@ export const lessons2: Record<string, GrammarLesson> = {
       text("Every diminutive is a het-word, whatever the original was: de kop → het kopje."),
     ],
     examples: [
-      example("Luca proeft een stukje oude kaas.", "Luca tastes a little piece of aged cheese.", "stukje"),
-      example("Ze hebben een lijstje", "They have a little list", "lijstje"),
+      example("De kaasboer geeft hun een stukje oude kaas.", "The cheese seller gives them a little piece of old cheese.", "stukje"),
+      example("Luca pakt een pen en maakt een lijstje.", "Luca takes a pen and makes a list.", "lijstje"),
       example("Ze drinken een biertje en praten tot laat.", "They have a beer and talk until late.", "biertje"),
     ],
     exercises: [
@@ -154,7 +155,7 @@ export const lessons2: Record<string, GrammarLesson> = {
     ],
     examples: [
       example("Luca staat elke dag om zeven uur op.", "Luca gets up at seven every day.", "staat", "op"),
-      example("Na het eten ruimt Bram de tafel op en wast Noor af.", "After dinner Bram clears the table and Noor does the dishes.", "ruimt", "op", "wast", "af"),
+      example("Ik neem iets lekkers mee.", "I'll bring something nice.", "neem", "mee"),
       example("En Bram neemt soms taart mee uit het café.", "And Bram sometimes brings cake home from the café.", "neemt", "mee"),
     ],
     exercises: [

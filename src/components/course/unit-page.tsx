@@ -36,7 +36,6 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
   const keyWords = words.filter((w) => w.core);
   const slang = slangForUnit(pack, unit.id);
   const slangDone = useProgress("slang", pack.code).doneIds;
-  const storyDone = useProgress("story", pack.code).doneIds;
   const beyond = resourcesFor(pack, unit.level).filter((r) => r.units?.includes(unit.id));
 
   return (
@@ -58,8 +57,8 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
         </div>
       </header>
 
-      <section className="can-do-box" aria-labelledby="can-do-title">
-        <h2 id="can-do-title">After this unit you can</h2>
+      <section className="can-do-box" aria-labelledby="can-do-title" data-done={progress.checkPassed.has(unit.id) || undefined}>
+        <h2 id="can-do-title">{progress.checkPassed.has(unit.id) ? "You can now" : "After this unit you can"}</h2>
         <ul>
           {unit.canDo.map((c) => (
             <li key={c}>{c}</li>
@@ -79,22 +78,10 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
 
       {unit.story ? (
         <section className="story-section" aria-labelledby="story-title">
-          <p className="trial-card-kicker">Trial</p>
           <h2 id="story-title">
             Story: <span lang={lang}>{unit.story.title}</span>
           </h2>
           <p>{unit.story.intro}</p>
-          <ol className="story-episodes">
-            {unit.story.episodes.map((e, i) => (
-              <li key={e.id}>
-                <Link href={`/story/${lang}/${e.id}`}>
-                  <span lang={lang}>{i + 1}. {e.title}</span> <span className="story-episode-en">{e.titleTranslation}</span>
-                </Link>
-                {storyDone.has(e.id) ? <span className="story-episode-done" aria-label="done"> ✓</span> : null}
-              </li>
-            ))}
-          </ol>
-          <Link href="/today" className="button button-quiet">Today&apos;s session</Link>
         </section>
       ) : null}
 
@@ -170,6 +157,18 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
             Finish {WRITING_REQUIRED} of {unit.writing.length} for this unit&apos;s writing tile.{" "}
             {unit.writing.filter((t) => progress.writingDone.has(t.id)).length >= WRITING_REQUIRED ? "Done." : ""}
           </li>
+        </SkillSection>
+      ) : null}
+
+      {unit.checkpoint ? (
+        <SkillSection skill="check" title="Checkpoint">
+          <Row
+            href={`/check/${lang}/${unit.id}`}
+            title={unit.checkpoint.title}
+            titleLang={lang}
+            meta={[unit.checkpoint.titleTranslation, "Read, listen, write", progress.checkPassed.has(unit.id) ? "Passed" : "About 10 min"]}
+            done={progress.isDone({ kind: "check", id: unit.id })}
+          />
         </SkillSection>
       ) : null}
 

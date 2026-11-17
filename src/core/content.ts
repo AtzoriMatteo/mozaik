@@ -150,8 +150,11 @@ export type Unit = {
    * need them and its texts don't happen to use them: "lievelings-", "omdat".
    */
   teach?: TaughtWord[];
-  /** The unit's continuing story (trial shape, see Story). */
+  /** The unit told as one story (see Story). */
   story?: Story;
+  /** The order of the unit's activities by id (texts, listening, grammar, writing, "words", "check"); default: mixed. */
+  sequence?: string[];
+  checkpoint?: Checkpoint;
 };
 
 /** One tile in a word-order diagram. */
@@ -348,29 +351,32 @@ export type SlangPart = {
 };
 
 /**
- * The trial story shape (Matteo, Nov 2026): one continuing story per unit,
- * told in episodes. Each episode is read while heard, then one grammar
- * pattern from it is noticed and practised, then the learner says something
- * back. Words come from the story, not before it.
+ * A unit told as one story (Matteo, Nov 2026): the same people all through
+ * the unit, so its words keep coming back. The episodes are the unit's texts;
+ * its listening, grammar examples and writing come from the same story.
  */
-export type Notice = {
-  /** The grammar point it introduces or recalls (its lesson stays the reference). */
-  grammar: string;
-  title: string;
-  /** One or two plain sentences. */
-  explain: string;
-  /** Pieces quoted word for word from the episode, with the pattern in them. */
-  examples: string[];
-  exercises: Exercise[];
-};
-
-export type Episode = ReadingText & { notice: Notice };
-
 export type Story = {
   id: string;
   title: string;
   titleTranslation: string;
-  /** One line: who and what, before episode 1. */
+  /** One line: who and what. */
   intro: string;
-  episodes: Episode[];
+};
+
+/**
+ * The end of a unit: the story's last scene as a short mixed check. Passing
+ * it ticks the unit's can-do goals. Never a wall: you can always go on.
+ */
+export type Checkpoint = {
+  title: string;
+  titleTranslation: string;
+  /** Read: a short new scene. */
+  text: Sentence[][];
+  textTasks: Task[];
+  /** Listen: a short new clip. */
+  listening: { situation: string; lines: ListeningLine[]; questions: Question[] };
+  /** Write: a few sentences, with frames at A1. */
+  write: { situation: string; points: { prompt: string; frame?: string }[]; model: string; modelTranslation: string };
+  /** Help for words in the checkpoint's text and clip. */
+  words?: Record<string, WordHelp>;
 };

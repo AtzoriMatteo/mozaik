@@ -14,7 +14,7 @@ describe("dialogue in reading texts", () => {
   it("names a speaker for every quoted turn in every text (Matteo: hard to follow who's talking)", () => {
     for (const pack of listPacks()) {
       for (const u of pack.units) {
-        for (const t of [...u.texts, ...(u.story?.episodes ?? [])]) {
+        for (const t of u.texts) {
           const n = turnCount(t.paragraphs.flat().map((s) => s.text));
           const line = pack.speakers?.[t.id];
           if (n === 0) {
@@ -25,8 +25,13 @@ describe("dialogue in reading texts", () => {
           expect(parseSpeakers(line!).length, `${pack.code}/${t.id}`).toBe(n);
         }
       }
+      for (const u of pack.units.filter((x) => x.checkpoint)) {
+        const n = turnCount(u.checkpoint!.text.flat().map((s) => s.text));
+        if (n) expect(parseSpeakers(pack.speakers?.[`check-${u.id}`] ?? "").length, `${pack.code}/check-${u.id}`).toBe(n);
+      }
       for (const id of Object.keys(pack.speakers ?? {})) {
-        expect(pack.units.some((u) => [...u.texts, ...(u.story?.episodes ?? [])].some((t) => t.id === id)), `${pack.code}/${id} is not a text`).toBe(true);
+        const isCheck = id.startsWith("check-") && pack.units.some((u) => `check-${u.id}` === id && u.checkpoint);
+        expect(isCheck || pack.units.some((u) => u.texts.some((t) => t.id === id)), `${pack.code}/${id} is not a text`).toBe(true);
       }
     }
   });

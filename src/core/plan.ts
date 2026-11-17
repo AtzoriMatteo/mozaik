@@ -88,6 +88,8 @@ export function minutesFor(pack: LanguagePack, a: Activity): number {
       return 10;
     case "words":
       return 8;
+    case "check":
+      return 15;
     default:
       return 10;
   }

@@ -13,6 +13,8 @@ export function useCourseProgress(pack: LanguagePack | null) {
   const listen = useProgress("listen", pack?.code ?? null);
   const grammar = useProgress("grammar", pack?.code ?? null);
   const speak = useProgress("speak", pack?.code ?? null);
+  const check = useProgress("check", pack?.code ?? null);
+  const checkPassed = useProgress("checkpass", pack?.code ?? null);
   // Writing: finished topics; a unit's writing counts once enough are done.
   const writing = useProgress("writing", pack?.code ?? null);
   const done = useMemo(() => {
@@ -21,8 +23,8 @@ export function useCourseProgress(pack: LanguagePack | null) {
         .filter((u) => (u.writing ?? []).filter((t) => writing.doneIds.has(t.id)).length >= WRITING_REQUIRED)
         .map((u) => u.id),
     );
-    return { words: words.doneIds, read: read.doneIds, listen: listen.doneIds, grammar: grammar.doneIds, write, speak: speak.doneIds };
-  }, [pack, words.doneIds, read.doneIds, listen.doneIds, grammar.doneIds, writing.doneIds, speak.doneIds]);
+    return { words: words.doneIds, read: read.doneIds, listen: listen.doneIds, grammar: grammar.doneIds, write, speak: speak.doneIds, check: check.doneIds };
+  }, [pack, words.doneIds, read.doneIds, listen.doneIds, grammar.doneIds, writing.doneIds, speak.doneIds, check.doneIds]);
 
   const isDone = (a: Pick<Activity, "kind" | "id">) => done[a.kind].has(a.id);
 
@@ -41,6 +43,9 @@ export function useCourseProgress(pack: LanguagePack | null) {
     markListened: listen.markDone,
     markGrammar: grammar.markDone,
     markSpoken: speak.markDone,
+    markChecked: check.markDone,
+    checkPassed: checkPassed.doneIds,
+    markCheckPassed: checkPassed.markDone,
     writingDone: writing.doneIds,
     markWritten: writing.markDone,
   };

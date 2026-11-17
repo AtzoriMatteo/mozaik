@@ -17,6 +17,7 @@ import { useReadTexts } from "@/lib/progress/use-read-texts";
 import { WordPanel } from "./word-panel";
 import { ExpressionBox, type Phrase } from "./expression-box";
 import { ListenControls } from "./listen-controls";
+import { WordsBack } from "./words-back";
 import { TaskRunner } from "@/components/exercises/task-runner";
 
 type WordRef = {
@@ -76,6 +77,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
         ) : null}
         {tasks.length === 0 || typeof check === "object" ? (
           <>
+            {unit?.story ? <WordsBack pack={pack} unit={unit} text={text} /> : null}
             <NextActivityLink pack={pack} next={next} onDone={() => markRead(text.id)} />
             <LearningTip pack={pack} place="read" />
           </>

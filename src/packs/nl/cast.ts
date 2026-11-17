@@ -13,7 +13,7 @@ export const cast: Cast = {
     Pieter: "m", Priya: "f", Rafael: "m", Ria: "f", Ruben: "m", Samir: "m", Sanne: "f", Saskia: "f", Sem: "m",
     Shanti: "f", Tim: "m", Wei: "any", Wim: "m", Wouter: "m", Yara: "f", Zainab: "f", Zeynep: "f",
     // Roles.
-    Agent: "m", Ambtenaar: "m", Apotheker: "f", Assistente: "f", Bakker: "any", Bandje: "f", Buurman: "m",
+    Agent: "m", Ambtenaar: "m", Kaasboer: "m", Apotheker: "f", Assistente: "f", Bakker: "any", Bandje: "f", Buurman: "m",
     Clublid: "f", Docent: "f", Gids: "m", Kassa: "f", Klant: "any", Manager: "m", Medewerker: "any", Meisje: "f",
     Moeder: "f", Monteur: "m", Nieuwslezer: "any", Ober: "m", Omroep: "any", Receptionist: "f", Reiziger: "any",
     Restaurant: "f", Spreker: "m", Tandarts: "m", Vader: "m", Verhuurder: "m", Verkoper: "any", Vrouw: "f",
