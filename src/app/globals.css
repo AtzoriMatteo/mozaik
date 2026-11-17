@@ -1389,6 +1389,7 @@ a {
 .skill-section[data-skill="listen"] { --s: var(--glaze-ochre); }
 .skill-section[data-skill="grammar"] { --s: var(--glaze-manganese); }
 .skill-section[data-skill="speak"] { --s: var(--glaze-copper); }
+.skill-section[data-skill="slang"] { --s: var(--glaze-iron); }
 .skill-section[data-skill="words"] { --s: var(--glaze-copper); }
 .skill-section[data-skill="write"] { --s: var(--glaze-iron); }
 .skill-section[data-skill="beyond"] { --s: var(--ink-muted); }
@@ -4395,7 +4396,7 @@ button.vocab-word:hover {
 
 .plan-date-label {
   margin-left: 0.5rem;
-  font-family: var(--font-ui, inherit);
+  font-family: var(--font-ui);
   font-size: 0.95rem;
   font-weight: 400;
   color: var(--ink-muted);
@@ -5217,3 +5218,123 @@ button.vocab-word:hover {
 @media (min-width: 641px) and (max-width: 760px) {
   .topbar .notice { display: none; }
 }
+
+/* ---------------------------------------------------------------
+ * Zo praten we echt: real-life Dutch, kept apart from the course.
+ * Slang is marked with a warm wash; each register has its own glaze.
+ * ------------------------------------------------------------- */
+.slang [data-who], .slang-who[data-who] { --w: var(--ink-muted); }
+.slang [data-who="everyone"] { --w: var(--glaze-copper); }
+.slang [data-who="casual"] { --w: var(--glaze-ochre); }
+.slang [data-who="young"], .slang [data-who="teens"] { --w: var(--glaze-cobalt); }
+.slang [data-who="street"] { --w: var(--glaze-manganese); }
+.slang [data-who="rude"] { --w: var(--glaze-iron); }
+.slang [data-who="chat"], .slang [data-who="rare"] { --w: var(--ink-muted); }
+.slang-who[data-who="everyone"] { --w: var(--glaze-copper); }
+.slang-who[data-who="casual"] { --w: var(--glaze-ochre); }
+.slang-who[data-who="young"], .slang-who[data-who="teens"] { --w: var(--glaze-cobalt); }
+.slang-who[data-who="street"] { --w: var(--glaze-manganese); }
+.slang-who[data-who="rude"] { --w: var(--glaze-iron); }
+
+.slang-situation {
+  max-width: var(--measure);
+  margin: 0 auto 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--tile);
+  border-left: 3px solid var(--glaze-iron);
+  color: var(--ink-muted);
+}
+.slang-kind {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0 0.45rem;
+  border-radius: 3px;
+  background: var(--glaze-iron);
+  color: var(--tile);
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.slang-tools .button-row { flex-wrap: wrap; gap: 0.5rem; }
+
+.word.slang-word, .slang-sample {
+  background: color-mix(in srgb, var(--w, var(--glaze-iron)) 14%, transparent);
+  box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--w, var(--glaze-iron)) 70%, transparent);
+  border-radius: 3px;
+}
+.slang-sample { --w: var(--glaze-iron); padding: 0 0.2em; }
+.word.slang-word[data-selected] { background: var(--w, var(--accent)); color: var(--tile); box-shadow: none; }
+
+.slang-chat, .slang-talk {
+  list-style: none;
+  max-width: var(--measure);
+  margin: 0 auto 2rem;
+  padding: 0;
+  font-family: var(--font-read);
+  font-size: var(--step-1, 1.15rem);
+  line-height: 1.55;
+}
+.slang-line { display: flex; flex-direction: column; gap: 0.15rem; }
+.slang-line[data-speaker="0"] { --sp: var(--glaze-cobalt); }
+.slang-line[data-speaker="1"] { --sp: var(--glaze-copper); }
+.slang-line[data-speaker="2"] { --sp: var(--glaze-manganese); }
+.slang-line[data-speaker="3"] { --sp: var(--glaze-ochre); }
+.slang-speaker { font-family: var(--font-ui); font-size: 0.72em; font-weight: 700; color: var(--sp); letter-spacing: 0.02em; }
+
+/* Chat: bubbles on a tiled wall, like a phone screen. */
+.slang-chat {
+  padding: 1rem;
+  background: var(--glaze);
+  border: 1px solid var(--grout);
+  border-radius: 6px;
+}
+.slang-chat .slang-line {
+  align-self: flex-start;
+  max-width: 88%;
+  width: fit-content;
+  margin: 0 0 0.6rem;
+  padding: 0.45rem 0.75rem 0.5rem;
+  background: var(--tile);
+  border-radius: 4px 12px 12px 12px;
+  border-left: 3px solid var(--sp);
+}
+/* Talk: a script, one speaker per line. */
+.slang-talk .slang-line { padding: 0.55rem 0; border-bottom: 1px solid var(--grout); }
+.slang-talk .slang-line:last-child { border-bottom: 0; }
+
+.slang-textbook, .slang-english {
+  font-family: var(--font-ui);
+  font-size: 0.8em;
+  color: var(--ink-muted);
+}
+.slang-textbook::before { content: "Textbook: "; font-weight: 600; color: var(--glaze-copper); }
+.slang-english { font-style: italic; }
+
+.slang-items { max-width: var(--measure); margin: 0 auto 2rem; }
+.slang-items h2 { font-size: var(--step-1, 1.2rem); }
+.slang-items h3 { font-size: 1rem; margin-top: 1.5rem; color: var(--ink-muted); }
+.slang-items ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.slang-item {
+  padding: 0.7rem 0.9rem;
+  background: var(--tile);
+  border-left: 3px solid var(--w);
+}
+.slang-item p { margin: 0; }
+.slang-item-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+.slang-item-form { font-family: var(--font-read); font-size: 1.1em; font-weight: 600; }
+.slang-item-meaning { margin-top: 0.15rem !important; }
+.slang-item-note { margin-top: 0.25rem !important; font-size: 0.9em; color: var(--ink-muted); }
+.slang-item-origin { font-style: italic; }
+
+.slang-badge {
+  display: inline-block;
+  padding: 0.05rem 0.45rem;
+  border: 1px solid var(--w);
+  border-radius: 3px;
+  color: var(--w);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.slang-who { display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; align-items: baseline; margin: 0.5rem 0 0; font-size: 0.9em; color: var(--ink-muted); }
+.slang-done { color: var(--ok); }
