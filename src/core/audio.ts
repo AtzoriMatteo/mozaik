@@ -77,8 +77,17 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
     }
   }
   for (const unit of pack.units) {
-    for (const text of [...unit.texts, ...(unit.story?.episodes ?? [])]) {
+    for (const text of unit.texts) {
       for (const s of text.paragraphs.flat()) add({ text: s.text, role: "narrator", gender: cast?.narrator ?? "f", group: text.id });
+    }
+    // The checkpoint: its scene in the narrator's voice, its message in the speaker's.
+    if (unit.checkpoint) {
+      const group = `check-${unit.id}`;
+      for (const s of unit.checkpoint.text.flat()) add({ text: s.text, role: "narrator", gender: cast?.narrator ?? "f", group });
+      for (const l of unit.checkpoint.listening.lines) {
+        const speaker = l.speaker ?? "Spreker";
+        add({ text: l.text, role: speaker in (cast?.gender ?? {}) ? speaker : `${group}/${speaker}`, gender: cast?.gender[speaker] ?? "any", group });
+      }
     }
   }
   // Single words and short lines, in the narrator's voice: every word in the

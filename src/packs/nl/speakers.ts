@@ -6,7 +6,6 @@
  */
 export const speakers: Record<string, string> = {
   "hallo-en-tot-ziens": "-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|Luca|Bram",
-  "wat-eten-nederlanders": "-",
   "overal-getallen": "Ingrid|De klas|Fatima|Luca|Luca|Ingrid|Ingrid",
   "het-jaar-rond": "Noor|Noor",
   "kunt-u-dat-herhalen": "De bakker|Kenji|De bakker|Kenji|Kenji|De bakker|Kenji|De bakker|Kenji|Een vrouw|Kenji|Een vrouw|Kenji|Iemand",
@@ -16,9 +15,6 @@ export const speakers: Record<string, string> = {
   "mijn-familie": "Bram|Bram",
   "bellen-met-mama": "Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca",
   "een-mail-van-giulia": "Leo",
-  "op-de-markt": "Luca|De groenteman|Luca|De groenteman|Luca|De groenteman|De kaasvrouw|Luca|De kaasvrouw|Luca|De kaasvrouw|Luca|Bram|Bram",
-  "samen-koken": "Noor|Luca|Noor|Luca|Bram|Luca|Bram|Luca|Noor|Bram|Luca",
-  "in-de-supermarkt": "Luca|De jongen|Het scherm",
   "een-afspraak": "Fatima|Luca|Fatima|Luca|Fatima|Luca|Fatima|Luca|Fatima|Luca|Luca|Fatima|Luca",
   "de-weg-vragen": "Luca|De meneer|De meneer|De meneer|De meneer|Luca|De meneer|Luca|De meneer|Een meisje",
   "kamer-te-huur": "Fatima|Fatima",
@@ -58,9 +54,10 @@ export const speakers: Record<string, string> = {
   "dit-heb-ik-niet-besteld": "Fatou|Fatou|De ober|De ober|De ober|Fatou",
   "wadlopen": "De gids",
   "praten-over-het-weer": "-|-|Je collega|Je collega|-",
-  // Story episodes (Een Italiaanse avond)
-  "avond-1-een-plan": "Luca|Luca|Noor|Noor|Luca|Noor|Luca|Luca|Bram|Bram|Luca|Noor|Noor|Bram|Bram|Luca|Noor|Noor|Fatima|Mevrouw De Vries",
+  // Unit 4: Een Italiaanse avond
+  "check-a1-eten": "Mevrouw De Vries|Luca|Noor|Noor",
+  "avond-1-een-plan": "Luca|Luca|Noor|Noor|Luca|Noor|Luca|Luca|Bram|Bram|Bram|Bram|Luca|Noor|Noor|Bram|Bram|Luca|Noor|Noor|Fatima|Mevrouw De Vries",
   "avond-2-in-de-supermarkt": "Noor|Luca|Luca|Luca|Luca|Noor|Luca|Luca|Noor|Noor|Luca|Noor|Noor|Luca|Luca|Luca",
-  "avond-3-op-de-markt": "De bakker|Fatima|Luca|De kaasboer|De kaasboer|Fatima|Luca|Fatima|Luca|Fatima|Luca|Fatima|Fatima",
-  "avond-4-eet-smakelijk": "Mevrouw De Vries|Mevrouw De Vries|Luca|Fatima|Fatima|Luca|Noor|Bram|Mevrouw De Vries|Mevrouw De Vries|Luca|Mevrouw De Vries",
+  "avond-3-op-de-markt": "De bakker|Fatima|Luca|De kaasboer|De kaasboer|Luca|Fatima|Luca|Fatima|Luca|Fatima|Luca|Fatima|Fatima",
+  "avond-4-eet-smakelijk": "Luca|Mevrouw De Vries|Mevrouw De Vries|Luca|Luca|Bram|Fatima|Fatima|Luca|Luca|Mevrouw De Vries|Mevrouw De Vries|Noor|Noor|Fatima|Luca|Luca|Bram|Noor|Bram|Mevrouw De Vries",
 };

@@ -5,6 +5,37 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (evening) — Dutch unit 4 is a story unit, with a checkpoint
+
+Matteo: keep the unit structure and the Plan, but make it less repetitive and
+more rewarding. Same characters, different episodes in the same unit; exercise
+sentences must make you think, not just remember.
+
+- **Unit 4 (Eten en boodschappen) is "Een Italiaanse avond"**: four episodes
+  with Luca, Noor, Bram, Fatima and Mevrouw De Vries (a plan, the supermarket,
+  the market, the dinner) replace the old unit-4 texts. Listening is four new
+  scenes from the same week (Fatima's voicemail, De Vries calls, a supermarket
+  announcement, the cheese stall). Writing joins in: you answer Luca's
+  invitation. (Matteo)
+- **Questions after each episode make you think**: true/false about what
+  people mean or will do, put events in order, pick what someone wants; never
+  "find this sentence in the text". A test makes sure no grammar exercise is a
+  sentence copied from the unit's texts. (Matteo, Claude)
+- **Checkpoint at the end of the unit (Matteo).** "De volgende ochtend": read
+  the story's last scene, listen to Noor's voicemail, write three lines back to
+  Mevrouw De Vries. About 10 minutes. 70% passes: the unit's can-do goals tick
+  over to "You can now…". Not a wall: you can always go on.
+- **Continue alternates skills (Claude).** A unit can set its own order; the
+  default mixes read, grammar and listening, never three of the same in a row.
+- **Grammar: "I've got it: finish here" (Matteo, work-style).** After three
+  right in a row you can stop a grammar practice early.
+- **The separate Today page is gone (Claude).** Plan's "today" already does
+  that job.
+- Cost: progress on the old unit-4 texts and listening no longer counts for
+  the unit (those texts are no longer in it). New audio for the checkpoint is
+  recorded by the audio workflow.
+- Next: the same for Italian unit 4 (Al bar), plus Italian slang parts.
+
 ## 2026-11-17 (afternoon) — Speaking taken out; Italian says "Parla con Matteo!"
 
 Matteo: take speaking out everywhere. For Italian, put something funny instead.

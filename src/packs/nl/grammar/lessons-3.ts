@@ -76,7 +76,7 @@ export const lessons3: Record<string, GrammarLesson> = {
       text("It sounds direct but normal. Soften it with even, maar or alsjeblieft: Wacht even. Kom maar binnen. Snijd de uien, alsjeblieft. The polite form adds u: Gaat u hier rechtdoor."),
     ],
     examples: [
-      example("Snijd eerst de uien, alsjeblieft.", "Cut the onions first, please.", "Snijd"),
+      example("Snijd eerst de uien, alsjeblieft", "Cut the onions first, please", "Snijd"),
       example("Ga hier rechtdoor tot de brug.", "Go straight on here until the bridge.", "Ga"),
       example("Blijf vandaag in bed.", "Stay in bed today.", "Blijf"),
       example("Drink veel water en slaap.", "Drink lots of water and sleep.", "Drink", "slaap"),

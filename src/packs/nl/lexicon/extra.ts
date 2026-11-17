@@ -2,6 +2,12 @@ import type { Lexicon } from "@/core/content";
 
 /** Words added while filling A1 coverage gaps. */
 export const lexiconExtra: Lexicon = {
+  // Unit 4 story (Een Italiaanse avond): dictionary forms of words met inflected.
+  los: { meaning: "loose" },
+  parmezaans: { meaning: "Parmesan" },
+  stokbrood: { meaning: "baguette", closer: "stok (stick) + brood (bread)" },
+  vers: { meaning: "fresh" },
+  bakje: { meaning: "tub, small container", closer: "bak + -je: a small container" },
   achter: { meaning: "behind", closer: "Same root as English 'after' (aft of a ship)" },
   alles: { meaning: "everything", local: "Alles goed? = All good? A very common greeting" },
   betalen: { meaning: "pay" },

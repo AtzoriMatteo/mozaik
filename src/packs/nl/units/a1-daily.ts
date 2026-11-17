@@ -1,5 +1,6 @@
 import type { UnitContent } from "./types";
-import { italiaanseAvond } from "../stories/italiaanse-avond";
+import { avondTexts, italiaanseAvond } from "../stories/italiaanse-avond";
+import { avondCheckpoint } from "../stories/italiaanse-avond-more";
 
 export const eten: UnitContent = {
   id: "a1-eten",
@@ -12,223 +13,25 @@ export const eten: UnitContent = {
     "Understand prices and amounts",
     "Follow and give simple cooking instructions",
   ],
-  texts: [
-    {
-      id: "op-de-markt",
-      level: "A1",
-      title: "Op de markt",
-      titleTranslation: "At the market",
-      grammar: ["er-is", "demonstratives", "time-numbers", "plurals", "modal-verbs", "diminutives"],
-      paragraphs: [
-        [
-          {
-            text: "Op zaterdag is er markt in Leiden.",
-            translation: "On Saturdays there's a market in Leiden.",
-          },
-          {
-            text: "De markt is groot en heel druk.",
-            translation: "The market is big and very busy.",
-          },
-          {
-            text: "Er zijn kramen met groente, fruit, vis, kaas, brood en bloemen.",
-            translation: "There are stalls with vegetables, fruit, fish, cheese, bread and flowers.",
-          },
-          {
-            text: "Luca gaat met Bram naar de markt.",
-            translation: "Luca goes to the market with Bram.",
-          },
-          {
-            text: "Ze hebben een lijstje: aardappels, uien, tomaten, bananen en een stuk kaas.",
-            translation: "They have a little list: potatoes, onions, tomatoes, bananas and a piece of cheese.",
-          },
-        ],
-        [
-          {
-            text: "Bij de groenteman kopen ze een kilo aardappels en drie uien.",
-            translation: "At the greengrocer's they buy a kilo of potatoes and three onions.",
-          },
-          {
-            text: "\"Hoeveel kosten deze tomaten?\" vraagt Luca.",
-            translation: "\"How much are these tomatoes?\" asks Luca.",
-          },
-          {
-            text: "\"Twee euro vijftig per kilo,\" zegt de man.",
-            translation: "\"Two euros fifty a kilo,\" says the man.",
-          },
-          {
-            text: "\"En die tomaten daar?\"",
-            translation: "\"And those tomatoes over there?\"",
-          },
-          {
-            text: "\"Die zijn duur, maar heel lekker.\"",
-            translation: "\"Those are expensive, but really tasty.\"",
-          },
-          {
-            text: "\"Waarom zijn ze duur?\" \"Ze komen uit de kas van mijn broer. Geen supermarkt heeft deze prijs en deze kwaliteit!\"",
-            translation: "\"Why are they expensive?\" \"They come from my brother's greenhouse. No supermarket has this price and this quality!\"",
-          },
-          {
-            text: "Luca neemt de goedkope tomaten. Hij heeft niet veel geld.",
-            translation: "Luca takes the cheap tomatoes. He doesn't have much money.",
-          },
-        ],
-        [
-          {
-            text: "Dan gaan ze naar de kaaskraam.",
-            translation: "Then they go to the cheese stall.",
-          },
-          {
-            text: "Er liggen grote, gele kazen op de tafel.",
-            translation: "There are big yellow cheeses on the table.",
-          },
-          {
-            text: "\"Wilt u even proeven?\" vraagt de vrouw.",
-            translation: "\"Would you like a taste?\" asks the woman.",
-          },
-          {
-            text: "Luca proeft een stukje oude kaas.",
-            translation: "Luca tastes a little piece of aged cheese.",
-          },
-          {
-            text: "\"Mmm, lekker! Mag ik een stuk van deze kaas, alstublieft?\"",
-            translation: "\"Mmm, delicious! Could I have a piece of this cheese, please?\"",
-          },
-          {
-            text: "\"Natuurlijk. Is dit goed?\" \"Ja, prima.\"",
-            translation: "\"Of course. Is this alright?\" \"Yes, fine.\"",
-          },
-          {
-            text: "\"Dat is dan zes euro twintig. Wilt u pinnen?\" \"Ja, graag.\"",
-            translation: "\"That'll be six euros twenty. Would you like to pay by card?\" \"Yes, please.\"",
-          },
-          {
-            text: "Op de markt is er geen kassa: je kunt betalen met je pinpas of contant.",
-            translation: "At the market there's no checkout: you can pay with your bank card or in cash.",
-          },
-        ],
-        [
-          {
-            text: "Bram koopt nog een zakje kibbeling: kleine stukjes gebakken vis.",
-            translation: "Bram also buys a little bag of kibbeling: small pieces of fried fish.",
-          },
-          {
-            text: "\"Dat moet je proberen,\" zegt hij. \"Het is typisch Nederlands.\"",
-            translation: "\"You have to try this,\" he says. \"It's typically Dutch.\"",
-          },
-          {
-            text: "Ze eten de vis op een bank bij de gracht.",
-            translation: "They eat the fish on a bench by the canal.",
-          },
-          {
-            text: "Luca heeft honger, en de vis is warm en lekker.",
-            translation: "Luca is hungry, and the fish is warm and tasty.",
-          },
-          {
-            text: "Hun tassen zijn vol en hun portemonnee is bijna leeg. Een goede zaterdag!",
-            translation: "Their bags are full and their wallet is almost empty. A good Saturday!",
-          },
-        ],
-      ],
-    },
-    {
-      id: "samen-koken",
-      level: "A1",
-      title: "Samen koken",
-      titleTranslation: "Cooking together",
-      grammar: ["imperative", "separable-verbs", "modal-verbs", "object-pronouns", "negation"],
-      paragraphs: [
-        [
-          { text: "Het is woensdagavond.", translation: "It's Wednesday evening." },
-          {
-            text: "Luca kookt voor zijn huisgenoten. Hij maakt pasta met tomatensaus, net als zijn oma.",
-            translation: "Luca is cooking for his housemates. He's making pasta with tomato sauce, just like his grandma.",
-          },
-          { text: "Noor helpt hem.", translation: "Noor helps him." },
-        ],
-        [
-          {
-            text: "\"Wat moet ik doen?\" vraagt Noor.",
-            translation: "\"What should I do?\" asks Noor.",
-          },
-          {
-            text: "\"Snijd eerst de uien, alsjeblieft. Klein, niet groot!\"",
-            translation: "\"Cut the onions first, please. Small, not big!\"",
-          },
-          {
-            text: "Noor pakt een mes en begint. \"Au, mijn ogen!\"",
-            translation: "Noor grabs a knife and starts. \"Ow, my eyes!\"",
-          },
-          {
-            text: "Luca zet een grote pan met water op het vuur.",
-            translation: "Luca puts a big pan of water on the stove.",
-          },
-          {
-            text: "\"Doe er een beetje zout in. Niet te veel!\"",
-            translation: "\"Put a bit of salt in it. Not too much!\"",
-          },
-          {
-            text: "Dan bakt hij de uien in olie en doet hij de tomaten erbij.",
-            translation: "Then he fries the onions in oil and adds the tomatoes.",
-          },
-        ],
-        [
-          { text: "Om half zeven komt Bram thuis.", translation: "At half past six Bram comes home." },
-          {
-            text: "\"Wat ruikt het hier lekker! Ik heb zo'n honger.\"",
-            translation: "\"It smells so good in here! I'm so hungry.\"",
-          },
-          {
-            text: "\"Over tien minuten is het eten klaar. Wil jij de tafel dekken?\"",
-            translation: "\"Dinner's ready in ten minutes. Will you set the table?\"",
-          },
-          {
-            text: "\"Ja hoor. Wil je iets drinken? Ik heb dorst. Water? Bier?\"",
-            translation: "\"Sure. Do you want something to drink? I'm thirsty. Water? Beer?\"",
-          },
-          {
-            text: "\"Ik wil graag een glas rode wijn. Er staat een fles in de kast.\"",
-            translation: "\"I'd like a glass of red wine. There's a bottle in the cupboard.\"",
-          },
-        ],
-        [
-          {
-            text: "Om zeven uur zitten ze aan tafel. \"Eet smakelijk!\" zegt Noor.",
-            translation: "At seven they sit down at the table. \"Enjoy your meal!\" says Noor.",
-          },
-          {
-            text: "Bram neemt een hap. \"Dit is de beste pasta van Leiden!\"",
-            translation: "Bram takes a bite. \"This is the best pasta in Leiden!\"",
-          },
-          {
-            text: "Na het eten ruimt Bram de tafel op en wast Noor af.",
-            translation: "After dinner Bram clears the table and Noor does the dishes.",
-          },
-          {
-            text: "Luca hoeft niets te doen. Dat is de regel in hun huis: de kok mag op de bank zitten.",
-            translation: "Luca doesn't have to do anything. That's the rule in their house: the cook gets to sit on the sofa.",
-          },
-        ],
-        [
-          {
-            text: "Bij Noor thuis in Groningen eten ze anders.",
-            translation: "At Noor's home in Groningen they eat differently.",
-          },
-          {
-            text: "Om zes uur warm eten: aardappels, groente en vlees.",
-            translation: "A hot meal at six: potatoes, vegetables and meat.",
-          },
-          {
-            text: "En als ontbijt en lunch een boterham met kaas of hagelslag. Rijst of pasta eten ze bijna nooit.",
-            translation: "And for breakfast and lunch a slice of bread with cheese or chocolate sprinkles. They hardly ever eat rice or pasta.",
-          },
-          {
-            text: "\"Hagelslag? Op brood?\" Luca vindt dat raar, maar hij wil het morgen proberen.",
-            translation: "\"Sprinkles? On bread?\" Luca thinks that's weird, but he wants to try it tomorrow.",
-          },
-        ],
-      ],
-    },
+  // The unit is one story: its texts are the episodes (Matteo, 17 Nov 2026).
+  texts: avondTexts,
+  sequence: [
+    "avond-1-een-plan",
+    "voicemail-van-fatima",
+    "er-is",
+    "avond-2-in-de-supermarkt",
+    "omroep-supermarkt",
+    "demonstratives",
+    "de-vries-belt",
+    "avond-3-op-de-markt",
+    "bij-de-kaaskraam",
+    "diminutives",
+    "write",
+    "avond-4-eet-smakelijk",
+    "words",
+    "check",
   ],
+  checkpoint: avondCheckpoint,
 };
 
 export const dagEnTijd: UnitContent = {

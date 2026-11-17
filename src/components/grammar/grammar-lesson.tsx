@@ -26,6 +26,7 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
   const progress = useCourseProgress(pack);
   const [mode, setMode] = useState<"learn" | "practise" | "done">("learn");
   const [score, setScore] = useState(0);
+  const [outOf, setOutOf] = useState(1);
   // Once started, the exercises stay where you left them while you look back at the pattern.
   const [started, setStarted] = useState(false);
 
@@ -78,8 +79,9 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
             seed={point.id}
             exercises={lesson.exercises}
             onBack={() => setMode("learn")}
-            onDone={(right) => {
+            onDone={(right, total) => {
               setScore(right);
+              setOutOf(total);
               setMode("done");
               setStarted(false);
               progress.markGrammar(point.id);
@@ -91,10 +93,10 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
       {mode === "done" ? (
         <section className="step-body">
           <h2 className="done-title">
-            {score} of {lesson.exercises.length} right
+            {score} of {outOf} right
           </h2>
           <p className="lede">
-            {score / lesson.exercises.length >= 0.8
+            {score / outOf >= 0.8
               ? "You've got this pattern. You'll keep meeting it in the texts."
               : "Good start. This one takes a few rounds: look at the pattern again whenever you like."}
           </p>
@@ -235,21 +237,23 @@ export function ExerciseRunner({
   seed: string;
   exercises: Exercise[];
   onBack: () => void;
-  onDone: (right: number) => void;
+  onDone: (right: number, total: number) => void;
 }) {
   const [index, setIndex] = useState(0);
   const [right, setRight] = useState(0);
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const ex = exercises[index];
+  const rightNow = right + (verdict === "right" || verdict === "almost" ? 1 : 0);
+  // Adapting to what you know (Matteo): three right from the start and you may stop there.
+  const canFinishEarly = verdict !== null && index >= 2 && index + 1 < exercises.length && rightNow === index + 1;
 
   function next() {
-    const total = right + (verdict === "right" || verdict === "almost" ? 1 : 0);
     if (index + 1 < exercises.length) {
-      setRight(total);
+      setRight(rightNow);
       setIndex(index + 1);
       setVerdict(null);
     } else {
-      onDone(total);
+      onDone(rightNow, exercises.length);
     }
   }
 
@@ -269,9 +273,16 @@ export function ExerciseRunner({
             <span className="feedback-answer" lang={lang}>{correctAnswer(ex)}</span>
           </p>
           <p className="example-translation">{ex.translation}</p>
-          <button type="button" className="button" onClick={next} autoFocus>
-            Continue
-          </button>
+          <div className="button-row">
+            <button type="button" className="button" onClick={next} autoFocus>
+              Continue
+            </button>
+            {canFinishEarly ? (
+              <button type="button" className="button button-quiet" onClick={() => onDone(rightNow, index + 1)}>
+                I&apos;ve got it: finish here
+              </button>
+            ) : null}
+          </div>
         </div>
       ) : null}
     </section>

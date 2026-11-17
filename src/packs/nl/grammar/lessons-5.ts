@@ -148,7 +148,7 @@ export const lessons5: Record<string, GrammarLesson> = {
     examples: [
       example("Nee, dank je. Ik drink liever thee.", "No, thanks. I'd rather have tea.", "liever"),
       example("Het liefst Italiaanse films, natuurlijk!", "Preferably Italian films, of course!", "Het liefst"),
-      example("Ik wil graag een bruin brood.", "I'd like a brown loaf.", "graag"),
+      example("Ik kom graag!", "I'd love to come!", "graag"),
       example("Ze houdt van lezen", "She loves reading", "houdt van"),
     ],
     exercises: [

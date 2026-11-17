@@ -15,10 +15,11 @@ import type { ActivityKind } from "@/core/course";
 import { pushProgress } from "./sync";
 import { logStudy } from "@/lib/plan/log";
 
-export type ProgressKind = ActivityKind | "beyond" | "writing" | "slang" | "story" | "replay";
+/** "checkpass": checkpoints passed (their can-do goals are ticked). */
+export type ProgressKind = ActivityKind | "beyond" | "writing" | "slang" | "checkpass";
 
 /** Every kind that is stored (and synced). "write" is derived from "writing". */
-export const PROGRESS_KINDS: ProgressKind[] = ["words", "read", "listen", "grammar", "speak", "beyond", "writing", "slang", "story", "replay"];
+export const PROGRESS_KINDS: ProgressKind[] = ["words", "read", "listen", "grammar", "speak", "check", "checkpass", "beyond", "writing", "slang"];
 
 export const progressKey = (kind: ProgressKind, language: string) => `mozaik:${kind}:${language}`;
 const key = progressKey;

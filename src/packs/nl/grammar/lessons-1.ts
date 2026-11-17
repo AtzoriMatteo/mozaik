@@ -59,7 +59,7 @@ export const lessons1: Record<string, GrammarLesson> = {
       fill("Noor ", " geneeskunde.", "studeert", "Noor studies medicine.", "studeren"),
       fill("Wij ", " Nederlands.", "leren", "We're learning Dutch.", "leren"),
       fill("Bram ", " in een café.", "werkt", "Bram works in a café.", "werken"),
-      fill("Luca ", " in de keuken.", "zit", "Luca is sitting in the kitchen.", "zitten"),
+      fill("Bram ", " in de keuken.", "zit", "Bram is sitting in the kitchen.", "zitten"),
       choice("Jullie ", " heel goed Engels.", ["spreek", "spreekt", "spreken"], 2, "You (all) speak English very well."),
     ],
   },
@@ -81,7 +81,7 @@ export const lessons1: Record<string, GrammarLesson> = {
       example("Ik ben drieëntwintig jaar en ik ben student.", "I'm twenty-three and I'm a student.", "ben"),
       example("Op maandag en woensdag heb ik les.", "On Mondays and Wednesdays I have class.", "heb"),
       example("Hij heeft hoofdpijn en buikpijn, en hij is heel moe.", "He has a headache and stomach ache, and he's very tired.", "heeft", "is"),
-      example("Luca heeft honger", "Luca is hungry", "heeft", "honger"),
+      example("Ik heb geen honger meer.", "I'm not hungry any more.", "heb", "honger"),
     ],
     exercises: [
       fill("Ik ", " student.", "ben", "I'm a student.", "zijn"),
