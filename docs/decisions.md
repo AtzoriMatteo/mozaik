@@ -5,6 +5,32 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (late) — One street, a different lead each unit
+
+Matteo: roll the story units out to the whole course, but keep the variety
+of people and nationalities, and stay comprehensive.
+
+- **The setting is one street, not one household (Claude, Matteo's
+  brief).** The Oude Vest in Leiden: Luca, Noor and Bram at number 12,
+  Mevrouw De Vries at 14, Ruth Pinas and her son Jayden at 11 above the
+  bakery. Each unit stars someone different, and the regulars come back in
+  small roles. A2 will get its own setting and people.
+- **Done so far:** unit 5 "Een drukke week" (Ruth from Suriname and Jayden;
+  Luca reads half vier as half past four), unit 6 "Een nieuwe buurman" (Kwame
+  from Ghana rents De Vries's attic room), unit 7 "Fatima zoekt werk"
+  (Fatima's weekend job at Ruth's bakery). Each has four episodes, a story
+  scene to listen to, a story writing topic and a checkpoint. The unit's
+  other listening (other people, other places, like Mehmet in Rotterdam)
+  stays, so you still hear many voices.
+- **Comprehensive, checked (Claude).** Before a unit is rewritten,
+  `scripts/story-constraints.ts` lists what its texts carry that the course
+  relies on: core words met only there, grammar examples quoted from them,
+  words later tasks need. The new episodes must cover all of it; the tests
+  fail otherwise.
+- Culture texts (interviews with many people) stay in story units as extra
+  reading.
+- Next: Dutch A1 units 8–12 and 1–3, then Italian units 1–3, then A2.
+
 ## 2026-11-17 (night) — Italian unit 4 is a story unit too
 
 Matteo's standing rule: every change to Dutch also goes to Italian.

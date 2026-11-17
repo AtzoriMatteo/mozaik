@@ -15,9 +15,6 @@ export const speakers: Record<string, string> = {
   "mijn-familie": "Bram|Bram",
   "bellen-met-mama": "Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca",
   "een-mail-van-giulia": "Leo",
-  "de-taalles": "Ingrid|Fatima|Ingrid|Ingrid|-|Ingrid|Ingrid|Noor",
-  "een-bijbaan": "Bram|Bram|Kees|Luca|Kees|Luca|Kees|Luca|Kees|Kees|Luca",
-  "noor-in-het-ziekenhuis": "Noor|Noor|Noor",
   "wat-voor-werk-doet-u": "De journaliste|Peter|Yasmin|Tom|Joanna|Sven|Ricardo|Ricardo|Ricardo|De journaliste",
   "ziek": "Noor|Luca|Noor|Luca|Noor|Luca|Noor|Noor",
   "bij-de-huisarts": "De assistente|Luca|De assistente|Luca|De assistente|Luca|De huisarts|Luca|De huisarts|De huisarts|Luca|De huisarts|De huisarts",
@@ -51,6 +48,12 @@ export const speakers: Record<string, string> = {
   "dit-heb-ik-niet-besteld": "Fatou|Fatou|De ober|De ober|De ober|Fatou",
   "wadlopen": "De gids",
   "praten-over-het-weer": "-|-|Je collega|Je collega|-",
+  // Unit 7: Fatima zoekt werk
+  "werk-1-in-de-taalles": "Ingrid|Ingrid|Fatima|Fatima|Luca|Luca",
+  "werk-2-verkoper-gezocht": "Fatima|Ruth|Ruth|Fatima",
+  "werk-3-het-gesprek": "Ruth|Fatima|Ruth|Fatima|Ruth|Fatima|Ruth|Fatima|Ruth|Fatima",
+  "werk-4-de-eerste-zaterdag": "Mevrouw De Vries|Kapper|Noor|Noor|Fatima|Ruth|Fatima|Ruth",
+  "check-a1-werk-en-studie": "Ruth",
   // Unit 6: Een nieuwe buurman
   "buurman-1-kamer-te-huur": "Mevrouw De Vries|Mevrouw De Vries|Kwame|Mevrouw De Vries|Kwame|Mevrouw De Vries",
   "buurman-2-verhuizen": "Bram|Kwame|Bram|Kwame|Mevrouw De Vries",

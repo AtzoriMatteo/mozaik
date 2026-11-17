@@ -19,10 +19,10 @@ import type { WritingTask } from "@/core/writing";
 import { avondListening, avondWriting } from "../stories/italiaanse-avond-more";
 import { weekListening, weekWriting } from "../stories/een-drukke-week";
 import { buurmanListening, buurmanWriting } from "../stories/een-nieuwe-buurman";
+import { werkListening, werkWriting } from "../stories/fatima-zoekt-werk";
 import {
   fatimasProfiel,
   gezondLeven,
-  inHetZiekenhuis,
   mailVanGiulia,
   vrijeTijdText,
 } from "./a1-more-texts";
@@ -56,7 +56,6 @@ const LOOK: Record<string, { motif: Motif; glaze: Glaze }> = {
 const MORE_TEXTS = {
   "a1-kennismaken": fatimasProfiel,
   "a1-familie": mailVanGiulia,
-  "a1-werk-en-studie": inHetZiekenhuis,
   "a1-gezondheid": gezondLeven,
   "a1-vrije-tijd": vrijeTijdText,
 } as const;
@@ -84,6 +83,7 @@ const STORY: Record<string, { listening: ListeningItem[]; writing: WritingTask[]
   // Unit 5 keeps its listening (other people on other days) and adds a scene from the story.
   "a1-dag-en-tijd": { listening: [weekListening, ...(listening["a1-dag-en-tijd"] ?? [])], writing: [weekWriting] },
   "a1-wonen": { listening: [buurmanListening, ...(listening["a1-wonen"] ?? [])], writing: [buurmanWriting] },
+  "a1-werk-en-studie": { listening: [werkListening, ...(listening["a1-werk-en-studie"] ?? [])], writing: [werkWriting] },
 };
 
 function assemble(u: UnitContent): Unit {
@@ -92,7 +92,7 @@ function assemble(u: UnitContent): Unit {
   return {
     ...u,
     look: u.look ?? LOOK[u.id],
-    texts: [...u.texts, ...(extra ? [extra] : []), ...(story ? [] : (CULTURE_TEXTS[u.id] ?? []))].map((t) => ({ ...t, tasks: t.tasks ?? tasksA1[t.id] })),
+    texts: [...u.texts, ...(extra ? [extra] : []), ...(CULTURE_TEXTS[u.id] ?? [])].map((t) => ({ ...t, tasks: t.tasks ?? tasksA1[t.id] })),
     listening: (story?.listening ?? listening[u.id] ?? []).map((l) => ({ ...l, tasks: l.tasks ?? listeningTasksA1[l.id] })),
     speaking: speakingA1[u.id],
     writing: [...(story?.writing ?? []), ...(writingA1[u.id] ?? []), ...(writingCulture[u.id] ?? [])],
