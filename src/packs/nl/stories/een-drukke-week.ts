@@ -77,7 +77,7 @@ export const weekTexts: ReadingText[] = [
     grammar: ["separable-verbs", "verb-second", "time-numbers", "present-regular", "conjunctions"],
     paragraphs: [
       [
-        s("Ruth Pinas woont tegenover Luca, op nummer twaalf.", "Ruth Pinas lives across from Luca, at number twelve."),
+        s("Ruth Pinas woont tegenover Luca, op nummer elf.", "Ruth Pinas lives across from Luca, at number eleven."),
         s("Ze komt uit Suriname en ze werkt bij de bakker in de straat.", "She's from Suriname and she works at the baker's in the street."),
         s("Haar wekker gaat om half vijf.", "Her alarm goes off at half past four."),
         s("Om vijf uur staat ze op, en om half zes begint haar werk.", "At five she gets up, and at half past five her work starts."),
