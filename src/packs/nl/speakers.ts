@@ -58,4 +58,9 @@ export const speakers: Record<string, string> = {
   "dit-heb-ik-niet-besteld": "Fatou|Fatou|De ober|De ober|De ober|Fatou",
   "wadlopen": "De gids",
   "praten-over-het-weer": "-|-|Je collega|Je collega|-",
+  // Story episodes (Een Italiaanse avond)
+  "avond-1-een-plan": "Luca|Luca|Noor|Noor|Luca|Noor|Luca|Luca|Bram|Bram|Luca|Noor|Noor|Bram|Bram|Luca|Noor|Noor|Fatima|Mevrouw De Vries",
+  "avond-2-in-de-supermarkt": "Noor|Luca|Luca|Luca|Luca|Noor|Luca|Luca|Noor|Noor|Luca|Noor|Noor|Luca|Luca|Luca",
+  "avond-3-op-de-markt": "De bakker|Fatima|Luca|De kaasboer|De kaasboer|Fatima|Luca|Fatima|Luca|Fatima|Luca|Fatima|Fatima",
+  "avond-4-eet-smakelijk": "Mevrouw De Vries|Mevrouw De Vries|Luca|Fatima|Fatima|Luca|Noor|Bram|Mevrouw De Vries|Mevrouw De Vries|Luca|Mevrouw De Vries",
 };

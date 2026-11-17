@@ -1,0 +1,392 @@
+import type { Sentence, Story, WordHelp } from "@/core/content";
+
+const s = (text: string, translation: string): Sentence => ({ text, translation });
+
+/** Help for words the story uses that the course dictionary doesn't have yet. */
+const storyWords: Record<string, WordHelp> = {
+  knoflook: { meaning: "garlic", closer: "knof + look (old word for leek or onion)" },
+  maandagavond: { meaning: "Monday evening" },
+  zaterdagochtend: { meaning: "Saturday morning" },
+  vijven: { meaning: "met z'n vijven = the five of us", base: "vijf" },
+  pen: { meaning: "pen" },
+  groter: { meaning: "bigger", base: "groot" },
+  broodjes: { meaning: "rolls", base: "broodje" },
+  ham: { meaning: "ham" },
+  dekt: { meaning: "sets (the table)", base: "dekken" },
+  borden: { meaning: "plates", base: "bord" },
+  toetje: { meaning: "dessert", local: "Everyday word; the menu says nagerecht." },
+  olijfolie: { meaning: "olive oil" },
+  tiramisu: { meaning: "tiramisu" },
+  mascarpone: { meaning: "mascarpone" },
+  antwoordt: { meaning: "answers", base: "antwoorden" },
+  keuze: { meaning: "choice" },
+  serieus: { meaning: "serious(ly)" },
+  kaasboer: { meaning: "cheese seller", closer: "kaas + boer (farmer)" },
+  pond: { meaning: "pound (half a kilo)", local: "Een pond = 500 grams: still how people order cheese and meat." },
+  terugweg: { meaning: "the way back", closer: "terug (back) + weg (way)" },
+  bloemenkraam: { meaning: "flower stall" },
+  bosje: { meaning: "a bunch (of flowers)", base: "bos" },
+  volle: { meaning: "full", base: "vol" },
+  kleinzoon: { meaning: "grandson", closer: "klein (small) + zoon (son)" },
+  papiertje: { meaning: "a piece of paper", base: "papier" },
+};
+
+/**
+ * Trial story for A1 unit 4 (Eten en boodschappen). One plot over four
+ * episodes, written so the unit's words keep coming back: boodschappen,
+ * lijstje, kosten, duur, goedkoop, kilo, pak, stuk, kaas, tomaten, uien,
+ * knoflook, kip, brood, proeven, lekker. Present tense, like the unit.
+ */
+export const italiaanseAvond: Story = {
+  id: "italiaanse-avond",
+  title: "Een Italiaanse avond",
+  titleTranslation: "An Italian evening",
+  intro: "Luca wants to cook a real Italian dinner for his housemates and two guests. Four episodes, one week.",
+  episodes: [
+    {
+      id: "avond-1-een-plan",
+      level: "A1",
+      title: "Een plan",
+      titleTranslation: "A plan",
+      grammar: ["er-is"],
+      paragraphs: [
+        [
+          s("Het is maandagavond.", "It's Monday evening."),
+          s("Luca, Noor en Bram zitten in de keuken.", "Luca, Noor and Bram are sitting in the kitchen."),
+          s("De koelkast is bijna leeg.", "The fridge is almost empty."),
+          s("Er is geen melk en er zijn geen eieren meer.", "There's no milk and there are no eggs left."),
+        ],
+        [
+          s('"Ik heb een plan," zegt Luca.', '"I have a plan," says Luca.'),
+          s('"Zaterdag kook ik voor jullie. Een echte Italiaanse avond!"', '"On Saturday I\'m cooking for you. A real Italian evening!"'),
+          s('"Wat leuk!" zegt Noor. "Mag Fatima ook komen?"', '"How nice!" says Noor. "Can Fatima come too?"'),
+          s('"Natuurlijk. En mevrouw De Vries ook. Dan zijn we met z\'n vijven."', '"Of course. And Mrs De Vries too. Then there are five of us."'),
+        ],
+        [
+          s("Luca pakt een pen en maakt een lijstje.", "Luca takes a pen and makes a list."),
+          s("Eerst een voorgerecht: brood met tomaten en olijfolie.", "First a starter: bread with tomatoes and olive oil."),
+          s("Dan pasta met een saus van tomaten, uien en knoflook.", "Then pasta with a sauce of tomatoes, onions and garlic."),
+          s("Daarna kip met groente.", "After that, chicken with vegetables."),
+          s("En als toetje: tiramisu.", "And for dessert: tiramisu."),
+        ],
+        [
+          s("Noor leest het lijstje hardop.", "Noor reads the list out loud."),
+          s('"Tomaten, uien, knoflook, pasta, kip, groente, brood, kaas, mascarpone en koekjes. Waarom koekjes?"', '"Tomatoes, onions, garlic, pasta, chicken, vegetables, bread, cheese, mascarpone and biscuits. Why biscuits?"'),
+          s('"Voor de tiramisu," zegt Luca. "En een paar voor mij."', '"For the tiramisu," says Luca. "And a few for me."'),
+        ],
+        [
+          s('"Dat is veel eten," zegt Bram. "Wat kost dat allemaal?"', '"That\'s a lot of food," says Bram. "What does it all cost?"'),
+          s("Luca rekent. Pasta en tomaten zijn goedkoop, maar kip en kaas zijn duur.", "Luca does the sums. Pasta and tomatoes are cheap, but chicken and cheese are expensive."),
+          s('"Ongeveer veertig euro, denk ik."', '"About forty euros, I think."'),
+          s('"Dat is acht euro per persoon," zegt Noor. "Dat is goedkoop voor een etentje!"', '"That\'s eight euros a person," says Noor. "That\'s cheap for a dinner!"'),
+        ],
+        [
+          s('"Er is één probleem," zegt Bram. "Ik kan niet koken."', '"There\'s one problem," says Bram. "I can\'t cook."'),
+          s('Luca lacht. "Geen probleem. Jij kookt niet. Jij doet de afwas."', 'Luca laughs. "No problem. You don\'t cook. You do the washing-up."'),
+        ],
+        [
+          s("Maar er is nog een probleem: de tafel in de keuken is klein. Er zijn maar vier stoelen.", "But there's another problem: the kitchen table is small. There are only four chairs."),
+          s('"Ik heb een stoel op mijn kamer," zegt Noor. "Dan zijn er vijf."', '"I have a chair in my room," says Noor. "Then there are five."'),
+          s("Later stuurt Luca een bericht aan Fatima en mevrouw De Vries.", "Later Luca sends a message to Fatima and Mrs De Vries."),
+          s('Fatima antwoordt meteen: "Ja, graag! Ik neem iets lekkers mee."', 'Fatima answers straight away: "Yes, please! I\'ll bring something nice."'),
+          s('En mevrouw De Vries? Zij belt aan. "Een Italiaanse avond? Wat gezellig. Ik kom graag!"', 'And Mrs De Vries? She rings the bell. "An Italian evening? How lovely. I\'d love to come!"'),
+        ],
+      ],
+      words: {
+        ...storyWords,
+        rekent: { meaning: "does the sums, works it out", base: "rekenen" },
+        voorgerecht: { meaning: "starter, first course", closer: "voor (before) + gerecht (dish)" },
+        toetje: { meaning: "dessert", local: "Everyday word; the menu says nagerecht." },
+        etentje: { meaning: "a dinner (with friends)", base: "etentje", closer: "eten + -tje: a small, cosy meal" },
+        olijfolie: { meaning: "olive oil" },
+        tiramisu: { meaning: "tiramisu" },
+        allemaal: { meaning: "all of it, everything" },
+      },
+      tasks: [
+        { kind: "choice", prompt: "Why does Luca make a list?", options: ["He's cooking an Italian dinner on Saturday", "The fridge is broken", "It's Noor's birthday"], answer: 0 },
+        { kind: "choice", prompt: "How many people will be at dinner?", options: ["Five", "Three", "Eight"], answer: 0 },
+        { kind: "choice", prompt: "What is Bram's job on Saturday?", options: ["The washing-up", "The dessert", "The shopping"], answer: 0 },
+      ],
+      notice: {
+        grammar: "er-is",
+        title: "Er is… / Er zijn…",
+        explain: "To say something is there (or isn't), Dutch starts with er: er is + one thing, er zijn + more than one. Geen makes it 'no'.",
+        examples: ["Er is geen melk en er zijn geen eieren meer.", "Er is één probleem"],
+        exercises: [
+          { kind: "fill", before: "Er", after: "geen melk.", answers: ["is"], translation: "There's no milk." },
+          { kind: "fill", before: "Er", after: "geen eieren.", answers: ["zijn"], translation: "There are no eggs." },
+          { kind: "choice", before: "Er", after: "drie tomaten in de koelkast.", options: ["is", "zijn"], answer: 1, translation: "There are three tomatoes in the fridge." },
+        ],
+      },
+      say: [
+        {
+          prompt: "Think of your own fridge. Say one thing that's there and one thing that isn't.",
+          frame: "Er is … . Er is geen … .",
+          model: "Er is kaas. Er is geen melk.",
+          translation: "There's cheese. There's no milk.",
+        },
+        {
+          prompt: "What's Luca's starter? Say it in one short sentence.",
+          frame: "Het voorgerecht is … .",
+          model: "Het voorgerecht is brood met tomaten.",
+          translation: "The starter is bread with tomatoes.",
+        },
+      ],
+    },
+    {
+      id: "avond-2-in-de-supermarkt",
+      level: "A1",
+      title: "In de supermarkt",
+      titleTranslation: "At the supermarket",
+      grammar: ["demonstratives"],
+      paragraphs: [
+        [
+          s("Op dinsdag gaan Luca en Noor naar de supermarkt.", "On Tuesday Luca and Noor go to the supermarket."),
+          s("Luca heeft het lijstje in zijn hand. Noor neemt een karretje.", "Luca has the list in his hand. Noor takes a trolley."),
+        ],
+        [
+          s("Eerst gaan ze naar de groente.", "First they go to the vegetables."),
+          s("Er zijn tomaten in een bakje en losse tomaten.", "There are tomatoes in a tub and loose tomatoes."),
+          s('"Welke tomaten neem je?" vraagt Noor.', '"Which tomatoes are you taking?" asks Noor.'),
+          s('"Deze, de losse. Die tomaten in het bakje zijn niet lekker."', '"These, the loose ones. Those tomatoes in the tub aren\'t nice."'),
+          s("Luca pakt een kilo tomaten, drie uien en knoflook.", "Luca takes a kilo of tomatoes, three onions and garlic."),
+        ],
+        [
+          s("Bij de pasta is er heel veel keuze. Luca leest de pakken.", "There's a lot of choice at the pasta. Luca reads the packs."),
+          s('"Deze pasta komt uit Italië. Die pasta komt uit Nederland."', '"This pasta comes from Italy. That pasta comes from the Netherlands."'),
+          s('Hij neemt de Italiaanse. "Dat is belangrijk," zegt hij serieus. Noor lacht.', 'He takes the Italian one. "That\'s important," he says seriously. Noor laughs.'),
+        ],
+        [
+          s("Dan zoeken ze de kaas.", "Then they look for the cheese."),
+          s("Er is jonge kaas, oude kaas en Italiaanse kaas.", "There's young cheese, old cheese and Italian cheese."),
+          s('"Is er Parmezaanse kaas?" "Ja, hier. Maar dit stuk kost zes euro!"', '"Is there Parmesan?" "Yes, here. But this piece costs six euros!"'),
+          s('"Dat is duur. Neem deze. Die is in de aanbieding."', '"That\'s expensive. Take this one. It\'s on offer."'),
+        ],
+        [
+          s("Bij het vlees ligt de kip.", "The chicken is by the meat."),
+          s('Luca kijkt naar de prijs. "Dit pak kip kost negen euro. Dat is te veel."', 'Luca looks at the price. "This pack of chicken costs nine euros. That\'s too much."'),
+          s('"Kijk, daar," zegt Noor. "Dat pak is groter en het kost maar zeven euro."', '"Look, there," says Noor. "That pack is bigger and it costs only seven euros."'),
+          s('"Perfect!"', '"Perfect!"'),
+        ],
+        [
+          s("Bij de melk pakt Noor een pak melk en zes eieren.", "At the milk Noor takes a carton of milk and six eggs."),
+          s('"Die zijn niet voor zaterdag," zegt ze. "Die zijn voor morgen. Er is niets voor het ontbijt!"', '"Those aren\'t for Saturday," she says. "Those are for tomorrow. There\'s nothing for breakfast!"'),
+        ],
+        [
+          s("Bij de kassa betaalt Luca. Alles samen kost zevenendertig euro.", "Luca pays at the till. Everything together costs thirty-seven euros."),
+          s('"Minder dan veertig!" zegt hij blij.', '"Less than forty!" he says, happy.'),
+          s("Thuis kijkt hij nog een keer naar het lijstje.", "At home he looks at the list once more."),
+          s("Daar staat ook mascarpone. Maar er is geen mascarpone in de tas.", "Mascarpone is on it too. But there's no mascarpone in the bag."),
+          s('"O nee," zegt Luca. "Geen mascarpone, geen tiramisu!"', '"Oh no," says Luca. "No mascarpone, no tiramisu!"'),
+        ],
+      ],
+      words: {
+        ...storyWords,
+        karretje: { meaning: "(shopping) trolley", base: "karretje" },
+        bakje: { meaning: "tub, small container", base: "bakje" },
+        losse: { meaning: "loose", base: "los" },
+        parmezaanse: { meaning: "Parmesan", base: "Parmezaans" },
+        mascarpone: { meaning: "mascarpone" },
+        tiramisu: { meaning: "tiramisu" },
+        olijfolie: { meaning: "olive oil" },
+      },
+      tasks: [
+        { kind: "choice", prompt: "Which tomatoes does Luca take?", options: ["The loose ones", "The ones in the tub", "None"], answer: 0 },
+        { kind: "choice", prompt: "Why does Luca take the other pack of chicken?", options: ["It's bigger and cheaper", "It's Italian", "Noor doesn't eat chicken"], answer: 0 },
+        { kind: "choice", prompt: "What has Luca forgotten?", options: ["Mascarpone", "Garlic", "The list"], answer: 0 },
+      ],
+      notice: {
+        grammar: "demonstratives",
+        title: "Deze, die, dit, dat",
+        explain: "This and that: deze (here) and die (there) go with de-words and plurals; dit (here) and dat (there) go with het-words.",
+        examples: ["Die tomaten in het bakje zijn niet lekker.", "dit stuk kost zes euro", "Dat pak is groter"],
+        exercises: [
+          { kind: "choice", before: "", after: "kaas is in de aanbieding. (here)", options: ["Deze", "Dit"], answer: 0, translation: "This cheese is on offer." },
+          { kind: "choice", before: "", after: "pak is groter. (there)", options: ["Die", "Dat"], answer: 1, translation: "That pack is bigger." },
+          { kind: "fill", before: "Neem", after: "tomaten. (there)", answers: ["die"], translation: "Take those tomatoes." },
+        ],
+      },
+      say: [
+        {
+          prompt: "You're in a shop. Point at a cheese near you and say it's cheap.",
+          frame: "Deze … is goedkoop.",
+          model: "Deze kaas is goedkoop.",
+          translation: "This cheese is cheap.",
+        },
+        {
+          prompt: "Ask what that bread over there costs. (Brood is a het-word.)",
+          frame: "Wat kost … brood?",
+          model: "Wat kost dat brood?",
+          translation: "What does that bread cost?",
+        },
+      ],
+    },
+    {
+      id: "avond-3-op-de-markt",
+      level: "A1",
+      title: "Op de markt",
+      titleTranslation: "At the market",
+      grammar: ["diminutives"],
+      paragraphs: [
+        [
+          s("Zaterdagochtend gaat Luca naar de markt. Fatima gaat mee.", "On Saturday morning Luca goes to the market. Fatima comes along."),
+          s("Op de markt is het druk. Er zijn kramen met groente, fruit, vis, kaas en bloemen.", "The market is busy. There are stalls with vegetables, fruit, fish, cheese and flowers."),
+        ],
+        [
+          s("Eerst gaan ze naar de bakker. Luca koopt twee stokbroden en zes broodjes.", "First they go to the baker. Luca buys two baguettes and six rolls."),
+          s('"Wil je een koekje proeven?" vraagt de bakker.', '"Would you like to taste a biscuit?" asks the baker.'),
+          s('Fatima neemt een stukje. "Mmm, lekker!"', 'Fatima takes a little piece. "Mmm, delicious!"'),
+        ],
+        [
+          s('Bij de kaaskraam vraagt Luca: "Heeft u mascarpone?"', 'At the cheese stall Luca asks: "Do you have mascarpone?"'),
+          s('"Nee, sorry. Dat hebben we niet. Maar de Italiaanse winkel in de Breestraat heeft het."', '"No, sorry. We don\'t have that. But the Italian shop in the Breestraat has it."'),
+          s('De kaasboer geeft hun een stukje oude kaas. "Proef maar."', 'The cheese seller gives them a little piece of old cheese. "Go on, taste it."'),
+          s("Fatima vindt de kaas te zout, maar Luca vindt hem lekker. Hij koopt een stuk van een pond.", "Fatima finds the cheese too salty, but Luca likes it. He buys a piece of a pound."),
+        ],
+        [
+          s('Dan zegt Fatima: "Luca, ik eet geen varkensvlees. Is er varkensvlees in de saus?"', 'Then Fatima says: "Luca, I don\'t eat pork. Is there pork in the sauce?"'),
+          s('"Nee, alleen tomaten, uien en knoflook. En het vlees is kip."', '"No, only tomatoes, onions and garlic. And the meat is chicken."'),
+          s('"Gelukkig!"', '"Good!"'),
+          s('"Maar wacht… op het brood doe ik soms een plakje ham."', '"But wait… I sometimes put a slice of ham on the bread."'),
+          s('"Niet doen, alsjeblieft!"', '"Please don\'t!"'),
+          s('Luca lacht. "Goed, geen ham. Een beetje kaas is ook lekker."', 'Luca laughs. "Fine, no ham. A bit of cheese is nice too."'),
+        ],
+        [
+          s("In de Italiaanse winkel vinden ze de mascarpone.", "In the Italian shop they find the mascarpone."),
+          s("Achter de kassa staat een oude meneer. Hij komt uit Napels.", "Behind the till is an old man. He's from Naples."),
+          s("Luca en de meneer praten even Italiaans.", "Luca and the man chat in Italian for a moment."),
+          s("Fatima begrijpt er niets van, maar ze krijgt een gratis zakje koekjes.", "Fatima doesn't understand a word, but she gets a free little bag of biscuits."),
+        ],
+        [
+          s("Op de terugweg komen ze langs de bloemenkraam.", "On the way back they pass the flower stall."),
+          s('"Een bosje tulpen voor de tafel," zegt Fatima. "Vijf euro. Dat is niet duur."', '"A bunch of tulips for the table," says Fatima. "Five euros. That\'s not expensive."'),
+          s("Met twee volle tassen en een bosje tulpen fietsen ze naar huis.", "With two full bags and a bunch of tulips they cycle home."),
+        ],
+      ],
+      words: {
+        ...storyWords,
+        stokbroden: { meaning: "baguettes", base: "stokbrood", closer: "stok (stick) + brood (bread)" },
+        varkensvlees: { meaning: "pork", closer: "varken (pig) + s + vlees (meat)" },
+        plakje: { meaning: "a slice", base: "plak" },
+        zakje: { meaning: "a little bag", base: "zak" },
+        mascarpone: { meaning: "mascarpone" },
+        napels: { meaning: "Naples" },
+        breestraat: { meaning: "the Breestraat (a street in Leiden)" },
+        kaaskraam: { meaning: "cheese stall", closer: "kaas + kraam (stall)" },
+      },
+      tasks: [
+        { kind: "choice", prompt: "Where do they find the mascarpone?", options: ["In the Italian shop", "At the cheese stall", "At the baker"], answer: 0 },
+        { kind: "choice", prompt: "Why does Luca leave out the ham?", options: ["Fatima doesn't eat pork", "Ham is too expensive", "The baker has no ham"], answer: 0 },
+        { kind: "choice", prompt: "What does Fatima get for free?", options: ["A little bag of biscuits", "A baguette", "Some cheese"], answer: 0 },
+      ],
+      notice: {
+        grammar: "diminutives",
+        title: "Small things: -je",
+        explain: "Add -je to make something small, or a small portion: een stuk → een stukje, een koek → een koekje. Every -je word is a het-word.",
+        examples: ["Fatima neemt een stukje.", "een plakje ham", "een gratis zakje koekjes"],
+        exercises: [
+          { kind: "fill", before: "een stuk → een", after: "", answers: ["stukje"], translation: "a piece → a little piece" },
+          { kind: "choice", before: "", after: "broodje is lekker.", options: ["De", "Het"], answer: 1, translation: "The roll is tasty." },
+          { kind: "fill", before: "Wil je een", after: "? (koek, a small one)", answers: ["koekje"], translation: "Would you like a biscuit?" },
+        ],
+      },
+      say: [
+        {
+          prompt: "At the baker's, ask for six rolls.",
+          frame: "Zes …, alstublieft.",
+          model: "Zes broodjes, alstublieft.",
+          translation: "Six rolls, please.",
+        },
+        {
+          prompt: "Tell your host something you don't eat.",
+          frame: "Ik eet geen … .",
+          model: "Ik eet geen vis.",
+          translation: "I don't eat fish.",
+        },
+      ],
+    },
+    {
+      id: "avond-4-eet-smakelijk",
+      level: "A1",
+      title: "Eet smakelijk!",
+      titleTranslation: "Enjoy your meal!",
+      grammar: ["plurals"],
+      paragraphs: [
+        [
+          s("Om zes uur staat Luca in de keuken.", "At six o'clock Luca is standing in the kitchen."),
+          s("Het water kookt, de saus is bijna klaar en het huis ruikt naar knoflook.", "The water is boiling, the sauce is almost ready and the house smells of garlic."),
+          s("Noor dekt de tafel: vijf borden, vijf glazen, vijf vorken en vijf messen.", "Noor sets the table: five plates, five glasses, five forks and five knives."),
+          s("In het midden zet ze de tulpen van Fatima.", "In the middle she puts Fatima's tulips."),
+        ],
+        [
+          s("Om half zeven gaat de bel. Fatima en mevrouw De Vries staan voor de deur.", "At half past six the bell rings. Fatima and Mrs De Vries are at the door."),
+          s("Mevrouw De Vries heeft een fles wijn en een schaal in haar handen.", "Mrs De Vries has a bottle of wine and a dish in her hands."),
+          s('"Voor bij het toetje," zegt ze. "Het zijn stroopwafels. Iets Nederlands voor een Italiaanse avond!"', '"To go with the dessert," she says. "They\'re stroopwafels. Something Dutch for an Italian evening!"'),
+        ],
+        [
+          s("Ze zitten aan tafel. Eerst het brood met tomaten. Dan de pasta.", "They sit at the table. First the bread with tomatoes. Then the pasta."),
+          s('"Eet smakelijk!" zegt Luca.', '"Enjoy your meal!" says Luca.'),
+          s('Iedereen proeft. "Deze saus is fantastisch," zegt Fatima. "Wat zit erin?"', 'Everyone tastes. "This sauce is fantastic," says Fatima. "What\'s in it?"'),
+          s('"Alleen tomaten, uien, knoflook, olijfolie en zout."', '"Only tomatoes, onions, garlic, olive oil and salt."'),
+        ],
+        [
+          s("Bram neemt twee keer pasta, en dan nog een keer.", "Bram has pasta twice, and then once more."),
+          s('"Er is ook nog kip, Bram!" lacht Noor.', '"There\'s chicken too, Bram!" laughs Noor.'),
+          s('"O nee. Ik heb geen honger meer."', '"Oh no. I\'m not hungry any more."'),
+        ],
+        [
+          s('Mevrouw De Vries proeft de kip. "Heel lekker. Mag ik het recept? Voor mijn kleinzoon."', 'Mrs De Vries tastes the chicken. "Very nice. Can I have the recipe? For my grandson."'),
+          s("Luca schrijft het recept op een papiertje: kip, tomaten, uien, knoflook, een beetje wijn en veel tijd.", "Luca writes the recipe on a piece of paper: chicken, tomatoes, onions, garlic, a little wine and lots of time."),
+          s('"Veel tijd?" "Ja. Dat is het geheim van mijn oma."', '"Lots of time?" "Yes. That\'s my grandmother\'s secret."'),
+        ],
+        [
+          s("Na de kip komt de tiramisu, met de stroopwafels van mevrouw De Vries.", "After the chicken comes the tiramisu, with Mrs De Vries's stroopwafels."),
+          s("Om elf uur zijn de borden leeg, en de glazen ook.", "At eleven the plates are empty, and the glasses too."),
+          s('Mevrouw De Vries geeft Luca een hand. "Dank je wel, Luca. Volgende keer kook ik. Stamppot!"', 'Mrs De Vries shakes Luca\'s hand. "Thank you, Luca. Next time I cook. Stamppot!"'),
+          s("En Bram? Bram doet de afwas. Alle borden, alle glazen, alle pannen.", "And Bram? Bram does the washing-up. All the plates, all the glasses, all the pans."),
+        ],
+      ],
+      words: {
+        ...storyWords,
+        vorken: { meaning: "forks", base: "vork" },
+        messen: { meaning: "knives", base: "mes" },
+        schaal: { meaning: "dish, bowl" },
+        erin: { meaning: "in it" },
+        fantastisch: { meaning: "fantastic" },
+        olijfolie: { meaning: "olive oil" },
+        tiramisu: { meaning: "tiramisu" },
+        stamppot: { meaning: "stamppot (mashed potatoes with vegetables)", local: "The Dutch winter dish: ask any Dutch grandmother." },
+        pannen: { meaning: "pans", base: "pan" },
+      },
+      tasks: [
+        { kind: "choice", prompt: "What does Mrs De Vries bring?", options: ["Wine and stroopwafels", "Stamppot", "Flowers"], answer: 0 },
+        { kind: "choice", prompt: "Why doesn't Bram want the chicken?", options: ["He's had too much pasta", "He doesn't eat meat", "It's cold"], answer: 0 },
+        { kind: "choice", prompt: "What will Mrs De Vries cook next time?", options: ["Stamppot", "Tiramisu", "Pasta"], answer: 0 },
+      ],
+      notice: {
+        grammar: "plurals",
+        title: "More than one: -en or -s",
+        explain: "Most plurals add -en: bord → borden, glas → glazen (the s becomes z between vowels). Words on -el, -er and -je take -s: stroopwafel → stroopwafels.",
+        examples: ["vijf borden, vijf glazen, vijf vorken en vijf messen", "Het zijn stroopwafels.", "alle pannen"],
+        exercises: [
+          { kind: "fill", before: "één bord, twee", after: "", answers: ["borden"], translation: "one plate, two plates" },
+          { kind: "fill", before: "één glas, vijf", after: "", answers: ["glazen"], translation: "one glass, five glasses" },
+          { kind: "fill", before: "één stroopwafel, tien", after: "", answers: ["stroopwafels"], translation: "one stroopwafel, ten stroopwafels" },
+        ],
+      },
+      say: [
+        {
+          prompt: "Dinner is ready. What do you say before everyone starts?",
+          model: "Eet smakelijk!",
+          translation: "Enjoy your meal!",
+        },
+        {
+          prompt: "Say what's on your table tonight: plates and glasses, with a number.",
+          frame: "Er zijn … borden en … glazen.",
+          model: "Er zijn vier borden en vier glazen.",
+          translation: "There are four plates and four glasses.",
+        },
+      ],
+    },
+  ],
+};

@@ -5,6 +5,52 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (afternoon) — Trial: learning through a story (A1 unit 4)
+
+Matteo: the course feels like a textbook (word batches, dozens of cards,
+short unrelated texts). Asked for methods that really work, adapted, with the
+session length customisable. Not Duolingo: no streaks, no points.
+
+**What the research says (Claude).** Reading and listening at 95–98% known
+words is where most vocabulary comes from; a word needs about 10–15
+meetings; narrow reading (same topic, same people) gives those repeats;
+noticing a pattern in what you just read makes it stick; a good course
+balances input, output, study and fluency (Nation's four strands).
+
+**The trial (Matteo said yes to one unit first).**
+- **A story in episodes.** "Een Italiaanse avond": four episodes (about 230–250
+  words each) in unit 4, Luca cooking for his housemates, Fatima and mevrouw
+  De Vries. Written so the unit's words keep returning (tomaten 13 times,
+  kip 10, knoflook 7). Read while you hear it; the sentence being heard
+  lights up.
+- **After reading, one step at a time, all skippable:** three questions, one
+  pattern to notice (er is/zijn, deze/die/dit/dat, -je, plurals) with three
+  quick exercises and a link to the full lesson, two things to say back
+  (prompt, frame, an answer to compare), then "words that keep coming back"
+  to add as cards: new in this unit, used at least three times, offered once
+  in the episode where they first appear. No word batches before reading.
+- **Today page.** One session in a fixed order: review, today's episode;
+  15 minutes and up add a replay of the last episode (straight through, no
+  stopping: fluency); 30 and no limit add another episode. Length: 5, 10, 15,
+  30 min or no limit, from your Plan's minutes by default, changeable on the
+  page. What you don't do is simply there tomorrow.
+- **Where to find it.** A Trial card on Home and a Story section at the top
+  of unit 4. The rest of the course is unchanged.
+- Finishing an episode's reading counts it as done; the rest is extra. The
+  textbook-order check now covers the story too (say-back answers and
+  noticing exercises use only words met so far).
+
+**Also fixed.** A switched-on chip (session length, Textbook Dutch, English)
+now looks switched on; five speakers in one text get five colours.
+
+**Technical (Claude).** No migration: episode and replay progress use the
+existing table (kinds "story", "replay"); the day's session is kept on the
+device. Episodes play with the device voice until "Record course audio" runs.
+
+**Next (Matteo to decide after trying it).** Whether to rewrite all of A1–A2
+this way, keep the separate texts as extra reading, and whether review moves
+to FSRS.
+
 ## 2026-11-17 (midday) — Who's talking, in every reading text
 
 Matteo: in dialogues it's hard to keep track of who's talking.

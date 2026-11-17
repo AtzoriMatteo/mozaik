@@ -1,10 +1,12 @@
 import type { UnitContent } from "./types";
+import { italiaanseAvond } from "../stories/italiaanse-avond";
 
 export const eten: UnitContent = {
   id: "a1-eten",
   level: "A1",
   title: "Eten en boodschappen",
   titleTranslation: "Food and shopping",
+  story: italiaanseAvond,
   canDo: [
     "Buy food at a market or shop and ask what it costs",
     "Understand prices and amounts",

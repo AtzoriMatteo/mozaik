@@ -14,7 +14,7 @@ export type Flag = {
   created_at: string;
 };
 
-export type FlagTarget = { language: string; itemKind: "text" | "listening" | "slang"; itemId: string };
+export type FlagTarget = { language: string; itemKind: "text" | "listening" | "slang" | "story"; itemId: string };
 
 async function client() {
   const supabase = getBrowserSupabase();

@@ -32,7 +32,7 @@ export const KIND_LABEL: Record<ReviewKind, string> = {
   speak: "Speaking",
 };
 
-type Session = { items: ReviewItem[]; label: string };
+export type Session = { items: ReviewItem[]; label: string };
 
 export function Review() {
   const { pack } = useLearningLanguage();
@@ -377,7 +377,7 @@ function Segmented({
 
 /* ---------------------------------------------------------------- */
 
-function SessionRunner({
+export function SessionRunner({
   pack,
   session,
   settings,

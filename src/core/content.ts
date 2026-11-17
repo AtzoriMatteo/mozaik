@@ -150,6 +150,8 @@ export type Unit = {
    * need them and its texts don't happen to use them: "lievelings-", "omdat".
    */
   teach?: TaughtWord[];
+  /** The unit's continuing story (trial shape, see Story). */
+  story?: Story;
 };
 
 /** One tile in a word-order diagram. */
@@ -343,4 +345,41 @@ export type SlangPart = {
   tasks: Task[];
   /** Help for other words in the lines; overrides the pack lexicon. */
   words?: Record<string, WordHelp>;
+};
+
+/**
+ * The trial story shape (Matteo, Nov 2026): one continuing story per unit,
+ * told in episodes. Each episode is read while heard, then one grammar
+ * pattern from it is noticed and practised, then the learner says something
+ * back. Words come from the story, not before it.
+ */
+export type Notice = {
+  /** The grammar point it introduces or recalls (its lesson stays the reference). */
+  grammar: string;
+  title: string;
+  /** One or two plain sentences. */
+  explain: string;
+  /** Pieces quoted word for word from the episode, with the pattern in them. */
+  examples: string[];
+  exercises: Exercise[];
+};
+
+/** Say something back: a prompt, an optional frame, and one possible answer. */
+export type SayItBack = {
+  prompt: string;
+  /** A sentence frame to start from, with … for the gaps. */
+  frame?: string;
+  model: string;
+  translation: string;
+};
+
+export type Episode = ReadingText & { notice: Notice; say: SayItBack[] };
+
+export type Story = {
+  id: string;
+  title: string;
+  titleTranslation: string;
+  /** One line: who and what, before episode 1. */
+  intro: string;
+  episodes: Episode[];
 };
