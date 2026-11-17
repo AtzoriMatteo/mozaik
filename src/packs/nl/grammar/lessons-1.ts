@@ -167,7 +167,7 @@ export const lessons1: Record<string, GrammarLesson> = {
       text("een (a/an) is the same for both. Say it 'un'. With accents, één means 'one'."),
     ],
     examples: [
-      example("Het is het kind, niet de kind.", "It's het kind, not de kind.", "het kind"),
+      example("Het is het kind, niet de kind", "It's het kind, not de kind.", "het kind"),
       example("Ik woon in een oud huis in het centrum", "I live in an old house in the centre", "een", "het"),
       example("De les is leuk, maar soms ook moeilijk.", "The class is fun, but sometimes also difficult.", "De"),
     ],

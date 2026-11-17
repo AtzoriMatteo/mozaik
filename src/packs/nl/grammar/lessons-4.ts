@@ -78,7 +78,7 @@ export const lessons4: Record<string, GrammarLesson> = {
     examples: [
       example("Vroeg opstaan is niet moeilijk voor Ruth, want ze is een echt ochtendmens.", "Getting up early isn't hard for Ruth, because she's a real morning person.", "want"),
       example("Ik spreek nog niet veel Nederlands, maar ik leer elke dag een beetje.", "I don't speak much Dutch yet, but I learn a bit every day.", "maar"),
-      example("Hij wil wat extra geld verdienen, want Leiden is duur.", "He wants to earn some extra money, because Leiden is expensive.", "want"),
+      example("ik wil wat extra geld verdienen, want alles is duur", "I want to earn a bit of extra money, because everything is expensive", "want"),
       example("In het Engels is het anders, en in het Italiaans ook.", "In English it's different, and in Italian too.", "en"),
     ],
     exercises: [
