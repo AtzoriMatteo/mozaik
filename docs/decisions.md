@@ -5,6 +5,19 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (midday) — Who's talking, in every reading text
+
+Matteo: in dialogues it's hard to keep track of who's talking.
+
+- **Each speaker's turn on its own line, with their name (Claude).** Narration
+  flows as before; "…," zegt Noor stays on Noor's line; each person in a text
+  keeps one colour. Quoted words that aren't speech (zeg dan "dag") stay inline.
+- **Every quoted turn was attributed by hand.** 341 turns in 53 Dutch texts and
+  48 in 9 Italian ones, kept in each pack's speakers file. Roles without a name
+  get one in the language: De bakker, De kaasvrouw, Iemand.
+- A test fails if a text gains or loses a quote without its speakers being
+  updated.
+
 ## 2026-11-17 (morning) — Review waits start small again on every new card
 
 Matteo: a word promoted to "just the Dutch word" offered Hard 4 d and Good

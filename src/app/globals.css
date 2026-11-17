@@ -5338,3 +5338,26 @@ button.vocab-word:hover {
 }
 .slang-who { display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; align-items: baseline; margin: 0.5rem 0 0; font-size: 0.9em; color: var(--ink-muted); }
 .slang-done { color: var(--ok); }
+
+/* Dialogue in reading texts: each speaker's turn on its own line, named. */
+.reader-body .dialogue { margin: 0 0 1.25em; }
+.reader-body .dialogue p { margin: 0 0 0.35em; }
+.reader-body .turn {
+  --sp: var(--glaze-cobalt);
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--sp);
+}
+.reader-body .turn[data-speaker="1"] { --sp: var(--glaze-copper); }
+.reader-body .turn[data-speaker="2"] { --sp: var(--glaze-manganese); }
+.reader-body .turn[data-speaker="3"] { --sp: var(--glaze-ochre); }
+.turn-speaker {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.62em;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--sp);
+  padding-top: 0.25em;
+}
+.reader-body .turn-narration { color: var(--ink); }

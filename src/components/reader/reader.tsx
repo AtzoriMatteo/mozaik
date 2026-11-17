@@ -5,7 +5,8 @@ import { glueTokens } from "@/core/glue";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { expressionsAt, helpFor, type WordHelp } from "@/core/content";
-import { allTexts, type LanguagePack } from "@/core/language-pack";
+import { allTexts, type LanguagePack, type Token } from "@/core/language-pack";
+import { layoutDialogue, parseSpeakers } from "@/core/dialogue";
 import { nextActivity } from "@/core/course";
 import { NextActivityLink } from "@/components/course/next-activity-link";
 import { getPack } from "@/core/registry";
@@ -150,6 +151,48 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [words, selectedKey, selected, toggleSave]);
 
+  // Who's talking: each turn's speaker (see core/dialogue and the pack's speakers file).
+  const layout = useMemo(
+    () =>
+      layoutDialogue(
+        paragraphs.map((ss) => ss.map((ts) => ts.map((x) => x.tok))),
+        text.paragraphs.map((ss) => ss.map((x) => x.text)),
+        parseSpeakers(pack.speakers?.[text.id] ?? ""),
+      ),
+    [paragraphs, pack.speakers, text],
+  );
+  const cast = useMemo(() => [...new Set(layout.flatMap((bs) => bs ?? []).map((b) => b.speaker).filter(Boolean))] as string[], [layout]);
+  const castIndex = (speaker: string) => cast.indexOf(speaker);
+
+  const renderRun = (tokens: { tok: Token; ref: WordRef | null }[], from: number, to: number) => {
+    const run = tokens.slice(from, to);
+    return glueTokens(run.map((x) => x.tok)).map((g, gi) =>
+      g.kind === "gap" ? (
+        <span key={gi}>{g.text}</span>
+      ) : (
+        <span key={gi} className="nobr">
+          {g.pieces.map((piece, pi) => {
+            const ref = piece.kind === "word" ? run[piece.index].ref : null;
+            if (!ref) return <span key={pi}>{piece.kind === "word" ? piece.token.text : piece.text}</span>;
+            return (
+              <button
+                key={pi}
+                type="button"
+                className="word"
+                data-selected={ref.key === selectedKey || inRange(ref) || undefined}
+                data-saved={saved.isSaved(ref.normalized, ref.help?.base) || undefined}
+                aria-pressed={ref.key === selectedKey}
+                onClick={() => clickWord(ref)}
+              >
+                {piece.kind === "word" ? piece.token.text : ""}
+              </button>
+            );
+          })}
+        </span>
+      ),
+    );
+  };
+
   return (
     <article className="reader">
       <Link href={unit ? `/course/${pack.code}/${unit.id}` : "/course"} className="back-link">
@@ -172,39 +215,38 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
       </div>
 
       <div className="reader-body" lang={pack.code}>
-        {paragraphs.map((sentences, p) => (
-          <p key={p}>
-            {sentences.map((tokens, s) => (
-              <span key={s}>
-                {glueTokens(tokens.map((x) => x.tok)).map((g, gi) =>
-                  g.kind === "gap" ? (
-                    <span key={gi}>{g.text}</span>
-                  ) : (
-                    <span key={gi} className="nobr">
-                      {g.pieces.map((piece, pi) => {
-                        const ref = piece.kind === "word" ? tokens[piece.index].ref : null;
-                        if (!ref) return <span key={pi}>{piece.kind === "word" ? piece.token.text : piece.text}</span>;
-                        return (
-                          <button
-                            key={pi}
-                            type="button"
-                            className="word"
-                            data-selected={ref.key === selectedKey || inRange(ref) || undefined}
-                            data-saved={saved.isSaved(ref.normalized, ref.help?.base) || undefined}
-                            aria-pressed={ref.key === selectedKey}
-                            onClick={() => clickWord(ref)}
-                          >
-                            {piece.kind === "word" ? piece.token.text : ""}
-                          </button>
-                        );
-                      })}
-                    </span>
-                  ),
-                )}{" "}
-              </span>
-            ))}
-          </p>
-        ))}
+        {paragraphs.map((sentences, p) => {
+          const blocks = layout[p];
+          if (!blocks) {
+            return (
+              <p key={p}>
+                {sentences.map((tokens, s) => (
+                  <span key={s}>
+                    {renderRun(tokens, 0, tokens.length)}{" "}
+                  </span>
+                ))}
+              </p>
+            );
+          }
+          // A paragraph with speech: every speaker's turn on its own line, with their name.
+          return (
+            <div key={p} className="dialogue">
+              {blocks.map((b, bi) => (
+                <p key={bi} className={b.speaker ? "turn" : "turn-narration"} data-speaker={b.speaker ? castIndex(b.speaker) % 4 : undefined}>
+                  {b.speaker ? <span className="turn-speaker">{b.speaker}</span> : null}
+                  <span className="turn-text">
+                    {b.parts.map((part, pi) => (
+                      <span key={pi}>
+                        {renderRun(sentences[part.sentence], part.from, part.to)}
+                        {part.to === sentences[part.sentence].length ? " " : null}
+                      </span>
+                    ))}
+                  </span>
+                </p>
+              ))}
+            </div>
+          );
+        })}
       </div>
 
       <footer className="reader-end">
