@@ -5,6 +5,61 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 — Zo praten we echt: real-life Dutch, kept apart
+
+Matteo: level-appropriate parts with slang and colloquial Dutch people
+actually use today, nothing dated or cringe, kept separate so the course
+doesn't get confusing. Bonus, not part of the mosaic.
+
+**Shape (Claude, within the brief).** 16 parts: 6 at A1 (every other unit),
+10 at A2 (one per unit). Each is a WhatsApp chat (read) or a spoken talk
+(recorded like listening). Slang bits are marked in the text; one tap shows
+the meaning, who says it and when not to. "Textbook Dutch" shows the
+standard version under every line; "English" the translation. A short check
+(2–3 questions on meaning and when to say what) ends each part.
+- A1: the spoken basics adults use: toch, hoor, joh, nou, even, hè, da's,
+  'k, tuurlijk, klopt, balen, gezellig, lekker, doe maar; first chat habits
+  (ff, mss, idd, no capitals, x).
+- A2: work chat (vrijmibo, sparren, komt goed), house chat (tikkie, boeie,
+  doe normaal, my bad), a group chat of twenty-somethings (cringe, random,
+  letterlijk, sws, gwn), the buurtapp (how older people write), food
+  (patat vs friet, patatje oorlog, ik rammel), weather (zeiknat, plenzen,
+  Buienradar).
+- Swearing (Matteo: "if it fits"): one A2 part, a cancelled train. kut,
+  shit, fuck, kutweer, each rated mild / strong / very offensive.
+  godverdomme, tering, tyfus and kanker are explained but never said in the
+  lines; kanker is marked "never use".
+- Straattaal: one A2 part to recognise, not copy: mattie, osso, doekoe,
+  skeer, fissa, wollah. More at B1.
+
+**Labels.** Everyday, Casual, Young people, Teens, Straattaal, Chat only,
+Swearing (with strength), Rarely said (het regent pijpenstelen, the textbook
+idiom nobody says). Region where it matters (patat/friet). Netherlands Dutch
+only; Belgian Dutch differs.
+
+**Kept separate (checked in code).** Slang parts sit outside the course:
+not in Continue, the Plan, the mosaic or unit words. A test fails if any
+young, teen, street, chat-only or swearing item appears in a course text,
+listening line or speaking sentence. Saving a slang word makes a card whose
+meaning names its register ("mate (straattaal)"), so it never passes for
+textbook Dutch.
+
+**Up to date (Claude).** Checked against 2025–26 sources: the Meertens
+Institute study of 573 pupils (NOS, Jan 2026: osso, fittie, mattie still
+very alive; sma replaced by ams), Onze Taal's 2026 generation word lists
+(vet, swag, kweenie, YOLO read as millennial), the Kinderwoord/Tienerwoord
+2024–25 results, Bond tegen Vloeken research on swearing. A test blocks a
+list of dated words (vet, gaaf, swag, kweenie, lit, relaxed, skibidi, yolo…).
+Teen-only fads (67, rizz, cooked, no cap) are left out: they change monthly.
+Still: no native has checked this. "Sounds odd?" works on every line;
+flags show as "Real Dutch".
+
+**Technical (Claude).** No migration: progress uses the existing table with
+kind "slang". Spoken parts are recorded on the next "Record course audio"
+run (about 2,800 characters); until then they use the device voice.
+Kwame's friend is Ahmed, not Bilal: Bilal already shared Kwame's voice.
+The Dutch tokeniser now keeps 'k (spoken ik) as one word.
+
 ## 2026-11-16 (evening) — Review ladder: every step, gentler waits
 
 Matteo: he reached "English → type the Dutch" without ever getting the

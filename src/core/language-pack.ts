@@ -8,7 +8,7 @@
 
 import type { VerbTables } from "./verbs";
 import type { Handbook } from "./handbook";
-import type { Expression, GrammarPoint, Lexicon, ReadingText, Unit } from "./content";
+import type { Expression, GrammarPoint, Lexicon, ReadingText, SlangPart, Unit } from "./content";
 import type { Sound } from "./pronunciation";
 import type { Resource } from "./resources";
 import type { LearningTip } from "./tips";
@@ -106,6 +106,8 @@ export interface LanguagePack {
   handbook?: Handbook;
   /** Fixed expressions (op tijd, er een nachtje over slapen) to recognise in texts and save as one card. */
   expressions?: readonly Expression[];
+  /** Bonus parts with real-life spoken and chat language, by unit. */
+  slang?: readonly SlangPart[];
   /** Who speaks in the listening material, so recorded audio gives each character a fitting voice. */
   cast?: Cast;
 }

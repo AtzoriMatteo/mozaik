@@ -13,6 +13,8 @@ import { resourcesFor } from "@/core/resources";
 import { WRITING_REQUIRED } from "@/core/writing";
 import { NextStep } from "@/components/next-step";
 import { unitWords } from "@/core/unit-words";
+import { slangForUnit } from "@/core/slang";
+import { useProgress } from "@/lib/progress/use-read-texts";
 
 const KIND_LABEL = {
   dialogue: "Dialogue",
@@ -32,6 +34,8 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
   const { n, of } = unitNumber(pack, unit);
   const words = unitWords(pack, unit);
   const keyWords = words.filter((w) => w.core);
+  const slang = slangForUnit(pack, unit.id);
+  const slangDone = useProgress("slang", pack.code).doneIds;
   const beyond = resourcesFor(pack, unit.level).filter((r) => r.units?.includes(unit.id));
 
   return (
@@ -158,6 +162,21 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
             ]}
             done={progress.isDone({ kind: "speak", id: unit.id })}
           />
+        </SkillSection>
+      ) : null}
+
+      {slang.length > 0 ? (
+        <SkillSection skill="slang" title="Zo praten we echt (bonus)">
+          {slang.map((p) => (
+            <Row
+              key={p.id}
+              href={`/slang/${lang}/${p.id}`}
+              title={p.title}
+              titleLang={lang}
+              meta={[p.titleTranslation, p.kind === "chat" ? "Chat" : "Spoken", "How people really talk"]}
+              done={slangDone.has(p.id)}
+            />
+          ))}
         </SkillSection>
       ) : null}
 

@@ -67,6 +67,15 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
       }
     }
   }
+  // Spoken slang parts, each speaker in their own voice. Chats are read, not heard.
+  for (const part of pack.slang ?? []) {
+    if (part.kind !== "talk") continue;
+    for (const l of part.lines) {
+      const generic = !cast || cast.generic.includes(l.speaker) || !(l.speaker in cast.gender);
+      const role = generic ? `${part.id}/${l.speaker}` : l.speaker;
+      add({ text: l.text, role, gender: cast?.gender[l.speaker] ?? "any", group: part.id });
+    }
+  }
   for (const unit of pack.units) {
     for (const text of unit.texts) {
       for (const s of text.paragraphs.flat()) add({ text: s.text, role: "narrator", gender: cast?.narrator ?? "f", group: text.id });

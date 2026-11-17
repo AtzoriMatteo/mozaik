@@ -12,6 +12,7 @@ import { articleFor } from "./articles";
 import { zipf } from "./frequency";
 import { cast } from "./cast";
 import { expressions } from "./expressions";
+import { slang } from "./slang";
 import { handbook } from "./handbook";
 import { verbTools } from "./verbs";
 import { makeChecker } from "./writing/check";
@@ -51,13 +52,13 @@ function tokenizeDutch(text: string): Token[] {
       continue;
     }
 
-    // Short forms: "'s" / "'t" / "'n" at the start of a word.
+    // Short forms: "'s" / "'t" / "'n" / "'k" at the start of a word.
     if (
       tok.kind === "punctuation" &&
       tok.text === "'" &&
       (prev === undefined || prev.kind !== "word") &&
       next?.kind === "word" &&
-      /^(s|t|n)$/i.test(next.text)
+      /^(s|t|n|k)$/i.test(next.text)
     ) {
       const text = "'" + next.text;
       out.push({ kind: "word", text, normalized: text.toLowerCase() });
@@ -122,6 +123,7 @@ export const dutch: LanguagePack = {
   wordFrequency: zipf,
   cast,
   expressions,
+  slang,
   handbook,
   ...verbTools(() => dutch),
 };

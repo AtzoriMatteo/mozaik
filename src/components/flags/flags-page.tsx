@@ -96,7 +96,7 @@ function FlagRow({ flag, admin, mark }: { flag: Flag; admin: boolean; mark: (ids
     <li className="flag-row" data-status={flag.status}>
       <p className="flag-sentence" lang={flag.language}>{flag.sentence}</p>
       <p className="flag-meta">
-        <span>{flag.item_kind === "text" ? "Text" : "Listening"}: {flag.item_id}</span>
+        <span>{flag.item_kind === "text" ? "Text" : flag.item_kind === "slang" ? "Real Dutch" : "Listening"}: {flag.item_id}</span>
         <span>{new Date(flag.created_at).toLocaleDateString()}</span>
         <span>{STATUS_LABEL[flag.status]}</span>
       </p>

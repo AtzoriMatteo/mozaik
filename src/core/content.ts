@@ -268,3 +268,79 @@ export function expressionsAt(
   // Longest first: "er een nachtje over slapen" before "een".
   return out.sort((a, b) => b.to - b.from - (a.to - a.from));
 }
+
+/**
+ * Who says a piece of real-life Dutch (or any language), so a learner knows
+ * when it fits. Kept apart from the course: slang only lives in slang parts.
+ */
+export type SlangRegister =
+  /** Informal but fine with almost anyone you're on first-name terms with. */
+  | "everyone"
+  /** Friends, housemates, colleagues you're close to. Not with strangers or your boss. */
+  | "casual"
+  /** Mostly people under 35. */
+  | "young"
+  /** Mostly teenagers. Recognise it; from an adult it sounds like trying too hard. */
+  | "teens"
+  /** Straattaal: young people in cities, from Sranan, Moroccan Arabic, English… Recognise it. */
+  | "street"
+  /** Only written, in chats and texts. */
+  | "chat"
+  /** Swearing. See `strength`. */
+  | "rude"
+  /** Textbook favourite that people rarely say any more. */
+  | "rare";
+
+/** One slang word or phrase in a slang part, with when to use it. */
+export type SlangItem = {
+  /** As it's written in the part: "ff", "nee hè", "mattie". */
+  form: string;
+  /** Other shapes it takes in the lines (lower-case), if any. */
+  forms?: string[];
+  meaning: string;
+  /** The everyday standard word it stands for: ff → "even". */
+  standard?: string;
+  who: SlangRegister;
+  /** Swearing only: 1 mild, 2 strong, 3 very offensive. */
+  strength?: 1 | 2 | 3;
+  /** Where it's said, when not everywhere in the Netherlands. */
+  where?: string;
+  /** How it's really used, and when not to use it. One or two short lines. */
+  note?: string;
+  /** Where it comes from, when that helps it stick. */
+  origin?: string;
+  /** Not in the lines: worth recognising, explained in the list only. */
+  heardOnly?: boolean;
+};
+
+/** One message or line: as people really say it, and the textbook version. */
+export type SlangLine = {
+  speaker: string;
+  text: string;
+  /** The same thing in the course's standard Dutch. */
+  textbook: string;
+  translation: string;
+};
+
+/**
+ * A bonus part with real-life Dutch: a chat (written) or a talk (spoken,
+ * recorded). It sits in a unit but outside the course: it never counts for the
+ * mosaic or Continue, and its slang never appears in the course itself.
+ */
+export type SlangPart = {
+  id: string;
+  level: CefrLevel;
+  /** The unit it belongs with. */
+  unit: string;
+  kind: "chat" | "talk";
+  title: string;
+  titleTranslation: string;
+  /** One line of context: who is talking, where. */
+  situation: string;
+  lines: SlangLine[];
+  items: SlangItem[];
+  /** Quick checks, in the explanation language. */
+  tasks: Task[];
+  /** Help for other words in the lines; overrides the pack lexicon. */
+  words?: Record<string, WordHelp>;
+};
