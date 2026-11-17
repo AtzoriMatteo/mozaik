@@ -49,12 +49,6 @@ describe("story episodes (trial shape)", () => {
     }
   });
 
-  it("asks the learner to say something back, with an answer to compare", () => {
-    for (const e of episodes) {
-      expect(e.say.length, e.id).toBeGreaterThan(0);
-      for (const x of e.say) expect(x.model && x.translation && x.prompt, e.id).toBeTruthy();
-    }
-  });
 
   it("is recorded like the texts", () => {
     const specs = new Set(clipSpecs(dutch).map((s) => s.text));

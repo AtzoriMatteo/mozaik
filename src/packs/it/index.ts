@@ -60,6 +60,10 @@ export const italian: LanguagePack = {
   cast,
   expressions,
   speakers,
+  speakingNote: {
+    title: "Parla con Matteo!",
+    text: "There's no speaking practice in this course. The best way to practise Italian is to talk to an Italian, and Matteo, who built this, is one. Send him a voice message in Italian. Worst case, he corrects your double consonants.",
+  },
   handbook,
   ...verbTools(() => italian),
   // c'è, dov'è, com'è and ecco do a verb's job.

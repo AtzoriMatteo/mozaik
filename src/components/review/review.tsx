@@ -293,7 +293,6 @@ function SettingsPanel({
                 onChange={(e) => update({ mix: { ...settings.mix, [k]: e.target.checked } })}
               />
               {KIND_LABEL[k]}
-              {k === "speak" ? <small> (needs the microphone)</small> : null}
             </label>
           ))}
         </fieldset>

@@ -25,7 +25,7 @@ import {
 
 const goals = (pack: LanguagePack): { id: Goal; label: string; hint: string }[] => [
   { id: "living", label: "I live in the country, or will soon", hint: `Everyday ${pack.name}: shops, neighbours, the doctor, the town hall.` },
-  { id: "travel", label: "Travel", hint: "Getting around, ordering, small talk. Speaking practice switched on." },
+  { id: "travel", label: "Travel", hint: "Getting around, ordering, small talk." },
   { id: "work", label: "Work or study", hint: "Steady progress, with writing kept in." },
   { id: "exam", label: "An exam", hint: `${pack.exams ? pack.exams + ": a" : "A"} fixed finish date and a strict plan.` },
   { id: "fun", label: "Just for fun", hint: "No pressure. A gentle plan you can drop any day." },
@@ -45,7 +45,6 @@ function afterGoal(s: PlanSettings, goal: Goal): PlanSettings {
   return {
     ...s,
     goal,
-    includeSpeaking: goal === "travel" ? true : s.includeSpeaking,
     strictness: goal === "exam" ? "strict" : goal === "fun" ? "relaxed" : s.strictness === "strict" ? "steady" : s.strictness,
   };
 }
@@ -272,10 +271,6 @@ export function PlanSetup({
             <label className="plan-check">
               <input type="checkbox" checked={s.dailyReview} onChange={(e) => set({ dailyReview: e.target.checked })} />
               <span>Start each study day with a few minutes of review</span>
-            </label>
-            <label className="plan-check">
-              <input type="checkbox" checked={s.includeSpeaking} onChange={(e) => set({ includeSpeaking: e.target.checked })} />
-              <span>Include speaking practice</span>
             </label>
             <fieldset className="plan-check plan-view-choice">
               <legend>Show the plan as</legend>

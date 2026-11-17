@@ -123,7 +123,7 @@ function TodayFor({ pack }: { pack: LanguagePack }) {
       ? {
           id: "episode",
           title: `Episode ${todays.index + 1}: ${todays.episode.title}`,
-          detail: `${todays.story.title}. Read it while you hear it, then one thing to notice and something to say back.`,
+          detail: `${todays.story.title}. Read it while you hear it, then a few questions and one thing to notice.`,
           minutes: length !== null && length <= 5 ? 4 : 7,
           done: !!log.episode,
           action: (

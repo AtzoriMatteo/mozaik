@@ -73,18 +73,7 @@ export function activities(pack: LanguagePack): Activity[] {
           },
         ]
       : []),
-    ...(unit.speaking
-      ? [
-          {
-            kind: "speak" as const,
-            id: unit.id,
-            title: "Speaking practice",
-            titleTranslation: "Sounds and sentences to say aloud",
-            unit,
-            href: `/speak/${pack.code}/${unit.id}`,
-          },
-        ]
-      : []),
+    // Speaking practice was taken out (Matteo, 17 Nov 2026); its data stays in the packs.
   ]);
 }
 

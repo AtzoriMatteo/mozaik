@@ -126,7 +126,7 @@ export function LevelMosaic({
               {revealed} of {MOSAIC_TILES} tiles
             </strong>
             . {done} of {total} {level} activities done. Every text, listening and grammar lesson glazes more of the
-            picture; finish them all to see it whole. Speaking is a bonus.
+            picture; finish them all to see it whole.
           </>
         )}
       </figcaption>

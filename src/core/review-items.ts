@@ -12,7 +12,8 @@ import { formInSentence } from "./coherence";
  */
 
 export type ReviewKind = "word" | "grammar" | "listen" | "speak";
-export const REVIEW_KINDS: readonly ReviewKind[] = ["word", "grammar", "listen", "speak"];
+/** Speaking was taken out (17 Nov 2026), so it never comes up in review. */
+export const REVIEW_KINDS: readonly ReviewKind[] = ["word", "grammar", "listen"];
 
 export type WordItem = {
   kind: "word";
@@ -182,18 +183,7 @@ export function eligibleItems(
         }
       });
     }
-    // Speaking: the unit's pair words and sentences, once practised.
-    if (unit.speaking && done.speak.has(unit.id)) {
-      for (const soundId of unit.speaking.sounds) {
-        const sound = pack.sounds.find((s) => s.id === soundId);
-        for (const [a, b] of sound?.pairs ?? []) {
-          items.push({ kind: "speak", id: `sp:${soundId}:${a}`, text: a, contrast: b, soundId });
-        }
-      }
-      unit.speaking.shadowing.forEach((s, i) =>
-        items.push({ kind: "speak", id: `s:${unit.id}:${i}`, text: s.text, translation: s.translation }),
-      );
-    }
+    // Speaking was taken out (Matteo, 17 Nov 2026): no speaking cards.
   }
   return items;
 }
