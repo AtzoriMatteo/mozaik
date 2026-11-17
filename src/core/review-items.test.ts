@@ -36,7 +36,7 @@ describe("what comes back in review", () => {
     expect(items.map((i) => i.id)).toEqual(["w:wonen"]);
   });
 
-  it("adds grammar exercises, listening lines and speaking items when those are done", () => {
+  it("adds grammar exercises and listening lines when those are done, and no speaking (taken out)", () => {
     const items = eligibleItems(dutch, {
       read: new Set(), listen: new Set(["op-het-perron"]), grammar: new Set(["verb-second"]), speak: new Set(["a1-eten"]),
     }, {});
@@ -44,7 +44,7 @@ describe("what comes back in review", () => {
       dutch.grammar.find((g) => g.id === "verb-second")!.lesson!.exercises.length,
     );
     expect(items.filter((i) => i.kind === "listen").length).toBeGreaterThan(0);
-    expect(items.some((i) => i.kind === "speak" && i.contrast === "hoes")).toBe(true);
+    expect(items.some((i) => i.kind === "speak")).toBe(false);
   });
 });
 

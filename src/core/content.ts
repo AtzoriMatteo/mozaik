@@ -364,16 +364,7 @@ export type Notice = {
   exercises: Exercise[];
 };
 
-/** Say something back: a prompt, an optional frame, and one possible answer. */
-export type SayItBack = {
-  prompt: string;
-  /** A sentence frame to start from, with … for the gaps. */
-  frame?: string;
-  model: string;
-  translation: string;
-};
-
-export type Episode = ReadingText & { notice: Notice; say: SayItBack[] };
+export type Episode = ReadingText & { notice: Notice };
 
 export type Story = {
   id: string;

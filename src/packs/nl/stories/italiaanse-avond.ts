@@ -118,20 +118,6 @@ export const italiaanseAvond: Story = {
           { kind: "choice", before: "Er ", after: " drie tomaten in de koelkast.", options: ["is", "zijn"], answer: 1, translation: "There are three tomatoes in the fridge." },
         ],
       },
-      say: [
-        {
-          prompt: "Think of your own fridge. Say one thing that's there and one thing that isn't.",
-          frame: "Er is … . Er is geen … .",
-          model: "Er is kaas. Er is geen melk.",
-          translation: "There's cheese. There's no milk.",
-        },
-        {
-          prompt: "What's Luca's starter? Say it in one short sentence.",
-          frame: "Het voorgerecht is … .",
-          model: "Het voorgerecht is brood met tomaten.",
-          translation: "The starter is bread with tomatoes.",
-        },
-      ],
     },
     {
       id: "avond-2-in-de-supermarkt",
@@ -206,20 +192,6 @@ export const italiaanseAvond: Story = {
           { kind: "fill", before: "Neem ", after: " tomaten. (there)", answers: ["die"], translation: "Take those tomatoes." },
         ],
       },
-      say: [
-        {
-          prompt: "You're in a shop. Point at a cheese near you and say it's cheap.",
-          frame: "Deze … is goedkoop.",
-          model: "Deze kaas is goedkoop.",
-          translation: "This cheese is cheap.",
-        },
-        {
-          prompt: "Ask what that bread over there costs. (Brood is a het-word.)",
-          frame: "Wat kost … brood?",
-          model: "Wat kost dat brood?",
-          translation: "What does that bread cost?",
-        },
-      ],
     },
     {
       id: "avond-3-op-de-markt",
@@ -290,20 +262,6 @@ export const italiaanseAvond: Story = {
           { kind: "fill", before: "Wil je een ", after: "? (koek, a small one)", answers: ["koekje"], translation: "Would you like a biscuit?" },
         ],
       },
-      say: [
-        {
-          prompt: "At the baker's, ask for six rolls.",
-          frame: "Zes …, alstublieft.",
-          model: "Zes broodjes, alstublieft.",
-          translation: "Six rolls, please.",
-        },
-        {
-          prompt: "Tell your host something you don't eat.",
-          frame: "Ik eet geen … .",
-          model: "Ik eet geen vis.",
-          translation: "I don't eat fish.",
-        },
-      ],
     },
     {
       id: "avond-4-eet-smakelijk",
@@ -374,19 +332,6 @@ export const italiaanseAvond: Story = {
           { kind: "fill", before: "één stroopwafel, tien ", after: "", answers: ["stroopwafels"], translation: "one stroopwafel, ten stroopwafels" },
         ],
       },
-      say: [
-        {
-          prompt: "Dinner is ready. What do you say before everyone starts?",
-          model: "Eet smakelijk!",
-          translation: "Enjoy your meal!",
-        },
-        {
-          prompt: "Say what's on your table tonight: plates and glasses, with a number.",
-          frame: "Er zijn … borden en … glazen.",
-          model: "Er zijn vier borden en vier glazen.",
-          translation: "There are four plates and four glasses.",
-        },
-      ],
     },
   ],
 };

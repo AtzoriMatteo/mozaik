@@ -5467,3 +5467,8 @@ button.vocab-word:hover {
 /* Reader words are inline spans: they hyphenate and never leave punctuation alone on a line. */
 .reader-body .word { -webkit-tap-highlight-color: transparent; }
 .reader-body .word:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Italian: where speaking practice would be, a note to go and talk to Matteo. */
+.speaking-note { list-style: none; padding: 0.8rem 1rem; background: var(--tile); }
+.speaking-note p { margin: 0; }
+.speaking-note-title { font-family: var(--font-read); font-size: 1.15rem; color: var(--heading); margin-bottom: 0.25rem !important; }

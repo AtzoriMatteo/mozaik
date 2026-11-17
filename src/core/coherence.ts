@@ -130,12 +130,8 @@ export function productionItems(pack: LanguagePack, unit: Unit): { where: string
     const own = t.paragraphs.flat().map((s) => s.text).join(" ");
     (t.tasks ?? []).forEach((task, i) => taskStrings(task).filter((x) => !own.includes(x)).forEach((text) => out.push({ where: `reading ${t.id} task ${i + 1}`, text })));
   }
-  // The story: what the learner says back, and the noticing exercises.
+  // The story's noticing exercises.
   for (const e of unit.story?.episodes ?? []) {
-    e.say.forEach((x, i) => {
-      out.push({ where: `story ${e.id} say ${i + 1}`, text: x.model });
-      if (x.frame) out.push({ where: `story ${e.id} say ${i + 1} frame`, text: x.frame.replace(/…/g, " ") });
-    });
     e.notice.exercises.forEach((ex, i) =>
       grammarStrings(ex)
         .map((text) => text.replace(/\([^)]*\)/g, " "))

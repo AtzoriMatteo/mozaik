@@ -8,20 +8,19 @@ import { findEpisode, wordsThatComeBack } from "@/core/story";
 import { ReaderView } from "@/components/reader/reader";
 import { TaskRunner } from "@/components/exercises/task-runner";
 import { ExerciseRunner } from "@/components/grammar/grammar-lesson";
-import { SpeakButton } from "@/components/speak-button";
 import { useProgress } from "@/lib/progress/use-read-texts";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
 import { noteEpisode } from "@/lib/today";
 import { useNow } from "@/lib/use-now";
 
-type Step = "read" | "questions" | "notice" | "say" | "words" | "done";
+type Step = "read" | "questions" | "notice" | "words" | "done";
 
 /** YYYY-MM-DD in the learner's own time zone. */
 export const dayKey = (ms: number) => new Date(ms).toLocaleDateString("sv");
 
 /**
  * One story episode: read it while hearing it, then (one step at a time)
- * check you got it, notice one pattern from it, say something back, and keep
+ * check you got it, notice one pattern from it, and keep
  * the words the story keeps using. Finishing the reading is what counts; every
  * later step can be skipped (Matteo: stop anytime, no penalty).
  */
@@ -109,11 +108,8 @@ export function EpisodeView({ lang, episodeId, replay = false }: { lang: string;
           )
         ) : null}
 
-        {step === "notice" ? <NoticeStep pack={pack} episodeId={episode.id} onNext={() => setStep("say")} /> : null}
+        {step === "notice" ? <NoticeStep pack={pack} episodeId={episode.id} onNext={() => setStep(wordsThatComeBack(pack, unit, episode).length ? "words" : "done")} /> : null}
 
-        {step === "say" ? (
-          <SayStep pack={pack} episodeId={episode.id} onNext={() => setStep(wordsThatComeBack(pack, unit, episode).length ? "words" : "done")} />
-        ) : null}
 
         {step === "words" ? <WordsStep pack={pack} episodeId={episode.id} onNext={() => setStep("done")} /> : null}
 
@@ -136,7 +132,6 @@ const STEPS: { id: Step; label: string }[] = [
   { id: "read", label: "Read" },
   { id: "questions", label: "Follow" },
   { id: "notice", label: "Notice" },
-  { id: "say", label: "Say" },
   { id: "words", label: "Keep" },
 ];
 
@@ -196,7 +191,7 @@ function NoticeStep({ pack, episodeId, onNext }: { pack: LanguagePack; episodeId
             Try {n.exercises.length} quick ones
           </button>
         ) : (
-          <button type="button" className="button" onClick={onNext}>Next: say it back</button>
+          <button type="button" className="button" onClick={onNext}>Next</button>
         )}
         {lesson ? (
           <Link href={`/grammar/${pack.code}/${lesson.id}`} className="button button-quiet">
@@ -205,55 +200,6 @@ function NoticeStep({ pack, episodeId, onNext }: { pack: LanguagePack; episodeId
         ) : null}
       </div>
       {right === null ? <Skip onClick={onNext} /> : null}
-    </section>
-  );
-}
-
-function SayStep({ pack, episodeId, onNext }: { pack: LanguagePack; episodeId: string; onNext: () => void }) {
-  const { episode } = findEpisode(pack, episodeId)!;
-  const [i, setI] = useState(0);
-  const [shown, setShown] = useState(false);
-  const item = episode.say[i];
-  const last = i === episode.say.length - 1;
-  return (
-    <section className="say-back">
-      <p className="notice-kicker">
-        Say it back · {i + 1} of {episode.say.length}
-      </p>
-      <h2>{item.prompt}</h2>
-      {item.frame ? (
-        <p className="say-frame" lang={pack.code}>
-          {item.frame}
-        </p>
-      ) : null}
-      <p className="say-hint">Say it out loud first. Then compare.</p>
-      {shown ? (
-        <div className="say-model">
-          <p lang={pack.code}>
-            <strong>{item.model}</strong> <SpeakButton lang={pack.code} text={item.model} label="Hear it" />
-          </p>
-          <p className="example-translation">{item.translation}</p>
-          <p className="say-hint">Yours can be different: any true sentence counts.</p>
-          <button
-            type="button"
-            className="button"
-            onClick={() => {
-              if (last) onNext();
-              else {
-                setI(i + 1);
-                setShown(false);
-              }
-            }}
-          >
-            {last ? "Next" : "Next one"}
-          </button>
-        </div>
-      ) : (
-        <button type="button" className="button" onClick={() => setShown(true)}>
-          Show an answer
-        </button>
-      )}
-      <Skip onClick={onNext} />
     </section>
   );
 }

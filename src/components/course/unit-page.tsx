@@ -173,17 +173,12 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
         </SkillSection>
       ) : null}
 
-      {unit.speaking ? (
-        <SkillSection skill="speak" title="Speaking (bonus)">
-          <Row
-            href={`/speak/${lang}/${unit.id}`}
-            title="Speaking practice"
-            meta={[
-              `Sounds: ${unit.speaking.sounds.map((id) => pack.sounds.find((s) => s.id === id)?.title).join(", ")}`,
-              `${unit.speaking.shadowing.length} sentences to say`,
-            ]}
-            done={progress.isDone({ kind: "speak", id: unit.id })}
-          />
+      {pack.speakingNote ? (
+        <SkillSection skill="speak" title="Speaking">
+          <li className="speaking-note">
+            <p className="speaking-note-title">{pack.speakingNote.title}</p>
+            <p>{pack.speakingNote.text}</p>
+          </li>
         </SkillSection>
       ) : null}
 

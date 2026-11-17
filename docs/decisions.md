@@ -5,6 +5,18 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (afternoon) — Speaking taken out; Italian says "Parla con Matteo!"
+
+Matteo: take speaking out everywhere. For Italian, put something funny instead.
+
+- No speaking sections on unit pages, no speaking practice route, no speaking
+  cards in review or "Include speaking" in Plan. The story's "Say it back"
+  step is gone too. The speaking data stays in the packs, unused.
+- Italian units show a Speaking card: "Parla con Matteo!", which says to send
+  him a voice message in Italian ("worst case, he corrects your double
+  consonants").
+- Standing rule (Matteo): every change made to Dutch is also made to Italian.
+
 ## 2026-11-17 (later) — Justified texts; Words-section cards marked in texts
 
 - **Texts fill the whole line (Matteo).** Reading texts, story episodes and

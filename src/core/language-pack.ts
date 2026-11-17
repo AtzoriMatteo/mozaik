@@ -108,6 +108,8 @@ export interface LanguagePack {
   expressions?: readonly Expression[];
   /** Who says each quoted turn in each reading text (see core/dialogue). */
   speakers?: Readonly<Record<string, string>>;
+  /** Shown where a unit's speaking practice would be (Italian: go and talk to Matteo). */
+  speakingNote?: { title: string; text: string };
   /** Bonus parts with real-life spoken and chat language, by unit. */
   slang?: readonly SlangPart[];
   /** Who speaks in the listening material, so recorded audio gives each character a fitting voice. */
