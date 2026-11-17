@@ -5,6 +5,26 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (night) — Italian unit 4 is a story unit too
+
+Matteo's standing rule: every change to Dutch also goes to Italian.
+
+- **Al bar is "Il compleanno di Marco"**: four episodes with Emma, Giulia,
+  Karim, Marco and Signora Rita (the new neighbour, the rules of the bar,
+  a Friday at the bar, the surprise party) replace the three old unit-4
+  texts. The coffee culture they taught (banco vs tavolo, no cappuccino
+  after lunch, "un latte" = milk, not to take away, aperitivo, tabaccheria)
+  now happens to the characters instead of being explained.
+- Listening keeps its three scenes (they already had Emma, Karim and Marco)
+  plus a new one, "La sorpresa", planning the party. A new writing topic:
+  your own birthday card for Marco.
+- Checkpoint "Il lunedì dopo": Marco's note on the door, Giulia's voicemail,
+  a three-line reply. Same 70% pass and can-do ticks as Dutch.
+- Thinking questions after each episode, Continue alternates skills,
+  grammar can finish early: shared with Dutch.
+- Cost: progress on the old unit-4 texts no longer counts for the unit.
+- Still to do for Italian: slang parts ("real talk" in Italian).
+
 ## 2026-11-17 (evening) — Dutch unit 4 is a story unit, with a checkpoint
 
 Matteo: keep the unit structure and the Plan, but make it less repetitive and

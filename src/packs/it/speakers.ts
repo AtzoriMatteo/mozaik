@@ -7,6 +7,10 @@ export const speakers: Record<string, string> = {
   "le-mani-parlano": "-|-|-",
   "la-famiglia-di-giulia": "Giulia|Giulia|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma",
   "a-trentanni-con-mamma-e-papa": "La mamma di Karim",
-  "il-caffe-allitaliana": "-|-",
-  "la-colazione-al-bar-margherita": "Marco|Emma|Marco|Emma|Marco|Emma|Marco|Emma|Marco",
+  // Unit 4: Il compleanno di Marco
+  "bar-1-la-nuova-vicina": "Marco|Emma|Marco|Emma|Marco|Emma|Marco|Emma|Marco|Marco|Marco|Emma|Marco",
+  "bar-2-le-regole-del-bar": "Emma|Marco|Giulia|Emma|Karim|Giulia|Karim|Marco|Marco|Emma",
+  "bar-3-un-venerdi-al-bar": "Rita|Emma|Rita|Rita|Rita|Rita",
+  "bar-4-tanti-auguri-marco": "Tutti|Marco|Marco|Marco|Marco|Karim|Marco|Emma|Marco",
+  "check-it-a1-al-bar": "Marco",
 };
