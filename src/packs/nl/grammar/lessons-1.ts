@@ -141,8 +141,8 @@ export const lessons1: Record<string, GrammarLesson> = {
     examples: [
       example("Leiden is een mooie stad met veel grachten, bruggen en fietsen.", "Leiden is a beautiful city with lots of canals, bridges and bikes.", "grachten", "bruggen", "fietsen"),
       example("Er liggen grote, gele kazen op de tafel.", "There are big yellow cheeses on the table.", "kazen"),
-      example("Het huis is hoog en smal, zoals veel huizen in Leiden.", "The house is tall and narrow, like many houses in Leiden.", "huizen"),
-      example("Boven zijn drie slaapkamers en één badkamer.", "Upstairs there are three bedrooms and one bathroom.", "slaapkamers"),
+      example("Alle huizen zijn hoog en smal, en overal zijn grachten en bruggen.", "All the houses are tall and narrow, and everywhere there are canals and bridges.", "huizen", "grachten", "bruggen"),
+      example("Op de eerste verdieping zijn twee slaapkamers en een badkamer.", "On the first floor there are two bedrooms and a bathroom.", "slaapkamers"),
     ],
     exercises: [
       fill("Ik heb twee ", ".", "boeken", "I have two books.", "boek"),

@@ -23,7 +23,7 @@ export const lessons3: Record<string, GrammarLesson> = {
     examples: [
       example("Naast de woonkamer is de keuken.", "Next to the living room is the kitchen.", "Naast"),
       example("Op het bureau staan een lamp en zijn computer. Onder het bed liggen zijn schoenen.", "On the desk there's a lamp and his computer. Under the bed are his shoes.", "Op", "Onder"),
-      example("De kamer van Luca ligt tussen de kamer van Noor en de badkamer.", "Luca's room is between Noor's room and the bathroom.", "tussen"),
+      example("de kast staat tussen de deur en het bureau", "the wardrobe is between the door and the desk", "tussen"),
       example("dichtbij het station en de universiteit", "close to the station and the university", "dichtbij"),
     ],
     exercises: [
