@@ -1,37 +1,59 @@
 /**
  * Spaced repetition, kept deliberately simple (a Leitner-style ladder).
  *
- * Each word sits on a rung. After each review the learner rates it, Anki
- * style:
+ * Each word sits on a rung, and each rung shows one kind of card (see
+ * review-items.wordCardFor): in its sentence (0–2), on its own (3), on its
+ * own / as a gap / heard (4), then typing the Dutch (5+). After each review
+ * the learner rates it, Anki style:
  * - Again: forgot it. Back to the start, shown again in 10 minutes.
- * - Hard:  got it with effort. Stays on its rung, same wait again.
+ * - Hard:  got it with effort. Stays on its rung.
  * - Good:  got it. One rung up.
- * - Easy:  instantly. One rung up too (no card type is ever skipped), with
- *          half as long again to wait.
- * The waits grow gently (1, 2, 4, 7, 12 days…), so the four buttons sit
- * close together. A word counts as *learned* (a glazed tile) from rung 4:
- * about a week of successful reviews.
+ * - Easy:  instantly. One rung up too (no card type is ever skipped), a
+ *          little later.
+ * Matteo: every time a word moves to a new kind of card, the waits start
+ * small again (Hard 1 d, Easy at most 2 d), because the new card is harder.
+ * Only within a kind of card do they grow. A word counts as *learned*
+ * (a glazed tile) from rung 4: about a week of successful reviews.
  */
 
-/** Wait before the next review, by rung (in days). Rung 0 = due now. */
-export const INTERVAL_DAYS = [0, 1, 2, 4, 7, 12, 21, 40, 90] as const;
-export const MAX_STAGE = INTERVAL_DAYS.length - 1;
+/** Waits in days for [Hard, Good, Easy] on each rung. Hard on rung 0 is an hour. */
+export const WAITS: readonly (readonly [number, number, number])[] = [
+  [1 / 24, 1, 2], // 0  new: in its sentence
+  [1, 2, 3], //      1  in its sentence
+  [2, 4, 6], //      2  in its sentence
+  [1, 1, 2], //      3  on its own: new card, short waits again
+  [1, 1, 2], //      4  on its own, a gap or heard: new card again
+  [1, 1, 2], //      5  type the Dutch: new card again
+  [1, 2, 3], //      6
+  [2, 4, 6], //      7
+  [4, 7, 11], //     8
+  [7, 12, 18], //    9
+  [12, 21, 32], //  10
+  [21, 40, 60], //  11
+  [45, 90, 90], //  12  top
+];
+export const MAX_STAGE = WAITS.length - 1;
 export const LEARNED_STAGE = 4;
 
 /**
- * Stages as stored. The first ladder (0, 1, 3, 7, 16, 35, 90 days) stored
- * its rungs as 0–6; this one stores rung n as 10 + n, so schedules saved
- * before the change are read on the rung with the closest wait, with no
- * database migration. 0 still means new, 99 graduated.
+ * Stages as stored, so no ladder change ever needs a database migration.
+ * - 0 new, 99 graduated.
+ * - 30 + n: rung n of this ladder.
+ * - 10 + n: rung n of the 16 Nov ladder (waits 1, 2, 4, 7, 12, 21, 40, 90).
+ * - 1–6: the first ladder (waits 1, 3, 7, 16, 35, 90).
+ * Old stages are read on the rung with the same card and the closest wait.
  */
-const STORED_OFFSET = 10;
-const OLD_LADDER = [0, 1, 3, 4, 5, 7, 8] as const;
+const STORED_OFFSET = 30;
+const NOV16_OFFSET = 10;
+const NOV16_LADDER = [0, 1, 2, 3, 4, 10, 11, 12, 12] as const;
+const FIRST_LADDER = [0, 1, 3, 4, 10, 11, 12] as const;
 
-/** The rung (0–8) of a stored stage. */
+/** The rung (0–12) of a stored stage. */
 export function rungOf(stored: number | undefined): number {
   const s = stored ?? 0;
   if (s >= STORED_OFFSET && s < GRADUATED_STAGE) return Math.min(s - STORED_OFFSET, MAX_STAGE);
-  if (s >= 0 && s < OLD_LADDER.length) return OLD_LADDER[s];
+  if (s >= NOV16_OFFSET && s < STORED_OFFSET) return NOV16_LADDER[Math.min(s - NOV16_OFFSET, NOV16_LADDER.length - 1)];
+  if (s >= 0 && s < FIRST_LADDER.length) return FIRST_LADDER[s];
   return 0;
 }
 
@@ -63,19 +85,19 @@ function inDays(now: Date, days: number): Date {
 /** The next review, from the stored stage; returns a stored stage. */
 export function schedule(stage: number, result: ReviewResult, now: Date): ReviewState {
   const rung = rungOf(stage);
+  const [hard, good, easy] = WAITS[rung];
   switch (result) {
     case "again":
       return { stage: 0, dueAt: new Date(now.getTime() + RETRY_MINUTES * MINUTE_MS) };
     case "hard":
-      // Not promoted; the same wait again (a new word: in an hour; the top rung: half of it).
+      // Not promoted. A new word comes back in an hour, the rest in whole days.
       return rung === 0
-        ? { stage: 0, dueAt: new Date(now.getTime() + HOUR_MS) }
-        : { stage: storedStage(rung), dueAt: inDays(now, rung === MAX_STAGE ? INTERVAL_DAYS[rung] / 2 : INTERVAL_DAYS[rung]) };
+        ? { stage: 0, dueAt: new Date(now.getTime() + hard * DAY_MS) }
+        : { stage: storedStage(rung), dueAt: inDays(now, hard) };
     case "good":
     case "easy": {
       const next = Math.min(rung + 1, MAX_STAGE);
-      const days = INTERVAL_DAYS[next];
-      return { stage: storedStage(next), dueAt: inDays(now, result === "easy" ? Math.round(days * 1.5) : days) };
+      return { stage: storedStage(next), dueAt: inDays(now, result === "easy" ? easy : good) };
     }
   }
 }

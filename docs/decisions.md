@@ -5,6 +5,25 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-17 (morning) — Review waits start small again on every new card
+
+Matteo: a word promoted to "just the Dutch word" offered Hard 4 d and Good
+7 d. Every promotion should come back with Hard 1 d and Easy at most 2 d.
+
+- **Matteo's rule.** Whenever a word moves to a new kind of card (on its
+  own, then gap/heard, then typing the Dutch), the waits start again:
+  Again 10 min · Hard 1 d · Good 1 d · Easy 2 d. Good and Hard both say
+  1 d there, but Good moves the word on and Hard keeps it on this card.
+- **Waits grow only within a kind of card.** In its sentence: 1, 2, 4 days.
+  Typing the Dutch: 1, 2, 4, 7, 12, 21, 40, 90. A word reaches 90 days
+  after more reviews than before, by design.
+- **Learned** (a glazed tile): still from the gap/heard card, about a week.
+- **No migration (Claude).** New rungs are stored as 30 + rung. Schedules
+  from the 16 Nov ladder (10 + rung) and the first ladder are read on the
+  same card with the closest wait, so progress and due dates stay. A card
+  already due in 4 or 7 days keeps that date once; its next rating uses the
+  new waits.
+
 ## 2026-11-17 — Zo praten we echt: real-life Dutch, kept apart
 
 Matteo: level-appropriate parts with slang and colloquial Dutch people
