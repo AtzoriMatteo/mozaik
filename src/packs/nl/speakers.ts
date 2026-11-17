@@ -15,7 +15,6 @@ export const speakers: Record<string, string> = {
   "mijn-familie": "Bram|Bram",
   "bellen-met-mama": "Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca",
   "een-mail-van-giulia": "Leo",
-  "een-afspraak": "Fatima|Luca|Fatima|Luca|Fatima|Luca|Fatima|Luca|Fatima|Luca|Luca|Fatima|Luca",
   "de-weg-vragen": "Luca|De meneer|De meneer|De meneer|De meneer|Luca|De meneer|Luca|De meneer|Een meisje",
   "kamer-te-huur": "Fatima|Fatima",
   "de-taalles": "Ingrid|Fatima|Ingrid|Ingrid|-|Ingrid|Ingrid|Noor",
@@ -54,6 +53,12 @@ export const speakers: Record<string, string> = {
   "dit-heb-ik-niet-besteld": "Fatou|Fatou|De ober|De ober|De ober|Fatou",
   "wadlopen": "De gids",
   "praten-over-het-weer": "-|-|Je collega|Je collega|-",
+  // Unit 5: Een drukke week
+  "week-1-vroeg-op": "Ruth|Jayden|Ruth",
+  "week-2-een-afspraak": "Ruth|Luca|Ruth|Luca|Luca|Ruth|Luca|Ruth|Ruth|Ruth",
+  "week-3-half-vier": "Jayden|Luca|Assistente|Luca|Assistente|Jayden",
+  "week-4-vrijdagavond": "Ruth|Luca|Luca|Noor|Noor|Bram|Ruth|Ruth|Ruth",
+  "check-a1-dag-en-tijd": "Ruth",
   // Unit 4: Een Italiaanse avond
   "check-a1-eten": "Mevrouw De Vries|Luca|Noor|Noor",
   "avond-1-een-plan": "Luca|Luca|Noor|Noor|Luca|Noor|Luca|Luca|Bram|Bram|Bram|Bram|Luca|Noor|Noor|Bram|Bram|Luca|Noor|Noor|Fatima|Mevrouw De Vries",

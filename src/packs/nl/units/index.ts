@@ -17,12 +17,12 @@ import {
 import type { ListeningItem, ReadingText } from "@/core/content";
 import type { WritingTask } from "@/core/writing";
 import { avondListening, avondWriting } from "../stories/italiaanse-avond-more";
+import { weekListening, weekWriting } from "../stories/een-drukke-week";
 import {
   fatimasProfiel,
   gezondLeven,
   inHetZiekenhuis,
   kamerTeHuur,
-  lucasWeek,
   mailVanGiulia,
   vrijeTijdText,
 } from "./a1-more-texts";
@@ -56,7 +56,6 @@ const LOOK: Record<string, { motif: Motif; glaze: Glaze }> = {
 const MORE_TEXTS = {
   "a1-kennismaken": fatimasProfiel,
   "a1-familie": mailVanGiulia,
-  "a1-dag-en-tijd": lucasWeek,
   "a1-wonen": kamerTeHuur,
   "a1-werk-en-studie": inHetZiekenhuis,
   "a1-gezondheid": gezondLeven,
@@ -83,6 +82,8 @@ for (const [id, items] of Object.entries(listeningCulture)) {
 /** Story units: their listening and a writing topic come from the story too. */
 const STORY: Record<string, { listening: ListeningItem[]; writing: WritingTask[] }> = {
   "a1-eten": { listening: avondListening, writing: [avondWriting] },
+  // Unit 5 keeps its listening (other people on other days) and adds a scene from the story.
+  "a1-dag-en-tijd": { listening: [weekListening, ...(listening["a1-dag-en-tijd"] ?? [])], writing: [weekWriting] },
 };
 
 function assemble(u: UnitContent): Unit {
