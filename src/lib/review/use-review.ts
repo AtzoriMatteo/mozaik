@@ -58,8 +58,8 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
     load
       .then(async (r) => {
         if (cancelled) return;
-        // Until the database is set up, keep progress on this device.
-        if (!r.ready) {
+        // Until the database is set up (or with no accounts at all), keep progress on this device.
+        if (!remote || !r.ready) {
           setOwn(new Map(readLocal(lang)));
         } else {
           // Once it is: upload what this device kept meanwhile, then forget it.

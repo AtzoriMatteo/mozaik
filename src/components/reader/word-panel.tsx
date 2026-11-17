@@ -21,6 +21,8 @@ export function WordPanel(props: {
   translation: string;
   sentence: string;
   saved: boolean;
+  /** Already a card from the unit's Words or New words (not saved from a text). */
+  inCards?: boolean;
   error: string | null;
   onToggleSave: () => void;
   onClose: () => void;
@@ -82,7 +84,11 @@ export function WordPanel(props: {
               All forms
             </Link>
           ) : null}
-          {help ? (
+          {help && props.inCards && !saved ? (
+            <span className="chip chip-save chip-static" title="You met this word in Words or New words: it's already one of your cards.">
+              In your cards
+            </span>
+          ) : help ? (
             <button
               type="button"
               className="chip chip-save"

@@ -11,6 +11,8 @@ import { nextActivity } from "@/core/course";
 import { NextActivityLink } from "@/components/course/next-activity-link";
 import { getPack } from "@/core/registry";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
+import { useReview } from "@/lib/review/use-review";
+import { useReviewSettings } from "@/lib/review/use-review-settings";
 import { useReadTexts } from "@/lib/progress/use-read-texts";
 import { WordPanel } from "./word-panel";
 import { ExpressionBox, type Phrase } from "./expression-box";
@@ -113,6 +115,14 @@ export function ReaderView({
   children?: ReactNode;
 }) {
   const saved = useSavedWords(pack.code);
+  // A word met in a unit's Words or in New words is a card too: mark it like a saved one.
+  const { settings: reviewSettings } = useReviewSettings();
+  const review = useReview(pack, reviewSettings);
+  const inCards = (w: { normalized: string; help?: WordHelp }) => {
+    if (!review.loaded || !w.help) return false;
+    const state = review.wordState((w.help.base ?? w.normalized).toLowerCase(), w.normalized);
+    return state === "learning" || state === "learned";
+  };
   const [active, setActive] = useState<number | null>(null);
   const sentenceStart = useMemo(() => {
     const out: number[] = [];
@@ -252,22 +262,31 @@ export function ReaderView({
       g.kind === "gap" ? (
         <span key={gi}>{g.text}</span>
       ) : (
-        <span key={gi} className="nobr">
+        <span key={gi} className="glued">
           {g.pieces.map((piece, pi) => {
             const ref = piece.kind === "word" ? run[piece.index].ref : null;
             if (!ref) return <span key={pi}>{piece.kind === "word" ? piece.token.text : piece.text}</span>;
             return (
-              <button
+              // A span, not a <button>: buttons can't be hyphenated, and justified
+              // text needs hyphens to avoid wide gaps on phones.
+              <span
                 key={pi}
-                type="button"
+                role="button"
+                tabIndex={0}
                 className="word"
                 data-selected={ref.key === selectedKey || inRange(ref) || undefined}
-                data-saved={saved.isSaved(ref.normalized, ref.help?.base) || undefined}
+                data-saved={saved.isSaved(ref.normalized, ref.help?.base) || inCards(ref) || undefined}
                 aria-pressed={ref.key === selectedKey}
                 onClick={() => clickWord(ref)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    clickWord(ref);
+                  }
+                }}
               >
                 {piece.kind === "word" ? piece.token.text : ""}
-              </button>
+              </span>
             );
           })}
         </span>
@@ -351,6 +370,7 @@ export function ReaderView({
           translation={selected.translation}
           sentence={selected.sentence}
           saved={saved.isSaved(selected.normalized, selected.help?.base)}
+          inCards={inCards(selected)}
           error={saved.error}
           onToggleSave={() => toggleSave(selected)}
           onClose={() => {
