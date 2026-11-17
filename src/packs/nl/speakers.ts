@@ -15,8 +15,6 @@ export const speakers: Record<string, string> = {
   "mijn-familie": "Bram|Bram",
   "bellen-met-mama": "Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca",
   "een-mail-van-giulia": "Leo",
-  "de-weg-vragen": "Luca|De meneer|De meneer|De meneer|De meneer|Luca|De meneer|Luca|De meneer|Een meisje",
-  "kamer-te-huur": "Fatima|Fatima",
   "de-taalles": "Ingrid|Fatima|Ingrid|Ingrid|-|Ingrid|Ingrid|Noor",
   "een-bijbaan": "Bram|Bram|Kees|Luca|Kees|Luca|Kees|Luca|Kees|Kees|Luca",
   "noor-in-het-ziekenhuis": "Noor|Noor|Noor",
@@ -53,6 +51,12 @@ export const speakers: Record<string, string> = {
   "dit-heb-ik-niet-besteld": "Fatou|Fatou|De ober|De ober|De ober|Fatou",
   "wadlopen": "De gids",
   "praten-over-het-weer": "-|-|Je collega|Je collega|-",
+  // Unit 6: Een nieuwe buurman
+  "buurman-1-kamer-te-huur": "Mevrouw De Vries|Mevrouw De Vries|Kwame|Mevrouw De Vries|Kwame|Mevrouw De Vries",
+  "buurman-2-verhuizen": "Bram|Kwame|Bram|Kwame|Mevrouw De Vries",
+  "buurman-3-de-weg-vragen": "Ruth|Kwame|Ruth|Meisje|Ambtenaar|Kwame",
+  "buurman-4-videobellen": "Moeder|Kwame|Moeder|Moeder|Kwame|Kwame|Moeder|Kwame|Kwame|Moeder|Kwame",
+  "check-a1-wonen": "Mevrouw De Vries",
   // Unit 5: Een drukke week
   "week-1-vroeg-op": "Ruth|Jayden|Ruth",
   "week-2-een-afspraak": "Ruth|Luca|Ruth|Luca|Luca|Ruth|Luca|Ruth|Ruth|Ruth",

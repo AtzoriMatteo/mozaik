@@ -35,7 +35,7 @@ export const lessons5: Record<string, GrammarLesson> = {
       text("Two spellings, one sound: ij and ei (mijn, klein); ou and au (oud, blauw)."),
     ],
     examples: [
-      example("Het huis is hoog en smal, zoals veel huizen in Leiden.", "The house is tall and narrow, like many houses in Leiden.", "huis", "huizen"),
+      example("Het huis van mevrouw De Vries is hoog en smal, zoals veel huizen in Leiden.", "Mrs De Vries's house is tall and narrow, like many houses in Leiden.", "huis", "huizen"),
       example("Er liggen grote, gele kazen op de tafel.", "There are big yellow cheeses on the table.", "grote", "gele", "kazen"),
       example("Leiden is een mooie stad met veel grachten, bruggen en fietsen.", "Leiden is a beautiful city with lots of canals, bridges and bikes.", "bruggen"),
     ],

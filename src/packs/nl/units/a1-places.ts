@@ -1,4 +1,5 @@
 import type { UnitContent } from "./types";
+import { buurmanCheckpoint, buurmanTexts, eenNieuweBuurman } from "../stories/een-nieuwe-buurman";
 
 export const wonen: UnitContent = {
   id: "a1-wonen",
@@ -10,166 +11,16 @@ export const wonen: UnitContent = {
     "Ask for directions and understand simple answers",
     "Understand where places are: links, rechts, naast, tussen…",
   ],
-  texts: [
-    {
-      id: "ons-huis",
-      level: "A1",
-      title: "Ons huis",
-      titleTranslation: "Our house",
-      grammar: ["er-is", "prepositions", "adjective-e", "plurals", "articles"],
-      paragraphs: [
-        [
-          {
-            text: "Luca, Noor en Bram wonen in een oud huis aan een gracht.",
-            translation: "Luca, Noor and Bram live in an old house on a canal.",
-          },
-          {
-            text: "Het huis is hoog en smal, zoals veel huizen in Leiden.",
-            translation: "The house is tall and narrow, like many houses in Leiden.",
-          },
-          {
-            text: "Beneden is de woonkamer.",
-            translation: "Downstairs is the living room.",
-          },
-          {
-            text: "Er staat een grote bank voor het raam, en er is een oude tafel met vier stoelen.",
-            translation: "There's a big sofa in front of the window, and there's an old table with four chairs.",
-          },
-          {
-            text: "Naast de woonkamer is de keuken. De keuken is klein, maar er is een nieuwe koelkast.",
-            translation: "Next to the living room is the kitchen. The kitchen is small, but there's a new fridge.",
-          },
-        ],
-        [
-          {
-            text: "De trap naar boven is heel steil.",
-            translation: "The stairs up are very steep.",
-          },
-          {
-            text: "Boven zijn drie slaapkamers en één badkamer.",
-            translation: "Upstairs there are three bedrooms and one bathroom.",
-          },
-          {
-            text: "'s Ochtends is het altijd druk in de badkamer!",
-            translation: "In the morning the bathroom is always busy!",
-          },
-          {
-            text: "De kamer van Luca ligt tussen de kamer van Noor en de badkamer.",
-            translation: "Luca's room is between Noor's room and the bathroom.",
-          },
-          {
-            text: "In zijn kamer staan een bed, een bureau en een kast.",
-            translation: "In his room there's a bed, a desk and a wardrobe.",
-          },
-          {
-            text: "Op het bureau staan een lamp en zijn computer. Onder het bed liggen zijn schoenen.",
-            translation: "On the desk there's a lamp and his computer. Under the bed are his shoes.",
-          },
-          {
-            text: "Uit zijn raam ziet hij een kleine tuin met een groene boom. Achter de tuin ligt een park.",
-            translation: "From his window he sees a small garden with a green tree. Behind the garden there's a park.",
-          },
-        ],
-        [
-          {
-            text: "Ze huren het huis. De huur is niet goedkoop: zeshonderd euro per maand voor één kamer.",
-            translation: "They rent the house. The rent isn't cheap: six hundred euros a month for one room.",
-          },
-          {
-            text: "Maar het huis ligt in het centrum, dichtbij het station en de universiteit.",
-            translation: "But the house is in the centre, close to the station and the university.",
-          },
-          {
-            text: "Dat is handig. Luca heeft geen auto nodig, en hij kan ook niet rijden. Hij gaat overal op de fiets.",
-            translation: "That's handy. Luca doesn't need a car, and he can't drive anyway. He goes everywhere by bike.",
-          },
-          {
-            text: "Zijn adres is Oude Vest 12. Het is een mooi adres, vindt hij.",
-            translation: "His address is Oude Vest 12. It's a nice address, he thinks.",
-          },
-        ],
-      ],
-    },
-    {
-      id: "de-weg-vragen",
-      level: "A1",
-      title: "De weg vragen",
-      titleTranslation: "Asking the way",
-      grammar: ["imperative", "demonstratives", "questions", "prepositions", "modal-verbs"],
-      paragraphs: [
-        [
-          {
-            text: "Luca moet vandaag naar het stadhuis. Hij heeft daar om tien uur een afspraak.",
-            translation: "Luca has to go to the town hall today. He has an appointment there at ten.",
-          },
-          {
-            text: "Wie nieuw is in Leiden, moet zijn adres doorgeven.",
-            translation: "Anyone new in Leiden has to register their address.",
-          },
-          {
-            text: "Maar waar is het stadhuis? Luca weet het niet.",
-            translation: "But where is the town hall? Luca doesn't know.",
-          },
-        ],
-        [
-          {
-            text: "Hij vraagt het aan een meneer op straat.",
-            translation: "He asks a man on the street.",
-          },
-          {
-            text: "\"Pardon, meneer. Weet u waar het stadhuis is?\"",
-            translation: "\"Excuse me, sir. Do you know where the town hall is?\"",
-          },
-          {
-            text: "\"Het stadhuis? Ja hoor. Ga hier rechtdoor tot de brug.\"",
-            translation: "\"The town hall? Sure. Go straight on here until the bridge.\"",
-          },
-          {
-            text: "\"Ga over de brug en dan links. Dat is de Breestraat.\"",
-            translation: "\"Go over the bridge and then left. That's the Breestraat.\"",
-          },
-          {
-            text: "\"Loop langs de kerk en het plein. Ga niet rechts, maar blijf op de Breestraat.\"",
-            translation: "\"Walk past the church and the square. Don't go right, but stay on the Breestraat.\"",
-          },
-          {
-            text: "\"Het stadhuis is aan de rechterkant, tussen een bank en een kledingwinkel.\"",
-            translation: "\"The town hall is on the right, between a bank and a clothes shop.\"",
-          },
-          {
-            text: "\"Is het ver?\" \"Nee hoor, het is vijf minuten lopen.\"",
-            translation: "\"Is it far?\" \"No, it's a five-minute walk.\"",
-          },
-          {
-            text: "\"Dank u wel!\" \"Graag gedaan.\"",
-            translation: "\"Thank you!\" \"You're welcome.\"",
-          },
-        ],
-        [
-          {
-            text: "Luca loopt rechtdoor, maar bij de gracht twijfelt hij.",
-            translation: "Luca walks straight on, but at the canal he hesitates.",
-          },
-          {
-            text: "Is dit de goede brug? Er zijn zo veel bruggen in Leiden!",
-            translation: "Is this the right bridge? There are so many bridges in Leiden!",
-          },
-          {
-            text: "Hij vraagt het aan een meisje op een fiets.",
-            translation: "He asks a girl on a bike.",
-          },
-          {
-            text: "\"Ja, deze brug is goed. Zie je die witte toren daar? Daar is het.\"",
-            translation: "\"Yes, this bridge is right. Do you see that white tower over there? That's it.\"",
-          },
-          {
-            text: "Om vijf voor tien staat Luca voor het stadhuis. Precies op tijd!",
-            translation: "At five to ten Luca is standing in front of the town hall. Right on time!",
-          },
-        ],
-      ],
-    },
+  // One street, a different lead each unit (Matteo, 17 Nov 2026): Kwame moves in.
+  story: eenNieuweBuurman,
+  texts: buurmanTexts,
+  sequence: [
+    "buurman-1-kamer-te-huur", "kwame-belt-over-de-kamer", "adjective-e",
+    "buurman-2-verhuizen", "een-kamer-bekijken", "prepositions",
+    "buurman-3-de-weg-vragen", "in-de-bus", "imperative",
+    "welke-bak", "write", "buurman-4-videobellen", "een-voicemail", "words", "check",
   ],
+  checkpoint: buurmanCheckpoint,
 };
 
 export const werkEnStudie: UnitContent = {
