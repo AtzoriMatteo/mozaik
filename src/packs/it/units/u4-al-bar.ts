@@ -1,5 +1,6 @@
 import type { Unit } from "@/core/content";
-import { a1, gaps, heard, line, mc, order, p, pairs, pf, s, tf } from "./helpers";
+import { a1, gaps, heard, line, mc, pf, tf } from "./helpers";
+import { barCheckpoint, barTexts, ilCompleanno, laSorpresa, unBiglietto } from "../stories/il-compleanno-di-marco";
 
 /** A1 unit 4: at the bar. Present of -are verbs, vorrei, questions. */
 export const alBar: Unit = {
@@ -14,110 +15,15 @@ export const alBar: Unit = {
     "Talk about what you do every day, with -are verbs",
     "Know the unwritten rules of the Italian bar",
   ],
-  texts: [
-    {
-      id: "il-caffe-allitaliana",
-      level: "A1",
-      title: "Il caffè all'italiana",
-      titleTranslation: "Coffee the Italian way",
-      grammar: ["present-are", "questions", "articles"],
-      paragraphs: [
-        [
-          s("In Italia il caffè è un piccolo rito.", "In Italy coffee is a little ritual."),
-          s("Se chiedi \"un caffè\", il barista prepara un espresso: piccolo, forte e caldo.", "If you ask for \"un caffè\", the barista makes an espresso: small, strong and hot."),
-          s("Molti italiani bevono il caffè in piedi, al banco, in pochi minuti.", "Many Italians drink their coffee standing up, at the counter, in a few minutes."),
-          s("Al banco costa poco, più o meno un euro e venti.", "At the counter it's cheap, about one euro twenty."),
-          s("Al tavolo, in un bar del centro, costa di più.", "At a table, in a bar in the centre, it costs more."),
-        ],
-        [
-          s("In alcuni bar prima paghi alla cassa e prendi lo scontrino, poi ordini al banco.", "In some bars you first pay at the till and take the receipt, then you order at the counter."),
-          s("Ci sono tanti tipi di caffè.", "There are lots of kinds of coffee."),
-          s("Il caffè macchiato ha un po' di latte, il caffè lungo ha più acqua, e il caffè corretto ha un po' di grappa.", "A caffè macchiato has a little milk, a caffè lungo has more water, and a caffè corretto has a little grappa."),
-          s("E il cappuccino? Gli italiani bevono il cappuccino la mattina, a colazione, quasi mai dopo pranzo.", "And cappuccino? Italians drink cappuccino in the morning, at breakfast, almost never after lunch."),
-        ],
-        [
-          s("Attenzione: se chiedi \"un latte\", arriva un bicchiere di latte!", "Careful: if you ask for \"un latte\", a glass of milk arrives!"),
-          s("Per un caffè con tanto latte, chiedi un latte macchiato.", "For a coffee with lots of milk, ask for a latte macchiato."),
-          s("Un'ultima cosa: in Italia il caffè non è da portare via.", "One last thing: in Italy coffee isn't for taking away."),
-          s("Si beve al bar, con calma, e si parla un po' con il barista.", "You drink it at the bar, calmly, and chat a little with the barista."),
-        ],
-      ],
-      tasks: [
-        mc("What do you get if you ask for \"un caffè\"?", ["An espresso", "A cappuccino", "A big coffee with milk"], 0),
-        tf("Al banco il caffè costa più che al tavolo.", "At the counter coffee costs more than at a table.", false),
-        mc("When do Italians drink cappuccino?", ["In the morning", "After dinner", "After lunch"], 0),
-        pairs("Match.", "caffè macchiato=with a little milk | caffè lungo=with more water | caffè corretto=with a little grappa | latte macchiato=lots of milk, a little coffee", true),
-        tf("Se chiedi un latte, arriva un bicchiere di latte.", "If you ask for a latte, a glass of milk arrives.", true),
-      ],
-    },
-    {
-      id: "la-colazione-al-bar-margherita",
-      level: "A1",
-      title: "La colazione al Bar Margherita",
-      titleTranslation: "Breakfast at Bar Margherita",
-      grammar: ["vorrei", "present-are", "tu-lei"],
-      paragraphs: [
-        [
-          s("Il Bar Margherita è all'angolo di via del Pratello, sotto la casa di Emma.", "Bar Margherita is on the corner of Via del Pratello, below Emma's flat."),
-          s("Il barista si chiama Marco.", "The barista is called Marco."),
-          s("È napoletano e parla sempre: con i clienti, con i colleghi, anche con la macchina del caffè!", "He's from Naples and he never stops talking: to the customers, to his colleagues, even to the coffee machine!"),
-          s("Oggi Emma entra per la prima volta.", "Today Emma goes in for the first time."),
-        ],
-        [
-          s("\"Buongiorno! Che cosa desidera?\" chiede Marco.", "\"Good morning! What would you like?\" Marco asks."),
-          s("\"Buongiorno. Vorrei un cappuccino e un cornetto, per favore.\"", "\"Good morning. I'd like a cappuccino and a croissant, please.\""),
-          s("\"Un cornetto vuoto o con la crema?\" \"Con la crema, grazie.\"", "\"A plain croissant or with custard?\" \"With custard, thanks.\""),
-          s("Marco prepara il cappuccino e disegna un cuore nella schiuma.", "Marco makes the cappuccino and draws a heart in the foam."),
-        ],
-        [
-          s("\"Ecco qua. Lei non è italiana, vero?\" \"No, sono irlandese. Abito qui sopra.\"", "\"Here you are. You're not Italian, are you?\" \"No, I'm Irish. I live upstairs.\""),
-          s("\"Ah, la nuova vicina! Allora siamo amici. Io sono Marco, e da oggi ci diamo del tu!\"", "\"Ah, the new neighbour! Then we're friends. I'm Marco, and from today we use tu!\""),
-          s("Emma paga alla cassa: due euro e settanta.", "Emma pays at the till: two euros seventy."),
-          s("\"Grazie, Marco. A domani!\" \"A domani, Emma!\"", "\"Thanks, Marco. See you tomorrow!\" \"See you tomorrow, Emma!\""),
-        ],
-      ],
-      tasks: [
-        tf("Il Bar Margherita è vicino alla casa di Emma.", "Bar Margherita is near Emma's flat.", true),
-        mc("Where is Marco from?", ["Naples", "Bologna", "Turin"], 0),
-        mc("What does Emma order?", ["A cappuccino and a custard croissant", "An espresso and a plain croissant", "A latte"], 0),
-        tf("Marco e Emma usano il Lei anche alla fine.", "Marco and Emma still use Lei at the end.", false),
-        mc("How much does Emma pay?", ["€2.70", "€1.20", "€7.20"], 0),
-      ],
-    },
-    {
-      id: "al-bar-dalla-mattina-alla-sera",
-      level: "A1",
-      title: "Al bar dalla mattina alla sera",
-      titleTranslation: "At the bar from morning to night",
-      grammar: ["present-are", "questions", "plurals"],
-      paragraphs: [
-        [
-          s("Per gli italiani il bar non è solo un posto per bere il caffè.", "For Italians the bar isn't just a place to drink coffee."),
-          s("La mattina presto le persone fanno colazione prima del lavoro.", "Early in the morning people have breakfast before work."),
-          s("A metà mattina arrivano gli impiegati per una pausa.", "Mid-morning, office workers arrive for a break."),
-          s("Dopo pranzo molti prendono un caffè, per non dormire in ufficio!", "After lunch many have a coffee, so as not to fall asleep at the office!"),
-        ],
-        [
-          s("Il pomeriggio i pensionati giocano a carte e parlano di calcio.", "In the afternoon pensioners play cards and talk about football."),
-          s("La sera, dalle sei alle nove, c'è l'aperitivo: un bicchiere di vino o uno spritz, con patatine, olive e piccoli panini.", "In the evening, from six to nine, there's aperitivo: a glass of wine or a spritz, with crisps, olives and little sandwiches."),
-          s("Molti bar sono anche tabaccherie: lì compri i biglietti dell'autobus.", "Many bars are tobacconists too: there you buy bus tickets."),
-        ],
-        [
-          s("In molte città il bar è il centro del quartiere.", "In many towns the bar is the heart of the neighbourhood."),
-          s("Il barista conosce tutti, e tutti conoscono il barista.", "The barista knows everyone, and everyone knows the barista."),
-          s("Quanti bar ci sono in Italia? Più di centomila!", "How many bars are there in Italy? More than a hundred thousand!"),
-          s("E tu, quando vai al bar? E che cosa ordini?", "And you, when do you go to the bar? And what do you order?"),
-        ],
-      ],
-      tasks: [
-        order("Put the day at the bar in order.", "Breakfast before work", "A break mid-morning", "Coffee after lunch", "Cards in the afternoon", "Aperitivo in the evening"),
-        tf("I pensionati giocano a carte la mattina presto.", "Pensioners play cards early in the morning.", false),
-        mc("What can you buy at a bar that's also a tabaccheria?", ["Bus tickets", "Train tickets to Rome only", "Newspapers only"], 0),
-        mc("When is aperitivo?", ["From six to nine in the evening", "At lunchtime", "After midnight"], 0),
-        tf("In Italia ci sono più di centomila bar.", "There are more than a hundred thousand bars in Italy.", true),
-      ],
-    },
+  story: ilCompleanno,
+  texts: barTexts,
+  sequence: [
+    "bar-1-la-nuova-vicina", "cosa-prendete", "vorrei",
+    "bar-2-le-regole-del-bar", "alla-cassa", "questions",
+    "bar-3-un-venerdi-al-bar", "il-lavoro-di-marco", "present-are",
+    "la-sorpresa", "write", "bar-4-tanti-auguri-marco", "words", "check",
   ],
+  checkpoint: barCheckpoint,
   listening: [
     {
       id: "cosa-prendete",
@@ -212,8 +118,10 @@ export const alBar: Unit = {
         bassi: { meaning: "Bassi (a surname)" },
       },
     },
+    laSorpresa,
   ],
   writing: [
+    unBiglietto,
     a1({
       id: "w-al-bar",
       title: "Al bar con un'amica",
