@@ -3,6 +3,8 @@ import type { Lexicon } from "@/core/content";
 /** Words added while filling A1 coverage gaps. */
 export const lexiconExtra: Lexicon = {
   // Unit 4 story (Een Italiaanse avond): dictionary forms of words met inflected.
+  tikken: { meaning: "to tap, to knock lightly" },
+  zwaaien: { meaning: "to wave" },
   los: { meaning: "loose" },
   parmezaans: { meaning: "Parmesan" },
   stokbrood: { meaning: "baguette", closer: "stok (stick) + brood (bread)" },

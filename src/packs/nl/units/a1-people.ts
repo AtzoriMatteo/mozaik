@@ -1,4 +1,5 @@
 import type { UnitContent } from "./types";
+import { martaCheckpoint, martaIsNieuw, martaTexts } from "../stories/marta-is-nieuw";
 
 /**
  * Cast (recurs through A1): Luca, an Italian student new in Leiden; his
@@ -17,157 +18,16 @@ export const kennismaken: UnitContent = {
     "Ask someone's name and where they live",
     "Choose between jij and u",
   ],
-  texts: [
-    {
-      id: "nieuw-in-leiden",
-      level: "A1",
-      title: "Nieuw in Leiden",
-      titleTranslation: "New in Leiden",
-      grammar: ["pronouns-subject", "present-regular", "zijn-hebben", "articles", "adjective-e", "conjunctions"],
-      paragraphs: [
-        [
-          { text: "Hallo!", translation: "Hello!" },
-          { text: "Mijn naam is Luca.", translation: "My name is Luca." },
-          {
-            text: "Ik kom uit Italië, uit een klein dorp bij Turijn.",
-            translation: "I'm from Italy, from a small village near Turin.",
-          },
-          {
-            text: "Ik ben drieëntwintig jaar en ik ben student.",
-            translation: "I'm twenty-three and I'm a student.",
-          },
-          {
-            text: "Ik studeer biologie aan de universiteit van Leiden.",
-            translation: "I study biology at Leiden University.",
-          },
-        ],
-        [
-          {
-            text: "Ik woon nu twee weken in Nederland.",
-            translation: "I've been living in the Netherlands for two weeks now.",
-          },
-          {
-            text: "Ik woon in een oud huis in het centrum, samen met twee andere studenten: Noor en Bram.",
-            translation: "I live in an old house in the centre, together with two other students: Noor and Bram.",
-          },
-          { text: "Noor is Nederlands.", translation: "Noor is Dutch." },
-          {
-            text: "Ze komt uit Groningen en ze studeert geneeskunde.",
-            translation: "She's from Groningen and she studies medicine.",
-          },
-          { text: "Bram komt uit Leiden.", translation: "Bram is from Leiden." },
-          {
-            text: "Hij werkt in een café in de Breestraat.",
-            translation: "He works in a café on the Breestraat.",
-          },
-        ],
-        [
-          { text: "Ik spreek Italiaans en Engels.", translation: "I speak Italian and English." },
-          {
-            text: "Ik spreek nog niet veel Nederlands, maar ik leer elke dag een beetje.",
-            translation: "I don't speak much Dutch yet, but I learn a bit every day.",
-          },
-          {
-            text: "Op maandag en woensdag heb ik les.",
-            translation: "On Mondays and Wednesdays I have class.",
-          },
-          {
-            text: "De les is leuk, maar soms ook moeilijk.",
-            translation: "The class is fun, but sometimes also difficult.",
-          },
-        ],
-        [
-          {
-            text: "Mijn kamer is klein, maar ik vind het hier fijn.",
-            translation: "My room is small, but I like it here.",
-          },
-          {
-            text: "Leiden is een mooie stad met veel grachten, bruggen en fietsen.",
-            translation: "Leiden is a beautiful city with lots of canals, bridges and bikes.",
-          },
-          { text: "Heel veel fietsen!", translation: "Lots and lots of bikes!" },
-        ],
-      ],
-    },
-    {
-      id: "in-de-keuken",
-      level: "A1",
-      title: "In de keuken",
-      titleTranslation: "In the kitchen",
-      grammar: ["questions", "jij-inversion", "modal-verbs", "demonstratives", "time-numbers", "prepositions"],
-      paragraphs: [
-        [
-          { text: "Het is acht uur 's ochtends.", translation: "It's eight o'clock in the morning." },
-          { text: "Luca zit in de keuken.", translation: "Luca is sitting in the kitchen." },
-          { text: "Hij drinkt koffie.", translation: "He's drinking coffee." },
-          { text: "Dan komt Noor binnen.", translation: "Then Noor comes in." },
-        ],
-        [
-          {
-            text: "\"Goedemorgen!\" zegt Noor. \"Ben jij altijd zo vroeg wakker?\"",
-            translation: "\"Good morning!\" says Noor. \"Are you always up this early?\"",
-          },
-          {
-            text: "\"Ja, meestal wel,\" zegt Luca. \"Ik heb om negen uur les. Wil je ook koffie?\"",
-            translation: "\"Yes, usually,\" says Luca. \"I have class at nine. Do you want coffee too?\"",
-          },
-          {
-            text: "\"Nee, dank je. Ik drink liever thee. Waar is de thee?\"",
-            translation: "\"No, thanks. I prefer tea. Where's the tea?\"",
-          },
-          {
-            text: "\"In de kast, naast het brood.\"",
-            translation: "\"In the cupboard, next to the bread.\"",
-          },
-        ],
-        [
-          {
-            text: "Noor pakt een kopje. \"Hoe gaat het met je Nederlands?\"",
-            translation: "Noor grabs a cup. \"How's your Dutch going?\"",
-          },
-          {
-            text: "\"Goed, denk ik. Maar de woorden zijn soms zo lang! En jij? Wat doe je vandaag?\"",
-            translation: "\"Good, I think. But the words are sometimes so long! And you? What are you doing today?\"",
-          },
-          {
-            text: "\"Ik werk vandaag in het ziekenhuis. Ik ben student, maar ik werk ook twee dagen per week.\"",
-            translation: "\"I'm working at the hospital today. I'm a student, but I also work two days a week.\"",
-          },
-        ],
-        [
-          { text: "Dan gaat de bel.", translation: "Then the doorbell rings." },
-          {
-            text: "\"Wie is dat?\" vraagt Noor. \"Ik weet het niet. Ik doe wel open.\"",
-            translation: "\"Who's that?\" asks Noor. \"I don't know. I'll get it.\"",
-          },
-          {
-            text: "Er staat een oudere vrouw voor de deur.",
-            translation: "There's an older woman at the door.",
-          },
-          {
-            text: "\"Goedemorgen. Ik ben mevrouw De Vries, uw buurvrouw. Bent u de nieuwe student?\"",
-            translation: "\"Good morning. I'm Mrs De Vries, your neighbour. Are you the new student?\"",
-          },
-          {
-            text: "\"Ja, dat ben ik. Ik heet Luca. Aangenaam!\"",
-            translation: "\"Yes, that's me. My name is Luca. Nice to meet you!\"",
-          },
-          {
-            text: "\"Aangenaam. Welkom in de straat, Luca! Wonen jullie hier met z'n drieën?\"",
-            translation: "\"Nice to meet you. Welcome to the street, Luca! Do the three of you live here?\"",
-          },
-          {
-            text: "\"Ja, met Noor en Bram. Zij zijn ook student.\" \"Noor ken ik al. Maar jou ken ik nog niet!\"",
-            translation: "\"Yes, with Noor and Bram. They're students too.\" \"I already know Noor. But I don't know you yet!\"",
-          },
-          {
-            text: "Later zegt Noor: \"Dat is onze buurvrouw. Haar man, onze buurman, is ook heel aardig.\"",
-            translation: "Later Noor says: \"That's our neighbour. Her husband, our other neighbour, is very nice too.\"",
-          },
-        ],
-      ],
-    },
+  // One street, a different lead each unit (Matteo, 18 Nov 2026): Marta moves in.
+  story: martaIsNieuw,
+  texts: martaTexts,
+  sequence: [
+    "marta-1-nieuw-in-leiden", "de-eerste-les", "pronouns-subject",
+    "marta-2-de-buren", "bij-de-balie", "zijn-hebben",
+    "marta-3-een-taalmaatje", "marta-en-sanne", "present-regular",
+    "waar-kom-je-vandaan", "write", "marta-4-een-pakketje", "op-een-feestje", "words", "check",
   ],
+  checkpoint: martaCheckpoint,
 };
 
 export const familie: UnitContent = {

@@ -95,13 +95,13 @@ export const writingA1: Record<string, WritingTask[]> = {
       points: [
         pf("Greet Sanne and say who you are", "Hoi Sanne, ik ben … .", "hoi", "hallo", "ben"),
         pf("Say where you're from and what you do", "Ik kom uit … en ik ben … .", "kom", "uit", "student", "werk"),
-        pf("Say which language you can help her with", "Ik kan je helpen met … .", "italiaans", "spaans", "engels", "helpen"),
+        pf("Say which language you speak", "Ik spreek … .", "spreek", "pools", "engels", "spaans"),
         pf("Say what you like doing", "Ik … graag.", "graag", "hobby"),
         pf("Suggest a day and time to meet", "Kun je op … om … uur?", "uur", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag", "zondag"),
         pf("Suggest a place and say goodbye", "Dan kunnen we koffie drinken in … . Groeten, …", "café", "bibliotheek", "groeten", "doei"),
       ],
       model:
-        "Hoi Sanne, ik ben Luca. Ik kom uit Italië en ik ben student in Leiden. Ik studeer biologie. Ik wil graag je taalmaatje zijn! Ik kan je helpen met Italiaans, want dat is mijn taal. Ik leer nu Nederlands, maar ik spreek nog niet veel. Ik kook graag en ik fiets ook graag. Kun je op donderdag om vier uur? Dan kunnen we koffie drinken in een café bij het station. Groeten, Luca",
+        "Hoi Sanne, ik ben Ana. Ik kom uit Brazilië en ik ben student in Leiden. Ik wil graag je taalmaatje zijn! Ik spreek Portugees, Engels en een beetje Spaans. Ik leer nu Nederlands, maar ik spreek nog niet veel. Ik kook graag en ik fiets ook graag. Kun je op donderdag om vier uur? Dan kunnen we koffie drinken in een café bij het station. Groeten, Ana",
     },
     {
       id: "w-mijn-huisgenoten",

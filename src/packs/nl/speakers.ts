@@ -9,8 +9,6 @@ export const speakers: Record<string, string> = {
   "overal-getallen": "Ingrid|De klas|Fatima|Luca|Luca|Ingrid|Ingrid",
   "het-jaar-rond": "Noor|Noor",
   "kunt-u-dat-herhalen": "De bakker|Kenji|De bakker|Kenji|Kenji|De bakker|Kenji|De bakker|Kenji|Een vrouw|Kenji|Een vrouw|Kenji|Iemand",
-  "in-de-keuken": "Noor|Noor|Luca|Luca|Noor|Luca|Noor|Luca|Noor|Noor|Luca|Mevrouw De Vries|Luca|Mevrouw De Vries|Luca|Mevrouw De Vries|Noor",
-  "een-taalmaatje": "Luca",
   "waar-kom-je-vandaan": "Mevrouw De Vries|Oleksandr|Mevrouw De Vries|Oleksandr|Mevrouw De Vries|Oleksandr|Amira|Mevrouw De Vries|Diego|Mevrouw De Vries",
   "mijn-familie": "Bram|Bram",
   "bellen-met-mama": "Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca",
@@ -66,6 +64,11 @@ export const speakers: Record<string, string> = {
   "week-3-half-vier": "Jayden|Luca|Assistente|Luca|Assistente|Jayden",
   "week-4-vrijdagavond": "Ruth|Luca|Luca|Noor|Noor|Bram|Ruth|Ruth|Ruth",
   "check-a1-dag-en-tijd": "Ruth",
+  // Unit 2: Marta is nieuw
+  "marta-2-de-buren": "Noor|Marta|Noor|Marta|Noor|Luca|Luca|Marta|Bram|Bram|Noor|Noor|Marta|Mevrouw De Vries",
+  "marta-3-een-taalmaatje": "Ingrid|Marta|Sanne",
+  "marta-4-een-pakketje": "Ruth|Marta|Ruth|Mevrouw De Vries|Marta|Mevrouw De Vries|Marta|Mevrouw De Vries",
+  "check-a1-kennismaken": "Ingrid|Daniel|Marta",
   // Unit 4: Een Italiaanse avond
   "check-a1-eten": "Mevrouw De Vries|Luca|Noor|Noor",
   "avond-1-een-plan": "Luca|Luca|Noor|Noor|Luca|Noor|Luca|Luca|Bram|Bram|Bram|Bram|Luca|Noor|Noor|Bram|Bram|Luca|Noor|Noor|Fatima|Mevrouw De Vries",
