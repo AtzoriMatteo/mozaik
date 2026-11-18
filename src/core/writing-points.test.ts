@@ -48,7 +48,7 @@ describe("point by point writing", () => {
   });
 
   it("judges a point by a real sentence that says it", () => {
-    const task = dutch.units.find((u) => u.id === "a1-kennismaken")!.writing![0];
+    const task = dutch.units.find((u) => u.id === "a1-kennismaken")!.writing!.find((w) => w.id === "w-over-mij")!;
     const age = task.points[1];
     const ex = pointExamples(dutch, task)[1];
     expect(pointStatus(dutch, "", age)).toBe("empty");

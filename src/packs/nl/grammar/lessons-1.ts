@@ -20,9 +20,9 @@ export const lessons1: Record<string, GrammarLesson> = {
       text("jij is for friends, family, peers and children; u for strangers, older people, shops and offices. When in doubt, start with u: people will tell you to say jij."),
     ],
     examples: [
-      example("Ik ben drieëntwintig jaar en ik ben student.", "I'm twenty-three and I'm a student.", "Ik", "ik"),
-      example("Ze komt uit Groningen en ze studeert geneeskunde.", "She's from Groningen and she studies medicine.", "Ze", "ze"),
-      example("Bent u de nieuwe student?", "Are you the new student?", "u"),
+      example("Ik ben drieëntwintig jaar en ik ben student", "I'm twenty-three and I'm a student.", "Ik", "ik"),
+      example("Ze studeert geneeskunde en werkt soms in het ziekenhuis.", "She studies medicine and sometimes works at the hospital.", "Ze"),
+      example("Ben jij de nieuwe buurvrouw?", "Are you the new neighbour?", "jij"),
       example("Wonen jullie hier met z'n drieën?", "Do the three of you live here?", "jullie"),
     ],
     exercises: [
@@ -78,7 +78,7 @@ export const lessons1: Record<string, GrammarLesson> = {
       text("Dutch uses hebben where English uses 'to be' for some feelings: Ik heb honger (I'm hungry), Ik heb het koud (I'm cold). And age is just zijn + jaar: Ik ben 23 jaar."),
     ],
     examples: [
-      example("Ik ben drieëntwintig jaar en ik ben student.", "I'm twenty-three and I'm a student.", "ben"),
+      example("Ik ben drieëntwintig jaar en ik ben student", "I'm twenty-three and I'm a student.", "ben"),
       example("Op maandag en woensdag heb ik les.", "On Mondays and Wednesdays I have class.", "heb"),
       example("Hij heeft hoofdpijn en buikpijn, en hij is heel moe.", "He has a headache and stomach ache, and he's very tired.", "heeft", "is"),
       example("Ik heb geen honger meer.", "I'm not hungry any more.", "heb", "honger"),
@@ -111,9 +111,9 @@ export const lessons1: Record<string, GrammarLesson> = {
       text("Only 'our' changes: onze with de-words and plurals, ons with het-words (ons huis). Another way to say whose: de kamer van Luca = Luca's room."),
     ],
     examples: [
-      example("Mijn vader heet Marco en mijn moeder heet Anna.", "My father is called Marco and my mother is called Anna.", "Mijn", "mijn"),
-      example("Hun namen zijn Leo en Sofia.", "Their names are Leo and Sofia.", "Hun"),
-      example("Dat is onze buurvrouw.", "That's our neighbour.", "onze"),
+      example("Mijn vader heet Ahmet en mijn moeder heet Fatma.", "My father is called Ahmet and my mother is called Fatma.", "Mijn", "mijn"),
+      example("Hun namen zijn Emre en Defne.", "Their names are Emre and Defne.", "Hun"),
+      example("Dat is onze buurvrouw", "That's our neighbour.", "onze"),
       example("Jouw familie is groot!", "Your family is big!", "Jouw"),
     ],
     exercises: [

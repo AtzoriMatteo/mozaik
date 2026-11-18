@@ -103,7 +103,7 @@ export const lessons2: Record<string, GrammarLesson> = {
     examples: [
       example("Om half acht staat hij eindelijk onder de douche.", "At half past seven he's finally under the shower.", "half acht"),
       example("Om kwart over zeven belt ze weer", "At quarter past seven she calls again", "kwart over zeven"),
-      example("Mijn vader is zesenvijftig.", "My father is fifty-six.", "zesenvijftig"),
+      example("Mijn vader is negenenzeventig.", "My father is seventy-nine.", "negenenzeventig"),
     ],
     exercises: [
       choice("8:30 is ", ".", ["half acht", "half negen"], 1, "Half past eight."),
@@ -156,7 +156,7 @@ export const lessons2: Record<string, GrammarLesson> = {
     examples: [
       example("Om vijf uur staat ze op", "At five she gets up", "staat", "op"),
       example("Ik neem iets lekkers mee.", "I'll bring something nice.", "neem", "mee"),
-      example("En Bram neemt soms taart mee uit het café.", "And Bram sometimes brings cake home from the café.", "neemt", "mee"),
+      example("Bram neemt een taart mee uit het café.", "Bram brings a cake from the café.", "neemt", "mee"),
     ],
     exercises: [
       build("Ik | sta | om zeven uur | op", "I get up at seven."),

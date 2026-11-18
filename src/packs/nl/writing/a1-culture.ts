@@ -49,7 +49,7 @@ export const writingCulture: Record<string, WritingTask[]> = {
         pf("Invite someone to try it", "Kom een keer bij mij eten! Proef maar!", "proef", "kom", "maak"),
       ],
       model:
-        "Ik kom uit Italië. Een typisch gerecht uit Italië is pasta met tomatensaus. Er zitten tomaten, uien, olie en een beetje zout in. We eten het vaak, ook op zondag met de hele familie. Het is niet moeilijk. Je bakt de uien in olie en daarna doe je de tomaten in de pan. Nederlanders eten om zes uur warm, maar in Italië eten we om acht of negen uur. Kom een keer bij mij eten, dan maak ik het voor je. Proef maar, het is echt lekker!",
+        "Ik kom uit Spanje. Een typisch gerecht uit Spanje is een grote pannenkoek van eieren en aardappels. Er zitten eieren, aardappels, uien, olie en een beetje zout in. We eten het vaak, ook op zondag met de hele familie. Het is niet moeilijk. Je bakt de aardappels en de uien in olie en daarna doe je de eieren in de pan. Nederlanders eten om zes uur warm, maar in Spanje eten we om negen of tien uur. Kom een keer bij mij eten, dan maak ik het voor je. Proef maar, het is echt lekker!",
     }),
   ],
   "a1-nederland": [
