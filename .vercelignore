@@ -1,0 +1,3 @@
+# Recordings are served from Supabase Storage (see scripts/upload-audio.ts),
+# so deployments stay small. They stay in the repo as the source of truth.
+public/audio

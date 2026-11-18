@@ -14,6 +14,15 @@ const supported = () => typeof window !== "undefined" && "speechSynthesis" in wi
 
 /* ---------- Recorded audio ---------- */
 
+/**
+ * Where the recordings live: the public "audio" bucket in Supabase Storage
+ * (they're copied there by the "Record course audio" workflow), so Vercel
+ * deployments don't carry them. Without Supabase settings (local preview),
+ * the copies in public/audio are used.
+ */
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "");
+const AUDIO_BASE = process.env.NEXT_PUBLIC_AUDIO_BASE ?? (supabaseUrl ? `${supabaseUrl}/storage/v1/object/public/audio` : "/audio");
+
 const manifests = new Map<string, AudioManifest | null>();
 const manifestListeners = new Set<() => void>();
 
@@ -21,7 +30,7 @@ const manifestListeners = new Set<() => void>();
 function loadManifest(lang: string) {
   if (typeof window === "undefined" || manifests.has(lang)) return;
   manifests.set(lang, null);
-  fetch(`/audio/${lang}/manifest.json`)
+  fetch(`${AUDIO_BASE}/${lang}/manifest.json`)
     .then((r) => (r.ok ? (r.json() as Promise<AudioManifest>) : null))
     .then((m) => {
       if (m?.clips) {
@@ -36,7 +45,7 @@ function recordingFor(lang: string, text: string): string | null {
   loadManifest(lang);
   const clips = manifests.get(lang)?.clips;
   const id = clips?.[textKey(text)] ?? clips?.[legacyTextKey(text)];
-  return id ? `/audio/${lang}/${id}.mp3` : null;
+  return id ? `${AUDIO_BASE}/${lang}/${id}.mp3` : null;
 }
 
 const hasRecordings = (lang: string) => Object.keys(manifests.get(lang)?.clips ?? {}).length > 0;

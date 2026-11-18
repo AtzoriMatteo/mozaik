@@ -5,6 +5,26 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-18 — Audio served from Supabase Storage
+
+Vercel's free 10 GB of deployment storage filled up: every deployment
+carried ~82 MB of recordings.
+
+- **The recordings now live in a public Supabase Storage bucket, "audio"
+  (Matteo chose Supabase over jsDelivr: no extra company sees listeners).**
+  The "Record course audio" workflow records new sentences as before, keeps
+  the MP3s in the repo, then copies any new ones to the bucket. It also runs
+  when recordings reach main another way.
+- **Deployments no longer include them** (`.vercelignore`): about 5 MB each
+  instead of ~90 MB.
+- Cost: Supabase's free plan has 1 GB of storage (we use ~80 MB) and 5 GB of
+  downloads a month. Fine for a handful of learners; each recording is cached
+  by the browser for a year.
+- Needs two repository secrets (Matteo): SUPABASE_URL and
+  SUPABASE_SERVICE_ROLE_KEY. Until the first copy has run, recorded audio
+  falls back to the device voice.
+- Privacy policy: Supabase listed as serving the audio.
+
 ## 2026-11-17 — Vercel: only the live site deploys
 
 Vercel warned that the free plan's 10 GB of deployment storage is 75% used.
