@@ -114,6 +114,98 @@ dove | where | | Latin de ubi
 ore | hours; o'clock (che ore sono? = what time is it?) | ora
 film | film
 chiuso | closed | chiudere
+recife | Recife (a city in Brazil)
+brasile | Brazil
+brasiliano | Brazilian
+studiato | studied | studiare
+studiare | to study | | ~ study
+architettura | architecture
+luglio | July | | named after Julius Caesar
+master | master's degree
+cerca | looks for | cercare
+cercare | to look for | | ~ search
+mandato | sent | mandare
+mandare | to send | | ~ mandate
+curriculum | CV | | Latin curriculum vitae: 'the course of life'
+risposto | answered | rispondere
+rispondere | to answer | | ~ respond
+laurea | (university) degree | | ~ laurel: graduates in Italy wear a laurel wreath on the day
+dottore | doctor; title for any graduate | | In Italy a graduate is dottore / dottoressa
+architetto | architect | | Also used as a title: Buongiorno, architetto!
+mail | email
+benassi | Benassi (a surname)
+santo | saint (Santo Stefano)
+stefano | Stephen; Stefano (a name)
+abbiamo | we have | avere
+colloquio | (job) interview | | ~ colloquium
+salta | jumps | saltare
+saltare | to jump | | ~ salient, somersault
+sa | knows (non si sa mai = you never know) | sapere
+allo | to the (a + lo) | a
+sessant' | sixty (sessant'anni = sixty years old) | sessanta
+sessanta | sixty
+lavorato | worked | lavorare
+progettato | designed | progettare
+progettare | to design, to plan | | ~ project
+progetti | projects; designs | progetto
+progetto | project; design
+lavoriamo | we work | lavorare
+capisce | understands | capire
+capire | to understand | | -isc-: capisco, capisci
+fuori | outside
+mamãe | mum (Portuguese)
+trovato | found | trovare
+trovare | to find | | ~ treasure trove
+portoghese | Portuguese
+architetti | architects | architetto
+geometra | surveyor | | A very Italian job: a building technician
+segretaria | secretary
+danno | give | dare
+dare | to give | | ~ donate
+chiedono | ask | chiedere
+chiedere | to ask
+offre | offers; pays for (offre il caffè = buys the coffee) | offrire
+offrire | to offer; to pay for someone | | ~ offer
+scatola | box
+paste | pastries; pasta (plural) | pasta | In a bar, le paste are pastries
+pasta | pasta; pastry
+onomastico | name day | | The day of the saint you're named after: many Italians celebrate it
+ricevi | you receive | ricevere
+ricevere | to receive
+scrivania | desk | | ~ scribe
+preoccupata | worried | preoccupato
+preoccupato | worried | | ~ preoccupied
+sacra | sacred | sacro
+sacro | sacred
+venga | come (to Lei) | venire
+trattoria | trattoria, simple family restaurant
+cos'è | what's this? (cosa è)
+imparato | learned | imparare
+imparare | to learn
+festeggia | celebrates | festeggiare
+festeggiare | to celebrate | | festa
+festeggio | I celebrate | festeggiare
+brigadeiros | brigadeiros (Brazilian chocolate sweets)
+dolci | sweets, desserts | dolce
+dolce | sweet; dessert | | ~ dulcet
+pericolosi | dangerous | pericoloso
+pericoloso | dangerous | | ~ perilous
+disegnato | drawn, designed | disegnare
+disegnare | to draw, to design | | ~ design
+modena | Modena (a city near Bologna)
+conosciuto | met, known | conoscere
+mangiato | eaten | mangiare
+portato | brought | portare
+successo | success; hit
+fai | you do, you make | fare
+faccio | I do, I make | fare
+cerco | I look for | cercare
+dello | of the (di + lo) | di
+nostra | our | nostro
+nostro | our
+ascensore | lift, elevator
+ventinove | twenty-nine
+diciannove | nineteen
 davide | Davide (a name)
 grafico | graphic designer; graph
 manifesti | posters | manifesto

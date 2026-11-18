@@ -790,4 +790,88 @@ export const grammar: readonly GrammarPoint[] = [
       ],
     },
   },
+  /* ---------------- Unit 9: Lavoro e studio ---------------- */
+  {
+    id: "professions",
+    level: "A1",
+    title: "Jobs: faccio l'architetto, sono infermiera",
+    summary: "Say your job with fare + il/la (faccio il medico) or essere without an article (sono medico). Many jobs have a feminine form: infermiere → infermiera.",
+    unit: "it-a1-lavoro",
+    lesson: {
+      blocks: [
+        text("Two ways to say your job: Faccio l'ingegnere (fare + the article) or Sono ingegnere (essere, no article). Both are normal."),
+        table("Masculine and feminine", ["he", "she"], ["l'infermiere", "l'infermiera"], ["il cameriere", "la cameriera"], ["lo studente", "la studentessa"], ["il dottore", "la dottoressa"], ["l'architetto", "l'architetto / l'architetta"], ["il / la farmacista", "same form"]),
+        text("Graduates are often called dottore / dottoressa, even if they aren't doctors. Architects, engineers and lawyers are often called by their job: Buongiorno, architetto! Buongiorno, avvocato!"),
+      ],
+      examples: [
+        example("Faccio l'ingegnere.", "I'm an engineer.", "Faccio l'ingegnere"),
+        example("Sono architetto, ma cerco ancora lavoro.", "I'm an architect, but I'm still looking for work.", "Sono architetto"),
+        example("In Italia chi ha una laurea è dottore o dottoressa.", "In Italy anyone with a degree is dottore or dottoressa.", "dottore", "dottoressa"),
+      ],
+      exercises: [
+        choice("Che lavoro fai? ", " il cameriere.", ["Faccio", "Sono", "Ho"], 0, "What do you do? I'm a waiter."),
+        choice("Giulia è ", ".", ["studentessa", "studente", "studentessi"], 0, "Giulia is a student."),
+        fill("Amadou ", " il sarto.", "fa", "Amadou is a tailor.", "fare"),
+        transform("Say it about a woman.", "Lui è infermiere.", "Lei è infermiera.", "She's a nurse."),
+        match("Match.", "il sarto=sews clothes | il barista=makes coffee | l'architetto=designs houses | l'infermiera=works in a hospital", "Jobs."),
+        spot("Faccio ingegnere.", "ingegnere", "l'ingegnere", "I'm an engineer (fare needs the article)."),
+      ],
+    },
+  },
+  {
+    id: "da-tempo",
+    level: "A1",
+    title: "Da: for how long (still going on)",
+    summary: "Present tense + da for something still going on: Vivo a Bologna da due anni = I've lived in Bologna for two years. Da quanto tempo...?",
+    unit: "it-a1-lavoro",
+    lesson: {
+      blocks: [
+        text("English says 'I have lived here for two years'. Italian uses the present, because it's still true: Vivo qui da due anni."),
+        slots("Present + da + time", ["Vivo | a Bologna | da:for* | due anni", "I've lived in Bologna for two years."], ["Da quanto tempo:how long* | lavori | qui?", "How long have you worked here?"]),
+        text("da also works with a starting point: Lavoro qui da settembre (since September), Studio italiano da lunedì."),
+      ],
+      examples: [
+        example("Vive a Bologna da due anni.", "She's lived in Bologna for two years.", "da due anni"),
+        example("Da quanto tempo vive in Italia?", "How long have you lived in Italy?", "Da quanto tempo"),
+        example("Da sei anni. E tu?", "For six years. And you?", "Da sei anni"),
+      ],
+      exercises: [
+        fill("Lavoro in questo bar ", " cinque anni.", "da", "I've worked in this bar for five years."),
+        choice("Da quanto tempo ", " l'italiano?", ["studi", "hai studiato", "studiare"], 0, "How long have you been studying Italian?"),
+        transform("Answer with da.", "Quando sei arrivata a Bologna? Due anni fa.", "Vivo a Bologna da due anni.", "I've lived in Bologna for two years."),
+        build("Da | quanto | tempo | abiti | in | via | del | Pratello", "How long have you lived on Via del Pratello?"),
+        spot("Vivo qui per due anni.", "per", "da", "I've lived here for two years (still true: da)."),
+      ],
+    },
+  },
+  {
+    id: "passato-prossimo",
+    level: "A1",
+    title: "The past: ho lavorato, ho studiato",
+    summary: "avere + past participle: ho lavorato, hai studiato, ha mandato. -are → -ato, -ere → -uto, -ire → -ito. Some are irregular: fatto, letto, scritto, preso.",
+    unit: "it-a1-lavoro",
+    lesson: {
+      blocks: [
+        text("To say what you did, Italian usually uses the passato prossimo: a form of avere + the past participle. It covers both 'I worked' and 'I have worked'."),
+        table("lavorare", ["", "avere", "participle"], ["io", "ho", "lavorato"], ["tu", "hai", "lavorato"], ["lui / lei / Lei", "ha", "lavorato"], ["noi", "abbiamo", "lavorato"], ["voi", "avete", "lavorato"], ["loro", "hanno", "lavorato"]),
+        table("Participles", ["infinitive", "participle"], ["lavorare", "lavorato"], ["ricevere", "ricevuto"], ["finire", "finito"], ["fare", "fatto"], ["leggere", "letto"], ["scrivere", "scritto"], ["prendere", "preso"], ["vedere", "visto"]),
+        text("Verbs of movement (andare, venire, arrivare) use essere instead: that's in the next unit. With non: Non ho mangiato."),
+      ],
+      examples: [
+        example("Ha studiato architettura all'università e a luglio ha finito il master.", "She studied architecture at the university and in July she finished her master's.", "Ha studiato", "ha finito"),
+        example("Questo mese ha mandato venti curriculum a venti studi di architettura.", "This month she's sent twenty CVs to twenty architecture firms.", "ha mandato"),
+        example("Ho lavorato tre anni in uno studio a Recife.", "I worked for three years in a firm in Recife.", "Ho lavorato"),
+        example("abbiamo letto il suo curriculum", "we've read your CV", "abbiamo letto"),
+      ],
+      exercises: [
+        fill("Ieri io ", " fino alle otto.", "ho lavorato", "Yesterday I worked until eight.", "lavorare"),
+        fill("Tu ", " la mail?", "hai letto", "Have you read the email?", "leggere"),
+        fill("Karim ", " il cuscus per tutti.", "ha preparato", "Karim made couscous for everyone.", "preparare"),
+        fill("Noi ", " un picnic domenica.", "abbiamo fatto", "We had a picnic on Sunday.", "fare"),
+        choice("Ana ", " venti curriculum.", ["ha mandato", "è mandato", "ha mandata"], 0, "Ana has sent twenty CVs."),
+        match("Match.", "fare=fatto | scrivere=scritto | prendere=preso | vedere=visto | finire=finito", "Participles."),
+        spot("Ieri ho mangiare in trattoria.", "mangiare", "mangiato", "Yesterday I ate at a trattoria."),
+      ],
+    },
+  },
 ];

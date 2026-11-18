@@ -51,6 +51,15 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("nuotare", "to swim", "D'estate nuoto spesso al mare.", "In summer I often swim in the sea."),
     t("televisione", "television (la tv)", "Non guardo mai la televisione.", "I never watch television."),
   ],
+  "it-a1-lavoro": [
+    t("ospedale", "hospital", "Elena lavora in ospedale.", "Elena works in a hospital."),
+    t("notte", "night (di notte = at night)", "A volte lavoro di notte.", "Sometimes I work at night."),
+    t("cameriere", "waiter (la cameriera = waitress)", "Il cameriere porta il caffè.", "The waiter brings the coffee."),
+    t("cameriera", "waitress", "Faccio la cameriera in un bar.", "I'm a waitress in a bar."),
+    t("cordiali", "cordial (cordiali saluti = kind regards)", "Cordiali saluti, Sara", "Kind regards, Sara"),
+    t("insegnante", "teacher", "Mia madre fa l'insegnante.", "My mother is a teacher."),
+    t("avvocato", "lawyer", "Buongiorno, avvocato!", "Good morning, Counsellor!"),
+  ],
   "it-a1-piacere": [
     t("cercare", "to look for", "Cerco amici italiani per parlare.", "I'm looking for Italian friends to talk to."),
     t("spagnolo", "Spanish", "Parlo spagnolo e un po' di inglese.", "I speak Spanish and a little English."),
