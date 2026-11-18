@@ -35,6 +35,15 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("camera", "room; bedroom (camera da letto)", "La camera da letto è piccola.", "The bedroom is small."),
     t("volentieri", "gladly, I'd love to", "Vieni al cinema? Volentieri!", "Are you coming to the cinema? I'd love to!"),
   ],
+  "it-a1-spesa": [
+    t("pomodoro", "tomato (i pomodori)", "La pasta al pomodoro è buonissima.", "Pasta with tomato sauce is delicious."),
+    t("pomodori", "tomatoes (il pomodoro)", "Compro un chilo di pomodori.", "I'm buying a kilo of tomatoes."),
+    t("patate", "potatoes (la patata)", "Mi servono delle patate.", "I need some potatoes."),
+    t("carne", "meat", "Giulia non mangia carne.", "Giulia doesn't eat meat."),
+    t("pesce", "fish", "Il venerdì mangio pesce.", "On Fridays I eat fish."),
+    t("aspettare", "to wait", "Dobbiamo aspettare dieci minuti.", "We have to wait ten minutes."),
+    t("frigo", "fridge", "Il latte è in frigo.", "The milk is in the fridge."),
+  ],
   "it-a1-piacere": [
     t("cercare", "to look for", "Cerco amici italiani per parlare.", "I'm looking for Italian friends to talk to."),
     t("spagnolo", "Spanish", "Parlo spagnolo e un po' di inglese.", "I speak Spanish and a little English."),

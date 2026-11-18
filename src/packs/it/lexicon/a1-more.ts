@@ -114,6 +114,125 @@ dove | where | | Latin de ubi
 ore | hours; o'clock (che ore sono? = what time is it?) | ora
 film | film
 chiuso | closed | chiudere
+alimentari | groceries (negozio di alimentari = grocer's) | | ~ alimentary
+lin | Lin (a Chinese name)
+wei | Wei (a Chinese name)
+suoi | his, her (plural) | suo
+vengono | come | venire
+cina | China
+cinese | Chinese
+cinesi | Chinese (plural) | cinese
+uova | eggs (plural of uovo) | uovo
+uovo | egg | | Latin ovum ~ oval | Irregular plural: le uova
+formaggio | cheese | | ~ fromage
+spezie | spices | spezia
+spezia | spice | | ~ spice
+mondo | world | | ~ mundane
+prodotti | products | prodotto
+prodotto | product
+africani | African | africano
+africano | African
+arabi | Arab | arabo
+arabo | Arab; Arabic
+giorni | days | giorno
+accento | accent
+vivo | I live | vivere
+lista | list
+servono | are needed (mi servono = I need) | servire
+chilo | kilo | | Prices are al chilo: per kilo
+chili | kilos | chilo
+carote | carrots | carota
+carota | carrot
+zucchine | courgettes | zucchina
+zucchina | courgette, zucchini
+cipolle | onions | cipolla
+cipolla | onion
+qualcos' | something (qualcosa) | qualcosa
+qualcosa | something | | qualcos'altro? = anything else?
+etti | hundreds of grams | etto
+etto | 100 grams | | Short for ettogrammo | How Italians buy cheese and ham: due etti
+ceci | chickpeas | cece
+cece | chickpea | | Latin cicer (Cicero's name!)
+olio | oil | | ~ oil (Latin oleum)
+vegetariana | vegetarian | vegetariano
+vegetariano | vegetarian
+pensare | to think
+giuste | right, correct | giusto
+giusto | right, correct; fair | | ~ just
+sacchetto | little bag | sacco
+sacco | sack, bag
+dallo | from the (da + lo) | da
+scaffale | shelf
+ras | (part of ras el hanout)
+el | (part of ras el hanout)
+hanout | ras el hanout: a North African spice mix | | Arabic: 'head of the shop', the best spices
+marocco | Morocco
+ferma | stops (si ferma) | fermarsi
+fermarsi | to stop | | ~ firm
+puoi | you can | potere
+provare | to try | | ~ prove
+erbe | herbs (Mercato delle Erbe = Bologna's covered market) | erba
+erba | grass; herb | | ~ herb
+coperto | covered; cover charge | | ~ covert
+comprano | buy | comprare
+comprare | to buy
+fresca | fresh | fresco
+fresco | fresh; cool | | ~ fresco
+mele | apples | mela
+arancia | orange (the fruit) | | from Persian narang
+fragola | strawberry
+ventotto | twenty-eight
+settantacinque | seventy-five
+venticinque | twenty-five
+ottantatré | eighty-three
+mela | apple
+arance | oranges | arancia
+uva | grapes | | Singular in Italian: l'uva
+venditori | sellers | venditore
+venditore | seller | | vendere (to sell) ~ vendor
+franco | Franco (a name)
+com'è | how is (come è)
+sicilia | Sicily
+costano | cost (plural) | costare
+costare | to cost | | ~ cost
+ne | of it, of them (ne prendo venti = I'll take twenty of them)
+prendo | I take | prendere
+numeri | numbers | numero
+numero | number
+foglio | sheet of paper | | ~ folio
+sorpresa | surprised; surprise | sorpreso
+sorpreso | surprised
+contratta | haggles (si contratta = people haggle) | contrattare
+contrattare | to haggle, to bargain
+possiamo | we can | potere
+vuote | empty | vuoto
+vuoto | empty; plain | | ~ void
+piena | full | pieno
+pieno | full | | ~ plenty
+profumo | smell, scent | | ~ perfume
+buonissimo | really good, delicious | buono
+buono | good | | ~ bonus
+assaggiare | to taste | | ~ assay
+assaggia | tastes | assaggiare
+oh | oh
+sale | salt | | ~ salary (Roman soldiers were paid in salt)
+chiavi | keys | chiave
+chiave | key | | ~ clavicle, clef
+pacco | packet, parcel | | ~ pack
+peperoncino | chilli pepper | pepe
+pepe | pepper
+finalmente | at last, finally
+mangiano | eat | mangiare
+eh | eh, right
+devi | you must, you have to | dovere
+porti | you bring | portare
+portare | to bring, to carry | | ~ porter
+rosse | red | rosso
+verdi | green | verde
+cose | things | cosa
+cosa | thing; what
+bottiglie | bottles | bottiglia
+bottiglia | bottle | | ~ bottle
 nata | born (è nata = she was born) | nascere
 nascere | to be born | | ~ nascent
 luminosa | bright, full of light | luminoso

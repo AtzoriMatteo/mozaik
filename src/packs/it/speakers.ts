@@ -7,6 +7,12 @@ export const speakers: Record<string, string> = {
   "le-mani-parlano": "-|-|-",
   "la-famiglia-di-giulia": "Giulia|Giulia|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma",
   "a-trentanni-con-mamma-e-papa": "La mamma di Karim",
+  // Unit 7: Il negozio dei Chen
+  "lin-1-il-negozio": "-|Lin|Wei",
+  "lin-2-la-spesa-di-karim": "Karim|Lin|Karim|Lin|Karim|Lin|Lin|Karim|Lin|Karim|Lin|Karim|Lin",
+  "lin-3-al-mercato": "Wei|Franco|Wei|Franco|Wei|Franco|Lin|Wei|Wei",
+  "lin-4-la-cena-di-karim": "Emma|Karim|Karim|Lin|Lin|Wei|Lin|Karim",
+  "check-it-a1-spesa": "Lin",
   // Unit 6: La via di Rita
   "rita-1-la-casa-di-rita": "Emma|Rita|Rita|Rita",
   "rita-2-un-nuovo-vicino": "Hiro|Rita|Rita|Hiro|Rita|Hiro|Rita",

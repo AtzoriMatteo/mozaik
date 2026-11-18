@@ -74,7 +74,7 @@ export const giornata: Unit = {
           s("Amadou guarda e misura. \"Tre centimetri. Va bene?\" \"Perfetto!\"", "Amadou looks and measures. \"Three centimetres. All right?\" \"Perfect!\""),
         ],
         [
-          s("\"Quando sono pronti?\" \"Giovedì pomeriggio, dopo le quattro.\"", "\"When will they be ready?\" \"Thursday afternoon, after four.\""),
+          s("\"Quando sono pronti?\" \"Sono pronti giovedì pomeriggio, dopo le quattro.\"", "\"When will they be ready?\" \"They'll be ready on Thursday afternoon, after four.\""),
           s("\"Giovedì lavoro fino alle cinque e mezza. Posso venire alle sei?\"", "\"On Thursday I work until half past five. Can I come at six?\""),
           s("\"Alle sei va bene. Io chiudo alle sette.\"", "\"Six is fine. I close at seven.\""),
           s("\"E quanto costa?\" \"Dodici euro.\"", "\"And how much is it?\" \"Twelve euros.\""),
