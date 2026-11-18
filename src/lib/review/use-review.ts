@@ -164,6 +164,24 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
   );
 
   /**
+   * "I know these" on a unit's Words page: graduate many words at once, each on
+   * the card it already has (a course card, or the card of a word you saved).
+   */
+  const graduateWords = useCallback(
+    (words: { lemma: string; word: string }[]) => {
+      const at = new Date().toISOString();
+      const entries: [string, string, Schedule][] = words.map(({ lemma, word }) => {
+        const courseId = courseWordId(lemma);
+        const sw = own.has(courseId) ? undefined : (saved.words.find((w) => lemmaFor(w) === lemma) ?? saved.words.find((w) => w.word === word));
+        const id = sw ? `saved:${sw.word}` : courseId;
+        return [id, "word", { stage: GRADUATED_STAGE, dueAt: GRADUATED_DUE, introducedAt: own.get(id)?.introducedAt ?? at }];
+      });
+      return store(entries);
+    },
+    [own, saved.words, store],
+  );
+
+  /**
    * Into My words, due now. New words has its own session size, so these
    * don't use up the daily allowance for new grammar and listening cards.
    */
@@ -222,6 +240,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
     error: error ?? saved.error,
     rate,
     graduate,
+    graduateWords,
     ungraduate,
     meet,
     newWords: fresh,

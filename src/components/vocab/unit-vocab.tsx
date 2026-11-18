@@ -36,6 +36,10 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
   const done = progress.isDone({ kind: "words", id: unit.id });
   const [open, setOpen] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
+  // "I know these": tick words to graduate them all at once.
+  const [picking, setPicking] = useState(false);
+  const [picked, setPicked] = useState<Set<string>>(new Set());
+  const [justKnown, setJustKnown] = useState<number | null>(null);
   const { n } = unitNumber(pack, unit);
 
   const words = useMemo(() => unitWords(pack, unit), [pack, unit]);
@@ -46,6 +50,24 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
   // Same card whether the word was met here, in New words, or saved while reading.
   const status = (w: UnitWord): Status => review.wordState(w.lemma, w.word);
   const fresh = key.filter((w) => status(w) === "new");
+  const pickable = (items: UnitWord[]) => items.filter((w) => status(w) !== "known");
+  const togglePick = (lemma: string) =>
+    setPicked((prev) => {
+      const next = new Set(prev);
+      if (next.has(lemma)) next.delete(lemma);
+      else next.add(lemma);
+      return next;
+    });
+  const stopPicking = () => {
+    setPicking(false);
+    setPicked(new Set());
+  };
+  const confirmKnown = async () => {
+    const chosen = words.filter((w) => picked.has(w.lemma));
+    stopPicking();
+    setJustKnown(chosen.length);
+    await review.graduateWords(chosen.map((w) => ({ lemma: w.lemma, word: w.word })));
+  };
 
   if (practising) {
     return (
@@ -72,9 +94,19 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
             {inGroup.map((w) => {
               const s = review.loaded ? status(w) : "new";
               const expanded = open === w.lemma;
+              const canPick = picking && s !== "known";
               return (
                 <li key={w.lemma} data-status={s}>
-                  <div className="vocab-row">
+                  <div className={canPick ? "vocab-row vocab-row-picking" : "vocab-row"}>
+                    {canPick ? (
+                      <input
+                        type="checkbox"
+                        className="vocab-pick"
+                        checked={picked.has(w.lemma)}
+                        onChange={() => togglePick(w.lemma)}
+                        aria-label={`I know ${w.label}`}
+                      />
+                    ) : null}
                     <button
                       type="button"
                       className="vocab-word"
@@ -138,8 +170,30 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
           ) : review.loaded ? (
             <p className="setting-note">You&apos;ve met every key word of this unit. They come back in Review.</p>
           ) : null}
+          {review.loaded && !picking && pickable(words).length > 0 ? (
+            <div className="vocab-know">
+              <button
+                type="button"
+                className="button button-quiet"
+                onClick={() => {
+                  setPicking(true);
+                  setJustKnown(null);
+                }}
+              >
+                I already know some of these
+              </button>
+              <p className="setting-note">Tick them and they won&apos;t come back in Review.</p>
+            </div>
+          ) : null}
+          {justKnown !== null && justKnown > 0 ? (
+            <p className="setting-note" role="status">
+              {justKnown} {justKnown === 1 ? "word is" : "words are"} now known for good. Changed your mind? Review → Graduated words
+              has Undo.
+            </p>
+          ) : null}
         </div>
       ) : null}
+
 
       <section className="skill-section" data-skill="words" aria-labelledby="key-words">
         <h2 id="key-words">Key words <small className="count">{key.length}</small></h2>
@@ -179,6 +233,28 @@ export function UnitVocab({ lang, unitId }: { lang: string; unitId: string }) {
             </button>
           )}
         </section>
+      ) : null}
+      {picking ? (
+        <div className="vocab-pick-bar" role="region" aria-label="Words you know">
+          <span>
+            {picked.size === 0 ? "Tick the words you already know." : `${picked.size} ticked`}
+          </span>
+          <div className="button-row">
+            <button type="button" className="button" disabled={picked.size === 0} onClick={confirmKnown}>
+              Mark as known for good
+            </button>
+            <button
+              type="button"
+              className="button button-quiet"
+              onClick={() => setPicked(new Set(pickable(showAll ? words : key).map((w) => w.lemma)))}
+            >
+              Tick all
+            </button>
+            <button type="button" className="link-button" onClick={stopPicking}>
+              Cancel
+            </button>
+          </div>
+        </div>
       ) : null}
       <div className="finish-box">
         {done ? (
