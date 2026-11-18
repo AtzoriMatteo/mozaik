@@ -113,7 +113,7 @@ export const lessons5: Record<string, GrammarLesson> = {
       ),
     ],
     examples: [
-      example("Luca wordt wakker, maar hij voelt zich niet goed.", "Luca wakes up, but he doesn't feel well.", "voelt zich"),
+      example("Bram wordt wakker, maar hij voelt zich niet goed.", "Bram wakes up, but he doesn't feel well.", "voelt zich"),
       example("Bram voelt zich niet fit.", "Bram doesn't feel fit.", "voelt zich"),
       example("Opa is tachtig, maar hij voelt zich nog jong.", "Grandpa is eighty, but he still feels young.", "voelt zich"),
     ],

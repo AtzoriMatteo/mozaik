@@ -20,8 +20,8 @@ export const gezondheid: UnitContent = {
       paragraphs: [
         [
           {
-            text: "Het is maandagochtend. Luca wordt wakker, maar hij voelt zich niet goed.",
-            translation: "It's Monday morning. Luca wakes up, but he doesn't feel well.",
+            text: "Het is maandagochtend. Bram wordt wakker, maar hij voelt zich niet goed.",
+            translation: "It's Monday morning. Bram wakes up, but he doesn't feel well.",
           },
           {
             text: "Hij heeft hoofdpijn en buikpijn, en hij is heel moe.",
@@ -38,8 +38,8 @@ export const gezondheid: UnitContent = {
         ],
         [
           {
-            text: "Noor klopt op de deur. \"Luca? Je bent laat. Heb je geen les?\"",
-            translation: "Noor knocks on the door. \"Luca? You're late. Don't you have class?\"",
+            text: "Noor klopt op de deur. \"Bram? Je bent laat. Moet je niet werken?\"",
+            translation: "Noor knocks on the door. \"Bram? You're late. Don't you have to work?\"",
           },
           {
             text: "\"Ik ben ziek. Ik kan niet naar de les.\"",
@@ -82,8 +82,8 @@ export const gezondheid: UnitContent = {
         ],
         [
           {
-            text: "Luca stuurt Ingrid een berichtje: hij is ziek en hij komt niet naar de les.",
-            translation: "Luca sends Ingrid a message: he's ill and he's not coming to class.",
+            text: "Bram stuurt zijn baas een berichtje: hij is ziek en hij komt niet werken.",
+            translation: "Bram sends his boss a message: he's ill and he's not coming to work.",
           },
           {
             text: "Dan slaapt hij de hele dag.",
@@ -101,8 +101,8 @@ export const gezondheid: UnitContent = {
       paragraphs: [
         [
           {
-            text: "Dinsdag is Luca nog steeds ziek. Om acht uur belt hij de huisarts.",
-            translation: "On Tuesday Luca is still ill. At eight he calls the GP.",
+            text: "Dinsdag is Bram nog steeds ziek. Om acht uur belt hij de huisarts.",
+            translation: "On Tuesday Bram is still ill. At eight he calls the GP.",
           },
           {
             text: "\"Huisartsenpraktijk Oude Vest, goedemorgen.\"",
@@ -117,8 +117,8 @@ export const gezondheid: UnitContent = {
             translation: "\"What's your name and date of birth?\"",
           },
           {
-            text: "\"Luca Bianchi, twaalf mei tweeduizend drie.\"",
-            translation: "\"Luca Bianchi, the twelfth of May two thousand and three.\"",
+            text: "\"Bram de Jong, drie maart tweeduizend twee.\"",
+            translation: "\"Bram de Jong, the third of March two thousand and two.\"",
           },
           {
             text: "\"Kunt u om tien over elf komen?\" \"Ja, dat is goed.\"",
@@ -131,8 +131,8 @@ export const gezondheid: UnitContent = {
             translation: "The GP is a friendly woman of about fifty.",
           },
           {
-            text: "\"Goedemorgen, meneer Bianchi. Wat zijn uw klachten?\"",
-            translation: "\"Good morning, Mr Bianchi. What are your symptoms?\"",
+            text: "\"Goedemorgen, meneer De Jong. Wat zijn uw klachten?\"",
+            translation: "\"Good morning, Mr De Jong. What are your symptoms?\"",
           },
           {
             text: "\"Ik heb sinds zondag koorts en mijn hoofd doet pijn. Mijn buik ook.\"",
@@ -165,8 +165,8 @@ export const gezondheid: UnitContent = {
             translation: "\"Call us if it isn't better in a week.\"",
           },
           {
-            text: "Luca fietst langzaam naar huis. Paracetamol, denkt hij. In Nederland is het antwoord altijd paracetamol.",
-            translation: "Luca cycles home slowly. Paracetamol, he thinks. In the Netherlands the answer is always paracetamol.",
+            text: "Bram fietst langzaam naar huis. Paracetamol, denkt hij. In Nederland is het antwoord altijd paracetamol.",
+            translation: "Bram cycles home slowly. Paracetamol, he thinks. In the Netherlands the answer is always paracetamol.",
           },
         ],
       ],
@@ -202,8 +202,8 @@ export const vrijeTijd: UnitContent = {
             translation: "In the morning the sun shines, in the afternoon it rains and in the evening there's a lot of wind.",
           },
           {
-            text: "Luca heeft altijd een regenjas in zijn tas.",
-            translation: "Luca always has a raincoat in his bag.",
+            text: "Kwame heeft altijd een regenjas in zijn tas.",
+            translation: "Kwame always has a raincoat in his bag.",
           },
         ],
         [
@@ -216,8 +216,8 @@ export const vrijeTijd: UnitContent = {
             translation: "There isn't often snow, but sometimes it freezes and you can skate. Bad weather is normal: rain, rain and more rain.",
           },
           {
-            text: "Dan draagt Luca een dikke trui, een warme jas en zijn zwarte schoenen.",
-            translation: "Then Luca wears a thick jumper, a warm coat and his black shoes.",
+            text: "Dan draagt Kwame een dikke trui, een warme jas en zijn zwarte schoenen.",
+            translation: "Then Kwame wears a thick jumper, a warm coat and his black shoes.",
           },
           {
             text: "In de zomer is het lekker warm, soms vijfentwintig graden. Dan draagt hij een korte broek.",
@@ -230,8 +230,8 @@ export const vrijeTijd: UnitContent = {
             translation: "Today is Saturday and the weather is lovely: a blue sky, little wind and twenty degrees.",
           },
           {
-            text: "Luca speelt op zaterdag meestal voetbal, en Noor gaat graag wandelen. Maar vandaag willen ze niet sporten.",
-            translation: "On Saturdays Luca usually plays football, and Noor likes to go walking. But today they don't want to do sport.",
+            text: "Kwame speelt op zaterdag meestal voetbal, en Noor gaat graag wandelen. Maar vandaag willen ze niet sporten.",
+            translation: "On Saturdays Kwame usually plays football, and Noor likes to go walking. But today they don't want to do sport.",
           },
           {
             text: "\"Zullen we naar het strand gaan?\" vraagt Bram. \"Katwijk is maar twintig minuten fietsen.\"",
@@ -246,8 +246,8 @@ export const vrijeTijd: UnitContent = {
             translation: "Bram goes for a swim, but the water is cold: only sixteen degrees!",
           },
           {
-            text: "Luca blijft liever op het zand. Hij leest een boek en luistert naar muziek.",
-            translation: "Luca prefers to stay on the sand. He reads a book and listens to music.",
+            text: "Kwame blijft liever op het zand. Hij leest een boek en luistert naar muziek.",
+            translation: "Kwame prefers to stay on the sand. He reads a book and listens to music.",
           },
           {
             text: "Na een uur hebben ze dorst. Bram haalt twee ijsjes en twee flesjes water.",
@@ -264,8 +264,8 @@ export const vrijeTijd: UnitContent = {
             translation: "They cycle home fast, but they're too late. They get completely wet.",
           },
           {
-            text: "\"Typisch Nederlands weer,\" zegt Bram. Luca lacht. Hij begint eraan te wennen.",
-            translation: "\"Typical Dutch weather,\" says Bram. Luca laughs. He's starting to get used to it.",
+            text: "\"Typisch Nederlands weer,\" zegt Bram. Kwame lacht. Hij begint eraan te wennen.",
+            translation: "\"Typical Dutch weather,\" says Bram. Kwame laughs. He's starting to get used to it.",
           },
         ],
       ],
@@ -287,8 +287,8 @@ export const vrijeTijd: UnitContent = {
             translation: "She's having a little party at home, on Friday evening at eight.",
           },
           {
-            text: "Luca wil een cadeau voor haar kopen, maar wat?",
-            translation: "Luca wants to buy her a present, but what?",
+            text: "Kwame wil een cadeau voor haar kopen, maar wat?",
+            translation: "Kwame wants to buy her a present, but what?",
           },
           {
             text: "\"Ze houdt van lezen,\" zegt Bram. \"Koop een boek voor haar.\"",
@@ -315,8 +315,8 @@ export const vrijeTijd: UnitContent = {
         ],
         [
           {
-            text: "Luca loopt de kring rond. \"Gefeliciteerd met je dochter,\" zegt hij tegen de moeder van Noor.",
-            translation: "Luca goes round the circle. \"Congratulations on your daughter,\" he says to Noor's mother.",
+            text: "Kwame loopt de kring rond. \"Gefeliciteerd met je dochter,\" zegt hij tegen de moeder van Noor.",
+            translation: "Kwame goes round the circle. \"Congratulations on your daughter,\" he says to Noor's mother.",
           },
           {
             text: "\"Dank je wel! Wil je koffie en een stukje taart?\"",
@@ -327,8 +327,8 @@ export const vrijeTijd: UnitContent = {
             translation: "Everyone gets one cup of coffee and one piece of cake. Not two!",
           },
           {
-            text: "Dan opent Noor haar cadeautjes. Van haar tante krijgt ze een lelijke trui, maar ze is heel blij met het boek van Luca.",
-            translation: "Then Noor opens her presents. From her aunt she gets an ugly jumper, but she's very happy with Luca's book.",
+            text: "Dan opent Noor haar cadeautjes. Van haar tante krijgt ze een lelijke trui, maar ze is heel blij met het boek van Kwame.",
+            translation: "Then Noor opens her presents. From her aunt she gets an ugly jumper, but she's very happy with Kwame's book.",
           },
         ],
         [
@@ -337,8 +337,8 @@ export const vrijeTijd: UnitContent = {
             translation: "Later in the evening Bram puts music on. There's beer, wine and cheese with mustard.",
           },
           {
-            text: "De opa van Noor vraagt Luca: \"Wat vind jij van Nederland?\"",
-            translation: "Noor's grandpa asks Luca: \"What do you think of the Netherlands?\"",
+            text: "De opa van Noor vraagt Kwame: \"Wat vind jij van Nederland?\"",
+            translation: "Noor's grandpa asks Kwame: \"What do you think of the Netherlands?\"",
           },
           {
             text: "\"Ik vind het hier leuk. Alleen het weer niet!\"",

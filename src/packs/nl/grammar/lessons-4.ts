@@ -19,7 +19,7 @@ export const lessons4: Record<string, GrammarLesson> = {
     ],
     examples: [
       example("Ik ben ziek. Ik kan niet naar de les.", "I'm ill. I can't go to class.", "niet"),
-      example("Heb je geen les?", "Don't you have class?", "geen"),
+      example("Moet je niet werken?", "Don't you have to work?", "niet"),
       example("Hij heeft geen auto nodig", "He doesn't need a car", "geen"),
       example("Hij wil het niet vergeten.", "He doesn't want to forget it.", "niet"),
     ],
