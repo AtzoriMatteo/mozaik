@@ -6,6 +6,8 @@ import { tenseUses } from "@/core/coherence";
 const HELPERS = new Set(["ho", "hai", "ha", "abbiamo", "avete", "hanno", "sono", "sei", "è", "siamo", "siete"]);
 /** Participles used as adjectives or in set phrases at A1 (sono nata a…, è sposato). */
 const FIXED = new Set(["nato", "nata", "nati", "nate", "sposato", "sposata", "sposati", "chiuso", "chiusa", "aperto", "aperta", "stanco", "stanca", "sbagliato", "sbagliata", "macchiato"]);
+/** Polite (Lei) imperatives used for directions and requests: formally subjunctive, taught at A1 with the imperative. */
+const POLITE = new Set(["giri", "vada", "prenda", "esca", "scusi", "senta", "dica", "venga", "faccia", "continui", "attraversi", "segua", "salga", "scenda"]);
 const VORREI = new Set(["vorrei", "vorresti", "vorrebbe", "vorremmo", "vorreste", "vorrebbero"]);
 
 export function italianGrammarIn(pack: LanguagePack, text: string): { grammar: string; word: string }[] {
@@ -23,6 +25,7 @@ export function italianGrammarIn(pack: LanguagePack, text: string): { grammar: s
         case "conditional":
           return VORREI.has(form) ? "vorrei" : "condizionale";
         case "subjunctive":
+          return POLITE.has(form) ? "imperative" : "congiuntivo";
         case "subjunctive-imperfect":
           return "congiuntivo";
         case "remote":

@@ -5,6 +5,45 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-18 (night) — Broader cast; Italian units 5–8
+
+Matteo: the course still felt too Italian and too much about him (an Italian
+student in Leiden). Rewrite freely for everyone, Dutch and Italian; then four
+more Italian units, keeping all of A1 in about twelve.
+
+**Dutch (Claude, Matteo's brief).**
+- Unit 2 is now "Marta is nieuw": Marta from Kraków (the hotel receptionist
+  from Ingrid's class) moves in above Ruth's bakery and meets the street. Sanne,
+  the language buddy, now wants to learn Polish.
+- Unit 3 is now "De familie Yilmaz": Yusuf's clothes shop, his parents who
+  came from Turkey fifty years ago, his sister in Istanbul, and Grandpa
+  Ahmet's eightieth as a Dutch circle birthday. Luca's Italian family is gone.
+- Writing examples are no longer all Luca from Italy: Priya (India), Daniel
+  (Mexico), Ana (Brazil), Tomás and Sara (Spain), Marta, Noor.
+- Smaller swaps: Kwame (from Ghana) buys the winter coat; Marta calls her
+  sister at New Year.
+- Luca stays as one neighbour among many; unit 4 (his Italian dinner) stays.
+  Next on the Dutch side: units 1 and 8–12 as street stories.
+
+**Italian units 5–8, Via del Pratello as one street (Claude).** Each unit is
+a story with four episodes, two listening scenes, three or four grammar
+lessons, two writing topics and a checkpoint.
+- 5 La giornata: Amadou, the tailor from Senegal (time, -ere/-ire verbs,
+  reflexive verbs).
+- 6 Casa e quartiere: Signora Rita (82, born in the building) and Hiro, the
+  Japanese violin maker who moves in (c'è/ci sono, prepositions with the
+  article, directions with tu and Lei).
+- 7 La spesa: Lin Chen, born in Bologna, and her grandfather Wei at their
+  shop (quantities, the partitive, potere/volere/dovere, numbers from 100).
+- 8 Il tempo libero: Davide, graphic designer and wheelchair basketball
+  player (piacere, how often, andare/venire/uscire/fare).
+- Plan for the rest of A1 (to be written): 9 lavoro e studio, 10 viaggi e
+  trasporti, 11 salute e corpo, 12 feste e ricordi (passato prossimo).
+- Technical: Lei imperatives (giri, vada) count as the imperative, not the
+  subjunctive, in the "taught before it's asked" check. Italian speaking
+  checks only run where speaking data remains.
+- Not checked by a native speaker yet; "Sounds odd?" works everywhere.
+
 ## 2026-11-18 — Audio served from Supabase Storage
 
 Vercel's free 10 GB of deployment storage filled up: every deployment
