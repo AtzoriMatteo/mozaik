@@ -2,10 +2,16 @@
 # Run it from GitHub: Actions → "Record course audio" → Run workflow.
 # Needs the repository secret GOOGLE_TTS_KEY. Only new or changed sentences are
 # recorded, so running it again after adding content is cheap.
+# The recordings are then copied to Supabase Storage (bucket "audio"), where the
+# website plays them from; that needs SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.
+# It also runs on every push to main that changes the recordings.
 name: Record course audio
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["public/audio/**"]
 
 permissions:
   contents: write
@@ -26,12 +32,14 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Record new sentences
+        if: github.event_name == 'workflow_dispatch'
         env:
           GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
         run: |
           npx tsx scripts/generate-audio.ts nl
           npx tsx scripts/generate-audio.ts it
       - name: Commit the recordings
+        if: github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "mozaik-audio"
           git config user.email "mozaik-audio@users.noreply.github.com"
@@ -42,3 +50,8 @@ jobs:
             git commit -m "Record course audio"
             git push
           fi
+      - name: Copy the recordings to Supabase Storage
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npx tsx scripts/upload-audio.ts nl it
