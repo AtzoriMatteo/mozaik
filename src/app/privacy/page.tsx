@@ -90,7 +90,7 @@ export default function PrivacyPage() {
         <h2>4. Services we rely on</h2>
         <dl className="policy-list">
           <dt>Supabase</dt>
-          <dd>Stores accounts and learning data, in the European Union (Stockholm, Sweden). It also serves the course's recorded audio: playing a sentence asks Supabase for the recording, like loading any file from a website.</dd>
+          <dd>Stores accounts and learning data, in the European Union (Stockholm, Sweden). It also serves the course&apos;s recorded audio: playing a sentence asks Supabase for the recording, like loading any file from a website.</dd>
           <dt>Vercel</dt>
           <dd>Hosts the website. Its servers for Mozaik run in Stockholm; pages are delivered through its worldwide network.</dd>
           <dt>Google and GitHub</dt>
