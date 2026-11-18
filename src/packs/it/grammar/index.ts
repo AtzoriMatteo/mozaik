@@ -702,4 +702,92 @@ export const grammar: readonly GrammarPoint[] = [
       ],
     },
   },
+  /* ---------------- Unit 8: Il tempo libero ---------------- */
+  {
+    id: "piacere",
+    level: "A1",
+    title: "Mi piace, mi piacciono",
+    summary: "mi piace + one thing or a verb (mi piace il jazz, mi piace ballare); mi piacciono + more things (mi piacciono i film). ti, gli, le piace...",
+    unit: "it-a1-tempo-libero",
+    lesson: {
+      blocks: [
+        text("Italian says 'it pleases me' instead of 'I like'. The thing you like is the subject: if it's one thing or an activity, piace; if it's more than one, piacciono."),
+        table("Who likes", ["", "Italian", "English"], ["me", "mi piace", "I like"], ["you", "ti piace", "you like"], ["him", "gli piace", "he likes"], ["her / you (Lei)", "le piace", "she likes / you like"], ["us", "ci piace", "we like"], ["them", "gli piace", "they like"]),
+        slots("One or more", ["Mi | piace:singular* | il jazz", "I like jazz."], ["Mi | piacciono:plural* | i film", "I like films."], ["Non | mi | piace | ballare", "I don't like dancing."]),
+        text("With a name, use a: A Davide piace la musica. To ask: Ti piace...? Le piace...? (polite)."),
+      ],
+      examples: [
+        example("Gli piace anche la musica, soprattutto il jazz.", "He also likes music, especially jazz.", "Gli piace"),
+        example("I film mi piacciono, ma preferisco la musica dal vivo.", "I like films, but I prefer live music.", "mi piacciono"),
+        example("Davide, ti piace ballare?", "Davide, do you like dancing?", "ti piace"),
+        example("Mi piace questa via. Mi piacciono queste persone.", "I like this street. I like these people.", "Mi piace", "Mi piacciono"),
+      ],
+      exercises: [
+        choice("Mi ", " il basket.", ["piace", "piacciono", "piaci"], 0, "I like basketball."),
+        choice("Ti ", " i concerti?", ["piacciono", "piace", "piaccio"], 0, "Do you like concerts?"),
+        fill("A Giulia ", " le tagliatelle.", "piacciono", "Giulia likes tagliatelle.", "piacere"),
+        fill("Non mi ", " ballare.", "piace", "I don't like dancing.", "piacere"),
+        choice("Signora, ", " piace la musica jazz?", ["le", "ti", "mi"], 0, "Madam, do you like jazz? (Lei)"),
+        transform("Make it plural.", "Mi piace il film.", "Mi piacciono i film.", "I like the films."),
+        spot("Mi piace le arance.", "piace", "piacciono", "I like oranges."),
+      ],
+    },
+  },
+  {
+    id: "frequency",
+    level: "A1",
+    title: "How often: sempre, spesso, mai",
+    summary: "sempre, quasi sempre, spesso, a volte, raramente, quasi mai, non... mai. Non ballo mai = I never dance.",
+    unit: "it-a1-tempo-libero",
+    lesson: {
+      blocks: [
+        text("Words for how often usually go after the verb: Esco spesso. Gioco sempre il sabato. A volte can also start the sentence."),
+        table("From always to never", ["Italian", "English"], ["sempre", "always"], ["quasi sempre", "almost always"], ["spesso", "often"], ["a volte", "sometimes"], ["raramente", "rarely"], ["quasi mai", "hardly ever"], ["non... mai", "never"]),
+        text("mai needs non before the verb: Non ballo mai. Non vado mai al cinema. Italian is happy with this double negative."),
+      ],
+      examples: [
+        example("Il sabato c'è quasi sempre una partita.", "On Saturdays there's almost always a match.", "quasi sempre"),
+        example("Spesso esce con gli amici e va ai concerti.", "He often goes out with friends to concerts.", "Spesso"),
+        example("Ballare? Non mi piace per niente! Non ballo mai.", "Dancing? I don't like it at all! I never dance.", "Non ballo mai"),
+        example("Va bene, a volte ballo.", "OK, sometimes I dance.", "a volte"),
+      ],
+      exercises: [
+        choice("Io non vado ", " al cinema.", ["mai", "sempre", "spesso"], 0, "I never go to the cinema."),
+        fill("Karim non corre ", ".", "mai", "Karim never runs."),
+        choice("Davide gioca ", " il martedì e il giovedì.", ["sempre", "mai", "non"], 0, "Davide always plays on Tuesdays and Thursdays."),
+        transform("Say the opposite.", "Esco sempre il venerdì.", "Non esco mai il venerdì.", "I never go out on Fridays."),
+        build("A | volte | andiamo | ai | concerti", "Sometimes we go to concerts."),
+        spot("Io ballo mai.", "ballo", "non ballo", "I never dance (mai needs non)."),
+      ],
+    },
+  },
+  {
+    id: "irregular-verbs",
+    level: "A1",
+    title: "Andare, venire, uscire, fare",
+    summary: "vado, vengo, esco, faccio: four everyday verbs that don't follow the rules.",
+    unit: "it-a1-tempo-libero",
+    lesson: {
+      blocks: [
+        text("Some of the most used verbs are irregular. Learn them as you met them: vado al bar, vengo anch'io, esco con gli amici, faccio un picnic."),
+        table("Four irregular verbs", ["", "andare (go)", "venire (come)", "uscire (go out)", "fare (do, make)"], ["io", "vado", "vengo", "esco", "faccio"], ["tu", "vai", "vieni", "esci", "fai"], ["lui / lei / Lei", "va", "viene", "esce", "fa"], ["noi", "andiamo", "veniamo", "usciamo", "facciamo"], ["voi", "andate", "venite", "uscite", "fate"], ["loro", "vanno", "vengono", "escono", "fanno"]),
+        text("andare a + a town or an activity (vado a Milano, vado a ballare); andare in + a country or a place (vado in palestra). fare is everywhere: fa bel tempo, faccio colazione, facciamo un picnic."),
+      ],
+      examples: [
+        example("Il martedì e il giovedì sera va all'allenamento", "On Tuesday and Thursday evenings he goes to training", "va"),
+        example("Sabato pomeriggio Emma, Karim e Marco vanno a vedere la partita di Davide.", "On Saturday afternoon Emma, Karim and Marco go to watch Davide's match.", "vanno"),
+        example("Vengo, vengo! Ma porto Emma", "I'll come, I'll come! But I'm bringing Emma", "Vengo"),
+        example("Facciamo un picnic ai Giardini Margherita con tutti.", "Let's have a picnic in the Giardini Margherita with everyone.", "Facciamo"),
+      ],
+      exercises: [
+        fill("Stasera io ", " con Giulia.", "esco", "Tonight I'm going out with Giulia.", "uscire"),
+        fill("Tu ", " al concerto?", "vieni", "Are you coming to the concert?", "venire"),
+        fill("Noi ", " un picnic domenica.", "facciamo", "We're having a picnic on Sunday.", "fare"),
+        fill("Loro ", " in palestra il martedì.", "vanno", "They go to the gym on Tuesdays.", "andare"),
+        choice("Che cosa ", " sabato?", ["fai", "fa", "faccio"], 0, "What are you doing on Saturday?"),
+        match("Match.", "io=vado | tu=vai | lei=va | noi=andiamo | loro=vanno", "andare (to go)."),
+        spot("Io vieno alla festa.", "vieno", "vengo", "I'm coming to the party."),
+      ],
+    },
+  },
 ];

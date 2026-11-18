@@ -44,6 +44,13 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("aspettare", "to wait", "Dobbiamo aspettare dieci minuti.", "We have to wait ten minutes."),
     t("frigo", "fridge", "Il latte è in frigo.", "The milk is in the fridge."),
   ],
+  "it-a1-tempo-libero": [
+    t("vederci", "to see each other, to meet (vedere + ci)", "Possiamo vederci alle otto?", "Can we meet at eight?"),
+    t("ballare", "to dance", "Ti piace ballare?", "Do you like dancing?"),
+    t("leggere", "to read", "Mi piace leggere la sera.", "I like reading in the evening."),
+    t("nuotare", "to swim", "D'estate nuoto spesso al mare.", "In summer I often swim in the sea."),
+    t("televisione", "television (la tv)", "Non guardo mai la televisione.", "I never watch television."),
+  ],
   "it-a1-piacere": [
     t("cercare", "to look for", "Cerco amici italiani per parlare.", "I'm looking for Italian friends to talk to."),
     t("spagnolo", "Spanish", "Parlo spagnolo e un po' di inglese.", "I speak Spanish and a little English."),

@@ -114,6 +114,108 @@ dove | where | | Latin de ubi
 ore | hours; o'clock (che ore sono? = what time is it?) | ora
 film | film
 chiuso | closed | chiudere
+davide | Davide (a name)
+grafico | graphic designer; graph
+manifesti | posters | manifesto
+manifesto | poster | | ~ manifest
+copertine | covers | copertina
+copertina | (book) cover | | coprire = to cover
+libri | books | libro
+rotelle | little wheels (sedia a rotelle = wheelchair) | rotella
+rotella | little wheel | | ruota (wheel) + -ella
+libero | free (tempo libero = free time) | | ~ liberty
+fermo | still, not moving | | ~ firm
+allenamento | training (session)
+gioca | plays | giocare
+giocare | to play (a game, a sport)
+basket | basketball
+carrozzina | wheelchair; pram | | carrozza (carriage) + -ina
+carrozzine | wheelchairs | carrozzina
+partita | match, game
+soprattutto | above all, especially | | sopra + tutto
+jazz | jazz
+esce | goes out | uscire
+ai | to the (a + i) | a
+concerti | concerts | concerto
+concerto | concert
+cinema | cinema
+raramente | rarely
+preferisco | I prefer | preferire
+preferire | to prefer
+ballare | to dance | | ~ ballet, ballroom
+ballo | I dance; dance | ballare
+balla | dances | ballare
+palestra | gym, sports hall | | Greek palaistra (wrestling school)
+squadra | team; squad | | ~ squad
+maglia | shirt (sports); jumper
+avversari | opponents | avversario
+avversario | opponent | | ~ adversary
+velocissima | very fast | veloce
+veloce | fast | | ~ velocity
+girano | turn | girare
+girare | to turn | | ~ gyrate
+fermano | stop (si fermano) | fermarsi
+partono | set off, leave | partire
+partire | to leave, to set off | | ~ depart
+segna | scores | segnare
+segnare | to score; to mark | | ~ sign
+canestri | baskets | canestro
+canestro | basket (in basketball)
+grida | shouts | gridare
+gridare | to shout | | ~ cry
+forza | strength; come on! | | ~ force
+vince | wins | vincere
+vincere | to win | | ~ victory, invincible
+siede | sits down (si siede) | sedersi
+sedersi | to sit down | | ~ sedentary
+prova | tries | provare
+tirare | to shoot; to pull, to throw
+nemmeno | not even
+difficilissimo | really difficult | difficile
+difficile | difficult
+alleno | I train (mi alleno) | allenarsi
+allenarsi | to train
+peccato | pity, shame (che peccato! = what a shame!) | | Literally 'sin'
+dispiace | is sorry (mi dispiace = I'm sorry) | dispiacere
+dispiacere | to be sorry; displeasure | | dis + piacere
+esame | exam | | ~ exam
+facciamo | we do, we make; let's do | fare
+fare | to do, to make | | Irregular: faccio, fai, fa
+picnic | picnic
+giardini | gardens; park | giardino
+giardino | garden | | ~ garden
+agli | to the (a + gli) | a
+altri | others | altro
+altro | other
+già | already
+sapete | you know (plural) | sapere
+nessuno | nobody
+bel | nice, beautiful (fa bel tempo = the weather's nice) | bello
+bello | beautiful, nice
+cani | dogs | cane
+cane | dog | | Latin canis ~ canine
+biciclette | bicycles | bicicletta
+bicicletta | bicycle
+naturalmente | of course, naturally
+coperta | blanket | | ~ cover
+frisbee | frisbee
+lago | lake | | ~ lagoon
+noi | we; us
+piacciamo | we please (non piacciamo al frisbee = frisbee doesn't like us) | piacere
+piacere | to please (mi piace = I like); pleasure
+tornano | go back, come back | tornare
+pensa | thinks | pensare
+queste | these | questo
+sport | sport
+buon | good (buon weekend = have a good weekend) | buono
+contro | against
+quattordici | fourteen
+museo | museum
+gratuito | free (no cost) | | ~ gratis
+correre | to run | | ~ current, courier
+sessantadue | sixty-two
+cinquantotto | fifty-eight
+tredici | thirteen
 alimentari | groceries (negozio di alimentari = grocer's) | | ~ alimentary
 lin | Lin (a Chinese name)
 wei | Wei (a Chinese name)
