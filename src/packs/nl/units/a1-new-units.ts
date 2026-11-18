@@ -170,9 +170,9 @@ export const feestdagen: UnitContent = {
           s("Alles is goedkoop. Je kunt een boek kopen voor één euro.", "Everything is cheap. You can buy a book for one euro."),
         ],
         [
-          s("Luca gaat met Noor en Bram naar de vrijmarkt.", "Luca goes to the free market with Noor and Bram."),
+          s("Daniel gaat met Noor en Bram naar de vrijmarkt.", "Daniel goes to the free market with Noor and Bram."),
           s("Bram verkoopt zijn oude cd's, maar niemand wil ze hebben.", "Bram sells his old CDs, but nobody wants them."),
-          s("Luca koopt een lamp voor zijn kamer voor drie euro.", "Luca buys a lamp for his room for three euros."),
+          s("Daniel koopt een lamp voor zijn kamer voor drie euro.", "Daniel buys a lamp for his room for three euros."),
           s("'s Middags is er muziek op de grachten en op de pleinen.", "In the afternoon there's music on the canals and in the squares."),
           s("Het is druk, het is gezellig en iedereen is oranje.", "It's busy, it's cosy and everyone is orange."),
         ],
@@ -182,7 +182,7 @@ export const feestdagen: UnitContent = {
         mc("Why is everything orange?", ["The king's family is called Van Oranje-Nassau", "It's the colour of spring", "Orange is cheap"], 0),
         tf("Op de vrijmarkt is alles duur.", "At the free market everything is expensive.", false),
         tf("Bram verkoopt veel cd's.", "Bram sells a lot of CDs.", false),
-        mc("What does Luca buy?", ["A book", "A lamp", "An orange hat"], 1),
+        mc("What does Daniel buy?", ["A book", "A lamp", "An orange hat"], 1),
       ],
     },
     {

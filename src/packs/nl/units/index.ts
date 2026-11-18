@@ -22,6 +22,7 @@ import { buurmanListening, buurmanWriting } from "../stories/een-nieuwe-buurman"
 import { werkListening, werkWriting } from "../stories/fatima-zoekt-werk";
 import { martaListening, martaWriting } from "../stories/marta-is-nieuw";
 import { familieListening, familieWriting } from "../stories/de-familie-yilmaz";
+import { checkpointsNl } from "../checkpoints";
 import {
   fatimasProfiel,
   gezondLeven,
@@ -120,6 +121,7 @@ export const units: readonly Unit[] = [
 ]
   .map(assemble)
   .concat(unitsA2)
+  .map((u) => (u.checkpoint || !checkpointsNl[u.id] ? u : { ...u, checkpoint: checkpointsNl[u.id] }))
   .map((u) => (teachNl[u.id] ? { ...u, teach: [...(u.teach ?? []), ...teachNl[u.id]] } : u))
   .map((u) => ({
     ...u,

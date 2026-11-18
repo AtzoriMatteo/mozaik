@@ -101,16 +101,16 @@ export const tasksA1: Record<string, Task[]> = {
 
   /* ---------- 7 Gezondheid ---------- */
   ziek: [
-    mc("What's wrong with Luca?", ["A headache and stomach ache", "A broken arm", "Toothache"], 0),
-    tf("Luca gaat vandaag naar de dokter.", "Luca goes to the doctor today.", false),
+    mc("What's wrong with Bram?", ["A headache and stomach ache", "A broken arm", "Toothache"], 0),
+    tf("Bram gaat vandaag naar de dokter.", "Bram goes to the doctor today.", false),
     pairs("What does Noor bring him?", "from the supermarket=soup and oranges | to drink=water and tea | for the pain=a paracetamol"),
-    tf("Luca stuurt Ingrid een berichtje.", "Luca sends Ingrid a message.", true),
+    tf("Bram stuurt Ingrid een berichtje.", "Bram sends Ingrid a message.", true),
   ],
   "bij-de-huisarts": [
     mc("When is the appointment?", ["At ten past eleven", "At eight o'clock", "At half past ten"], 0),
     tf("De huisarts is een man.", "The GP is a man.", false),
     mc("What does the doctor think it is?", ["Something serious", "Flu", "An allergy"], 1),
-    tf("Luca krijgt een medicijn van de huisarts.", "Luca gets medicine from the GP.", false),
+    tf("Bram krijgt een medicijn van de huisarts.", "Bram gets medicine from the GP.", false),
     mc("How often may he take paracetamol?", ["At most three times a day", "Twice a week", "Every hour"], 0),
   ],
 
@@ -118,15 +118,15 @@ export const tasksA1: Record<string, Task[]> = {
   "het-weer": [
     tf("Het weer in Nederland verandert vaak.", "The weather in the Netherlands changes often.", true),
     mc("How warm is the sea water?", ["Twenty degrees", "Sixteen degrees", "Twelve degrees"], 1),
-    pairs("Who does what at the beach?", "Bram=goes swimming | Luca=reads a book on the sand"),
+    pairs("Who does what at the beach?", "Bram=goes swimming | Kwame=reads a book on the sand"),
     order("Put their Saturday in order.", "They cycle to the sea", "Bram goes swimming", "Bram gets ice creams", "The clouds turn grey", "They get soaking wet"),
     tf("Ze zijn op tijd thuis, voor de regen.", "They're home in time, before the rain.", false),
   ],
   "een-verjaardag": [
-    mc("What does Luca give Noor?", ["A sweater", "A book", "Flowers"], 1),
+    mc("What does Kwame give Noor?", ["A sweater", "A book", "Flowers"], 1),
     tf("Je geeft op een Nederlands feest alleen je vrienden een hand.", "At a Dutch party you only shake hands with your friends.", false),
     mc("What do you say to the family?", ["Gefeliciteerd", "Beterschap", "Aangenaam"], 0),
     tf("Iedereen krijgt twee stukjes taart.", "Everyone gets two pieces of cake.", false),
-    mc("What doesn't Luca like about the Netherlands?", ["The food", "The weather", "The parties"], 1),
+    mc("What doesn't Kwame like about the Netherlands?", ["The food", "The weather", "The parties"], 1),
   ],
 };
