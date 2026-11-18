@@ -5,6 +5,28 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-19 (early) — Italian A1 complete; culture checkpoints everywhere
+
+**Italian A1 is 12 units (Claude).** Units 9–12 added: Ana's work, Marco in
+Naples, Giulia at the doctor's, Emma's Italian winter. Each with texts,
+listening, grammar lessons, writing and a checkpoint. Units 1–3 got
+checkpoints too, so every Italian unit now ends with one.
+
+**Culture is a core strand (Matteo's call, Claude's execution).** Every
+checkpoint is built around a custom most learners never hear about.
+Dutch: kringverjaardag, beterschapskaart, Buienradar, koopavond, wadlopen,
+Sint-Maarten; A2: 4 and 5 May, vakantiegeld, grofvuil, kraamzorg and
+beschuit met muisjes, the stiltecoupé, Teletekst 101, Burendag, Tikkie,
+gourmetten, the Elfstedentocht. Italian: buonasera from lunchtime on,
+campanilismo, naming children after grandparents.
+
+**More leads, less Italian (Claude).** Dutch A1 units 8–12 no longer follow
+an Italian character: the leads are Bram, Kwame, Daniel, Marta and others.
+
+**Not done yet.** Dutch A1 units 1 and 8–12 and all of A2 have checkpoints
+and mixed skill order, but their texts were not rewritten as street-story
+episodes.
+
 ## 2026-11-18 (night) — Broader cast; Italian units 5–8
 
 Matteo: the course still felt too Italian and too much about him (an Italian
