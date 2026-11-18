@@ -27,6 +27,14 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("tardi", "late", "La domenica mi alzo tardi.", "On Sundays I get up late."),
     t("ufficio", "office", "Lavoro in un ufficio in centro.", "I work in an office in the centre."),
   ],
+  "it-a1-quartiere": [
+    t("appartamento", "flat, apartment", "Abito in un appartamento in centro.", "I live in a flat in the centre."),
+    t("ascensore", "lift, elevator", "Nel palazzo non c'è l'ascensore.", "There's no lift in the building."),
+    t("palazzo", "building, block of flats; palace", "Il mio palazzo ha quattro piani.", "My building has four floors."),
+    t("piano", "floor, storey (al primo piano = on the first floor)", "Abito al terzo piano.", "I live on the third floor."),
+    t("camera", "room; bedroom (camera da letto)", "La camera da letto è piccola.", "The bedroom is small."),
+    t("volentieri", "gladly, I'd love to", "Vieni al cinema? Volentieri!", "Are you coming to the cinema? I'd love to!"),
+  ],
   "it-a1-piacere": [
     t("cercare", "to look for", "Cerco amici italiani per parlare.", "I'm looking for Italian friends to talk to."),
     t("spagnolo", "Spanish", "Parlo spagnolo e un po' di inglese.", "I speak Spanish and a little English."),

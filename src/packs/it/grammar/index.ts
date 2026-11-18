@@ -499,4 +499,92 @@ export const grammar: readonly GrammarPoint[] = [
       ],
     },
   },
+  /* ---------------- Unit 6: Casa e quartiere ---------------- */
+  {
+    id: "c-e-ci-sono",
+    level: "A1",
+    title: "C'è and ci sono: there is, there are",
+    summary: "C'è + one thing (c'è un divano), ci sono + more than one (ci sono due bar). Question: C'è un bar qui vicino?",
+    unit: "it-a1-quartiere",
+    lesson: {
+      blocks: [
+        text("c'è (ci + è) means 'there is'; ci sono means 'there are'. Use them to say what you find somewhere: in a room, in a street, in a town."),
+        table("One or more", ["", "Italian", "English"], ["one", "C'è una farmacia.", "There's a chemist's."], ["more", "Ci sono due bar.", "There are two bars."], ["question", "C'è un ufficio postale?", "Is there a post office?"], ["no", "Non c'è l'ascensore.", "There's no lift."]),
+        text("Questions just go up at the end: C'è un bar qui vicino? To ask how many: Quanti/Quante ... ci sono?"),
+      ],
+      examples: [
+        example("C'è un ingresso stretto, poi c'è il soggiorno con un grande divano verde.", "There's a narrow hall, then there's the living room with a big green sofa.", "C'è", "c'è"),
+        example("In cucina ci sono tante piante e un vecchio tavolo di legno.", "In the kitchen there are lots of plants and an old wooden table.", "ci sono"),
+        example("Quante stanze ci sono?", "How many rooms are there?", "ci sono"),
+        example("Scusi, c'è un ufficio postale qui vicino?", "Excuse me, is there a post office near here?", "c'è"),
+      ],
+      exercises: [
+        choice("Nella via ", " una libreria.", ["c'è", "ci sono", "è"], 0, "There's a bookshop in the street."),
+        choice("Nel parco ", " tanti alberi.", ["ci sono", "c'è", "sono"], 0, "There are lots of trees in the park."),
+        fill("Scusi, ", " una farmacia qui vicino?", ["c'è", "C'è"], "Excuse me, is there a chemist's near here?"),
+        fill("Nella mia via non ", " una farmacia.", "c'è", "There's no chemist's in my street."),
+        transform("Make it plural.", "C'è una sedia in cucina.", "Ci sono due sedie in cucina.", "There are two chairs in the kitchen."),
+        build("Quanti | bar | ci | sono | in | via | del | Pratello", "How many bars are there on Via del Pratello?"),
+        spot("Nel cortile ci sono un tavolo.", "sono", "è", "There's a table in the courtyard (one table: c'è)."),
+      ],
+    },
+  },
+  {
+    id: "prepositions-articulated",
+    level: "A1",
+    title: "Prepositions with the article: nel, sul, dal",
+    summary: "a, da, di, in, su join the article: in + il = nel, su + la = sulla, a + il = al, da + il = dal, di + la = della.",
+    unit: "it-a1-quartiere",
+    lesson: {
+      blocks: [
+        text("When a, da, di, in or su come before the (il, la, i, le...), they melt into one word. You've already met some: al bar, alla cassa, alle sei."),
+        table("The main ones", ["", "+ il", "+ la", "+ l'", "+ i", "+ le"], ["a", "al", "alla", "all'", "ai", "alle"], ["da", "dal", "dalla", "dall'", "dai", "dalle"], ["di", "del", "della", "dell'", "dei", "delle"], ["in", "nel", "nella", "nell'", "nei", "nelle"], ["su", "sul", "sulla", "sull'", "sui", "sulle"]),
+        text("con, per and tra don't join: con il, per la, tra i. In the table only the first letters change: in becomes ne-, di becomes de-."),
+      ],
+      examples: [
+        example("Sul divano c'è un gatto grigio.", "On the sofa there's a grey cat.", "Sul"),
+        example("Nel cortile c'è un lungo tavolo con una tovaglia rossa.", "In the courtyard there's a long table with a red tablecloth.", "Nel"),
+        example("Dal balcone si vede tutta la via", "From the balcony you can see the whole street", "Dal"),
+        example("accanto alla farmacia", "next to the chemist's", "alla"),
+      ],
+      exercises: [
+        choice("Il gatto è ", " balcone.", ["sul", "sulla", "su il"], 0, "The cat is on the balcony."),
+        fill("Le foto sono ", " tavolo.", "sul", "The photos are on the table.", "su + il"),
+        fill("La moka è ", " cucina.", "nella", "The moka pot is in the kitchen.", "in + la"),
+        fill("Hiro arriva ", " Giappone.", "dal", "Hiro comes from Japan.", "da + il"),
+        choice("Il bar è accanto ", " sartoria.", ["alla", "al", "nella"], 0, "The bar is next to the tailor's."),
+        match("Match.", "in + il=nel | su + la=sulla | a + le=alle | da + il=dal | di + la=della", "Prepositions with the article."),
+        spot("Le foto sono sulla tavolo.", "sulla", "sul", "The photos are on the table."),
+      ],
+    },
+  },
+  {
+    id: "imperative",
+    level: "A1",
+    title: "Giving directions: gira, giri, vai, vada",
+    summary: "To a friend: gira a destra, vai dritto, prendi la seconda. Politely (Lei): giri a destra, vada dritto, prenda la seconda.",
+    unit: "it-a1-quartiere",
+    lesson: {
+      blocks: [
+        text("To tell someone what to do, Italian uses the imperative. With a friend (tu), -are verbs end in -a and the others in -i: gira! prendi! senti!"),
+        table("tu and Lei", ["verb", "to a friend (tu)", "politely (Lei)"], ["girare", "gira", "giri"], ["prendere", "prendi", "prenda"], ["andare", "vai", "vada"], ["uscire", "esci", "esca"], ["scusare", "scusa", "scusi"]),
+        text("The Lei form swaps the vowel: -are verbs end in -i, the others in -a. That's why you say Scusi! to a stranger and Scusa! to a friend."),
+        table("Directions", ["Italian", "English"], ["a destra / a sinistra", "right / left"], ["dritto", "straight on"], ["fino a", "as far as"], ["la prima / la seconda strada", "the first / second street"], ["accanto a, davanti a, dietro", "next to, in front of, behind"]),
+      ],
+      examples: [
+        example("Esca dal portone e giri a destra. Vada dritto fino alla piazza.", "Go out of the main door and turn right. Go straight on to the square.", "Esca", "giri", "Vada"),
+        example("Vada dritto fino al semaforo, poi giri a sinistra.", "Go straight on to the traffic lights, then turn left.", "Vada", "giri"),
+        example("Scusi, c'è un ufficio postale qui vicino?", "Excuse me, is there a post office near here?", "Scusi"),
+      ],
+      exercises: [
+        choice("Karim, ", " a destra!", ["gira", "giri", "girare"], 0, "Karim, turn right! (to a friend)"),
+        choice("Signora, ", " dritto fino alla chiesa.", ["vada", "vai", "va"], 0, "Madam, go straight on to the church. (Lei)"),
+        fill("Ciao Karim! ", " la seconda strada a sinistra.", ["Prendi", "prendi"], "Hi Karim! Take the second street on the left.", "prendere, tu"),
+        fill("", ", signora, dov'è la farmacia?", ["Scusi", "scusi"], "Excuse me, madam, where's the chemist's?", "scusare, Lei"),
+        transform("Say it to a friend.", "Giri a sinistra.", "Gira a sinistra.", "Turn left."),
+        build("Vai | dritto | e | poi | gira | a | destra", "Go straight on and then turn right."),
+        spot("Scusa, signore, dov'è la stazione?", "Scusa", "Scusi", "Excuse me, sir, where's the station?"),
+      ],
+    },
+  },
 ];
