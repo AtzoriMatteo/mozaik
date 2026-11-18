@@ -79,6 +79,17 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("scaldo", "I heat (scaldare = to heat)", "Scaldo il latte.", "I heat the milk."),
     t("promesso", "promised; promise! (promettere)", "Vengo domani, promesso!", "I'm coming tomorrow, promise!"),
   ],
+  "it-a1-feste": [
+    t("febbraio", "February", "A febbraio c'è il Carnevale.", "In February there's Carnival."),
+    t("marzo", "March", "Il compleanno di Rita è a marzo.", "Rita's birthday is in March."),
+    t("estate", "summer (d'estate = in summer)", "D'estate andiamo al mare.", "In summer we go to the seaside."),
+    t("primavera", "spring", "In primavera ci sono i fiori.", "In spring there are flowers."),
+    t("ravioli", "ravioli, dumplings", "A Capodanno mangiamo i ravioli.", "At New Year we eat dumplings."),
+    t("busta", "envelope (le buste)", "Il nonno mi dà una busta rossa.", "Grandpa gives me a red envelope."),
+    t("buste", "envelopes", "Ho ricevuto tre buste.", "I received three envelopes."),
+    t("continuare", "to continue", "Voglio continuare a studiare.", "I want to keep studying."),
+    t("vita", "life (lunga vita a... = long live...)", "Lunga vita al re!", "Long live the king!"),
+  ],
   "it-a1-piacere": [
     t("cercare", "to look for", "Cerco amici italiani per parlare.", "I'm looking for Italian friends to talk to."),
     t("spagnolo", "Spanish", "Parlo spagnolo e un po' di inglese.", "I speak Spanish and a little English."),

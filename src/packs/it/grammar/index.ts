@@ -1014,4 +1014,87 @@ export const grammar: readonly GrammarPoint[] = [
       ],
     },
   },
+  /* ---------------- Unit 12: Le feste ---------------- */
+  {
+    id: "dates",
+    level: "A1",
+    title: "Dates, months and seasons",
+    summary: "il 25 dicembre (the + number), il primo gennaio (first only), a dicembre / in dicembre, in inverno, d'estate. Months and days have no capital.",
+    unit: "it-a1-feste",
+    lesson: {
+      blocks: [
+        text("Italian dates are il + a normal number + the month: il venticinque dicembre. Only the first day uses an ordinal: il primo gennaio."),
+        table("Months", ["", "", ""], ["gennaio", "febbraio", "marzo"], ["aprile", "maggio", "giugno"], ["luglio", "agosto", "settembre"], ["ottobre", "novembre", "dicembre"]),
+        table("When", ["Italian", "English"], ["il sei gennaio", "on 6 January"], ["a dicembre / in dicembre", "in December"], ["in inverno, in primavera", "in winter, in spring"], ["d'estate, d'autunno", "in summer, in autumn"], ["l'anno prossimo, l'anno scorso", "next year, last year"]),
+        text("Months, days and seasons are written with a small letter: lunedì, gennaio, l'estate."),
+      ],
+      examples: [
+        example("Il ventitré dicembre Emma e Marco partono in treno.", "On the twenty-third of December Emma and Marco leave by train.", "Il ventitré dicembre"),
+        example("A dicembre via del Pratello è piena di luci.", "In December Via del Pratello is full of lights.", "A dicembre"),
+        example("Il sei gennaio è l'Epifania.", "The sixth of January is Epiphany.", "Il sei gennaio"),
+      ],
+      exercises: [
+        choice("Natale è ", " venticinque dicembre.", ["il", "a", "in"], 0, "Christmas is on 25 December."),
+        choice("Capodanno è il ", " gennaio.", ["primo", "uno", "un"], 0, "New Year's Day is 1 January."),
+        fill("Il mio compleanno è ", " luglio.", ["a", "in"], "My birthday is in July."),
+        fill("", " inverno fa freddo.", ["In", "in"], "In winter it's cold."),
+        match("Match.", "gennaio=January | aprile=April | agosto=August | ottobre=October", "Months."),
+        spot("Il compleanno di Rita è il uno marzo.", "uno", "primo", "Rita's birthday is on 1 March."),
+      ],
+    },
+  },
+  {
+    id: "passato-scelta",
+    level: "A1",
+    title: "Avere or essere in the past?",
+    summary: "Most verbs: avere (ho mangiato). Going, coming, staying, changing: essere (sono andata, sono rimasta). With essere the ending agrees.",
+    unit: "it-a1-feste",
+    lesson: {
+      blocks: [
+        text("A simple test: if the verb can have an object (eat something, see someone, buy something), it takes avere. If it's about movement or a change of state, it takes essere."),
+        table("Which one?", ["avere", "essere"], ["ho mangiato, ho visto", "sono andato/a, sono arrivato/a"], ["ho comprato, ho fatto", "sono partito/a, sono tornato/a"], ["ho conosciuto, ho bevuto", "sono rimasto/a, sono stato/a"], ["ho dormito, ho lavorato", "sono nato/a, sono uscito/a"]),
+        text("Piacere also takes essere: Mi è piaciuto il presepe. Non mi è piaciuto il capitone."),
+      ],
+      examples: [
+        example("Abbiamo mangiato gli spaghetti alle vongole", "We ate spaghetti with clams", "Abbiamo mangiato"),
+        example("Poi molti sono andati a messa.", "Then many went to Mass.", "sono andati"),
+        example("Io sono rimasta a casa con la zia", "I stayed at home with the aunt", "sono rimasta"),
+        example("Non mi è piaciuto molto, ma non l'ho detto!", "I didn't like it much, but I didn't say so!", "è piaciuto", "ho detto"),
+      ],
+      exercises: [
+        choice("Ieri Emma ", " a Napoli.", ["è tornata", "ha tornato", "ha tornata"], 0, "Yesterday Emma came back to Naples."),
+        choice("A Natale ", " troppo.", ["ho mangiato", "sono mangiato", "ho mangiata"], 0, "At Christmas I ate too much."),
+        fill("Sabato noi ", " al cinema.", "siamo andati", "On Saturday we went to the cinema.", "andare"),
+        fill("Giulia ", " un regalo per la nonna.", "ha comprato", "Giulia bought a present for her grandma.", "comprare"),
+        fill("Mi ", " molto il presepe.", "è piaciuto", "I really liked the nativity scene.", "piacere"),
+        sort("Avere or essere?", ["avere", "essere"], "mangiare=0 | andare=1 | vedere=0 | partire=1 | comprare=0 | tornare=1", "Avere or essere in the past."),
+        spot("Marco ha partito alle otto.", "ha", "è", "Marco left at eight."),
+      ],
+    },
+  },
+  {
+    id: "fa-ago",
+    level: "A1",
+    title: "Fa: ago",
+    summary: "time + fa = ago: un anno fa, due giorni fa, tre settimane fa. Usually with the past: Un anno fa è arrivata a Bologna.",
+    unit: "it-a1-feste",
+    lesson: {
+      blocks: [
+        text("fa after a length of time means 'ago': un anno fa, dieci minuti fa. It goes after the time, like English."),
+        slots("time + fa", ["Un anno | fa:ago* | è arrivata | a Bologna", "A year ago she arrived in Bologna."], ["Due giorni | fa:ago* | ho visto | Marco", "I saw Marco two days ago."]),
+        text("Don't mix it up with da: Vivo qui da un anno (I've lived here for a year, still true) vs Sono arrivata un anno fa (I arrived a year ago, finished)."),
+      ],
+      examples: [
+        example("Un anno fa è arrivata a Bologna con una valigia e tre parole di italiano.", "A year ago she arrived in Bologna with a suitcase and three words of Italian.", "Un anno fa"),
+        example("Un anno fa non conoscevo nessuno.", "A year ago I didn't know anyone.", "Un anno fa"),
+      ],
+      exercises: [
+        fill("Sono arrivato in Italia tre mesi ", ".", "fa", "I arrived in Italy three months ago."),
+        choice("Vivo a Bologna ", " un anno.", ["da", "fa", "per"], 0, "I've lived in Bologna for a year."),
+        choice("Ho conosciuto Giulia due anni ", ".", ["fa", "da", "per"], 0, "I met Giulia two years ago."),
+        transform("Use fa.", "Ho visto Marco lunedì. Oggi è mercoledì.", "Ho visto Marco due giorni fa.", "I saw Marco two days ago."),
+        spot("Vivo a Bologna fa due anni.", "fa", "da", "I've lived in Bologna for two years (still true: da)."),
+      ],
+    },
+  },
 ];

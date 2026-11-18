@@ -110,7 +110,7 @@ export const viaggio: Unit = {
         [
           s("La sera giocano a tombola. Ogni numero ha un significato: è la smorfia napoletana.", "In the evening they play tombola. Every number has a meaning: it's the Neapolitan smorfia."),
           s("Lo zio legge i numeri: \"Novanta, la paura! Quarantasette, il morto che parla! Uno, l'Italia!\"", "Uncle reads out the numbers: \"Ninety, fear! Forty-seven, the dead man who talks! One, Italy!\""),
-          s("Alla fine vince la zia di novantadue anni. Come ogni anno.", "In the end the ninety-two-year-old aunt wins. Like every year."),
+          s("Alla fine vince la zia di novantadue anni, come ogni anno.", "In the end the ninety-two-year-old aunt wins, like every year."),
         ],
       ],
       tasks: [

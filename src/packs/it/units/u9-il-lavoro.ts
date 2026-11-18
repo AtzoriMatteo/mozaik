@@ -80,7 +80,7 @@ export const lavoro: Unit = {
         [
           s("Alla fine Benassi si alza. \"Allora, ci vediamo lunedì alle nove, architetto.\"", "At the end Benassi stands up. \"So, see you on Monday at nine, architetto.\""),
           s("Ana non capisce subito. Poi capisce: ha il lavoro!", "Ana doesn't understand straight away. Then she understands: she's got the job!"),
-          s("Fuori chiama sua madre a Recife. \"Mamãe, ho trovato lavoro!\" In portoghese, naturalmente.", "Outside she calls her mother in Recife. \"Mamãe, I've found a job!\" In Portuguese, of course."),
+          s("Fuori chiama sua madre a Recife. \"Mamãe, ho trovato lavoro!\" Parla in portoghese, naturalmente.", "Outside she calls her mother in Recife. \"Mamãe, I've found a job!\" She speaks Portuguese, of course."),
         ],
       ],
       tasks: [
@@ -205,7 +205,7 @@ export const lavoro: Unit = {
         line("Ana", "Sì, grazie! Giovedì alle dieci va benissimo.", "Yes, thank you! Thursday at ten is perfect."),
         line("Segretaria", "Perfetto. Porti anche il portfolio, per favore.", "Perfect. Please bring your portfolio too."),
         line("Ana", "Certo. Dov'è lo studio, esattamente?", "Of course. Where exactly is the firm?"),
-        line("Segretaria", "In via Santo Stefano quaranta, al secondo piano. C'è l'ascensore.", "At Via Santo Stefano 40, on the second floor. There's a lift."),
+        line("Segretaria", "È in via Santo Stefano quaranta, al secondo piano. C'è l'ascensore.", "It's at Via Santo Stefano 40, on the second floor. There's a lift."),
       ],
       gist: { prompt: "Why does the secretary call?", options: ["To confirm the interview", "To say no to Ana", "To ask for her CV"], answer: 0 },
       details: [

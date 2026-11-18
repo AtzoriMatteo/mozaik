@@ -114,6 +114,136 @@ dove | where | | Latin de ubi
 ore | hours; o'clock (che ore sono? = what time is it?) | ora
 film | film
 chiuso | closed | chiudere
+dicembre | December | | Latin decem: it was the tenth month
+mercatini | (Christmas) markets | mercatino
+mercatino | little market (mercatino di Natale = Christmas market) | mercato
+discussione | debate, discussion
+panettone | panettone, Milan's tall Christmas cake with raisins | | Every Italian has an opinion: panettone or pandoro?
+pandoro | pandoro, Verona's star-shaped Christmas cake | | 'golden bread': plain, dusted with sugar
+uvetta | raisins | uva
+canditi | candied fruit
+quest' | this (quest'anno = this year) | questo
+questo | this
+diciamo | we say | dire
+dire | to say | | Irregular: dico, dici, dice
+pasqua | Easter
+spiega | explains | spiegare
+spiegare | to explain
+scorso | last (il mese scorso = last month)
+gregorio | Gregory (San Gregorio Armeno, the nativity street in Naples)
+armeno | Armenian
+presepi | nativity scenes | presepe
+presepe | nativity scene, crib | | Naples' nativity scenes include footballers and politicians!
+migliaia | thousands | migliaio
+migliaio | about a thousand
+statuine | little figures, figurines | statuina
+statuina | figurine | statua
+statua | statue
+gesù | Jesus
+maria | Mary
+pastori | shepherds | pastore
+pastore | shepherd | | ~ pastor
+calciatori | footballers | calciatore
+calciatore | footballer | calcio
+cantanti | singers | cantante
+cantante | singer | cantare
+politici | politicians | politico
+politico | politician; political
+diario | diary
+vigilia | eve (la Vigilia di Natale = Christmas Eve) | | ~ vigil
+eravamo | we were | essere
+spaghetti | spaghetti
+vongole | clams | vongola
+vongola | clam
+baccalà | salt cod
+capitone | capitone, big eel eaten in Naples on Christmas Eve
+specie | kind, sort (una specie di = a kind of) | | ~ species
+anguilla | eel
+assaggiato | tasted | assaggiare
+piaciuto | liked (mi è piaciuto = I liked it) | piacere
+detto | said | dire
+giocato | played | giocare
+messo | put | mettere
+messa | Mass | | ~ Mass (Latin ite, missa est)
+rimasta | stayed | rimanere
+rimanere | to stay, to remain | | ~ remain
+struffoli | struffoli, little fried balls in honey (Naples)
+palline | little balls | pallina
+pallina | little ball | palla
+palla | ball
+stato | been; state | essere
+sciarpa | scarf | | ~ sash
+fatta | made | fare
+chiamato | called | chiamare
+pianto | cried | piangere
+felicità | happiness | | ~ felicity
+tornata | come back | tornare
+capodanno | New Year's Day; New Year's Eve | | capo (head) + d'anno: the head of the year
+passa | spends (time); passes | passare
+lenticchie | lentils | lenticchia
+lenticchia | lentil | | They look like little coins: eat them at New Year for money
+cotechino | cotechino, a big pork sausage eaten at New Year
+portano | bring | portare
+voglio | I want | volere
+volere | to want | | Irregular: voglio, vuoi, vuole
+ricco | rich
+pacchetto | little package | pacco
+biancheria | underwear; linen | | Red underwear at New Year brings luck
+fortuna | luck | | ~ fortune
+vecchione | the Vecchione: a giant 'old man' burnt in Bologna at New Year | vecchio
+vecchio | old | | ~ veteran
+pupazzo | puppet, dummy
+simbolo | symbol
+contano | count | contare
+contare | to count | | ~ count
+brucia | burns | bruciare
+bruciare | to burn
+brutto | ugly; bad
+abbracciano | hug (si abbracciano = they hug) | abbracciare
+abbracciare | to hug | | a + braccio: to take in your arms
+baciano | kiss (si baciano = they kiss) | baciare
+baciare | to kiss | bacio
+bacio | kiss
+bacia | kisses | baciare
+sconosciuto | stranger; unknown | | s + conosciuto
+gennaio | January | | Janus, the two-faced god
+epifania | Epiphany (6 January)
+befana | the Befana, the old lady who brings sweets on 6 January | | From Epifania | La Befana vien di notte... every Italian child knows the rhyme
+scopa | broom; a card game
+caramelle | sweets | caramella
+caramella | sweet, candy | | ~ caramel
+buoni | good | buono
+carbone | coal | | ~ carbon | Naughty children get coal: today it's made of sugar
+cattivi | naughty, bad | cattivo
+cattivo | bad, naughty
+zucchero | sugar | | ~ sugar (Arabic sukkar)
+trova | finds | trovare
+calza | stocking, sock
+arrivata | arrived | arrivare
+valigia | suitcase | | ~ valise
+bevuto | drunk | bere
+cappuccini | cappuccinos | cappuccino
+festeggiato | celebrated | festeggiare
+accorciato | shortened | accorciare
+insegnato | taught | insegnare
+insegnare | to teach
+venduto | sold | vendere
+vendere | to sell | | ~ vendor
+portata | taken, brought | portare
+conoscevo | I knew | conoscere
+intera | whole | intero
+intero | whole, entire | | ~ entire
+spegne | turns off | spegnere
+spegnere | to turn off, to switch off
+gatti | cats | gatto
+loro | they; their
+amare | to love | | ~ amorous
+musicista | musician
+mancare | to be missing (mi manchi = I miss you)
+ventiquattro | twenty-four
+promesso | promised; promise! | promettere
+promettere | to promise | | ~ promise
+meglio | better
 male | bad; badly; pain (mi fa male = it hurts) | | ~ malady
 testa | head | | ~ test (Latin testa = pot)
 gola | throat | | ~ gullet
