@@ -12,8 +12,9 @@ import { viaggio } from "./u10-in-viaggio";
 import { salute } from "./u11-la-salute";
 import { feste } from "./u12-le-feste";
 import { teachIt } from "../teach";
+import { checkpointsIt } from "../checkpoints";
 
 /** The Italian course, in suggested order. */
-export const units: readonly Unit[] = [ciao, piacere, famiglia, alBar, giornata, quartiere, spesa, tempoLibero, lavoro, viaggio, salute, feste].map((u) =>
-  teachIt[u.id] ? { ...u, teach: [...(u.teach ?? []), ...teachIt[u.id]] } : u,
-);
+export const units: readonly Unit[] = [ciao, piacere, famiglia, alBar, giornata, quartiere, spesa, tempoLibero, lavoro, viaggio, salute, feste]
+  .map((u) => (teachIt[u.id] ? { ...u, teach: [...(u.teach ?? []), ...teachIt[u.id]] } : u))
+  .map((u) => (u.checkpoint || !checkpointsIt[u.id] ? u : { ...u, checkpoint: checkpointsIt[u.id] }));
