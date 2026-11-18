@@ -21,6 +21,7 @@ import { weekListening, weekWriting } from "../stories/een-drukke-week";
 import { buurmanListening, buurmanWriting } from "../stories/een-nieuwe-buurman";
 import { werkListening, werkWriting } from "../stories/fatima-zoekt-werk";
 import { martaListening, martaWriting } from "../stories/marta-is-nieuw";
+import { familieListening, familieWriting } from "../stories/de-familie-yilmaz";
 import {
   fatimasProfiel,
   gezondLeven,
@@ -81,6 +82,7 @@ for (const [id, items] of Object.entries(listeningCulture)) {
 /** Story units: their listening and a writing topic come from the story too. */
 const STORY: Record<string, { listening: ListeningItem[]; writing: WritingTask[] }> = {
   "a1-kennismaken": { listening: [martaListening, ...(listening["a1-kennismaken"] ?? [])], writing: [martaWriting] },
+  "a1-familie": { listening: [...(listening["a1-familie"] ?? []), familieListening], writing: [familieWriting] },
   "a1-eten": { listening: avondListening, writing: [avondWriting] },
   // Unit 5 keeps its listening (other people on other days) and adds a scene from the story.
   "a1-dag-en-tijd": { listening: [weekListening, ...(listening["a1-dag-en-tijd"] ?? [])], writing: [weekWriting] },

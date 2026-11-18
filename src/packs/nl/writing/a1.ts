@@ -30,7 +30,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Thank the teacher and say goodbye", "Dank u wel en tot ziens! Groeten, …", "dank", "groeten", "ziens"),
       ],
       model:
-        "Goedemiddag! Mijn naam is Luca Bianchi. Mijn voornaam is Luca en mijn achternaam is Bianchi: B, I, A, N, C, H, I. Mijn achternaam heeft zeven letters. Ik ben drieëntwintig jaar. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. Dinsdag en donderdag zijn goed. Maandag is niet goed. Dank u wel en tot ziens! Groeten, Luca",
+        "Goedemiddag! Mijn naam is Priya Shah. Mijn voornaam is Priya en mijn achternaam is Shah: S, H, A, H. Mijn achternaam heeft vier letters. Ik ben eenendertig jaar. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. Dinsdag en donderdag zijn goed. Maandag is niet goed. Dank u wel en tot ziens! Groeten, Priya",
     },
     {
       id: "w-mijn-jaar",
@@ -64,7 +64,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say goodbye", "Tot ziens! Groeten, …", "groeten", "ziens", "doei"),
       ],
       model:
-        "Goedemiddag! Mijn naam is Luca Bianchi en ik ben uw nieuwe buurman. Ik woon sinds vorige week op nummer twaalf. Ik kom uit Italië. Ik spreek Italiaans, Engels en een beetje Nederlands. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. En u? Wat is uw naam en wat is uw huisnummer? Tot ziens! Groeten, Luca",
+        "Goedemiddag! Mijn naam is Daniel Ortiz en ik ben uw nieuwe buurman. Ik woon sinds vorige week op nummer zeven. Ik kom uit Mexico. Ik spreek Spaans, Engels en een beetje Nederlands. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. En u? Wat is uw naam en wat is uw huisnummer? Tot ziens! Groeten, Daniel",
     },
   ]),
 
@@ -84,7 +84,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say why you're learning Dutch", "Ik leer Nederlands, want … .", "leer", "want"),
       ],
       model:
-        "Hallo! Mijn naam is Luca en ik kom uit Italië. Ik kom uit een klein dorp bij Turijn. Ik ben drieëntwintig jaar. Ik woon nu twee weken in Nederland. Ik woon in Leiden, in een oud huis in het centrum, met twee huisgenoten. Ik ben student en ik studeer biologie aan de universiteit. Ik spreek Italiaans en Engels, en nu ook een beetje Nederlands. Ik leer Nederlands, want ik wil hier wonen en werken. Ik vind de taal moeilijk, maar ook leuk.",
+        "Hallo! Mijn naam is Ana en ik kom uit Brazilië. Ik kom uit een klein dorp bij Rio. Ik ben zevenentwintig jaar. Ik woon nu twee weken in Nederland. Ik woon in Leiden, in een oud huis in het centrum, met twee huisgenoten. Ik ben student en ik studeer biologie aan de universiteit. Ik spreek Portugees en Engels, en nu ook een beetje Nederlands. Ik leer Nederlands, want ik wil hier wonen en werken. Ik vind de taal moeilijk, maar ook leuk.",
     },
     {
       id: "w-antwoord-sanne",
@@ -138,24 +138,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say how often you see or call them", "Ik bel elke … met mijn … .", "bel", "zie", "elke", "week", "maand"),
       ],
       model:
-        "Mijn familie is niet groot. Ik heb een vader, een moeder, een broer en een zus. Mijn vader heet Marco en hij is zesenvijftig jaar. Mijn moeder heet Anna. Mijn zus Giulia is negentien en mijn broer Paolo is dertig. Mijn ouders en mijn zus wonen in een dorp in Italië. Paolo woont in Turijn met zijn vrouw en twee kinderen. Mijn vader is leraar en mijn moeder werkt in een winkel. Ik bel elke zondag met mijn moeder en ik ga twee keer per jaar naar huis.",
-    },
-    {
-      id: "w-mail-aan-giulia",
-      title: "Een mail aan Giulia",
-      titleTranslation: "An email to Giulia",
-      form: "email",
-      situation: "Answer Giulia's email (from the text Een mail van Giulia).",
-      points: [
-        pf("Greet Giulia and say how you are", "Lieve Giulia, met mij gaat het … .", "hoi", "lieve", "gaat"),
-        pf("React to her news about her boyfriend", "Wat leuk, een vriend! Is Matteo … ?", "matteo", "vriend"),
-        pf("Say something about your room", "Mijn kamer is … .", "kamer"),
-        pf("Say something about your housemates", "Mijn huisgenoten heten … . Ze zijn … .", "noor", "bram", "huisgenoten"),
-        pf("Ask about Leo and Sofia", "Hoe gaat het met … ?", "leo", "sofia"),
-        pf("Say when you're coming home and say goodbye", "In … kom ik naar huis. Veel liefs, …", "december", "kom", "liefs", "groeten"),
-      ],
-      model:
-        "Lieve Giulia, dank je voor je mail! Met mij gaat het goed. Ik ben een beetje moe, maar Leiden is heel leuk. Wat leuk, een vriend! Is Matteo aardig? Speelt hij goed gitaar? Mijn kamer is klein, maar heel mooi. Ik stuur je een foto. Mijn huisgenoten heten Noor en Bram. Ze zijn heel aardig en we koken vaak samen. Hoe gaat het met Leo en Sofia? Slaapt Sofia nu goed? In december kom ik naar huis. Veel liefs, Luca",
+        "Mijn familie is niet groot. Ik heb een vader, een moeder, een broer en een zus. Mijn vader heet Paulo en hij is zesenvijftig jaar. Mijn moeder heet Rosa. Mijn zus Bia is negentien en mijn broer Rafael is dertig. Mijn ouders en mijn zus wonen in een dorp in Brazilië. Rafael woont in Rio met zijn vrouw en twee kinderen. Mijn vader is leraar en mijn moeder werkt in een winkel. Ik bel elke zondag met mijn moeder en ik ga twee keer per jaar naar huis.",
     },
     {
       id: "w-een-familiefeest",
@@ -172,7 +155,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say why you like it", "Ik vind het heel … .", "leuk", "gezellig", "mooi", "fijn"),
       ],
       model:
-        "Elke zondag is er een klein feest bij mijn oma thuis. Dan komt de hele familie naar haar huis in het dorp. Mijn ouders komen, mijn zus Giulia, mijn broer Paolo met zijn kinderen en soms ook mijn tante. Mijn oma kookt en we eten samen aan een lange tafel in de tuin. Na het eten drinken we koffie met taart. Daarna spelen de kinderen in de tuin en praten de anderen aan tafel. Opa speelt soms gitaar. Ik vind het heel gezellig. Dat mis ik nu in Nederland.",
+        "Elke zondag is er een klein feest bij mijn oma thuis. Dan komt de hele familie naar haar huis in het dorp. Mijn ouders komen, mijn zus Bia, mijn broer Rafael met zijn kinderen en soms ook mijn tante. Mijn oma kookt en we eten samen aan een lange tafel in de tuin. Na het eten drinken we koffie met taart. Daarna spelen de kinderen in de tuin en praten de anderen aan tafel. Opa speelt soms gitaar. Ik vind het heel gezellig. Dat mis ik nu in Nederland.",
     },
   ]),
 
@@ -209,7 +192,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say what Dutch food you like or don't like", "Ik vind … lekker, maar … vind ik raar.", "lekker", "vind", "hagelslag", "kaas", "kibbeling"),
       ],
       model:
-        "In Italië eet ik als ontbijt een croissant en drink ik een kleine koffie. Hier in Leiden eet ik brood met kaas. Ik drink 's ochtends koffie met melk. Als lunch eet ik twee boterhammen op de universiteit. 's Avonds kook ik om acht uur, vaak pasta of rijst met groente. In Nederland is het eten anders. Nederlanders eten al om zes uur warm, en hun lunch is kort en simpel. Ik vind kibbeling op de markt heel lekker. Hagelslag op brood vind ik raar, maar mijn huisgenoten eten het elke dag.",
+        "In Spanje eet ik als ontbijt brood met tomaat en drink ik een kleine koffie. Hier in Leiden eet ik brood met kaas. Ik drink 's ochtends koffie met melk. Als lunch eet ik twee boterhammen op mijn werk. 's Avonds kook ik om acht uur, vaak pasta of rijst met groente. In Nederland is het eten anders. Nederlanders eten al om zes uur warm, en hun lunch is kort en simpel. Ik vind kibbeling op de markt heel lekker. Hagelslag op brood vind ik raar, maar mijn huisgenoten eten het elke dag.",
     },
     {
       id: "w-in-het-restaurant",
@@ -226,7 +209,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Invite your friend to come next time", "Kom je de volgende keer ook?", "volgende", "keer", "kom"),
       ],
       model:
-        "Hoi Noor! Ik zit met Fatima in een klein café bij de gracht. Het is gezellig en niet heel druk. Fatima drinkt thee met munt en ik drink een cappuccino. Ik eet soep met een broodje en Fatima neemt vis met aardappels en groente. Het eten is heel lekker! Daarna nemen we samen een stuk appeltaart met slagroom. Samen betalen we vierendertig euro. Dat is niet duur. Kom je de volgende keer ook? Dan gaan we met z'n drieën. Tot straks! Luca",
+        "Hoi Noor! Ik zit met Fatima in een klein café bij de gracht. Het is gezellig en niet heel druk. Fatima drinkt thee met munt en ik drink een cappuccino. Ik eet soep met een broodje en Fatima neemt vis met aardappels en groente. Het eten is heel lekker! Daarna nemen we samen een stuk appeltaart met slagroom. Samen betalen we vierendertig euro. Dat is niet duur. Kom je de volgende keer ook? Dan gaan we met z'n drieën. Tot straks! Marta",
     },
   ]),
 
@@ -263,7 +246,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Ask them to answer and say goodbye", "Laat je het even weten? Tot …, groeten van …", "laat", "weten", "groeten", "tot"),
       ],
       model:
-        "Hoi Fatima! Zullen we deze week samen Nederlands oefenen? Op maandag en woensdag kan ik niet, want dan heb ik les tot vijf uur. Donderdag kan ik ook niet, dan heb ik voetbal. Dinsdag is goed voor mij. Kun jij om kwart over vier? Dan heb jij geen werk meer, toch? We kunnen in de grote bibliotheek bij het station zitten. Daar is het rustig en er is koffie. Ik neem mijn boek mee. Laat je het even weten? Tot dinsdag, groeten van Luca",
+        "Hoi Fatima! Zullen we deze week samen Nederlands oefenen? Op maandag en woensdag kan ik niet, want dan heb ik les tot vijf uur. Donderdag kan ik ook niet, dan heb ik voetbal. Dinsdag is goed voor mij. Kun jij om kwart over vier? Dan heb jij geen werk meer, toch? We kunnen in de grote bibliotheek bij het station zitten. Daar is het rustig en er is koffie. Ik neem mijn boek mee. Laat je het even weten? Tot dinsdag, groeten van Marta",
     },
     {
       id: "w-mijn-weekend",
@@ -334,7 +317,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say when you're home and close politely", "Ik ben thuis op … . Met vriendelijke groet, …", "thuis", "groet", "groeten"),
       ],
       model:
-        "Beste meneer De Groot, ik ben Luca Bianchi en ik woon op de Oude Vest nummer twaalf. Ik schrijf u over de douche in de badkamer. De douche is kapot. Er komt geen warm water meer. Het probleem is er al sinds zondag. Dat is een probleem, want we zijn met drie studenten en we hebben maar één badkamer. Kan er deze week iemand komen? Ik ben thuis op dinsdag en donderdag, de hele dag. U kunt mij ook bellen. Met vriendelijke groet, Luca Bianchi",
+        "Beste meneer De Groot, ik ben Sara Gómez en ik woon in de Breestraat, nummer acht. Ik schrijf u over de douche in de badkamer. De douche is kapot. Er komt geen warm water meer. Het probleem is er al sinds zondag. Dat is een probleem, want we zijn met drie studenten en we hebben maar één badkamer. Kan er deze week iemand komen? Ik ben thuis op dinsdag en donderdag, de hele dag. U kunt mij ook bellen. Met vriendelijke groet, Sara Gómez",
     },
   ]),
 
@@ -371,7 +354,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Give your phone number and close politely", "Mijn telefoonnummer is … . Met vriendelijke groet, …", "telefoonnummer", "nummer", "groet"),
       ],
       model:
-        "Beste Kees, mijn naam is Luca Bianchi. Ik ben student in Leiden en ik zoek een bijbaan. Bram zegt: u zoekt iemand voor het weekend. Ik wil graag in uw café werken. Ik heb ervaring, want in Italië werk ik elke zomer in een bar. Ik kan heel goed koffie maken. Ik spreek Italiaans en Engels, en een beetje Nederlands. Ik kan op zaterdag en op zondag werken. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. Met vriendelijke groet, Luca Bianchi",
+        "Beste Kees, mijn naam is Tomás Ruiz. Ik ben student in Leiden en ik zoek een bijbaan. Bram zegt: u zoekt iemand voor het weekend. Ik wil graag in uw café werken. Ik heb ervaring, want in Spanje werk ik elke zomer in een bar. Ik kan heel goed koffie maken. Ik spreek Spaans en Engels, en een beetje Nederlands. Ik kan op zaterdag en op zondag werken. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. Met vriendelijke groet, Tomás Ruiz",
     },
     {
       id: "w-mijn-taalles",
@@ -408,7 +391,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Ask about the homework and say when you'll be back", "Wat is het huiswerk? Volgende week ben ik weer in de les.", "huiswerk", "volgende", "week"),
       ],
       model:
-        "Beste Ingrid, ik ben ziek en ik kan vandaag niet naar de les komen. Ik heb hoofdpijn en buikpijn en ik heb ook koorts. Ik voel me sinds gisteren niet goed. Vanmiddag heb ik een afspraak bij de huisarts. Het is griep, denk ik. Nu blijf ik in bed, ik drink veel thee en ik neem paracetamol. Wat is het huiswerk voor deze week? Kan Fatima het misschien aan mij geven? Volgende week ben ik weer in de les, denk ik. Met vriendelijke groet, Luca",
+        "Beste Ingrid, ik ben ziek en ik kan vandaag niet naar de les komen. Ik heb hoofdpijn en buikpijn en ik heb ook koorts. Ik voel me sinds gisteren niet goed. Vanmiddag heb ik een afspraak bij de huisarts. Het is griep, denk ik. Nu blijf ik in bed, ik drink veel thee en ik neem paracetamol. Wat is het huiswerk voor deze week? Kan Fatima het misschien aan mij geven? Volgende week ben ik weer in de les, denk ik. Met vriendelijke groet, Marta",
     },
     {
       id: "w-gezond-leven",
@@ -462,7 +445,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say something you'd like to try", "Ik wil graag een keer … proberen.", "wil", "graag", "proberen"),
       ],
       model:
-        "In mijn vrije tijd speel ik graag voetbal. Ik speel elke zaterdag met vrienden van de universiteit. We spelen op een veld bij het park. Ik vind het leuk, want ik ben dan buiten en ik praat Nederlands met mijn vrienden. Ik kijk ook graag films, het liefst Italiaanse films. Dat doe ik op zondagavond met Noor en Bram, thuis op de bank. In de winter vriest het soms. Dan wil ik graag een keer schaatsen proberen. Dat is typisch Nederlands, zegt Bram.",
+        "In mijn vrije tijd speel ik graag voetbal. Ik speel elke zaterdag met vrienden van de universiteit. We spelen op een veld bij het park. Ik vind het leuk, want ik ben dan buiten en ik praat Nederlands met mijn vrienden. Ik kijk ook graag films, het liefst oude films. Dat doe ik op zondagavond met mijn huisgenoten, thuis op de bank. In de winter vriest het soms. Dan wil ik graag een keer schaatsen proberen. Dat is typisch Nederlands, zegt mijn huisgenoot.",
     },
     {
       id: "w-het-weer",
@@ -479,7 +462,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Ask about the weather where your friend lives", "Hoe is het weer bij jullie?", "bij", "jou", "jullie", "hoe"),
       ],
       model:
-        "Hoi Giulia! Hier in Leiden is het weer vandaag typisch Nederlands. Het regent en er is veel wind. Het is maar acht graden. Ik draag een dikke trui en mijn nieuwe winterjas. Op de fiets word ik toch nat. Morgen schijnt de zon en het wordt twaalf graden. Dan ga ik met Noor naar het strand in Katwijk. We gaan niet zwemmen, alleen wandelen. Vandaag blijf ik thuis met een boek en een kopje thee. Hoe is het weer bij jullie in Italië? Groeten, Luca",
+        "Hoi Ania! Hier in Leiden is het weer vandaag typisch Nederlands. Het regent en er is veel wind. Het is maar acht graden. Ik draag een dikke trui en mijn nieuwe winterjas. Op de fiets word ik toch nat. Morgen schijnt de zon en het wordt twaalf graden. Dan ga ik met Noor naar het strand in Katwijk. We gaan niet zwemmen, alleen wandelen. Vandaag blijf ik thuis met een boek en een kopje thee. Hoe is het weer bij jullie in Polen? Groeten, Marta",
     },
     {
       id: "w-een-uitnodiging",
@@ -496,7 +479,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Ask them to let you know if they're coming", "Kom je ook? Laat het even weten!", "laat", "weten", "komen", "kom"),
       ],
       model:
-        "Hallo allemaal! Volgende week ben ik jarig en ik geef een feestje. Het feest is op zaterdag, om acht uur 's avonds. Het is bij ons thuis, op de Oude Vest nummer twaalf. Er is taart, kaas met mosterd en natuurlijk bier en wijn. Neem ook een vriend of vriendin mee. Na het eten gaan we dansen in de woonkamer. Cadeaus zijn niet nodig! Muziek is wel welkom: neem je lievelingsmuziek mee. Kom je ook? Laat het even weten! Tot zaterdag! Luca",
+        "Hallo allemaal! Volgende week ben ik jarig en ik geef een feestje. Het feest is op zaterdag, om acht uur 's avonds. Het is bij ons thuis, op de Oude Vest nummer twaalf. Er is taart, kaas met mosterd en natuurlijk bier en wijn. Neem ook een vriend of vriendin mee. Na het eten gaan we dansen in de woonkamer. Cadeaus zijn niet nodig! Muziek is wel welkom: neem je lievelingsmuziek mee. Kom je ook? Laat het even weten! Tot zaterdag! Noor",
     },
   ]),
 
@@ -550,7 +533,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say if you're happy with it", "Ik ben heel blij met … , want … .", "blij", "mooi", "vind"),
       ],
       model:
-        "Zaterdag ga ik met Noor naar de stad. Ik heb een echte winterjas nodig, want mijn jas uit Italië is te dun. In de eerste winkel zijn de jassen mooi, maar heel duur: honderdvijftig euro! In de tweede winkel is er uitverkoop. Ik pas een donkerblauwe jas in maat M, maar de mouwen zijn te lang. Dan pas ik een zwarte jas. Die past perfect. Eerst kost hij negentig euro, nu nog maar zestig. Ik neem hem meteen. Ik ben heel blij met mijn nieuwe jas, want hij is warm en mooi.",
+        "Zaterdag ga ik met Noor naar de stad. Ik heb een echte winterjas nodig, want mijn jas uit Brazilië is te dun. In de eerste winkel zijn de jassen mooi, maar heel duur: honderdvijftig euro! In de tweede winkel is er uitverkoop. Ik pas een donkerblauwe jas in maat M, maar de mouwen zijn te lang. Dan pas ik een zwarte jas. Die past perfect. Eerst kost hij negentig euro, nu nog maar zestig. Ik neem hem meteen. Ik ben heel blij met mijn nieuwe jas, want hij is warm en mooi.",
     },
   ]),
 
@@ -570,7 +553,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say what you like about it", "Ik vind mijn studie leuk, want … .", "leuk", "gezellig", "mooi", "mis"),
       ],
       model:
-        "In Italië vieren we op zes januari de Befana. De Befana is een oude vrouw met een lange zwarte jas en een oude hoed. 's Avonds zetten de kinderen hun schoen bij de deur, net als bij Sinterklaas. In de nacht komt de Befana. Lieve kinderen krijgen snoep en chocola. 's Ochtends kijken de kinderen meteen in hun schoen. Die dag eten we veel snoep. Het is een beetje zoals Sinterklaas in Nederland, maar zonder paard en zonder gedichten. Ik vind het een leuk feest. Dit jaar mis ik het, want ik ben in Leiden.",
+        "In Mexico vieren we op zes januari Driekoningen. Dan komen de drie koningen, net als in het verhaal van Jezus. 's Avonds zetten de kinderen hun schoen bij de deur, net als bij Sinterklaas. In de nacht komen de drie koningen. Lieve kinderen krijgen snoep en cadeautjes. 's Ochtends kijken de kinderen meteen in hun schoen. Die dag eten we veel snoep. Het is een beetje zoals Sinterklaas in Nederland, maar zonder paard en zonder gedichten. Ik vind het een leuk feest. Dit jaar mis ik het, want ik ben in Leiden.",
     },
     {
       id: "w-sinterklaasgedicht",

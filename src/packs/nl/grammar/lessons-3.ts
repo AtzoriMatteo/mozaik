@@ -113,7 +113,7 @@ export const lessons3: Record<string, GrammarLesson> = {
     ],
     examples: [
       example("Hoe gaat het met je Nederlands?", "How's your Dutch going?", "Hoe", "gaat"),
-      example("Wanneer kom je naar huis?", "When are you coming home?", "Wanneer", "kom"),
+      example("wanneer kom je naar huis?", "when are you coming home?", "wanneer", "kom"),
       example("Hoeveel uur per week is het?", "How many hours a week is it?", "Hoeveel"),
       example("Heb je ervaring in een winkel?", "Do you have experience in a shop?", "Heb"),
     ],

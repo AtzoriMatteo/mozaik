@@ -10,9 +10,6 @@ export const speakers: Record<string, string> = {
   "het-jaar-rond": "Noor|Noor",
   "kunt-u-dat-herhalen": "De bakker|Kenji|De bakker|Kenji|Kenji|De bakker|Kenji|De bakker|Kenji|Een vrouw|Kenji|Een vrouw|Kenji|Iemand",
   "waar-kom-je-vandaan": "Mevrouw De Vries|Oleksandr|Mevrouw De Vries|Oleksandr|Mevrouw De Vries|Oleksandr|Amira|Mevrouw De Vries|Diego|Mevrouw De Vries",
-  "mijn-familie": "Bram|Bram",
-  "bellen-met-mama": "Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca|Mama|Luca",
-  "een-mail-van-giulia": "Leo",
   "wat-voor-werk-doet-u": "De journaliste|Peter|Yasmin|Tom|Joanna|Sven|Ricardo|Ricardo|Ricardo|De journaliste",
   "ziek": "Noor|Luca|Noor|Luca|Noor|Luca|Noor|Noor",
   "bij-de-huisarts": "De assistente|Luca|De assistente|Luca|De assistente|Luca|De huisarts|Luca|De huisarts|De huisarts|Luca|De huisarts|De huisarts",
@@ -64,6 +61,10 @@ export const speakers: Record<string, string> = {
   "week-3-half-vier": "Jayden|Luca|Assistente|Luca|Assistente|Jayden",
   "week-4-vrijdagavond": "Ruth|Luca|Luca|Noor|Noor|Bram|Ruth|Ruth|Ruth",
   "check-a1-dag-en-tijd": "Ruth",
+  // Unit 3: De familie Yilmaz
+  "familie-2-hoor-je-mij": "Ayşe|Emre|Ayşe|Ayşe|Defne|Opa|Ayşe|Elif|Ayşe|Defne|Elif",
+  "familie-3-opa-wordt-tachtig": "-|-|Marta|Opa|Marta|Opa|Mevrouw De Vries|Yusuf|Yusuf",
+  "check-a1-familie": "Yusuf|Mevrouw De Vries",
   // Unit 2: Marta is nieuw
   "marta-2-de-buren": "Noor|Marta|Noor|Marta|Noor|Luca|Luca|Marta|Bram|Bram|Noor|Noor|Marta|Mevrouw De Vries",
   "marta-3-een-taalmaatje": "Ingrid|Marta|Sanne",

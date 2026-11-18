@@ -111,8 +111,8 @@ export const lessons1: Record<string, GrammarLesson> = {
       text("Only 'our' changes: onze with de-words and plurals, ons with het-words (ons huis). Another way to say whose: de kamer van Luca = Luca's room."),
     ],
     examples: [
-      example("Mijn vader heet Marco en mijn moeder heet Anna.", "My father is called Marco and my mother is called Anna.", "Mijn", "mijn"),
-      example("Hun namen zijn Leo en Sofia.", "Their names are Leo and Sofia.", "Hun"),
+      example("Mijn vader heet Ahmet en mijn moeder heet Fatma.", "My father is called Ahmet and my mother is called Fatma.", "Mijn", "mijn"),
+      example("Hun namen zijn Emre en Defne.", "Their names are Emre and Defne.", "Hun"),
       example("Dat is onze buurvrouw", "That's our neighbour.", "onze"),
       example("Jouw familie is groot!", "Your family is big!", "Jouw"),
     ],

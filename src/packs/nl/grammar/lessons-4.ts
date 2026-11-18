@@ -135,7 +135,7 @@ export const lessons4: Record<string, GrammarLesson> = {
     ],
     examples: [
       example("Het gaat zo regenen.", "It's about to rain.", "gaat", "regenen"),
-      example("Hij gaat je morgen bellen.", "He'll call you tomorrow.", "gaat", "bellen"),
+      example("papa gaat haar morgen weer bellen", "Daddy is going to call her again tomorrow", "gaat", "bellen"),
       example("Bram gaat zwemmen", "Bram goes for a swim", "gaat", "zwemmen"),
     ],
     exercises: [
