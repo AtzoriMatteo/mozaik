@@ -77,4 +77,79 @@ export const tips: readonly LearningTip[] = [
     text: "On Dutch public TV (NPO), subtitles in Dutch are on teletext page 888, and in the NPO Start app. Dutch audio plus Dutch text is ideal.",
     places: ["listen", "home"],
   },
+  {
+    id: "nl-wh-w",
+    text: "English wh- is Dutch w-: what → wat, who → wie, where → waar, when → wanneer, why → waarom.",
+    places: ["review", "read", "home"],
+  },
+  {
+    id: "nl-sch-sh",
+    text: "English sh- is often Dutch sch-: ship → schip, shoe → schoen, sheep → schaap, shine → schijnen.",
+    places: ["review", "read"],
+  },
+  {
+    id: "nl-ij-i",
+    text: "An English long i is often Dutch ij: wine → wijn, time → tijd, ice → ijs, mine → mijn.",
+    places: ["review", "read"],
+  },
+  {
+    id: "nl-ui-ou",
+    text: "The English ou in house is often Dutch ui: house → huis, mouse → muis, out → uit, brown → bruin.",
+    places: ["review", "listen"],
+  },
+  {
+    id: "nl-kofschip",
+    text: "Past participles: ge- + stem + t or d. If the stem ends in t, k, f, s, ch or p ('t kofschip), use -t: gewerkt. Otherwise -d: gewoond.",
+    places: ["write", "review"],
+  },
+  {
+    id: "nl-er-jobs",
+    text: "Er has four jobs: there is (er is), of them (ik heb er twee), there as a place (ik woon er) and with a preposition (ermee, erop).",
+    places: ["read", "write"],
+  },
+  {
+    id: "nl-niet-place",
+    text: "Niet goes near the end (Ik zie hem niet), but before an adjective, a place or a preposition: Het is niet duur. Ik ga niet naar huis.",
+    places: ["write"],
+  },
+  {
+    id: "nl-je-friendly",
+    text: "-je doesn't only mean small: it makes things casual and friendly. Een biertje, een rondje, een momentje. You'll hear it all day.",
+    places: ["listen", "read", "home"],
+  },
+  {
+    id: "nl-u-jij",
+    text: "Most adults say jij to each other, even at work. Use u with older people, officials and in formal letters. If someone says \"zeg maar jij\", switch.",
+    places: ["home", "write", "course"],
+  },
+  {
+    id: "nl-separable",
+    text: "Separable verbs split: opbellen → Ik bel je morgen op. A small op, uit or mee at the end of a sentence belongs to the verb: glue it back on.",
+    places: ["read", "write"],
+  },
+  {
+    id: "nl-unstressed",
+    text: "be-, ge-, ver-, ont- and her- are never stressed: beginnen, vergeten, ontmoeten. Stress the part after them.",
+    places: ["listen", "review"],
+  },
+  {
+    id: "nl-ben-gefietst",
+    text: "Ik heb gefietst (an activity), but ik ben naar Leiden gefietst (going somewhere): movement to a place takes zijn.",
+    places: ["write", "review"],
+  },
+  {
+    id: "nl-numbers-back",
+    text: "Numbers from 21 to 99 go backwards and are one word: 25 is vijfentwintig, five-and-twenty. Listen for the second number first.",
+    places: ["listen", "review"],
+  },
+  {
+    id: "nl-ik-en",
+    text: "Ik ben, ik heb, ik kan: the ik form is the stem with nothing added. Take -en off the infinitive and you have it: werken → ik werk.",
+    places: ["write", "home"],
+  },
+  {
+    id: "nl-nou",
+    text: "Nou starts half of all Dutch answers: nou, nee (well, no), nou ja (oh well), nou en? (so what?). Copy it and you sound less textbook.",
+    places: ["listen", "home"],
+  },
 ];

@@ -22,7 +22,7 @@ export const speakers: Record<string, string> = {
   // Unit 10: Marco torna a Napoli
   "marco-1-il-biglietto": "-|Marco|Impiegato|Marco|Impiegato|Marco|Emma|Marco|Marco",
   "marco-2-in-treno": "Signora|Marco|Signora|Signora|Marco|Marco|Signora",
-  "marco-3-napoli": "Marco|Signore|Barista|Mamma|Zio",
+  "marco-3-napoli": "Marco|Signore|Barista|Marco|Mamma|Zio",
   "marco-4-il-ritorno": "Marco|Rita|Marco|Marco|Emma|Marco|-|Marco",
   "check-it-a1-viaggio": "Mamma",
   // Unit 9: Ana cerca lavoro

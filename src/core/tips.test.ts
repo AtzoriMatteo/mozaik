@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { GENERAL_TIPS, pickTip, tipOrder, tipsFor } from "./tips";
+import { listPacks } from "./registry";
 
 describe("tips", () => {
   it("puts the pack's tips first and only shows tips for the place", () => {
@@ -20,6 +21,16 @@ describe("tips", () => {
   it("keeps tips short enough to read at a glance", () => {
     for (const t of GENERAL_TIPS) expect(t.text.length, t.id).toBeLessThanOrEqual(170);
     expect(new Set(GENERAL_TIPS.map((t) => t.id)).size).toBe(GENERAL_TIPS.length);
+  });
+
+  it("keeps every language's own tips short and distinct too", () => {
+    for (const pack of listPacks()) {
+      const own = pack.tips ?? [];
+      expect(own.length, pack.code).toBeGreaterThanOrEqual(25);
+      for (const t of own) expect(t.text.length, t.id).toBeLessThanOrEqual(170);
+      const ids = [...own, ...GENERAL_TIPS].map((t) => t.id);
+      expect(new Set(ids).size, pack.code).toBe(ids.length);
+    }
   });
 });
 

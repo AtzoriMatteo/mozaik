@@ -1,7 +1,7 @@
 import type { Checkpoint } from "@/core/content";
 import { line, s } from "./units/helpers";
 
-/** Checkpoints for the first Italian units (each built around a custom few learners know). */
+/** Checkpoints for the first Italian units. Customs appear as hints in the scene, not explained. */
 export const checkpointsIt: Record<string, Checkpoint> = {
   "it-a1-ciao": {
     title: "Buonasera alle tre?",
@@ -10,14 +10,13 @@ export const checkpointsIt: Record<string, Checkpoint> = {
       [
         s("Sono le tre del pomeriggio. Emma incontra la signora Rita sulle scale.", "It's three in the afternoon. Emma meets Signora Rita on the stairs."),
         s("Emma dice: Buongiorno, signora! Rita risponde: Buonasera, cara!", "Emma says: Good morning, madam! Rita answers: Good evening, dear!"),
-        s("Buonasera alle tre? Sì. In Italia buongiorno è per la mattina. Dopo pranzo, molti italiani dicono già buonasera.", "Good evening at three? Yes. In Italy buongiorno is for the morning. After lunch, many Italians already say buonasera."),
-        s("E se non sai cosa dire, c'è salve: va bene a ogni ora, con il tu e con il Lei.", "And if you don't know what to say, there's salve: it works at any time, with tu and with Lei."),
+        s("Emma ride. Buonasera alle tre? Va bene: buonasera, signora!", "Emma laughs. Good evening at three? All right: good evening, madam!"),
       ],
     ],
     textTasks: [
-      { kind: "truefalse", statement: "In Italia si dice buonasera solo di sera.", translation: "In Italy you only say buonasera in the evening.", answer: false },
-      { kind: "choice", prompt: "What can you say at any time of day?", options: ["Salve", "Buongiorno", "Buonanotte"], answer: 0 },
-      { kind: "choice", prompt: "Why does Rita say buonasera at three?", options: ["After lunch many Italians already say buonasera", "She's confused", "She's going to bed"], answer: 0 },
+      { kind: "truefalse", statement: "Rita dice buongiorno a Emma.", translation: "Rita says good morning to Emma.", answer: false },
+      { kind: "choice", prompt: "What time is it?", options: ["Three in the afternoon", "Three in the morning", "Nine in the evening"], answer: 0 },
+      { kind: "choice", prompt: "What does Emma say in the end?", options: ["Buonasera", "Buongiorno", "Buonanotte"], answer: 0 },
     ],
     listening: {
       situation: "Rita leaves Emma a voice message.",
@@ -43,6 +42,8 @@ export const checkpointsIt: Record<string, Checkpoint> = {
     },
     words: {
       salve: { meaning: "hello (neutral, any time, tu or Lei)" },
+      ride: { meaning: "laughs", base: "ridere" },
+      bene: { meaning: "well (va bene = all right)" },
       buonasera: { meaning: "good evening (from about lunchtime on)" },
       buongiorno: { meaning: "good morning, hello (until about lunchtime)" },
       sai: { meaning: "you know", base: "sapere" },
@@ -57,15 +58,14 @@ export const checkpointsIt: Record<string, Checkpoint> = {
     text: [
       [
         s("Al bar Emma chiede a un signore: Lei è di Bologna? Lui risponde: No, signorina. Sono di Imola!", "At the bar Emma asks a man: Are you from Bologna? He answers: No, miss. I'm from Imola!"),
-        s("Imola è a trenta chilometri da Bologna. Ma per lui è un'altra città, e un'altra storia.", "Imola is thirty kilometres from Bologna. But for him it's another town, and another story."),
-        s("Questo in Italia si chiama campanilismo: l'amore per la propria città, il proprio campanile.", "In Italy this is called campanilismo: love for your own town, your own bell tower."),
-        s("Molti italiani si presentano con la città prima del paese: sono napoletano, sono milanese, sono di Bari.", "Many Italians introduce themselves with their town before the country: I'm from Naples, I'm from Milan, I'm from Bari."),
+        s("Imola è a trenta chilometri da Bologna. Ma per lui è un'altra città!", "Imola is thirty kilometres from Bologna. But for him it's another town!"),
+        s("Emma ride e dice: Scusi! Allora, Lei è di Imola.", "Emma laughs and says: Sorry! So, you're from Imola."),
       ],
     ],
     textTasks: [
-      { kind: "choice", prompt: "What is campanilismo?", options: ["Strong love for your own town", "A kind of church music", "A sport"], answer: 0 },
+      { kind: "choice", prompt: "How far is Imola from Bologna?", options: ["Thirty kilometres", "Three kilometres", "Three hundred kilometres"], answer: 0 },
       { kind: "truefalse", statement: "Il signore è di Bologna.", translation: "The man is from Bologna.", answer: false },
-      { kind: "choice", prompt: "How do many Italians say where they're from?", options: ["With their town first", "With their country first", "With their region only"], answer: 0 },
+      { kind: "choice", prompt: "What does Emma do?", options: ["Laughs and apologises", "Leaves the bar", "Gets angry"], answer: 0 },
     ],
     listening: {
       situation: "Karim leaves Emma a voice message.",
@@ -91,6 +91,9 @@ export const checkpointsIt: Record<string, Checkpoint> = {
     },
     words: {
       imola: { meaning: "Imola (a town near Bologna)" },
+      scusi: { meaning: "sorry, excuse me (with Lei)" },
+      allora: { meaning: "so, well then" },
+      ride: { meaning: "laughs", base: "ridere" },
       chilometri: { meaning: "kilometres", base: "chilometro" },
       città: { meaning: "town, city" },
       storia: { meaning: "story; history" },
@@ -117,15 +120,14 @@ export const checkpointsIt: Record<string, Checkpoint> = {
     text: [
       [
         s("La cugina di Giulia ha un bambino. Si chiama Giovanni, come il nonno.", "Giulia's cousin has a baby boy. He's called Giovanni, like his grandfather."),
-        s("In molte famiglie italiane, soprattutto al sud, c'è una vecchia tradizione: il primo figlio ha il nome del nonno paterno.", "In many Italian families, especially in the south, there's an old tradition: the first son gets his paternal grandfather's name."),
-        s("La prima figlia ha il nome della nonna paterna. Il secondo figlio ha il nome del nonno materno, e così via.", "The first daughter gets her paternal grandmother's name. The second son gets the maternal grandfather's name, and so on."),
-        s("Per questo in una famiglia ci sono spesso tre o quattro Giovanni! Al pranzo della domenica è un problema: chi chiami?", "That's why a family often has three or four Giovannis! At Sunday lunch it's a problem: who are you calling?"),
+        s("Al pranzo della domenica ci sono tre Giovanni: il nonno, lo zio e il bambino.", "At Sunday lunch there are three Giovannis: grandpa, the uncle and the baby."),
+        s("La nonna chiama: Giovanni, a tavola! E tutti e tre rispondono.", "Grandma calls: Giovanni, lunch is ready! And all three answer."),
       ],
     ],
     textTasks: [
-      { kind: "choice", prompt: "Who is the first son named after?", options: ["His father's father", "His mother's father", "His father"], answer: 0 },
-      { kind: "truefalse", statement: "Questa tradizione c'è solo al nord.", translation: "This tradition is only found in the north.", answer: false },
-      { kind: "choice", prompt: "Why is Sunday lunch a problem?", options: ["Several people have the same name", "The family is too big for the table", "Grandpa can't come"], answer: 0 },
+      { kind: "choice", prompt: "Who is the baby named after?", options: ["His grandfather", "His father", "His uncle"], answer: 0 },
+      { kind: "truefalse", statement: "Al pranzo della domenica c'è solo un Giovanni.", translation: "At Sunday lunch there's only one Giovanni.", answer: false },
+      { kind: "choice", prompt: "What happens when grandma calls Giovanni?", options: ["All three answer", "Nobody answers", "The baby cries"], answer: 0 },
     ],
     listening: {
       situation: "Giulia's grandma Pina calls her.",
@@ -153,6 +155,12 @@ export const checkpointsIt: Record<string, Checkpoint> = {
       cugina: { meaning: "cousin (a woman)" },
       bambino: { meaning: "baby; child" },
       giovanni: { meaning: "Giovanni (John)" },
+      zio: { meaning: "uncle" },
+      tavola: { meaning: "table (a tavola! = food's ready!)" },
+      tutti: { meaning: "all, everyone", base: "tutto" },
+      tre: { meaning: "three" },
+      rispondono: { meaning: "answer", base: "rispondere" },
+      nonna: { meaning: "grandma" },
       soprattutto: { meaning: "especially" },
       sud: { meaning: "south" },
       tradizione: { meaning: "tradition" },

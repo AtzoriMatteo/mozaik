@@ -99,8 +99,8 @@ export const viaggio: Unit = {
         [
           s("Prima di andare dalla mamma, Marco entra in un bar vicino alla stazione.", "Before going to his mum's, Marco goes into a bar near the station."),
           s("\"Un caffè, e un caffè sospeso\", dice al barista. Paga due caffè, ma ne beve uno.", "\"A coffee, and a caffè sospeso,\" he tells the barista. He pays for two coffees, but drinks one."),
-          s("Il caffè sospeso è una vecchia tradizione di Napoli: paghi un caffè in più, per una persona che non ha soldi.", "The caffè sospeso is an old Naples tradition: you pay for an extra coffee, for someone who has no money."),
           s("Dopo dieci minuti entra un signore. \"C'è un sospeso?\" \"Sì, c'è!\" E il signore beve il caffè di Marco.", "Ten minutes later a man comes in. \"Is there a sospeso?\" \"Yes, there is!\" And the man drinks Marco's coffee."),
+          s("\"È una tradizione di Napoli\", dice Marco al barista, e sorride.", "\"It's a Naples tradition,\" Marco says to the barista, and smiles."),
         ],
         [
           s("A casa della mamma c'è tutta la famiglia: tre sorelle, due cognati, sette nipoti e una zia di novantadue anni.", "At his mum's house the whole family is there: three sisters, two brothers-in-law, seven nephews and nieces, and an aunt of ninety-two."),

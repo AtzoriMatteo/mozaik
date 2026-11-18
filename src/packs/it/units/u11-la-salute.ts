@@ -46,8 +46,7 @@ export const salute: Unit = {
           s("Ma Rita è seria: \"E tu, Emma, metti le pantofole! In casa non si sta a piedi nudi!\"", "But Rita is serious: \"And you, Emma, put your slippers on! You don't go barefoot at home!\""),
         ],
         [
-          s("Molti italiani hanno paura delle correnti d'aria e dei piedi freddi.", "Many Italians are afraid of draughts and cold feet."),
-          s("E molti nonni dicono ancora: dopo mangiato, aspetta tre ore prima di fare il bagno al mare!", "And many grandparents still say: after eating, wait three hours before swimming in the sea!"),
+          s("Emma non dice niente e mette le pantofole.", "Emma says nothing and puts her slippers on."),
           s("Giulia beve il brodo e va a letto. \"Lunedì ho l'esame. Devo stare bene!\"", "Giulia drinks the broth and goes to bed. \"I've got my exam on Monday. I have to be well!\""),
         ],
       ],
@@ -98,7 +97,6 @@ export const salute: Unit = {
       paragraphs: [
         [
           s("Emma va in farmacia per le medicine. Fuori c'è una croce verde che si accende.", "Emma goes to the chemist's for the medicine. Outside there's a green cross that lights up."),
-          s("In Italia la farmacia è molto importante. Molte persone chiedono consiglio al farmacista prima di andare dal medico.", "In Italy the chemist's is very important. Many people ask the pharmacist for advice before going to the doctor."),
           s("La farmacista, la dottoressa Neri, dà le medicine e dice: \"Le prenda dopo i pasti, non a stomaco vuoto.\"", "The pharmacist, Dr Neri, gives her the medicine and says: \"Take it after meals, not on an empty stomach.\""),
           s("\"E se Giulia sta male di notte?\" \"C'è sempre una farmacia di turno, aperta anche di notte. Guardi il cartello sulla porta.\"", "\"And if Giulia feels ill at night?\" \"There's always a duty pharmacy, open at night too. Look at the sign on the door.\""),
         ],
@@ -129,7 +127,6 @@ export const salute: Unit = {
       paragraphs: [
         [
           s("Due settimane dopo Giulia sta benissimo. Oggi c'è l'appello di storia dell'arte.", "Two weeks later Giulia is perfectly well. Today is the history of art exam."),
-          s("In Italia molti esami all'università sono orali: lo studente parla con il professore per venti o trenta minuti.", "In Italy many university exams are oral: the student talks with the professor for twenty or thirty minutes."),
           s("Il voto va da diciotto a trenta. Diciotto basta per passare. Con un esame perfetto, il professore dà trenta e lode.", "The grade goes from eighteen to thirty. Eighteen is enough to pass. For a perfect exam, the professor gives thirty cum laude."),
           s("E una cosa strana per Emma: se il voto non ti piace, puoi rifiutarlo e rifare l'esame!", "And a strange thing for Emma: if you don't like the grade, you can refuse it and take the exam again!"),
         ],
