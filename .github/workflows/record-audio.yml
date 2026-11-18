@@ -48,7 +48,8 @@ jobs:
             echo "Nothing new to record."
           else
             git commit -m "Record course audio"
-            git push
+            # Other changes may have reached main while recording: replay on top of them.
+            for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
           fi
       - name: Copy the recordings to Supabase Storage
         env:
