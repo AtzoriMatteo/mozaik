@@ -12,13 +12,21 @@ Naples, Giulia at the doctor's, Emma's Italian winter. Each with texts,
 listening, grammar lessons, writing and a checkpoint. Units 1–3 got
 checkpoints too, so every Italian unit now ends with one.
 
-**Culture is a core strand (Matteo's call, Claude's execution).** Every
-checkpoint is built around a custom most learners never hear about.
-Dutch: kringverjaardag, beterschapskaart, Buienradar, koopavond, wadlopen,
-Sint-Maarten; A2: 4 and 5 May, vakantiegeld, grofvuil, kraamzorg and
-beschuit met muisjes, the stiltecoupé, Teletekst 101, Burendag, Tikkie,
-gourmetten, the Elfstedentocht. Italian: buonasera from lunchtime on,
-campanilismo, naming children after grandparents.
+**Culture: a handful of texts, hints elsewhere (Matteo, corrected the same
+morning).** Not every unit should teach a custom. Each A1 has about five
+culture texts (Dutch: Koningsdag, Sinterklaas, Oud en nieuw, Nederland op de
+fiets, Nederland in het klein; Italian: tu or Lei, the languages of Italy,
+gestures, Sunday lunch, living with your parents). Everywhere else a custom
+may appear in a scene without being explained: the birthday calendar in the
+toilet, Buienradar, koopavond, a caffè sospeso, Rita saying buonasera at three.
+The checkpoints were rewritten that way, A2's too, and the narrator's
+"In Italy people…" lines in Italian units 10–11 were cut.
+
+**More tips (Matteo).** 15 new Dutch tips, 15 new Italian, 5 general (about
+30 per language now): sound shifts (wh → w, sh → sch, ct → tt, ph → f),
+small grammar shortcuts ('t kofschip, er, niet, essere with movement) and
+words that make you sound less textbook (nou, dai, magari, volentieri).
+A test keeps every tip under 170 characters and their ids unique.
 
 **More leads, less Italian (Claude).** Dutch A1 units 8–12 no longer follow
 an Italian character: the leads are Bram, Kwame, Daniel, Marta and others.

@@ -4,9 +4,9 @@ const s = (text: string, translation: string): Sentence => ({ text, translation 
 const l = (speaker: string, text: string, translation: string): ListeningLine => ({ speaker, text, translation });
 
 /**
- * Checkpoints for the units that aren't story units yet (Matteo, 18 Nov
- * 2026: every unit ends with one, and culture should be a real part of the
- * course). Each is built around a custom many learners never hear about.
+ * Checkpoints for the units that aren't story units yet. A custom may show
+ * up in the scene as a hint, never as an explanation (Matteo, 19 Nov 2026:
+ * culture is a handful of texts per level, not every unit).
  */
 export const checkpointsNl: Record<string, Checkpoint> = {
   /* ---------------- A1 ---------------- */
@@ -16,14 +16,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Mevrouw De Vries geeft Priya een cadeau: een verjaardagskalender.", "Mrs De Vries gives Priya a present: a birthday calendar."),
-        s("Die hang je op de wc, zegt ze. Op de wc? Ja! In veel Nederlandse huizen hangt de verjaardagskalender op de wc.", "You hang it in the toilet, she says. In the toilet? Yes! In many Dutch homes the birthday calendar hangs in the toilet."),
-        s("Daar zie je hem elke dag, dus je vergeet geen verjaardag.", "You see it there every day, so you don't forget a birthday."),
+        s("Die hang je op de wc, zegt ze. Priya lacht, maar ze doet het.", "You hang it in the toilet, she says. Priya laughs, but she does it."),
+        s("Nu ziet ze hem elke dag, dus ze vergeet geen verjaardag.", "Now she sees it every day, so she won't forget a birthday."),
         s("Priya schrijft de eerste naam: mevrouw De Vries, zeventien juni.", "Priya writes the first name: Mrs De Vries, the seventeenth of June."),
       ],
     ],
     textTasks: [
-      { kind: "truefalse", statement: "De verjaardagskalender hangt vaak in de keuken.", translation: "The birthday calendar often hangs in the kitchen.", answer: false },
-      { kind: "choice", prompt: "Why in the toilet?", options: ["You see it every day there, so you don't forget birthdays", "There's no other wall", "It's a joke"], answer: 0 },
+      { kind: "truefalse", statement: "De verjaardagskalender hangt in de keuken van Priya.", translation: "The birthday calendar hangs in Priya's kitchen.", answer: false },
+      { kind: "choice", prompt: "Where does Mrs De Vries tell her to hang it?", options: ["In the toilet", "In the kitchen", "By the front door"], answer: 0 },
       { kind: "choice", prompt: "When is Mrs De Vries's birthday?", options: ["17 June", "7 June", "17 July"], answer: 0 },
     ],
     listening: {
@@ -68,7 +68,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Donderdag ligt er een kaart in de brievenbus van nummer twaalf. Op de kaart staat een grote zon en één woord: Beterschap!", "On Thursday there's a card in the letterbox of number twelve. On the card there's a big sun and one word: Get well soon!"),
         s("De kaart is van de collega's van Bram in het café. Iedereen schrijft iets: Kom snel terug! Het café is saai zonder jou!", "The card is from Bram's colleagues at the café. Everyone writes something: Come back soon! The café is boring without you!"),
-        s("In Nederland stuur je een beterschapskaart als iemand ziek is. Vaak tekent het hele team.", "In the Netherlands you send a get-well card when someone is ill. Often the whole team signs it."),
+        s("Ook Ruth en Jayden schrijven iets. Jayden tekent een grote kop koffie.", "Ruth and Jayden write something too. Jayden draws a big cup of coffee."),
         s("Bram zet de kaart op de tafel. Hij voelt zich al een beetje beter.", "Bram puts the card on the table. He already feels a bit better."),
       ],
     ],
@@ -103,6 +103,8 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     words: {
       brievenbus: { meaning: "letterbox", closer: "brieven (letters) + bus (box)" },
       beterschap: { meaning: "get well soon" },
+      ruth: { meaning: "Ruth (a name)" },
+      jayden: { meaning: "Jayden (a name)" },
       beterschapskaart: { meaning: "get-well card" },
       saai: { meaning: "boring" },
       tekent: { meaning: "signs; draws", base: "tekenen" },
@@ -119,14 +121,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Zaterdag wil Kwame met Noor naar het strand. Maar eerst kijkt Noor op haar telefoon.", "On Saturday Kwame wants to go to the beach with Noor. But first Noor looks at her phone."),
         s("Ze kijkt op Buienradar. Op die app zie je precies waar het regent, en wanneer.", "She looks at Buienradar. On that app you can see exactly where it's raining, and when."),
-        s("Bijna elke Nederlander heeft Buienradar op zijn telefoon. Want wie fietst, wil weten: word ik nat of niet?", "Almost every Dutch person has Buienradar on their phone. Because if you cycle, you want to know: will I get wet or not?"),
+        s("Kwame lacht. In Ghana kijk ik gewoon naar de lucht, zegt hij.", "Kwame laughs. In Ghana I just look at the sky, he says."),
         s("Om twee uur regent het, zegt Noor. Om drie uur schijnt de zon weer. We gaan om kwart over drie.", "At two it rains, says Noor. At three the sun shines again. We'll go at quarter past three."),
       ],
     ],
     textTasks: [
       { kind: "choice", prompt: "What is Buienradar?", options: ["An app that shows where and when it rains", "A weather station", "A TV programme"], answer: 0 },
       { kind: "truefalse", statement: "Ze gaan om twee uur naar het strand.", translation: "They're going to the beach at two.", answer: false },
-      { kind: "choice", prompt: "Why do so many Dutch people use it?", options: ["They cycle and don't want to get wet", "It's required", "It's a game"], answer: 0 },
+      { kind: "choice", prompt: "What does Kwame do in Ghana?", options: ["He just looks at the sky", "He uses Buienradar too", "He watches the weather on TV"], answer: 0 },
     ],
     listening: {
       situation: "Noor leaves Kwame a voice message on Saturday afternoon.",
@@ -170,15 +172,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Op de deur van de kledingwinkel van Yusuf hangt een briefje: Donderdag koopavond, open tot negen uur!", "On the door of Yusuf's clothes shop there's a note: Thursday late-night shopping, open until nine!"),
-        s("In Nederland gaan de meeste winkels om zes uur dicht. Maar één avond per week is er koopavond. In Leiden is dat op donderdag.", "In the Netherlands most shops close at six. But one evening a week there's late-night shopping. In Leiden that's on Thursday."),
-        s("Op zondag zijn veel winkels open, maar vaak pas vanaf twaalf uur. En op maandagochtend zijn ze vaak dicht.", "On Sundays many shops are open, but often only from twelve. And on Monday mornings they're often closed."),
+        s("Om zes uur gaan de andere winkels in de straat dicht, maar Yusuf is nog open. Het is druk: veel mensen komen na hun werk.", "At six the other shops in the street close, but Yusuf is still open. It's busy: lots of people come after work."),
         s("Fatima komt op donderdag om half acht. Na haar werk heeft ze eindelijk tijd voor nieuwe schoenen.", "Fatima comes on Thursday at half past seven. After work she finally has time for new shoes."),
       ],
     ],
     textTasks: [
       { kind: "truefalse", statement: "Op koopavond is de winkel open tot zes uur.", translation: "On late-night shopping evening the shop is open until six.", answer: false },
       { kind: "choice", prompt: "Why does Fatima come on Thursday evening?", options: ["It's the only evening she has time after work", "It's cheaper", "Yusuf asks her"], answer: 0 },
-      { kind: "choice", prompt: "When are shops often closed?", options: ["Monday morning", "Thursday evening", "Saturday afternoon"], answer: 0 },
+      { kind: "choice", prompt: "Why is the shop busy?", options: ["Lots of people come after work", "There's a sale", "It's Saturday"], answer: 0 },
     ],
     listening: {
       situation: "Yusuf leaves Kwame a voice message.",
@@ -223,14 +224,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Marta stuurt een ansichtkaart aan mevrouw De Vries.", "Marta sends Mrs De Vries a postcard."),
         s("Lieve mevrouw De Vries, ik ben op Texel, een eiland in het noorden. Hier zijn meer schapen dan mensen! Gisteren heb ik gefietst door de duinen.", "Dear Mrs De Vries, I'm on Texel, an island in the north. There are more sheep than people here! Yesterday I cycled through the dunes."),
-        s("Morgen ga ik wadlopen: met een gids loop je bij laag water over de bodem van de zee. Dat kan bijna nergens anders in de wereld.", "Tomorrow I'm going mudflat walking: with a guide you walk on the sea bed at low tide. You can hardly do that anywhere else in the world."),
+        s("Morgen ga ik wadlopen, met een gids. Ik vind het een beetje spannend!", "Tomorrow I'm going mudflat walking, with a guide. I find it a bit exciting!"),
         s("Groetjes, ook aan uw kat! Marta", "Best wishes, to your cat too! Marta"),
       ],
     ],
     textTasks: [
-      { kind: "choice", prompt: "What is wadlopen?", options: ["Walking on the sea bed at low tide, with a guide", "Swimming to another island", "Cycling through the dunes"], answer: 0 },
+      { kind: "choice", prompt: "What is Marta doing tomorrow?", options: ["Mudflat walking with a guide", "Swimming to another island", "Going home"], answer: 0 },
       { kind: "truefalse", statement: "Op Texel zijn meer mensen dan schapen.", translation: "On Texel there are more people than sheep.", answer: false },
-      { kind: "choice", prompt: "Why do you need a guide?", options: ["The sea comes back: it's dangerous alone", "It's very far", "It's a law for tourists"], answer: 0 },
+      { kind: "choice", prompt: "Who else does Marta greet?", options: ["Mrs De Vries's cat", "Her sister", "The guide"], answer: 0 },
     ],
     listening: {
       situation: "An announcement on the train back from Den Helder.",
@@ -289,14 +290,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Op elf november gaat om zes uur 's avonds de bel bij mevrouw De Vries.", "On the eleventh of November at six in the evening the bell rings at Mrs De Vries's."),
         s("Voor de deur staan Jayden, Emre en Defne, met lampionnen. Ze zingen een liedje over Sint-Maarten.", "At the door are Jayden, Emre and Defne, with paper lanterns. They sing a song about St Martin."),
-        s("Op Sint-Maarten lopen kinderen in het donker langs de deuren. Ze zingen, en ze krijgen snoep of een mandarijn.", "On St Martin's Day children walk from door to door in the dark. They sing, and they get sweets or a tangerine."),
-        s("Het is niet in heel Nederland een feest, maar in veel steden en dorpen wel. Mevrouw De Vries heeft een grote schaal met snoep klaar. Ze vindt het elk jaar weer prachtig.", "It's not celebrated everywhere in the Netherlands, but it is in lots of towns and villages. Mrs De Vries has a big bowl of sweets ready. She finds it lovely every year."),
+        s("Ze zingen nog een keer, en mevrouw De Vries geeft ze snoep en een mandarijn.", "They sing once more, and Mrs De Vries gives them sweets and a tangerine."),
+        s("Ze heeft een grote schaal met snoep klaar. Ze vindt het elk jaar weer prachtig.", "She has a big bowl of sweets ready. She loves it every year."),
       ],
     ],
     textTasks: [
       { kind: "truefalse", statement: "Op Sint-Maarten zingen kinderen bij de deur.", translation: "On St Martin's Day children sing at the door.", answer: true },
       { kind: "choice", prompt: "What do the children carry?", options: ["Paper lanterns", "Presents", "Orange flags"], answer: 0 },
-      { kind: "choice", prompt: "Is it celebrated everywhere in the Netherlands?", options: ["No, but in many towns and villages", "Yes, everywhere", "Only in Amsterdam"], answer: 0 },
+      { kind: "choice", prompt: "What do the children get?", options: ["Sweets and a tangerine", "Money", "A lantern"], answer: 0 },
     ],
     listening: {
       situation: "Ruth leaves Mrs De Vries a voice message.",
@@ -355,7 +356,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
         s("Dan herdenken de Nederlanders de mensen die in de Tweede Wereldoorlog en daarna in oorlogen zijn gestorven.", "Then the Dutch remember the people who died in the Second World War and in wars since."),
         s("De treinen stoppen, de trams staan stil, en ook op straat blijft iedereen staan.", "The trains stop, the trams stand still, and people in the street stand still too."),
         s("Vorig jaar was Joris in de supermarkt om acht uur. Alle klanten stonden twee minuten stil tussen de schappen. Niemand zei iets.", "Last year Joris was in the supermarket at eight o'clock. All the customers stood still between the shelves for two minutes. Nobody said a word."),
-        s("De volgende dag, op vijf mei, is het Bevrijdingsdag: dan vieren de mensen de vrijheid, met muziek en festivals.", "The next day, 5 May, is Liberation Day: then people celebrate freedom, with music and festivals."),
+        s("De volgende dag gaat Joris naar een festival in Haarlem, want het is vijf mei.", "The next day Joris goes to a festival in Haarlem, because it's the fifth of May."),
       ],
     ],
     textTasks: [
@@ -387,6 +388,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       modelTranslation: "On 11 November in my country we remember the end of the First World War. Last year I watched it on TV with my grandpa. It was quiet and very beautiful.",
     },
     words: {
+      festival: { meaning: "festival" },
       herdenken: { meaning: "to remember, to commemorate" },
       tweede: { meaning: "second" },
       wereldoorlog: { meaning: "world war", closer: "wereld (world) + oorlog (war)" },
@@ -412,12 +414,11 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("In mei krijgt Esther een verrassing: haar salaris is veel hoger dan normaal.", "In May Esther gets a surprise: her salary is much higher than usual."),
         s("Is het een fout? Nee. Het is vakantiegeld.", "Is it a mistake? No. It's holiday pay."),
-        s("In Nederland krijgen werknemers elk jaar acht procent van hun salaris extra, meestal in mei of juni. Dat geld is voor de zomervakantie.", "In the Netherlands employees get an extra eight percent of their salary every year, usually in May or June. That money is for the summer holiday."),
-        s("Veel buitenlanders weten dat niet en zijn heel blij verrast. Esther boekt meteen een reis naar Portugal.", "Many foreigners don't know this and are very happily surprised. Esther books a trip to Portugal straight away."),
+        s("Haar collega Ruud lacht: dat is je vakantiegeld! Esther boekt meteen een reis naar Portugal.", "Her colleague Ruud laughs: that's your holiday pay! Esther books a trip to Portugal straight away."),
       ],
     ],
     textTasks: [
-      { kind: "choice", prompt: "What is vakantiegeld?", options: ["An extra 8% of your salary, paid around May", "A bonus for working at Christmas", "Money for a company trip"], answer: 0 },
+      { kind: "choice", prompt: "Who tells Esther what the money is?", options: ["Her colleague Ruud", "Her boss", "Her bank"], answer: 0 },
       { kind: "truefalse", statement: "Het vakantiegeld is een fout van de baas.", translation: "The holiday pay is the boss's mistake.", answer: false },
       { kind: "choice", prompt: "What does Esther do with it?", options: ["Books a trip to Portugal", "Saves it", "Buys a bike"], answer: 0 },
     ],
@@ -471,14 +472,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Op dinsdagavond zet Linda een oude stoel en een lamp op de stoep. Woensdag komt de gemeente het grofvuil ophalen.", "On Tuesday evening Linda puts an old chair and a lamp on the pavement. On Wednesday the council comes to collect the bulky rubbish."),
         s("Maar om negen uur 's avonds staat de stoel er al niet meer. En de lamp ook niet.", "But at nine in the evening the chair is already gone. And so is the lamp."),
-        s("In Nederland nemen mensen vaak spullen mee van de stoep. Een stoel, een kast, een plant: waarom niet? Dat heet soms 'stoepvondst'.", "In the Netherlands people often take things from the pavement. A chair, a cupboard, a plant: why not? It's sometimes called a 'pavement find'."),
+        s("Linda lacht. Waarom niet?", "Linda laughs. Why not?"),
         s("De volgende dag ziet Linda haar lamp. Hij staat in het raam van de buren, en hij brandt.", "The next day Linda sees her lamp. It's in the neighbours' window, switched on."),
       ],
     ],
     textTasks: [
       { kind: "truefalse", statement: "De gemeente haalt de stoel op dinsdagavond op.", translation: "The council collects the chair on Tuesday evening.", answer: false },
       { kind: "choice", prompt: "What happened to the lamp?", options: ["The neighbours took it from the pavement", "The council took it", "It broke"], answer: 0 },
-      { kind: "choice", prompt: "Why can Linda see the lamp in their window?", options: ["Dutch homes often have no curtains closed: you see inside", "She goes into their house", "They show it to her"], answer: 0 },
+      { kind: "choice", prompt: "Where is the lamp now?", options: ["In the neighbours' window", "With the rubbish", "Back with Linda"], answer: 0 },
     ],
     listening: {
       situation: "The council's phone line about bulky rubbish.",
@@ -523,7 +524,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Mariana heeft een dochtertje gekregen. Ze heet Lila.", "Mariana has had a little daughter. She's called Lila."),
-        s("Mariana is niet in het ziekenhuis bevallen, maar thuis. In Nederland kan dat, met een verloskundige.", "Mariana didn't give birth in hospital, but at home. In the Netherlands that's possible, with a midwife."),
+        s("Mariana is niet in het ziekenhuis bevallen, maar thuis.", "Mariana didn't give birth in hospital, but at home."),
         s("De volgende dag komt er een kraamverzorgster. Ze komt een week lang, elke dag een paar uur.", "The next day a maternity nurse comes. She comes for a week, a few hours every day."),
         s("Ze helpt met de baby, ze controleert of moeder en kind gezond zijn, en ze zet zelfs koffie voor het bezoek.", "She helps with the baby, she checks that mother and child are healthy, and she even makes coffee for the visitors."),
         s("En het bezoek krijgt beschuit met muisjes: roze voor een meisje, blauw voor een jongen.", "And the visitors get rusks with aniseed sprinkles: pink for a girl, blue for a boy."),
@@ -583,7 +584,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Kofi zit in de trein van Utrecht naar Groningen. Hij belt zijn moeder in Ghana, lekker hard, want de verbinding is slecht.", "Kofi is on the train from Utrecht to Groningen. He's calling his mother in Ghana, nice and loud, because the connection is bad."),
         s("Een vrouw tegenover hem wijst naar een bordje boven het raam: een grote S.", "A woman opposite him points to a sign above the window: a big S."),
-        s("Kofi zit in de stiltecoupé. Daar mag je niet bellen en niet hard praten. Veel Nederlanders kiezen die coupé om te werken of te lezen.", "Kofi is in the quiet carriage. There you're not allowed to phone or talk loudly. Many Dutch people choose that carriage to work or read."),
+        s("Kofi zit in de stiltecoupé. Daar mag je niet bellen.", "Kofi is in the quiet carriage. You're not allowed to phone there."),
         s("Kofi zegt zachtjes sorry en loopt naar het balkon van de trein. Daar mag het wel.", "Kofi quietly says sorry and walks to the vestibule of the train. There it's allowed."),
       ],
     ],
@@ -639,14 +640,13 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Opa Wim leest het nieuws niet op zijn telefoon. Hij zet de televisie aan en drukt op de knop van Teletekst.", "Grandpa Wim doesn't read the news on his phone. He turns on the television and presses the Teletext button."),
-        s("Teletekst bestaat al sinds negentienhonderdtachtig: alleen tekst, in grote letters, op een zwarte achtergrond.", "Teletext has existed since 1980: just text, in big letters, on a black background."),
-        s("Op pagina honderdeen staat het belangrijkste nieuws. Verrassend genoeg gebruiken nog steeds meer dan een miljoen Nederlanders het, elke week.", "Page 101 has the most important news. Surprisingly, more than a million Dutch people still use it every week."),
+        s("Op pagina honderdeen staat het belangrijkste nieuws, zegt hij altijd.", "Page 101 has the most important news, he always says."),
         s("Zijn kleindochter Noa lacht. Maar als haar wifi kapot is, kijkt zij ook op pagina honderdeen.", "His granddaughter Noa laughs. But when her wifi is broken, she looks at page 101 too."),
       ],
     ],
     textTasks: [
-      { kind: "choice", prompt: "What is Teletekst?", options: ["Text news on the TV, since 1980", "A news app", "A newspaper"], answer: 0 },
-      { kind: "truefalse", statement: "Bijna niemand gebruikt Teletekst nog.", translation: "Almost nobody uses Teletext any more.", answer: false },
+      { kind: "choice", prompt: "Where does Wim read the news?", options: ["On the TV, on Teletekst", "On his phone", "In the paper"], answer: 0 },
+      { kind: "truefalse", statement: "Opa Wim leest het nieuws op zijn telefoon.", translation: "Grandpa Wim reads the news on his phone.", answer: false },
       { kind: "choice", prompt: "When does Noa use it?", options: ["When her wifi is broken", "Every morning", "Never"], answer: 0 },
     ],
     listening: {
@@ -700,14 +700,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     titleTranslation: "Neighbours' Day",
     text: [
       [
-        s("Op de vierde zaterdag van september is het Burendag. Dan doen buren in heel Nederland iets samen.", "On the fourth Saturday of September it's Neighbours' Day. Then neighbours all over the Netherlands do something together."),
+        s("Zaterdag is het Burendag in de straat van Samir.", "On Saturday it's Neighbours' Day in Samir's street."),
         s("In de straat van Samir maken de buren de speeltuin schoon en planten ze bloemen. Daarna is er een lange tafel op straat, en iedereen neemt eten mee.", "In Samir's street the neighbours clean up the playground and plant flowers. Afterwards there's a long table in the street, and everyone brings food."),
         s("Samir woont er al drie jaar, maar veel buren kende hij nog niet. Nu weet hij hoe ze heten, wat ze doen, en wie er een ladder heeft.", "Samir has lived there for three years, but he didn't know many neighbours yet. Now he knows their names, what they do, and who has a ladder."),
         s("Sinds Burendag is er ook een buurtapp. Vandaag staat erin: Wie heeft er een boormachine? Drie mensen reageren binnen vijf minuten.", "Since Neighbours' Day there's also a neighbourhood chat. Today someone wrote: Who has a drill? Three people reply within five minutes."),
       ],
     ],
     textTasks: [
-      { kind: "choice", prompt: "When is Burendag?", options: ["The fourth Saturday of September", "On 4 May", "Every Sunday"], answer: 0 },
+      { kind: "choice", prompt: "What do the neighbours do first?", options: ["Clean the playground and plant flowers", "Have a party", "Paint the houses"], answer: 0 },
       { kind: "truefalse", statement: "Samir kende al zijn buren al goed.", translation: "Samir already knew all his neighbours well.", answer: false },
       { kind: "choice", prompt: "What changed after Burendag?", options: ["Neighbours help each other through a chat group", "Samir moved", "The street got a new playground"], answer: 0 },
     ],
@@ -813,7 +813,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Op eerste kerstdag staat er bij de familie van Pieter een vreemd apparaat op tafel: een gourmetstel.", "On Christmas Day at Pieter's family there's a strange appliance on the table: a gourmet set."),
         s("Het is een soort kleine grill met pannetjes. Iedereen bakt zijn eigen stukjes vlees, groente en ei, aan tafel.", "It's a kind of small grill with little pans. Everyone fries their own pieces of meat, vegetables and egg, at the table."),
-        s("Gourmetten is in Nederland heel populair met Kerst. Het duurt uren, want je bakt steeds een klein beetje.", "Gourmetten is very popular in the Netherlands at Christmas. It takes hours, because you only fry a little at a time."),
+        s("Het duurt uren, want je bakt steeds een klein beetje.", "It takes hours, because you only fry a little at a time."),
         s("Zainab, de vriendin van Pieter, is voor het eerst bij zijn familie. Na drie uur zegt ze: dit is geen eten, dit is een spel!", "Zainab, Pieter's girlfriend, is with his family for the first time. After three hours she says: this isn't a meal, it's a game!"),
       ],
     ],
@@ -868,14 +868,14 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Elke winter vraagt Nederland zich hetzelfde af: komt er dit jaar een Elfstedentocht?", "Every winter the Netherlands asks the same question: will there be an Eleven Cities Tour this year?"),
-        s("De Elfstedentocht is een schaatstocht van tweehonderd kilometer langs elf steden in Friesland, over natuurijs.", "The Eleven Cities Tour is a skating tour of two hundred kilometres past eleven towns in Friesland, on natural ice."),
-        s("Maar het ijs moet minstens vijftien centimeter dik zijn. De laatste tocht was in negentienhonderdzevenennegentig. Sindsdien is het nooit meer koud genoeg geweest.", "But the ice has to be at least fifteen centimetres thick. The last tour was in 1997. Since then it has never been cold enough again."),
-        s("Toch hebben veel Friezen hun schaatsen altijd klaar staan. Je weet maar nooit, zegt opa Jelle elke winter.", "Even so, many Frisians always keep their skates ready. You never know, says Grandpa Jelle every winter."),
+        s("Opa Jelle heeft hem in negentienhonderdzevenennegentig zelf geschaatst: tweehonderd kilometer, op natuurijs.", "Grandpa Jelle skated it himself in 1997: two hundred kilometres, on natural ice."),
+        s("Sindsdien is het nooit meer koud genoeg geweest.", "Since then it has never been cold enough again."),
+        s("Toch staan zijn schaatsen altijd klaar. Je weet maar nooit, zegt hij elke winter.", "Even so, his skates are always ready. You never know, he says every winter."),
       ],
     ],
     textTasks: [
       { kind: "truefalse", statement: "De laatste Elfstedentocht was vorig jaar.", translation: "The last Eleven Cities Tour was last year.", answer: false },
-      { kind: "choice", prompt: "Why hasn't there been one since 1997?", options: ["The ice has never been thick enough", "It's forbidden", "Nobody wants to skate"], answer: 0 },
+      { kind: "choice", prompt: "Why hasn't there been one since 1997?", options: ["It has never been cold enough", "It's forbidden", "Nobody wants to skate"], answer: 0 },
       { kind: "choice", prompt: "Why does Jelle keep his skates ready?", options: ["Maybe one winter it will be cold enough", "He skates every week", "He sells them"], answer: 0 },
     ],
     listening: {
@@ -902,6 +902,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       modelTranslation: "In my country summers are very hot. When it's very warm in August, almost everyone goes to the sea. Last year I spent two weeks by the sea.",
     },
     words: {
+      geschaatst: { meaning: "skated", base: "schaatsen" },
       elfstedentocht: { meaning: "Eleven Cities Tour", closer: "elf (eleven) + steden (cities) + tocht (tour)" },
       schaatstocht: { meaning: "skating tour" },
       friesland: { meaning: "Friesland (a province in the north)" },

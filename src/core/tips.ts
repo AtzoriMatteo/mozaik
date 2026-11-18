@@ -80,6 +80,31 @@ export const GENERAL_TIPS: readonly LearningTip[] = [
     text: "Stop while it's still going well. Ending a session mid-flow makes it easier to start the next one.",
     places: ["home", "course"],
   },
+  {
+    id: "start-small",
+    text: "Not in the mood? Do one review session. Five minutes counts, and starting is the hardest part.",
+    places: ["home", "review"],
+  },
+  {
+    id: "spread",
+    text: "Two short sessions beat one long one. Memory settles between sessions, so a little in the morning and a little at night works well.",
+    places: ["home", "course"],
+  },
+  {
+    id: "sentence-not-word",
+    text: "When a word won't stick, reread its sentence. A word you remember inside a scene is easier to find when you need it.",
+    places: ["review"],
+  },
+  {
+    id: "say-correction",
+    text: "When you catch your own mistake, say the right version once out loud. That one repetition is worth ten silent ones.",
+    places: ["write", "review"],
+  },
+  {
+    id: "picture-it",
+    text: "Picture the thing as you learn the word. An image plus a word gives you two ways back to it.",
+    places: ["review", "read"],
+  },
 ];
 
 /** The tips for one place: the pack's own first, then general ones. */
