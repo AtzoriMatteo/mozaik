@@ -1,13 +1,20 @@
 {
+ "Amadou": "it-IT-Chirp3-HD-Charon",
+ "Davide": "it-IT-Chirp3-HD-Iapetus",
  "Emma": "it-IT-Chirp3-HD-Autonoe",
+ "Fruttivendolo": "it-IT-Chirp3-HD-Enceladus",
  "Giulia": "it-IT-Chirp3-HD-Despina",
  "Hiro": "it-IT-Chirp3-HD-Algenib",
  "Karim": "it-IT-Chirp3-HD-Achird",
+ "Lin": "it-IT-Chirp3-HD-Leda",
+ "Lucia": "it-IT-Chirp3-HD-Kore",
  "Marco": "it-IT-Chirp3-HD-Alnilam",
  "Nonna": "it-IT-Chirp3-HD-Erinome",
  "Rita": "it-IT-Chirp3-HD-Callirrhoe",
+ "Speaker": "it-IT-Chirp3-HD-Fenrir",
  "alla-cassa/Cassiera": "it-IT-Chirp3-HD-Gacrux",
  "alla-segreteria/Segretaria": "it-IT-Chirp3-HD-Aoede",
  "in-palestra/Receptionist": "it-IT-Chirp3-HD-Algieba",
- "narrator": "it-IT-Chirp3-HD-Achernar"
+ "narrator": "it-IT-Chirp3-HD-Achernar",
+ "scusi-dov-e/Turista": "it-IT-Chirp3-HD-Laomedeia"
 }
