@@ -5,6 +5,28 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-18 (late) — Review by unit; "I already know some of these"
+
+Matteo: reviews keep piling up. Wanted a way to clear words faster and to
+choose which units to revise.
+
+- **One pile, with a unit picker (Matteo).** Review gets "Review by unit":
+  Everything (the default), All of A1/A2, single units, and words saved while
+  reading, each with how many cards are due. Pick one or more; Start review,
+  the focus chips and "Learn 5 more" then use only those units. Only units
+  you have cards from are listed. The choice lasts for this visit, so Review
+  never quietly stays small next time. Cards from other units just wait.
+- **What belongs to a unit (Claude).** A word belongs to the unit whose Words
+  page lists it (saved words too, if a unit lists them); grammar to the unit
+  that teaches it; listening lines to their unit.
+- **"I already know some of these" on every unit's Words page (Matteo).**
+  Tick words (or Tick all) and "Mark as known for good": they graduate on the
+  card they already have, so they never come back. Undo is in Review →
+  Graduated words, as before.
+- No migration; tests check every unit's words, grammar and listening land in
+  the right unit.
+- Next idea, not built: a quick mode (meaning-only flips, no typing) for big piles.
+
 ## 2026-11-19 (early) — Italian A1 complete; culture checkpoints everywhere
 
 **Italian A1 is 12 units (Claude).** Units 9–12 added: Ana's work, Marco in

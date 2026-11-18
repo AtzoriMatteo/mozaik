@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Verdict } from "@/core/answers";
 import { checkDictation, type DictationResult } from "@/core/dictation";
-import type { CefrLevel, LanguagePack } from "@/core/language-pack";
+import { unitNumber, type CefrLevel, type LanguagePack } from "@/core/language-pack";
 import {
   buildSession, checkProduced, countItems, introducedToday, REVIEW_KINDS, wordCardFor, type CardDirection, type ProduceVerdict,
   type GrammarItem, type ListenItem, type ReviewItem, type ReviewKind, type SpeakItem, type WordItem,
 } from "@/core/review-items";
-import { describeWait, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
+import { describeWait, isDue, REVIEW_RESULTS, type ReviewResult } from "@/core/srs";
 import { LanguagePicker } from "@/components/language-picker";
 import { useLearningLanguage } from "@/components/learning-language";
 import { NewWordsSession, WordStats } from "./new-words";
@@ -24,6 +24,7 @@ import { useReview } from "@/lib/review/use-review";
 import { useReviewSettings, type ReviewSettings } from "@/lib/review/use-review-settings";
 import { speak, useHasVoice } from "@/lib/speech";
 import { useNow } from "@/lib/use-now";
+import { inScope, levelUnits, unitOfItem, type ReviewScope } from "@/core/review-scope";
 
 export const KIND_LABEL: Record<ReviewKind, string> = {
   word: "Words and expressions",
@@ -41,6 +42,7 @@ export function Review() {
   const clock = useNow();
   const [session, setSession] = useState<Session | null>(null);
   const [meeting, setMeeting] = useState(false);
+  const [scope, setScope] = useState<ReviewScope>(null);
 
   if (!pack) return <LanguagePicker />;
   if (!review.loaded || clock === null) return <p className="lede">Loading your reviews…</p>;
@@ -73,12 +75,17 @@ export function Review() {
     );
   }
 
+  // Review by unit: everything below works on the chosen units only.
+  const items = scope ? review.items.filter((i) => inScope(pack, i, scope)) : review.items;
+  const scopeName = scopeLabel(pack, scope);
+  const withScope = (label: string) => (scope ? `${label} · ${scopeName}` : label);
+
   const startedToday = introducedToday(review.schedules, now);
   const allowanceLeft = Math.max(0, settings.newPerDay - startedToday);
   const start = (kinds: ReviewKind[], label: string, extraNew = 0) =>
     setSession({
       label,
-      items: buildSession(review.items, review.schedules, {
+      items: buildSession(items, review.schedules, {
         kinds: new Set(kinds),
         size: settings.size,
         newPerDay: Math.max(settings.newPerDay, startedToday) + extraNew,
@@ -87,13 +94,13 @@ export function Review() {
     });
 
   const mixKinds = REVIEW_KINDS.filter((k) => settings.mix[k]);
-  const mixed = buildSession(review.items, review.schedules, {
+  const mixed = buildSession(items, review.schedules, {
     kinds: new Set(mixKinds),
     size: settings.size,
     newPerDay: settings.newPerDay,
     now,
   });
-  const counts = countItems(review.items, review.schedules, now);
+  const counts = countItems(items, review.schedules, now);
   const nextDue = [...review.schedules.values()]
     .map((s) => s.dueAt)
     .filter((d) => new Date(d).getTime() > clock)
@@ -112,6 +119,10 @@ export function Review() {
         onStart={() => setMeeting(true)}
       />
 
+      {review.items.length > 0 ? (
+        <ScopePicker pack={pack} items={review.items} schedules={review.schedules} now={now} scope={scope} onChange={setScope} />
+      ) : null}
+
       {review.items.length === 0 ? (
         <div className="stack-loose">
           <p className="lede">
@@ -129,22 +140,22 @@ export function Review() {
                 <button
                   type="button"
                   className="button review-start"
-                  onClick={() => setSession({ items: mixed, label: mixKinds.length === 1 ? KIND_LABEL[mixKinds[0]] : "Mixed review" })}
+                  onClick={() => setSession({ items: mixed, label: withScope(mixKinds.length === 1 ? KIND_LABEL[mixKinds[0]] : "Mixed review") })}
                 >
                   Start review
                 </button>
                 <p className="review-main-meta">
-                  {mixed.length} {mixed.length === 1 ? "card" : "cards"}, about {Math.max(1, Math.round(mixed.length * 0.4))} min.
+                  {mixed.length} {mixed.length === 1 ? "card" : "cards"}, about {Math.max(1, Math.round(mixed.length * 0.4))} min.{" "}
                   {mixKinds.length === 1 ? KIND_LABEL[mixKinds[0]] : `Mixes ${mixKinds.map((k) => KIND_LABEL[k].toLowerCase()).join(", ")}`}.
                 </p>
               </>
             ) : (
               <div className="stack-loose">
                 <p className="lede">
-                  All caught up for today{nextDue ? `. Next review ${describeWhen(nextDue, clock)}` : ""}.
+                  {scope ? `Nothing due in ${scopeName}` : "All caught up for today"}{nextDue && !scope ? `. Next review ${describeWhen(nextDue, clock)}` : ""}.
                 </p>
                 {mixKinds.some((k) => counts[k].fresh > 0) ? (
-                  <button type="button" className="button button-quiet" onClick={() => start(mixKinds, "Extra", 5)}>
+                  <button type="button" className="button button-quiet" onClick={() => start(mixKinds, withScope("Extra"), 5)}>
                     Learn 5 more new cards
                   </button>
                 ) : null}
@@ -163,7 +174,7 @@ export function Review() {
                     type="button"
                     className="focus-chip focus-chip-all"
                     disabled={available === 0}
-                    onClick={() => start(all, "Everything")}
+                    onClick={() => start(all, withScope("Everything"))}
                   >
                     <span>Everything</span>
                     <span className="focus-count">words, grammar and listening</span>
@@ -178,7 +189,7 @@ export function Review() {
                     type="button"
                     className="focus-chip"
                     disabled={available === 0}
-                    onClick={() => start([k], KIND_LABEL[k])}
+                    onClick={() => start([k], withScope(KIND_LABEL[k]))}
                   >
                     <span>{KIND_LABEL[k]}</span>
                     <span className="focus-count">
@@ -211,6 +222,139 @@ export function Review() {
 
       <SettingsPanel settings={settings} update={update} reset={reset} levels={pack.levels} name={pack.name} />
     </div>
+  );
+}
+
+function scopeLabel(pack: LanguagePack, scope: ReviewScope): string {
+  if (!scope) return "Everything";
+  const parts: string[] = [];
+  for (const level of pack.levels) {
+    const ids = levelUnits(pack, level);
+    const picked = ids.filter((id) => scope.units.has(id));
+    if (picked.length === 0) continue;
+    if (picked.length === ids.length && ids.length > 1) parts.push(`all of ${level}`);
+    else parts.push(...picked.map((id) => `${level} unit ${unitNumber(pack, pack.units.find((u) => u.id === id)!).n}`));
+  }
+  if (scope.saved) parts.push("saved words");
+  return parts.length > 3 ? `${parts.slice(0, 2).join(", ")} and ${parts.length - 2} more` : parts.join(", ");
+}
+
+/**
+ * Review by unit: Everything by default; or pick levels, units and words
+ * saved while reading. Kept for this visit only, so Review never quietly
+ * stays small next time.
+ */
+function ScopePicker({
+  pack,
+  items,
+  schedules,
+  now,
+  scope,
+  onChange,
+}: {
+  pack: LanguagePack;
+  items: readonly ReviewItem[];
+  schedules: ReadonlyMap<string, { dueAt: string }>;
+  now: Date;
+  scope: ReviewScope;
+  onChange: (s: ReviewScope) => void;
+}) {
+  const due = new Map<string, number>();
+  const hasCards = new Set<string>();
+  let savedDue = 0;
+  let hasSaved = false;
+  for (const item of items) {
+    const isSaved = item.kind === "word" && item.source === "saved";
+    if (isSaved) hasSaved = true;
+    const unit = unitOfItem(pack, item);
+    if (unit) hasCards.add(unit);
+    const s = schedules.get(item.id);
+    if (!s || !isDue(s.dueAt, now)) continue;
+    if (isSaved) savedDue++;
+    if (unit) due.set(unit, (due.get(unit) ?? 0) + 1);
+  }
+  const units = scope?.units ?? new Set<string>();
+  const set = (next: Set<string>, saved: boolean) => onChange(next.size === 0 && !saved ? null : { units: next, saved });
+  const toggleUnits = (ids: string[]) => {
+    const next = new Set(units);
+    const allOn = ids.every((id) => next.has(id));
+    for (const id of ids) if (allOn) next.delete(id); else next.add(id);
+    set(next, scope?.saved ?? false);
+  };
+  const count = (n: number) => (n > 0 ? `${n} due` : "nothing due");
+
+  return (
+    <details className="settings-panel scope-picker" open={scope !== null}>
+      <summary>
+        Review by unit: <strong>{scopeLabel(pack, scope)}</strong>
+      </summary>
+      <div className="settings-body">
+        <div className="scope-row">
+          <button
+            type="button"
+            className="focus-chip"
+            aria-pressed={scope === null}
+            onClick={() => onChange(null)}
+          >
+            <span>Everything</span>
+            <span className="focus-count">the whole course</span>
+          </button>
+          {hasSaved ? (
+            <button
+              type="button"
+              className="focus-chip"
+              aria-pressed={scope?.saved ?? false}
+              onClick={() => set(new Set(units), !(scope?.saved ?? false))}
+            >
+              <span>Saved while reading</span>
+              <span className="focus-count">{count(savedDue)}</span>
+            </button>
+          ) : null}
+        </div>
+        {pack.levels.map((level) => {
+          // Only units you have cards from: no wall of empty chips.
+          const ids = levelUnits(pack, level).filter((id) => hasCards.has(id));
+          if (ids.length === 0) return null;
+          const levelDue = ids.reduce((n, id) => n + (due.get(id) ?? 0), 0);
+          return (
+            <fieldset key={level} className="setting">
+              <legend>{level}</legend>
+              <div className="scope-row">
+                <button
+                  type="button"
+                  className="focus-chip"
+                  aria-pressed={levelUnits(pack, level).every((id) => units.has(id))}
+                  onClick={() => toggleUnits(levelUnits(pack, level))}
+                >
+                  <span>All of {level}</span>
+                  <span className="focus-count">{count(levelDue)}</span>
+                </button>
+                {ids.map((id) => {
+                  const unit = pack.units.find((u) => u.id === id)!;
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      className="focus-chip"
+                      aria-pressed={units.has(id)}
+                      onClick={() => toggleUnits([id])}
+                    >
+                      <span>
+                        {unitNumber(pack, unit).n} · {unit.titleTranslation}
+                      </span>
+                      <span className="focus-count">{count(due.get(id) ?? 0)}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+          );
+        })}
+        <small className="setting-note">
+          Pick one or more. Cards from other units just wait for your next full review.
+        </small>
+      </div>
+    </details>
   );
 }
 
