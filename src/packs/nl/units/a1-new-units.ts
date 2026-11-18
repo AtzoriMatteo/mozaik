@@ -24,35 +24,35 @@ export const kleren: UnitContent = {
       paragraphs: [
         [
           s("Het is november en het is koud.", "It's November and it's cold."),
-          s("Luca heeft alleen een dunne jas uit Italië.", "Luca only has a thin coat from Italy."),
+          s("Kwame heeft alleen een dunne jas uit Ghana.", "Kwame only has a thin coat from Ghana."),
           s("\"Je hebt een echte winterjas nodig,\" zegt Noor.", "\"You need a real winter coat,\" says Noor."),
           s("Op zaterdag gaan ze samen naar de stad.", "On Saturday they go into town together."),
         ],
         [
           s("In de eerste winkel zijn de jassen mooi, maar heel duur.", "In the first shop the coats are nice, but very expensive."),
           s("In de tweede winkel is er uitverkoop.", "In the second shop there's a sale."),
-          s("Luca ziet een donkerblauwe jas met een capuchon.", "Luca sees a dark blue coat with a hood."),
+          s("Kwame ziet een donkerblauwe jas met een capuchon.", "Kwame sees a dark blue coat with a hood."),
           s("\"Heeft u deze jas in maat M?\" vraagt hij aan de verkoopster.", "\"Do you have this coat in size M?\" he asks the shop assistant."),
           s("\"Even kijken. Ja, hier is hij. De paskamer is achterin.\"", "\"Let me check. Yes, here it is. The fitting room is at the back.\""),
         ],
         [
-          s("Luca past de jas. Hij is warm en zacht, maar de mouwen zijn te lang.", "Luca tries on the coat. It's warm and soft, but the sleeves are too long."),
+          s("Kwame past de jas. Hij is warm en zacht, maar de mouwen zijn te lang.", "Kwame tries on the coat. It's warm and soft, but the sleeves are too long."),
           s("\"Heeft u hem ook in maat S?\"", "\"Do you have it in size S too?\""),
           s("\"Nee, sorry. Maar deze zwarte jas is ook mooi, en hij is ook in de aanbieding.\"", "\"No, sorry. But this black coat is nice too, and it's also on offer.\""),
           s("De zwarte jas past perfect.", "The black coat fits perfectly."),
         ],
         [
           s("\"Wat kost deze jas?\" \"Eerst negentig euro, nu zestig.\"", "\"How much is this coat?\" \"It was ninety euros, now sixty.\""),
-          s("\"Die neem ik!\" Luca betaalt en houdt de jas meteen aan.", "\"I'll take it!\" Luca pays and keeps the coat on straight away."),
-          s("Buiten begint het te regenen, maar Luca heeft het lekker warm.", "Outside it starts to rain, but Luca is nice and warm."),
+          s("\"Die neem ik!\" Kwame betaalt en houdt de jas meteen aan.", "\"I'll take it!\" Kwame pays and keeps the coat on straight away."),
+          s("Buiten begint het te regenen, maar Kwame heeft het lekker warm.", "Outside it starts to rain, but Kwame is nice and warm."),
         ],
       ],
       tasks: [
-        mc("Why does Luca need a new coat?", ["His coat is broken", "He only has a thin coat", "It's his birthday"], 1),
+        mc("Why does Kwame need a new coat?", ["His coat is broken", "He only has a thin coat", "It's his birthday"], 1),
         tf("De blauwe jas past goed.", "The blue coat fits well.", false),
         mc("What's wrong with the blue coat?", ["It's too expensive", "The sleeves are too long", "It's too small"], 1),
-        mc("How much does Luca pay?", ["€90", "€60", "€30"], 1),
-        order("Put it in order.", "Noor says he needs a winter coat", "The first shop is too expensive", "Luca tries on the blue coat", "He buys the black coat"),
+        mc("How much does Kwame pay?", ["€90", "€60", "€30"], 1),
+        order("Put it in order.", "Noor says he needs a winter coat", "The first shop is too expensive", "Kwame tries on the blue coat", "He buys the black coat"),
       ],
     },
     {
