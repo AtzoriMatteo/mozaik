@@ -114,6 +114,403 @@ dove | where | | Latin de ubi
 ore | hours; o'clock (che ore sono? = what time is it?) | ora
 film | film
 chiuso | closed | chiudere
+dicembre | December | | Latin decem: it was the tenth month
+mercatini | (Christmas) markets | mercatino
+mercatino | little market (mercatino di Natale = Christmas market) | mercato
+discussione | debate, discussion
+panettone | panettone, Milan's tall Christmas cake with raisins | | Every Italian has an opinion: panettone or pandoro?
+pandoro | pandoro, Verona's star-shaped Christmas cake | | 'golden bread': plain, dusted with sugar
+uvetta | raisins | uva
+canditi | candied fruit
+quest' | this (quest'anno = this year) | questo
+questo | this
+diciamo | we say | dire
+dire | to say | | Irregular: dico, dici, dice
+pasqua | Easter
+spiega | explains | spiegare
+spiegare | to explain
+scorso | last (il mese scorso = last month)
+gregorio | Gregory (San Gregorio Armeno, the nativity street in Naples)
+armeno | Armenian
+presepi | nativity scenes | presepe
+presepe | nativity scene, crib | | Naples' nativity scenes include footballers and politicians!
+migliaia | thousands | migliaio
+migliaio | about a thousand
+statuine | little figures, figurines | statuina
+statuina | figurine | statua
+statua | statue
+gesù | Jesus
+maria | Mary
+pastori | shepherds | pastore
+pastore | shepherd | | ~ pastor
+calciatori | footballers | calciatore
+calciatore | footballer | calcio
+cantanti | singers | cantante
+cantante | singer | cantare
+politici | politicians | politico
+politico | politician; political
+diario | diary
+vigilia | eve (la Vigilia di Natale = Christmas Eve) | | ~ vigil
+eravamo | we were | essere
+spaghetti | spaghetti
+vongole | clams | vongola
+vongola | clam
+baccalà | salt cod
+capitone | capitone, big eel eaten in Naples on Christmas Eve
+specie | kind, sort (una specie di = a kind of) | | ~ species
+anguilla | eel
+assaggiato | tasted | assaggiare
+piaciuto | liked (mi è piaciuto = I liked it) | piacere
+detto | said | dire
+giocato | played | giocare
+messo | put | mettere
+messa | Mass | | ~ Mass (Latin ite, missa est)
+rimasta | stayed | rimanere
+rimanere | to stay, to remain | | ~ remain
+struffoli | struffoli, little fried balls in honey (Naples)
+palline | little balls | pallina
+pallina | little ball | palla
+palla | ball
+stato | been; state | essere
+sciarpa | scarf | | ~ sash
+fatta | made | fare
+chiamato | called | chiamare
+pianto | cried | piangere
+felicità | happiness | | ~ felicity
+tornata | come back | tornare
+capodanno | New Year's Day; New Year's Eve | | capo (head) + d'anno: the head of the year
+passa | spends (time); passes | passare
+lenticchie | lentils | lenticchia
+lenticchia | lentil | | They look like little coins: eat them at New Year for money
+cotechino | cotechino, a big pork sausage eaten at New Year
+portano | bring | portare
+voglio | I want | volere
+volere | to want | | Irregular: voglio, vuoi, vuole
+ricco | rich
+pacchetto | little package | pacco
+biancheria | underwear; linen | | Red underwear at New Year brings luck
+fortuna | luck | | ~ fortune
+vecchione | the Vecchione: a giant 'old man' burnt in Bologna at New Year | vecchio
+vecchio | old | | ~ veteran
+pupazzo | puppet, dummy
+simbolo | symbol
+contano | count | contare
+contare | to count | | ~ count
+brucia | burns | bruciare
+bruciare | to burn
+brutto | ugly; bad
+abbracciano | hug (si abbracciano = they hug) | abbracciare
+abbracciare | to hug | | a + braccio: to take in your arms
+baciano | kiss (si baciano = they kiss) | baciare
+baciare | to kiss | bacio
+bacio | kiss
+bacia | kisses | baciare
+sconosciuto | stranger; unknown | | s + conosciuto
+gennaio | January | | Janus, the two-faced god
+epifania | Epiphany (6 January)
+befana | the Befana, the old lady who brings sweets on 6 January | | From Epifania | La Befana vien di notte... every Italian child knows the rhyme
+scopa | broom; a card game
+caramelle | sweets | caramella
+caramella | sweet, candy | | ~ caramel
+buoni | good | buono
+carbone | coal | | ~ carbon | Naughty children get coal: today it's made of sugar
+cattivi | naughty, bad | cattivo
+cattivo | bad, naughty
+zucchero | sugar | | ~ sugar (Arabic sukkar)
+trova | finds | trovare
+calza | stocking, sock
+arrivata | arrived | arrivare
+valigia | suitcase | | ~ valise
+bevuto | drunk | bere
+cappuccini | cappuccinos | cappuccino
+festeggiato | celebrated | festeggiare
+accorciato | shortened | accorciare
+insegnato | taught | insegnare
+insegnare | to teach
+venduto | sold | vendere
+vendere | to sell | | ~ vendor
+portata | taken, brought | portare
+conoscevo | I knew | conoscere
+intera | whole | intero
+intero | whole, entire | | ~ entire
+spegne | turns off | spegnere
+spegnere | to turn off, to switch off
+gatti | cats | gatto
+loro | they; their
+amare | to love | | ~ amorous
+musicista | musician
+mancare | to be missing (mi manchi = I miss you)
+ventiquattro | twenty-four
+promesso | promised; promise! | promettere
+promettere | to promise | | ~ promise
+meglio | better
+male | bad; badly; pain (mi fa male = it hurts) | | ~ malady
+testa | head | | ~ test (Latin testa = pot)
+gola | throat | | ~ gullet
+orecchie | ears | orecchio
+orecchio | ear | | Latin auricula ~ aural
+febbre | fever, temperature | | ~ fever
+campanello | doorbell | | campana (bell) + -ello
+pentola | pot, saucepan
+brodo | broth | | ~ broth | Italy's first remedy for any illness
+visto | seen | vedere
+colpo | blow, hit (colpo d'aria = a chill from a draught) | | ~ coup | Many Italians believe a draught can make you ill
+aria | air | | ~ air, aria
+ieri | yesterday
+uscita | gone out | uscire
+bagnati | wet | bagnato
+bagnato | wet | | bagno
+irlanda | Ireland
+escono | go out | uscire
+inverno | winter | | ~ hibernate
+metti | put (on) | mettere
+mettere | to put | | ~ admit, emit
+pantofole | slippers | pantofola
+pantofola | slipper | | ~ pantofle | Barefoot at home? Many Italians say no!
+nudi | bare, naked | nudo
+nudo | naked, bare | | ~ nude
+correnti | draughts; currents | corrente
+corrente | draught; current | | ~ current
+freddi | cold | freddo
+freddo | cold | | ~ frigid
+ferri | Ferri (a surname)
+sala | room, hall (sala d'attesa = waiting room) | | ~ salon
+attesa | wait, waiting
+tossisce | coughs | tossire
+tossire | to cough
+influenza | flu | | Italian gave English the word influenza
+grave | serious | | ~ grave
+stia | stay (to Lei) | stare
+stare | to be (well, ill); to stay | | Irregular: sto, stai, sta
+beva | drink (to Lei) | bere
+bere | to drink | | Latin bibere ~ beverage
+molta | much, a lot of | molto
+molto | very; a lot
+signorina | miss, young lady
+triste | sad
+appelli | exam dates | appello
+appello | exam date, exam session | | ~ appeal | Italian universities offer several dates per exam
+medicine | medicines | medicina
+medicina | medicine
+croce | cross | | The green cross means a chemist's
+neri | Neri (a surname)
+pasti | meals | pasto
+pasto | meal | | ~ repast
+stomaco | stomach (a stomaco vuoto = on an empty stomach)
+notte | night | | ~ nocturnal
+turno | turn, shift (farmacia di turno = duty pharmacy) | | One chemist's is always open: the sign on the door says which
+aperta | open | aperto
+guardi | look (to Lei) | guardare
+guardare | to look at, to watch | | ~ guard
+rimedi | remedies | rimedio
+rimedio | remedy
+ognuno | each one, everyone
+zenzero | ginger | | ~ ginger (via Latin zingiber)
+tazze | cups | tazza
+tazza | cup | | ~ tass (old English)
+miele | honey | | Latin mel ~ mellifluous
+limoni | lemons | limone
+limone | lemon
+menta | mint | | ~ mint, menthol
+esami | exams | esame
+orali | oral | orale
+orale | oral | | Many Italian university exams are oral
+voto | grade, mark; vote
+basta | is enough; that's enough! | bastare
+bastare | to be enough
+passare | to pass; to spend (time) | | ~ pass
+lode | praise (trenta e lode = top marks with distinction) | | ~ laud
+strana | strange | strano
+strano | strange | | ~ strange
+rifiutarlo | refuse it (rifiutare + lo) | rifiutare
+rifiutare | to refuse | | ~ refute | Italian students can refuse a grade and retake the exam
+rifare | to do again | fare
+entrata | gone in | entrare
+entrare | to go in, to enter | | ~ enter
+aula | classroom, lecture room
+aspettano | wait | aspettare
+festeggiano | celebrate | festeggiare
+vedi | you see | vedere
+merito | merit (è merito di = it's thanks to)
+fatto | done, made | fare
+tue | your (plural feminine) | tuo
+tuo | your
+sanitario | health (adjective) | | ~ sanitary
+emergenza | emergency
+trentotto | thirty-eight
+chiusa | closed | chiuso
+cartello | sign, notice
+centrale | central (Bologna Centrale = the main station)
+andata | gone; one way (andata e ritorno = return ticket) | andare
+ritorno | return | | ~ return
+frecciarossa | Frecciarossa ('red arrow', Italy's high-speed train)
+regionale | regional (train) | | The slow, cheap local trains
+regionali | regional (trains) | regionale
+aspetta | waits | aspettare
+aspettare | to wait | | ~ expect
+partenza | departure | | partire
+binario | platform; track | | 'double' (two rails)
+aereo | plane; by air | | ~ aero
+treno | train
+arrivo | I arrive; arrival | arrivare
+arrivare | to arrive | | ~ arrive
+raccomando | mi raccomando = please, listen (insisting) | raccomandare | | Mi raccomando! = don't forget!
+raccomandare | to recommend
+convalidare | to validate (a ticket) | | Regional tickets must be stamped before you board, or you get a fine
+salire | to get on; to go up
+altrimenti | otherwise
+multa | fine (a penalty)
+partito | left, gone | partire
+orario | timetable; on time (in orario)
+enorme | enormous
+firenze | Florence
+dentro | inside
+frittata | frittata, thick omelette
+giovanotto | young man
+prenda | take (to Lei) | prendere
+magro | thin
+quarant' | forty (quarant'anni) | quaranta
+quaranta | forty
+sente | hears; can tell (si sente = you can tell) | sentire
+sentire | to hear; to feel | | ~ sense
+napoletana | from Naples | napoletano
+napoletano | from Naples, Neapolitan
+arrivato | arrived | arrivare
+sceso | got off, gone down | scendere
+scendere | to get off; to go down | | ~ descend
+sospeso | suspended (caffè sospeso = a coffee paid for a stranger) | | A Naples tradition: pay an extra coffee for someone who can't
+tradizione | tradition
+soldi | money
+cognati | brothers-in-law | cognato
+cognato | brother-in-law
+zia | aunt
+piange | cries | piangere
+piangere | to cry
+venuto | come (sei venuto = you came) | venire
+ragù | ragù, slow-cooked meat sauce | | In Naples it cooks for hours on Sunday morning
+cotto | cooked | cuocere
+cuocere | to cook
+settant' | seventy (settant'anni) | settanta
+settanta | seventy
+tombola | tombola, Italian bingo | | Played with the family at Christmas
+significato | meaning | | ~ significance
+smorfia | the Naples 'book of dreams': every number from 1 to 90 has a meaning | | 90 = fear, 47 = the dead man who talks, 33 = Christ's age
+paura | fear
+morto | dead; dead man
+tornato | come back | tornare
+bancone | counter, bar | banco
+vassoio | tray
+sfogliatelle | sfogliatelle, shell-shaped Naples pastries | sfogliatella
+sfogliatella | sfogliatella | | from sfoglia: 'thin layer of pastry'
+dato | given | dare
+andati | gone (siamo andati = we went) | andare
+mergellina | Mergellina (a seafront in Naples)
+stati | been (siamo stati = we were) | essere
+vinto | won | vincere
+attacca | sticks, attaches | attaccare
+attaccare | to stick, to attach; to attack
+avete | you (plural) have | avere
+pizza | pizza
+p.s | P.S.
+mangio | I eat | mangiare
+ricordare | to remember; to remind | | ~ record
+viaggiatore | traveller, passenger
+fritto | fried
+esistere | to exist
+novantadue | ninety-two
+quarantasette | forty-seven
+recife | Recife (a city in Brazil)
+brasile | Brazil
+brasiliano | Brazilian
+studiato | studied | studiare
+studiare | to study | | ~ study
+architettura | architecture
+luglio | July | | named after Julius Caesar
+master | master's degree
+cerca | looks for | cercare
+cercare | to look for | | ~ search
+mandato | sent | mandare
+mandare | to send | | ~ mandate
+curriculum | CV | | Latin curriculum vitae: 'the course of life'
+risposto | answered | rispondere
+rispondere | to answer | | ~ respond
+laurea | (university) degree | | ~ laurel: graduates in Italy wear a laurel wreath on the day
+dottore | doctor; title for any graduate | | In Italy a graduate is dottore / dottoressa
+architetto | architect | | Also used as a title: Buongiorno, architetto!
+mail | email
+benassi | Benassi (a surname)
+santo | saint (Santo Stefano)
+stefano | Stephen; Stefano (a name)
+abbiamo | we have | avere
+colloquio | (job) interview | | ~ colloquium
+salta | jumps | saltare
+saltare | to jump | | ~ salient, somersault
+sa | knows (non si sa mai = you never know) | sapere
+allo | to the (a + lo) | a
+sessant' | sixty (sessant'anni = sixty years old) | sessanta
+sessanta | sixty
+lavorato | worked | lavorare
+progettato | designed | progettare
+progettare | to design, to plan | | ~ project
+progetti | projects; designs | progetto
+progetto | project; design
+lavoriamo | we work | lavorare
+capisce | understands | capire
+capire | to understand | | -isc-: capisco, capisci
+fuori | outside
+mamãe | mum (Portuguese)
+trovato | found | trovare
+trovare | to find | | ~ treasure trove
+portoghese | Portuguese
+architetti | architects | architetto
+geometra | surveyor | | A very Italian job: a building technician
+segretaria | secretary
+danno | give | dare
+dare | to give | | ~ donate
+chiedono | ask | chiedere
+chiedere | to ask
+offre | offers; pays for (offre il caffè = buys the coffee) | offrire
+offrire | to offer; to pay for someone | | ~ offer
+scatola | box
+paste | pastries; pasta (plural) | pasta | In a bar, le paste are pastries
+pasta | pasta; pastry
+onomastico | name day | | The day of the saint you're named after: many Italians celebrate it
+ricevi | you receive | ricevere
+ricevere | to receive
+scrivania | desk | | ~ scribe
+preoccupata | worried | preoccupato
+preoccupato | worried | | ~ preoccupied
+sacra | sacred | sacro
+sacro | sacred
+venga | come (to Lei) | venire
+trattoria | trattoria, simple family restaurant
+cos'è | what's this? (cosa è)
+imparato | learned | imparare
+imparare | to learn
+festeggia | celebrates | festeggiare
+festeggiare | to celebrate | | festa
+festeggio | I celebrate | festeggiare
+brigadeiros | brigadeiros (Brazilian chocolate sweets)
+dolci | sweets, desserts | dolce
+dolce | sweet; dessert | | ~ dulcet
+pericolosi | dangerous | pericoloso
+pericoloso | dangerous | | ~ perilous
+disegnato | drawn, designed | disegnare
+disegnare | to draw, to design | | ~ design
+modena | Modena (a city near Bologna)
+conosciuto | met, known | conoscere
+mangiato | eaten | mangiare
+portato | brought | portare
+successo | success; hit
+fai | you do, you make | fare
+faccio | I do, I make | fare
+cerco | I look for | cercare
+dello | of the (di + lo) | di
+nostra | our | nostro
+nostro | our
+ascensore | lift, elevator
+ventinove | twenty-nine
+diciannove | nineteen
 davide | Davide (a name)
 grafico | graphic designer; graph
 manifesti | posters | manifesto

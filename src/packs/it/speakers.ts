@@ -7,6 +7,30 @@ export const speakers: Record<string, string> = {
   "le-mani-parlano": "-|-|-",
   "la-famiglia-di-giulia": "Giulia|Giulia|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma",
   "a-trentanni-con-mamma-e-papa": "La mamma di Karim",
+  // Unit 12: Il primo inverno di Emma
+  "emma-1-natale-con-i-tuoi": "Rita|Karim|Giulia|Giulia|Emma|Marco",
+  "emma-2-la-vigilia": "Mamma",
+  "emma-3-capodanno": "Giulia|Giulia|Karim|Giulia|-|-",
+  "emma-4-un-anno-fa": "-|-",
+  "check-it-a1-feste": "Rita",
+  // Unit 11: Giulia sta male
+  "giulia-1-il-colpo-d-aria": "Emma|Giulia|Rita|Rita|Giulia",
+  "giulia-2-dal-medico": "Dottoressa|Giulia|Dottoressa|Dottoressa|Giulia|Dottoressa|Emma|Giulia|Emma",
+  "giulia-3-in-farmacia": "Farmacista|Emma|Farmacista|Wei|Giulia|-",
+  "giulia-4-trenta-e-lode": "Karim|Giulia|Rita|Wei|Amadou|Giulia",
+  "check-it-a1-salute": "Giulia",
+  // Unit 10: Marco torna a Napoli
+  "marco-1-il-biglietto": "-|Marco|Impiegato|Marco|Impiegato|Marco|Emma|Marco|Marco",
+  "marco-2-in-treno": "Signora|Marco|Signora|Signora|Marco|Marco|Signora",
+  "marco-3-napoli": "Marco|Signore|Barista|Mamma|Zio",
+  "marco-4-il-ritorno": "Marco|Rita|Marco|Marco|Emma|Marco|-|Marco",
+  "check-it-a1-viaggio": "Mamma",
+  // Unit 9: Ana cerca lavoro
+  "ana-1-venti-curriculum": "Giulia|Ana|Giulia|Giulia|Ana|Giulia|Segretaria",
+  "ana-2-il-colloquio": "Benassi|Ana|Benassi|Ana|Benassi|Ana|Benassi|Ana|Benassi|Ana|Benassi|Ana",
+  "ana-3-il-primo-giorno": "-|-|Ana|Stefano|Segretaria",
+  "ana-4-le-paste-di-ana": "Stefano|Ana|Benassi|-",
+  "check-it-a1-lavoro": "Benassi",
   // Unit 8: Il tempo libero di Davide
   "davide-1-cosa-ti-piace": "Davide|Emma|Davide|Marco|Davide",
   "davide-2-la-partita": "Marco|Davide|Karim|Davide|Davide|Karim",
