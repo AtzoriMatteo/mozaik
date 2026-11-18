@@ -168,6 +168,8 @@ export const lexiconMore: Lexicon = {
   marja: { meaning: "Marja (a name)" },
   mark: { meaning: "Mark (a name)" },
   matteo: { meaning: "Matteo (a name)" },
+  ania: { meaning: "Ania (a Polish name)" },
+  ghana: { meaning: "Ghana" },
   maat: { meaning: "size", local: "Welke maat heb je? = What size are you?" },
   medicijnen: { meaning: "medicine", base: "medicijn" },
   meer: { meaning: "more; any more", local: "geen brood meer = no bread left" },
