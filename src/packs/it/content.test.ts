@@ -186,8 +186,9 @@ describe("Italian speaking practice", () => {
     ...dutch.units.flatMap((u) => u.listening.flatMap((l) => l.lines.map((x) => x.text))),
   ].map((s) => s.replace(/"/g, ""));
 
+  // Speaking practice was taken out (Matteo, 17 Nov 2026): only units that still carry its data are checked.
   it("gives every unit sounds to drill and sentences to shadow", () => {
-    for (const unit of dutch.units) {
+    for (const unit of dutch.units.filter((u) => u.speaking)) {
       expect(unit.speaking, unit.id).toBeDefined();
       expect(unit.speaking!.sounds.length, unit.id).toBeGreaterThan(0);
       expect(unit.speaking!.shadowing.length, unit.id).toBeGreaterThanOrEqual(3);

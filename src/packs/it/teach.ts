@@ -16,6 +16,17 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("pane", "bread", "A colazione mangio pane con burro e marmellata.", "For breakfast I eat bread with butter and jam."),
     t("burro", "butter", "Pane, burro e marmellata: la mia colazione!", "Bread, butter and jam: my breakfast!"),
   ],
+  "it-a1-giornata": [
+    t("sveglia", "alarm clock (anche: si sveglia = wakes up)", "La sveglia suona alle sei.", "The alarm goes off at six."),
+    t("doccia", "shower (fare la doccia = to have a shower)", "La mattina faccio la doccia.", "In the morning I have a shower."),
+    t("pranzo", "lunch (a pranzo = at lunch)", "A pranzo mangio un panino.", "At lunch I eat a sandwich."),
+    t("cena", "dinner (a cena = at dinner)", "A cena mangiamo alle otto.", "We have dinner at eight."),
+    t("comincio", "I start (cominciare = to start)", "Comincio a lavorare alle nove.", "I start work at nine."),
+    t("finisco", "I finish (finire = to finish)", "Finisco alle cinque.", "I finish at five."),
+    t("presto", "early; soon", "Mi alzo presto.", "I get up early."),
+    t("tardi", "late", "La domenica mi alzo tardi.", "On Sundays I get up late."),
+    t("ufficio", "office", "Lavoro in un ufficio in centro.", "I work in an office in the centre."),
+  ],
   "it-a1-piacere": [
     t("cercare", "to look for", "Cerco amici italiani per parlare.", "I'm looking for Italian friends to talk to."),
     t("spagnolo", "Spanish", "Parlo spagnolo e un po' di inglese.", "I speak Spanish and a little English."),
