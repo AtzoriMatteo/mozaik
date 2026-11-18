@@ -7,7 +7,7 @@ const HELPERS = new Set(["ho", "hai", "ha", "abbiamo", "avete", "hanno", "sono",
 /** Participles used as adjectives or in set phrases at A1 (sono nata a…, è sposato). */
 const FIXED = new Set(["nato", "nata", "nati", "nate", "sposato", "sposata", "sposati", "chiuso", "chiusa", "aperto", "aperta", "stanco", "stanca", "sbagliato", "sbagliata", "macchiato"]);
 /** Polite (Lei) imperatives used for directions and requests: formally subjunctive, taught at A1 with the imperative. */
-const POLITE = new Set(["giri", "vada", "prenda", "esca", "scusi", "senta", "dica", "venga", "faccia", "continui", "attraversi", "segua", "salga", "scenda"]);
+const POLITE = new Set(["giri", "vada", "prenda", "stia", "beva", "chiami", "guardi", "mangi", "esca", "scusi", "senta", "dica", "venga", "faccia", "continui", "attraversi", "segua", "salga", "scenda"]);
 const VORREI = new Set(["vorrei", "vorresti", "vorrebbe", "vorremmo", "vorreste", "vorrebbero"]);
 
 export function italianGrammarIn(pack: LanguagePack, text: string): { grammar: string; word: string }[] {

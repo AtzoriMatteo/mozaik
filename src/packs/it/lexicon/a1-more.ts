@@ -114,6 +114,181 @@ dove | where | | Latin de ubi
 ore | hours; o'clock (che ore sono? = what time is it?) | ora
 film | film
 chiuso | closed | chiudere
+male | bad; badly; pain (mi fa male = it hurts) | | ~ malady
+testa | head | | ~ test (Latin testa = pot)
+gola | throat | | ~ gullet
+orecchie | ears | orecchio
+orecchio | ear | | Latin auricula ~ aural
+febbre | fever, temperature | | ~ fever
+campanello | doorbell | | campana (bell) + -ello
+pentola | pot, saucepan
+brodo | broth | | ~ broth | Italy's first remedy for any illness
+visto | seen | vedere
+colpo | blow, hit (colpo d'aria = a chill from a draught) | | ~ coup | Many Italians believe a draught can make you ill
+aria | air | | ~ air, aria
+ieri | yesterday
+uscita | gone out | uscire
+bagnati | wet | bagnato
+bagnato | wet | | bagno
+irlanda | Ireland
+escono | go out | uscire
+inverno | winter | | ~ hibernate
+metti | put (on) | mettere
+mettere | to put | | ~ admit, emit
+pantofole | slippers | pantofola
+pantofola | slipper | | ~ pantofle | Barefoot at home? Many Italians say no!
+nudi | bare, naked | nudo
+nudo | naked, bare | | ~ nude
+correnti | draughts; currents | corrente
+corrente | draught; current | | ~ current
+freddi | cold | freddo
+freddo | cold | | ~ frigid
+ferri | Ferri (a surname)
+sala | room, hall (sala d'attesa = waiting room) | | ~ salon
+attesa | wait, waiting
+tossisce | coughs | tossire
+tossire | to cough
+influenza | flu | | Italian gave English the word influenza
+grave | serious | | ~ grave
+stia | stay (to Lei) | stare
+stare | to be (well, ill); to stay | | Irregular: sto, stai, sta
+beva | drink (to Lei) | bere
+bere | to drink | | Latin bibere ~ beverage
+molta | much, a lot of | molto
+molto | very; a lot
+signorina | miss, young lady
+triste | sad
+appelli | exam dates | appello
+appello | exam date, exam session | | ~ appeal | Italian universities offer several dates per exam
+medicine | medicines | medicina
+medicina | medicine
+croce | cross | | The green cross means a chemist's
+neri | Neri (a surname)
+pasti | meals | pasto
+pasto | meal | | ~ repast
+stomaco | stomach (a stomaco vuoto = on an empty stomach)
+notte | night | | ~ nocturnal
+turno | turn, shift (farmacia di turno = duty pharmacy) | | One chemist's is always open: the sign on the door says which
+aperta | open | aperto
+guardi | look (to Lei) | guardare
+guardare | to look at, to watch | | ~ guard
+rimedi | remedies | rimedio
+rimedio | remedy
+ognuno | each one, everyone
+zenzero | ginger | | ~ ginger (via Latin zingiber)
+tazze | cups | tazza
+tazza | cup | | ~ tass (old English)
+miele | honey | | Latin mel ~ mellifluous
+limoni | lemons | limone
+limone | lemon
+menta | mint | | ~ mint, menthol
+esami | exams | esame
+orali | oral | orale
+orale | oral | | Many Italian university exams are oral
+voto | grade, mark; vote
+basta | is enough; that's enough! | bastare
+bastare | to be enough
+passare | to pass; to spend (time) | | ~ pass
+lode | praise (trenta e lode = top marks with distinction) | | ~ laud
+strana | strange | strano
+strano | strange | | ~ strange
+rifiutarlo | refuse it (rifiutare + lo) | rifiutare
+rifiutare | to refuse | | ~ refute | Italian students can refuse a grade and retake the exam
+rifare | to do again | fare
+entrata | gone in | entrare
+entrare | to go in, to enter | | ~ enter
+aula | classroom, lecture room
+aspettano | wait | aspettare
+festeggiano | celebrate | festeggiare
+vedi | you see | vedere
+merito | merit (è merito di = it's thanks to)
+fatto | done, made | fare
+tue | your (plural feminine) | tuo
+tuo | your
+sanitario | health (adjective) | | ~ sanitary
+emergenza | emergency
+trentotto | thirty-eight
+chiusa | closed | chiuso
+cartello | sign, notice
+centrale | central (Bologna Centrale = the main station)
+andata | gone; one way (andata e ritorno = return ticket) | andare
+ritorno | return | | ~ return
+frecciarossa | Frecciarossa ('red arrow', Italy's high-speed train)
+regionale | regional (train) | | The slow, cheap local trains
+regionali | regional (trains) | regionale
+aspetta | waits | aspettare
+aspettare | to wait | | ~ expect
+partenza | departure | | partire
+binario | platform; track | | 'double' (two rails)
+aereo | plane; by air | | ~ aero
+treno | train
+arrivo | I arrive; arrival | arrivare
+arrivare | to arrive | | ~ arrive
+raccomando | mi raccomando = please, listen (insisting) | raccomandare | | Mi raccomando! = don't forget!
+raccomandare | to recommend
+convalidare | to validate (a ticket) | | Regional tickets must be stamped before you board, or you get a fine
+salire | to get on; to go up
+altrimenti | otherwise
+multa | fine (a penalty)
+partito | left, gone | partire
+orario | timetable; on time (in orario)
+enorme | enormous
+firenze | Florence
+dentro | inside
+frittata | frittata, thick omelette
+giovanotto | young man
+prenda | take (to Lei) | prendere
+magro | thin
+quarant' | forty (quarant'anni) | quaranta
+quaranta | forty
+sente | hears; can tell (si sente = you can tell) | sentire
+sentire | to hear; to feel | | ~ sense
+napoletana | from Naples | napoletano
+napoletano | from Naples, Neapolitan
+arrivato | arrived | arrivare
+sceso | got off, gone down | scendere
+scendere | to get off; to go down | | ~ descend
+sospeso | suspended (caffè sospeso = a coffee paid for a stranger) | | A Naples tradition: pay an extra coffee for someone who can't
+tradizione | tradition
+soldi | money
+cognati | brothers-in-law | cognato
+cognato | brother-in-law
+zia | aunt
+piange | cries | piangere
+piangere | to cry
+venuto | come (sei venuto = you came) | venire
+ragù | ragù, slow-cooked meat sauce | | In Naples it cooks for hours on Sunday morning
+cotto | cooked | cuocere
+cuocere | to cook
+settant' | seventy (settant'anni) | settanta
+settanta | seventy
+tombola | tombola, Italian bingo | | Played with the family at Christmas
+significato | meaning | | ~ significance
+smorfia | the Naples 'book of dreams': every number from 1 to 90 has a meaning | | 90 = fear, 47 = the dead man who talks, 33 = Christ's age
+paura | fear
+morto | dead; dead man
+tornato | come back | tornare
+bancone | counter, bar | banco
+vassoio | tray
+sfogliatelle | sfogliatelle, shell-shaped Naples pastries | sfogliatella
+sfogliatella | sfogliatella | | from sfoglia: 'thin layer of pastry'
+dato | given | dare
+andati | gone (siamo andati = we went) | andare
+mergellina | Mergellina (a seafront in Naples)
+stati | been (siamo stati = we were) | essere
+vinto | won | vincere
+attacca | sticks, attaches | attaccare
+attaccare | to stick, to attach; to attack
+avete | you (plural) have | avere
+pizza | pizza
+p.s | P.S.
+mangio | I eat | mangiare
+ricordare | to remember; to remind | | ~ record
+viaggiatore | traveller, passenger
+fritto | fried
+esistere | to exist
+novantadue | ninety-two
+quarantasette | forty-seven
 recife | Recife (a city in Brazil)
 brasile | Brazil
 brasiliano | Brazilian
