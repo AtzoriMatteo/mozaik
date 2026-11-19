@@ -5,6 +5,17 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-19 (morning) — "Again" steps back two rungs, not to the start
+
+Matteo: a forgotten word shouldn't start the whole climb again (about ten
+reviews); one or two steps back is enough. Hard stays where it is.
+
+- **Again: two rungs down, back in 10 minutes (Matteo).** A word on "type
+  the Dutch" (rung 5) goes back to "on its own" (rung 3); a word at 21 days
+  goes back to 7 days; a new word stays at the start. Hard keeps the word on
+  its rung, as before.
+- No migration: stored stages are unchanged; only the next rating differs.
+
 ## 2026-11-19 (night, later) — Every text read again: facts, continuity, both languages
 
 Matteo: check literally all the content and optimise it. Claude read every

@@ -5,7 +5,8 @@
  * review-items.wordCardFor): in its sentence (0–2), on its own (3), on its
  * own / as a gap / heard (4), then typing the Dutch (5+). After each review
  * the learner rates it, Anki style:
- * - Again: forgot it. Back to the start, shown again in 10 minutes.
+ * - Again: forgot it. Two rungs down (never below the start), shown again
+ *          in 10 minutes. Matteo: a slip shouldn't undo weeks of climbing.
  * - Hard:  got it with effort. Stays on its rung.
  * - Good:  got it. One rung up.
  * - Easy:  instantly. One rung up too (no card type is ever skipped), a
@@ -62,6 +63,9 @@ export function storedStage(rung: number): number {
   return rung === 0 ? 0 : STORED_OFFSET + rung;
 }
 
+/** "Again" moves a word this many rungs down. */
+export const AGAIN_DROP = 2;
+
 /** "Again" brings a word back after this many minutes. */
 export const RETRY_MINUTES = 10;
 
@@ -88,7 +92,7 @@ export function schedule(stage: number, result: ReviewResult, now: Date): Review
   const [hard, good, easy] = WAITS[rung];
   switch (result) {
     case "again":
-      return { stage: 0, dueAt: new Date(now.getTime() + RETRY_MINUTES * MINUTE_MS) };
+      return { stage: storedStage(Math.max(0, rung - AGAIN_DROP)), dueAt: new Date(now.getTime() + RETRY_MINUTES * MINUTE_MS) };
     case "hard":
       // Not promoted. A new word comes back in an hour, the rest in whole days.
       return rung === 0
