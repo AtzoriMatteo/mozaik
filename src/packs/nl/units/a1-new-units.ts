@@ -172,7 +172,7 @@ export const feestdagen: UnitContent = {
         [
           s("Daniel gaat met Noor en Bram naar de vrijmarkt.", "Daniel goes to the free market with Noor and Bram."),
           s("Bram verkoopt zijn oude cd's, maar niemand wil ze hebben.", "Bram sells his old CDs, but nobody wants them."),
-          s("Daniel koopt een lamp voor zijn kamer voor drie euro.", "Daniel buys a lamp for his room for three euros."),
+          s("Daniel koopt een lamp voor zijn kamer voor vier euro, met een koekje erbij.", "Daniel buys a lamp for his room for four euros, with a biscuit thrown in."),
           s("'s Middags is er muziek op de grachten en op de pleinen.", "In the afternoon there's music on the canals and in the squares."),
           s("Het is druk, het is gezellig en iedereen is oranje.", "It's busy, it's cosy and everyone is orange."),
         ],

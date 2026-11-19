@@ -70,7 +70,7 @@ export const speakingA1: Record<string, UnitSpeaking> = {
     shadowing: [
       { text: "Ik ben ziek.", translation: "I'm ill." },
       { text: "Ik wil graag een afspraak maken.", translation: "I'd like to make an appointment." },
-      { text: "Ik heb sinds zondag koorts en mijn hoofd doet pijn.", translation: "I've had a fever since Sunday and my head hurts." },
+      { text: "Ik heb sinds maandag koorts en mijn hoofd doet pijn.", translation: "I've had a fever since Monday and my head hurts." },
       { text: "Beterschap!", translation: "Get well soon!" },
     ],
   },

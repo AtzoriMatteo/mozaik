@@ -18,9 +18,9 @@ export const lessons4: Record<string, GrammarLesson> = {
       text("niet usually goes at the end, but before adjectives, places and the final verb: Ik ga niet naar de les. Ik kan niet komen."),
     ],
     examples: [
-      example("Ik ben ziek. Ik kan niet naar de les.", "I'm ill. I can't go to class.", "niet"),
+      example("Ik ben ziek. Ik kan niet werken.", "I'm ill. I can't work.", "niet"),
       example("Moet je niet werken?", "Don't you have to work?", "niet"),
-      example("Hij heeft geen auto nodig", "He doesn't need a car", "geen"),
+      example("Hij heeft geen auto", "He hasn't got a car", "geen"),
       example("Hij wil het niet vergeten.", "He doesn't want to forget it.", "niet"),
     ],
     exercises: [

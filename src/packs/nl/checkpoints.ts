@@ -46,8 +46,8 @@ export const checkpointsNl: Record<string, Checkpoint> = {
         { prompt: "Give your phone number", frame: "Mijn telefoonnummer is … ." },
         { prompt: "Say when your birthday is", frame: "Ik ben jarig op … ." },
       ],
-      model: "Mijn naam is Priya Shah. Dat is S, H, A, H. Mijn telefoonnummer is nul zes, twaalf, vierendertig, zesenvijftig. Ik ben jarig op drie oktober.",
-      modelTranslation: "My name is Priya Shah. That's S, H, A, H. My phone number is 06 12 34 56. My birthday is on 3 October.",
+      model: "Mijn naam is Priya Shah. Dat is S, H, A, H. Mijn telefoonnummer is nul zes, twaalf, vierendertig, zesenvijftig, negentig. Ik ben jarig op drie oktober.",
+      modelTranslation: "My name is Priya Shah. That's S, H, A, H. My phone number is 06 12 34 56 90. My birthday is on 3 October.",
     },
     words: {
       verjaardagskalender: { meaning: "birthday calendar", closer: "verjaardag + kalender" },
@@ -173,7 +173,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Op de deur van de kledingwinkel van Yusuf hangt een briefje: Donderdag koopavond, open tot negen uur!", "On the door of Yusuf's clothes shop there's a note: Thursday late-night shopping, open until nine!"),
         s("Om zes uur gaan de andere winkels in de straat dicht, maar Yusuf is nog open. Het is druk: veel mensen komen na hun werk.", "At six the other shops in the street close, but Yusuf is still open. It's busy: lots of people come after work."),
-        s("Fatima komt op donderdag om half acht. Na haar werk heeft ze eindelijk tijd voor nieuwe schoenen.", "Fatima comes on Thursday at half past seven. After work she finally has time for new shoes."),
+        s("Fatima komt op donderdag om half acht. Na haar werk heeft ze eindelijk tijd voor een nieuwe jurk.", "Fatima comes on Thursday at half past seven. After work she finally has time for a new dress."),
       ],
     ],
     textTasks: [
@@ -185,13 +185,13 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       situation: "Yusuf leaves Kwame a voice message.",
       lines: [
         l("Yusuf", "Hoi Kwame, met Yusuf van de winkel.", "Hi Kwame, it's Yusuf from the shop."),
-        l("Yusuf", "De winterjas in maat L is binnen.", "The winter coat in size L has come in."),
-        l("Yusuf", "Hij kost negentig euro, maar voor jou tachtig.", "It costs ninety euros, but for you eighty."),
+        l("Yusuf", "De warme trui in maat S is binnen.", "The warm jumper in size S has come in."),
+        l("Yusuf", "Hij kost vijftig euro, maar voor jou veertig.", "It costs fifty euros, but for you forty."),
         l("Yusuf", "Kom je donderdag op koopavond? Tot dan!", "Are you coming on Thursday for late-night shopping? See you then!"),
       ],
       questions: [
-        { prompt: "What has come in?", options: ["The winter coat in size L", "Shoes in size 42", "A jumper"], answer: 0 },
-        { prompt: "How much does Kwame pay?", options: ["Eighty euros", "Ninety euros", "Seventy euros"], answer: 0 },
+        { prompt: "What has come in?", options: ["The warm jumper in size S", "Shoes in size 42", "A winter coat"], answer: 0 },
+        { prompt: "How much does Kwame pay?", options: ["Forty euros", "Fifty euros", "Thirty euros"], answer: 0 },
       ],
     },
     write: {
@@ -208,7 +208,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       koopavond: { meaning: "late-night shopping", closer: "koop (buy) + avond (evening)" },
       kledingwinkel: { meaning: "clothes shop" },
       briefje: { meaning: "a note", base: "brief" },
-      l: { meaning: "L (size large)" },
+      s: { meaning: "S (size small)" },
       yusuf: { meaning: "Yusuf (a name)" },
       meeste: { meaning: "most", base: "meest" },
       pas: { meaning: "only (not before); just" },
@@ -223,7 +223,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Marta stuurt een ansichtkaart aan mevrouw De Vries.", "Marta sends Mrs De Vries a postcard."),
-        s("Lieve mevrouw De Vries, ik ben op Texel, een eiland in het noorden. Hier zijn meer schapen dan mensen! Gisteren heb ik gefietst door de duinen.", "Dear Mrs De Vries, I'm on Texel, an island in the north. There are more sheep than people here! Yesterday I cycled through the dunes."),
+        s("Lieve mevrouw De Vries, ik ben op Texel, een eiland in het noorden. Hier zijn meer schapen dan mensen! Elke dag fiets ik door de duinen.", "Dear Mrs De Vries, I'm on Texel, an island in the north. There are more sheep than people here! Every day I cycle through the dunes."),
         s("Morgen ga ik wadlopen, met een gids. Ik vind het een beetje spannend!", "Tomorrow I'm going mudflat walking, with a guide. I find it a bit exciting!"),
         s("Groetjes, ook aan uw kat! Marta", "Best wishes, to your cat too! Marta"),
       ],
@@ -413,8 +413,8 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("In mei krijgt Esther een verrassing: haar salaris is veel hoger dan normaal.", "In May Esther gets a surprise: her salary is much higher than usual."),
-        s("Is het een fout? Nee. Het is vakantiegeld.", "Is it a mistake? No. It's holiday pay."),
-        s("Haar collega Ruud lacht: dat is je vakantiegeld! Esther boekt meteen een reis naar Portugal.", "Her colleague Ruud laughs: that's your holiday pay! Esther books a trip to Portugal straight away."),
+        s("Is het een fout?", "Is it a mistake?"),
+        s("Haar collega Ruud lacht: nee hoor, dat is je vakantiegeld! Esther boekt meteen een reis naar Portugal.", "Her colleague Ruud laughs: no, that's your holiday pay! Esther books a trip to Portugal straight away."),
       ],
     ],
     textTasks: [
@@ -442,8 +442,8 @@ export const checkpointsNl: Record<string, Checkpoint> = {
         { prompt: "Say something about his last day", frame: "Ik vind het … ." },
         { prompt: "Ask about his new job", frame: "Waar … ?" },
       ],
-      model: "Hoi Arjun, ik kom zeker! Ik vind het niet leuk, want je gaat weg. Waar ga je straks werken?",
-      modelTranslation: "Hi Arjun, I'll definitely come! I don't like it, because you're leaving. Where are you going to work?",
+      model: "Hoi Arjun, ik kom zeker! Ik vind het niet leuk, want je bent een goede collega. Waar ga je straks werken?",
+      modelTranslation: "Hi Arjun, I'll definitely come! I'm sad about it, because you're a good colleague. Where are you going to work?",
     },
     words: {
       verrassing: { meaning: "surprise" },
@@ -472,7 +472,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       [
         s("Op dinsdagavond zet Linda een oude stoel en een lamp op de stoep. Woensdag komt de gemeente het grofvuil ophalen.", "On Tuesday evening Linda puts an old chair and a lamp on the pavement. On Wednesday the council comes to collect the bulky rubbish."),
         s("Maar om negen uur 's avonds staat de stoel er al niet meer. En de lamp ook niet.", "But at nine in the evening the chair is already gone. And so is the lamp."),
-        s("Linda lacht. Waarom niet?", "Linda laughs. Why not?"),
+        s("Linda lacht. Iemand wil ze dus nog graag hebben. Prima!", "Linda laughs. So someone still wants them. Fine!"),
         s("De volgende dag ziet Linda haar lamp. Hij staat in het raam van de buren, en hij brandt.", "The next day Linda sees her lamp. It's in the neighbours' window, switched on."),
       ],
     ],
@@ -583,7 +583,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Kofi zit in de trein van Utrecht naar Groningen. Hij belt zijn moeder in Ghana, lekker hard, want de verbinding is slecht.", "Kofi is on the train from Utrecht to Groningen. He's calling his mother in Ghana, nice and loud, because the connection is bad."),
-        s("Een vrouw tegenover hem wijst naar een bordje boven het raam: een grote S.", "A woman opposite him points to a sign above the window: a big S."),
+        s("Een vrouw tegenover hem wijst naar een bordje boven het raam: Stilte.", "A woman opposite him points to a sign above the window: Silence."),
         s("Kofi zit in de stiltecoupé. Daar mag je niet bellen.", "Kofi is in the quiet carriage. You're not allowed to phone there."),
         s("Kofi zegt zachtjes sorry en loopt naar het balkon van de trein. Daar mag het wel.", "Kofi quietly says sorry and walks to the vestibule of the train. There it's allowed."),
       ],
@@ -617,6 +617,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       modelTranslation: "You can just use your bank card. Don't forget to check in and check out. In the quiet carriage you can't phone, so watch out!",
     },
     words: {
+      stilte: { meaning: "silence" },
       kofi: { meaning: "Kofi (a Ghanaian name)" },
       verbinding: { meaning: "connection" },
       wijst: { meaning: "points", base: "wijzen" },
@@ -701,7 +702,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Zaterdag is het Burendag in de straat van Samir.", "On Saturday it's Neighbours' Day in Samir's street."),
-        s("In de straat van Samir maken de buren de speeltuin schoon en planten ze bloemen. Daarna is er een lange tafel op straat, en iedereen neemt eten mee.", "In Samir's street the neighbours clean up the playground and plant flowers. Afterwards there's a long table in the street, and everyone brings food."),
+        s("Dan maken de buren samen de speeltuin schoon en planten ze bloemen. Daarna is er een lange tafel op straat, en iedereen neemt eten mee.", "Then the neighbours clean up the playground together and plant flowers. Afterwards there's a long table in the street, and everyone brings food."),
         s("Samir woont er al drie jaar, maar veel buren kende hij nog niet. Nu weet hij hoe ze heten, wat ze doen, en wie er een ladder heeft.", "Samir has lived there for three years, but he didn't know many neighbours yet. Now he knows their names, what they do, and who has a ladder."),
         s("Sinds Burendag is er ook een buurtapp. Vandaag staat erin: Wie heeft er een boormachine? Drie mensen reageren binnen vijf minuten.", "Since Neighbours' Day there's also a neighbourhood chat. Today someone wrote: Who has a drill? Three people reply within five minutes."),
       ],
@@ -825,7 +826,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     listening: {
       situation: "Pieter's mother calls him before Christmas.",
       lines: [
-        l("Moeder", "Pieter, met mama. Komt Zainab ook met Kerst?", "Pieter, it's Mum. Is Zainab coming at Christmas too?"),
+        l("Moeder", "Pieter, met mama. Komt Zainab ook met kerst?", "Pieter, it's Mum. Is Zainab coming at Christmas too?"),
         l("Moeder", "Eet ze vlees? Ik koop vlees voor het gourmetten.", "Does she eat meat? I'm buying meat for the gourmetten."),
         l("Moeder", "Als ze geen varkensvlees eet, koop ik kip en vis.", "If she doesn't eat pork, I'll buy chicken and fish."),
         l("Moeder", "Bel me even terug, schat!", "Call me back, love!"),

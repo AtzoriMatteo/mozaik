@@ -42,8 +42,8 @@ export const gezondheid: UnitContent = {
             translation: "Noor knocks on the door. \"Bram? You're late. Don't you have to work?\"",
           },
           {
-            text: "\"Ik ben ziek. Ik kan niet naar de les.\"",
-            translation: "\"I'm ill. I can't go to class.\"",
+            text: "\"Ik ben ziek. Ik kan niet werken.\"",
+            translation: "\"I'm ill. I can't work.\"",
           },
           {
             text: "Noor komt binnen en kijkt naar hem. \"Je hebt koorts, denk ik. Blijf vandaag in bed.\"",
@@ -135,8 +135,8 @@ export const gezondheid: UnitContent = {
             translation: "\"Good morning, Mr De Jong. What are your symptoms?\"",
           },
           {
-            text: "\"Ik heb sinds zondag koorts en mijn hoofd doet pijn. Mijn buik ook.\"",
-            translation: "\"I've had a fever since Sunday and my head hurts. My stomach too.\"",
+            text: "\"Ik heb sinds maandag koorts en mijn hoofd doet pijn. Mijn buik ook.\"",
+            translation: "\"I've had a fever since Monday and my head hurts. My stomach too.\"",
           },
           {
             text: "\"Doe uw mond open, alstublieft. Zeg eens 'aaa'.\"",
@@ -230,8 +230,8 @@ export const vrijeTijd: UnitContent = {
             translation: "Today is Saturday and the weather is lovely: a blue sky, little wind and twenty degrees.",
           },
           {
-            text: "Kwame speelt op zaterdag meestal voetbal, en Noor gaat graag wandelen. Maar vandaag willen ze niet sporten.",
-            translation: "On Saturdays Kwame usually plays football, and Noor likes to go walking. But today they don't want to do sport.",
+            text: "Kwame speelt op zaterdag meestal voetbal, en Bram slaapt graag lang. Maar vandaag willen ze allebei naar buiten.",
+            translation: "On Saturdays Kwame usually plays football, and Bram likes a long lie-in. But today they both want to go outside.",
           },
           {
             text: "\"Zullen we naar het strand gaan?\" vraagt Bram. \"Katwijk is maar twintig minuten fietsen.\"",

@@ -23,7 +23,7 @@ export const verleden: Unit = {
       grammar: ["perfect-hebben", "perfect-zijn", "participles-irregular"],
       paragraphs: [
         [
-          s("Het is maandagochtend. Op kantoor vraagt Esther aan Noor: \"Hoe was je weekend?\"", "It's Monday morning. At the office Esther asks Noor: \"How was your weekend?\""),
+          s("Het is maandagochtend. In de pauze vraagt Esther aan Noor: \"Hoe was je weekend?\"", "It's Monday morning. During the break Esther asks Noor: \"How was your weekend?\""),
           s("\"Heel druk,\" zegt Noor. \"Maar ook heel leuk.\"", "\"Very busy,\" says Noor. \"But really nice too.\""),
         ],
         [
@@ -37,7 +37,7 @@ export const verleden: Unit = {
         ],
         [
           s("\"En zondag?\" vraagt Esther.", "\"And Sunday?\" asks Esther."),
-          s("\"Op zondag ben ik met mijn zus naar het strand gegaan. Het heeft de hele dag gewaaid, maar we hebben toch gewandeld.", "\"On Sunday I went to the beach with my sister. It was windy all day, but we went for a walk anyway."),
+          s("\"Op zondag ben ik met mijn broer naar het strand gegaan. Het heeft de hele dag gewaaid, maar we hebben toch gewandeld.", "\"On Sunday I went to the beach with my brother. It was windy all day, but we went for a walk anyway."),
           s("En jij? Wat heb jij gedaan?\"", "And you? What did you do?\""),
           s("Esther lacht. \"Ik ben thuisgebleven. Ik heb drie films gekeken en pizza besteld. Ook een goed weekend!\"", "Esther laughs. \"I stayed at home. I watched three films and ordered pizza. Also a good weekend!\""),
         ],
@@ -49,7 +49,7 @@ export const verleden: Unit = {
           "She cycled to the market",
           "She had coffee with Joris",
           "She tidied up her house",
-          "She went to the beach with her sister",
+          "She went to the beach with her brother",
         ),
         tf("Noor heeft Joris in de supermarkt gezien.", "Noor saw Joris in the supermarket.", false),
         mc("What happened to the lasagne?", ["It burned completely", "It went a bit wrong, but they ate it all", "Her parents didn't like it"], 1),
@@ -348,7 +348,7 @@ export const verleden: Unit = {
     sounds: ["g", "ui"],
     shadowing: [
       { text: "Hoe was je weekend?", translation: "How was your weekend?" },
-      { text: "Op zondag ben ik met mijn zus naar het strand gegaan.", translation: "On Sunday I went to the beach with my sister." },
+      { text: "Op zondag ben ik met mijn broer naar het strand gegaan.", translation: "On Sunday I went to the beach with my brother." },
       { text: "Ik ben eindelijk verhuisd!", translation: "I've finally moved!" },
       { text: "Mijn fiets is gestolen.", translation: "My bike has been stolen." },
     ],

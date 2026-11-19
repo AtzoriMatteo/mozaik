@@ -71,7 +71,7 @@ export const listeningNewUnits: Record<string, ListeningItem[]> = {
       situation: "Fatima gets a voicemail from her neighbour.",
       grammar: ["object-pronouns", "separable-verbs", "time-numbers"],
       lines: [
-        line("Buurman", "Hoi Fatima, met Henk, je buurman van nummer negen.", "Hi Fatima, it's Henk, your neighbour from number nine."),
+        line("Buurman", "Hoi Fatima, met Wim, je buurman van nummer negen.", "Hi Fatima, it's Wim, your neighbour from number nine."),
         line("Buurman", "Ik heb een pakketje voor je. Het ligt bij mij.", "I have a parcel for you. It's at my place."),
         line("Buurman", "Het is een grote doos. Schoenen, denk ik?", "It's a big box. Shoes, I think?"),
         line("Buurman", "Ik ben vanavond thuis tot tien uur.", "I'm home tonight until ten."),
@@ -79,8 +79,8 @@ export const listeningNewUnits: Record<string, ListeningItem[]> = {
       ],
       gist: { prompt: "Why does the neighbour call?", options: ["He has a parcel for Fatima", "He wants to borrow something", "He invites her to dinner"], answer: 0 },
       details: [
-        { prompt: "Which house number does Henk live at?", options: ["Seven", "Nine", "Ten"], answer: 1 },
-        { prompt: "Until when is Henk home?", options: ["Until eight", "Until nine", "Until ten"], answer: 2 },
+        { prompt: "Which house number does Wim live at?", options: ["Seven", "Nine", "Ten"], answer: 1 },
+        { prompt: "Until when is Wim home?", options: ["Until eight", "Until nine", "Until ten"], answer: 2 },
       ],
       tasks: [
         tf("Het pakketje is een kleine doos.", "The parcel is a small box.", false),

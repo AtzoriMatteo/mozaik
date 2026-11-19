@@ -87,7 +87,7 @@ export const basis: UnitContent = {
           s("Nu komt het moeilijkste deel: de getallen tussen twintig en honderd.", "Now comes the hardest part: the numbers between twenty and a hundred."),
           s("In het Nederlands zeg je eerst de één en dan de tien.", "In Dutch you say the one first and then the ten."),
           s("Vierentwintig is dus vier-en-twintig, en vijfennegentig is vijf-en-negentig.", "So vierentwintig is four-and-twenty, and vijfennegentig is five-and-ninety."),
-          s("Luca denkt even na en zegt: \"Mijn huisnummer is twaalf en mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig.\"", "Luca thinks for a moment and says: \"My house number is twelve and my phone number is zero six, thirty-eight, fifteen, forty-seven.\""),
+          s("Luca denkt even na en zegt: \"Mijn huisnummer is twaalf en mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig, twintig.\"", "Luca thinks for a moment and says: \"My house number is twelve and my phone number is zero six, thirty-eight, fifteen, forty-seven, twenty.\""),
         ],
         [
           s("Aan het eind van de les oefenen ze het alfabet.", "At the end of the lesson they practise the alphabet."),

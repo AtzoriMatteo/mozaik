@@ -5,6 +5,55 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-19 (night, later) — Every text read again: facts, continuity, both languages
+
+Matteo: check literally all the content and optimise it. Claude read every
+reading text, story episode, listening script and checkpoint of Dutch A1–A2
+and Italian A1, every grammar exercise in both, and the writing models.
+Word-for-word repetition across texts turned out to be rare (no repeated
+sentences, no repeated exercises, no repeated tips); what needed fixing was
+continuity and facts.
+
+**Dutch.**
+- Phone numbers: Luca's and Priya's Dutch mobile numbers had 8 digits, not
+  10; Priya, Daniel and Tomás all had Luca's number. Each now has its own.
+- The same street, the same people: the street party moved from a
+  Lindenstraat to the Oude Vest, Mevrouw De Vries has lived there fifty
+  years (not forty in one text and fifty in another), Wei and Lin no longer
+  live above the bakery where Marta lives.
+- Fatima works in a hotel (one text said an office) and no longer works
+  Saturdays there, since she works at the bakery then; she starts at nine.
+- Bram works in a café, so he can't "go to class" when he's ill; his fever
+  started on Monday, not Sunday (he was fine on Sunday).
+- A Saturday at the beach no longer loses Noor halfway; Noor's sister (she
+  has a brother) is now her brother; a teacher doesn't buy rolls for his
+  break on a Saturday.
+- Kwame (A1: a teacher in Leiden) and the nurse looking for a flat in
+  Utrecht (A2) were the same name: the A2 one is now Kofi, as the A2
+  checkpoint already called him.
+- Smaller: the four-euro lamp, a winter coat Kwame already owned, Henk
+  (Noor's father's name) as a random neighbour, a perfect tense in an A1
+  postcard, "sinds drie dagen" → "al drie dagen", a stilte sign that said
+  "S", a change at Zwolle (not Amersfoort) to Groningen, "met kerst".
+
+**Italian.**
+- Hiro (unit 6: the violin maker who moves in) and Ana (unit 9: a
+  29-year-old architect from Recife) were also classmates in unit 2 with
+  other lives (an engineer; a 45-year-old mother of three). The classmates
+  are now Kenji and Fernanda.
+- Emma is a graphic designer who works from home (unit 2), not a bookshop
+  assistant (unit 5). Giulia studies medicine, so her exam is anatomy, not
+  art history (that's Ingrid's subject).
+- Ana's colleague's name day fell on 26 December, a holiday: he's now
+  Francesco (4 October), and the party guest who mentions his boss works at
+  Studio Benassi, not a motorbike factory.
+- The smorfia: 48 is "il morto che parla" (47 is "il morto"). A station
+  announcer was labelled with the Dutch "Spreker". Bar Margherita: the
+  price adds up, and paying after ordering is explained as that bar's habit.
+- Grammar: "Nel cortile ci è un tavolo" (a fix that produced wrong Italian)
+  and "Come sei?" corrected.
+- Changed sentences are recorded on the next "Record course audio" run.
+
 ## 2026-11-19 (night) — Flashcards: speed, audio, the right word on every card
 
 Matteo: some flashcard audio doesn't play, some cards show the wrong word,

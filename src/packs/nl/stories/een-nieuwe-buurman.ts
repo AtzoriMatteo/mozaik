@@ -116,9 +116,8 @@ export const buurmanTexts: ReadingText[] = [
     paragraphs: [
       [
         s("Zaterdag verhuist Kwame.", "On Saturday Kwame moves house."),
-        s("Hij heeft geen auto nodig, en hij kan ook niet rijden.", "He doesn't need a car, and he can't drive either."),
-        s("Luca, Noor en Bram huren hun huis ook van een oude dame. Ze wonen naast mevrouw De Vries.", "Luca, Noor and Bram rent their house from an old lady too. They live next door to Mrs De Vries."),
-        s("Ruth van de bakker leent hem haar bakfiets, en Luca, Noor en Bram helpen ook.", "Ruth from the bakery lends him her cargo bike, and Luca, Noor and Bram help too."),
+        s("Hij heeft geen auto, en hij kan ook niet rijden.", "He hasn't got a car, and he can't drive either."),
+        s("Ruth van de bakker leent hem haar bakfiets, en Luca, Noor en Bram helpen ook. Ze wonen naast mevrouw De Vries en ze huren hun huis ook.", "Ruth from the bakery lends him her cargo bike, and Luca, Noor and Bram help too. They live next door to Mrs De Vries, and they rent their house too."),
         s("Ze fietsen drie keer van zijn oude adres naar de Oude Vest. Het is niet ver: tien minuten.", "They cycle three times from his old address to the Oude Vest. It isn't far: ten minutes."),
       ],
       [
@@ -270,7 +269,7 @@ export const buurmanCheckpoint: Checkpoint = {
   text: [
     [
       s("Dinsdag hangt er een briefje op de deur van Kwame.", "On Tuesday there's a note on Kwame's door."),
-      s("\"Beste Kwame, het gas en het licht zijn voor de kamer. De wifi ook! Het wachtwoord staat op de koelkast in de keuken. De vuilnisbak is op dinsdag en vrijdag. Zaterdag om drie uur is er koffie met taart bij mij beneden. Groetjes, mevrouw De Vries\"", "\"Dear Kwame, the gas and electricity are included with the room. The wifi too! The password is on the fridge in the kitchen. The bin goes out on Tuesdays and Fridays. On Saturday at three there's coffee and cake at mine downstairs. Best wishes, Mrs De Vries\""),
+      s("\"Beste Kwame, het gas en het licht zijn voor de kamer. De wifi ook! Het wachtwoord staat op de koelkast in de keuken. De vuilnisbak: de grijze op maandag, de groene op donderdag. Zaterdag om drie uur is er koffie met taart bij mij beneden. Groetjes, mevrouw De Vries\"", "\"Dear Kwame, the gas and electricity are included with the room. The wifi too! The password is on the fridge in the kitchen. The bins: the grey one on Monday, the green one on Thursday. On Saturday at three there's coffee and cake at mine downstairs. Best wishes, Mrs De Vries\""),
     ],
   ],
   textTasks: [

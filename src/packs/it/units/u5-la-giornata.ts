@@ -75,7 +75,7 @@ export const giornata: Unit = {
         ],
         [
           s("\"Quando sono pronti?\" \"Sono pronti giovedì pomeriggio, dopo le quattro.\"", "\"When will they be ready?\" \"They'll be ready on Thursday afternoon, after four.\""),
-          s("\"Giovedì lavoro fino alle cinque e mezza. Posso venire alle sei?\"", "\"On Thursday I work until half past five. Can I come at six?\""),
+          s("\"Giovedì ho lezione di italiano fino alle cinque e mezza. Posso venire alle sei?\"", "\"On Thursday I have Italian class until half past five. Can I come at six?\""),
           s("\"Alle sei va bene. Io chiudo alle sette.\"", "\"Six is fine. I close at seven.\""),
           s("\"E quanto costa?\" \"Dodici euro.\"", "\"And how much is it?\" \"Twelve euros.\""),
         ],
@@ -83,11 +83,11 @@ export const giornata: Unit = {
           s("Sul muro ci sono molte foto: il mare, una grande famiglia, una ragazza con un camice bianco.", "On the wall there are lots of photos: the sea, a big family, a girl in a white coat."),
           s("\"Chi è?\" chiede Emma. \"È mia figlia Awa. Studia medicina a Dakar. Diventa dottoressa!\"", "\"Who's that?\" Emma asks. \"That's my daughter Awa. She studies medicine in Dakar. She's going to be a doctor!\""),
           s("Amadou sorride. È molto orgoglioso.", "Amadou smiles. He's very proud."),
-          s("\"E lei? Lavora qui vicino?\" chiede Amadou. \"Sì, in una libreria in centro. Comincio alle nove e finisco alle cinque e mezza.\"", "\"And you? Do you work near here?\" Amadou asks. \"Yes, in a bookshop in the centre. I start at nine and finish at half past five.\""),
+          s("\"E lei? Lavora qui vicino?\" chiede Amadou. \"Sì, lavoro a casa, qui sopra. Sono grafica: comincio alle nove e finisco alle cinque.\"", "\"And you? Do you work near here?\" Amadou asks. \"Yes, I work from home, just upstairs. I'm a graphic designer: I start at nine and finish at five.\""),
         ],
       ],
       tasks: [
-        mc("Why doesn't Emma come on Thursday at four?", ["She works until half past five", "The shop is closed", "The jeans aren't ready"], 0),
+        mc("Why doesn't Emma come on Thursday at four?", ["She has Italian class until half past five", "The shop is closed", "The jeans aren't ready"], 0),
         tf("I jeans costano venti euro.", "The jeans cost twenty euros.", false),
         mc("Who is the girl in the white coat?", ["Amadou's daughter, a future doctor", "A nurse from the street", "Emma's sister"], 0),
         mc("What does \"Diventa dottoressa!\" tell you about Amadou?", ["He's proud of Awa", "He's worried about Awa", "He wants to be a doctor"], 0),
@@ -116,7 +116,7 @@ export const giornata: Unit = {
         [
           s("Dopo la telefonata, Amadou scrive sul calendario, in grande: AGOSTO, AWA.", "After the call, Amadou writes on the calendar, in big letters: AUGUST, AWA."),
           s("Prende un libro, legge due pagine e chiude gli occhi.", "He picks up a book, reads two pages and closes his eyes."),
-          s("Poi chiude la luce e dorme. Sono le dieci e mezza, come sempre.", "Then he turns off the light and sleeps. It's half past ten, as always."),
+          s("Poi spegne la luce e dorme. Sono le dieci e mezza, come sempre.", "Then he turns off the light and sleeps. It's half past ten, as always."),
         ],
       ],
       tasks: [

@@ -31,10 +31,10 @@ export const piacere: Unit = {
         ],
         [
           s("Il primo è un ragazzo giapponese.", "The first is a Japanese man."),
-          s("\"Mi chiamo Hiro, ho trentun anni e sono ingegnere. Lavoro per una ditta di moto.\"", "\"My name's Hiro, I'm thirty-one and I'm an engineer. I work for a motorbike company.\""),
+          s("\"Mi chiamo Kenji, ho trentun anni e sono ingegnere. Lavoro per una ditta di moto.\"", "\"My name's Kenji, I'm thirty-one and I'm an engineer. I work for a motorbike company.\""),
           s("Poi parla una ragazza bionda.", "Then a blonde young woman speaks."),
           s("\"Io sono Ingrid, sono tedesca, di Monaco. Ho ventidue anni e sono studentessa. Studio storia dell'arte.\"", "\"I'm Ingrid, I'm German, from Munich. I'm twenty-two and I'm a student. I study art history.\""),
-          s("\"Mi chiamo Ana e sono brasiliana. Ho quarantacinque anni. Non lavoro: ho tre figli!\"", "\"My name's Ana and I'm Brazilian. I'm forty-five. I don't work: I have three children!\""),
+          s("\"Mi chiamo Fernanda e sono brasiliana. Ho quarantacinque anni. Non lavoro: ho tre figli!\"", "\"My name's Fernanda and I'm Brazilian. I'm forty-five. I don't work: I have three children!\""),
           s("Tutti ridono.", "Everyone laughs."),
         ],
         [
@@ -47,9 +47,9 @@ export const piacere: Unit = {
       ],
       tasks: [
         tf("Nella classe ci sono dieci studenti.", "There are ten students in the class.", false),
-        mc("What does Hiro do?", ["He's an engineer", "He's a student", "He's a teacher"], 0),
-        mc("Why doesn't Ana work?", ["She has three children", "She's a student", "She's on holiday"], 0),
-        pairs("How old are they?", "Hiro=trentun anni | Ingrid=ventidue anni | Ana=quarantacinque anni | Emma=ventisei anni", false, true),
+        mc("What does Kenji do?", ["He's an engineer", "He's a student", "He's a teacher"], 0),
+        mc("Why doesn't Fernanda work?", ["She has three children", "She's a student", "She's on holiday"], 0),
+        pairs("How old are they?", "Kenji=trentun anni | Ingrid=ventidue anni | Fernanda=quarantacinque anni | Emma=ventisei anni", false, true),
         tf("Emma parla un po' di irlandese.", "Emma speaks a bit of Irish.", true),
       ],
     },
@@ -156,20 +156,20 @@ export const piacere: Unit = {
       title: "Il numero di telefono",
       titleTranslation: "The phone number",
       kind: "dialogue",
-      situation: "After class, Hiro asks Emma for her number.",
+      situation: "After class, Kenji asks Emma for her number.",
       grammar: ["avere", "numbers"],
       lines: [
-        line("Hiro", "Emma, hai un numero italiano?", "Emma, do you have an Italian number?"),
+        line("Kenji", "Emma, hai un numero italiano?", "Emma, do you have an Italian number?"),
         line("Emma", "Sì, ho un numero nuovo. È tre quattro sette, uno due otto, cinque cinque nove zero.", "Yes, I have a new number. It's three four seven, one two eight, five five nine zero."),
-        line("Hiro", "Scusa, più piano, per favore. Tre quattro sette…", "Sorry, slower, please. Three four seven…"),
+        line("Kenji", "Scusa, più piano, per favore. Tre quattro sette…", "Sorry, slower, please. Three four seven…"),
         line("Emma", "Uno due otto, cinque cinque nove zero.", "One two eight, five five nine zero."),
-        line("Hiro", "Perfetto, grazie! Ti scrivo stasera.", "Perfect, thanks! I'll text you tonight."),
-        line("Emma", "Va bene. A domani, Hiro!", "All right. See you tomorrow, Hiro!"),
+        line("Kenji", "Perfetto, grazie! Ti scrivo stasera.", "Perfect, thanks! I'll text you tonight."),
+        line("Emma", "Va bene. A domani, Kenji!", "All right. See you tomorrow, Kenji!"),
       ],
-      gist: { prompt: "What does Hiro want?", options: ["Emma's phone number", "Emma's address", "Emma's email"], answer: 0 },
+      gist: { prompt: "What does Kenji want?", options: ["Emma's phone number", "Emma's address", "Emma's email"], answer: 0 },
       details: [
-        { prompt: "What does Hiro ask Emma to do?", options: ["Say it more slowly", "Write it down", "Say it again in English"], answer: 0 },
-        { prompt: "When will Hiro write to Emma?", options: ["Tonight", "Tomorrow", "On Monday"], answer: 0 },
+        { prompt: "What does Kenji ask Emma to do?", options: ["Say it more slowly", "Write it down", "Say it again in English"], answer: 0 },
+        { prompt: "When will Kenji write to Emma?", options: ["Tonight", "Tomorrow", "On Monday"], answer: 0 },
       ],
       tasks: [
         tf("Emma ha un numero nuovo.", "Emma has a new number.", true),
@@ -178,7 +178,8 @@ export const piacere: Unit = {
       ],
       dictation: [2, 4],
       words: {
-        hiro: { meaning: "Hiro (a Japanese name)" },
+        kenji: { meaning: "Kenji (a Japanese name)" },
+        fernanda: { meaning: "Fernanda (a Brazilian name)" },
       },
     },
     {
@@ -231,7 +232,7 @@ export const piacere: Unit = {
         pf("Say who you're looking for", "Cerco … per parlare italiano.", "cerco", "amici", "persone"),
       ],
       model:
-        "Mi chiamo Ana e ho quarantacinque anni. Sono brasiliana, di San Paolo, ma adesso abito a Bologna. Ho tre figli. Non lavoro, ma studio l'italiano tutti i giorni. Parlo portoghese, spagnolo e un po' di inglese. Non parlo bene l'italiano, ma imparo piano piano. Cerco amici italiani per parlare e prendere un caffè insieme!",
+        "Mi chiamo Fernanda e ho quarantacinque anni. Sono brasiliana, di San Paolo, ma adesso abito a Bologna. Ho tre figli. Non lavoro, ma studio l'italiano tutti i giorni. Parlo portoghese, spagnolo e un po' di inglese. Non parlo bene l'italiano, ma imparo piano piano. Cerco amici italiani per parlare e prendere un caffè insieme!",
     }),
     a1({
       id: "w-un-compagno",
@@ -248,7 +249,7 @@ export const piacere: Unit = {
         pf("Say something they don't do, with non", "Non … .", "non"),
       ],
       model:
-        "Lui si chiama Hiro. Ha trentun anni ed è giapponese, di Osaka. È ingegnere e lavora per una ditta di moto. Parla giapponese, inglese e un po' di italiano. Non ha figli e non parla tedesco. Hiro è molto simpatico!",
+        "Lui si chiama Kenji. Ha trentun anni ed è giapponese, di Osaka. È ingegnere e lavora per una ditta di moto. Parla giapponese, inglese e un po' di italiano. Non ha figli e non parla tedesco. Kenji è molto simpatico!",
     }),
   ],
   speaking: {

@@ -33,7 +33,7 @@ export const listeningBasis: Record<string, ListeningItem[]> = {
         line("Medewerker", "En uw voornaam?", "And your first name?"),
         line("Luca", "Luca. Met een c.", "Luca. With a c."),
         line("Medewerker", "Wat is uw telefoonnummer?", "What's your phone number?"),
-        line("Luca", "Nul zes, achtendertig, vijftien, zevenenveertig.", "Zero six, thirty-eight, fifteen, forty-seven."),
+        line("Luca", "Nul zes, achtendertig, vijftien, zevenenveertig, twintig.", "Zero six, thirty-eight, fifteen, forty-seven, twenty."),
         line("Medewerker", "Dank u wel. Hier is uw pasje. Veel leesplezier!", "Thank you. Here's your card. Enjoy reading!"),
       ],
       gist: { prompt: "What is happening?", options: ["Luca becomes a library member", "Luca buys a book", "Luca opens a bank account"], answer: 0 },

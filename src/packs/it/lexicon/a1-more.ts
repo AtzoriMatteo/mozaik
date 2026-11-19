@@ -419,6 +419,7 @@ fritto | fried
 esistere | to exist
 novantadue | ninety-two
 quarantasette | forty-seven
+quarantotto | forty-eight
 recife | Recife (a city in Brazil)
 brasile | Brazil
 brasiliano | Brazilian
@@ -441,6 +442,10 @@ mail | email
 benassi | Benassi (a surname)
 santo | saint (Santo Stefano)
 stefano | Stephen; Stefano (a name)
+francesco | Francesco (a name); Francis (San Francesco, 4 October)
+kenji | Kenji (a Japanese name)
+anatomia | anatomy
+fernanda | Fernanda (a Brazilian name)
 abbiamo | we have | avere
 colloquio | (job) interview | | ~ colloquium
 salta | jumps | saltare
