@@ -79,7 +79,7 @@ export const lexiconMore: Lexicon = {
   fijne: { meaning: "nice, happy", base: "fijn", local: "Fijne Koningsdag! Fijn weekend! = Have a nice …" },
   fit: { meaning: "fit, healthy" },
   frans: { meaning: "French (language)" },
-  friet: { meaning: "chips, fries", local: "Patat in the west and south, friet elsewhere: both fine" },
+  friet: { meaning: "chips, fries", local: "Patat in the north and west, friet in the south and in Belgium: both fine" },
   gaatje: { meaning: "cavity; small hole", base: "gat", closer: "gat (hole) + -je" },
   gang: { meaning: "aisle; corridor" },
   gas: { meaning: "gas" },

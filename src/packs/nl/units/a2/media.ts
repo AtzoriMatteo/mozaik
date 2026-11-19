@@ -99,7 +99,7 @@ export const media: Unit = {
         ],
         [
           s("Zoek daarna of andere nieuwssites hetzelfde schrijven. Als niemand anders het bericht heeft, is dat een slecht teken.", "After that, search whether other news sites write the same thing. If nobody else has the story, that's a bad sign."),
-          s("Let ook op hoe je je voelt. Word je heel boos of bang? Dan is dat vaak precies wat de schrijver wil.", "Also notice how you feel. Do you get very angry or scared? Then that's often exactly what the writer wants."),
+          s("Let ook op hoe je je voelt. Word je heel boos of bang? Dan is dat vaak precies wat de schrijver wil, want dan deel je het bericht sneller.", "Also notice how you feel. Do you get very angry or scared? Then that's often exactly what the writer wants, because then you share the message faster."),
         ],
         [
           s("Twijfel je nog? Deel het bericht dan niet. Het is beter om even te wachten dan om nepnieuws te verspreiden.", "Still in doubt? Then don't share the message. It's better to wait a moment than to spread fake news."),
@@ -111,7 +111,7 @@ export const media: Unit = {
         tf("Als geen andere website het bericht heeft, is dat een goed teken.", "If no other website has the story, that's a good sign.", false),
         mc("What should you do if you're still in doubt?", ["Don't share it", "Share it with a warning", "Send it to a newspaper"], 0),
         pairs("Match.", "nepnieuws=fake news | delen=to share | verzonnen=made up | twijfelen=to be in doubt", true),
-        mc("Why do some writers want you to feel angry or scared?", ["Then you share the message faster", "Then you buy a newspaper", "The text doesn't say"], 0),
+        mc("Why do some writers want you to feel angry or scared?", ["Then you share the message faster", "Then you buy a newspaper", "Then you read more slowly"], 0),
       ],
     },
     {

@@ -29,7 +29,7 @@ export const tips: readonly LearningTip[] = [
   },
   {
     id: "nl-ing-de",
-    text: "Words ending in -ing, -heid or -tie are always de-words: de woning, de vrijheid, de politie.",
+    text: "Words ending in -ing, -heid or -tie are de-words: de woning, de vrijheid, de politie. (Het ding is a whole word, not an -ing ending.)",
     places: ["review", "write"],
   },
   {

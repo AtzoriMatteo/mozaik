@@ -220,7 +220,7 @@ export const buurmanListening: ListeningItem = {
     l("Mevrouw De Vries", "Met De Vries.", "De Vries speaking."),
     l("Kwame", "Goedemiddag, mevrouw. Ik bel over de kamer. Is hij nog vrij?", "Good afternoon, madam. I'm calling about the room. Is it still free?"),
     l("Mevrouw De Vries", "Ja, hij is nog vrij. Hoe heet u?", "Yes, it's still free. What's your name?"),
-    l("Kwame", "Kwame Mensah. Ik ben leraar, en ik werk vanaf maandag in Leiden.", "Kwame Mensah. I'm a teacher, and I start work in Leiden on Monday."),
+    l("Kwame", "Kwame Mensah. Ik ben leraar, en ik werk vanaf volgende maand in Leiden.", "Kwame Mensah. I'm a teacher, and I start work in Leiden next month."),
     l("Mevrouw De Vries", "Wilt u vandaag komen kijken? Om vier uur?", "Would you like to come and look today? At four?"),
     l("Kwame", "Graag. Is het ver van het station?", "Yes please. Is it far from the station?"),
     l("Mevrouw De Vries", "Nee, vijf minuten lopen. Tot straks!", "No, five minutes' walk. See you later!"),

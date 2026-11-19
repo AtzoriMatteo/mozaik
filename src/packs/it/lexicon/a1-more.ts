@@ -394,7 +394,7 @@ settant' | seventy (settant'anni) | settanta
 settanta | seventy
 tombola | tombola, Italian bingo | | Played with the family at Christmas
 significato | meaning | | ~ significance
-smorfia | the Naples 'book of dreams': every number from 1 to 90 has a meaning | | 90 = fear, 47 = the dead man who talks, 33 = Christ's age
+smorfia | the Naples 'book of dreams': every number from 1 to 90 has a meaning | | 90 = fear, 48 = the dead man who talks, 33 = Christ's age
 paura | fear
 morto | dead; dead man
 tornato | come back | tornare
@@ -719,7 +719,7 @@ buono | good | | ~ bonus
 assaggiare | to taste | | ~ assay
 assaggia | tastes | assaggiare
 oh | oh
-sale | salt | | ~ salary (Roman soldiers were paid in salt)
+sale | salt | | ~ salary (the story goes that Roman soldiers got money for salt)
 chiavi | keys | chiave
 chiave | key | | ~ clavicle, clef
 pacco | packet, parcel | | ~ pack

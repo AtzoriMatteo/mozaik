@@ -342,6 +342,7 @@ zender | channel, station
 zeshonderdvijftig | six hundred and fifty
 zessen | six | zes | | met z'n zessen = the six of them
 zestiende | sixteenth
+zehra | Zehra (a Turkish name)
 zichzelf | himself, herself, themselves | | zich + zelf
 zin | sentence; desire | | | Ik heb zin in… = I feel like…
 zocht | looked for | zoeken

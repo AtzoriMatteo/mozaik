@@ -77,6 +77,7 @@ joods | Jewish
 joodse | Jewish | joods
 journaal | news (on TV) | | | Het Journaal = the main NOS news programme
 juist | actually, precisely; right | | | juist klein = actually short (the opposite of what you'd expect)
+koen | Koen (a name)
 kaal | bare; unfurnished; bald | | kaal ~ callow | Een kale huurwoning comes without floors or curtains
 kaarsen | candles | kaars
 kaarsje | (little) candle | kaars

@@ -212,7 +212,7 @@ export const tempoLibero: Unit = {
       lines: [
         line("Karim", "Ciao Davide! Martedì vengo all'allenamento. A che ora è?", "Hi Davide! I'm coming to training on Tuesday. What time is it?"),
         line("Davide", "Alle otto, alla palestra di via Saragozza. Vieni con Emma?", "At eight, at the sports hall on Via Saragozza. Are you coming with Emma?"),
-        line("Karim", "Sì, ma lei arriva alle otto e un quarto: finisce di lavorare tardi.", "Yes, but she'll arrive at quarter past eight: she finishes work late."),
+        line("Karim", "Sì, ma lei arriva alle otto e un quarto: il martedì finisce di lavorare tardi.", "Yes, but she'll arrive at quarter past eight: on Tuesdays she finishes work late."),
         line("Davide", "Va bene. Ti piace correre? Prima facciamo sempre venti minuti di riscaldamento.", "Fine. Do you like running? We always do twenty minutes of warm-up first."),
         line("Karim", "Correre? Non corro mai!", "Running? I never run!"),
         line("Davide", "Tranquillo, noi non corriamo: giriamo in carrozzina!", "Relax, we don't run: we go round in wheelchairs!"),
@@ -220,7 +220,7 @@ export const tempoLibero: Unit = {
       gist: { prompt: "What are they talking about?", options: ["Karim coming to basketball training", "A concert", "A dinner"], answer: 0 },
       details: [
         { prompt: "Where is the training?", options: ["Sports hall on Via Saragozza", "Giardini Margherita", "Via del Pratello"], answer: 0 },
-        { prompt: "Why is Emma late?", options: ["She finishes work late", "She doesn't like sport", "She's at the bar"], answer: 0 },
+        { prompt: "Why is Emma late?", options: ["On Tuesdays she finishes work late", "She doesn't like sport", "She's at the bar"], answer: 0 },
       ],
       tasks: [
         tf("L'allenamento comincia alle otto e un quarto.", "Training starts at quarter past eight.", false),

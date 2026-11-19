@@ -124,7 +124,7 @@ export const reizen: Unit = {
       grammar: ["perfect-or-past", "imperfect-irregular", "subordinate-order"],
       paragraphs: [
         [
-          s("Emre en zijn vriendin Lotte hebben vorig jaar een vakantie naar Kreta geboekt. Ze verheugden zich er al maanden op.", "Last year Emre and his girlfriend Lotte booked a holiday to Crete. They had been looking forward to it for months."),
+          s("Koen en zijn vriendin Lotte hebben vorig jaar een vakantie naar Kreta geboekt. Ze verheugden zich er al maanden op.", "Last year Koen and his girlfriend Lotte booked a holiday to Crete. They had been looking forward to it for months."),
           s("Maar op de dag van vertrek ging alles mis.", "But on the day they left, everything went wrong."),
         ],
         [
@@ -132,22 +132,22 @@ export const reizen: Unit = {
           s("Ze aten een broodje en wachtten. En wachtten.", "They ate a sandwich and waited. And waited."),
         ],
         [
-          s("Om middernacht landden ze op Kreta. Lotte had haar koffer snel, maar die van Emre kwam niet.", "At midnight they landed on Crete. Lotte got her suitcase quickly, but Emre's didn't come."),
+          s("Om middernacht landden ze op Kreta. Lotte had haar koffer snel, maar die van Koen kwam niet.", "At midnight they landed on Crete. Lotte got her suitcase quickly, but Koen's didn't come."),
           s("Bij de balie zei een medewerker: \"Uw koffer is nog in Amsterdam. Misschien komt hij morgen.\"", "At the desk an employee said: \"Your suitcase is still in Amsterdam. Maybe it'll come tomorrow.\""),
-          s("Emre had niets: geen kleren, geen tandenborstel, geen zwembroek.", "Emre had nothing: no clothes, no toothbrush, no swimming trunks."),
+          s("Koen had niets: geen kleren, geen tandenborstel, geen zwembroek.", "Koen had nothing: no clothes, no toothbrush, no swimming trunks."),
         ],
         [
           s("De volgende ochtend kocht hij in een klein winkeltje een T-shirt met een grote ezel erop. Iets anders hadden ze niet.", "The next morning he bought a T-shirt with a big donkey on it in a little shop. They didn't have anything else."),
-          s("De koffer kwam pas na vier dagen. Maar toen was Emre al aan het shirt gewend.", "The suitcase only came after four days. But by then Emre had already got used to the shirt."),
+          s("De koffer kwam pas na vier dagen. Maar toen was Koen al aan het shirt gewend.", "The suitcase only came after four days. But by then Koen had already got used to the shirt."),
           s("\"Het was een geweldige vakantie,\" zegt hij nu. \"En die ezel draag ik nog steeds.\"", "\"It was a great holiday,\" he says now. \"And I still wear that donkey.\""),
         ],
       ],
       tasks: [
-        order("Put the story in order.", "They're stuck in a traffic jam", "They see the delay on the board", "They land at midnight", "Emre's suitcase doesn't come", "He buys a T-shirt", "The suitcase arrives"),
+        order("Put the story in order.", "They're stuck in a traffic jam", "They see the delay on the board", "They land at midnight", "Koen's suitcase doesn't come", "He buys a T-shirt", "The suitcase arrives"),
         tf("De koffer van Lotte was ook weg.", "Lotte's suitcase was gone too.", false),
-        mc("Why did Emre buy the donkey T-shirt?", ["The shop had nothing else", "He loves donkeys", "Lotte gave it to him"], 0),
+        mc("Why did Koen buy the donkey T-shirt?", ["The shop had nothing else", "He loves donkeys", "Lotte gave it to him"], 0),
         mc("How long did the delay at Schiphol last?", ["One hour", "Three hours", "Four days"], 1),
-        tf("Emre vond het uiteindelijk een leuke vakantie.", "In the end Emre thought it was a nice holiday.", true),
+        tf("Koen vond het uiteindelijk een leuke vakantie.", "In the end Koen thought it was a nice holiday.", true),
       ],
     },
   ],
