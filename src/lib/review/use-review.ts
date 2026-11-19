@@ -1,7 +1,7 @@
 "use client";
 
 import { logStudy } from "@/lib/plan/log";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   courseWordId, eligibleItems, newWords, type ReviewItem, type Schedule,
 } from "@/core/review-items";
@@ -46,7 +46,13 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
   const progress = useCourseProgress(pack);
   const remote = isAuthEnabled();
 
-  const [own, setOwn] = useState<Map<string, Schedule>>(new Map());
+  const [own, setOwnState] = useState<Map<string, Schedule>>(new Map());
+  // The latest schedules, so two quick ratings in a row never undo each other.
+  const ownRef = useRef(own);
+  const setOwn = useCallback((map: Map<string, Schedule>) => {
+    ownRef.current = map;
+    setOwnState(map);
+  }, []);
   const [loaded, setLoaded] = useState(false);
   const [ready, setReady] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -88,7 +94,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
     return () => {
       cancelled = true;
     };
-  }, [lang, remote]);
+  }, [lang, remote, setOwn]);
 
   const done = progress.done;
   const items = useMemo<ReviewItem[]>(() => {
@@ -120,7 +126,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
   const store = useCallback(
     async (entries: [string, string, Schedule][]) => {
       if (!lang) return;
-      const map = new Map(own);
+      const map = new Map(ownRef.current);
       for (const [id, , sch] of entries) map.set(id, sch);
       setOwn(map);
       try {
@@ -130,7 +136,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
         setError((e as Error).message);
       }
     },
-    [lang, own, remote, ready],
+    [lang, remote, ready, setOwn],
   );
 
   const rate = useCallback(
@@ -141,7 +147,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
         await saved.review(item.word, result);
         return;
       }
-      const prev = own.get(item.id);
+      const prev = ownRef.current.get(item.id);
       const next = schedule(prev?.stage ?? 0, result, new Date());
       await store([[item.id, item.kind, {
         stage: next.stage,
@@ -149,7 +155,7 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
         introducedAt: prev?.introducedAt ?? new Date().toISOString(),
       }]]);
     },
-    [lang, own, saved, store],
+    [lang, saved, store],
   );
 
   /** Known for good: the word never comes back (undo from the graduated list). */
@@ -210,16 +216,17 @@ export function useReview(pack: LanguagePack | null, settings: ReviewSettings) {
    * or a unit's Words, or a word saved while reading. Where does it stand?
    */
   const savedByLemma = useMemo(() => new Map(saved.words.map((w) => [lemmaFor(w), w])), [saved.words]);
+  const savedByForm = useMemo(() => new Map(saved.words.map((w) => [w.word, w])), [saved.words]);
   const wordState = useCallback(
     (lemma: string, form?: string): "new" | "learning" | "learned" | "known" => {
       const course = own.get(courseWordId(lemma));
-      const sw = savedByLemma.get(lemma) ?? (form ? saved.words.find((w) => w.word === form) : undefined);
+      const sw = savedByLemma.get(lemma) ?? (form ? savedByForm.get(form) : undefined);
       const stage = course ? course.stage : sw ? (schedules.get(`saved:${sw.word}`)?.stage ?? sw.stage ?? 0) : undefined;
       if (stage === undefined) return "new";
       if (isGraduated(stage)) return "known";
       return isLearned(stage) ? "learned" : "learning";
     },
-    [savedByLemma, saved.words, schedules, own],
+    [savedByLemma, savedByForm, schedules, own],
   );
   const fresh = useMemo(
     () => (pack ? newWords(pack, settings.newWordLevels.filter((l) => pack.levels.includes(l)), own, savedForms) : []),

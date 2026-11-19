@@ -104,13 +104,20 @@ export function schedule(stage: number, result: ReviewResult, now: Date): Review
 
 /** Short label for when a rating would bring the word back: "10 min", "3 d". */
 export function describeWait(stage: number, result: ReviewResult, now: Date): string {
-  const ms = schedule(stage, result, now).dueAt.getTime() - now.getTime();
+  const due = schedule(stage, result, now).dueAt;
+  const ms = due.getTime() - now.getTime();
   if (ms < HOUR_MS) return `${Math.round(ms / MINUTE_MS)} min`;
-  if (ms < DAY_MS / 2 && ms < 3 * HOUR_MS) return `${Math.round(ms / HOUR_MS)} h`;
-  // Due early tomorrow morning: "1 d", not "10 h".
-  if (ms < 1.5 * DAY_MS) return "1 d";
-  const days = Math.max(1, Math.round(ms / DAY_MS));
+  if (ms < 3 * HOUR_MS) return `${Math.round(ms / HOUR_MS)} h`;
+  // Whole days counted on the calendar, as the waits are set: in the evening,
+  // "tomorrow morning" is 1 d and "the morning after" 2 d, never both "1 d".
+  const days = Math.max(1, calendarDays(now, due));
   return days < 30 ? `${days} d` : `${Math.round(days / 30)} mo`;
+}
+
+/** How many midnights lie between two moments, in local time. */
+function calendarDays(from: Date, to: Date): number {
+  const day = (d: Date) => Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+  return Math.round((day(to) - day(from)) / DAY_MS);
 }
 
 /** Clocks in the UI tick per minute, so allow a minute of slack. */

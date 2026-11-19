@@ -10,6 +10,9 @@ const VERB_BEFORE = new Set([
   "ga", "gaat", "gaan", "wil", "wilt", "willen", "kan", "kun", "kunt", "kunnen", "moet", "moeten", "mag", "mogen", "zal", "zult", "zullen", "zou", "zouden", "blijf", "blijft", "blijven", "leer", "leert", "leren",
 ]);
 
+const PLURAL = new Set(["we", "wij", "jullie"]);
+const SUBJECTS = new Set(["ik", "jij", "u", "hij", "zij", "we", "wij", "jullie", "men"]);
+
 export function dutchPosInContext(form: string, words: readonly string[]): "noun" | "verb" | null {
   const i = words.indexOf(form);
   if (i < 0) return null;
@@ -20,6 +23,8 @@ export function dutchPosInContext(form: string, words: readonly string[]): "noun
   if (NOUN_BEFORE.has(prev)) return "noun";
   // "een goede reden", "het mooie leven": an inflected adjective between.
   if (/e$/.test(prev) && NOUN_BEFORE.has(words[i - 2] ?? "") && !VERB_BEFORE.has(prev)) return "noun";
-  if (VERB_BEFORE.has(prev)) return "verb";
+  // After te, om or a helper verb only an infinitive is a verb: "te vroeg" is "too early".
+  // After we/wij/jullie too: "moeten we vroeg vertrekken" is "early", not a verb.
+  if (VERB_BEFORE.has(prev)) return (SUBJECTS.has(prev) && !PLURAL.has(prev)) || /n$/.test(form) ? "verb" : null;
   return null;
 }

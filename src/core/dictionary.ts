@@ -22,17 +22,35 @@ export const withArticle = (article: string, lemma: string) => (article.endsWith
  */
 export function dictionaryLabel(pack: LanguagePack, lemma: string, meaning?: string): string {
   const article = cardArticle(pack, lemma, meaning);
-  // leiden = to lead stays lower case; Leiden the city doesn't get a card.
-  const written = meaning && /^to /.test(meaning) ? lemma : (pack.displayCase?.(lemma) ?? lemma);
+  const written = cardCase(pack, lemma, meaning);
   return article ? withArticle(article, written) : written;
 }
 
-/** The article a card's noun takes, or null (not a noun, or used as a verb or adverb here). */
+/**
+ * How the word is written on its card. The card's own meaning decides first:
+ * "leiden = to lead" and "wei = meadow" stay lower case, "Wei (a name)" and
+ * "Ahmet (a name)" take their capital. Otherwise the pack's own rule.
+ */
+export function cardCase(pack: LanguagePack, lemma: string, meaning?: string): string {
+  if (meaning) {
+    if (/^to /.test(meaning)) return lemma;
+    // A name the pack doesn't list itself (Ahmet, Accra): its meaning spells it.
+    const own = meaning.slice(0, lemma.length);
+    const listed = !!pack.lexicon[lemma];
+    if (!listed && own.toLowerCase() === lemma && own !== lemma && !/\p{L}/u.test(meaning[lemma.length] ?? "")) return own;
+    if (/^\p{Ll}/u.test(meaning) && !/^the /.test(meaning)) return lemma;
+  }
+  return pack.displayCase?.(lemma) ?? lemma;
+}
+
+/** The article a card's noun takes, or null (not a noun, used as a verb or adverb here, or a name). */
 export function cardArticle(pack: LanguagePack, lemma: string, meaning?: string): string | null {
   const article = pack.nounArticle?.(lemma) ?? null;
   if (!article || (meaning && /^to /.test(meaning))) return null;
   const homograph = pack.homographs?.[lemma];
   if (homograph && meaning !== undefined && meaning === homograph.other) return null;
+  // Names and places: Spanje, Mientje, Visser. Only a few keep one (de Noordzee).
+  if (/^\p{Lu}/u.test(cardCase(pack, lemma, meaning)) && !pack.properArticles?.has(lemma)) return null;
   return article;
 }
 
@@ -65,7 +83,7 @@ export function pickSense(meaning: string, pos: "noun" | "verb" | null): string 
  * eten = to eat; "het eten is klaar" gives het eten = food, meal; "we
  * fietsen" gives fietsen = to cycle, not de fiets.
  */
-export function cardSense(
+function computeCardSense(
   pack: LanguagePack,
   form: string,
   help: { meaning: string; base?: string },
@@ -74,17 +92,21 @@ export function cardSense(
   // The sentence's hint counts only when the word can be that: "te duur" is "too expensive", not a verb.
   const hint = pack.posInContext?.(form, sentence) ?? null;
   const base = (help.base ?? form).toLowerCase();
-  const homograph = pack.homographs?.[base] ?? pack.homographs?.[form.toLowerCase()];
+  const key = pack.homographs?.[base] ? base : form.toLowerCase();
+  const homograph = pack.homographs?.[key];
   if (homograph) {
     // "twee dagen": a plural of the noun is the noun, whatever comes before it.
     const plural = form.toLowerCase() !== base && form.toLowerCase().startsWith(base) && /(en|s)$/.test(form) && !homograph.nounLemma;
     // "twee boeken": the lexicon reads the form as the plural, unless the sentence says verb.
     // "een enkele keer": an inflected adjective, never the noun.
     const adjective = form.toLowerCase() !== base && form.toLowerCase() === `${base}e`;
-    const asNoun = (hint === "noun" && !adjective) || (hint !== "verb" && (plural || (!!homograph.nounLemma && base === homograph.nounLemma)));
+    const capital = key.charAt(0).toUpperCase() + key.slice(1);
+    const named = !!homograph.nounWhenCapital && hint !== "verb" && new RegExp(`\\b${capital}\\b`, "u").test(sentence);
+    const asNoun = named || (hint === "noun" && !adjective) || (hint !== "verb" && (plural || (!!homograph.nounLemma && base === homograph.nounLemma)));
     return asNoun
       ? { lemma: homograph.nounLemma ?? base, meaning: homograph.noun }
-      : { lemma: homograph.otherLemma ?? base, meaning: homograph.other };
+      : // "we fietsen": the verb's own form, not the noun the lexicon gives as base.
+        { lemma: homograph.otherLemma ?? (homograph.nounLemma ? key : base), meaning: homograph.other };
   }
   const canBeVerb = !!pack.verbFor?.(form) || isVerb(pack, (help.base ?? form).toLowerCase());
   let lemma = (help.base ?? form).toLowerCase();
@@ -92,6 +114,8 @@ export function cardSense(
   const pos = (hint === "verb" && !canBeVerb) || (hint === "noun" && !pack.nounArticle?.(lemma)) ? null : hint;
   const inf = pack.verbFor?.(form);
   if (pos === "verb" && inf && inf !== lemma && pack.nounArticle?.(lemma)) lemma = inf;
+  // "ik vroeg": a past form whose lexicon entry is the adjective (vroeg = early) is the verb vragen.
+  if (pos === "verb" && inf && inf !== lemma && !isVerb(pack, lemma) && help.base === undefined) lemma = inf;
   // Met in its dictionary form: the sentence's own meaning is the right sense.
   // Met inflected (lacht): the dictionary form's own entry ("to laugh").
   const dictionary = pack.lexicon[lemma]?.dictionary;
@@ -103,6 +127,31 @@ export function cardSense(
   // "il telefono = phone; I phone": a noun card keeps only the noun's senses.
   if (cardArticle(pack, lemma, meaning)) meaning = withoutVerbForms(meaning);
   return { lemma, meaning };
+}
+
+const senseCache = new WeakMap<LanguagePack, Map<string, { lemma: string; meaning: string }>>();
+
+/**
+ * The card a word gets from the sentence it's in (see computeCardSense).
+ * Remembered: the same word in the same sentence always gives the same card,
+ * and Review and the Words pages ask for thousands of them.
+ */
+export function cardSense(
+  pack: LanguagePack,
+  form: string,
+  help: { meaning: string; base?: string },
+  sentence: string,
+): { lemma: string; meaning: string } {
+  let cache = senseCache.get(pack);
+  if (!cache) senseCache.set(pack, (cache = new Map()));
+  const key = `${form}\u0000${help.base ?? ""}\u0000${help.meaning}\u0000${sentence}`;
+  let sense = cache.get(key);
+  if (!sense) {
+    sense = computeCardSense(pack, form, help, sentence);
+    if (cache.size > 50000) cache.clear();
+    cache.set(key, sense);
+  }
+  return sense;
 }
 
 /** Drops senses that are a conjugated verb ("I phone", "(they) work") from a noun's meaning. */

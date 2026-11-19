@@ -3,7 +3,7 @@ import type { LanguagePack } from "./language-pack";
 import { helpFor } from "./content";
 import { cardArticle, cardSense, dictionaryLabel, isVerb } from "./dictionary";
 import { formInSentence } from "./coherence";
-import { SKIP, type WordInfo } from "./review-items";
+import { SKIP, taughtCard, type WordInfo } from "./review-items";
 
 /**
  * A unit's words: the level's core words that the course first uses in this
@@ -66,9 +66,9 @@ function build(pack: LanguagePack): Map<string, UnitWord[]> {
     // Words taught on purpose come first: the unit's tasks rely on them.
     for (const t of unit.teach ?? []) {
       if (t.phrase) continue;
-      const lemma = t.word.toLowerCase();
+      const { lemma, meaning } = taughtCard(pack, t, (l) => seen.has(l) || !!pack.lexicon[l]);
       const form = formInSentence(pack, t);
-      add(lemma, { word: form, surface: form, base: form === lemma ? undefined : lemma, meaning: t.meaning, sentence: t.text, translation: t.translation }, true);
+      add(lemma, { word: form, surface: form, base: form === lemma ? undefined : lemma, meaning, sentence: t.text, translation: t.translation }, true);
     }
     const sources = [
       ...unit.texts.map((t) => ({ owner: t, lines: t.paragraphs.flat() })),

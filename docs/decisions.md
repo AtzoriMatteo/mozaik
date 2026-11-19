@@ -5,6 +5,58 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-19 (night) — Flashcards: speed, audio, the right word on every card
+
+Matteo: some flashcard audio doesn't play, some cards show the wrong word,
+taps sometimes need a second click, and the new card system "seems off".
+Check everything, both languages.
+
+**Why taps needed a second click (Claude).** Review rebuilt the whole
+course's word list (every word of every text, its sense in its sentence)
+after every rating and every page load, and nothing kept the result. On a
+phone that froze the page for 6–8 seconds after each rating, and pages took
+10–23 seconds to settle (measured at phone speed). The list is now built
+once and kept; each sentence is split into words once. Now a rating moves to
+the next card in about 0.04 s and pages settle in 3–4 s. Two quick ratings
+in a row can no longer undo each other either.
+
+**Audio (Claude).** The recordings list was made from the texts only, so
+words taught on purpose for tasks (lievelingsseizoen, bestelling, comincio…)
+and their example sentences, and some cards' sentences, had no recording.
+Everything a card or Words page plays is now on the list; a test keeps it
+that way. They're recorded on the next "Record course audio" run (started
+with this change); until then they use the device voice.
+
+**Wait labels (Claude).** Late in the evening Good and Easy could both say
+"1 d" although Easy really was a day later: the label counted hours, not
+days on the calendar. Fixed, with a test for evening and after-midnight
+reviews.
+
+**The right card (Claude), checked by simulating every word a learner can
+save in both languages (about 2,400 Dutch and 1,200 Italian cards):**
+- Wrong sense or form: "fietsen = to cycle; to bikes", "we fietsen" filed
+  under de fiets, "antwoordt" giving "antwoorden = answers", "te vroeg" as a
+  verb, "alle" filed under al, "lerares" under leraar, "controleert =
+  checks", "bevallen = given birth", Leiden (the city) as "to lead".
+- Capitals: de Mevrouw, de Huisarts, Nk → mevrouw, huisarts, NK; names keep
+  their capital (Ahmet, Accra, Napels); de wei (meadow) vs Wei (a name).
+- Names and countries no longer get an article (het Spanje, het Mientje,
+  de Visser); de Noordzee, de Nederlander and l'Italia-style feasts keep one.
+- Articles added for about 50 Dutch nouns that had none (de bakfiets, het
+  apparaat, de tandarts…) and about 250 Italian ones (il bagno, la sedia,
+  l'esame…), plus capitals for Italian places and feasts (Italia, il Natale,
+  la Befana).
+- Words taught as a form (comincio, pomodori, buste, promesso) are now drilled
+  as their dictionary form (cominciare, il pomodoro), on cards and Words
+  pages alike, so practising them from a Words page puts them in Review.
+- Tests now check every saveable card: no article on a verb, no article on a
+  name, every dictionary form has its own entry.
+
+**The ladder itself (checked, unchanged).** Every rung, wait and card type
+works as decided on 17 Nov. Still worth deciding (Matteo): "Again" sends a
+word back to the very start (about ten reviews to climb again), which is a
+big part of why reviews pile up.
+
 ## 2026-11-18 (late) — Review by unit; "I already know some of these"
 
 Matteo: reviews keep piling up. Wanted a way to clear words faster and to

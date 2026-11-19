@@ -4,9 +4,10 @@ import type { Lexicon } from "@/core/content";
 const LOWER = new Set([
   "cd", "tv", "cv", "nazi", "nazi's", "calvinist", "calvinisten", "toko", "toko's", "personeelsmanager",
   "oranjekoorts", "kerstdag", "kerstboom", "kerstpakket", "tikkie", "helder", "dam", "a", "g", "k", "n", "w", "t",
+  "mevrouw", "huisarts", "huisartsenpraktijk", "kerst", "nieuwjaarsduik", "oudejaarsavond", "werelderfgoedlijst",
 ]);
 /** Capitalised, though the English meaning starts with "the". */
-const UPPER = new Set(["nederland", "randstad", "noordzee", "waddenzee"]);
+const UPPER = new Set(["nederland", "randstad", "noordzee", "waddenzee", "napels", "maarten", "limburgs", "turks", "engelsen", "sint", "elfstedentocht", "teletekst"]);
 const ENGLISH_CAPS = /^(I\b|I'|January|February|March|April|May|June|July|August|September|October|November|December|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/;
 
 /**

@@ -72,6 +72,8 @@ export interface LanguagePack {
   homographs?: Readonly<Record<string, Homograph>>;
   /** How a dictionary form is written on a card (Nederland, Duits); defaults to as is. */
   displayCase?: (lemma: string) => string;
+  /** Names that still take an article on a card (de Noordzee, de Nederlander); other names never do. */
+  properArticles?: ReadonlySet<string>;
   /** Possible dictionary forms of an inflected word the lexicon doesn't list (groter → groot, katten → kat). */
   stems?: (word: string) => string[];
   /** Number words (drieëntwintig): taught as a system, never "untaught" one by one. */
@@ -152,4 +154,6 @@ export interface Homograph {
   other: string;
   /** The other sense's dictionary form, when it differs (reden → rijden). */
   otherLemma?: string;
+  /** A name when written with a capital inside the sentence: "in Leiden" is the city, "leiden" the verb. */
+  nounWhenCapital?: boolean;
 }

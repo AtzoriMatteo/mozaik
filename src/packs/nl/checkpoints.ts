@@ -562,7 +562,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
       mariana: { meaning: "Mariana (a name)" },
       lila: { meaning: "Lila (a name)" },
       dochtertje: { meaning: "little daughter", base: "dochter" },
-      bevallen: { meaning: "given birth", base: "bevallen" },
+      bevallen: { meaning: "given birth (is bevallen = has given birth)", base: "bevallen" },
       verloskundige: { meaning: "midwife" },
       kraamverzorgster: { meaning: "maternity nurse (at home)", closer: "kraam (childbirth) + verzorgster (carer)" },
       controleert: { meaning: "checks", base: "controleren" },

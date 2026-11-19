@@ -20,8 +20,11 @@ export const homographs: Readonly<Record<string, Homograph>> = {
   zorgen: { noun: "worry, care", nounLemma: "zorg", other: "to take care (of); to worry" },
   bakken: { noun: "bin, tray", nounLemma: "bak", other: "to bake, to fry" },
   stemmen: { noun: "voice; vote", nounLemma: "stem", other: "to vote" },
-  leiden: { noun: "Leiden", other: "to lead" },
+  leiden: { noun: "Leiden (a city)", other: "to lead", nounWhenCapital: true },
   enkel: { noun: "ankle", other: "single, only" },
   eten: { noun: "food, meal", other: "to eat" },
   koken: { noun: "cooking", other: "to cook" },
+  antwoorden: { noun: "answer", nounLemma: "antwoord", other: "to answer" },
+  planten: { noun: "plant", nounLemma: "plant", other: "to plant" },
+  fietsen: { noun: "bike", nounLemma: "fiets", other: "to cycle" },
 };

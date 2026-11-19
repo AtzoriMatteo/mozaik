@@ -60,7 +60,20 @@ export type WordInfo = Omit<WordItem, "kind" | "id" | "source">;
  * Every drillable core word of a level, keyed by dictionary form, with the
  * first course sentence it appears in. Tiny words (de, en, ik…) are left out.
  */
-export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, WordInfo> {
+const indexCache = new WeakMap<LanguagePack, Map<CefrLevel, ReadonlyMap<string, WordInfo>>>();
+
+export function wordIndex(pack: LanguagePack, level: CefrLevel): ReadonlyMap<string, WordInfo> {
+  // Built once per level: Review asks for it after every rating.
+  let byLevel = indexCache.get(pack);
+  if (!byLevel) indexCache.set(pack, (byLevel = new Map()));
+  const cached = byLevel.get(level);
+  if (cached) return cached;
+  const index = buildWordIndex(pack, level);
+  byLevel.set(level, index);
+  return index;
+}
+
+function buildWordIndex(pack: LanguagePack, level: CefrLevel): Map<string, WordInfo> {
   const index = new Map<string, WordInfo>();
   const core = new Set(pack.coreVocabulary[level] ?? []);
   for (const unit of pack.units) for (const text of unit.texts) {
@@ -90,14 +103,14 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
     if (unit.level !== level) continue;
     for (const t of unit.teach ?? []) {
       if (t.phrase) continue;
-      const lemma = t.word.toLowerCase();
+      const { lemma, meaning } = taughtCard(pack, t, (l) => index.has(l));
       if (index.has(lemma) || lemma.includes(" ") || lemma.endsWith("-")) continue;
       const form = formInSentence(pack, t);
       index.set(lemma, {
         word: form,
         surface: form,
         base: form === lemma ? undefined : lemma,
-        meaning: t.meaning,
+        meaning,
         sentence: t.text,
         translation: t.translation,
         unitId: unit.id,
@@ -108,6 +121,27 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): Map<string, Wor
 }
 
 export const courseWordId = (lemma: string) => `w:${lemma}`;
+
+/**
+ * A word a unit teaches on purpose, as its card: taught as a form (comincio,
+ * pomodori), drilled as its dictionary form (cominciare, il pomodoro). Only
+ * when it's really a form of it: "sveglia = alarm clock" stays a noun.
+ */
+export function taughtCard(
+  pack: LanguagePack,
+  t: { word: string; meaning: string },
+  known: (lemma: string) => boolean,
+): { lemma: string; meaning: string } {
+  const taught = t.word.toLowerCase();
+  const base = pack.lexicon[taught]?.base?.toLowerCase();
+  const formOf =
+    !!base &&
+    base !== taught &&
+    (!!pack.lexicon[base] || known(base)) &&
+    (t.meaning.includes(base) || !!pack.nounArticle?.(base) || /^(I|you|he|she|it|we|they) |^\w+ed\b/.test(t.meaning));
+  if (!formOf) return { lemma: taught, meaning: t.meaning };
+  return { lemma: base, meaning: cardMeaning(pack, base, pack.lexicon[base]?.meaning ?? t.meaning) };
+}
 
 /**
  * New words to meet, most common first: core words of the chosen levels that
@@ -157,12 +191,15 @@ export function eligibleItems(
   // One card per dictionary form: saving grachten and gracht gives one card.
   const seen = new Set<string>();
   for (const w of saved) {
-    const lemma = lemmaFor(w);
+    // The sense the word had where it was saved; a word saved inflected gets its dictionary form's meaning.
+    // The sense also picks the dictionary form: "we fietsen" is fietsen, "twee fietsen" is de fiets.
+    const sense = w.word.includes(" ") ? null : cardSense(pack, w.word, { meaning: w.meaning, base: w.base ?? undefined }, w.sentence);
+    const lemma = sense?.lemma ?? lemmaFor(w);
     if (seen.has(lemma) || opts.schedules?.has(courseWordId(lemma))) continue;
     seen.add(lemma);
-    // The sense the word had where it was saved; a word saved inflected gets its dictionary form's meaning.
-    const meaning = w.word.includes(" ") ? w.meaning : cardSense(pack, w.word, { meaning: w.meaning, base: w.base ?? undefined }, w.sentence).meaning;
-    items.push({ ...w, meaning, kind: "word", id: `saved:${w.word}`, source: "saved" });
+    const meaning = sense?.meaning ?? w.meaning;
+    const base = sense && lemma !== w.word.toLowerCase() ? lemma : sense ? undefined : w.base;
+    items.push({ ...w, base, meaning, kind: "word", id: `saved:${w.word}`, source: "saved" });
   }
 
   // Grammar: every exercise of the lessons you've finished.

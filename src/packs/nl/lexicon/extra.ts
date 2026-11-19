@@ -90,4 +90,13 @@ export const lexiconExtra: Lexicon = {
   vertrekt: { meaning: "leaves, departs", base: "vertrekken" },
   nieuw: { meaning: "new", closer: "nieuw ~ new" },
   buurman: { meaning: "(male) neighbour", closer: "buur + man" },
+  duin: { meaning: "dune" },
+  lampion: { meaning: "paper lantern" },
+  schap: { meaning: "shelf (in a shop)" },
+  controleren: { meaning: "to check" },
+  muisje: { meaning: "aniseed sprinkle ('little mouse')" },
+  wijzen: { meaning: "to point; to show" },
+  bevallen: { meaning: "to give birth", local: "Ze is bevallen van een dochter = she has given birth to a daughter" },
+  alle: { meaning: "all", local: "alle mensen = all people; al het brood = all the bread" },
+  lerares: { meaning: "teacher (a woman)" },
 };

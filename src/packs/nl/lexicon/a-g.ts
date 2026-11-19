@@ -15,7 +15,6 @@ export const lexiconAG: Lexicon = {
   afspraak: { meaning: "appointment, arrangement", local: "een afspraak maken = make an appointment" },
   agenda: { meaning: "diary, planner", local: "Not just a meeting agenda: your personal calendar" },
   al: { meaning: "already", local: "Ze woont al een jaar hier = she's been living here for a year" },
-  alle: { meaning: "all", base: "al" },
   alleen: { meaning: "only; alone", closer: "all + een = all-one, like English 'alone'" },
   als: { meaning: "if; as, like", local: "net als = just like; als je ziek bent = if you're ill" },
   alsjeblieft: { meaning: "please (informal)", closer: "als het je belieft = if it pleases you", local: "Also said when handing something over: 'here you go'" },

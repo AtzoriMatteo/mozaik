@@ -50,6 +50,6 @@ export const lexiconListening: Lexicon = {
   warmer: { meaning: "warmer", base: "warm" },
   weerbericht: { meaning: "weather forecast", closer: "weer + bericht = weather-report" },
   wensen: { meaning: "wish", closer: "wensen ~ wish" },
-  westen: { meaning: "west" },
+  westen: { meaning: "the west" },
   ziens: { meaning: "(in 'tot ziens')", local: "Tot ziens = Goodbye (polite); doei is casual" },
 };

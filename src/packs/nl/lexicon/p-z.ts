@@ -59,7 +59,7 @@ export const lexiconPZ: Lexicon = {
   spreek: { meaning: "speak", base: "spreken" },
   spreekt: { meaning: "speaks", base: "spreken", local: "Daar spreekt u mee = Speaking (on the phone)" },
   spreken: { meaning: "speak", closer: "spreken ~ speak (English lost the r)", local: "afspreken = arrange to meet" },
-  staan: { meaning: "stand, be (upright)", local: "Upright things staan: er staat een bed in de kamer" },
+  staan: { meaning: "stand, be upright", local: "Upright things staan: er staat een bed in de kamer" },
   staat: { meaning: "stands, is", base: "staan", local: "opstaan = get up: hij staat op" },
   stad: { meaning: "town, city", closer: "stad ~ stead (place), as in 'instead'" },
   stadhuis: { meaning: "town hall", closer: "stad + huis = town-house" },

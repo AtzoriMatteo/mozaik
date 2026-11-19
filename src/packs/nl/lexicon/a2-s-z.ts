@@ -227,7 +227,7 @@ via | via, through
 viel | fell | vallen
 vierden | celebrated | vieren
 vincent | Vincent (a name)
-vinden | find
+vinden | find; think (an opinion)
 virus | virus
 vlag | flag
 vlaggen | flags | vlag
