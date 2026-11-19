@@ -22,6 +22,12 @@ function greetingFor(hour: number) {
   return { text: "Buonanotte", meaning: "Good night" };
 }
 
+const IT_UPPER = new Set([
+  "brasile", "cina", "dublino", "firenze", "irlanda", "italia", "gesù", "gregorio", "epifania", "londra", "maria", "marino",
+  "marocco", "milano", "napoli", "pasqua", "roma", "sardegna", "sicilia", "stefano", "torino", "vaticano", "vesuvio",
+  "capodanno", "natale", "befana", "bologna",
+]);
+
 export const italian: LanguagePack = {
   code: "it",
   name: "Italian",
@@ -52,6 +58,9 @@ export const italian: LanguagePack = {
   resources,
   tips,
   nounArticle: articleFor,
+  // Places, feasts and names keep their capital on a card: l'Italia, il Natale.
+  displayCase: (lemma) => (IT_UPPER.has(lemma) ? lemma.charAt(0).toUpperCase() + lemma.slice(1) : lemma),
+  properArticles: new Set(["natale", "capodanno", "vaticano", "vesuvio", "befana", "epifania", "pasqua"]),
   homographs: {
     // "Sì, piacere!" is a greeting; "mi piace" is the verb. One card for both.
     piacere: { noun: "pleasure; nice to meet you", other: "nice to meet you; pleasure; to please (mi piace = I like it)" },

@@ -7,6 +7,10 @@ import { DE_NOUNS, HET_NOUNS } from "./writing/data";
  */
 
 const DE = [
+  "italiaan", "mexicaan", "europeaan", "engelsen", "ansichtkaart", "bakfiets", "beschuit", "bloemenkraam", "boormachine", "compagnie", "docent", "duin", "grill", "ham",
+  "kaasboer", "keuze", "klok", "knop", "knuffel", "kraamverzorgster", "kroon", "ladder", "lampion", "linde", "linzensoep",
+  "mandarijn", "mascarpone", "museumkaart", "olijfolie", "pagina", "pen", "speeltuin", "tandarts", "tekening", "terugweg",
+  "verbinding", "verjaardagskalender", "vla", "vork", "vuilnisbak", "watersnoodramp", "wereldoorlog", "zolderkamer", "lerares",
   "post", "bedrijfskunde", "linkerkant", "lol", "snert", "jazz", "enkel",
   "bestelling", "lievelingsmaand", "lievelingskleur", "huurder", "tweepersoonskamer", "recensie", "reactie", "paprika", "knoflook", "ster", "long", "sprong", "erwtensoep", "shampoo", "pruik", "macht", "laptop", "reservesleutel", "ijssalon", "kookcursus", "studietijd", "lasagne", "nazi", "onderduiker", "sector", "ventilator", "vensterbank", "kuur", "alcohol", "oorontsteking", "kop", "spijt", "oordop", "moeite", "kraan", "presentator", "ondertitel", "nieuwssite", "strip", "windkracht", "serie", "aflevering", "sportclub", "partij", "nieuwkomer", "compost", "folder", "grondstof", "jeugd", "bardienst", "klomp", "dominee", "prediker", "filmnacht", "filmliefhebber", "voetbalherinnering", "sjerp", "luitenant", "nachtscène", "boulevard", "sjaal", "wintersoep", "spliterwt", "gram", "knolselderij", "saté", "nasi", "bami", "sambal", "salami", "tiramisu", "allergie", "noot", "zalm", "biefstuk", "appelflap", "geul", "kelder", "sok", "bodem", "eb", "ingenieur", "slaaf", "reiziger", "oostkant", "eenpersoonskamer", "code", "sleutelkaart", "fado", "schaatser", "ree", "fietser", "voetganger", "afvaldienst", "calvinist", "reiskosten", "fietsonderdelen", "servicekosten", "vakantiedag", "mat", "kaneel", "nootmuskaat", "pom", "kilometer", "uitwedstrijden", "schutters", "wifi", "werkende", "bel", "groet", "fout", "personeelsmanager",
   "informatie", "korting", "mist",
@@ -69,6 +73,8 @@ const DE = [
 ];
 
 const HET = [
+  "apparaat", "festival", "gourmetstel", "grofvuil", "jeugdjournaal", "kompas", "natuurijs", "pond", "schap", "stokbrood",
+  "voorgerecht", "wachtwoord", "wisselgeld",
   "midden", "tiental", "ov", "retour",
   "lievelingsseizoen", "veld", "burgerservicenummer", "zuiden", "oosten", "noorden", "westen", "noordwesten", "verzorgingshuis", "statiegeld", "waterschap", "team", "mannenteam", "contract", "gordijn", "poldermodel", "concentratiekamp", "hart", "item", "katenspek", "bruiswater", "gft", "podium", "kunstmuseum", "edelhert", "zwijn", "geluk", "vasteland", "rotweer", "basketbal", "onweer", "gebruik", "cv", "excuus", "hockey", "lot",
   "buitenland",

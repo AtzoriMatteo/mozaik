@@ -134,7 +134,6 @@ export const lexiconHO: Lexicon = {
   lekker: { meaning: "tasty; nice", local: "Not just food: lekker weer, lekker slapen, lekker!" },
   leo: { meaning: "Leo (a name)" },
   leraar: { meaning: "teacher (male)", closer: "leren (teach/learn) + -aar" },
-  lerares: { meaning: "teacher (female)", base: "leraar" },
   leren: { meaning: "learn; teach", local: "leren means both: Ingrid leert ons Nederlands" },
   les: { meaning: "class, lesson", local: "les hebben = have class; naar les gaan = go to class" },
   leuk: { meaning: "fun, nice", local: "The everyday 'nice/fun': Leuk! Dat is leuk" },

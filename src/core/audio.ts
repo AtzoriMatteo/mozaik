@@ -1,5 +1,7 @@
 import type { LanguagePack } from "./language-pack";
-import { withArticle } from "./dictionary";
+import { dictionaryLabel, lemmaFor, withArticle } from "./dictionary";
+import { wordIndex } from "./review-items";
+import { unitWords } from "./unit-words";
 
 /**
  * Recorded audio for course sentences. Every sentence the course reads aloud
@@ -103,6 +105,23 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
     const lemma = (help.base ?? form).toLowerCase();
     const article = pack.nounArticle?.(lemma);
     word(article ? withArticle(article, lemma) : lemma);
+  }
+  // Flashcards and Words pages: exactly what their buttons say (the card's
+  // dictionary form in its sense, the form met, its sentence), including words
+  // taught on purpose with sentences of their own.
+  for (const level of pack.levels) {
+    for (const [lemma, info] of wordIndex(pack, level)) {
+      word(dictionaryLabel(pack, lemma, info.meaning));
+      word(lemmaFor({ word: lemma }));
+      if (!/\d/.test(info.surface)) word(info.surface);
+      add({ text: info.sentence, role: "narrator", gender: cast?.narrator ?? "f", group: "words" });
+    }
+  }
+  for (const unit of pack.units) {
+    for (const w of unitWords(pack, unit)) {
+      word(w.label);
+      if (w.sentence) add({ text: w.sentence, role: "narrator", gender: cast?.narrator ?? "f", group: "words" });
+    }
   }
   for (const e of pack.expressions ?? []) word(e.phrase);
   for (const v of pack.commonVerbs?.() ?? []) word(v);

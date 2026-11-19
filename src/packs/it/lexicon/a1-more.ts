@@ -876,4 +876,18 @@ libro | book | | Latin liber ~ library
 libreria | bookshop | | Not a library! A library is a biblioteca.
 prendiamo | we take | prendere
 andiamo | we go; let's go | andare
+offerta | offer, deal
+compiere | to turn (an age); to complete | | | compie trent'anni = he turns thirty
+presentare | to present, to introduce
+perdere | to lose; to miss (a train) | | | ho perso il treno = I missed the train
+asciutto | dry
+pomodori | tomatoes | pomodoro
+buste | envelopes | busta
+visitato | visited (ho visitato = I visited) | visitare
+braccio | arm | | | Irregular plural: le braccia
+braccia | arms | braccio
+ginocchio | knee | | | Irregular plural: le ginocchia
+ginocchia | knees | ginocchio
+cordiale | cordial, warm
+cordiali | cordial (cordiali saluti = kind regards) | cordiale
 `);

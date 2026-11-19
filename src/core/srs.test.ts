@@ -95,3 +95,16 @@ describe("spaced repetition", () => {
     expect(cardKind(rung(3))).toBe("recall");
   });
 });
+
+describe("wait labels count calendar days", () => {
+  it("never shows two different waits as the same day, late in the evening or after midnight", () => {
+    for (const at of ["2026-11-12T08:00:00", "2026-11-12T18:00:00", "2026-11-12T23:30:00", "2026-11-13T01:30:00"]) {
+      const now = new Date(at);
+      for (let r = 0; r <= MAX_STAGE; r++) {
+        const [, good, easy] = REVIEW_RESULTS.slice(1).map((res) => describeWait(storedStage(r), res, now));
+        if (good === easy && r < MAX_STAGE) throw new Error(`${at}, rung ${r}: Good and Easy both ${good}`);
+      }
+    }
+    expect(describeWait(storedStage(3), "easy", new Date("2026-11-12T23:30:00"))).toBe("2 d");
+  });
+});

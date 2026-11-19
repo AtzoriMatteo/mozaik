@@ -35,3 +35,29 @@ describe("course audio", () => {
     expect(cast.Luca).toBe(assignVoices(specs, VOICES, cast).Luca);
   });
 });
+
+describe("every flashcard can be heard", () => {
+  it("records each card's word, the form met and its sentence, and every Words-page line", async () => {
+    const { dutch } = await import("@/packs/nl");
+    const { italian } = await import("@/packs/it");
+    const { wordIndex } = await import("./review-items");
+    const { unitWords } = await import("./unit-words");
+    const { dictionaryLabel } = await import("./dictionary");
+    for (const pack of [dutch, italian]) {
+      const keys = new Set(clipSpecs(pack).map((c) => textKey(c.text)));
+      const missing: string[] = [];
+      const need = (t: string) => {
+        if (t && !/\d/.test(t) && !keys.has(textKey(t))) missing.push(t);
+      };
+      for (const level of pack.levels) {
+        for (const [lemma, info] of wordIndex(pack, level)) {
+          need(dictionaryLabel(pack, lemma, info.meaning));
+          need(info.surface);
+          need(info.sentence);
+        }
+      }
+      for (const unit of pack.units) for (const w of unitWords(pack, unit)) (need(w.label), need(w.sentence));
+      expect(missing, pack.code).toEqual([]);
+    }
+  });
+});

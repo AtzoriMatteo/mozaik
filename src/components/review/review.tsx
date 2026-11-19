@@ -259,11 +259,13 @@ function ScopePicker({
   scope: ReviewScope;
   onChange: (s: ReviewScope) => void;
 }) {
+  // Counted only once it's opened: matching every card to its unit takes a moment on a phone.
+  const [open, setOpen] = useState(scope !== null);
   const due = new Map<string, number>();
   const hasCards = new Set<string>();
   let savedDue = 0;
   let hasSaved = false;
-  for (const item of items) {
+  if (open) for (const item of items) {
     const isSaved = item.kind === "word" && item.source === "saved";
     if (isSaved) hasSaved = true;
     const unit = unitOfItem(pack, item);
@@ -284,11 +286,11 @@ function ScopePicker({
   const count = (n: number) => (n > 0 ? `${n} due` : "nothing due");
 
   return (
-    <details className="settings-panel scope-picker" open={scope !== null}>
+    <details className="settings-panel scope-picker" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
       <summary>
         Review by unit: <strong>{scopeLabel(pack, scope)}</strong>
       </summary>
-      <div className="settings-body">
+      {open ? <div className="settings-body">
         <div className="scope-row">
           <button
             type="button"
@@ -353,7 +355,7 @@ function ScopePicker({
         <small className="setting-note">
           Pick one or more. Cards from other units just wait for your next full review.
         </small>
-      </div>
+      </div> : null}
     </details>
   );
 }

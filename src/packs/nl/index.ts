@@ -80,19 +80,27 @@ function greetingFor(hour: number) {
   return { text: "Goedenacht", meaning: "Good night" };
 }
 
+/** A sentence's words, tokenised once: cards ask about every word of a sentence in turn. */
+const sentenceWords = new Map<string, readonly string[]>();
+function wordsOf(sentence: string): readonly string[] {
+  let words = sentenceWords.get(sentence);
+  if (!words) {
+    words = tokenizeDutch(sentence)
+      .filter((t) => t.kind === "word")
+      .map((t) => t.normalized);
+    if (sentenceWords.size > 20000) sentenceWords.clear();
+    sentenceWords.set(sentence, words);
+  }
+  return words;
+}
+
 export const dutch: LanguagePack = {
   checkWriting: makeChecker(lexicon, tokenizeDutch),
   isNumberWord,
   stems: dutchStems,
   homographs,
   displayCase: makeDisplayCase(lexicon),
-  posInContext: (form, sentence) =>
-    dutchPosInContext(
-      form,
-      tokenizeDutch(sentence)
-        .filter((t) => t.kind === "word")
-        .map((t) => t.normalized),
-    ),
+  posInContext: (form, sentence) => dutchPosInContext(form, wordsOf(sentence)),
   grammarIn: (text) => dutchGrammarIn(dutch, text),
   formulas: new Set([
     "hallo", "hoi", "hey", "hé", "dag", "doei", "beste", "lieve", "geachte", "goedemorgen", "goedemiddag", "goedenavond",
@@ -121,6 +129,7 @@ export const dutch: LanguagePack = {
   resources,
   tips,
   nounArticle: articleFor,
+  properArticles: new Set(["nederlander", "noordzee", "waddenzee", "randstad", "italiaan", "mexicaan", "europeaan", "engelsen"]),
   wordFrequency: zipf,
   cast,
   expressions,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { schedule, type ReviewResult } from "@/core/srs";
 import { isAuthEnabled } from "@/lib/supabase/config";
 import { listSavedWords, recordReview, saveWord, unsaveWord } from "./actions";
@@ -44,7 +44,13 @@ export type SavedWordsState = {
 };
 
 export function useSavedWords(language: string | null): SavedWordsState {
-  const [words, setWords] = useState<SavedWord[]>([]);
+  const [words, setWordsState] = useState<SavedWord[]>([]);
+  // The latest list, so quick changes in a row never undo each other.
+  const wordsRef = useRef(words);
+  const setWords = useCallback((next: SavedWord[]) => {
+    wordsRef.current = next;
+    setWordsState(next);
+  }, []);
   const [loaded, setLoaded] = useState(false);
   const [reviewReady, setReviewReady] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,14 +77,13 @@ export function useSavedWords(language: string | null): SavedWordsState {
     return () => {
       cancelled = true;
     };
-  }, [language, remote]);
+  }, [language, remote, setWords]);
 
+  // Asked for every word of a text on every tap: a lookup, not a search.
+  const savedForms = useMemo(() => new Set(words.flatMap((x) => [x.word, `=${lemmaFor(x)}`])), [words]);
   const isSaved = useCallback(
-    (w: string, base?: string) => {
-      const lemma = lemmaFor({ word: w, base });
-      return words.some((x) => x.word === w || lemmaFor(x) === lemma);
-    },
-    [words],
+    (w: string, base?: string) => savedForms.has(w) || savedForms.has(`=${lemmaFor({ word: w, base })}`),
+    [savedForms],
   );
 
   const toggle = useCallback(
@@ -100,16 +105,16 @@ export function useSavedWords(language: string | null): SavedWordsState {
         setError((e as Error).message);
       }
     },
-    [language, remote, words],
+    [language, remote, words, setWords],
   );
 
   const review = useCallback(
     async (word: string, result: ReviewResult) => {
       if (!language) return;
-      const current = words.find((x) => x.word === word);
+      const current = wordsRef.current.find((x) => x.word === word);
       if (!current) return;
       const { stage, dueAt } = schedule(current.stage ?? 0, result, new Date());
-      const next = words.map((x) =>
+      const next = wordsRef.current.map((x) =>
         x.word === word ? { ...x, stage, dueAt: dueAt.toISOString() } : x,
       );
       setWords(next);
@@ -120,7 +125,7 @@ export function useSavedWords(language: string | null): SavedWordsState {
         setError((e as Error).message);
       }
     },
-    [language, remote, words],
+    [language, remote, setWords],
   );
 
   return { words, loaded, reviewReady, error, isSaved, toggle, review };

@@ -240,7 +240,7 @@ neergezet | put down, left | neerzetten
 nepnieuws | fake news | | nep (fake) + nieuws
 nieuwkomers | newcomers | nieuwkomer
 nieuwssites | news sites | nieuwssite
-nk | Dutch championship | | | NK = Nederlands Kampioenschap
+nk | NK, Dutch championship | | | NK = Nederlands Kampioenschap
 noa | Noa (a name)
 nodigde | invited | uitnodigen | | nodigde … uit: the uit goes to the end
 noemen | call, name | | noemen ~ nominate
