@@ -307,7 +307,7 @@ export type WordCardKind = "context" | "word" | "recall" | "listen" | "produce";
  *   rung 3     the Dutch word on its own → what it means ("de lente")
  *   rung 4     on its own, a gap in the sentence, or heard
  *   rung 5+    the English → type the Dutch yourself
- * A miss sends the word back to the start, so it climbs again.
+ * A miss (Again) moves the word two rungs down, so it climbs back quickly.
  * "nl-en" never asks you to produce; "en-nl" always does.
  * stage is the stored stage (see srs.rungOf).
  */

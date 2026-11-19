@@ -22,10 +22,12 @@ describe("spaced repetition", () => {
     expect(dueAt.getHours()).toBe(4);
   });
 
-  it("sends a forgotten word back to the start, due again in minutes", () => {
-    const { stage, dueAt } = schedule(rung(5), "again", now);
-    expect(stage).toBe(0);
+  it("sends a forgotten word two rungs down, due again in minutes (Matteo)", () => {
+    const { stage, dueAt } = schedule(rung(9), "again", now);
+    expect(rungOf(stage)).toBe(7);
     expect(dueAt.getTime() - now.getTime()).toBe(10 * 60 * 1000);
+    expect(rungOf(schedule(rung(1), "again", now).stage)).toBe(0);
+    expect(schedule(0, "again", now).stage).toBe(0);
   });
 
   it("keeps a hard word on its rung, with the same wait again", () => {
