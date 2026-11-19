@@ -391,7 +391,7 @@ export const listeningA1More: Record<string, ListeningItem[]> = {
       grammar: ["time-numbers", "modal-verbs", "object-pronouns"],
       lines: [
         line("Assistente", "Goedemorgen, u spreekt met Linda van de huisartsenpraktijk.", "Good morning, this is Linda from the GP's practice."),
-        line("Assistente", "Dit bericht is voor meneer Bianchi.", "This message is for Mr Bianchi."),
+        line("Assistente", "Dit bericht is voor meneer De Jong.", "This message is for Mr De Jong."),
         line("Assistente", "Uw afspraak van donderdag kan helaas niet doorgaan.", "Unfortunately your appointment on Thursday can't go ahead."),
         line("Assistente", "De dokter is ziek.", "The doctor is ill."),
         line("Assistente", "Kunt u vrijdag om kwart voor tien komen?", "Can you come on Friday at quarter to ten?"),

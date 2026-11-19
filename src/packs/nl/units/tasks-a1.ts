@@ -104,7 +104,7 @@ export const tasksA1: Record<string, Task[]> = {
     mc("What's wrong with Bram?", ["A headache and stomach ache", "A broken arm", "Toothache"], 0),
     tf("Bram gaat vandaag naar de dokter.", "Bram goes to the doctor today.", false),
     pairs("What does Noor bring him?", "from the supermarket=soup and oranges | to drink=water and tea | for the pain=a paracetamol"),
-    tf("Bram stuurt Ingrid een berichtje.", "Bram sends Ingrid a message.", true),
+    tf("Bram stuurt zijn baas een berichtje.", "Bram sends his boss a message.", true),
   ],
   "bij-de-huisarts": [
     mc("When is the appointment?", ["At ten past eleven", "At eight o'clock", "At half past ten"], 0),

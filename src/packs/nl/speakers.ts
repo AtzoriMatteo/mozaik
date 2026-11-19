@@ -34,7 +34,7 @@ export const speakers: Record<string, string> = {
   "neem-maar-een-paracetamol": "De dokter",
   "ik-moest-in-bed-blijven": "Een collega",
   "met-de-trein-door-europa": "Femke|Femke",
-  "alles-ging-mis": "Een medewerker|Emre|Emre",
+  "alles-ging-mis": "Een medewerker|Koen|Koen",
   "is-het-wel-waar": "-|-",
   "toen-er-nog-geen-internet-was": "Oma|Oma|Oma|Oma|Oma|Oma|Lieke|Oma|Oma",
   "vrijwilliger-bij-de-voedselbank": "Amal|Amal|Amal|Amal|Amal|Amal",

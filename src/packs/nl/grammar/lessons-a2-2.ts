@@ -44,7 +44,7 @@ export const lessonsA2b: Record<string, GrammarLesson> = {
       text("With zijn, hebben and the modal verbs, the simple past is almost always the natural choice: ik was, ik had, ik moest."),
     ],
     examples: [
-      example("Emre en zijn vriendin Lotte hebben vorig jaar een vakantie naar Kreta geboekt.", "Last year Emre and his girlfriend Lotte booked a holiday to Crete.", "hebben", "geboekt"),
+      example("Koen en zijn vriendin Lotte hebben vorig jaar een vakantie naar Kreta geboekt.", "Last year Koen and his girlfriend Lotte booked a holiday to Crete.", "hebben", "geboekt"),
       example("Eerst stonden ze een uur in de file naar Schiphol.", "First they were stuck in a traffic jam to Schiphol for an hour.", "stonden"),
       example("Mijn fiets is gestolen.", "My bike has been stolen.", "is gestolen"),
       example("Het was een geweldige vakantie", "It was a great holiday", "was"),

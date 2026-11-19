@@ -65,7 +65,7 @@ export const verleden: Unit = {
       grammar: ["perfect-zijn", "perfect-hebben", "participles-irregular"],
       paragraphs: [
         [
-          s("Mehmet is buschauffeur in Rotterdam. Voor een project op school vraagt zijn dochter Elif: \"Papa, hoe was jouw leven vroeger?\"", "Mehmet is a bus driver in Rotterdam. For a school project his daughter Elif asks: \"Dad, what was your life like before?\""),
+          s("Mehmet is buschauffeur in Rotterdam. Voor een project op school vraagt zijn dochter Zehra: \"Papa, hoe was jouw leven vroeger?\"", "Mehmet is a bus driver in Rotterdam. For a school project his daughter Zehra asks: \"Dad, what was your life like before?\""),
         ],
         [
           s("\"Ik ben in 1985 geboren in Izmir, een grote stad in Turkije, aan de zee.", "\"I was born in 1985 in Izmir, a big city in Turkey, by the sea."),
@@ -79,15 +79,15 @@ export const verleden: Unit = {
           s("Daarna heb ik mijn rijbewijs voor de bus gehaald. Dat was de beste beslissing van mijn leven!\"", "After that I got my bus driving licence. That was the best decision of my life!\""),
         ],
         [
-          s("Elif schrijft alles op. \"En wat mis je van Turkije?\"", "Elif writes it all down. \"And what do you miss about Turkey?\""),
+          s("Zehra schrijft alles op. \"En wat mis je van Turkije?\"", "Zehra writes it all down. \"And what do you miss about Turkey?\""),
           s("\"De zon, het eten van mijn moeder, en de zee. Maar Rotterdam heeft ook veel water, hè?\"", "\"The sun, my mother's cooking, and the sea. But Rotterdam has lots of water too, doesn't it?\""),
         ],
       ],
       tasks: [
         mc("Where was Mehmet born?", ["In Rotterdam", "In Izmir", "In Istanbul"], 1),
-        order("Put Mehmet's life in order.", "He helped in his father's shop", "He came to the Netherlands", "He met Elif's mother", "He got married", "He got his bus licence"),
+        order("Put Mehmet's life in order.", "He helped in his father's shop", "He came to the Netherlands", "He met Zehra's mother", "He got married", "He got his bus licence"),
         tf("Het eerste jaar in Nederland was makkelijk.", "The first year in the Netherlands was easy.", false),
-        mc("Where did he meet Elif's mother?", ["At a colleague's birthday", "On the bus", "At the language school"], 0),
+        mc("Where did he meet Zehra's mother?", ["At a colleague's birthday", "On the bus", "At the language school"], 0),
         tf("Mehmet mist het eten van zijn moeder.", "Mehmet misses his mother's cooking.", true),
       ],
     },
@@ -208,13 +208,13 @@ export const verleden: Unit = {
         line("Kwame", "Sorry dat ik bel, maar ik heb een probleem. Ik ben mijn sleutels kwijt.", "Sorry to call, but I have a problem. I've lost my keys."),
         line("Kwame", "Ik heb vanochtend de deur dichtgedaan en ben naar mijn werk gefietst.", "This morning I shut the door and cycled to work."),
         line("Kwame", "Nu ben ik weer thuis, maar de sleutels zitten niet in mijn tas.", "Now I'm home again, but the keys aren't in my bag."),
-        line("Kwame", "Ik heb overal gezocht: in mijn jas, op mijn werk, in de trein. Niets.", "I've looked everywhere: in my coat, at work, on the train. Nothing."),
+        line("Kwame", "Ik heb overal gezocht: in mijn jas, op mijn werk, op straat. Niets.", "I've looked everywhere: in my coat, at work, in the street. Nothing."),
         line("Kwame", "Jij hebt toch een reservesleutel van mij gekregen, in de zomer?", "You got a spare key from me, didn't you, in the summer?"),
         line("Kwame", "Ik sta nu voor de deur. Kun je me terugbellen? Dank je wel!", "I'm standing at the door now. Can you call me back? Thank you!"),
       ],
       gist: { prompt: "Why is Kwame calling?", options: ["He can't get into his house", "He found Ria's keys", "He wants to borrow her bike"], answer: 0 },
       details: [
-        { prompt: "Where has he looked?", options: ["In his coat, at work and on the train", "Only in his bag", "At the police station"], answer: 0 },
+        { prompt: "Where has he looked?", options: ["In his coat, at work and in the street", "Only in his bag", "At the police station"], answer: 0 },
         { prompt: "What does Ria have?", options: ["His bike", "A spare key", "His bag"], answer: 1 },
       ],
       tasks: [

@@ -83,7 +83,7 @@ export const giornata: Unit = {
           s("Sul muro ci sono molte foto: il mare, una grande famiglia, una ragazza con un camice bianco.", "On the wall there are lots of photos: the sea, a big family, a girl in a white coat."),
           s("\"Chi è?\" chiede Emma. \"È mia figlia Awa. Studia medicina a Dakar. Diventa dottoressa!\"", "\"Who's that?\" Emma asks. \"That's my daughter Awa. She studies medicine in Dakar. She's going to be a doctor!\""),
           s("Amadou sorride. È molto orgoglioso.", "Amadou smiles. He's very proud."),
-          s("\"E lei? Lavora qui vicino?\" chiede Amadou. \"Sì, lavoro a casa, qui sopra. Sono grafica: comincio alle nove e finisco alle cinque.\"", "\"And you? Do you work near here?\" Amadou asks. \"Yes, I work from home, just upstairs. I'm a graphic designer: I start at nine and finish at five.\""),
+          s("\"E lei? Lavora qui vicino?\" chiede Amadou. \"Sì, lavoro a casa, qui di fronte. Sono grafica: comincio alle nove e finisco alle cinque.\"", "\"And you? Do you work near here?\" Amadou asks. \"Yes, I work from home, just across the street. I'm a graphic designer: I start at nine and finish at five.\""),
         ],
       ],
       tasks: [

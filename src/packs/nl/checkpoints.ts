@@ -178,7 +178,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     ],
     textTasks: [
       { kind: "truefalse", statement: "Op koopavond is de winkel open tot zes uur.", translation: "On late-night shopping evening the shop is open until six.", answer: false },
-      { kind: "choice", prompt: "Why does Fatima come on Thursday evening?", options: ["It's the only evening she has time after work", "It's cheaper", "Yusuf asks her"], answer: 0 },
+      { kind: "choice", prompt: "Why does Fatima come on Thursday evening?", options: ["The shop is open late, so she can come after work", "It's cheaper", "Yusuf asks her"], answer: 0 },
       { kind: "choice", prompt: "Why is the shop busy?", options: ["Lots of people come after work", "There's a sale", "It's Saturday"], answer: 0 },
     ],
     listening: {
@@ -356,7 +356,7 @@ export const checkpointsNl: Record<string, Checkpoint> = {
         s("Dan herdenken de Nederlanders de mensen die in de Tweede Wereldoorlog en daarna in oorlogen zijn gestorven.", "Then the Dutch remember the people who died in the Second World War and in wars since."),
         s("De treinen stoppen, de trams staan stil, en ook op straat blijft iedereen staan.", "The trains stop, the trams stand still, and people in the street stand still too."),
         s("Vorig jaar was Joris in de supermarkt om acht uur. Alle klanten stonden twee minuten stil tussen de schappen. Niemand zei iets.", "Last year Joris was in the supermarket at eight o'clock. All the customers stood still between the shelves for two minutes. Nobody said a word."),
-        s("De volgende dag gaat Joris naar een festival in Haarlem, want het is vijf mei.", "The next day Joris goes to a festival in Haarlem, because it's the fifth of May."),
+        s("De volgende dag ging Joris naar een festival in Haarlem, want het was vijf mei.", "The next day Joris went to a festival in Haarlem, because it was the fifth of May."),
       ],
     ],
     textTasks: [

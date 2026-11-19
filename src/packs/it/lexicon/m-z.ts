@@ -255,7 +255,7 @@ scusare | to excuse
 se | if | | | Se chiedi un latte… = If you ask for a latte…
 secondo | second; main course | | ~ second | il secondo = meat or fish
 sei | you are; six | essere | | Sei Emma? = Are you Emma? Also the number 6
-sempre | always | | ~ sempre fi (semper fidelis)
+sempre | always | | Latin semper ~ semper fi (semper fidelis)
 senti | listen!; you hear | sentire | | Senti… = Listen… (to start a request)
 sentire | to hear, to feel
 senza | without | | | senza parole = without words

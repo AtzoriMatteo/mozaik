@@ -11,7 +11,7 @@ export const cast: Cast = {
     Kofi: "m", Kwame: "m", Linda: "f", Lotte: "f", Luca: "m", Lucas: "m", Mariana: "f", Mark: "m", Marta: "f",
     Mehmet: "m", Ruth: "f", Jayden: "m", Ingrid: "f", "Meneer De Jong": "m", "Mevrouw De Vries": "f", Mila: "f", Nina: "f", Noa: "f", Noor: "f",
     Pieter: "m", Priya: "f", Rafael: "m", Ria: "f", Ruben: "m", Samir: "m", Sanne: "f", Saskia: "f", Sem: "m",
-    Shanti: "f", Tim: "m", Wei: "any", Wim: "m", Wouter: "m", Yara: "f", Zainab: "f", Zeynep: "f",
+    Shanti: "f", Tim: "m", Wei: "any", Wim: "m", Wouter: "m", Koen: "m", Yara: "f", Zainab: "f", Zeynep: "f",
     // Roles.
     Agent: "m", Ambtenaar: "m", Kaasboer: "m", Kapper: "m", Apotheker: "f", Assistente: "f", Bakker: "any", Bandje: "f", Buurman: "m",
     Clublid: "f", Docent: "f", Gids: "m", Kassa: "f", Klant: "any", Manager: "m", Medewerker: "any", Meisje: "f",

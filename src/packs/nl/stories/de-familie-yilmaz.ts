@@ -100,7 +100,7 @@ export const familieTexts: ReadingText[] = [
       ],
     ],
     tasks: [
-      { kind: "choice", prompt: "Why are the children with Grandma every Sunday, probably?", options: ["She cooks soup for the whole family", "Elif works on Sundays", "They go to the market"], answer: 0 },
+      { kind: "choice", prompt: "What happens every Sunday?", options: ["Grandma cooks soup for the whole family", "Elif works at night", "Grandpa cycles to the market"], answer: 0 },
       { kind: "truefalse", statement: "De ouders van Yusuf wonen in Turkije.", translation: "Yusuf's parents live in Turkey.", answer: false },
       { kind: "choice", prompt: "\"Mijn familie is niet groot, maar wel gezellig. En heel luid!\" What does Yusuf mean?", options: ["Few people, but lots of noise and warmth", "His family is very big", "His family is quiet"], answer: 0 },
       { kind: "choice", prompt: "Who is Ayşe?", options: ["Yusuf's sister", "Yusuf's wife", "Yusuf's daughter"], answer: 0 },
@@ -194,7 +194,7 @@ export const familieTexts: ReadingText[] = [
       ],
     ],
     tasks: [
-      { kind: "choice", prompt: "Why could Can have trouble with Yusuf's mother?", options: ["They don't share a language", "She doesn't like cooks", "She lives in Istanbul"], answer: 0 },
+      { kind: "choice", prompt: "Why could Can have trouble in Leiden?", options: ["He doesn't speak Dutch", "He doesn't like cooking", "He doesn't like the family"], answer: 0 },
       { kind: "truefalse", statement: "Ayşe en Can komen een week naar Leiden.", translation: "Ayşe and Can are coming to Leiden for a week.", answer: false },
       { kind: "choice", prompt: "Why does Yusuf need an extra bed?", options: ["Ayşe and Can will sleep at his house", "Defne wants a new bed", "Grandpa is moving in"], answer: 0 },
       { kind: "choice", prompt: "What does Ayşe want from Yusuf's shop?", options: ["A coat", "A photo of the children", "A cake"], answer: 0 },

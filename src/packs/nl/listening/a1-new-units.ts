@@ -155,7 +155,7 @@ export const listeningNewUnits: Record<string, ListeningItem[]> = {
       title: "Gelukkig nieuwjaar!",
       titleTranslation: "Happy new year!",
       kind: "dialogue",
-      situation: "It's the first of January. Marta calls his sister Ania.",
+      situation: "It's the first of January. Marta calls her sister Ania.",
       grammar: ["gaan-future", "questions", "het-subject"],
       lines: [
         line("Ania", "Marta! Gelukkig nieuwjaar!", "Marta! Happy new year!"),
@@ -167,7 +167,7 @@ export const listeningNewUnits: Record<string, ListeningItem[]> = {
         line("Ania", "Lekker! Wat is je voornemen?", "Yummy! What's your resolution?"),
         line("Marta", "Ik ga elke dag Nederlands leren. Dan kan ik jou ook lesgeven!", "I'm going to study Dutch every day. Then I can teach you too!"),
       ],
-      gist: { prompt: "Why does Marta call Ania?", options: ["To wish her a happy new year", "Because he's ill", "To ask for money"], answer: 0 },
+      gist: { prompt: "Why does Marta call Ania?", options: ["To wish her a happy new year", "Because she's ill", "To ask for money"], answer: 0 },
       details: [
         { prompt: "How does Ania feel?", options: ["Ill", "Very tired", "Sad"], answer: 1 },
         { prompt: "What is Marta's resolution?", options: ["To stop smoking", "To do more sport", "To study Dutch every day"], answer: 2 },

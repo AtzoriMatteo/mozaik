@@ -5,6 +5,35 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-19 (late morning) — Second content check: answer keys, slang, tips, word help
+
+Matteo asked for another correction pass. This one covered what the night
+audit skipped: every comprehension question and answer key (all 22 Dutch and
+12 Italian units, texts, listenings and checks), the 16 slang parts, the tips,
+both Handbooks and every word-help note. Claude fixed:
+
+- **Answers that didn't match the text**: Bram texts his boss, not Ingrid
+  (she's the teacher); the GP's voicemail was for "Mr Bianchi" but is Bram's;
+  Fatima comes on late-shopping night because the shop is open late (the text
+  never said "the only evening"); the fake-news text now says *why* writers
+  want you angry, because a question asked it and the text didn't answer.
+- **Continuity**: Kwame lost his keys after cycling, so he can't have looked
+  "on the train" (now: in the street); Joris's 5 May festival is in the past
+  tense like the rest of the story; Emma lives across the street from Amadou,
+  not upstairs; Emma is late for Tuesday training because she works late on
+  Tuesdays (she normally finishes at five); Marta calls *her* sister.
+- **Name clashes**: Mehmet's daughter was called Elif, like the Yilmaz mum in
+  A1, and the man on the Crete trip was Emre, like the Yilmaz boy. They're now
+  Zehra and Koen, so one name means one person.
+- **Facts in notes**: patat/friet regions now agree everywhere (patat north
+  and west, friet south and Belgium); "u always takes the hij verb" now says
+  except u bent; -ing/-heid/-tie nouns no longer "always" de (het ding); the
+  smorfia's talking dead man is 48, not 47; "semper fi" spelled right; the
+  salt-salary story is told as a story.
+
+Slang, tips and Handbooks were otherwise right. Some sentences changed, so
+their audio is re-recorded.
+
 ## 2026-11-19 (morning) — "Again" steps back two rungs, not to the start
 
 Matteo: a forgotten word shouldn't start the whole climb again (about ten

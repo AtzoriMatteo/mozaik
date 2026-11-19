@@ -218,9 +218,7 @@ eeuw | century
 eeuwen | centuries | eeuw
 eilanden | islands | eiland | | ei-land ~ island
 elftal | (football) team, eleven | | elf (eleven) + tal (number)
-elif | Elif (a name)
 emmer | bucket
-emre | Emre (a name)
 enige | only (one) | enig | | als enige = as the only one
 enorme | enormous | enorm
 enthousiast | enthusiastic
