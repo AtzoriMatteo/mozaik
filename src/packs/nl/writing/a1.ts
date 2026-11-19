@@ -30,7 +30,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Thank the teacher and say goodbye", "Dank u wel en tot ziens! Groeten, …", "dank", "groeten", "ziens"),
       ],
       model:
-        "Goedemiddag! Mijn naam is Priya Shah. Mijn voornaam is Priya en mijn achternaam is Shah: S, H, A, H. Mijn achternaam heeft vier letters. Ik ben eenendertig jaar. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. Dinsdag en donderdag zijn goed. Maandag is niet goed. Dank u wel en tot ziens! Groeten, Priya",
+        "Goedemiddag! Mijn naam is Priya Shah. Mijn voornaam is Priya en mijn achternaam is Shah: S, H, A, H. Mijn achternaam heeft vier letters. Ik ben eenendertig jaar. Mijn telefoonnummer is nul zes, eenenveertig, negentien, tweeëntachtig, dertig. Dinsdag en donderdag zijn goed. Maandag is niet goed. Dank u wel en tot ziens! Groeten, Priya",
     },
     {
       id: "w-mijn-jaar",
@@ -64,7 +64,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Say goodbye", "Tot ziens! Groeten, …", "groeten", "ziens", "doei"),
       ],
       model:
-        "Goedemiddag! Mijn naam is Daniel Ortiz en ik ben uw nieuwe buurman. Ik woon sinds vorige week op nummer zeven. Ik kom uit Mexico. Ik spreek Spaans, Engels en een beetje Nederlands. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. En u? Wat is uw naam en wat is uw huisnummer? Tot ziens! Groeten, Daniel",
+        "Goedemiddag! Mijn naam is Daniel Ortiz en ik ben uw nieuwe buurman. Ik woon sinds vorige week op nummer zeven. Ik kom uit Mexico. Ik spreek Spaans, Engels en een beetje Nederlands. Mijn telefoonnummer is nul zes, zevenentwintig, vijftig, dertien, achtentachtig. En u? Wat is uw naam en wat is uw huisnummer? Tot ziens! Groeten, Daniel",
     },
   ]),
 
@@ -354,7 +354,7 @@ export const writingA1: Record<string, WritingTask[]> = {
         pf("Give your phone number and close politely", "Mijn telefoonnummer is … . Met vriendelijke groet, …", "telefoonnummer", "nummer", "groet"),
       ],
       model:
-        "Beste Kees, mijn naam is Tomás Ruiz. Ik ben student in Leiden en ik zoek een bijbaan. Bram zegt: u zoekt iemand voor het weekend. Ik wil graag in uw café werken. Ik heb ervaring, want in Spanje werk ik elke zomer in een bar. Ik kan heel goed koffie maken. Ik spreek Spaans en Engels, en een beetje Nederlands. Ik kan op zaterdag en op zondag werken. Mijn telefoonnummer is nul zes, achtendertig, vijftien, zevenenveertig. Met vriendelijke groet, Tomás Ruiz",
+        "Beste Kees, mijn naam is Tomás Ruiz. Ik ben student in Leiden en ik zoek een bijbaan. Bram zegt: u zoekt iemand voor het weekend. Ik wil graag in uw café werken. Ik heb ervaring, want in Spanje werk ik elke zomer in een bar. Ik kan heel goed koffie maken. Ik spreek Spaans en Engels, en een beetje Nederlands. Ik kan op zaterdag en op zondag werken. Mijn telefoonnummer is nul zes, dertig, negentig, vierenveertig, twaalf. Met vriendelijke groet, Tomás Ruiz",
     },
     {
       id: "w-mijn-taalles",

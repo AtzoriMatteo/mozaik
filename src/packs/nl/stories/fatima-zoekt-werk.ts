@@ -97,7 +97,7 @@ export const werkTexts: ReadingText[] = [
       [
         s("Na de les praten Fatima en Luca nog even.", "After class Fatima and Luca chat for a bit."),
         s("Luca werkt sinds kort in café De Burcht, samen met Bram.", "Luca has recently started working at café De Burcht, with Bram."),
-        s("\"Ik zoek ook een bijbaan\", zegt Fatima. \"Ik werk op een kantoor, maar ik wil wat extra geld verdienen, want alles is duur.\"", "\"I'm looking for a side job too,\" says Fatima. \"I work in an office, but I want to earn a bit of extra money, because everything is expensive.\""),
+        s("\"Ik zoek ook een bijbaan\", zegt Fatima. \"Ik werk in een hotel, maar ik wil wat extra geld verdienen, want alles is duur.\"", "\"I'm looking for a side job too,\" says Fatima. \"I work in a hotel, but I want to earn a bit of extra money, because everything is expensive.\""),
         s("\"Kijk eens bij de bakker in onze straat\", zegt Luca. \"Ruth zoekt iemand.\"", "\"Have a look at the baker's in our street,\" says Luca. \"Ruth is looking for someone.\""),
       ],
     ],
@@ -182,7 +182,7 @@ export const werkTexts: ReadingText[] = [
       [
         s("Zaterdag om zeven uur staat Fatima in de bakkerij, met een wit schort.", "On Saturday at seven Fatima is standing in the bakery, in a white apron."),
         s("De eerste klant is mevrouw De Vries. \"Ik werk niet meer, ik ben gepensioneerd. Maar ik sta nog steeds vroeg op!\"", "The first customer is Mrs De Vries. \"I don't work any more, I'm retired. But I still get up early!\""),
-        s("Dan komt Kwame. Hij is leraar, en hij koopt twee broodjes voor de pauze.", "Then Kwame comes in. He's a teacher, and he buys two rolls for his break."),
+        s("Dan komt Kwame. Hij is leraar, maar vandaag is hij vrij. Hij koopt twee broodjes en een krentenbol.", "Then Kwame comes in. He's a teacher, but today he's off. He buys two rolls and a currant bun."),
         s("Om acht uur komt de kapper van hiernaast. \"Op zaterdag is het bij mij heel druk. Op maandag ben ik dicht.\"", "At eight the hairdresser from next door comes in. \"On Saturdays I'm very busy. On Mondays I'm closed.\""),
       ],
       [

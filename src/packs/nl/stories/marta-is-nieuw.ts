@@ -179,7 +179,7 @@ export const martaTexts: ReadingText[] = [
       [
         s("Maandag om zeven uur 's ochtends staat Marta voor de deur. Ze moet om acht uur in het hotel zijn.", "On Monday at seven in the morning Marta is at her front door. She has to be at the hotel at eight."),
         s("Ruth staat al in de bakkerij. \"Goedemorgen! Ben jij altijd zo vroeg wakker?\"", "Ruth is already in the bakery. \"Good morning! Are you always up this early?\""),
-        s("\"Ja, ik werk om acht uur. Wat doe je vandaag?\" \"Brood bakken, net als elke dag!\"", "\"Yes, I start at eight. What are you doing today?\" \"Baking bread, like every day!\""),
+        s("\"Ja, ik begin om acht uur. Wat doe je vandaag?\" \"Brood bakken, net als elke dag!\"", "\"Yes, I start at eight. What are you doing today?\" \"Baking bread, like every day!\""),
       ],
       [
         s("'s Avonds is Marta weer thuis. Dan gaat de bel.", "In the evening Marta is home again. Then the doorbell rings."),

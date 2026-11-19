@@ -166,14 +166,14 @@ export const reizen: Unit = {
         line("Aleksander", "Retour, graag. Ik kom vanavond terug.", "Return, please. I'm coming back this evening."),
         line("Medewerker", "Tweede klas? Dat is dan 59 euro 20.", "Second class? That'll be 59 euros 20."),
         line("Aleksander", "Prima. Van welk spoor vertrekt de trein?", "Fine. Which platform does the train leave from?"),
-        line("Medewerker", "Spoor 5b, om 10.04. Maar u moet in Amersfoort overstappen.", "Platform 5b, at 10.04. But you have to change in Amersfoort."),
+        line("Medewerker", "Spoor 5b, om 10.04. Maar u moet in Zwolle overstappen.", "Platform 5b, at 10.04. But you have to change in Zwolle."),
         line("Aleksander", "Hoe lang duurt de reis?", "How long does the journey take?"),
         line("Medewerker", "Ongeveer twee uur en een kwartier. Let op: de trein heeft vandaag vijf minuten vertraging.", "About two and a quarter hours. Note: the train has a five-minute delay today."),
         line("Aleksander", "Dan heb ik nog tijd voor een kop koffie. Bedankt!", "Then I still have time for a cup of coffee. Thanks!"),
       ],
       gist: { prompt: "What does Aleksander do?", options: ["He buys a return ticket to Groningen", "He asks for a refund", "He books a hotel in Groningen"], answer: 0 },
       details: [
-        { prompt: "Where does he have to change trains?", options: ["Utrecht", "Amersfoort", "Zwolle"], answer: 1 },
+        { prompt: "Where does he have to change trains?", options: ["Utrecht", "Amersfoort", "Zwolle"], answer: 2 },
         { prompt: "How long is the delay?", options: ["Five minutes", "Fifteen minutes", "There is no delay"], answer: 0 },
       ],
       tasks: [

@@ -303,6 +303,7 @@ export const lexiconCulture: Lexicon = {
   joost: { meaning: "Joost (a name)" },
   julia: { meaning: "Julia (a name)" },
   kwame: { meaning: "Kwame (a name)" },
+  kofi: { meaning: "Kofi (a Ghanaian name)" },
   lin: { meaning: "Lin (a name)" },
   marieke: { meaning: "Marieke (a name)" },
   marta: { meaning: "Marta (a name)" },

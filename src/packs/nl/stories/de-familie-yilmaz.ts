@@ -183,7 +183,7 @@ export const familieTexts: ReadingText[] = [
       ],
       [
         s("Can is heel aardig. Hij is kok in een restaurant en hij kookt elke avond voor mij.", "Can is very nice. He's a cook in a restaurant and he cooks for me every evening."),
-        s("Hij spreekt geen Nederlands en geen Duits, wel een beetje Engels. Dat is lastig met mama!", "He doesn't speak Dutch or German, but he speaks a bit of English. That's tricky with Mum!"),
+        s("Hij spreekt Turks en een beetje Engels, maar geen Nederlands. Dat is lastig in Leiden!", "He speaks Turkish and a bit of English, but no Dutch. That's tricky in Leiden!"),
         s("In juli komen we naar Leiden, voor drie weken. Kunnen we bij jullie slapen?", "In July we're coming to Leiden, for three weeks. Can we sleep at yours?"),
         s("We nemen cadeautjes mee voor Emre en Defne.", "We'll bring little presents for Emre and Defne."),
       ],

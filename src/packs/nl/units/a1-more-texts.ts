@@ -296,7 +296,7 @@ export const vrijeTijdText: ReadingText = {
   grammar: ["gaan-future", "het-subject", "conjunctions"],
   paragraphs: [
     [
-      s("De studentenkrant van Leiden vraagt aan vier studenten: wat doe jij in je vrije tijd?", "Leiden's student paper asks four students: what do you do in your free time?"),
+      s("De studentenkrant van Leiden vraagt aan vier jonge mensen: wat doe jij in je vrije tijd?", "Leiden's student paper asks four young people: what do you do in your free time?"),
     ],
     [
       s("Fatima (24): \"Ik zing in een koor. We oefenen elke donderdag in een oude kerk.", "Fatima (24): \"I sing in a choir. We practise every Thursday in an old church."),

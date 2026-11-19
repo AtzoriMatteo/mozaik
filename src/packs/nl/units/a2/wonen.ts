@@ -23,7 +23,7 @@ export const wonen: Unit = {
       grammar: ["relative-clauses", "subordinate-order", "comparatives"],
       paragraphs: [
         [
-          s("Kwame woont met twee huisgenoten in een huis in Utrecht. Hij wil graag alleen wonen, in een appartement dat een eigen keuken heeft.", "Kwame lives with two housemates in a house in Utrecht. He'd like to live on his own, in a flat that has its own kitchen."),
+          s("Kofi woont met twee huisgenoten in een huis in Utrecht. Hij wil graag alleen wonen, in een appartement dat een eigen keuken heeft.", "Kofi lives with two housemates in a house in Utrecht. He'd like to live on his own, in a flat that has its own kitchen."),
           s("Maar een huis vinden in Nederland is niet makkelijk.", "But finding a home in the Netherlands isn't easy."),
         ],
         [
@@ -32,21 +32,21 @@ export const wonen: Unit = {
           s("Een appartement van vijftig vierkante meter kost in Utrecht al snel 1.400 euro per maand.", "A flat of fifty square metres easily costs 1,400 euros a month in Utrecht."),
         ],
         [
-          s("Kwame kijkt elke dag op websites zoals Pararius en Funda. Hij reageert op alles wat hij leuk vindt.", "Kwame looks at websites like Pararius and Funda every day. He responds to everything he likes."),
+          s("Kofi kijkt elke dag op websites zoals Pararius en Funda. Hij reageert op alles wat hij leuk vindt.", "Kofi looks at websites like Pararius and Funda every day. He responds to everything he likes."),
           s("Vaak reageren er binnen een uur honderd mensen op hetzelfde huis.", "Often a hundred people respond to the same home within an hour."),
           s("Een collega die net een huis heeft gevonden, geeft hem een tip: \"Vertel in je bericht wie je bent. Verhuurders willen een persoon zien, geen nummer.\"", "A colleague who has just found a home gives him a tip: \"Say who you are in your message. Landlords want to see a person, not a number.\""),
         ],
         [
-          s("Kwame schrijft een kort bericht over zichzelf: dat hij verpleegkundige is, dat hij rustig is en dat hij niet rookt.", "Kwame writes a short message about himself: that he's a nurse, that he's quiet and that he doesn't smoke."),
+          s("Kofi schrijft een kort bericht over zichzelf: dat hij verpleegkundige is, dat hij rustig is en dat hij niet rookt.", "Kofi writes a short message about himself: that he's a nurse, that he's quiet and that he doesn't smoke."),
           s("Twee dagen later krijgt hij een uitnodiging voor een bezichtiging. Eindelijk!", "Two days later he gets an invitation to a viewing. At last!"),
         ],
       ],
       tasks: [
-        mc("What kind of home is Kwame looking for?", ["A flat of his own with its own kitchen", "A room in a student house", "A house with a garden"], 0),
+        mc("What kind of home is Kofi looking for?", ["A flat of his own with its own kitchen", "A room in a student house", "A house with a garden"], 0),
         tf("Op een sociale huurwoning moet je in Utrecht vaak meer dan tien jaar wachten.", "In Utrecht you often have to wait more than ten years for a social rented home.", true),
         pairs("Match.", "sociale huur=cheap, but a long waiting list | vrije sector=faster, but expensive | Pararius=a website with rented homes | bezichtiging=a viewing", true),
         mc("What is the colleague's tip?", ["Offer more money", "Say who you are in your message", "Call the landlord every day"], 1),
-        tf("Kwame rookt.", "Kwame smokes.", false),
+        tf("Kofi rookt.", "Kofi smokes.", false),
       ],
     },
     {
@@ -61,12 +61,12 @@ export const wonen: Unit = {
           s("De verhuurder, mevrouw Bakker, doet de deur open. \"Kom binnen! Let op, de trap is steil.\"", "The landlady, Mrs Bakker, opens the door. \"Come in! Careful, the stairs are steep.\""),
         ],
         [
-          s("De woonkamer is licht en heeft grote ramen. Kwame kijkt naar de vloer. \"Is de vloer erbij?\"", "The living room is light and has big windows. Kwame looks at the floor. \"Is the floor included?\""),
+          s("De woonkamer is licht en heeft grote ramen. Kofi kijkt naar de vloer. \"Is de vloer erbij?\"", "The living room is light and has big windows. Kofi looks at the floor. \"Is the floor included?\""),
           s("\"Nee,\" zegt mevrouw Bakker. \"Het huis is kaal. Daar moet u zelf voor zorgen.\"", "\"No,\" says Mrs Bakker. \"The flat is unfurnished. You have to see to that yourself.\""),
           s("In Nederland betekent een kale huurwoning echt kaal: geen vloer, geen gordijnen, soms zelfs geen lampen.", "In the Netherlands an unfurnished rental really means bare: no floor, no curtains, sometimes not even lights."),
         ],
         [
-          s("Kwame heeft een lijst met vragen. \"Wat kost de huur, en zijn er servicekosten?\"", "Kwame has a list of questions. \"What's the rent, and are there service charges?\""),
+          s("Kofi heeft een lijst met vragen. \"Wat kost de huur, en zijn er servicekosten?\"", "Kofi has a list of questions. \"What's the rent, and are there service charges?\""),
           s("\"De huur is 1.250 euro, plus 60 euro servicekosten. De borg is twee maanden huur.\"", "\"The rent is 1,250 euros, plus 60 euros service charges. The deposit is two months' rent.\""),
           s("\"En de verwarming? Ik heb gehoord dat oude huizen vaak koud zijn.\"", "\"And the heating? I've heard that old houses are often cold.\""),
           s("\"Daar hoeft u niet bang voor te zijn. De ramen zijn vorig jaar vervangen.\"", "\"You don't need to worry about that. The windows were replaced last year.\""),
@@ -81,7 +81,7 @@ export const wonen: Unit = {
         mc("Which floor is the flat on?", ["The ground floor", "The second floor", "The third floor"], 2),
         tf("Bij een kale huurwoning krijg je een vloer en gordijnen.", "An unfurnished rental comes with a floor and curtains.", false),
         pairs("Match the costs.", "1.250 euro=the rent | 60 euro=service charges | twee maanden huur=the deposit", true),
-        mc("What does Kwame say at the end?", ["He'll take it straight away", "He'd like to think about it for a night", "It's too expensive"], 1),
+        mc("What does Kofi say at the end?", ["He'll take it straight away", "He'd like to think about it for a night", "It's too expensive"], 1),
         tf("Er komen vandaag nog meer mensen kijken.", "More people are coming to look today.", true),
       ],
     },
@@ -93,7 +93,7 @@ export const wonen: Unit = {
       grammar: ["er-preposition", "perfect-hebben", "subordinate-order"],
       paragraphs: [
         [
-          s("Kwame woont nu drie maanden in zijn nieuwe appartement. Hij is er heel blij mee, maar er is een probleem.", "Kwame has now lived in his new flat for three months. He's very happy with it, but there's a problem."),
+          s("Kofi woont nu drie maanden in zijn nieuwe appartement. Hij is er heel blij mee, maar er is een probleem.", "Kofi has now lived in his new flat for three months. He's very happy with it, but there's a problem."),
           s("Hij stuurt een e-mail aan mevrouw Bakker.", "He sends an email to Mrs Bakker."),
         ],
         [
@@ -106,15 +106,15 @@ export const wonen: Unit = {
           s("Daarnaast doet de bel het niet. Pakketjes komen daardoor vaak niet aan, omdat de bezorger denkt dat ik niet thuis ben.", "Also, the doorbell doesn't work. Because of that, parcels often don't arrive, because the delivery person thinks I'm not home."),
           s("Kunt u een monteur sturen die naar allebei kan kijken? Ik ben na vijf uur altijd thuis, en op woensdag de hele dag.", "Could you send a repairman who can look at both? I'm always home after five, and all day on Wednesday."),
           s("Ik hoop dat u er snel iets aan kunt doen. Bedankt!", "I hope you can do something about it soon. Thanks in advance."),
-          s("Met vriendelijke groet, Kwame Mensah", "Kind regards, Kwame Mensah"),
+          s("Met vriendelijke groet, Kofi Mensah", "Kind regards, Kofi Mensah"),
         ],
       ],
       tasks: [
         mc("What is the main problem?", ["The heating", "Mould in the bathroom", "Noisy neighbours"], 1),
-        tf("Kwame heeft er nog niet over gebeld.", "Kwame hasn't called about it yet.", false),
+        tf("Kofi heeft er nog niet over gebeld.", "Kofi hasn't called about it yet.", false),
         mc("What does he think causes it?", ["The broken extractor fan", "The windows", "The shower"], 0),
         mc("Why don't parcels arrive?", ["He's never home", "The doorbell doesn't work", "The address is wrong"], 1),
-        tf("Op woensdag is Kwame de hele dag thuis.", "On Wednesday Kwame is home all day.", true),
+        tf("Op woensdag is Kofi de hele dag thuis.", "On Wednesday Kofi is home all day.", true),
       ],
     },
     {

@@ -109,7 +109,7 @@ export const viaggio: Unit = {
         ],
         [
           s("La sera giocano a tombola. Ogni numero ha un significato: è la smorfia napoletana.", "In the evening they play tombola. Every number has a meaning: it's the Neapolitan smorfia."),
-          s("Lo zio legge i numeri: \"Novanta, la paura! Quarantasette, il morto che parla! Uno, l'Italia!\"", "Uncle reads out the numbers: \"Ninety, fear! Forty-seven, the dead man who talks! One, Italy!\""),
+          s("Lo zio legge i numeri: \"Novanta, la paura! Quarantotto, il morto che parla! Uno, l'Italia!\"", "Uncle reads out the numbers: \"Ninety, fear! Forty-eight, the dead man who talks! One, Italy!\""),
           s("Alla fine vince la zia di novantadue anni, come ogni anno.", "In the end the ninety-two-year-old aunt wins, like every year."),
         ],
       ],
@@ -167,10 +167,10 @@ export const viaggio: Unit = {
       situation: "Announcements at Bologna Centrale station.",
       grammar: ["time", "numbers-big", "places-transport"],
       lines: [
-        line("Spreker", "Il treno Frecciarossa per Napoli Centrale delle otto e quindici è in partenza dal binario sei.", "The Frecciarossa to Napoli Centrale at 8:15 is leaving from platform six."),
-        line("Spreker", "Il treno regionale per Rimini delle otto e venti è in ritardo di dieci minuti.", "The regional train to Rimini at 8:20 is ten minutes late."),
-        line("Spreker", "Il treno per Firenze delle otto e trenta parte dal binario tre, invece del binario cinque.", "The train to Florence at 8:30 leaves from platform three, instead of platform five."),
-        line("Spreker", "Si ricorda ai signori viaggiatori di convalidare il biglietto prima di salire sul treno.", "Passengers are reminded to validate their ticket before getting on the train."),
+        line("Annuncio", "Il treno Frecciarossa per Napoli Centrale delle otto e quindici è in partenza dal binario sei.", "The Frecciarossa to Napoli Centrale at 8:15 is leaving from platform six."),
+        line("Annuncio", "Il treno regionale per Rimini delle otto e venti è in ritardo di dieci minuti.", "The regional train to Rimini at 8:20 is ten minutes late."),
+        line("Annuncio", "Il treno per Firenze delle otto e trenta parte dal binario tre, invece del binario cinque.", "The train to Florence at 8:30 leaves from platform three, instead of platform five."),
+        line("Annuncio", "Si ricorda ai signori viaggiatori di convalidare il biglietto prima di salire sul treno.", "Passengers are reminded to validate their ticket before getting on the train."),
       ],
       gist: { prompt: "Where are you?", options: ["At a train station", "At an airport", "On a bus"], answer: 0 },
       details: [

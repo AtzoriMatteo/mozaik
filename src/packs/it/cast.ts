@@ -4,10 +4,10 @@ import type { Cast } from "@/core/language-pack";
 export const cast: Cast = {
   narrator: "f",
   gender: {
-    Emma: "f", Giulia: "f", Karim: "m", Marco: "m", Rita: "f", Hiro: "m", Ingrid: "f", Ana: "f", Lucia: "f", Amadou: "m", Awa: "f", Turista: "any", Lin: "f", Davide: "m", Benassi: "m", Impiegato: "m", Signora: "f", Signore: "m", Mamma: "f", Zio: "m", Dottoressa: "f", Farmacista: "f", Venditrice: "f", Madre: "f", Stefano: "m", Speaker: "any", Wei: "m", Franco: "m", Fruttivendolo: "m",
+    Emma: "f", Giulia: "f", Karim: "m", Marco: "m", Rita: "f", Hiro: "m", Ingrid: "f", Ana: "f", Lucia: "f", Amadou: "m", Awa: "f", Turista: "any", Lin: "f", Davide: "m", Benassi: "m", Francesco: "m", Kenji: "m", Fernanda: "f", Impiegato: "m", Signora: "f", Signore: "m", Mamma: "f", Zio: "m", Dottoressa: "f", Farmacista: "f", Venditrice: "f", Madre: "f", Stefano: "m", Speaker: "any", Wei: "m", Franco: "m", Fruttivendolo: "m",
     Nonna: "f",
     // Roles.
-    Segretaria: "f", Receptionist: "any", Cassiera: "f", Barista: "any", Cliente: "any", Spreker: "any",
+    Segretaria: "f", Receptionist: "any", Cassiera: "f", Barista: "any", Cliente: "any", Annuncio: "any",
   },
   generic: ["Turista", "Segretaria", "Receptionist", "Cassiera", "Barista", "Cliente"],
 };

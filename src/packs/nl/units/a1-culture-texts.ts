@@ -14,9 +14,9 @@ export const waarKomJeVandaan: ReadingText = {
   grammar: ["questions", "pronouns-subject", "er-is", "separable-verbs"],
   paragraphs: [
     [
-      s("In de Lindenstraat is vandaag een buurtfeest.", "There's a street party in the Lindenstraat today."),
+      s("Op de Oude Vest is vandaag een buurtfeest.", "There's a street party on the Oude Vest today."),
       s("Er staan tafels op straat, er is muziek en iedereen neemt iets te eten mee.", "There are tables in the street, there's music and everyone brings something to eat."),
-      s("Mevrouw De Vries woont al veertig jaar in de straat. Ze kent bijna iedereen.", "Mrs De Vries has lived in the street for forty years. She knows almost everyone."),
+      s("Mevrouw De Vries woont al vijftig jaar in de straat. Ze kent bijna iedereen.", "Mrs De Vries has lived in the street for fifty years. She knows almost everyone."),
     ],
     [
       s("\"En wie bent u?\" vraagt ze aan een man met een baby.", "\"And who are you?\" she asks a man with a baby."),
@@ -31,7 +31,7 @@ export const waarKomJeVandaan: ReadingText = {
       s("Haar man Kees is Nederlander. Thuis praten ze Nederlands en Arabisch.", "Her husband Kees is Dutch. At home they speak Dutch and Arabic."),
     ],
     [
-      s("Dan komen Wei en Lin, twee studenten uit China. Ze wonen boven de bakker.", "Then Wei and Lin arrive, two students from China. They live above the baker's."),
+      s("Dan komen Wei en Lin, twee studenten uit China. Ze wonen op de hoek.", "Then Wei and Lin arrive, two students from China. They live on the corner."),
       s("En Diego is Mexicaan. Hij kookt vandaag voor de hele straat.", "And Diego is Mexican. Today he's cooking for the whole street."),
       s("Mevrouw De Vries lacht. \"Zoveel landen in één straat! Hier woont de hele wereld!\"", "Mrs De Vries laughs. \"So many countries in one street! The whole world lives here!\""),
     ],

@@ -139,7 +139,7 @@ export const spesa: Unit = {
         ],
         [
           s("Finalmente mangiano. Il nonno Wei vuole assaggiare tutto e prende tre piatti.", "At last they eat. Grandpa Wei wants to try everything and has three plates."),
-          s("\"Buono, eh!\" dice in bolognese. Tutti ridono.", "\"Good, eh!\" he says in Bolognese. Everyone laughs."),
+          s("\"Buono, eh!\" dice, con l'accento bolognese. Tutti ridono.", "\"Good, eh!\" he says, with a Bolognese accent. Everyone laughs."),
           s("\"Karim, devi venire a cucinare nel mio negozio!\" \"Solo se tu porti sempre il sale, Lin!\"", "\"Karim, you have to come and cook in my shop!\" \"Only if you always bring the salt, Lin!\""),
         ],
       ],

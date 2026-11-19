@@ -111,7 +111,7 @@ export const barTexts: ReadingText[] = [
         s("\"Qui si dice solo caffè\", risponde Marco. \"È piccolo, forte e caldo. Il signor Bassi lo beve in piedi, in un minuto, ogni mattina.\"", "\"Here we just say caffè,\" Marco answers. \"It's small, strong and hot. Signor Bassi drinks it standing up, in one minute, every morning.\""),
         s("Sulla lavagna ci sono tanti tipi di caffè: macchiato, lungo, corretto.", "On the board there are lots of kinds of coffee: macchiato, lungo, corretto."),
         s("\"Il caffè lungo ha più acqua, e il corretto ha un po' di grappa. Il signor Bassi lo prende solo la domenica!\"", "\"A caffè lungo has more water, and a corretto has a little grappa. Signor Bassi only has one on Sundays!\""),
-        s("Emma paga alla cassa: due euro e settanta.", "Emma pays at the till: two euros seventy."),
+        s("Emma paga alla cassa: due euro e ottanta.", "Emma pays at the till: two euros eighty."),
         s("\"Grazie, Marco. A domani!\" \"A domani, Emma!\"", "\"Thanks, Marco. See you tomorrow!\" \"See you tomorrow, Emma!\""),
       ],
     ],
@@ -131,7 +131,7 @@ export const barTexts: ReadingText[] = [
     paragraphs: [
       [
         s("Martedì, dopo pranzo, Emma torna al bar con Giulia e Karim.", "On Tuesday, after lunch, Emma goes back to the bar with Giulia and Karim."),
-        s("In questo bar prima paghi alla cassa e prendi lo scontrino, poi ordini al banco.", "In this bar you first pay at the till and take the receipt, then you order at the counter."),
+        s("In molti bar italiani prima paghi alla cassa e prendi lo scontrino, poi ordini al banco. Al Bar Margherita, invece, si paga dopo.", "In many Italian bars you first pay at the till and take the receipt, then you order at the counter. At Bar Margherita, though, you pay afterwards."),
         s("\"Io vorrei un cappuccino\", dice Emma.", "\"I'd like a cappuccino,\" says Emma."),
         s("Marco la guarda con gli occhi grandi: \"Un cappuccino? Dopo pranzo?\"", "Marco looks at her with big eyes: \"A cappuccino? After lunch?\""),
       ],

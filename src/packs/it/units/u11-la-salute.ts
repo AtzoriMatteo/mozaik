@@ -126,7 +126,7 @@ export const salute: Unit = {
       grammar: ["stare", "passato-prossimo", "passato-essere"],
       paragraphs: [
         [
-          s("Due settimane dopo Giulia sta benissimo. Oggi c'è l'appello di storia dell'arte.", "Two weeks later Giulia is perfectly well. Today is the history of art exam."),
+          s("Due settimane dopo Giulia sta benissimo. Oggi c'è l'appello di anatomia.", "Two weeks later Giulia is perfectly well. Today is the anatomy exam."),
           s("Il voto va da diciotto a trenta. Diciotto basta per passare. Con un esame perfetto, il professore dà trenta e lode.", "The grade goes from eighteen to thirty. Eighteen is enough to pass. For a perfect exam, the professor gives thirty cum laude."),
           s("E una cosa strana per Emma: se il voto non ti piace, puoi rifiutarlo e rifare l'esame!", "And a strange thing for Emma: if you don't like the grade, you can refuse it and take the exam again!"),
         ],
@@ -270,7 +270,7 @@ export const salute: Unit = {
     text: [
       [
         s("La sera Giulia scrive a sua nonna Pina.", "In the evening Giulia writes to her grandma Pina."),
-        s("\"Cara nonna, ho fatto l'esame di storia dell'arte: trenta e lode! Due settimane fa sono stata male, ho avuto la febbre e ho perso il primo appello. Ma tutta la via mi ha aiutato: brodo, zenzero, miele, menta. Domenica vengo a pranzo da te. Mi fai le tagliatelle? Un bacio, Giulia\"", "\"Dear Grandma, I've taken my history of art exam: thirty cum laude! Two weeks ago I was ill, I had a temperature and I missed the first exam date. But the whole street helped me: broth, ginger, honey, mint. On Sunday I'm coming to lunch at yours. Will you make me tagliatelle? A kiss, Giulia\""),
+        s("\"Cara nonna, ho fatto l'esame di anatomia: trenta e lode! Due settimane fa sono stata male, ho avuto la febbre e ho perso il primo appello. Ma tutta la via mi ha aiutato: brodo, zenzero, miele, menta. Domenica vengo a pranzo da te. Mi fai le tagliatelle? Un bacio, Giulia\"", "\"Dear Grandma, I've taken my anatomy exam: thirty cum laude! Two weeks ago I was ill, I had a temperature and I missed the first exam date. But the whole street helped me: broth, ginger, honey, mint. On Sunday I'm coming to lunch at yours. Will you make me tagliatelle? A kiss, Giulia\""),
       ],
     ],
     textTasks: [

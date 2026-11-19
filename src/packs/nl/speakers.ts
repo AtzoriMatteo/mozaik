@@ -29,7 +29,7 @@ export const speakers: Record<string, string> = {
   "mijn-leven-in-het-kort": "Elif|Mehmet|Elif|Mehmet",
   "het-gesprek": "Henk|Henk|Henk|Agnieszka|Henk|Henk",
   "op-zoek-naar-een-huis": "Een collega",
-  "de-bezichtiging": "Mevrouw Bakker|Kwame|Mevrouw Bakker|Mevrouw Bakker|Kwame|Mevrouw Bakker|Kwame|Mevrouw Bakker|Mevrouw Bakker|Kwame|Mevrouw Bakker",
+  "de-bezichtiging": "Mevrouw Bakker|Kofi|Mevrouw Bakker|Mevrouw Bakker|Kofi|Mevrouw Bakker|Kofi|Mevrouw Bakker|Mevrouw Bakker|Kofi|Mevrouw Bakker",
   "eerst-naar-de-huisarts": "De assistente|De huisarts|De huisarts|Sofia",
   "neem-maar-een-paracetamol": "De dokter",
   "ik-moest-in-bed-blijven": "Een collega",
