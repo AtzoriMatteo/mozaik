@@ -79,7 +79,7 @@ export const familieTexts: ReadingText[] = [
     id: "familie-1-de-familie-yilmaz",
     title: "De familie Yilmaz",
     titleTranslation: "The Yilmaz family",
-    grammar: ["possessives", "articles", "plurals", "zijn-hebben"],
+    grammar: ["possessives", "articles", "indefinite-article", "plurals", "zijn-hebben"],
     paragraphs: [
       [
         s("Ik ben Yusuf Yilmaz en ik ben achtendertig. Ik heb een kledingwinkel op de hoek van de Oude Vest.", "I'm Yusuf Yilmaz and I'm thirty-eight. I have a clothes shop on the corner of the Oude Vest."),

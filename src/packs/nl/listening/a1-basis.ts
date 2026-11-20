@@ -44,7 +44,7 @@ export const listeningBasis: Record<string, ListeningItem[]> = {
       tasks: [
         heard(9, ["veertien", "vijftien", "vijftig"], 1),
         gaps(4, "spelt"),
-        tf("Luca schrijft zijn naam met een k.", "Luca writes his name with a k.", false),
+        tf("Luca krijgt aan het eind een pasje.", "Luca gets a card at the end.", true),
       ],
       dictation: [2, 6],
     },

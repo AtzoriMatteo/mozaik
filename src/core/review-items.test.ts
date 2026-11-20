@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dutch } from "@/packs/nl";
 import {
-  buildSession, checkProduced, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor, wordIndex,
+  buildSession, checkProduced, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor, wordIndex, worthTyping,
   type Done, type ReviewItem, type Schedule,
 } from "./review-items";
 import { GRADUATED_DUE, GRADUATED_STAGE, storedStage } from "./srs";
@@ -171,5 +171,13 @@ describe("one card per thing", () => {
     const texts = items.filter((i) => i.kind === "listen").map((i) => normalizeWords((i as { text: string }).text).join(" "));
     expect(new Set(texts).size).toBe(texts.length);
     for (const l of nl.levels.slice(1)) for (const lemma of wordIndex(nl, l).keys()) expect(wordIndex(nl, "A1").has(lemma)).toBe(false);
+  });
+});
+
+describe("lines worth typing", () => {
+  it("skips lines that are only a name or spelled letters", () => {
+    expect(worthTyping(dutch, "Bianchi.")).toBe(false);
+    expect(worthTyping(dutch, "B-I-A-N-C-H-I.")).toBe(false);
+    expect(worthTyping(dutch, "Luca. Met een c.")).toBe(true);
   });
 });

@@ -18,6 +18,7 @@ const UNIT_FOR: Record<string, string> = {
   possessives: "a1-familie",
   plurals: "a1-familie",
   articles: "a1-familie",
+  "indefinite-article": "a1-familie",
   "er-is": "a1-eten",
   demonstratives: "a1-eten",
   diminutives: "a1-eten",

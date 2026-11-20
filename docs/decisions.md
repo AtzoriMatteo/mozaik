@@ -5,6 +5,27 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-20 (evening, later) — No name-spelling questions; een gets its own lesson
+
+**Questions about how a name is spelt are gone (Matteo: no use for learning
+Dutch).** "Which name did you hear: Marja, Maria or Marta?" is now "tien,
+twee or twintig?"; "Luca writes his name with a k" is now "Luca gets a card
+at the end"; the Italian "What does the secretary ask Emma to spell?" is now
+"How does she speak to Emma? (Lei or tu)". Review no longer makes "type what
+you hear" cards from lines that are only names or spelled-out letters
+("Bianchi.", "B-I-A-N-C-H-I.", "Nowak: N, O, W, A, K."); a test keeps it
+that way. Bram's girlfriend is now Iris (Lotte is Daan's friend in A2).
+
+**de/het and een are two lessons (Matteo).** In unit 3 (Familie), "de and
+het" is followed by a new lesson, "een: a, an": the same een for every
+noun, no een in the plural, with jobs (Hij is kok) or with things you don't
+count (water, brood), één = one, and geen as its "no". Examples are from the
+Yilmaz story. Italian got the same split (standing rule): "The: il, lo, la,
+l'" and a new "A, an: un, uno, una, un'" in unit 2.
+- Cost (Claude): if you'd already done the old articles lesson, a few of its
+  review cards now point at a neighbouring exercise of the same lesson. The
+  new een lesson shows as not done yet.
+
 ## 2026-11-20 (evening) — Checked answers read as sentences; no double cards
 
 **Your answer, shown as the real sentence (Matteo).** After a dictation (in

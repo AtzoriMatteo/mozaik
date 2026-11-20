@@ -20,7 +20,7 @@ export const piacere: Unit = {
       level: "A1",
       title: "La prima lezione",
       titleTranslation: "The first lesson",
-      grammar: ["avere", "numbers", "articles", "negation"],
+      grammar: ["avere", "numbers", "articles", "indefinite-articles", "negation"],
       paragraphs: [
         [
           s("Lunedì Emma comincia il corso di italiano.", "On Monday Emma starts her Italian course."),
@@ -58,7 +58,7 @@ export const piacere: Unit = {
       level: "A1",
       title: "Quante lingue in Italia?",
       titleTranslation: "How many languages in Italy?",
-      grammar: ["articles", "negation"],
+      grammar: ["articles", "indefinite-articles", "negation"],
       paragraphs: [
         [
           s("In Italia tutti parlano italiano, ma non solo.", "In Italy everyone speaks Italian, but not only that."),

@@ -89,15 +89,15 @@ export const listeningA1More: Record<string, ListeningItem[]> = {
         line("Luca", "En die man naast haar?", "And that man next to her?"),
         line("Bram", "Dat is haar vriend, Ruud. Hij is heel grappig.", "That's her boyfriend, Ruud. He's very funny."),
         line("Luca", "En dat meisje met de hond?", "And that girl with the dog?"),
-        line("Bram", "Dat is Lotte, mijn vriendin. De hond is van haar.", "That's Lotte, my girlfriend. The dog is hers."),
+        line("Bram", "Dat is Iris, mijn vriendin. De hond is van haar.", "That's Iris, my girlfriend. The dog is hers."),
       ],
       gist: { prompt: "What are they talking about?", options: ["Bram's family and friends in a photo", "A film", "Bram's holiday"], answer: 0 },
       details: [
         { prompt: "Where does Bram's mother live?", options: ["In Groningen", "In Leiden", "In Amsterdam"], answer: 1 },
-        { prompt: "Who is Lotte?", options: ["Bram's sister", "Bram's girlfriend", "Bram's colleague"], answer: 1 },
+        { prompt: "Who is Iris?", options: ["Bram's sister", "Bram's girlfriend", "Bram's colleague"], answer: 1 },
       ],
       tasks: [
-        heard(1, ["Marja", "Maria", "Marta"], 0),
+        heard(3, ["tien", "twee", "twintig"], 0),
         tf("Ruud is de vader van Bram.", "Ruud is Bram's father.", false),
         gaps(7, "vriendin", "hond"),
       ],
