@@ -5,6 +5,33 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-20 — Review shuffles every session; third content check
+
+**Review comes in a new order every time (Matteo).** Due cards used to be
+taken oldest first, so a big pile always started with the same cards in the
+same order. Now each session draws its cards from the due pile at random and
+shuffles them; words, grammar and listening still take turns. New words
+still come most common first (that order is how New words teaches).
+Counts on Home and Review are unchanged, so "10 cards" still means 10.
+Cost (Claude): a very overdue card may wait one extra session.
+
+**Third content check (Claude).** This pass covered what the earlier two
+read least: every grammar lesson (explanations, tables, exercises and their
+answers), every writing model, the expressions, and the example sentences of
+taught words, in both languages. Fixed:
+- An A2 "perfect with hebben" exercise wanted "ben … gefietst" (zijn,
+  taught in the next lesson): now "heb … pasta gekookt".
+- An Italian exercise put the bar next to Amadou's shop; it's across the
+  street, as in the story.
+- Weekdays matched to dates: Markthal outing Saturday 10 October, a B&B
+  booking Friday 12 to Sunday 14 June, Davide's party Saturday 13 June (all
+  real weekdays in 2026, like the rest of the course).
+- Two writing models in one unit had an Ana from Brazil and an Ana from
+  Portugal: the Portuguese one is now Mariana. Sara's card no longer puts her
+  at number seven, which a neighbour already has.
+- Smaller: "Mijn bestelling is te klein" → "Mijn bestelling is er nog niet";
+  an Italian word in an English gloss ("anche").
+
 ## 2026-11-19 (late morning) — Second content check: answer keys, slang, tips, word help
 
 Matteo asked for another correction pass. This one covered what the night

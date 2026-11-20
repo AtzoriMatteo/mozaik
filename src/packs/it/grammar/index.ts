@@ -552,7 +552,7 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Le foto sono ", " tavolo.", "sul", "The photos are on the table.", "su + il"),
         fill("La moka è ", " cucina.", "nella", "The moka pot is in the kitchen.", "in + la"),
         fill("Hiro arriva ", " Giappone.", "dal", "Hiro comes from Japan.", "da + il"),
-        choice("Il bar è accanto ", " sartoria.", ["alla", "al", "nella"], 0, "The bar is next to the tailor's."),
+        choice("Il bar è di fronte ", " sartoria.", ["alla", "al", "nella"], 0, "The bar is across from the tailor's."),
         match("Match.", "in + il=nel | su + la=sulla | a + le=alle | da + il=dal | di + la=della", "Prepositions with the article."),
         spot("Le foto sono sulla tavolo.", "sulla", "sul", "The photos are on the table."),
       ],

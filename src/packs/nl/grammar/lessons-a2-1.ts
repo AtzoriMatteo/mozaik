@@ -28,7 +28,7 @@ export const lessonsA2a: Record<string, GrammarLesson> = {
       fill("Ik heb genoeg geld ", ".", "verdiend", "I earned enough money.", "verdienen"),
       choice("Gisteren ", " ik pizza besteld.", ["heb", "ben"], 0, "Yesterday I ordered pizza."),
       build("Ik | heb | mijn huis | opgeruimd", "I tidied up my house."),
-      transform("Make it the perfect.", "Ik fiets naar mijn werk. (gisteren)", ["Gisteren ben ik naar mijn werk gefietst.", "Ik ben gisteren naar mijn werk gefietst."], "Yesterday I cycled to work."),
+      transform("Make it the perfect.", "Ik kook pasta. (gisteren)", ["Gisteren heb ik pasta gekookt.", "Ik heb gisteren pasta gekookt."], "Yesterday I cooked pasta."),
     ],
   },
 

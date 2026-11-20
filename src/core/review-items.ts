@@ -240,7 +240,23 @@ export type SessionOptions = {
   size: number;
   newPerDay: number;
   now: Date;
+  /**
+   * Give a random source (Math.random) when a session really starts: the due
+   * pile is then drawn in a new random order every time, and the cards come in
+   * a new order. Left out, the order is fixed (for counts and tests).
+   */
+  random?: () => number;
 };
+
+/** Fisher–Yates shuffle into a new array. */
+export function shuffled<T>(items: readonly T[], random: () => number): T[] {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
 
 export type SessionCounts = Record<ReviewKind, { due: number; fresh: number }>;
 
@@ -260,8 +276,10 @@ export function countItems(
 }
 
 /**
- * Pick a short session: due items first (oldest first), then new ones within
- * today's allowance, mixed so kinds alternate instead of coming in blocks.
+ * Pick a short session: due items first, then new ones within today's
+ * allowance, mixed so kinds alternate instead of coming in blocks. With a
+ * random source the due items are drawn at random and every session comes in
+ * a fresh order; without one, oldest due first.
  */
 export function buildSession(
   items: readonly ReviewItem[],
@@ -278,18 +296,22 @@ export function buildSession(
   const allowance = Math.max(0, opts.newPerDay - introducedToday(schedules, opts.now));
   const fresh = wanted.filter((i) => !schedules.has(i.id));
 
-  const picked = due.slice(0, opts.size);
+  const { random } = opts;
+  const picked = (random ? shuffled(due, random) : due).slice(0, opts.size);
   const room = Math.min(opts.size - picked.length, allowance);
   picked.push(...interleave(fresh).slice(0, room));
-  return interleave(picked);
+  return random ? interleave(shuffled(picked, random), random) : interleave(picked);
 }
 
-/** Round-robin by kind, keeping the order within each kind. */
-export function interleave(items: readonly ReviewItem[]): ReviewItem[] {
+/**
+ * Round-robin by kind, keeping the order within each kind. With a random
+ * source the kinds take turns in a random order each round.
+ */
+export function interleave(items: readonly ReviewItem[], random?: () => number): ReviewItem[] {
   const queues = REVIEW_KINDS.map((k) => items.filter((i) => i.kind === k)).filter((q) => q.length);
   const out: ReviewItem[] = [];
   while (queues.some((q) => q.length)) {
-    for (const q of queues) {
+    for (const q of random ? shuffled(queues, random) : queues) {
       const next = q.shift();
       if (next) out.push(next);
     }

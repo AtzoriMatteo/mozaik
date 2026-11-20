@@ -17,7 +17,7 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("burro", "butter", "Pane, burro e marmellata: la mia colazione!", "Bread, butter and jam: my breakfast!"),
   ],
   "it-a1-giornata": [
-    t("sveglia", "alarm clock (anche: si sveglia = wakes up)", "La sveglia suona alle sei.", "The alarm goes off at six."),
+    t("sveglia", "alarm clock (also: si sveglia = wakes up)", "La sveglia suona alle sei.", "The alarm goes off at six."),
     t("doccia", "shower (fare la doccia = to have a shower)", "La mattina faccio la doccia.", "In the morning I have a shower."),
     t("pranzo", "lunch (a pranzo = at lunch)", "A pranzo mangio un panino.", "At lunch I eat a sandwich."),
     t("cena", "dinner (a cena = at dinner)", "A cena mangiamo alle otto.", "We have dinner at eight."),

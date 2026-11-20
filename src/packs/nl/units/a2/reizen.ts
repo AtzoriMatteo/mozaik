@@ -322,7 +322,7 @@ export const reizen: Unit = {
         p("Close politely", "groet", "groeten", "alvast", "bedankt"),
       ],
       model:
-        "Geachte heer of mevrouw, Ik wil graag een kamer bij u reserveren voor twee personen. We komen van vrijdag 14 juni tot zondag 16 juni, dus voor twee nachten. We willen graag een tweepersoonskamer met een eigen badkamer en uitzicht op de tuin. Ik heb een paar vragen. Is het ontbijt bij de prijs inbegrepen, en hoe laat begint het? We komen met de auto. Kunnen we bij het hotel parkeren, en wat kost dat per nacht? Op vrijdag werken we allebei tot vijf uur, dus we komen pas om ongeveer negen uur 's avonds aan. Is de receptie dan nog open? Zo niet, hoe kunnen we de sleutel dan krijgen? Ik hoor graag van u. Alvast bedankt. Met vriendelijke groet, Paulina Nowak",
+        "Geachte heer of mevrouw, Ik wil graag een kamer bij u reserveren voor twee personen. We komen van vrijdag 12 juni tot zondag 14 juni, dus voor twee nachten. We willen graag een tweepersoonskamer met een eigen badkamer en uitzicht op de tuin. Ik heb een paar vragen. Is het ontbijt bij de prijs inbegrepen, en hoe laat begint het? We komen met de auto. Kunnen we bij het hotel parkeren, en wat kost dat per nacht? Op vrijdag werken we allebei tot vijf uur, dus we komen pas om ongeveer negen uur 's avonds aan. Is de receptie dan nog open? Zo niet, hoe kunnen we de sleutel dan krijgen? Ik hoor graag van u. Alvast bedankt. Met vriendelijke groet, Paulina Nowak",
     }),
     a2({
       id: "w-reisadvies",

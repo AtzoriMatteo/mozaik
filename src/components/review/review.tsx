@@ -90,6 +90,7 @@ export function Review() {
         size: settings.size,
         newPerDay: Math.max(settings.newPerDay, startedToday) + extraNew,
         now,
+        random: Math.random,
       }),
     });
 
@@ -140,7 +141,7 @@ export function Review() {
                 <button
                   type="button"
                   className="button review-start"
-                  onClick={() => setSession({ items: mixed, label: withScope(mixKinds.length === 1 ? KIND_LABEL[mixKinds[0]] : "Mixed review") })}
+                  onClick={() => setSession({ items: buildSession(items, review.schedules, { kinds: new Set(mixKinds), size: settings.size, newPerDay: settings.newPerDay, now, random: Math.random }), label: withScope(mixKinds.length === 1 ? KIND_LABEL[mixKinds[0]] : "Mixed review") })}
                 >
                   Start review
                 </button>

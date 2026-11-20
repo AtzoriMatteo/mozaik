@@ -283,7 +283,7 @@ export const tempoLibero: Unit = {
     text: [
       [
         s("Sulla porta di Davide c'è un manifesto nuovo, disegnato da lui.", "On Davide's door there's a new poster, which he designed."),
-        s("\"Festa di fine stagione! Sabato quattordici giugno, dalle otto di sera, nella palestra di via Saragozza. Musica, pizza e una partita per tutti: anche per chi non gioca mai! Ingresso gratuito. Portate gli amici!\"", "\"End-of-season party! Saturday 14 June, from eight in the evening, at the sports hall on Via Saragozza. Music, pizza and a game for everyone: even for people who never play! Free entry. Bring your friends!\""),
+        s("\"Festa di fine stagione! Sabato tredici giugno, dalle otto di sera, nella palestra di via Saragozza. Musica, pizza e una partita per tutti: anche per chi non gioca mai! Ingresso gratuito. Portate gli amici!\"", "\"End-of-season party! Saturday 13 June, from eight in the evening, at the sports hall on Via Saragozza. Music, pizza and a game for everyone: even for people who never play! Free entry. Bring your friends!\""),
       ],
     ],
     textTasks: [
