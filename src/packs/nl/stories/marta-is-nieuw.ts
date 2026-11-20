@@ -258,7 +258,7 @@ export const martaWriting: WritingTask = {
     { prompt: "Invite them for something", frame: "Zullen we … ?", cues: ["koffie", "thee", "zullen"] },
   ],
   model:
-    "Beste buren, ik ben Sara. Ik kom uit Spanje, uit een klein dorp bij Valencia. Ik woon nu op nummer zeven, naast de bakker. Ik werk in een hotel, en op maandag en woensdag heb ik les Nederlands. Mijn Nederlands is nog niet goed, maar ik leer elke dag een beetje. Zullen we zaterdag samen koffie drinken? Groetjes, Sara",
+    "Beste buren, ik ben Sara. Ik kom uit Spanje, uit een klein dorp bij Valencia. Ik woon nu op nummer dertien, naast de bakker. Ik werk in een hotel, en op maandag en woensdag heb ik les Nederlands. Mijn Nederlands is nog niet goed, maar ik leer elke dag een beetje. Zullen we zaterdag samen koffie drinken? Groetjes, Sara",
 };
 
 /** The end of the unit: a note from the language class. */

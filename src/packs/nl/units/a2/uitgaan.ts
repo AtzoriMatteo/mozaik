@@ -313,7 +313,7 @@ export const uitgaan: Unit = {
         p("Ask people to let you know, and close", "laat", "weten", "voor", "groetjes", "liefs"),
       ],
       model:
-        "Hoi allemaal! We hebben al drie maanden niets met z'n allen gedaan. Daarom heb ik een idee: zullen we op zaterdag 12 oktober samen naar de Markthal in Rotterdam gaan? Daar kun je eten uit de hele wereld proeven, en het is ook nog gezellig. Ik heb ook naar andere dingen gekeken. Een rondvaart was leuk, maar het goedkoopste is de markt, want de toegang is gratis. En als het regent, zitten we lekker binnen. We kunnen om twaalf uur afspreken bij de ingang aan de kant van het station. Neem genoeg geld mee voor eten, ik denk ongeveer twintig euro per persoon. 's Avonds kunnen we nog iets drinken in een café aan de haven. Laat je me voor woensdag weten of je meegaat? Dan kan ik een tafel reserveren. Groetjes, Lina",
+        "Hoi allemaal! We hebben al drie maanden niets met z'n allen gedaan. Daarom heb ik een idee: zullen we op zaterdag 10 oktober samen naar de Markthal in Rotterdam gaan? Daar kun je eten uit de hele wereld proeven, en het is ook nog gezellig. Ik heb ook naar andere dingen gekeken. Een rondvaart was leuk, maar het goedkoopste is de markt, want de toegang is gratis. En als het regent, zitten we lekker binnen. We kunnen om twaalf uur afspreken bij de ingang aan de kant van het station. Neem genoeg geld mee voor eten, ik denk ongeveer twintig euro per persoon. 's Avonds kunnen we nog iets drinken in een café aan de haven. Laat je me voor woensdag weten of je meegaat? Dan kan ik een tafel reserveren. Groetjes, Lina",
     }),
     a2({
       id: "w-mijn-favoriete-plek",

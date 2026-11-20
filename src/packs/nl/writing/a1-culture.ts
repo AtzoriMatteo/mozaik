@@ -30,7 +30,7 @@ export const writingCulture: Record<string, WritingTask[]> = {
         pf("Say what you like here", "Ik vind … heel mooi.", "vind", "leuk", "mooi", "fijn"),
       ],
       model:
-        "Hallo! Ik ben Ana en ik kom uit Portugal, uit Porto. Ik ben Portugese. Ik spreek Portugees, Engels en een beetje Spaans. Portugal ligt naast Spanje. Nu leer ik Nederlands, want ik woon en werk hier. Ik woon sinds januari in Rotterdam, met mijn man. Hier is het vaak koud en het waait veel. Maar ik vind Rotterdam heel mooi, en de mensen zijn aardig. Groeten, Ana",
+        "Hallo! Ik ben Mariana en ik kom uit Portugal, uit Porto. Ik ben Portugese. Ik spreek Portugees, Engels en een beetje Spaans. Portugal ligt naast Spanje. Nu leer ik Nederlands, want ik woon en werk hier. Ik woon sinds januari in Rotterdam, met mijn man. Hier is het vaak koud en het waait veel. Maar ik vind Rotterdam heel mooi, en de mensen zijn aardig. Groeten, Mariana",
     }),
   ],
   "a1-eten": [

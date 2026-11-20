@@ -47,7 +47,7 @@ export const teachNl: Record<string, TaughtWord[]> = {
   ],
   "a1-kleren": [
     t("kleren", "clothes", "Ik koop mijn kleren meestal op de markt.", "I usually buy my clothes at the market."),
-    t("bestelling", "order (something you ordered)", "Mijn bestelling is te klein.", "My order is too small."),
+    t("bestelling", "order (something you ordered)", "Mijn bestelling is er nog niet.", "My order hasn't arrived yet."),
     t("klantenservice", "customer service", "Beste klantenservice, ik heb een probleem.", "Dear customer service, I have a problem."),
   ],
   "a2-verleden": [

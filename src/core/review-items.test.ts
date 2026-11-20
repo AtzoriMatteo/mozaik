@@ -96,6 +96,19 @@ describe("building a session", () => {
     expect(s.map((i) => i.kind).sort()).toEqual(["grammar", "listen"]);
   });
 
+  it("shuffles the due pile and the session order when given a random source", () => {
+    const items = Array.from({ length: 40 }, (_, n) => item("word", `w${n}`));
+    const schedules = new Map(items.map((i, n) => [i.id, sched(`2026-11-${String(1 + (n % 10)).padStart(2, "0")}T08:00:00`)]));
+    const opts = { kinds: new Set(["word" as const]), size: 10, newPerDay: 0, now };
+    const fixed = buildSession(items, schedules, opts).map((i) => i.id);
+    expect(buildSession(items, schedules, opts).map((i) => i.id)).toEqual(fixed);
+    let seed = 1;
+    const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    const orders = new Set(Array.from({ length: 5 }, () => buildSession(items, schedules, { ...opts, random }).map((i) => i.id).join()));
+    expect(orders.size).toBeGreaterThan(1);
+    for (const o of orders) expect(new Set(o.split(",")).size).toBe(10);
+  });
+
   it("mixes kinds instead of blocks", () => {
     const items = [item("word", "a"), item("word", "b"), item("grammar", "g"), item("listen", "l")];
     expect(interleave(items).map((i) => i.id)).toEqual(["a", "g", "l", "b"]);
