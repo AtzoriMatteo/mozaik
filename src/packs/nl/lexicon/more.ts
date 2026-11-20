@@ -160,6 +160,7 @@ export const lexiconMore: Lexicon = {
   lol: { meaning: "fun", local: "voor de lol = for fun" },
   lootjes: { meaning: "lots (names drawn)", base: "lot", local: "lootjes trekken = draw names for Sinterklaas gifts" },
   lotte: { meaning: "Lotte (a name)" },
+  iris: { meaning: "Iris (a name)" },
   lui: { meaning: "lazy" },
   m: { meaning: "M (size medium)" },
   maart: { meaning: "March" },

@@ -222,7 +222,7 @@ export function eligibleItems(
       if (!done.listen.has(l.id)) continue;
       l.lines.forEach((line, i) => {
         const key = normalizeWords(line.text).join(" ");
-        if (lines.has(key)) return;
+        if (lines.has(key) || !worthTyping(pack, line.text, l.words)) return;
         lines.add(key);
         if (line.text.split(/\s+/).length <= MAX_LINE_WORDS) {
           items.push({ kind: "listen", id: `l:${l.id}:${i}`, text: line.text, translation: line.translation });
@@ -234,6 +234,20 @@ export function eligibleItems(
   // One card per id, whatever path it came from.
   const ids = new Set<string>();
   return items.filter((i) => !ids.has(i.id) && !!ids.add(i.id));
+}
+
+/**
+ * Is a listening line worth typing from memory? Not when it's only names and
+ * spelled-out letters ("Bianchi.", "B-I-A-N-C-H-I."): typing someone's name
+ * teaches no Dutch.
+ */
+export function worthTyping(pack: LanguagePack, text: string, words?: Record<string, { meaning: string }>): boolean {
+  return pack.tokenize(text).some((tok) => {
+    if (tok.kind !== "word") return false;
+    if (/^\p{L}$/u.test(tok.normalized) || /^(\p{L}-)+\p{L}$/u.test(tok.normalized)) return false;
+    const meaning = (words?.[tok.normalized] ?? pack.lexicon[tok.normalized])?.meaning ?? "";
+    return !/^\p{Lu}[\p{L}' -]*\((?:an? )?(?:[\w-]+ )*(?:name|surname)\)/u.test(meaning);
+  });
 }
 
 const sameDay = (a: Date, b: Date) =>

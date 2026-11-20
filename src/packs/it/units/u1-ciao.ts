@@ -151,7 +151,7 @@ export const ciao: Unit = {
       ],
       gist: { prompt: "What is happening?", options: ["Emma is signing up for a course", "Emma is buying a ticket", "Emma is meeting a friend"], answer: 0 },
       details: [
-        { prompt: "What does the secretary ask Emma to spell?", options: ["Her surname", "Her street", "Her first name"], answer: 0 },
+        { prompt: "How does the secretary speak to Emma?", options: ["Politely, with Lei", "Casually, with tu", "In English"], answer: 0 },
         { prompt: "When does the course start?", options: ["On Monday", "Today", "On Friday"], answer: 0 },
       ],
       tasks: [

@@ -27,8 +27,14 @@ export const grammarPoints: readonly GrammarPoint[] = [
   {
     id: "articles",
     level: "A1",
-    title: "de, het and een",
-    summary: "Most nouns take de, about a quarter take het; all plurals take de. een = a/an.",
+    title: "de and het",
+    summary: "Most nouns take de, about a quarter take het; all plurals take de.",
+  },
+  {
+    id: "indefinite-article",
+    level: "A1",
+    title: "een: a, an",
+    summary: "een is the same for every noun (een kamer, een huis); no een in the plural, with jobs (Ik ben student) or with water, brood.",
   },
   {
     id: "plurals",

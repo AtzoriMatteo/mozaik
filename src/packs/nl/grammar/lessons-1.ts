@@ -1,5 +1,5 @@
 import type { GrammarLesson } from "@/core/content";
-import { choice, example, fill, table, text, transform } from "./helpers";
+import { choice, example, fill, match, sort, table, text, transform } from "./helpers";
 
 /** Units 1–2: Kennismaken, Familie. */
 export const lessons1: Record<string, GrammarLesson> = {
@@ -164,11 +164,11 @@ export const lessons1: Record<string, GrammarLesson> = {
         ["verbs used as nouns (het eten)", "people by job or role (de leraar)"],
         ["languages (het Nederlands)", "most words ending in -ing (de ervaring)"],
       ),
-      text("een (a/an) is the same for both. Say it 'un'. With accents, één means 'one'."),
+      text("'A' or 'an' is een, the same for every noun: that's the next lesson."),
     ],
     examples: [
       example("Het is het kind, niet de kind", "It's het kind, not de kind.", "het kind"),
-      example("Ik woon in een oud huis in het centrum", "I live in an old house in the centre", "een", "het"),
+      example("Ik woon in een oud huis in het centrum", "I live in an old house in the centre", "het"),
       example("De les is leuk, maar soms ook moeilijk.", "The class is fun, but sometimes also difficult.", "De"),
     ],
     exercises: [
@@ -177,7 +177,37 @@ export const lessons1: Record<string, GrammarLesson> = {
       choice("", " kamer is klein.", ["De", "Het"], 0, "The room is small."),
       choice("", " fietsen staan bij het station.", ["De", "Het"], 0, "The bikes are by the station (plurals take de)."),
       choice("", " eten is goed.", ["De", "Het"], 1, "The food is good (verbs used as nouns are het)."),
-      choice("Ik heb ", " broer en één zus.", ["de", "een"], 1, "I have a brother and one sister."),
+    ],
+  },
+
+  // Split from "de, het and een" (Matteo, 20 Nov 2026): een gets its own lesson.
+  "indefinite-article": {
+    blocks: [
+      text("een means 'a' or 'an'. Unlike de and het, it's the same for every noun: een kamer (de kamer), een huis (het huis). Say it 'un'."),
+      table(
+        "the or a?",
+        ["", "de-word", "het-word"],
+        ["the", "de kamer", "het huis"],
+        ["a, an", "een kamer", "een huis"],
+        ["more than one", "kamers", "huizen"],
+      ),
+      text("No een in three places: in the plural (twee kinderen), with jobs after zijn (Ik ben student. Hij is kok.), and with things you don't count (Ik drink water. Ik koop brood.)."),
+      text("Written één, with accents, it means 'one': Ik heb één zus. The 'no' version of een is geen: Ik heb geen auto (more in niet and geen)."),
+    ],
+    examples: [
+      example("We hebben twee kinderen, een zoon en een dochter.", "We have two children, a son and a daughter.", "een zoon", "een dochter"),
+      example("Hij is kok in een restaurant", "He's a cook in a restaurant", "kok", "een restaurant"),
+      example("ik ben lerares Engels op een middelbare school", "I'm an English teacher at a secondary school", "lerares", "een"),
+      example("Hij spreekt Turks en een beetje Engels, maar geen Nederlands.", "He speaks Turkish and a bit of English, but no Dutch.", "geen"),
+    ],
+    exercises: [
+      choice("Noor heeft ", " fiets.", ["een", "het"], 0, "Noor has a bike."),
+      choice("Yusuf heeft ", " winkel en een huis.", ["een", "de"], 0, "Yusuf has a shop and a house (een for de- and het-words)."),
+      choice("Ik heb ", " zus, niet twee.", ["één", "een"], 0, "I have one sister, not two."),
+      sort("With een or without?", ["een", "no een"], "Ik ben ___ student.=1 | Ik heb ___ broer.=0 | Ik drink ___ water.=1 | Er is ___ markt.=0 | Wij hebben ___ kinderen.=1 | Ze woont in ___ huis.=0", "No een with jobs, things you don't count, or plurals."),
+      transform("Make it more than one (no een).", "Ik heb een boek.", ["Ik heb boeken."], "I have books."),
+      transform("Say what her job is (a job after zijn: no een).", "Elif / verpleegkundige", ["Elif is verpleegkundige."], "Elif is a nurse."),
+      match("Connect the Dutch and the English.", "een huis=a house | één huis=one house | geen huis=no house | huizen=houses", "een, één, geen and the plural."),
     ],
   },
 };

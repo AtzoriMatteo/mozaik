@@ -46,7 +46,7 @@ export const familie: UnitContent = {
   texts: familieTexts,
   sequence: [
     "familie-1-de-familie-yilmaz", "noor-over-haar-familie", "possessives",
-    "familie-2-hoor-je-mij", "de-foto-van-bram", "articles",
+    "familie-2-hoor-je-mij", "de-foto-van-bram", "articles", "indefinite-article",
     "familie-3-opa-wordt-tachtig", "een-kringverjaardag", "plurals",
     "in-de-kledingwinkel", "write", "familie-4-een-mail-uit-istanbul", "de-kleinkinderen", "words", "check",
   ],
