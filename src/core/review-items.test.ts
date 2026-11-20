@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { dutch } from "@/packs/nl";
 import {
-  buildSession, checkProduced, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor,
+  buildSession, checkProduced, countItems, courseWordId, eligibleItems, interleave, newWords, wordCardFor, wordIndex,
   type Done, type ReviewItem, type Schedule,
 } from "./review-items";
 import { GRADUATED_DUE, GRADUATED_STAGE, storedStage } from "./srs";
+import { normalizeWords } from "./dictation";
 
 const none: Done = { read: new Set(), listen: new Set(), grammar: new Set(), speak: new Set() };
 const now = new Date("2026-11-12T15:00:00");
@@ -155,5 +156,20 @@ describe("typed answers", () => {
     expect(checkProduced("telen", "tellen", null).verdict).toBe("almost");
     expect(checkProduced("drinken", "tellen", null).verdict).toBe("wrong");
     expect(checkProduced("", "tellen", null).verdict).toBe("wrong");
+  });
+});
+
+describe("one card per thing", () => {
+  it("gives a word taught in A1 and used again in A2 one card, and the same line in two clips one card", () => {
+    const nl = dutch;
+    const schedules = new Map<string, Schedule>();
+    for (const l of nl.levels) for (const [lemma] of wordIndex(nl, l)) schedules.set(courseWordId(lemma), { stage: 1, dueAt: "2026-01-01T00:00:00", introducedAt: "2026-01-01T00:00:00" });
+    const listen = new Set(nl.units.flatMap((u) => u.listening.map((l) => l.id)));
+    const items = eligibleItems(nl, { ...none, listen }, { schedules });
+    const ids = items.map((i) => i.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    const texts = items.filter((i) => i.kind === "listen").map((i) => normalizeWords((i as { text: string }).text).join(" "));
+    expect(new Set(texts).size).toBe(texts.length);
+    for (const l of nl.levels.slice(1)) for (const lemma of wordIndex(nl, l).keys()) expect(wordIndex(nl, "A1").has(lemma)).toBe(false);
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { checkDictation, normalizeWords } from "./dictation";
+import { checkDictation, displayWords, normalizeWords } from "./dictation";
 
 describe("dictation check", () => {
   it("ignores capitals and punctuation", () => {
@@ -12,7 +12,7 @@ describe("dictation check", () => {
     const r = checkDictation("Ik heb één zus.", "ik heb een zus");
     expect(r.perfect).toBe(false);
     expect(r.score).toBe(1);
-    expect(r.parts[2]).toEqual({ kind: "almost", word: "één", typed: "een" });
+    expect(r.parts[2]).toEqual({ kind: "almost", word: "één", typed: "een", display: "één" });
   });
 
   it("shows missing and extra words", () => {
@@ -29,5 +29,18 @@ describe("dictation check", () => {
 
   it("treats curly and straight apostrophes the same", () => {
     expect(checkDictation("auto's", "auto’s").perfect).toBe(true);
+  });
+});
+
+describe("showing the checked sentence", () => {
+  it("keeps the sentence's capitals and punctuation", () => {
+    const r = checkDictation("Hoe heet jij? Ik heet Noor.", "hoe heet je ik heet noor");
+    expect(r.parts.map((p) => (p.kind === "extra" ? null : p.display)).filter((d) => d !== null)).toEqual([
+      "Hoe", "heet", "jij?", "Ik", "heet", "Noor.",
+    ]);
+  });
+
+  it("shows a time or a quote whole", () => {
+    expect(displayWords("Om 8:30, zegt \"Bram\".")).toEqual(["Om", "8:30,", "", "zegt", "\"Bram\"."]);
   });
 });

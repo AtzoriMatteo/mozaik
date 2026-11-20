@@ -298,7 +298,7 @@ export function correctAnswer(ex: Exercise): string {
     case "transform":
       return ex.answers[0];
     case "build":
-      return ex.tiles.join(" ");
+      return asSentence(ex.tiles.join(" "));
     case "spot":
       return ex.correct;
     case "match":
@@ -479,4 +479,12 @@ export function ExerciseCard({
       ) : null}
     </div>
   );
+}
+
+/** A built sentence as it's written: a capital at the start, a full stop if it has no end mark. */
+function asSentence(s: string): string {
+  const t = s.trim();
+  if (!t) return t;
+  const capped = t[0].toLocaleUpperCase() + t.slice(1);
+  return /[.?!…]$/.test(capped) ? capped : `${capped}.`;
 }
