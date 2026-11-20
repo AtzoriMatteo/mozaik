@@ -10,6 +10,7 @@ import { nextActivity } from "@/core/course";
 import type { LanguagePack } from "@/core/language-pack";
 import { getPack } from "@/core/registry";
 import { checkDictation, type DictationResult } from "@/core/dictation";
+import { DiffLine } from "@/components/exercises/diff-line";
 import { playLines, speak, stopSpeaking, useHasVoice } from "@/lib/speech";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { useSavedWords } from "@/lib/saved-words/use-saved-words";
@@ -365,11 +366,7 @@ function DictationStep({
         <div className="feedback" role="status" data-verdict={result.perfect ? "right" : verdictFromScore(result.score)}>
           <VerdictLine verdict={result.perfect ? "right" : verdictFromScore(result.score)} label={result.perfect ? "Perfect" : undefined} />
           <p className="diff" lang={lang}>
-            {result.parts.map((p, i) => (
-              <span key={i} className={`diff-${p.kind}`}>
-                {p.kind === "extra" ? p.typed : p.word}
-              </span>
-            ))}
+            <DiffLine parts={result.parts} />
           </p>
           <p>
             {result.perfect

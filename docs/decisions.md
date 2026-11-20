@@ -5,6 +5,28 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-20 (evening) — Checked answers read as sentences; no double cards
+
+**Your answer, shown as the real sentence (Matteo).** After a dictation (in
+listening and in Review) the checked line was shown as loose lower-case
+words in boxes, with no capitals or punctuation. Now it reads as the
+sentence is written ("Hoe heet jij? Ik heet Noor."), on one line, with
+missing words underlined, almost-right words tinted (hover shows what you
+wrote) and extra words struck through. Capitals and punctuation still don't
+count against you. A built sentence in grammar shows its capital and full
+stop too.
+
+**Double cards (Claude).** Two causes, both fixed:
+- Nine Dutch words taught in an A1 unit (groet, huisgenoot, gezellig,
+  nodig, gerecht, zoals, vriendelijk, kleren…) were also counted as A2
+  words, so they had two cards with the same progress. A word now belongs to
+  the first level that has it.
+- Four listening lines are word for word the same in two clips ("Wij wensen
+  u een goede reis"); they're now one card.
+Checked by simulating a learner with every word known and saved, every clip
+heard and every lesson done: no two cards show the same thing. A test keeps
+it that way.
+
 ## 2026-11-20 — Review shuffles every session; third content check
 
 **Review comes in a new order every time (Matteo).** Due cards used to be

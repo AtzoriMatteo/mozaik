@@ -3,6 +3,7 @@ import type { CefrLevel, LanguagePack } from "./language-pack";
 import { isDue, rungOf } from "./srs";
 import { cardMeaning, cardSense, lemmaFor, withArticle } from "./dictionary";
 import { formInSentence } from "./coherence";
+import { normalizeWords } from "./dictation";
 
 /**
  * Everything that can come back in Review.
@@ -76,6 +77,9 @@ export function wordIndex(pack: LanguagePack, level: CefrLevel): ReadonlyMap<str
 function buildWordIndex(pack: LanguagePack, level: CefrLevel): Map<string, WordInfo> {
   const index = new Map<string, WordInfo>();
   const core = new Set(pack.coreVocabulary[level] ?? []);
+  // A word belongs to the first level that has it, so it never gets a second card at a later level.
+  const lower = pack.levels.slice(0, Math.max(0, pack.levels.indexOf(level))).map((l) => wordIndex(pack, l));
+  const earlier = (lemma: string) => lower.some((ix) => ix.has(lemma));
   for (const unit of pack.units) for (const text of unit.texts) {
     if (text.level !== level) continue;
     for (const sentence of text.paragraphs.flat()) {
@@ -85,7 +89,7 @@ function buildWordIndex(pack: LanguagePack, level: CefrLevel): Map<string, WordI
         if (!help) continue;
         // The sense of the word in this very sentence: "iets te eten" is the verb, "het eten" the noun.
         const { lemma, meaning } = cardSense(pack, tok.normalized, help, sentence.text);
-        if (!core.has(lemma) || SKIP.has(lemma) || index.has(lemma)) continue;
+        if (!core.has(lemma) || SKIP.has(lemma) || index.has(lemma) || earlier(lemma)) continue;
         index.set(lemma, {
           word: tok.normalized,
           surface: tok.text,
@@ -104,7 +108,7 @@ function buildWordIndex(pack: LanguagePack, level: CefrLevel): Map<string, WordI
     for (const t of unit.teach ?? []) {
       if (t.phrase) continue;
       const { lemma, meaning } = taughtCard(pack, t, (l) => index.has(l));
-      if (index.has(lemma) || lemma.includes(" ") || lemma.endsWith("-")) continue;
+      if (index.has(lemma) || earlier(lemma) || lemma.includes(" ") || lemma.endsWith("-")) continue;
       const form = formInSentence(pack, t);
       index.set(lemma, {
         word: form,
@@ -210,11 +214,16 @@ export function eligibleItems(
     );
   }
 
+  // The same line in two clips ("Wij wensen u een goede reis") is one card.
+  const lines = new Set<string>();
   for (const unit of pack.units) {
     // Listening: short lines from pieces you've listened to.
     for (const l of unit.listening) {
       if (!done.listen.has(l.id)) continue;
       l.lines.forEach((line, i) => {
+        const key = normalizeWords(line.text).join(" ");
+        if (lines.has(key)) return;
+        lines.add(key);
         if (line.text.split(/\s+/).length <= MAX_LINE_WORDS) {
           items.push({ kind: "listen", id: `l:${l.id}:${i}`, text: line.text, translation: line.translation });
         }
@@ -222,7 +231,9 @@ export function eligibleItems(
     }
     // Speaking was taken out (Matteo, 17 Nov 2026): no speaking cards.
   }
-  return items;
+  // One card per id, whatever path it came from.
+  const ids = new Set<string>();
+  return items.filter((i) => !ids.has(i.id) && !!ids.add(i.id));
 }
 
 const sameDay = (a: Date, b: Date) =>

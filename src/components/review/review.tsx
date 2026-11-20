@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Verdict } from "@/core/answers";
 import { checkDictation, type DictationResult } from "@/core/dictation";
+import { DiffLine } from "@/components/exercises/diff-line";
 import { unitNumber, type CefrLevel, type LanguagePack } from "@/core/language-pack";
 import {
   buildSession, checkProduced, countItems, introducedToday, REVIEW_KINDS, wordCardFor, type CardDirection, type ProduceVerdict,
@@ -1022,11 +1023,7 @@ function ListenCard({
         <div className="feedback" role="status" data-verdict={verdictFromScore(result.score)}>
           <VerdictLine verdict={verdictFromScore(result.score)} />
           <p className="diff" lang={lang}>
-            {result.parts.map((p, i) => (
-              <span key={i} className={`diff-${p.kind}`}>
-                {p.kind === "extra" ? p.typed : p.word}
-              </span>
-            ))}
+            <DiffLine parts={result.parts} />
           </p>
           <p className="example-translation">{item.translation}</p>
           <button
