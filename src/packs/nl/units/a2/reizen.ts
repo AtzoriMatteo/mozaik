@@ -20,7 +20,7 @@ export const reizen: Unit = {
       level: "A2",
       title: "Met de trein door Europa",
       titleTranslation: "By train across Europe",
-      grammar: ["imperfect-regular", "imperfect-irregular", "separable-verbs"],
+      grammar: ["imperfect-regular", "imperfect-irregular", "separable-verbs", "er-four-jobs"],
       paragraphs: [
         [
           s("Femke was negentien toen ze voor het eerst alleen op reis ging. Ze had een Interrail-pas, en daarmee kon ze een maand lang met de trein door Europa reizen.", "Femke was nineteen when she travelled alone for the first time. She had an Interrail pass, and with it she could travel across Europe by train for a month."),

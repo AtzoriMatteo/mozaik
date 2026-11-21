@@ -181,6 +181,31 @@ export const grammarPoints: readonly GrammarPoint[] = [
     summary: "groot → groter → het grootst; goed → beter → best; dan = than, te = too.",
   },
 
+  {
+    id: "welk-wat-voor",
+    level: "A1",
+    title: "welke, welk, wat voor",
+    summary: "Which one: welke jas, welk huis. What kind: wat voor jas?",
+  },
+  {
+    id: "kennen-weten",
+    level: "A1",
+    title: "kennen and weten",
+    summary: "Two verbs for 'know': kennen for people and places (Ik ken Noor), weten for facts (Ik weet het niet).",
+  },
+  {
+    id: "al-nog-pas",
+    level: "A1",
+    title: "al, nog, pas",
+    summary: "already, still, not yet, only just: Ik woon hier al tien jaar. Het is pas negen uur.",
+  },
+  {
+    id: "aan-het",
+    level: "A1",
+    title: "aan het: doing it right now",
+    summary: "zijn + aan het + infinitive: Ik ben aan het koken. The object comes first: Ik ben de afwas aan het doen.",
+  },
+
   // ---- A2 ----
   {
     id: "perfect-hebben",
@@ -313,5 +338,53 @@ export const grammarPoints: readonly GrammarPoint[] = [
     level: "A2",
     title: "Time, manner, place",
     summary: "Ik ga morgen met de trein naar Utrecht: when, then how, then where.",
+  },
+  {
+    id: "hoeven",
+    level: "A2",
+    title: "hoeven: don't have to",
+    summary: "Je hoeft niet te werken = you don't have to work. Only with niet, geen or nooit; moeten for 'must'.",
+  },
+  {
+    id: "particles",
+    level: "A2",
+    title: "even, maar, toch, hoor",
+    summary: "Small words that make Dutch sound friendly: Mag ik even…? Kom maar binnen. Geen probleem, hoor.",
+  },
+  {
+    id: "laten",
+    level: "A2",
+    title: "laten + infinitive",
+    summary: "Have it done (Ik laat mijn fiets repareren), let it happen, and let's (Laten we gaan).",
+  },
+  {
+    id: "passive",
+    level: "A2",
+    title: "The passive",
+    summary: "worden + participle when the doer doesn't matter: De bak wordt opgehaald. Mijn fiets is gestolen.",
+  },
+  {
+    id: "alle-allemaal",
+    level: "A2",
+    title: "alle, allemaal, elke, iedereen, alles",
+    summary: "alle buren, we komen allemaal, elke dag, elk jaar, iedereen, alles.",
+  },
+  {
+    id: "iets-lekkers",
+    level: "A2",
+    title: "iets lekkers",
+    summary: "After iets, niets, veel: describing word + s. iets lekkers, niets ernstigs, but iets Nederlands.",
+  },
+  {
+    id: "er-four-jobs",
+    level: "A2",
+    title: "The four jobs of er",
+    summary: "there is, a place, with a preposition, with a number: Er is…, Ik woon er, Ik denk eraan, Ik heb er twee.",
+  },
+  {
+    id: "zou-conditional",
+    level: "A2",
+    title: "If I were…: als + zou",
+    summary: "Imagining: Als ik rijk was, zou ik een huis aan zee kopen.",
   },
 ];

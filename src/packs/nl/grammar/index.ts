@@ -1,14 +1,13 @@
 import type { GrammarPoint } from "@/core/content";
 import { grammarPoints } from "./points";
-import { lessons1 } from "./lessons-1";
-import { lessons2 } from "./lessons-2";
-import { lessons3 } from "./lessons-3";
-import { lessons4 } from "./lessons-4";
-import { lessons5 } from "./lessons-5";
-import { lessonsA2a } from "./lessons-a2-1";
-import { lessonsA2b } from "./lessons-a2-2";
-import { lessonsA2c } from "./lessons-a2-3";
-import { moreBlocks, moreExamples, moreExercises } from "./more-exercises";
+import { a1Textbook1 } from "./a1-textbook-1";
+import { a1Textbook2 } from "./a1-textbook-2";
+import { a1Textbook3 } from "./a1-textbook-3";
+import { a2Textbook1 } from "./a2-textbook-1";
+import { a2Textbook2 } from "./a2-textbook-2";
+import { textbookExtra } from "./textbook-extra";
+import { deeper } from "./deeper";
+import { withDeeper } from "@/core/deeper";
 
 /** Which unit teaches which grammar point (about three per unit). */
 const UNIT_FOR: Record<string, string> = {
@@ -41,6 +40,10 @@ const UNIT_FOR: Record<string, string> = {
   "graag-liever": "a1-kleren",
   comparatives: "a1-kleren",
   "dates-ordinals": "a1-feestdagen",
+  "welk-wat-voor": "a1-kleren",
+  "kennen-weten": "a1-nederland",
+  "al-nog-pas": "a1-nederland",
+  "aan-het": "a1-feestdagen",
   // A2
   "perfect-hebben": "a2-verleden",
   "perfect-zijn": "a2-verleden",
@@ -64,17 +67,25 @@ const UNIT_FOR: Record<string, string> = {
   "zou-polite": "a2-koken",
   "zullen-future": "a2-natuur",
   "word-order-tmp": "a2-natuur",
+  hoeven: "a2-gezondheid",
+  particles: "a2-werk",
+  laten: "a2-wonen",
+  passive: "a2-media",
+  "alle-allemaal": "a2-samenleving",
+  "iets-lekkers": "a2-uitgaan",
+  "er-four-jobs": "a2-koken",
+  "zou-conditional": "a2-natuur",
 };
 
-const lessons = { ...lessons1, ...lessons2, ...lessons3, ...lessons4, ...lessons5, ...lessonsA2a, ...lessonsA2b, ...lessonsA2c };
+/**
+ * Every lesson is in the textbook shape (21 Nov 2026): what it's for, how it
+ * works step by step, real mistakes, a short text, a summary card, and
+ * exercises from easy to harder.
+ */
+const lessons = { ...a1Textbook1, ...a1Textbook2, ...a1Textbook3, ...a2Textbook1, ...a2Textbook2, ...textbookExtra };
 
 export const grammar: readonly GrammarPoint[] = grammarPoints.map((g) => ({
   ...g,
   unit: UNIT_FOR[g.id],
-  lesson: lessons[g.id] && {
-    ...lessons[g.id],
-    blocks: [...lessons[g.id].blocks, ...(moreBlocks[g.id] ?? [])],
-    examples: [...lessons[g.id].examples, ...(moreExamples[g.id] ?? [])],
-    exercises: [...lessons[g.id].exercises, ...(moreExercises[g.id] ?? [])],
-  },
+  lesson: withDeeper(lessons[g.id], deeper[g.id]),
 }));

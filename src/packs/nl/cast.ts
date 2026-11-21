@@ -6,7 +6,7 @@ export const cast: Cast = {
   gender: {
     // People with names keep their voice across the course.
     Agnieszka: "f", Ahmed: "m", Aleksander: "m", Annemiek: "f", Arjun: "m", Bilal: "m", Bram: "m", Chen: "m",
-    Daan: "m", Daniel: "m", Yusuf: "m", Ania: "f", Opa: "m", Elif: "f", Emre: "m", Defne: "f", Ayşe: "f", Esther: "f", Eva: "f", Fatima: "f", Fenna: "f", Giulia: "f", Giuseppe: "m", Grace: "f",
+    Daan: "m", Daniel: "m", Yusuf: "m", Ania: "f", Opa: "m", Elif: "f", Emre: "m", Defne: "f", Ayşe: "f", Esther: "f", Anouk: "f", Eva: "f", Fatima: "f", Fenna: "f", Giulia: "f", Giuseppe: "m", Grace: "f",
     Hanna: "f", Hiroshi: "m", Hugo: "m", Ilse: "f", Isabel: "f", Jelle: "m", Jesse: "m", Julia: "f", Kees: "m",
     Kofi: "m", Kwame: "m", Linda: "f", Lotte: "f", Iris: "f", Luca: "m", Lucas: "m", Mariana: "f", Mark: "m", Marta: "f",
     Mehmet: "m", Ruth: "f", Jayden: "m", Ingrid: "f", "Meneer De Jong": "m", "Mevrouw De Vries": "f", Mila: "f", Nina: "f", Noa: "f", Noor: "f",

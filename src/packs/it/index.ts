@@ -1,3 +1,4 @@
+import { pictures } from "./pictures";
 import { isItalianNumber, italianGrammarIn, italianStems } from "./grammar-use";
 import { speakers } from "./speakers";
 import type { LanguagePack } from "@/core/language-pack";
@@ -34,6 +35,7 @@ export const italian: LanguagePack = {
   nativeName: "Italiano",
   accent: { light: "#9e2b25", dark: "#ec8f80" }, // Pompeian red
   theme: "ravenna",
+  pictures,
   verbShape: "Italian infinitives end in -are, -ere or -ire (parlare, prendere, dormire), or -arsi for reflexive verbs.",
   exams: "CILS, CELI or PLIDA",
   checkerCovers: "Spelling looks right, and LanguageTool found no grammar problems.",

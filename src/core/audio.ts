@@ -92,6 +92,14 @@ export function clipSpecs(pack: LanguagePack): ClipSpec[] {
       }
     }
   }
+  // Grammar lessons: their examples, short texts and right-version sentences, all with a play button.
+  for (const g of pack.grammar) {
+    const group = `grammar-${g.id}`;
+    for (const e of g.lesson?.examples ?? []) add({ text: e.text, role: "narrator", gender: cast?.narrator ?? "f", group });
+    for (const b of g.lesson?.blocks ?? []) {
+      if (b.kind === "passage") for (const s of b.sentences) add({ text: s.text, role: "narrator", gender: cast?.narrator ?? "f", group });
+    }
+  }
   // Single words and short lines, in the narrator's voice: every word in the
   // texts (as written), dictionary forms with de/het for flashcards,
   // expressions, verbs and the Handbook tables.

@@ -171,7 +171,19 @@ export type LessonBlock =
   | { kind: "text"; text: string }
   /** Sentences as rows of tiles: shows word order at a glance. */
   | { kind: "slots"; caption?: string; rows: { slots: Slot[]; translation?: string }[] }
-  | { kind: "table"; caption?: string; headers: string[]; rows: string[][] };
+  | { kind: "table"; caption?: string; headers: string[]; rows: string[][] }
+  /** A numbered step heading inside a lesson: "How it works". */
+  | { kind: "step"; title: string }
+  /** Mistakes learners really make: the wrong sentence, the right one, and why. */
+  | { kind: "mistakes"; caption?: string; items: { wrong: string; right: string; why: string }[] }
+  /** A side note in a tinted card: compared with English or Italian, a shortcut. */
+  | { kind: "note"; title: string; text: string }
+  /** A short new text that uses the pattern, sentence by sentence, with the pattern marked. */
+  | { kind: "passage"; title: string; sentences: { text: string; translation: string }[]; highlight: string[] }
+  /** The whole rule on one card; also shown in the Handbook. */
+  | { kind: "summary"; points: string[] }
+  /** Optional, after the summary: harder cases, exceptions, what natives do (Matteo, 21 Nov 2026). */
+  | { kind: "deeper"; items: { title: string; text: string }[] };
 
 /** A sentence quoted from the course, with the words that show the pattern. */
 export type Example = { text: string; translation: string; highlight: string[] };
@@ -180,7 +192,7 @@ export type Exercise =
   /** Type the missing word(s): before + ___ + after. */
   | { kind: "fill"; before: string; after: string; answers: string[]; translation: string; hint?: string }
   /** Pick the form that fits the gap. */
-  | { kind: "choice"; before: string; after: string; options: string[]; answer: number; translation: string }
+  | { kind: "choice"; before: string; after: string; options: string[]; answer: number; translation: string; prompt?: string }
   /** Rewrite a sentence as instructed. */
   | { kind: "transform"; instruction: string; from: string; answers: string[]; translation: string }
   /** Put shuffled tiles in order; `tiles` is the correct order. */
@@ -379,4 +391,36 @@ export type Checkpoint = {
   write: { situation: string; points: { prompt: string; frame?: string }[]; model: string; modelTranslation: string };
   /** Help for words in the checkpoint's text and clip. */
   words?: Record<string, WordHelp>;
+};
+
+/**
+ * A picture for a text, painted in the pack's tile style (Matteo, 21 Nov
+ * 2026: a related picture in every text). A background scene plus people and
+ * things placed by hand, so each picture shows what its own text says.
+ */
+export type PictureItem = {
+  /** A prop name (see components/pictures/props), or "p:" + a person kind (p:woman, p:oldman…). */
+  k: string;
+  x: number;
+  y: number;
+  s?: number;
+  flip?: boolean;
+  c?: Glaze;
+  /** Variant of a prop (shelves of "bread", a stall of "fish"…). */
+  v?: string;
+  /** A short label: a number on a cake, a time on a clock. */
+  t?: string;
+  hair?: string;
+  beard?: boolean;
+  glasses?: boolean;
+  apron?: boolean;
+  pose?: string;
+};
+
+export type PictureSpec = {
+  scene: string;
+  night?: boolean;
+  /** What the picture shows, for screen readers, and as the check that it fits the text. */
+  alt: string;
+  items: PictureItem[];
 };

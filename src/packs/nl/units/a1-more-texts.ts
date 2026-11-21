@@ -299,7 +299,7 @@ export const vrijeTijdText: ReadingText = {
       s("De studentenkrant van Leiden vraagt aan vier jonge mensen: wat doe jij in je vrije tijd?", "Leiden's student paper asks four young people: what do you do in your free time?"),
     ],
     [
-      s("Fatima (24): \"Ik zing in een koor. We oefenen elke donderdag in een oude kerk.", "Fatima (24): \"I sing in a choir. We practise every Thursday in an old church."),
+      s("Fatima (24): \"Ik zing in een koor. We oefenen elke dinsdag in een oude kerk.", "Fatima (24): \"I sing in a choir. We practise every Tuesday in an old church."),
       s("In december gaan we een concert geven. Ik vind het spannend!\"", "In December we're going to give a concert. I find it exciting!\""),
     ],
     [

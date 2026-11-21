@@ -123,6 +123,11 @@ export function productionItems(pack: LanguagePack, unit: Unit): { where: string
         .filter((text) => words(pack, text).some((t) => pack.lexicon[t.normalized] || pack.verbFor?.(t.normalized)))
         .forEach((text) => out.push({ where: `grammar ${g.id} exercise ${i + 1}`, text })),
     );
+    // A lesson's own short text and its right-version sentences are new material: taught words only.
+    for (const b of g.lesson?.blocks ?? []) {
+      if (b.kind === "passage") b.sentences.forEach((s, i) => out.push({ where: `grammar ${g.id} passage line ${i + 1}`, text: s.text }));
+      if (b.kind === "mistakes") b.items.forEach((m, i) => out.push({ where: `grammar ${g.id} mistake ${i + 1}`, text: m.right }));
+    }
   }
   // Task lines quoted word for word from their own text or clip are that text, not something new.
   for (const t of unit.texts) {

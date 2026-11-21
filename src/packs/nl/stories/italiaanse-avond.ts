@@ -125,7 +125,7 @@ export const avondTexts: ReadingText[] = [
       { kind: "truefalse", statement: "Bram kookt zaterdag.", translation: "Bram cooks on Saturday.", answer: false },
       { kind: "choice", prompt: "Why does Noor bring a chair from her room?", options: ["There are five people and only four chairs", "Her chair is more comfortable", "A chair in the kitchen is broken"], answer: 0 },
       { kind: "order", prompt: "Put what happens in order.", items: ["Luca has an idea for Saturday", "Noor reads the list out loud", "Bram asks what it all costs", "Fatima answers Luca's message"] },
-      { kind: "choice", prompt: "How does Mrs De Vries feel about the invitation?", options: ["Happy: she says yes straight away", "Unsure: she needs to think", "Annoyed: she doesn't like Italian food"], answer: 0 },
+      { kind: "choice", prompt: "How does Mrs De Vries feel about the invitation?", options: ["Happy: she says she'd love to come", "Unsure: she needs to think", "Annoyed: she doesn't like Italian food"], answer: 0 },
     ],
   },
   {

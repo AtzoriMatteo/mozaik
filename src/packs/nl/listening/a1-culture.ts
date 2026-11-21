@@ -68,7 +68,7 @@ export const listeningCulture: Record<string, ListeningItem[]> = {
       lines: [
         line("Docent", "Goedenavond allemaal! Welkom bij de cursus Nederlands. Ik ben Ingrid.", "Good evening, everyone! Welcome to the Dutch course. I'm Ingrid."),
         line("Docent", "We beginnen meteen. Wie bent u en waar komt u vandaan?", "Let's start right away. Who are you and where are you from?"),
-        line("Marta", "Ik ben Marta. Ik kom uit Polen, uit Krakau. Ik werk in een hotel.", "I'm Marta. I'm from Poland, from Kraków. I work in a hotel."),
+        line("Marta", "Ik ben Marta. Ik kom uit Polen, uit een dorp bij Krakau. Ik werk in een hotel.", "I'm Marta. I'm from Poland, from a village near Kraków. I work in a hotel."),
         line("Docent", "Welkom, Marta. En u?", "Welcome, Marta. And you?"),
         line("Samir", "Mijn naam is Samir. Ik kom uit Syrië. Ik spreek Arabisch en een beetje Engels. Ik ben een beetje zenuwachtig.", "My name is Samir. I'm from Syria. I speak Arabic and a little English. I'm a bit nervous."),
         line("Docent", "Dank u. En jij, achterin?", "Thank you. And you, at the back?"),

@@ -239,13 +239,13 @@ export const listeningA1More: Record<string, ListeningItem[]> = {
         line("Bandje", "U bent verbonden met tandartspraktijk De Witte Tand.", "You've reached the De Witte Tand dental practice."),
         line("Bandje", "Wij zijn nu gesloten.", "We're closed right now."),
         line("Bandje", "Wij zijn open van maandag tot en met vrijdag, van half negen tot vijf uur.", "We're open Monday to Friday, from half past eight to five."),
-        line("Bandje", "Op woensdagmiddag zijn wij dicht.", "On Wednesday afternoons we're closed."),
+        line("Bandje", "Op vrijdagmiddag zijn wij dicht.", "On Friday afternoons we're closed."),
         line("Bandje", "Heeft u veel pijn? Bel dan het nummer voor spoed.", "Are you in a lot of pain? Then call the emergency number."),
         line("Bandje", "Wilt u een afspraak maken? Bel morgen na half negen terug.", "Would you like to make an appointment? Call back tomorrow after half past eight."),
       ],
       gist: { prompt: "What is this message?", options: ["A reminder of an appointment", "The dentist's recording when closed", "An advert"], answer: 1 },
       details: [
-        { prompt: "When is the practice closed during the week?", options: ["Monday morning", "Wednesday afternoon", "Friday afternoon"], answer: 1 },
+        { prompt: "When is the practice closed during the week?", options: ["Monday morning", "Wednesday afternoon", "Friday afternoon"], answer: 2 },
         { prompt: "What should you do if you're in a lot of pain?", options: ["Come straight in", "Call the emergency number", "Send an email"], answer: 1 },
       ],
       tasks: [

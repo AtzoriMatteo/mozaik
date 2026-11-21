@@ -93,7 +93,7 @@ export const werk: Unit = {
       level: "A2",
       title: "Het gesprek",
       titleTranslation: "The interview",
-      grammar: ["subordinate-order", "want-omdat", "perfect-hebben"],
+      grammar: ["subordinate-order", "want-omdat", "perfect-hebben", "particles"],
       paragraphs: [
         [
           s("Een week later krijgt Agnieszka een e-mail. Ze mag op gesprek komen!", "A week later Agnieszka gets an email. She's invited for an interview!"),

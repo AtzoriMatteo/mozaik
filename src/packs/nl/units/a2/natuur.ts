@@ -86,7 +86,7 @@ export const natuur: Unit = {
       level: "A2",
       title: "Praten over het weer",
       titleTranslation: "Talking about the weather",
-      grammar: ["zullen-future", "gaan-future", "comparatives"],
+      grammar: ["zullen-future", "gaan-future", "comparatives", "zou-conditional"],
       paragraphs: [
         [
           s("Nederlanders praten graag over het weer. Bij de bakker, op het werk of bij de bushalte: het weer is altijd een goed begin van een gesprek.", "The Dutch love talking about the weather. At the baker's, at work or at the bus stop: the weather is always a good way to start a conversation."),
@@ -94,7 +94,7 @@ export const natuur: Unit = {
         ],
         [
           s("Er is ook een goede reden voor: het weer in Nederland verandert steeds. 's Ochtends schijnt de zon, 's middags regent het, en 's avonds waait het hard.", "There's also a good reason for it: the weather in the Netherlands keeps changing. In the morning the sun shines, in the afternoon it rains, and in the evening it's very windy."),
-          s("Nederlanders zeggen soms dat ze vier seizoenen op één dag hebben.", "The Dutch sometimes say they have four seasons in one day."),
+          s("Nederlanders zeggen soms dat ze vier seizoenen op één dag hebben. Als het altijd mooi weer was, zouden ze veel minder te praten hebben!", "The Dutch sometimes say they have four seasons in one day. If the weather were always nice, they'd have much less to talk about!"),
         ],
         [
           s("Daarom kijkt bijna iedereen op Buienradar voordat hij op de fiets stapt. Die app laat precies zien waar de regen is en waar hij straks zal zijn.", "That's why almost everyone looks at Buienradar before getting on their bike. That app shows exactly where the rain is and where it will be soon."),

@@ -11,7 +11,7 @@ export const waarKomJeVandaan: ReadingText = {
   level: "A1",
   title: "Waar kom je vandaan?",
   titleTranslation: "Where are you from?",
-  grammar: ["questions", "pronouns-subject", "er-is", "separable-verbs"],
+  grammar: ["questions", "pronouns-subject", "er-is", "separable-verbs", "al-nog-pas", "kennen-weten"],
   paragraphs: [
     [
       s("Op de Oude Vest is vandaag een buurtfeest.", "There's a street party on the Oude Vest today."),
@@ -145,7 +145,7 @@ export const kuntUDatHerhalen: ReadingText = {
   level: "A1",
   title: "Kunt u dat herhalen?",
   titleTranslation: "Could you repeat that?",
-  grammar: ["questions", "modal-verbs", "negation", "prepositions"],
+  grammar: ["questions", "modal-verbs", "negation", "prepositions", "kennen-weten", "al-nog-pas"],
   paragraphs: [
     [
       s("Kenji komt uit Japan. Hij woont pas een week in Nederland.", "Kenji is from Japan. He has only lived in the Netherlands for a week."),

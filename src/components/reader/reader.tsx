@@ -1,5 +1,6 @@
 "use client";
 
+import { TextPicture } from "@/components/pictures/text-picture";
 import { LearningTip } from "@/components/learning-tip";
 import { glueTokens } from "@/core/glue";
 import Link from "next/link";
@@ -311,6 +312,7 @@ export function ReaderView({
         <h1 lang={pack.code}>{text.title}</h1>
         <p className="reader-subtitle">{text.titleTranslation}</p>
       </header>
+      {pack.pictures?.[text.id] ? <TextPicture spec={pack.pictures[text.id]} theme={pack.theme} /> : null}
 
       <div className="reader-tools">
         <p className="reader-hint">{flow ? "Listen and read along. Don't stop for words you don't know." : "Tap any word for help."}</p>

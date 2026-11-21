@@ -227,6 +227,7 @@ erger | worse | erg
 erop | on it | | er + op
 eruit | out (of it) | | | Hoe ziet het eruit? = What does it look like?
 erwten | peas | erwt
+anouk | Anouk (a name)
 esra | Esra (a name)
 esther | Esther (a name)
 etalage | shop window

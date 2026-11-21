@@ -5,6 +5,141 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-21 (evening) — Going deeper, and a grammar mix in every unit
+
+**Asked (Matteo).** Lessons should be more textbook-like: more depth, and
+review that mixes old and new.
+
+**Built (Claude).**
+- Every grammar lesson, in Dutch (63) and Italian (38), has a **Going deeper**
+  section right after the summary card. It's folded away by default, so it
+  doesn't make the lesson longer for anyone who doesn't want it. It covers
+  harder cases, exceptions and what natives actually say.
+- Every unit with grammar (except the first) ends with a **Grammar mix**,
+  just before the checkpoint. The mix has about ten exercises: two from each of
+  the unit's lessons and one from each of five earlier lessons (the last three,
+  plus two from further back), shuffled. Nothing says which pattern each one
+  practises until you've answered; then a link points to the lesson. It counts
+  as one grammar activity on the unit page and in Continue.
+
+## 2026-11-21 (evening) — Twelve more Dutch grammar lessons
+
+**Asked (Matteo).** Cover all the grammar points of A1–A2 without making the
+units heavy.
+
+**Added (Claude).** Each new lesson goes into a unit that had room, so no unit
+has more than four grammar lessons, and no new unit was needed.
+- A1: welke / welk / wat voor (Kleren), kennen and weten and al / nog / pas
+  (Nederland), aan het + infinitive (Feestdagen).
+- A2: hoeven (Gezondheid, after te + infinitive), even / maar / toch / hoor
+  (Werk), laten + infinitive (Wonen), the passive (Media), alle / allemaal /
+  elke / iedereen / alles (Samenleving), iets lekkers (Uitgaan), the four jobs
+  of er (Koken), als … zou (Natuur).
+- hoeven moved to A2 because it needs te + infinitive, which A2 teaches.
+- Four story sentences were adjusted so the lessons can quote the course
+  ("In de keuken is Bram oliebollen aan het bakken", "Wat voor jas zoekt u?",
+  "Kunt u allebei laten repareren?", "Als het altijd mooi weer was, zouden ze…").
+  Their recordings need the "Record course audio" action again; until then
+  they use the device voice.
+
+## 2026-11-21 (evening) — Exercises with only one right answer
+
+**The problem (Matteo).** "Fill in dit or dat" with no context: both were
+right, and his answer was marked wrong.
+
+**Fix (Claude).**
+- Gap, choice, tile and spot exercises now show what the sentence means
+  *before* you answer ("Meaning: This is my room."). The exercise practises the
+  form, so the meaning takes away the ambiguity without giving the answer.
+  A note in brackets that explains the rule still only appears afterwards.
+- Every exercise in Dutch and Italian was checked by hand. Changed: options that
+  were also correct (a book can *staan* as well as *liggen*; "Het is moeilijk de
+  taal te spreken" without *om* is fine; "Sono un architetto" is fine; "non vado
+  spesso" is fine) and a "mistake" that wasn't one ("Volgend jaar zal ik
+  verhuizen" is just more formal).
+- Tile exercises now accept the other correct word orders (for example both
+  "Morgen ga ik naar Utrecht" and "Ik ga morgen naar Utrecht").
+- Repeated exercises were replaced.
+- A test fails if an exercise has no meaning to show, or if the same exercise
+  appears twice in a lesson.
+
+## 2026-11-21 (later) — A picture in every text
+
+Matteo: put a related image in every text and wherever a picture helps; make
+sure each one is correct and belongs to its page. Style: painted tiles
+(Matteo chose it over photos).
+
+**166 pictures, one per reading text, story episode and checkpoint scene
+(Claude).** Each is drawn in code from a small kit: backgrounds (a Dutch
+street, a canal, Bologna's porticoes, a kitchen, a polder, the beach, the
+mudflats…), about 140 things (bikes, a cargo bike, market stalls, an
+espresso machine, a moka pot, the Befana, Sinterklaas, oliebollen…) and
+people drawn the way Delft tiles draw figures: no faces, just hair, clothes
+and pose, sitting on chairs, riding bikes, one in a wheelchair (Davide).
+- Every picture is written from its own text: who is there, where, and what
+  happens (Marta at number 12 with a cake, Kwame's attic room on a video
+  call, the clock at ten past three in "Half vier", Davide's wheelchair
+  basketball in red against blue). Each one has a one-line description,
+  used by screen readers; all 166 were looked at and corrected.
+- Dutch pictures are Delft tiles (cobalt line, polychrome glazes, corner
+  ornaments). Italian pictures are laid as a mosaic: the same drawing in
+  small stones, with a gold band, whatever language the page around it uses.
+- They sit under the title of every text, story episode and checkpoint.
+- Tests: every text and checkpoint has a picture, no picture points at a
+  missing text, and every scene and thing in a picture exists.
+- Cost: none. They're drawn in the browser (no image files), so the
+  deployment doesn't grow.
+- Not done yet (Matteo to decide): pictures for listening scenes and
+  Handbook topics (clock, family, the house) with the same kit.
+
+## 2026-11-21 — Grammar lessons rewritten like a textbook (all of them)
+
+Matteo: the grammar lessons felt shallow and not useful; the exercises were
+too predictable (in the een lesson, een was almost always the answer). They
+should be easy to follow but more like a textbook.
+
+**Every lesson now has the same shape: Dutch A1 (29), Dutch A2 (22) and
+Italian A1 (38) (Matteo's brief, Claude's design).** Numbered steps: 1 What it's for, 2 How it works (built
+up step by step, each step with a table or a sentence diagram), the
+mistakes learners really make (wrong sentence struck through, the right one,
+and why), a note comparing it with English or Italian where that helps, a
+short new text that uses the pattern (marked, with sound), and an "In short"
+card with the whole rule. The Handbook's grammar page now shows that card
+first.
+- New things taught on the way: welk/welke, dus + verb, de-word things are
+  hij, een returns with a describing word (een goede kok), u keeps the -t
+  (Woont u?), which verbs never split (be-, ver-, ont-), staat/ligt/zit/hangt.
+- zullen ("Zullen we…?") stays in Modal verbs, as decided in the A1 audit.
+- Dutch A2 was rewritten the same way (perfect with hebben/zijn, word order
+  in side clauses, er, die/dat, the past tenses, om … te, zou, zullen, TMP),
+  with new contrasts: er + a number vs ze for "them", want vs omdat as a
+  sort, toen vs als, which verbs take te.
+- Italian A1 kept its explanations (they were already solid) and gained the
+  steps, mistakes (Sono ventisei anni → Ho ventisei anni, Mi piace le arance,
+  Ho andato…), a short text from the street's stories, the summary card and
+  extra exercises in every lesson. Standing rule: Dutch changes go to Italian.
+
+**Exercises you can't guess (Matteo).** 9–13 per lesson instead of 6–8, from
+easy (match, sort) to harder (fill, transform, build a sentence). Choices
+offer real competitors: the een lesson asks een / de / geen / no word, and
+"no word" is the answer about half the time. Options now appear in a
+different order for every exercise (before, the right one was often first).
+A new test fails a lesson if one answer is right in more than 60% of its
+choices, or if it lacks steps, mistakes or a summary card.
+
+**Checked (Claude).** Every new sentence (exercises, short texts, right
+versions of mistakes) passes the "taught before it's asked" check, and
+facts match the stories (Elif is a nurse, Ayşe teaches English, Can is her
+boyfriend and a cook).
+
+- Cost (Claude): grammar review cards are numbered by their place in the
+  lesson, so if you'd already finished an A1 lesson, its review cards now
+  show the new exercises. Lessons have a few more exercises, so a finished
+  lesson adds a few more grammar cards (grammar is off in "Start review" by
+  default).
+- The short texts and examples are added to "Record course audio"; until it
+  runs they use the device voice.
+
 ## 2026-11-20 (evening, later) — No name-spelling questions; een gets its own lesson
 
 **Questions about how a name is spelt are gone (Matteo: no use for learning

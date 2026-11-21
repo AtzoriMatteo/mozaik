@@ -1,3 +1,4 @@
+import { pictures } from "./pictures";
 import type { LanguagePack, Token } from "@/core/language-pack";
 import { speakers } from "./speakers";
 import { segmentText } from "@/core/tokenize";
@@ -115,6 +116,7 @@ export const dutch: LanguagePack = {
   nativeName: "Nederlands",
   accent: { light: "#1d3f8c", dark: "#8fb0f0" }, // Delft blue
   theme: "delft",
+  pictures,
   verbShape: "Dutch infinitives end in -en or -n (werken, gaan).",
   exams: "Inburgering or NT2",
   checkerCovers: "Spelling and the A1 grammar Mozaik knows look right: word order, verb forms, de/het, adjective endings, geen/niet and more.",
