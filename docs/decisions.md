@@ -5,6 +5,23 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-21 (evening) — Going deeper, and a grammar mix in every unit
+
+**Asked (Matteo).** Lessons should be more textbook-like: more depth, and
+review that mixes old and new.
+
+**Built (Claude).**
+- Every grammar lesson, in Dutch (63) and Italian (38), has a **Going deeper**
+  section right after the summary card. It's folded away by default, so it
+  doesn't make the lesson longer for anyone who doesn't want it. It covers
+  harder cases, exceptions and what natives actually say.
+- Every unit with grammar (except the first) ends with a **Grammar mix**,
+  just before the checkpoint. The mix has about ten exercises: two from each of
+  the unit's lessons and one from each of five earlier lessons (the last three,
+  plus two from further back), shuffled. Nothing says which pattern each one
+  practises until you've answered; then a link points to the lesson. It counts
+  as one grammar activity on the unit page and in Continue.
+
 ## 2026-11-21 (evening) — Twelve more Dutch grammar lessons
 
 **Asked (Matteo).** Cover all the grammar points of A1–A2 without making the

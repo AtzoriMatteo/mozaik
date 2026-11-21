@@ -1,4 +1,6 @@
 import type { GrammarPoint } from "@/core/content";
+import { withDeeper } from "@/core/deeper";
+import { deeper } from "./deeper";
 import { build, choice, example, fill, match, mistakes, note, passage, pick, slots, sort, spot, step, summary, table, text, transform } from "./helpers";
 
 /**
@@ -6,7 +8,7 @@ import { build, choice, example, fill, match, mistakes, note, passage, pick, slo
  * Italian A1 syllabus (Profilo della lingua italiana); every point is quoted
  * from the course and featured by at least one A1 text (checked by tests).
  */
-export const grammar: readonly GrammarPoint[] = [
+const points: readonly GrammarPoint[] = [
   /* ---------------- Unit 1: Ciao! ---------------- */
   {
     id: "essere",
@@ -1407,3 +1409,6 @@ export const grammar: readonly GrammarPoint[] = [
     },
   },
 ];
+
+/** Each lesson with its "Going deeper" after the summary card. */
+export const grammar: readonly GrammarPoint[] = points.map((g) => ({ ...g, lesson: withDeeper(g.lesson, deeper[g.id]) }));

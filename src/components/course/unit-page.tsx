@@ -6,6 +6,7 @@ import { minutesToRead } from "@/core/content";
 import { getPack } from "@/core/registry";
 import { unitNumber, type LanguagePack } from "@/core/language-pack";
 import { activities, unitGrammar } from "@/core/course";
+import { hasMix, mixId } from "@/core/mix";
 import { ActivityLabel } from "./activity-label";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { SkillGlyph, UnitTile, type Skill } from "@/components/unit-tile";
@@ -139,6 +140,14 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
               done={progress.isDone({ kind: "grammar", id: g.id })}
             />
           ))}
+          {hasMix(pack, unit) ? (
+            <Row
+              href={`/grammar/${lang}/${mixId(unit)}`}
+              title="Grammar mix"
+              meta={["This unit's grammar and earlier lessons, mixed"]}
+              done={progress.isDone({ kind: "grammar", id: mixId(unit) })}
+            />
+          ) : null}
         </SkillSection>
       ) : null}
 

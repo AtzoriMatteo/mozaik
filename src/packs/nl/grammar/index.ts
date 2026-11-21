@@ -6,6 +6,8 @@ import { a1Textbook3 } from "./a1-textbook-3";
 import { a2Textbook1 } from "./a2-textbook-1";
 import { a2Textbook2 } from "./a2-textbook-2";
 import { textbookExtra } from "./textbook-extra";
+import { deeper } from "./deeper";
+import { withDeeper } from "@/core/deeper";
 
 /** Which unit teaches which grammar point (about three per unit). */
 const UNIT_FOR: Record<string, string> = {
@@ -85,5 +87,5 @@ const lessons = { ...a1Textbook1, ...a1Textbook2, ...a1Textbook3, ...a2Textbook1
 export const grammar: readonly GrammarPoint[] = grammarPoints.map((g) => ({
   ...g,
   unit: UNIT_FOR[g.id],
-  lesson: lessons[g.id],
+  lesson: withDeeper(lessons[g.id], deeper[g.id]),
 }));

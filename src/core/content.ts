@@ -181,7 +181,9 @@ export type LessonBlock =
   /** A short new text that uses the pattern, sentence by sentence, with the pattern marked. */
   | { kind: "passage"; title: string; sentences: { text: string; translation: string }[]; highlight: string[] }
   /** The whole rule on one card; also shown in the Handbook. */
-  | { kind: "summary"; points: string[] };
+  | { kind: "summary"; points: string[] }
+  /** Optional, after the summary: harder cases, exceptions, what natives do (Matteo, 21 Nov 2026). */
+  | { kind: "deeper"; items: { title: string; text: string }[] };
 
 /** A sentence quoted from the course, with the words that show the pattern. */
 export type Example = { text: string; translation: string; highlight: string[] };

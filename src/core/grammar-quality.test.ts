@@ -78,3 +78,19 @@ describe("grammar lessons in the textbook shape", () => {
     });
   }
 });
+
+describe("going deeper (Matteo, 21 Nov 2026)", () => {
+  for (const pack of listPacks()) {
+    it(`${pack.code}: every lesson has a Going deeper section after its summary`, () => {
+      const missing: string[] = [];
+      for (const g of pack.grammar.filter((x) => x.lesson)) {
+        const blocks = g.lesson!.blocks;
+        const at = blocks.findIndex((b) => b.kind === "deeper");
+        const sum = blocks.findIndex((b) => b.kind === "summary");
+        const d = blocks[at];
+        if (at < 0 || at !== sum + 1 || d.kind !== "deeper" || d.items.length < 2) missing.push(g.id);
+      }
+      expect(missing).toEqual([]);
+    });
+  }
+});

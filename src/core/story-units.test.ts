@@ -12,7 +12,8 @@ describe("story units (Matteo, 17 Nov 2026)", () => {
 
     it(`${pack.code}: a story unit's activities follow its sequence, every id real`, () => {
       for (const u of storyUnits) {
-        const ids = activities(pack).filter((a) => a.unit.id === u.id).map((a) => (a.kind === "write" ? "write" : a.kind === "words" ? "words" : a.kind === "check" ? "check" : a.id));
+        // The grammar mix goes in just before the checkpoint, whatever the sequence says.
+        const ids = activities(pack).filter((a) => a.unit.id === u.id && !a.id.startsWith("mix-")).map((a) => (a.kind === "write" ? "write" : a.kind === "words" ? "words" : a.kind === "check" ? "check" : a.id));
         for (const id of u.sequence ?? []) expect(ids, `${u.id}: ${id}`).toContain(id);
         expect(ids.slice(0, (u.sequence ?? []).length)).toEqual(u.sequence);
       }

@@ -195,6 +195,22 @@ export function Block({ block, lang, index }: { block: LessonBlock; lang: string
     );
   }
 
+  if (block.kind === "deeper") {
+    return (
+      <details className="lesson-deeper">
+        <summary>
+          Going deeper <span className="lesson-deeper-hint">(optional: harder cases and exceptions)</span>
+        </summary>
+        {block.items.map((it) => (
+          <section key={it.title} className="lesson-deeper-item">
+            <h3>{it.title}</h3>
+            <p>{it.text}</p>
+          </section>
+        ))}
+      </details>
+    );
+  }
+
   if (block.kind === "summary") {
     return (
       <aside className="lesson-summary" aria-label="The rule on one card">
@@ -310,13 +326,16 @@ export function ExerciseRunner({
   lang,
   seed,
   exercises,
+  sources,
   onBack,
   onDone,
 }: {
   lang: string;
   seed: string;
   exercises: Exercise[];
-  onBack: () => void;
+  /** For a mix: which lesson each exercise comes from, shown after answering. */
+  sources?: { title: string; href: string }[];
+  onBack?: () => void;
   onDone: (right: number, total: number) => void;
 }) {
   const [index, setIndex] = useState(0);
@@ -341,9 +360,11 @@ export function ExerciseRunner({
     <section className="step-body">
       <p className="review-progress">
         Exercise {index + 1} of {exercises.length}
-        <button type="button" className="link-button" onClick={onBack}>
-          See the pattern
-        </button>
+        {onBack ? (
+          <button type="button" className="link-button" onClick={onBack}>
+            See the pattern
+          </button>
+        ) : null}
       </p>
       <ExerciseCard key={index} lang={lang} seed={`${seed}-${index}`} exercise={ex} verdict={verdict} onCheck={setVerdict} />
       {verdict ? (
@@ -353,6 +374,11 @@ export function ExerciseRunner({
             <span className="feedback-answer" lang={lang}>{correctAnswer(ex)}</span>
           </p>
           <p className="example-translation">{ex.translation}</p>
+          {sources?.[index] ? (
+            <p className="mix-source">
+              From the lesson <Link href={sources[index].href}>{sources[index].title}</Link>
+            </p>
+          ) : null}
           <div className="button-row">
             <button type="button" className="button" onClick={next} autoFocus>
               Continue

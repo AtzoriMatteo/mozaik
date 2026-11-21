@@ -2311,6 +2311,12 @@ a {
   color: var(--ink-muted);
 }
 
+.mix-source {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
 /* What the sentence means, shown before you answer so the gap has only one right answer. */
 .exercise-meaning {
   margin: 0;
@@ -5734,6 +5740,35 @@ button.vocab-word:hover {
 .lesson-passage-body p {
   display: grid;
   gap: 0.1rem;
+  margin: 0;
+}
+
+.lesson-deeper {
+  max-width: var(--measure);
+  margin: -0.75rem 0 1.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--grout);
+  border-radius: var(--radius-tile);
+  background: var(--tile);
+}
+
+.lesson-deeper > summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--heading);
+}
+
+.lesson-deeper-hint {
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.lesson-deeper-item h3 {
+  margin: 1rem 0 0.25rem;
+  font-size: 1rem;
+}
+
+.lesson-deeper-item p {
   margin: 0;
 }
 
