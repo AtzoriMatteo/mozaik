@@ -2311,6 +2311,19 @@ a {
   color: var(--ink-muted);
 }
 
+/* What the sentence means, shown before you answer so the gap has only one right answer. */
+.exercise-meaning {
+  margin: 0;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.exercise-meaning-label {
+  font-style: normal;
+  font-weight: 600;
+  margin-right: 0.25em;
+}
+
 .exercise-sentence {
   margin: 0;
   font-family: var(--font-read);

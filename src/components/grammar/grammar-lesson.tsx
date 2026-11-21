@@ -558,6 +558,12 @@ export function ExerciseCard({
         </>
       ) : null}
 
+      {!locked && showsMeaning(exercise) ? (
+        <p className="exercise-meaning">
+          <span className="exercise-meaning-label">Meaning:</span> {meaningOf(exercise.translation)}
+        </p>
+      ) : null}
+
       {error ? <p className="error" role="alert">{error}</p> : null}
       {!locked && (exercise.kind === "fill" || exercise.kind === "transform" || exercise.kind === "build") ? (
         <button type="button" className="button" onClick={check}>
@@ -566,6 +572,20 @@ export function ExerciseCard({
       ) : null}
     </div>
   );
+}
+
+/**
+ * Gap, choice, tile and spot exercises show what the sentence means before you answer
+ * (Matteo: "Dit is mijn kamer" or "Dat is mijn kamer"? Without the meaning both are right).
+ * The form is what's being practised, so the meaning removes ambiguity without giving it away.
+ */
+export function showsMeaning(ex: Exercise): ex is Extract<Exercise, { kind: "fill" | "choice" | "build" | "spot" }> {
+  return ex.kind === "fill" || ex.kind === "choice" || ex.kind === "build" || ex.kind === "spot";
+}
+
+/** The translation without a trailing "(…)" note: notes explain the rule, so they wait until after. */
+export function meaningOf(translation: string): string {
+  return translation.replace(/\s*\([^()]*\)\s*$/, "").trim();
 }
 
 /** The option that means "no word here" (see the packs' pick helper). */

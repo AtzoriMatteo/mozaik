@@ -285,7 +285,7 @@ export const a2Textbook2: Record<string, GrammarLesson> = {
     exercises: [
       match("Connect the halves.", "Ik werk=om geld te verdienen | Ik ga naar de gemeente=om een paspoort aan te vragen | Ik sport=om fit te blijven", "om … te: what it's for"),
       pick("Hij komt om zijn pakket ", ".", "op te halen | te ophalen | ophalen", "op te halen", "He's coming to collect his parcel."),
-      pick("Het is moeilijk ", " de taal goed te spreken.", "om | voor | —", "om", "It's hard to speak the language well."),
+      pick("Het is moeilijk ", " de taal goed te spreken.", "om | voor | dat", "om", "It's hard to speak the language well."),
       fill("Ik werk in het weekend om een nieuwe fiets ", " kopen.", "te", "I work at weekends to buy a new bike."),
       fill("Ze belt de gemeente ", " een afspraak te maken.", "om", "She calls the council to make an appointment."),
       spot("Ik ga naar de markt voor groente te kopen.", "voor", "om", "I'm going to the market to buy vegetables."),
@@ -602,7 +602,7 @@ export const a2Textbook2: Record<string, GrammarLesson> = {
         "Mistakes learners make",
         ["Ik zullen je helpen.", "Ik zal je helpen.", "ik zal."],
         ["Morgen ik zal je bellen.", "Morgen zal ik je bellen.", "Verb second: zal before ik."],
-        ["Volgend jaar zal ik verhuizen, dat is ons plan.", "Volgend jaar ga ik verhuizen, dat is ons plan.", "A plan: gaan."],
+        ["Zal we koffie drinken?", "Zullen we koffie drinken?", "we: zullen."],
       ),
       passage(
         "Het klimaat",
@@ -676,14 +676,14 @@ export const a2Textbook2: Record<string, GrammarLesson> = {
     ],
     exercises: [
       sort("Time, manner or place?", ["time", "manner", "place"], "morgen=0 | met de fiets=1 | naar Leiden=2 | om acht uur=0 | samen=1 | in de stad=2", "T-M-P"),
-      pick("Ik ga ", ".", "vanavond met de bus naar huis | naar huis met de bus vanavond | met de bus vanavond naar huis", "vanavond met de bus naar huis", "I'm going home by bus tonight."),
-      pick("Ik werk ", ".", "elke dag thuis | thuis elke dag", "elke dag thuis", "I work at home every day."),
+      pick("Ik ga ", ".", "vanavond met de bus naar huis | naar huis met de bus vanavond", "vanavond met de bus naar huis", "I'm going home by bus tonight."),
+      pick("Ik ga ", ".", "morgen naar Leiden | naar Leiden morgen", "morgen naar Leiden", "I'm going to Leiden tomorrow. (time before place)"),
       pick("Morgen ", " naar Utrecht.", "ga ik met de trein | ik ga met de trein", "ga ik met de trein", "Tomorrow I'm going to Utrecht by train."),
-      build("Ik | ga | morgen | met de trein | naar Utrecht", "I'm going to Utrecht by train tomorrow."),
-      build("We | fietsen | zaterdag | samen | naar het strand", "We're cycling to the beach together on Saturday."),
+      build("Ik | ga | morgen | met de trein | naar Utrecht", "I'm going to Utrecht by train tomorrow.", "Morgen ga ik met de trein naar Utrecht"),
+      build("We | fietsen | zaterdag | samen | naar het strand", "We're cycling to the beach together on Saturday.", "Zaterdag fietsen we samen naar het strand"),
       transform("Start with the time.", "Ik ga in juli met de trein naar Texel.", ["In juli ga ik met de trein naar Texel."], "In July I'm going to Texel by train."),
       transform("Put time before place.", "Ik fiets naar mijn werk elke dag.", ["Ik fiets elke dag naar mijn werk."], "I cycle to work every day."),
-      transform("Fix the word order.", "In juli ik ga met de trein naar Texel.", ["In juli ga ik met de trein naar Texel."], "In July I'm going to Texel by train."),
+      transform("Fix the word order.", "Morgen ik fiets naar Leiden.", ["Morgen fiets ik naar Leiden."], "Tomorrow I'm cycling to Leiden."),
     ],
   },
 };

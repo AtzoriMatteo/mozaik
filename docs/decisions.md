@@ -5,6 +5,27 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-21 (evening) — Exercises with only one right answer
+
+**The problem (Matteo).** "Fill in dit or dat" with no context: both were
+right, and his answer was marked wrong.
+
+**Fix (Claude).**
+- Gap, choice, tile and spot exercises now show what the sentence means
+  *before* you answer ("Meaning: This is my room."). The exercise practises the
+  form, so the meaning takes away the ambiguity without giving the answer.
+  A note in brackets that explains the rule still only appears afterwards.
+- Every exercise in Dutch and Italian was checked by hand. Changed: options that
+  were also correct (a book can *staan* as well as *liggen*; "Het is moeilijk de
+  taal te spreken" without *om* is fine; "Sono un architetto" is fine; "non vado
+  spesso" is fine) and a "mistake" that wasn't one ("Volgend jaar zal ik
+  verhuizen" is just more formal).
+- Tile exercises now accept the other correct word orders (for example both
+  "Morgen ga ik naar Utrecht" and "Ik ga morgen naar Utrecht").
+- Repeated exercises were replaced.
+- A test fails if an exercise has no meaning to show, or if the same exercise
+  appears twice in a lesson.
+
 ## 2026-11-21 (later) — A picture in every text
 
 Matteo: put a related image in every text and wherever a picture helps; make

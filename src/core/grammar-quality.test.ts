@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { listPacks } from "./registry";
 import type { GrammarPoint } from "./content";
+import { correctAnswer, meaningOf, showsMeaning } from "@/components/grammar/grammar-lesson";
 
 /**
  * Grammar lessons in the textbook shape (Matteo, 21 Nov 2026): explained step
@@ -60,6 +61,20 @@ describe("grammar lessons in the textbook shape", () => {
         const top = Math.max(...counts.values());
         expect(top / choices.length, `${g.id}: one answer dominates ${JSON.stringify([...counts])}`).toBeLessThanOrEqual(0.6);
       }
+    });
+
+    // Matteo, 21 Nov 2026: "Dit is mijn kamer" marked wrong when "Dat" was just as right.
+    it.each(lessons.map((g) => [`${pack.code} ${g.id}`, g] as const))("%s: every exercise has one clear answer", (_id, g) => {
+      const ex = g.lesson!.exercises;
+      for (const e of ex) {
+        // The meaning is shown before you answer, so it must be there to pin the answer down.
+        if (showsMeaning(e)) expect(meaningOf(e.translation), correctAnswer(e)).not.toBe("");
+      }
+      // The same sentence may come back in a different kind of exercise (spot it, then build it),
+      // but never the same exercise twice.
+      const answers = ex.map((e) => `${e.kind}: ${correctAnswer(e).toLowerCase()}`);
+      const repeated = answers.filter((a, i) => answers.indexOf(a) !== i);
+      expect(repeated, "the same exercise twice").toEqual([]);
     });
   }
 });
