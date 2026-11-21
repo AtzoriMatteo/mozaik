@@ -4,7 +4,8 @@ import { VerdictLine, verdictFromScore } from "@/components/exercises/verdict";
 import { LearningTip } from "@/components/learning-tip";
 import { glueTokens } from "@/core/glue";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { shuffleTiles } from "@/core/answers";
 import { helpFor, type ListeningItem, type Question } from "@/core/content";
 import { nextActivity } from "@/core/course";
 import type { LanguagePack } from "@/core/language-pack";
@@ -239,6 +240,8 @@ function QuestionStep({
   const q = questions[index];
   const answered = picked !== null;
   const correct = picked === q.answer;
+  // The right answer is written first in the content; shuffle so it isn't always on top.
+  const shown = useMemo(() => shuffleTiles(q.options.map((opt, i) => ({ opt, i })), `${q.prompt}-${index}`), [q, index]);
 
   function next() {
     const total = right + (correct ? 1 : 0);
@@ -260,7 +263,7 @@ function QuestionStep({
       ) : null}
       <fieldset className="question" disabled={answered}>
         <legend>{q.prompt}</legend>
-        {q.options.map((opt, i) => (
+        {shown.map(({ opt, i }) => (
           <button
             key={opt}
             type="button"

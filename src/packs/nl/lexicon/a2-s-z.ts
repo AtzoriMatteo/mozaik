@@ -332,6 +332,7 @@ zat | sat; was | zitten
 zaten | sat; were | zitten
 zaterdagavond | Saturday evening
 zaterdagmiddag | Saturday afternoon
+vrijdagmiddag | Friday afternoon
 zeehonden | seals | zeehond | | Literally 'sea dogs'
 zeeland | Zeeland (a province: 'sea land')
 zei | said | zeggen

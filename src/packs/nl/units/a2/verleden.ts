@@ -23,7 +23,7 @@ export const verleden: Unit = {
       grammar: ["perfect-hebben", "perfect-zijn", "participles-irregular"],
       paragraphs: [
         [
-          s("Het is maandagochtend. In de pauze vraagt Esther aan Noor: \"Hoe was je weekend?\"", "It's Monday morning. During the break Esther asks Noor: \"How was your weekend?\""),
+          s("Het is maandagochtend. In de pauze vraagt Anouk aan Noor: \"Hoe was je weekend?\"", "It's Monday morning. During the break Anouk asks Noor: \"How was your weekend?\""),
           s("\"Heel druk,\" zegt Noor. \"Maar ook heel leuk.\"", "\"Very busy,\" says Noor. \"But really nice too.\""),
         ],
         [
@@ -36,10 +36,10 @@ export const verleden: Unit = {
           s("Ik heb lasagne gemaakt. Die is een beetje mislukt, maar ze hebben alles opgegeten!\"", "I made lasagne. It went a bit wrong, but they ate it all up!\""),
         ],
         [
-          s("\"En zondag?\" vraagt Esther.", "\"And Sunday?\" asks Esther."),
+          s("\"En zondag?\" vraagt Anouk.", "\"And Sunday?\" asks Anouk."),
           s("\"Op zondag ben ik met mijn broer naar het strand gegaan. Het heeft de hele dag gewaaid, maar we hebben toch gewandeld.", "\"On Sunday I went to the beach with my brother. It was windy all day, but we went for a walk anyway."),
           s("En jij? Wat heb jij gedaan?\"", "And you? What did you do?\""),
-          s("Esther lacht. \"Ik ben thuisgebleven. Ik heb drie films gekeken en pizza besteld. Ook een goed weekend!\"", "Esther laughs. \"I stayed at home. I watched three films and ordered pizza. Also a good weekend!\""),
+          s("Anouk lacht. \"Ik ben thuisgebleven. Ik heb drie films gekeken en pizza besteld. Ook een goed weekend!\"", "Anouk laughs. \"I stayed at home. I watched three films and ordered pizza. Also a good weekend!\""),
         ],
       ],
       tasks: [
@@ -53,8 +53,8 @@ export const verleden: Unit = {
         ),
         tf("Noor heeft Joris in de supermarkt gezien.", "Noor saw Joris in the supermarket.", false),
         mc("What happened to the lasagne?", ["It burned completely", "It went a bit wrong, but they ate it all", "Her parents didn't like it"], 1),
-        pairs("Who did what?", "Noor=went to the beach | Esther=stayed at home | Joris=had coffee at the market | Noor's parents=came for dinner"),
-        tf("Esther heeft pizza besteld.", "Esther ordered pizza.", true),
+        pairs("Who did what?", "Noor=went to the beach | Anouk=stayed at home | Joris=had coffee at the market | Noor's parents=came for dinner"),
+        tf("Anouk heeft pizza besteld.", "Anouk ordered pizza.", true),
       ],
     },
     {

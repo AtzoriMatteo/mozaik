@@ -166,7 +166,7 @@ export const gezondheid: Unit = {
       situation: "Daniel calls his GP's practice early in the morning.",
       grammar: ["time-numbers", "modal-verbs", "questions"],
       lines: [
-        line("Assistente", "Huisartsenpraktijk De Linde, goedemorgen, u spreekt met Sanne.", "De Linde GP practice, good morning, this is Sanne speaking."),
+        line("Assistente", "Huisartsenpraktijk De Linde, goedemorgen, u spreekt met Mirjam.", "De Linde GP practice, good morning, this is Mirjam speaking."),
         line("Daniel", "Goedemorgen, met Daniel Novak. Ik wil graag een afspraak maken.", "Good morning, this is Daniel Novak. I'd like to make an appointment."),
         line("Assistente", "Wat is uw geboortedatum?", "What is your date of birth?"),
         line("Daniel", "Twaalf maart 1994.", "The twelfth of March 1994."),

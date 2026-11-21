@@ -25,7 +25,7 @@ export const speakers: Record<string, string> = {
   "een-dagje-amsterdam": "Priya|Priya|Priya|Priya",
   "sinterklaas": "-|Noor|Noor",
   "oud-en-nieuw": "Luca|Iedereen|Noor|Luca|Luca",
-  "een-druk-weekend": "Esther|Noor|Noor|Noor|Esther|Noor|Esther",
+  "een-druk-weekend": "Anouk|Noor|Noor|Noor|Anouk|Noor|Anouk",
   "mijn-leven-in-het-kort": "Elif|Mehmet|Elif|Mehmet",
   "het-gesprek": "Henk|Henk|Henk|Agnieszka|Henk|Henk",
   "op-zoek-naar-een-huis": "Een collega",

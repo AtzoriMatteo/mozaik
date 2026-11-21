@@ -32,7 +32,7 @@ export const grammar: readonly GrammarPoint[] = [
         example("Emma è irlandese.", "Emma is Irish.", "è"),
         example("Sì, sono io! Tu sei Giulia?", "Yes, it's me! Are you Giulia?", "sono", "sei"),
         example("Karim è di Torino e studia ingegneria.", "Karim is from Turin and studies engineering.", "è di"),
-        example("Sono qui da ottant'anni!", "I've been here for eighty years!", "Sono"),
+        example("Sono qui da ottantadue anni!", "I've been here for eighty-two years!", "Sono"),
       ],
       exercises: [
         fill("Emma ", " irlandese.", "è", "Emma is Irish."),

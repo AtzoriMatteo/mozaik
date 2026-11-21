@@ -175,6 +175,8 @@ luisterde | listened | luisteren
 lukken | succeed, work out | | | Dat zal je lukken = you'll manage that
 lukt | works out | lukken | | Het lukt! = It's working! / I've done it!
 lukte | worked out | lukken | | Dat lukte niet = I didn't manage it
+maandagmiddag | Monday afternoon
+mirjam | Mirjam (a name)
 maakte | made | maken
 maaltijd | meal | | maal (meal, time) + tijd
 macht | power | | macht ~ might

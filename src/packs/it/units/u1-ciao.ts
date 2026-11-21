@@ -177,15 +177,15 @@ export const ciao: Unit = {
         line("Emma", "Sì, buongiorno! Mi chiamo Emma.", "Yes, good morning! My name's Emma."),
         line("Rita", "Piacere, io sono la signora Rita. Di dov'è, Emma?", "Nice to meet you, I'm Signora Rita. Where are you from, Emma?"),
         line("Emma", "Sono irlandese. E Lei, signora, è di Bologna?", "I'm Irish. And you, signora, are you from Bologna?"),
-        line("Rita", "Sì, sono bolognese. Sono qui da ottant'anni!", "Yes, I'm from Bologna. I've been here for eighty years!"),
-        line("Emma", "Ottant'anni? Complimenti!", "Eighty years? Well done!"),
+        line("Rita", "Sì, sono bolognese. Sono qui da ottantadue anni!", "Yes, I'm from Bologna. I've been here for eighty-two years!"),
+        line("Emma", "Ottantadue anni? Complimenti!", "Eighty-two years? Well done!"),
         line("Rita", "Grazie, cara. Buona giornata!", "Thank you, dear. Have a nice day!"),
         line("Emma", "Buona giornata anche a Lei!", "Have a nice day too!"),
       ],
       gist: { prompt: "Who is Rita?", options: ["A neighbour", "A teacher", "Emma's flatmate"], answer: 0 },
       details: [
         { prompt: "Which floor does Emma live on?", options: ["The third", "The first", "The eighth"], answer: 0 },
-        { prompt: "How long has Rita lived in Bologna?", options: ["Eighty years", "Eight years", "Eighteen years"], answer: 0 },
+        { prompt: "How long has Rita lived in Bologna?", options: ["Eighty-two years", "Eight years", "Twenty-eight years"], answer: 0 },
       ],
       tasks: [
         tf("Rita usa il Lei con Emma.", "Rita uses Lei with Emma.", true),
