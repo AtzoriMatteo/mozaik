@@ -466,7 +466,7 @@ export const pictures: Record<string, PictureSpec> = {
     p("man", 200, 212, { c: "iron", pose: "point", glasses: true }),
     p("woman", 330, 212, { c: "ochre", hair: "bun", flip: true }),
   ]),
-  "ana-6-il-trasloco": pic("street", "Moving day: boxes on the pavement, Karim and Marco carrying them up, Davide checking the list from his wheelchair.", [
+  "ana-6-il-trasloco": pic("porticoes", "Moving day: boxes on the pavement, Karim and Marco carrying them up, Davide checking the list from his wheelchair.", [
     o("boxes", 90, 200),
     o("plant", 140, 206),
     p("man", 200, 214, { c: "cobalt", pose: "hold" }),
@@ -521,5 +521,35 @@ export const pictures: Record<string, PictureSpec> = {
     o("shelves", 340, 150),
     p("man", 130, 212, { pose: "sit", c: "iron", glasses: true }),
     p("woman", 270, 212, { pose: "sit", c: "copper", hair: "long", flip: true }),
+  ]),
+
+  /* ---------------- A2 · Il quartiere cambia ---------------- */
+  "lin-5-l-avviso": pic("porticoes", "A council notice on the wall of Lin's shop: car park or garden for the little square?", [
+    o("shopfront", 120, 150),
+    o("poster", 250, 100, { t: "Parcheggio o giardino?" }),
+    p("woman", 300, 214, { c: "ochre", hair: "ponytail", pose: "point", flip: true }),
+    p("oldman", 350, 214, { c: "manganese", flip: true, pose: "cane" }),
+  ]),
+  "lin-6-la-riunione": pic("porticoes", "The neighbourhood meeting at Bar Margherita: more people than chairs, and hands up for the garden.", [
+    o("lights", 200, 40),
+    p("woman", 70, 212, { pose: "sit", c: "ochre", hair: "bun" }),
+    o("wheelchair", 140, 214),
+    p("oldwoman", 210, 214, { c: "manganese", pose: "point" }),
+    p("man", 280, 214, { c: "cobalt", pose: "wave" }),
+    p("oldman", 340, 214, { c: "iron", flip: true, pose: "wave" }),
+  ], true),
+  "lin-7-scriviamo-alla-sindaca": pic("room", "The letter to the mayor: Grandpa Wei signs first, in Italian and in Chinese.", [
+    o("table", 200, 214),
+    o("letter", 200, 178),
+    p("oldman", 130, 212, { pose: "sit", c: "manganese" }),
+    p("woman", 270, 212, { c: "ochre", hair: "ponytail", flip: true }),
+  ]),
+  "check-it-a2-quartiere": pic("park", "Spring: the little square is now a garden, with trees, benches and Grandpa Wei's vegetable patch.", [
+    o("bigtree", 80, 150),
+    o("bench", 200, 210),
+    o("tomatoes", 320, 200),
+    p("oldwoman", 200, 212, { pose: "sit", c: "manganese" }),
+    p("oldman", 330, 214, { c: "iron", flip: true }),
+    o("sun", 330, 50),
   ]),
 };

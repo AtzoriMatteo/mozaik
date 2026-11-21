@@ -278,4 +278,77 @@ tornerò | I'll go back | tornare
 troveresti | you'd find | trovare
 tutte | all (feminine plural) | tutto
 verrò | I'll come | venire
+# Unit A2-4: Il quartiere cambia
+aggiunge | adds | aggiungere
+aggiungere | to add
+allegro | cheerful, lively | | | Allegro in music: lively
+aperti | open (plural) | aperto
+architetta | architect (a woman) | architetto
+aspettiamo | we wait for, we expect | aspettare
+avviso | notice
+bici | bike | bicicletta | | Short for bicicletta
+cambierà | will change | cambiare
+cittadini | citizens, residents | cittadino | ~ citizen (città + -ino)
+cittadino | citizen, resident
+comodo | convenient, comfortable | | ~ commodious
+comune | town council, town hall; common | | | Il Comune = the council
+corre | runs | correre
+correre | to run
+corregge | corrects | correggere
+correggere | to correct
+cura | looks after | curare
+curare | to look after, to take care of | | ~ cure
+devono | they have to | dovere
+diceva | used to say | dire
+diventata | become (feminine) | diventare
+diventare | to become
+do | I give | dare
+email | email
+finestre | windows | finestra
+firmare | to sign
+firme | signatures | firma
+firma | signature
+gentili | kind; dear (in letters) | gentile | | Gentili cittadini = Dear residents
+gentile | kind; dear (in letters)
+immaginavo | I imagined | immaginare
+immaginare | to imagine
+indirizzo | address | | ~ direction (in- + dirizzo)
+leggo | I read | leggere
+mandiamo | we send | mandare
+negozi | shops | negozio
+ombra | shade, shadow | | ~ umbrella (a little shade)
+orto | vegetable garden | | | Gli orti in città: allotments
+panchine | benches | panchina
+panchina | bench
+parcheggio | car park, parking space
+penna | pen
+piazzetta | little square | piazza | piazza + -etta
+possono | they can | potere
+posta | post, mail; post office
+preferisce | prefers | preferire
+presta | lends | prestare
+prestare | to lend
+primavera | spring | | prima (first) + vera (spring)
+primi | first (plural) | primo
+pulita | clean (feminine) | pulito
+pulito | clean
+qualsiasi | any (at all)
+regalare | to give (as a present)
+ringrazio | I thank | ringraziare
+ringraziare | to thank | | grazie
+risposta | answer, reply
+risultato | result
+riunione | meeting | | ri- + unione: a coming together
+rumore | noise | | ~ rumour (originally: noise)
+sano | healthy | | ~ sane
+saperlo | to know it | sapere | sapere + lo
+scegliere | to choose
+scriviamo | we write; let's write | scrivere
+semi | seeds | seme
+seme | seed | | ~ semen, semolina
+troppe | too many (feminine plural) | troppo
+uguale | the same, equal | | Per me è uguale = it's all the same to me
+utile | useful
+votano | they vote | votare
+votare | to vote
 `);

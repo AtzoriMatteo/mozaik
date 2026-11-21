@@ -5,6 +5,32 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-22 — Italian A2, first four units; review cards without the sentence gap
+
+**Asked (Matteo).** Italian A2, four full units first. And: review cards that
+ask you to complete the original sentence test whether you remember the
+sentence word for word, which isn't the point.
+
+**Built (Claude).**
+- Four Italian A2 units continue the Via del Pratello story, each with 3 texts,
+  2 listening items, 2 writing topics, a checkpoint, pictures and 3 grammar lessons
+  (with Going deeper):
+  1. Com'era una volta (Rita's memories, Gino): imperfetto, imperfetto or
+     passato prossimo, sapere or conoscere.
+  2. Una casa nuova (Ana moves house): lo/la/li/le, ne, ci for places.
+  3. Progetti (Emma: stay or go home?): futuro, condizionale, stare + gerundio.
+  4. Il quartiere cambia (car park or garden?): che, comparatives and
+     superlatives, mi/ti/gli/le.
+  The Italian course now offers A1 and A2. The remaining A2 units (passato
+  remoto in stories, imperative with pronouns, combined pronouns, the
+  subjunctive's first steps…) come in a later PR.
+- The "Which word means…?" review card no longer shows the original sentence
+  with a gap. It shows the meaning and, as context, the sentence's English
+  translation. You answer with the dictionary form; the original sentence only
+  appears after you reveal the answer.
+- Pictures in Italian never use the Dutch street or canal scenes (gabled
+  houses); a test checks it.
+
 ## 2026-11-21 (evening) — Going deeper, and a grammar mix in every unit
 
 **Asked (Matteo).** Lessons should be more textbook-like: more depth, and

@@ -232,4 +232,19 @@ export const deeper: Record<string, [string, string][]> = {
     ["stare per: about to", "stare per + infinitive = be about to: Sto per uscire (I'm about to go out). Il treno sta per partire."],
     ["Pronouns on the gerundio", "Pronouns can go before stare or on the gerundio: Lo sto facendo = Sto facendolo. The first is more common."],
   ],
+  "che-relativo": [
+    ["il che: which (the whole idea)", "il che refers back to a whole sentence: Ha vinto il giardino, il che ha fatto felice Rita (which made Rita happy)."],
+    ["quello che: what", "quello che (or ciò che) = what, the thing that: Fai quello che vuoi. Non capisco quello che dici."],
+    ["il quale, la quale", "il quale/la quale can replace che or cui in formal writing: la signora alla quale ho scritto. In speech, che and cui are enough."],
+  ],
+  comparativi: [
+    ["Absolute superlative: -issimo", "-issimo means very, without comparing: bellissimo, buonissimo, velocissimo. Adverbs too: benissimo, malissimo. Words in -co/-go add h: stanchissimo, larghissimo."],
+    ["Irregular: maggiore, minore", "grande and piccolo also have maggiore and minore, especially for siblings: mio fratello maggiore (older brother), la sorella minore."],
+    ["Sempre più: more and more", "sempre più = more and more: Fa sempre più caldo. sempre meno = less and less."],
+  ],
+  "pronomi-indiretti": [
+    ["Combined pronouns", "When an indirect and a direct pronoun meet, mi/ti/ci/vi become me/te/ce/ve and gli/le become glie-: Me lo dai? Te lo porto. Glielo dico (I'll tell him/her)."],
+    ["Loro after the verb", "Formal Italian uses loro after the verb for 'to them': Mando loro una lettera. In speech gli is normal: Gli mando una lettera."],
+    ["Verbs like piacere", "Several verbs work like piacere: mi manca (I miss it), mi serve (I need it), mi interessa, mi sembra (it seems to me), mi dispiace."],
+  ],
 };

@@ -24,6 +24,8 @@ describe("text pictures", () => {
         expect(spec.alt.length, `${id}: alt`).toBeGreaterThan(20);
         for (const item of spec.items) {
           const ok = item.k.startsWith("p:") || kinds.has(item.k) || !!PROPS[item.k];
+          // Gabled canal houses belong in the Netherlands (21 Nov 2026: an Italian street drew Dutch gables).
+          if (pack.code !== "nl") expect(["street", "canal"].includes(spec.scene), `${id}: Dutch scene ${spec.scene}`).toBe(false);
           expect(ok, `${id}: ${item.k}`).toBe(true);
         }
       }
