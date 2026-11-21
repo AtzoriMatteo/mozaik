@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { listPacks } from "./registry";
 import type { GrammarPoint } from "./content";
-import { dutch } from "@/packs/nl";
 
 /**
  * Grammar lessons in the textbook shape (Matteo, 21 Nov 2026): explained step
@@ -11,8 +10,8 @@ import { dutch } from "@/packs/nl";
 const textbook = (g: GrammarPoint) => g.lesson?.blocks.some((b) => b.kind === "summary");
 
 describe("grammar lessons in the textbook shape", () => {
-  it("covers every Dutch lesson", () => {
-    const missing = dutch.grammar.filter((g) => g.lesson && !textbook(g)).map((g) => g.id);
+  it("covers every lesson in every language", () => {
+    const missing = listPacks().flatMap((p) => p.grammar.filter((g) => g.lesson && !textbook(g)).map((g) => `${p.code} ${g.id}`));
     expect(missing).toEqual([]);
   });
 
