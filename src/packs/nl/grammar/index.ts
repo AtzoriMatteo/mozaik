@@ -1,14 +1,11 @@
 import type { GrammarPoint } from "@/core/content";
 import { grammarPoints } from "./points";
-import { lessons1 } from "./lessons-1";
-import { lessons2 } from "./lessons-2";
-import { lessons3 } from "./lessons-3";
-import { lessons4 } from "./lessons-4";
-import { lessons5 } from "./lessons-5";
 import { lessonsA2a } from "./lessons-a2-1";
 import { lessonsA2b } from "./lessons-a2-2";
 import { lessonsA2c } from "./lessons-a2-3";
-import { moreBlocks, moreExamples, moreExercises } from "./more-exercises";
+import { a1Textbook1 } from "./a1-textbook-1";
+import { a1Textbook2 } from "./a1-textbook-2";
+import { a1Textbook3 } from "./a1-textbook-3";
 
 /** Which unit teaches which grammar point (about three per unit). */
 const UNIT_FOR: Record<string, string> = {
@@ -66,15 +63,15 @@ const UNIT_FOR: Record<string, string> = {
   "word-order-tmp": "a2-natuur",
 };
 
-const lessons = { ...lessons1, ...lessons2, ...lessons3, ...lessons4, ...lessons5, ...lessonsA2a, ...lessonsA2b, ...lessonsA2c };
+/**
+ * A1 lessons are in the textbook shape (21 Nov 2026): what it's for, how it
+ * works step by step, real mistakes, a short text, a summary card, and
+ * exercises from easy to harder. A2 follows.
+ */
+const lessons = { ...lessonsA2a, ...lessonsA2b, ...lessonsA2c, ...a1Textbook1, ...a1Textbook2, ...a1Textbook3 };
 
 export const grammar: readonly GrammarPoint[] = grammarPoints.map((g) => ({
   ...g,
   unit: UNIT_FOR[g.id],
-  lesson: lessons[g.id] && {
-    ...lessons[g.id],
-    blocks: [...lessons[g.id].blocks, ...(moreBlocks[g.id] ?? [])],
-    examples: [...lessons[g.id].examples, ...(moreExamples[g.id] ?? [])],
-    exercises: [...lessons[g.id].exercises, ...(moreExercises[g.id] ?? [])],
-  },
+  lesson: lessons[g.id],
 }));

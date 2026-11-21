@@ -47,7 +47,12 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
       {mode === "learn" ? (
         <>
           {lesson.blocks.map((b, i) => (
-            <Block key={i} block={b} lang={lang} />
+            <Block
+              key={i}
+              block={b}
+              lang={lang}
+              index={b.kind === "step" ? lesson.blocks.slice(0, i + 1).filter((x) => x.kind === "step").length : undefined}
+            />
           ))}
 
           <section className="examples" aria-labelledby="examples-title">
@@ -125,8 +130,83 @@ export function GrammarLessonView({ lang, pointId }: { lang: string; pointId: st
 
 /* ---------------------------------------------------------------- */
 
-export function Block({ block, lang }: { block: LessonBlock; lang: string }) {
+export function Block({ block, lang, index }: { block: LessonBlock; lang: string; index?: number }) {
   if (block.kind === "text") return <p className="lesson-text">{block.text}</p>;
+
+  if (block.kind === "step") {
+    return (
+      <h2 className="lesson-step">
+        {index ? <span className="lesson-step-number" aria-hidden="true">{index}</span> : null}
+        {block.title}
+      </h2>
+    );
+  }
+
+  if (block.kind === "mistakes") {
+    return (
+      <figure className="lesson-figure lesson-mistakes">
+        {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+        <ul>
+          {block.items.map((m) => (
+            <li key={m.wrong}>
+              <p className="mistake-wrong" lang={lang}>
+                <span className="mistake-mark" aria-label="Wrong">✗</span>
+                <s>{m.wrong}</s>
+              </p>
+              <p className="mistake-right" lang={lang}>
+                <span className="mistake-mark" aria-label="Right">✓</span>
+                {m.right}
+              </p>
+              <p className="mistake-why">{m.why}</p>
+            </li>
+          ))}
+        </ul>
+      </figure>
+    );
+  }
+
+  if (block.kind === "note") {
+    return (
+      <aside className="lesson-note">
+        <p className="lesson-note-title">{block.title}</p>
+        <p>{block.text}</p>
+      </aside>
+    );
+  }
+
+  if (block.kind === "passage") {
+    return (
+      <figure className="lesson-figure lesson-passage">
+        <figcaption>{block.title}</figcaption>
+        <div className="lesson-passage-body">
+          {block.sentences.map((s) => (
+            <p key={s.text}>
+              <span className="example-text" lang={lang}>
+                {highlightParts(s.text, block.highlight).map((p, i) =>
+                  p.mark ? <mark key={i}>{p.text}</mark> : <span key={i}>{p.text}</span>,
+                )}
+                <SpeakButton lang={lang} text={s.text} label="Hear this sentence" rate={0.85} />
+              </span>
+              <span className="example-translation">{s.translation}</span>
+            </p>
+          ))}
+        </div>
+      </figure>
+    );
+  }
+
+  if (block.kind === "summary") {
+    return (
+      <aside className="lesson-summary" aria-label="The rule on one card">
+        <p className="lesson-summary-title">In short</p>
+        <ul>
+          {block.points.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
+      </aside>
+    );
+  }
 
   if (block.kind === "table") {
     return (
@@ -294,7 +374,7 @@ export function correctAnswer(ex: Exercise): string {
     case "fill":
       return `${ex.before}${ex.answers[0]}${ex.after}`;
     case "choice":
-      return `${ex.before}${ex.options[ex.answer]}${ex.after}`;
+      return withChoice(ex.before, ex.options[ex.answer], ex.after);
     case "transform":
       return ex.answers[0];
     case "build":
@@ -327,6 +407,11 @@ export function ExerciseCard({
   const [error, setError] = useState<string | null>(null);
   const shuffled = useMemo(
     () => (exercise.kind === "build" ? shuffleTiles(exercise.tiles.map((t, i) => ({ t, i })), seed) : []),
+    [exercise, seed],
+  );
+  // Options in a different order for every exercise, so the right one isn't always first.
+  const options = useMemo(
+    () => (exercise.kind === "choice" ? shuffleTiles(exercise.options.map((o, i) => ({ o, i })), `${seed}-options`) : []),
     [exercise, seed],
   );
   const locked = verdict !== null;
@@ -379,14 +464,16 @@ export function ExerciseCard({
 
       {exercise.kind === "choice" ? (
         <>
-          <p className="exercise-prompt">Choose what fits:</p>
+          <p className="exercise-prompt">{exercise.prompt ?? "Choose what fits:"}</p>
           <p className="exercise-sentence" lang={lang}>
             {exercise.before}
-            <span className="gap">{picked === null ? "___" : exercise.options[picked]}</span>
+            <span className="gap" data-nothing={picked !== null && exercise.options[picked] === NOTHING ? true : undefined}>
+              {picked === null ? "___" : exercise.options[picked] === NOTHING ? "∅" : exercise.options[picked]}
+            </span>
             {exercise.after}
           </p>
           <div className="choice-row">
-            {exercise.options.map((o, i) => (
+            {options.map(({ o, i }) => (
               <button
                 key={o}
                 type="button"
@@ -399,7 +486,7 @@ export function ExerciseCard({
                   onCheck(i === exercise.answer ? "right" : "wrong");
                 }}
               >
-                {o}
+                {o === NOTHING ? "no word" : o}
               </button>
             ))}
           </div>
@@ -479,6 +566,16 @@ export function ExerciseCard({
       ) : null}
     </div>
   );
+}
+
+/** The option that means "no word here" (see the packs' pick helper). */
+export const NOTHING = "—";
+
+/** The sentence with the chosen option in the gap; "no word" closes the gap. */
+export function withChoice(before: string, option: string, after: string): string {
+  if (option !== NOTHING) return `${before}${option}${after}`;
+  const joined = `${before}${after}`.replace(/\s{2,}/g, " ").replace(/\s+([.,!?])/g, "$1").trim();
+  return joined ? joined[0].toLocaleUpperCase() + joined.slice(1) : joined;
 }
 
 /** A built sentence as it's written: a capital at the start, a full stop if it has no end mark. */

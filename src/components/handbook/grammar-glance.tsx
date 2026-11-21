@@ -34,7 +34,10 @@ export function GrammarGlance() {
         ))}
       </nav>
       {points.map((g) => {
-        const key = g.lesson!.blocks.filter((b) => b.kind === "table" || b.kind === "slots").slice(0, 2);
+        // The lesson's summary card first, then its key table or sentence pattern.
+        const blocks = g.lesson!.blocks;
+        const card = blocks.find((b) => b.kind === "summary");
+        const key = [...(card ? [card] : []), ...blocks.filter((b) => b.kind === "table" || b.kind === "slots").slice(0, card ? 1 : 2)];
         return (
           <section key={g.id} id={g.id} className="handbook-table grammar-glance" aria-labelledby={`${g.id}-title`}>
             <h2 id={`${g.id}-title`}>

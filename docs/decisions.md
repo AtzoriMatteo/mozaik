@@ -5,6 +5,48 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-21 — Grammar lessons rewritten like a textbook (Dutch A1)
+
+Matteo: the grammar lessons felt shallow and not useful; the exercises were
+too predictable (in the een lesson, een was almost always the answer). They
+should be easy to follow but more like a textbook.
+
+**Every Dutch A1 lesson (all 29) now has the same shape (Matteo's brief,
+Claude's design).** Numbered steps: 1 What it's for, 2 How it works (built
+up step by step, each step with a table or a sentence diagram), the
+mistakes learners really make (wrong sentence struck through, the right one,
+and why), a note comparing it with English or Italian where that helps, a
+short new text that uses the pattern (marked, with sound), and an "In short"
+card with the whole rule. The Handbook's grammar page now shows that card
+first.
+- New things taught on the way: welk/welke, dus + verb, de-word things are
+  hij, een returns with a describing word (een goede kok), u keeps the -t
+  (Woont u?), which verbs never split (be-, ver-, ont-), staat/ligt/zit/hangt.
+- zullen ("Zullen we…?") stays in Modal verbs, as decided in the A1 audit.
+
+**Exercises you can't guess (Matteo).** 9–13 per lesson instead of 6–8, from
+easy (match, sort) to harder (fill, transform, build a sentence). Choices
+offer real competitors: the een lesson asks een / de / geen / no word, and
+"no word" is the answer about half the time. Options now appear in a
+different order for every exercise (before, the right one was often first).
+A new test fails a lesson if one answer is right in more than 60% of its
+choices, or if it lacks steps, mistakes or a summary card.
+
+**Checked (Claude).** Every new sentence (exercises, short texts, right
+versions of mistakes) passes the "taught before it's asked" check, and
+facts match the stories (Elif is a nurse, Ayşe teaches English, Can is her
+boyfriend and a cook).
+
+- Cost (Claude): grammar review cards are numbered by their place in the
+  lesson, so if you'd already finished an A1 lesson, its review cards now
+  show the new exercises. Lessons have a few more exercises, so a finished
+  lesson adds a few more grammar cards (grammar is off in "Start review" by
+  default).
+- The short texts and examples are added to "Record course audio"; until it
+  runs they use the device voice.
+- Next: A2 and Italian in the same shape, then pictures for every text
+  (Matteo chose the painted tile style).
+
 ## 2026-11-20 (evening, later) — No name-spelling questions; een gets its own lesson
 
 **Questions about how a name is spelt are gone (Matteo: no use for learning
