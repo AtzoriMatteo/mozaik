@@ -490,4 +490,36 @@ export const pictures: Record<string, PictureSpec> = {
     p("man", 160, 212, { c: "cobalt", pose: "hold" }),
     p("oldwoman", 320, 212, { c: "manganese", flip: true }),
   ], true),
+
+  /* ---------------- A2 · Progetti ---------------- */
+  "emma-5-il-corso-finisce": pic("classroom", "The last weeks of the Italian course: Lucia asks the class what they'll do after June.", [
+    o("board", 110, 80, { t: "Cosa farete?" }),
+    o("calendar", 330, 70),
+    p("woman", 160, 212, { c: "iron", hair: "bob", pose: "point" }),
+    p("man", 250, 212, { pose: "sit", c: "cobalt" }),
+    p("woman", 320, 212, { pose: "sit", c: "copper", hair: "long", flip: true }),
+  ]),
+  "emma-6-al-posto-tuo": pic("porticoes", "At Bar Margherita everyone gives Emma advice over a cappuccino.", [
+    o("smalltable", 200, 214),
+    o("cup", 190, 180),
+    o("espresso", 214, 182),
+    p("woman", 120, 212, { pose: "sit", c: "copper", hair: "long" }),
+    p("oldwoman", 280, 212, { pose: "sit", c: "manganese", flip: true }),
+    p("man", 340, 214, { c: "cobalt", flip: true, pose: "point" }),
+  ]),
+  "emma-7-cosa-stai-facendo": pic("room", "Saturday night: Emma writes her CV on the laptop; a message pops up on her phone.", [
+    o("table", 190, 214),
+    o("laptop", 180, 176),
+    o("phone", 230, 182),
+    o("lamp", 90, 120),
+    o("moon", 320, 60),
+    p("woman", 260, 212, { pose: "sit", c: "copper", hair: "long", flip: true }),
+  ], true),
+  "check-it-a2-progetti": pic("room", "The interview at the Babele language school: the director reads Emma's CV.", [
+    o("table", 200, 214),
+    o("letter", 200, 178),
+    o("shelves", 340, 150),
+    p("man", 130, 212, { pose: "sit", c: "iron", glasses: true }),
+    p("woman", 270, 212, { pose: "sit", c: "copper", hair: "long", flip: true }),
+  ]),
 };

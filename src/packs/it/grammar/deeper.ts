@@ -218,4 +218,18 @@ export const deeper: Record<string, [string, string][]> = {
     ["Metterci", "metterci = to take (someone takes time): Ci metto dieci minuti (it takes me ten minutes). Quanto ci metti? Compare: Ci vogliono dieci minuti (in general)."],
     ["Spelling: ce before lo, la, ne", "ci becomes ce before another pronoun: Ce l'hai? Ce ne sono tre (there are three of them)."],
   ],
+  futuro: [
+    ["Future after quando and se", "Unlike English, Italian uses the future after quando and se when the time is future: Quando arriverò, ti chiamerò (When I arrive, I'll call you). In speech the present is common too: Quando arrivo, ti chiamo."],
+    ["The future perfect", "avrò/sarò + participle = will have done: Quando avrò finito, uscirò. Also for guesses about the past: Avrà perso il treno (he must have missed the train)."],
+  ],
+  condizionale: [
+    ["Would have: the past conditional", "avrei/sarei + participle: Sarei venuto, ma ero malato (I would have come, but I was ill). Avrei voluto un gelato."],
+    ["News: allegedly", "Newspapers use the condizionale for unconfirmed news: Il ministro sarebbe a Roma (the minister is reportedly in Rome)."],
+    ["If clauses", "Se + imperfect subjunctive + condizionale: Se avessi tempo, viaggerei. The subjunctive comes at B1; in speech you'll also hear Se avevo tempo, viaggiavo."],
+  ],
+  "stare-gerundio": [
+    ["Gerundio alone: while, by", "Without stare, the gerundio means 'while' or 'by': Camminando, ho visto Rita (while walking). Sbagliando s'impara (you learn by making mistakes)."],
+    ["stare per: about to", "stare per + infinitive = be about to: Sto per uscire (I'm about to go out). Il treno sta per partire."],
+    ["Pronouns on the gerundio", "Pronouns can go before stare or on the gerundio: Lo sto facendo = Sto facendolo. The first is more common."],
+  ],
 };

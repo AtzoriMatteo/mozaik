@@ -3,6 +3,7 @@ import { withDeeper } from "@/core/deeper";
 import { deeper } from "./deeper";
 import { grammarA2u1 } from "./a2-1";
 import { grammarA2u2 } from "./a2-2";
+import { grammarA2u3 } from "./a2-3";
 import { build, choice, example, fill, match, mistakes, note, passage, pick, slots, sort, spot, step, summary, table, text, transform } from "./helpers";
 
 /**
@@ -1413,4 +1414,4 @@ const points: readonly GrammarPoint[] = [
 ];
 
 /** Each lesson with its "Going deeper" after the summary card. */
-export const grammar: readonly GrammarPoint[] = [...points, ...grammarA2u1, ...grammarA2u2].map((g) => ({ ...g, lesson: withDeeper(g.lesson, deeper[g.id]) }));
+export const grammar: readonly GrammarPoint[] = [...points, ...grammarA2u1, ...grammarA2u2, ...grammarA2u3].map((g) => ({ ...g, lesson: withDeeper(g.lesson, deeper[g.id]) }));

@@ -13,10 +13,11 @@ import { salute } from "./u11-la-salute";
 import { feste } from "./u12-le-feste";
 import { ricordi } from "./u13-ricordi";
 import { casa } from "./u14-casa";
+import { progetti } from "./u15-progetti";
 import { teachIt } from "../teach";
 import { checkpointsIt } from "../checkpoints";
 
 /** The Italian course, in suggested order. */
-export const units: readonly Unit[] = [ciao, piacere, famiglia, alBar, giornata, quartiere, spesa, tempoLibero, lavoro, viaggio, salute, feste, ricordi, casa]
+export const units: readonly Unit[] = [ciao, piacere, famiglia, alBar, giornata, quartiere, spesa, tempoLibero, lavoro, viaggio, salute, feste, ricordi, casa, progetti]
   .map((u) => (teachIt[u.id] ? { ...u, teach: [...(u.teach ?? []), ...teachIt[u.id]] } : u))
   .map((u) => (u.checkpoint || !checkpointsIt[u.id] ? u : { ...u, checkpoint: checkpointsIt[u.id] }));

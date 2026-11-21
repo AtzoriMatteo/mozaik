@@ -187,4 +187,95 @@ ricetta | recipe | | ~ receipt (same Latin word)
 pão | pão de queijo: Brazilian cheese bread (Portuguese)
 de | de: 'of' in Portuguese (pão de queijo)
 queijo | queijo: 'cheese' in Portuguese
+# Unit A2-3: Progetti
+accordo | agreement (d'accordo = agreed, OK) | | | Non sono d'accordo = I don't agree
+andrebbe | would go; le andrebbe bene? = would it suit you? | andare
+anzi | in fact, actually, rather
+avrai | you'll have | avere
+avrebbe | would have | avere
+babele | Babel (the name of the school)
+banca | bank
+bussa | knocks | bussare
+bussare | to knock
+cercando | looking for | cercare
+cercano | they look for | cercare
+cercate | you (plural) look for | cercare
+cielo | sky | | ~ ceiling
+classi | classes | classe
+classe | class
+cucinando | cooking | cucinare
+cucinerò | I'll cook | cucinare
+davvero | really
+direttore | director, head
+domanda | question | | | Fare una domanda = to ask a question
+dormendo | sleeping | dormire
+dovresti | you should | dovere
+facendo | doing, making | fare
+farete | you (plural) will do | fare
+farà | will do, will make | fare
+farò | I'll do, I'll make | fare
+felice | happy | | ~ felicity
+giugno | June
+sere | evenings | sera
+pioverà | it will rain | piovere
+piovere | to rain
+gradi | degrees | grado
+grado | degree
+insegnanti | teachers | insegnante
+insegnante | teacher
+insegnare | to teach
+insegnerò | I'll teach | insegnare
+interessa | interests (ti interessa? = are you interested?) | interessare
+interessare | to interest
+iscriverò | I'll enrol | iscriversi
+iscriversi | to enrol, to sign up
+lavorando | working | lavorare
+lavorerò | I'll work | lavorare
+madrelingua | native speaker | | madre (mother) + lingua (tongue)
+maggio | May
+manca | is missing | mancare
+mancare | to be missing; to miss (mi manchi = I miss you)
+mandarci | to send us | mandare | mandare + ci
+manderò | I'll send | mandare
+migliorerà | will improve | migliorare
+migliorare | to improve
+nuvoloso | cloudy | | nuvola (cloud) + -oso
+palermo | Palermo, the capital of Sicily
+partirò | I'll leave | partire
+penserai | you'll think | pensare
+pesare | to weigh; to be a burden (pesare su) | | ~ peso
+porterete | you (plural) will take | portare
+potrebbe | could (he/she/Lei) | potere
+potrei | I could | potere
+potresti | you could | potere
+pratico | practical
+prenderemo | we'll take | prendere
+previsioni | forecast | previsione | | le previsioni del tempo = the weather forecast
+previsione | forecast, prediction
+quella | that (feminine) | quello
+quindi | so, therefore
+racconta | tells | raccontare
+resta | stays | restare
+resterai | you'll stay | restare
+resterei | I'd stay | restare
+resterò | I'll stay | restare
+saragozza | Saragozza (a street in Bologna, named after Zaragoza)
+sarà | will be | essere | | Sarà vero? = Can it be true?
+scrivendo | writing | scrivere
+scriverei | I'd write | scrivere
+scrivilo | write it! | scrivere | scrivi + lo
+scuole | schools | scuola
+servirebbe | would be needed (mi servirebbe = I'd need) | servire
+servire | to be needed; to serve | | Mi serve = I need
+settembre | September
+stanchissima | exhausted (feminine) | stanco | stanca + -issima
+studiando | studying | studiare
+studierò | I'll study | studiare
+temperature | temperatures | temperatura
+temperatura | temperature
+tokyo | Tokyo
+tornerò | I'll go back | tornare
+troveresti | you'd find | trovare
+tutte | all (feminine plural) | tutto
+verrò | I'll come | venire
 `);
