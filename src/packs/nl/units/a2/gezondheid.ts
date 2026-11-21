@@ -20,7 +20,7 @@ export const gezondheid: Unit = {
       level: "A2",
       title: "Eerst naar de huisarts",
       titleTranslation: "First, the GP",
-      grammar: ["modal-past", "perfect-hebben", "subordinate-order"],
+      grammar: ["modal-past", "perfect-hebben", "subordinate-order", "hoeven"],
       paragraphs: [
         [
           s("Sofia komt uit Portugal en woont sinds een jaar in Rotterdam. Vorige maand had ze opeens veel pijn in haar rug.", "Sofia is from Portugal and has lived in Rotterdam for a year. Last month she suddenly had a lot of pain in her back."),

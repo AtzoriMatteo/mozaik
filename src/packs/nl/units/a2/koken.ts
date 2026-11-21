@@ -85,7 +85,7 @@ export const koken: Unit = {
       level: "A2",
       title: "De rijsttafel",
       titleTranslation: "The rice table",
-      grammar: ["er-quantity", "imperfect-irregular", "relative-clauses"],
+      grammar: ["er-quantity", "imperfect-irregular", "relative-clauses", "iets-lekkers"],
       paragraphs: [
         [
           s("In bijna elke Nederlandse stad vind je een Indonesisch restaurant. Wie er voor het eerst komt, bestelt vaak een rijsttafel.", "In almost every Dutch town you'll find an Indonesian restaurant. Anyone who goes there for the first time often orders a rice table."),

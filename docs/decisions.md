@@ -5,6 +5,26 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-21 (evening) — Twelve more Dutch grammar lessons
+
+**Asked (Matteo).** Cover all the grammar points of A1–A2 without making the
+units heavy.
+
+**Added (Claude).** Each new lesson goes into a unit that had room, so no unit
+has more than four grammar lessons, and no new unit was needed.
+- A1: welke / welk / wat voor (Kleren), kennen and weten and al / nog / pas
+  (Nederland), aan het + infinitive (Feestdagen).
+- A2: hoeven (Gezondheid, after te + infinitive), even / maar / toch / hoor
+  (Werk), laten + infinitive (Wonen), the passive (Media), alle / allemaal /
+  elke / iedereen / alles (Samenleving), iets lekkers (Uitgaan), the four jobs
+  of er (Koken), als … zou (Natuur).
+- hoeven moved to A2 because it needs te + infinitive, which A2 teaches.
+- Four story sentences were adjusted so the lessons can quote the course
+  ("In de keuken is Bram oliebollen aan het bakken", "Wat voor jas zoekt u?",
+  "Kunt u allebei laten repareren?", "Als het altijd mooi weer was, zouden ze…").
+  Their recordings need the "Record course audio" action again; until then
+  they use the device voice.
+
 ## 2026-11-21 (evening) — Exercises with only one right answer
 
 **The problem (Matteo).** "Fill in dit or dat" with no context: both were

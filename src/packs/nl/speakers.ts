@@ -19,7 +19,7 @@ export const speakers: Record<string, string> = {
   "een-verjaardag": "Bram|Bram|Bram|Kwame|Bram|Kwame|De moeder van Noor|De opa van Noor|Kwame",
   "wat-doe-jij-in-je-vrije-tijd": "Fatima|Jonas|Noor|Luca",
   "nederland-op-de-fiets": "Hanna|-",
-  "een-winterjas": "Noor|Kwame|De verkoopster|Kwame|De verkoopster|Kwame|De verkoopster|Kwame",
+  "een-winterjas": "Noor|De verkoopster|Kwame|De verkoopster|Kwame|De verkoopster|Kwame|De verkoopster|Kwame",
   "online-bestellen": "-|Fatima|De buren",
   "wat-trek-ik-aan": "Luca|Luca|Bram|Bram|Bram|Luca|Bram|Bram|De vrouw van het lab",
   "een-dagje-amsterdam": "Priya|Priya|Priya|Priya",

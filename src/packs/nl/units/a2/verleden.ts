@@ -132,7 +132,7 @@ export const verleden: Unit = {
       level: "A2",
       title: "Het dagboek van Anne Frank",
       titleTranslation: "The diary of Anne Frank",
-      grammar: ["perfect-zijn", "perfect-hebben", "participles-irregular"],
+      grammar: ["perfect-zijn", "perfect-hebben", "participles-irregular", "passive"],
       paragraphs: [
         [
           s("Anne Frank is in 1929 in Frankfurt geboren, in Duitsland.", "Anne Frank was born in 1929 in Frankfurt, in Germany."),

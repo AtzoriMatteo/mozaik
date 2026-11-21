@@ -5,6 +5,7 @@ import { a1Textbook2 } from "./a1-textbook-2";
 import { a1Textbook3 } from "./a1-textbook-3";
 import { a2Textbook1 } from "./a2-textbook-1";
 import { a2Textbook2 } from "./a2-textbook-2";
+import { textbookExtra } from "./textbook-extra";
 
 /** Which unit teaches which grammar point (about three per unit). */
 const UNIT_FOR: Record<string, string> = {
@@ -37,6 +38,10 @@ const UNIT_FOR: Record<string, string> = {
   "graag-liever": "a1-kleren",
   comparatives: "a1-kleren",
   "dates-ordinals": "a1-feestdagen",
+  "welk-wat-voor": "a1-kleren",
+  "kennen-weten": "a1-nederland",
+  "al-nog-pas": "a1-nederland",
+  "aan-het": "a1-feestdagen",
   // A2
   "perfect-hebben": "a2-verleden",
   "perfect-zijn": "a2-verleden",
@@ -60,6 +65,14 @@ const UNIT_FOR: Record<string, string> = {
   "zou-polite": "a2-koken",
   "zullen-future": "a2-natuur",
   "word-order-tmp": "a2-natuur",
+  hoeven: "a2-gezondheid",
+  particles: "a2-werk",
+  laten: "a2-wonen",
+  passive: "a2-media",
+  "alle-allemaal": "a2-samenleving",
+  "iets-lekkers": "a2-uitgaan",
+  "er-four-jobs": "a2-koken",
+  "zou-conditional": "a2-natuur",
 };
 
 /**
@@ -67,7 +80,7 @@ const UNIT_FOR: Record<string, string> = {
  * works step by step, real mistakes, a short text, a summary card, and
  * exercises from easy to harder.
  */
-const lessons = { ...a1Textbook1, ...a1Textbook2, ...a1Textbook3, ...a2Textbook1, ...a2Textbook2 };
+const lessons = { ...a1Textbook1, ...a1Textbook2, ...a1Textbook3, ...a2Textbook1, ...a2Textbook2, ...textbookExtra };
 
 export const grammar: readonly GrammarPoint[] = grammarPoints.map((g) => ({
   ...g,
