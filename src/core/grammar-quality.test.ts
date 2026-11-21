@@ -11,8 +11,8 @@ import { dutch } from "@/packs/nl";
 const textbook = (g: GrammarPoint) => g.lesson?.blocks.some((b) => b.kind === "summary");
 
 describe("grammar lessons in the textbook shape", () => {
-  it("covers every Dutch A1 lesson", () => {
-    const missing = dutch.grammar.filter((g) => g.level === "A1" && !textbook(g)).map((g) => g.id);
+  it("covers every Dutch lesson", () => {
+    const missing = dutch.grammar.filter((g) => g.lesson && !textbook(g)).map((g) => g.id);
     expect(missing).toEqual([]);
   });
 

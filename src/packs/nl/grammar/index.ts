@@ -1,11 +1,10 @@
 import type { GrammarPoint } from "@/core/content";
 import { grammarPoints } from "./points";
-import { lessonsA2a } from "./lessons-a2-1";
-import { lessonsA2b } from "./lessons-a2-2";
-import { lessonsA2c } from "./lessons-a2-3";
 import { a1Textbook1 } from "./a1-textbook-1";
 import { a1Textbook2 } from "./a1-textbook-2";
 import { a1Textbook3 } from "./a1-textbook-3";
+import { a2Textbook1 } from "./a2-textbook-1";
+import { a2Textbook2 } from "./a2-textbook-2";
 
 /** Which unit teaches which grammar point (about three per unit). */
 const UNIT_FOR: Record<string, string> = {
@@ -64,11 +63,11 @@ const UNIT_FOR: Record<string, string> = {
 };
 
 /**
- * A1 lessons are in the textbook shape (21 Nov 2026): what it's for, how it
+ * Every lesson is in the textbook shape (21 Nov 2026): what it's for, how it
  * works step by step, real mistakes, a short text, a summary card, and
- * exercises from easy to harder. A2 follows.
+ * exercises from easy to harder.
  */
-const lessons = { ...lessonsA2a, ...lessonsA2b, ...lessonsA2c, ...a1Textbook1, ...a1Textbook2, ...a1Textbook3 };
+const lessons = { ...a1Textbook1, ...a1Textbook2, ...a1Textbook3, ...a2Textbook1, ...a2Textbook2 };
 
 export const grammar: readonly GrammarPoint[] = grammarPoints.map((g) => ({
   ...g,
