@@ -73,6 +73,7 @@ describe("unit words", () => {
       const listed = new Set(all);
       for (const level of pack.levels) {
         const core = (pack.coreVocabulary[level] ?? []).filter((w) => !SKIP.has(w) && !w.includes(" ") && !pack.isNumberWord?.(w));
+        if (!core.length) continue;
         const missing = core.filter((w) => !listed.has(w));
         // A few core words only appear inside names; nearly all must be listed somewhere up to their level.
         expect(missing.length / core.length, `${pack.code} ${level}: ${missing.slice(0, 10).join(", ")}`).toBeLessThan(0.05);

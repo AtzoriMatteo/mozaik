@@ -427,4 +427,67 @@ export const pictures: Record<string, PictureSpec> = {
     o("stocking", 330, 140, { s: 0.8 }),
     o("suitcase", 330, 212),
   ]),
+
+  /* ---------------- A2 · Com'era una volta ---------------- */
+  "rita-5-il-pratello-di-una-volta": pic("room", "Sunday afternoon at Rita's: a coffee, and a box of old photos of Via del Pratello on the table.", [
+    o("smalltable", 200, 214),
+    o("boxes", 200, 176, { s: 0.6 }),
+    o("frame", 330, 80),
+    o("espresso", 236, 180),
+    p("oldwoman", 120, 212, { pose: "sit", c: "manganese" }),
+    p("woman", 290, 212, { pose: "sit", c: "copper", hair: "long", flip: true }),
+  ]),
+  "rita-6-il-ballo": pic("piazza", "1962: the neighbourhood festival, an orchestra in the square, and a tall young man asking Rita to dance.", [
+    o("bunting", 200, 40),
+    o("violin", 70, 160),
+    o("sax", 110, 160),
+    p("woman", 210, 214, { c: "ochre", hair: "ponytail", pose: "wave" }),
+    p("man", 280, 214, { c: "iron", flip: true, pose: "point" }),
+    o("notes", 90, 110),
+  ], true),
+  "rita-7-sai-chi-era": pic("room", "Emma and Karim in the library, looking at an old photo of Rita and Gino.", [
+    o("shelves", 330, 150),
+    o("table", 190, 214),
+    o("openbook", 170, 176),
+    o("frame", 222, 172, { s: 0.6 }),
+    p("woman", 110, 212, { pose: "sit", c: "copper", hair: "long" }),
+    p("man", 270, 212, { pose: "sit", c: "cobalt", flip: true }),
+  ]),
+  "check-it-a2-ricordi": pic("platform", "Bologna station, 1965: Gino the train conductor with his accordion at the railway workers' party.", [
+    o("train", 120, 170, { s: 0.8 }),
+    p("man", 260, 214, { c: "iron", pose: "hold" }),
+    o("notes", 300, 120),
+  ]),
+
+  /* ---------------- A2 · Una casa nuova ---------------- */
+  "ana-5-cerco-casa": pic("room", "The empty two-room flat: Mr Ferri shows Ana the little kitchen with its window over the red roofs.", [
+    o("bigwindow", 290, 100),
+    o("stove", 120, 200),
+    p("man", 200, 212, { c: "iron", pose: "point", glasses: true }),
+    p("woman", 330, 212, { c: "ochre", hair: "bun", flip: true }),
+  ]),
+  "ana-6-il-trasloco": pic("street", "Moving day: boxes on the pavement, Karim and Marco carrying them up, Davide checking the list from his wheelchair.", [
+    o("boxes", 90, 200),
+    o("plant", 140, 206),
+    p("man", 200, 214, { c: "cobalt", pose: "hold" }),
+    p("man", 260, 214, { c: "copper", pose: "hold" }),
+    o("wheelchair", 340, 214),
+    o("note", 340, 150, { s: 0.6 }),
+  ]),
+  "ana-7-cara-mamma": pic("room", "Ana writes to her mother in Recife: the laptop on the table, the morning sun through the window over the roofs.", [
+    o("window", 300, 90),
+    o("sun", 300, 70, { s: 0.5 }),
+    o("table", 180, 214),
+    o("laptop", 180, 176),
+    o("plant", 80, 206),
+    p("woman", 240, 212, { pose: "sit", c: "ochre", hair: "bun", flip: true }),
+  ]),
+  "check-it-a2-casa": pic("room", "The housewarming: friends sitting on the floor, Karim with the wine, Rita with the cake.", [
+    o("lights", 200, 40),
+    o("wine", 120, 190),
+    o("cake", 280, 190),
+    p("woman", 70, 212, { pose: "sit", c: "ochre", hair: "bun" }),
+    p("man", 160, 212, { c: "cobalt", pose: "hold" }),
+    p("oldwoman", 320, 212, { c: "manganese", flip: true }),
+  ], true),
 };

@@ -188,4 +188,34 @@ export const deeper: Record<string, [string, string][]> = {
     ["fa after the time", "fa always follows the time: due giorni fa, un anno fa, poco fa (a little while ago)."],
     ["fa vs da vs per", "fa = ago (finished): Sono arrivata un anno fa. da = for/since (still true): Vivo qui da un anno. per = for (finished duration): Ho vissuto a Roma per due anni."],
   ],
+  imperfetto: [
+    ["Polite past", "volevo is a soft way to ask in the present: Volevo un'informazione (I'd like some information). Shops hear it all day."],
+    ["Two things at the same time", "Two background actions together: both imperfetto. Mentre io cucinavo, Karim studiava."],
+    ["In stories and dreams", "Children set up games in the imperfetto: Facciamo che io ero il re (Let's pretend I was the king). Dreams are told the same way: Ero in una casa enorme…"],
+  ],
+  "imperfetto-passato": [
+    ["Same verb, two meanings", "Sapevo = I knew; ho saputo = I found out. Conoscevo = I knew (someone); ho conosciuto = I met. Dovevo andare = I was supposed to go (maybe I didn't); sono dovuta andare = I had to go (and I did)."],
+    ["Time limits push to the passato", "With a clear limit (per due anni, dal 1960 al 1964, tre volte) use the passato prossimo even for long things: Ho abitato a Roma per due anni."],
+    ["The remote past in books", "In novels and in the South you'll meet the passato remoto (arrivò, disse) for events. It does the passato prossimo's job; the imperfetto stays the same."],
+  ],
+  "sapere-conoscere": [
+    ["sapere di", "sapere di = taste or smell of: Questo caffè sa di bruciato (tastes burnt). Also figurative: Non sa di niente (it's bland)."],
+    ["Far sapere", "Fammi sapere = let me know. Ti faccio sapere = I'll let you know (often a polite 'no' after an interview!)."],
+    ["conoscersi", "Ci conosciamo? = Have we met? Ci siamo conosciuti a una festa = We met at a party."],
+  ],
+  "pronomi-diretti": [
+    ["Starting with the object", "Italians love to put the thing first and repeat it with a pronoun: Il vino lo porto io. La pasta la faccio io. It's normal spoken Italian, not a mistake."],
+    ["Ecco + pronoun", "ecco takes the pronoun on the end: Eccolo! (Here it is!) Eccole! Eccomi! (Here I am!)."],
+    ["La for Lei", "Formal 'you' as an object is La: La ringrazio (thank you, to Lei). Arrivederla is goodbye to Lei."],
+  ],
+  ne: [
+    ["Agreement in the past", "With ne, the participle agrees with what you took: Le lasagne? Ne ho mangiate due (two pieces, feminine plural)."],
+    ["Andarsene", "ne also means 'from here': Me ne vado (I'm off). Vattene! (Go away!)."],
+    ["Fixed phrases", "Non ne posso più (I can't take it any more). Che ne so? (How should I know?). Non me ne importa (I don't care)."],
+  ],
+  "ci-luogo": [
+    ["ci with other verbs", "ci goes with verbs about places and topics: Ci penso io (I'll take care of it). Ci credo! (I believe it!). Ci sto (I'm in, I agree)."],
+    ["Metterci", "metterci = to take (someone takes time): Ci metto dieci minuti (it takes me ten minutes). Quanto ci metti? Compare: Ci vogliono dieci minuti (in general)."],
+    ["Spelling: ce before lo, la, ne", "ci becomes ce before another pronoun: Ce l'hai? Ce ne sono tre (there are three of them)."],
+  ],
 };

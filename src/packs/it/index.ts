@@ -49,7 +49,7 @@ export const italian: LanguagePack = {
     "scusa", "scusi", "sì", "no", "caro", "cara", "cari", "care", "gentile", "saluti", "baci", "abbracci", "auguri",
     "complimenti", "benvenuto", "benvenuta", "piacere", "buon", "buona", "tanti", "mille",
   ]),
-  levels: ["A1"],
+  levels: ["A1", "A2"],
   tokenize: tokenizeItalian,
   greeting: greetingFor,
   units,
