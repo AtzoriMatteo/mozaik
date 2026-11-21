@@ -5,14 +5,43 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
-## 2026-11-21 — Grammar lessons rewritten like a textbook (Dutch A1)
+## 2026-11-21 (later) — A picture in every text
+
+Matteo: put a related image in every text and wherever a picture helps; make
+sure each one is correct and belongs to its page. Style: painted tiles
+(Matteo chose it over photos).
+
+**166 pictures, one per reading text, story episode and checkpoint scene
+(Claude).** Each is drawn in code from a small kit: backgrounds (a Dutch
+street, a canal, Bologna's porticoes, a kitchen, a polder, the beach, the
+mudflats…), about 140 things (bikes, a cargo bike, market stalls, an
+espresso machine, a moka pot, the Befana, Sinterklaas, oliebollen…) and
+people drawn the way Delft tiles draw figures: no faces, just hair, clothes
+and pose, sitting on chairs, riding bikes, one in a wheelchair (Davide).
+- Every picture is written from its own text: who is there, where, and what
+  happens (Marta at number 12 with a cake, Kwame's attic room on a video
+  call, the clock at ten past three in "Half vier", Davide's wheelchair
+  basketball in red against blue). Each one has a one-line description,
+  used by screen readers; all 166 were looked at and corrected.
+- Dutch pictures are Delft tiles (cobalt line, polychrome glazes, corner
+  ornaments). Italian pictures are laid as a mosaic: the same drawing in
+  small stones, with a gold band, whatever language the page around it uses.
+- They sit under the title of every text, story episode and checkpoint.
+- Tests: every text and checkpoint has a picture, no picture points at a
+  missing text, and every scene and thing in a picture exists.
+- Cost: none. They're drawn in the browser (no image files), so the
+  deployment doesn't grow.
+- Not done yet (Matteo to decide): pictures for listening scenes and
+  Handbook topics (clock, family, the house) with the same kit.
+
+## 2026-11-21 — Grammar lessons rewritten like a textbook (all of them)
 
 Matteo: the grammar lessons felt shallow and not useful; the exercises were
 too predictable (in the een lesson, een was almost always the answer). They
 should be easy to follow but more like a textbook.
 
-**Every Dutch A1 lesson (all 29) now has the same shape (Matteo's brief,
-Claude's design).** Numbered steps: 1 What it's for, 2 How it works (built
+**Every lesson now has the same shape: Dutch A1 (29), Dutch A2 (22) and
+Italian A1 (38) (Matteo's brief, Claude's design).** Numbered steps: 1 What it's for, 2 How it works (built
 up step by step, each step with a table or a sentence diagram), the
 mistakes learners really make (wrong sentence struck through, the right one,
 and why), a note comparing it with English or Italian where that helps, a
@@ -23,6 +52,14 @@ first.
   hij, een returns with a describing word (een goede kok), u keeps the -t
   (Woont u?), which verbs never split (be-, ver-, ont-), staat/ligt/zit/hangt.
 - zullen ("Zullen we…?") stays in Modal verbs, as decided in the A1 audit.
+- Dutch A2 was rewritten the same way (perfect with hebben/zijn, word order
+  in side clauses, er, die/dat, the past tenses, om … te, zou, zullen, TMP),
+  with new contrasts: er + a number vs ze for "them", want vs omdat as a
+  sort, toen vs als, which verbs take te.
+- Italian A1 kept its explanations (they were already solid) and gained the
+  steps, mistakes (Sono ventisei anni → Ho ventisei anni, Mi piace le arance,
+  Ho andato…), a short text from the street's stories, the summary card and
+  extra exercises in every lesson. Standing rule: Dutch changes go to Italian.
 
 **Exercises you can't guess (Matteo).** 9–13 per lesson instead of 6–8, from
 easy (match, sort) to harder (fill, transform, build a sentence). Choices
@@ -44,8 +81,6 @@ boyfriend and a cook).
   default).
 - The short texts and examples are added to "Record course audio"; until it
   runs they use the device voice.
-- Next: A2 and Italian in the same shape, then pictures for every text
-  (Matteo chose the painted tile style).
 
 ## 2026-11-20 (evening, later) — No name-spelling questions; een gets its own lesson
 

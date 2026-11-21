@@ -8,7 +8,7 @@
 
 import type { VerbTables } from "./verbs";
 import type { Handbook } from "./handbook";
-import type { Expression, GrammarPoint, Lexicon, ReadingText, SlangPart, Unit } from "./content";
+import type { Expression, GrammarPoint, Lexicon, PictureSpec, ReadingText, SlangPart, Unit } from "./content";
 import type { Sound } from "./pronunciation";
 import type { Resource } from "./resources";
 import type { LearningTip } from "./tips";
@@ -37,6 +37,8 @@ export interface LanguagePack {
    * mosaic: marble, lapis, gold). Sets colours, heading type and the tiles.
    */
   theme?: "delft" | "ravenna";
+  /** A picture for each reading text, story episode and checkpoint scene, by text id. */
+  pictures?: Record<string, PictureSpec>;
   /** One line on what an infinitive looks like, for the verb tables. */
   verbShape?: string;
   /** Official exams learners may be aiming for, e.g. "CILS or CELI". */

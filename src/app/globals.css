@@ -5750,3 +5750,18 @@ button.vocab-word:hover {
 .gap[data-nothing] {
   color: var(--ink-muted);
 }
+
+/* ---------- Text pictures (21 Nov 2026) ---------- */
+
+.text-picture {
+  max-width: var(--measure);
+  margin: 0.25rem 0 1.5rem;
+}
+
+.text-picture svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 var(--grout), 0 0 0 1px var(--grout);
+}

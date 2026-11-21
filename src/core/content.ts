@@ -390,3 +390,35 @@ export type Checkpoint = {
   /** Help for words in the checkpoint's text and clip. */
   words?: Record<string, WordHelp>;
 };
+
+/**
+ * A picture for a text, painted in the pack's tile style (Matteo, 21 Nov
+ * 2026: a related picture in every text). A background scene plus people and
+ * things placed by hand, so each picture shows what its own text says.
+ */
+export type PictureItem = {
+  /** A prop name (see components/pictures/props), or "p:" + a person kind (p:woman, p:oldman…). */
+  k: string;
+  x: number;
+  y: number;
+  s?: number;
+  flip?: boolean;
+  c?: Glaze;
+  /** Variant of a prop (shelves of "bread", a stall of "fish"…). */
+  v?: string;
+  /** A short label: a number on a cake, a time on a clock. */
+  t?: string;
+  hair?: string;
+  beard?: boolean;
+  glasses?: boolean;
+  apron?: boolean;
+  pose?: string;
+};
+
+export type PictureSpec = {
+  scene: string;
+  night?: boolean;
+  /** What the picture shows, for screen readers, and as the check that it fits the text. */
+  alt: string;
+  items: PictureItem[];
+};
