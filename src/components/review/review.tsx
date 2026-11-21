@@ -698,8 +698,6 @@ function WordCard({
   useRevealKey(revealed || kind === "produce", reveal);
   const tokens = pack.tokenize(item.sentence);
   const target = targetTokens(tokens, item.word);
-  const first = Math.min(...target);
-  const targetText = tokens.filter((_, i) => target.has(i)).map((t) => t.text).join("");
   const lemma = lemmaFor(item);
   const dictionary = dictionaryLabel(pack, lemma, item.meaning);
 
@@ -719,6 +717,15 @@ function WordCard({
             </button>
           </div>
         </>
+      ) : kind === "recall" && !revealed ? (
+        // Matteo, 22 Nov 2026: a gap in the original sentence tests whether you remember the
+        // sentence word for word. Ask for the word itself; the sentence's meaning only sets the scene.
+        <>
+          <p className="review-prompt">Which word means…</p>
+          <p className="review-solo review-solo-en">{item.meaning}</p>
+          {item.translation ? <p className="review-hint">As in: {item.translation}</p> : null}
+          <p className="review-hint">Think of the dictionary form, then check.</p>
+        </>
       ) : kind === "word" && !revealed ? (
         <>
           <p className="review-prompt">What does this word mean?</p>
@@ -729,29 +736,11 @@ function WordCard({
       ) : (
         <>
           <p className="review-prompt">
-            {kind === "recall" && !revealed ? (
-              <>
-                Which word means <strong>{item.meaning}</strong>?
-              </>
-            ) : (
-              "What does the highlighted word mean?"
-            )}
+            {kind === "recall" ? "The word in its sentence:" : "What does the highlighted word mean?"}
           </p>
           <p className="review-sentence" lang={lang}>
             {tokens.map((tok, i) => {
               if (!target.has(i)) return <span key={i}>{tok.text}</span>;
-              if (kind === "recall" && !revealed) {
-                // One gap for the whole word or phrase.
-                if (i !== first) return null;
-                return (
-                  <span
-                    key={i}
-                    className="review-gap"
-                    aria-label="missing word"
-                    style={{ width: `${Math.max(3, targetText.length) * 0.62}em` }}
-                  />
-                );
-              }
               return <mark key={i} className="review-target">{tok.text}</mark>;
             })}
           </p>
