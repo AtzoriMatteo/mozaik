@@ -262,4 +262,19 @@ export const deeper: Record<string, [string, string][]> = {
     ["andarsene", "andarsene = to go away: Me ne vado, Te ne vai, Se ne va, Ce ne andiamo. Very common."],
     ["Ce la faccio", "farcela = to manage: Ce la faccio! (I can do it!). Non ce la faccio più (I can't take it any more)."],
   ],
+  "avverbi-mente": [
+    ["Two adverbs in a row", "With two -mente adverbs, Italians often drop the first -mente in writing: lenta e attentamente. In speech they usually say both."],
+    ["Adverb or adjective?", "Some adjectives work as adverbs without -mente: parla chiaro, va piano, lavora sodo, guida veloce. They sound more spoken."],
+    ["Sports Italian", "Commentators love them: tira violentemente, para miracolosamente. And the superlative: benissimo, malissimo, prestissimo."],
+  ],
+  "si-impersonale": [
+    ["Adjectives with si are plural", "With essere, the adjective after si is plural: Quando si è stanchi, si dorme male (when you're tired, you sleep badly)."],
+    ["Past tense: essere", "In the passato prossimo, si always takes essere: Si è mangiato bene. Ci si è divertiti."],
+    ["Uno for 'one'", "uno (a person) can also mean 'you, one': Uno non sa mai… (you never know…)."],
+  ],
+  "prima-dopo": [
+    ["prima che, dopo che", "With different subjects: prima che + subjunctive (prima che tu parta), dopo che + indicative (dopo che sei partito). The subjunctive comes at B1."],
+    ["prima di + noun, prima + nothing", "prima di + noun or pronoun: prima di cena, prima di me. Alone, prima means earlier/first: Mangiamo prima?"],
+    ["Pronouns on aver/esser", "Pronouns join aver or esser: dopo averlo visto, dopo essermi alzata."],
+  ],
 };

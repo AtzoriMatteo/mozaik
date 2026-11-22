@@ -31,6 +31,11 @@ export const speakers: Record<string, string> = {
   "emma-9-a-firenze": "Receptionist|Emma|Receptionist|Custode|Cameriere|Emma|Emma",
   "emma-10-il-regalo": "Emma|Artigiano|Artigiano|Emma|Artigiano|Emma|Emma|Siobhan",
   "check-it-a2-vacanza": "Mamma|Emma|Mamma",
+  // A2 unit 6: Davide in finale
+  "davide-5-l-allenamento": "Paola|Davide|Karim|Paola|Davide|Davide|Karim|Karim",
+  "davide-6-come-si-gioca": "Davide|Davide|Emma|Davide|Davide|Emma|Davide",
+  "davide-7-la-finale": "Paola|Davide",
+  "check-it-a2-sport": "Davide|Davide",
   // Unit 12: Il primo inverno di Emma
   "emma-1-natale-con-i-tuoi": "Rita|Karim|Giulia|Giulia|Emma|Marco",
   "emma-2-la-vigilia": "Mamma",

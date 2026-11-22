@@ -463,4 +463,114 @@ vedono | they see | vedere
 venere | Venus
 wifi | wifi
 you | (English) you
+# Unit A2-6: La finale
+allenano | they train (si allenano) | allenarsi
+allenarsi | to train
+allenatrice | coach (a woman) | allenatore
+allenatore | coach, trainer
+appende | hangs (up) | appendere
+appendere | to hang
+arbitro | referee | | ~ arbiter
+articolo | article
+ascoltatemi | listen to me (you all) | ascoltare
+attaccando | attacking | attaccare
+attaccare | to attack; to stick
+attentamente | carefully | attento
+attento | careful
+avanti | ahead, forward | | essere avanti di un punto = to be one point ahead
+avanza | moves forward | avanzare
+avanzare | to move forward, to advance
+aver | to have (short form, before a participle: dopo aver vinto) | avere
+bandiera | flag
+battono | they beat (battere le mani = to clap) | battere
+battere | to beat, to hit
+cambiano | they change | cambiare
+campione | champion
+campo | court, pitch, field | | ~ camp
+cantando | singing | cantare
+canzone | song | | ~ chanson
+completamente | completely | completo
+completo | complete
+continuamente | continuously, all the time | continuo
+continuo | continuous
+coppa | cup, trophy
+corpo | body | | ~ corpse, corporal
+corrono | they run | correre
+degli | of the (di + gli) | di
+difesa | defence
+esatto | exactly, right
+esplode | explodes | esplodere
+esplodere | to explode
+facevo | I did, I used to do | fare
+far | to make (short form: far rimbalzare = to bounce) | fare
+ferro | iron; the rim (of the basket)
+finale | final
+finita | over, finished (feminine) | finire
+giocate | play (you all) | giocare
+giocatore | player
+giocatori | players | giocatore
+giornale | newspaper | | giorno: a daily
+gira | turns, spins | girare
+gliele | them (feminine) to him / to her | | gli + le
+immediatamente | immediately | immediato
+immediato | immediate
+inclinate | slanted, tilted (feminine plural) | inclinato
+inclinato | slanted, tilted
+inizio | beginning, start | | all'inizio = at first
+intervista | interview
+leggera | light (feminine) | leggero
+leggero | light (in weight)
+lentamente | slowly | lento
+lento | slow
+matteo | Matteo (a man's name)
+muovono | they move (si muovono) | muoversi
+muoversi | to move
+normale | normal
+palazzetto | (sports) arena | | palazzo + -etto: a small palace
+paola | Paola (a woman's name)
+passano | they pass | passare
+pensate | think (you all) | pensare
+perde | loses | perdere
+perfino | even
+precisamente | precisely | preciso
+preciso | precise
+preferita | favourite (feminine) | preferito
+preferito | favourite
+pubblico | audience, crowd; public
+pulisce | cleans | pulire
+pulire | to clean
+punteggio | score
+punti | points | punto
+punto | point
+rapidamente | quickly | rapido
+rapido | quick, fast
+ricevuto | received | ricevere
+ricevere | to receive
+rimbalzare | to bounce
+ruote | wheels | ruota
+ruota | wheel
+sbaglia | misses, gets it wrong | sbagliare
+sbagliano | they miss, they get it wrong | sbagliare
+secondi | seconds | secondo
+sentito | heard | sentire
+seriamente | seriously | serio
+serio | serious
+spingi | push | spingere
+spingere | to push
+spinte | pushes | spinta
+spinta | push
+spogliatoi | changing rooms | spogliatoio
+spogliatoio | changing room | | spogliarsi = to undress
+superare | to go over, to exceed; to pass (an exam)
+taglia | cuts (out) | tagliare
+tagliare | to cut
+tazzine | (coffee) cups | tazzina
+tazzina | espresso cup | tazza
+tifoso | fan, supporter | | from tifo: typhus! Fans have 'the fever'
+tira | shoots, throws | tirare
+tirano | they shoot | tirare
+tirare | to throw, to shoot; to pull
+tornati | come back (plural) | tornare
+tribuna | stand (at a stadium)
+venuti | come (plural) | venire
 `);

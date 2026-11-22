@@ -580,4 +580,35 @@ export const pictures: Record<string, PictureSpec> = {
     p("woman", 120, 212, { pose: "sit", c: "copper", hair: "long" }),
     p("woman", 290, 214, { c: "cobalt", hair: "bob", flip: true }),
   ]),
+
+  /* ---------------- A2 · La finale ---------------- */
+  "davide-5-l-allenamento": pic("hall", "Tuesday training: Karim tries a basketball wheelchair, and his first shot goes in.", [
+    o("hoop", 330, 90),
+    o("basketball", 300, 70, { s: 0.7 }),
+    o("wheelchair", 200, 214),
+    o("wheelchair", 110, 214),
+    p("woman", 60, 214, { c: "iron", hair: "ponytail", pose: "point" }),
+  ]),
+  "davide-6-come-si-gioca": pic("porticoes", "At the bar Davide explains the rules to Emma, moving coffee cups around the table like players.", [
+    o("smalltable", 200, 214),
+    o("espresso", 180, 182),
+    o("espresso", 210, 182),
+    o("cup", 236, 180),
+    o("wheelchair", 120, 214),
+    p("woman", 290, 212, { pose: "sit", c: "copper", hair: "long", flip: true }),
+  ]),
+  "davide-7-la-finale": pic("hall", "The final: a full arena, Grandpa Wei waving a flag, and the cup going up to the stands.", [
+    o("hoop", 60, 90),
+    o("bunting", 200, 40),
+    o("flag", 300, 120),
+    o("crown", 200, 120, { s: 0.6 }),
+    o("wheelchair", 180, 214),
+    p("oldman", 320, 214, { c: "manganese", flip: true, pose: "wave" }),
+  ], true),
+  "check-it-a2-sport": pic("porticoes", "The day after: the cup shines on the bar counter, and Davide's photo is in the paper.", [
+    o("counter", 200, 200),
+    o("crown", 170, 160, { s: 0.7 }),
+    o("poster", 320, 100, { t: "Bologna campione!" }),
+    p("man", 260, 214, { c: "cobalt", pose: "hold", flip: true }),
+  ]),
 };
