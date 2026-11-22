@@ -274,6 +274,11 @@ export function SpotBoard({
   const [picked, setPicked] = useState<number | null>(null);
   const [typed, setTyped] = useState("");
   const before = picked === null ? "" : words.slice(0, picked).join(" ");
+  // The fixed word on its own, or the whole corrected sentence typed out.
+  const accepted = [
+    ...fix,
+    ...fix.map((f) => words.flatMap((w, i) => (i !== wrongIndex ? [w] : f === "—" ? [] : [f])).join(" ")),
+  ];
 
   return (
     <div className="board">
@@ -312,10 +317,10 @@ export function SpotBoard({
             autoFocus
             onChange={(e) => setTyped(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === "Enter" && typed.trim()) onCheck(judge(typed, fix));
+              if (e.key === "Enter" && typed.trim()) onCheck(judge(typed, accepted));
             }}
           />
-          <button type="button" className="button" onClick={() => typed.trim() && onCheck(judge(typed, fix))}>
+          <button type="button" className="button" onClick={() => typed.trim() && onCheck(judge(typed, accepted))}>
             Check
           </button>
         </div>

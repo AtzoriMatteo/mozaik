@@ -2311,6 +2311,12 @@ a {
   color: var(--ink-muted);
 }
 
+.exercise-hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
 .mix-source {
   margin: 0;
   font-size: 0.9rem;

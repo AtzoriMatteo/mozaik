@@ -5,6 +5,22 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-22 (morning) — Rewrite answers: just the part that changes is enough
+
+**Asked (Matteo).** In the grammar mix a "change part of the sentence" exercise
+marked me wrong because I only typed the changed part.
+
+**Built (Claude).**
+- Rewrite exercises accept either the whole new sentence or only the words that
+  change (Vieni con Giulia? → "lei", "con lei" or the whole sentence). Copying
+  words that are already in the sentence doesn't count as a change.
+- The same the other way round: gap exercises accept the whole sentence typed
+  out, and spot-the-mistake accepts the corrected word or the whole corrected
+  sentence.
+- Under each rewrite exercise: "Type the new version, or just the part that changes."
+- A test checks every rewrite exercise in Dutch and Italian: typing only the
+  changed words must count as right.
+
 ## 2026-11-22 (later) — Italian A2 complete (ten units); content double-checked
 
 **Asked (Matteo).** Build the rest of Italian A2 and double-check the content.
