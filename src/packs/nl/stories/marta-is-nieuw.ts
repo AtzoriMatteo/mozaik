@@ -76,6 +76,8 @@ export const martaTexts: ReadingText[] = [
     paragraphs: [
       [
         s("Lieve Ania,", "Dear Ania,"),
+      ],
+      [
         s("Hoe gaat het met jou? Met mij gaat het goed!", "How are you? I'm fine!"),
         s("Ik woon nu een week in Leiden. Leiden is een mooie stad met veel grachten, bruggen en fietsen.", "I've been living in Leiden for a week now. Leiden is a beautiful city with lots of canals, bridges and bikes."),
         s("Ik woon in een oud huis in het centrum, boven een bakkerij. Elke ochtend ruik ik vers brood!", "I live in an old house in the centre, above a bakery. Every morning I smell fresh bread!"),
@@ -91,7 +93,12 @@ export const martaTexts: ReadingText[] = [
         s("Mijn buurvrouw is een oude dame, mevrouw De Vries. Ze is heel aardig, en ze heeft een kat.", "My neighbour is an old lady, Mrs De Vries. She's very kind, and she has a cat."),
         s("Mijn buurman aan de andere kant is een oude meneer met een grote hond.", "My neighbour on the other side is an old man with a big dog."),
         s("In het huis naast mij wonen drie studenten. Ik ken ze nog niet.", "In the house next to me live three students. I don't know them yet."),
-        s("Veel liefs, en de groeten aan mama! Marta", "Lots of love, and say hi to Mum! Marta"),
+      ],
+      [
+        s("Veel liefs, en de groeten aan mama!", "Lots of love, and say hi to Mum!"),
+      ],
+      [
+        s("Marta", "Marta"),
       ],
     ],
     tasks: [

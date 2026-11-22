@@ -223,9 +223,16 @@ export const checkpointsNl: Record<string, Checkpoint> = {
     text: [
       [
         s("Marta stuurt een ansichtkaart aan mevrouw De Vries.", "Marta sends Mrs De Vries a postcard."),
+      ],
+      [
         s("Lieve mevrouw De Vries, ik ben op Texel, een eiland in het noorden. Hier zijn meer schapen dan mensen! Elke dag fiets ik door de duinen.", "Dear Mrs De Vries, I'm on Texel, an island in the north. There are more sheep than people here! Every day I cycle through the dunes."),
         s("Morgen ga ik wadlopen, met een gids. Ik vind het een beetje spannend!", "Tomorrow I'm going mudflat walking, with a guide. I find it a bit exciting!"),
-        s("Groetjes, ook aan uw kat! Marta", "Best wishes, to your cat too! Marta"),
+      ],
+      [
+        s("Groetjes, ook aan uw kat!", "Best wishes, to your cat too!"),
+      ],
+      [
+        s("Marta", "Marta"),
       ],
     ],
     textTasks: [

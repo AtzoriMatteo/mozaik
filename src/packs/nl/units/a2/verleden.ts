@@ -100,6 +100,8 @@ export const verleden: Unit = {
       paragraphs: [
         [
           s("Hoi allemaal,", "Hi everyone,"),
+        ],
+        [
           s("Ik ben eindelijk verhuisd! Na vier jaar in Groningen woon ik nu in Utrecht, vlak bij het station.", "I've finally moved! After four years in Groningen I now live in Utrecht, close to the station."),
           s("Ik heb daar een nieuwe baan gevonden, bij een ziekenhuis.", "I found a new job there, at a hospital."),
         ],
@@ -116,7 +118,12 @@ export const verleden: Unit = {
         [
           s("Gisteren heb ik mijn nieuwe buren ontmoet. Ze zijn heel aardig en ze hebben me een plant gegeven.", "Yesterday I met my new neighbours. They're very nice and they gave me a plant."),
           s("Kom je een keer langs? Het adres stuur ik nog. De koffie staat klaar!", "Will you come round some time? I'll send the address. The coffee is ready!"),
-          s("Groetjes, Hanna", "Love, Hanna"),
+        ],
+        [
+          s("Groetjes,", "Love,"),
+        ],
+        [
+          s("Hanna", "Hanna"),
         ],
       ],
       tasks: [

@@ -5,6 +5,20 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-22 (morning, later) — Letters laid out like letters; flagged sentences
+
+**Asked (Matteo).** Seven flagged sentences; and "no space between Ayşe and then
+Yusuf: check for mistakes like these in all texts".
+
+**Built (Claude).**
+- The sign-off name was glued to the next line of the story ("…kinderen. Ayşe
+  Yusuf leest…"). Every letter, email and postcard in both languages now has its
+  greeting on its own line, the closing on its own line and the name below it,
+  and the story carries on in a new paragraph (14 texts).
+- Fine as they were: "Hij wil honderd worden" (wil is right; "hij wilt" is
+  wrong) and Kenji's "zijn eerste gesprekken in het Nederlands!".
+- The four Italian notes (si pronuncia, si trovano solo, va bene sia per un uomo
+  che per una donna, Emma l'irlandese) were already in the text.
 ## 2026-11-22 (morning) — Rewrite answers: just the part that changes is enough
 
 **Asked (Matteo).** In the grammar mix a "change part of the sentence" exercise

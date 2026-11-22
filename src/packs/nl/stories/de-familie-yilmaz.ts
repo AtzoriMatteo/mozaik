@@ -178,6 +178,8 @@ export const familieTexts: ReadingText[] = [
     paragraphs: [
       [
         s("Op maandag krijgt Yusuf een mail van zijn zus.", "On Monday Yusuf gets an email from his sister."),
+      ],
+      [
         s("Hoi Yusuf, bedankt voor de foto's van het feest! Papa ziet er goed uit, en jullie stoelen in een kring zijn grappig.", "Hi Yusuf, thanks for the photos of the party! Dad looks good, and your chairs in a circle are funny."),
         s("Hier gaat alles goed. Mijn werk is druk, maar leuk: ik ben lerares Engels op een middelbare school.", "Everything is fine here. My work is busy but fun: I'm an English teacher at a secondary school."),
       ],
@@ -189,7 +191,14 @@ export const familieTexts: ReadingText[] = [
       ],
       [
         s("Hoe gaat het in de winkel? Stuur me een foto van de nieuwe kleding. Ik wil een jas uit Nederland!", "How's the shop going? Send me a photo of the new clothes. I want a coat from the Netherlands!"),
-        s("Veel liefs, ook aan Elif en de kinderen. Ayşe", "Lots of love, to Elif and the children too. Ayşe"),
+      ],
+      [
+        s("Veel liefs, ook aan Elif en de kinderen.", "Lots of love, to Elif and the children too."),
+      ],
+      [
+        s("Ayşe", "Ayşe"),
+      ],
+      [
         s("Yusuf leest de mail twee keer en lacht. Juli! Dan moet hij een extra bed kopen.", "Yusuf reads the email twice and laughs. July! Then he has to buy an extra bed."),
       ],
     ],

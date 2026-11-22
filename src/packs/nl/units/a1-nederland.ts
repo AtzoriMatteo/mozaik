@@ -126,27 +126,48 @@ export const nederland: UnitContent = {
       paragraphs: [
         [
           s("Lieve oma,", "Dear Grandma,"),
+        ],
+        [
           s("Groeten van Texel! Texel is een eiland in het noorden.", "Greetings from Texel! Texel is an island in the north."),
           s("De boot van Den Helder naar Texel duurt maar twintig minuten.", "The boat from Den Helder to Texel only takes twenty minutes."),
           s("Er zijn hier meer schapen dan mensen!", "There are more sheep than people here!"),
           s("Elke dag fietsen we naar het strand. Het waait altijd.", "Every day we cycle to the beach. It's always windy."),
-          s("Veel liefs, Sem en Lotte", "Lots of love, Sem and Lotte"),
+        ],
+        [
+          s("Veel liefs,", "Lots of love,"),
+        ],
+        [
+          s("Sem en Lotte", "Sem en Lotte"),
         ],
         [
           s("Hoi Ahmed,", "Hi Ahmed,"),
+        ],
+        [
           s("Vandaag zijn we in Kinderdijk, vlak bij Rotterdam.", "Today we're in Kinderdijk, close to Rotterdam."),
           s("Hier staan negentien oude molens naast elkaar.", "Nineteen old windmills stand here side by side."),
           s("Ze zijn bijna driehonderd jaar oud en ze kunnen nog steeds water uit de polder pompen.", "They're almost three hundred years old and can still pump water out of the polder."),
           s("In een paar molens wonen nog mensen. Twee molens kun je van binnen bekijken.", "People still live in a few of the mills. You can look inside two of them."),
-          s("Tot gauw, Youssef", "See you soon, Youssef"),
+        ],
+        [
+          s("Tot gauw,", "See you soon,"),
+        ],
+        [
+          s("Youssef", "Youssef"),
         ],
         [
           s("Beste collega's,", "Dear colleagues,"),
+        ],
+        [
           s("Hartelijke groeten uit Maastricht, helemaal in het zuiden!", "Warm greetings from Maastricht, right down in the south!"),
           s("Hier is Nederland niet plat: er zijn heuvels!", "Here the Netherlands isn't flat: there are hills!"),
           s("De stad is heel oud en de mensen praten met een zachte g.", "The city is very old and people speak with a soft g."),
           s("Elke middag drinken we koffie op het Vrijthof, een groot plein, en we eten Limburgse vlaai.", "Every afternoon we have coffee on the Vrijthof, a big square, and we eat Limburg tart."),
-          s("Tot maandag! Marieke", "See you on Monday! Marieke"),
+        ],
+        [
+          s("Tot maandag!", "See you on Monday!"),
+        ],
+        [
+          s("Marieke", "Marieke"),
         ],
       ],
       tasks: [
