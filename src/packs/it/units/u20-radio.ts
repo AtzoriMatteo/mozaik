@@ -25,7 +25,7 @@ export const radio: Unit = {
     title: "Karim alla radio",
     titleTranslation: "Karim on the radio",
     intro:
-      "November. The neighbourhood is starting its own little radio and needs a presenter, and Karim says yes. Davide makes the posters, Nicolò from Emma's class turns out to be a sound genius, and every Thursday at nine Via del Pratello is on air.",
+      "November. Radio Pratello, the little student radio that asked the street 'car park or garden?' in spring, needs a new presenter, and Karim says yes. Davide makes the posters, Nicolò from Emma's class turns out to be a sound genius, and every Thursday at nine Via del Pratello is on air.",
   },
   texts: [
     {
@@ -158,19 +158,19 @@ export const radio: Unit = {
         line("Karim", "Signor Wei, quando è stato aperto il negozio?", "Mr Wei, when was the shop opened?"),
         line("Wei", "È stato aperto trent'anni fa, da me e da mia moglie.", "It was opened thirty years ago, by me and my wife."),
         line("Karim", "E il nome? Chi l'ha scelto?", "And the name? Who chose it?"),
-        line("Wei", "È stato scelto da mia nipote Lin. Aveva tre anni e voleva chiamarlo Il Gatto!", "It was chosen by my granddaughter Lin. She was three and wanted to call it The Cat!"),
+        line("Wei", "È stato scelto da mia moglie. Io volevo chiamarlo Il Gatto, ma lei non era d'accordo!", "It was chosen by my wife. I wanted to call it The Cat, but she didn't agree!"),
         line("Karim", "E cosa è cambiato in trent'anni?", "And what has changed in thirty years?"),
         line("Wei", "Tutto, però i clienti sono gli stessi. Anzi, ora sono anche amici.", "Everything, but the customers are the same. Actually, now they're friends too."),
       ],
       gist: { prompt: "What's the interview about?", options: ["The history of Wei's shop", "Wei's health", "The garden"], answer: 0 },
       details: [
         { prompt: "When was the shop opened?", options: ["Thirty years ago", "Ten years ago", "Last year"], answer: 0 },
-        { prompt: "Who chose the name?", options: ["Lin, aged three", "Wei's wife", "Karim"], answer: 0 },
+        { prompt: "Who chose the name?", options: ["Wei's wife", "Wei", "Lin"], answer: 0 },
       ],
       tasks: [
         tf("Il negozio è stato aperto da Wei e da sua moglie.", "The shop was opened by Wei and his wife.", true),
         heard(5, ["stessi", "tessuti", "stessa"], 0),
-        gaps(3, "scelto", "nipote"),
+        gaps(3, "scelto", "moglie"),
       ],
       dictation: [1, 5],
     },

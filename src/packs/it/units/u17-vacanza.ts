@@ -229,7 +229,7 @@ export const vacanza: Unit = {
       lines: [
         line("Artigiano", "Buongiorno, signorina, sono il signor Paoli, di Firenze.", "Good morning, miss, it's Mr Paoli, from Florence."),
         line("Artigiano", "Ha dimenticato gli occhiali da sole nel mio negozio.", "You forgot your sunglasses in my shop."),
-        line("Artigiano", "Me li dica: glieli mando a Bologna per posta?", "Tell me: shall I post them to you in Bologna?"),
+        line("Artigiano", "Mi dica: glieli mando a Bologna per posta?", "Tell me: shall I post them to you in Bologna?"),
         line("Artigiano", "Mi richiami quando può. Arrivederla!", "Call me back when you can. Goodbye!"),
       ],
       questions: [

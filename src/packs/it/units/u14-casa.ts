@@ -95,7 +95,7 @@ export const casa: Unit = {
       paragraphs: [
         [
           s("Cara mamma, finalmente ho una casa mia! È in via del Pratello, vicino a Emma. Ti mando le foto.", "Dear Mum, at last I have a home of my own! It's on Via del Pratello, near Emma. I'm sending you the photos."),
-          s("La camera è piccola, ma c'è una finestra sui tetti. La mattina ci entra il sole.", "The bedroom is small, but there's a window over the roofs. In the morning the sun comes in."),
+          s("La cucina è piccola, ma c'è una finestra sui tetti. La mattina ci entra il sole.", "The kitchen is small, but there's a window over the roofs. In the morning the sun comes in."),
           s("In cucina ho messo le tue foto e la tua ricetta del pão de queijo. Non è facile da fare qui!", "In the kitchen I've put up your photos and your pão de queijo recipe. It isn't easy to make here!"),
         ],
         [

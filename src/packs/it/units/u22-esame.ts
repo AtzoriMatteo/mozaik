@@ -37,7 +37,7 @@ export const esame: Unit = {
       grammar: ["congiuntivo", "pronomi-tonici"],
       paragraphs: [
         [
-          s("Un lunedì di febbraio il signor Neri ferma Emma nel corridoio della scuola.", "One Monday in February Mr Neri stops Emma in the school corridor."),
+          s("Un lunedì di febbraio il signor Neri, che da gennaio le dà del tu, ferma Emma nel corridoio della scuola.", "One Monday in February Mr Neri, who has called her tu since January, stops Emma in the school corridor."),
           s("\"Emma, a marzo c'è l'esame di italiano B1. Penso che tu sia pronta. E credo che un certificato sia utile per il tuo lavoro qui.\"", "\"Emma, in March there's the B1 Italian exam. I think you're ready. And I believe a certificate is useful for your job here.\""),
         ],
         [
@@ -190,7 +190,7 @@ export const esame: Unit = {
         pf("Say what you hope", "Spero che … .", "spero"),
       ],
       model:
-        "Ciao Karim! Penso che l'esame sia una buona idea. Se lo passi, è più facile trovare lavoro. Se vuoi, studio con te il sabato. Spero che tu abbia un po' di tempo!",
+        "Ciao Tom! Penso che l'esame sia una buona idea. Se lo passi, è più facile trovare lavoro. Se vuoi, studio con te il sabato. Spero che tu abbia un po' di tempo!",
     }),
     a2({
       id: "w-due-anni-dopo",

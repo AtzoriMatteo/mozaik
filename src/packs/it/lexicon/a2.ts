@@ -645,6 +645,7 @@ ugo | Ugo (a man's name)
 vita | life | | ~ vital
 qualcosa | something
 sbagliato | wrong | sbagliare
+compagno | classmate; companion | | con + pane: someone you share bread with | compagno di corso = classmate
 // A2 unit 8: Radio Pratello
 quadrati | square (metri quadrati = square metres) | quadrato
 quadrato | square

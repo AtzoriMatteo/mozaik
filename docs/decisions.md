@@ -5,6 +5,42 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-22 (later) — Italian A2 complete (ten units); content double-checked
+
+**Asked (Matteo).** Build the rest of Italian A2 and double-check the content.
+
+**Built (Claude).** Six more units, same shape as the first four (3 texts,
+2 listening items, 2 writing topics, a checkpoint, pictures, 3 grammar lessons
+with Going deeper, a grammar mix). The story runs from July to the next February:
+  5. Arriva Siobhan (Emma's sister, Florence): imperative with pronouns,
+     polite imperative, combined pronouns (glielo, me lo).
+  6. La finale (Davide's wheelchair basketball final): -mente adverbs,
+     si impersonale, prima di / dopo aver.
+  7. La prof (Emma teaches at the Babele school): trapassato, cui, reported speech.
+  8. Radio Pratello (Karim on air): però / invece / quindi / infatti / anche se,
+     the passive (è stato aperto, viene chiuso), bisogna + infinitive.
+  9. Dottore! (Karim's graduation, the Italian laurea): quel / bel, molto / tanto /
+     troppo, tutto + article.
+  10. In bocca al lupo! (Emma's B1 exam): a first look at the congiuntivo
+     (penso che sia), se + present/future, me / te after a preposition.
+Italian A2 now has 30 grammar lessons.
+
+**Content check (Claude).** Read all A2 texts, listening and checkpoints for
+facts and timeline across both levels. Fixed:
+- Karim studies engineering (as he says in A1), not history; his graduation
+  is the A1 "I finish next year" paying off.
+- Lin was 28 in A1, so she can't have named a shop opened 30 years ago: Wei's
+  wife named it.
+- Radio Pratello already existed in A2 unit 4 (the street interviews), so unit 8
+  no longer says it's new. The garden opened in spring (unit 4), so the November
+  news is a new basketball court in it.
+- Siobhan doesn't speak Italian, so Emma's Italian email about her students goes
+  to Kenji, and the last voicemail is from Emma's mum (who is taking an evening
+  class).
+- Ana's window over the roofs is in the kitchen in both texts; the craftsman's
+  "Me li dica" (meaningless) is now "Mi dica"; Mr Neri switches to tu, and the
+  text says so.
+
 ## 2026-11-22 — Italian A2, first four units; review cards without the sentence gap
 
 **Asked (Matteo).** Italian A2, four full units first. And: review cards that

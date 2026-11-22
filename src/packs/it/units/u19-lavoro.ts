@@ -62,7 +62,7 @@ export const lavoro: Unit = {
       grammar: ["cui", "che-relativo"],
       paragraphs: [
         [
-          s("Dopo un mese Emma conosce bene i suoi studenti. Scrive una mail a Siobhan per raccontarglieli.", "After a month Emma knows her students well. She writes an email to Siobhan to tell her about them."),
+          s("Dopo un mese Emma conosce bene i suoi studenti. Scrive una mail a Kenji, il suo compagno di corso che è tornato a Tokyo, per raccontarglieli.", "After a month Emma knows her students well. She writes an email to Kenji, her classmate who has gone back to Tokyo, to tell him about them."),
           s("\"La classe in cui insegno il martedì è la mia preferita. È un gruppo piccolo, con cui si ride molto.\"", "\"The class I teach on Tuesdays is my favourite. It's a small group, one you laugh a lot with.\""),
         ],
         [
@@ -233,7 +233,7 @@ export const lavoro: Unit = {
       ],
     },
     write: {
-      situation: "Write to Siobhan and report what Mr Neri said.",
+      situation: "Write to Kenji and report what Mr Neri said.",
       points: [
         { prompt: "Report the news", frame: "Il direttore mi ha detto che … ." },
         { prompt: "Say how you feel", frame: "Sono … ." },
