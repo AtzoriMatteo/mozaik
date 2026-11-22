@@ -3,7 +3,7 @@
 import { VerdictLine } from "@/components/exercises/verdict";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { judge, shuffleTiles, type Verdict } from "@/core/answers";
+import { judge, judgeFill, judgeTransform, shuffleTiles, type Verdict } from "@/core/answers";
 import type { Example, Exercise, LessonBlock } from "@/core/content";
 import { nextActivity } from "@/core/course";
 import type { LanguagePack } from "@/core/language-pack";
@@ -445,7 +445,11 @@ export function ExerciseCard({
   function check() {
     if (exercise.kind === "fill" || exercise.kind === "transform") {
       if (!typed.trim()) return setError("Type your answer first.");
-      onCheck(judge(typed, exercise.answers));
+      onCheck(
+        exercise.kind === "fill"
+          ? judgeFill(typed, exercise.before, exercise.after, exercise.answers)
+          : judgeTransform(typed, exercise.from, exercise.answers),
+      );
     } else if (exercise.kind === "build") {
       if (placed.length < exercise.tiles.length) return setError("Use all the tiles first.");
       const sentence = placed.map((i) => exercise.tiles[i]).join(" ");
@@ -524,6 +528,7 @@ export function ExerciseCard({
           <p className="exercise-prompt">{exercise.instruction}</p>
           <p className="exercise-sentence" lang={lang}>{exercise.from}</p>
           <div className="field">{input}</div>
+          <p className="exercise-hint">Type the new version, or just the part that changes.</p>
         </>
       ) : null}
 
