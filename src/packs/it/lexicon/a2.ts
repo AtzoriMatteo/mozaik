@@ -351,4 +351,116 @@ uguale | the same, equal | | Per me è uguale = it's all the same to me
 utile | useful
 votano | they vote | votare
 votare | to vote
+# Unit A2-5: Arriva Siobhan
+abbraccia | hugs | abbracciare
+abbracciare | to hug | | a + braccio (arm)
+accomodi | (si accomodi) have a seat, come in | accomodarsi
+accomodarsi | to make yourself comfortable, to take a seat
+albergo | hotel
+arrivederla | goodbye (to Lei) | | arrivederci, formal
+arriveremo | we'll arrive | arrivare
+artigiano | craftsman | | ~ artisan
+bagagli | luggage | bagaglio
+bagaglio | piece of luggage
+bisogno | need (avere bisogno di = to need)
+bistecca | steak | | ~ beefsteak
+bordo | board (a bordo = on board)
+botticelli | Botticelli, painter of the Birth of Venus
+cameriere | waiter
+cammina | walks (si cammina = you walk, people walk) | camminare
+capito | understood | capire
+carrozza | carriage, coach (of a train)
+ce | there; us (before lo, la, ne: ce l'ho) | ci
+comode | comfortable (feminine plural) | comodo
+comprata | bought (feminine) | comprare
+compriamo | we buy; shall we buy | comprare
+consiglia | recommends, advises | consigliare
+consigliare | to advise, to recommend
+controllate | check (you all) | controllare
+custode | guard, caretaker | | ~ custodian
+dammi | give me | dare | da' + mi
+dia | give (Lei command) | dare
+dica | say, tell (Lei command; mi dica = how can I help?) | dire
+dille | tell her | dire | di' + le
+dillo | say it | dire | di' + lo
+dimenticato | forgotten | dimenticare
+dimenticare | to forget
+documento | document, ID
+eccola | here it is (feminine) | ecco | ecco + la
+fammi | make me, do for me | fare | fa' + mi
+fermata | stop
+fiorentina | Florentine (bistecca alla fiorentina: thick T-bone steak) | fiorentino
+fiume | river | | ~ flume
+gliela | it (fem.) to him / to her | | gli + la
+glieli | them to him / to her | | gli + li
+glielo | it to him / to her | | gli + lo
+incarta | wraps | incartare
+incartare | to wrap (in paper) | | in + carta
+incarto | I wrap | incartare
+lascio | I leave | lasciare
+leggilo | read it | leggere | leggi + lo
+marrone | brown | | ~ maroon
+mentre | while
+mettiti | put on (yourself) | mettersi | metti + ti
+mettersi | to put on (clothes)
+mezz' | half (mezz'ora = half an hour) | mezzo
+nei | in the (in + i) | in
+notti | nights | notte
+novella | (Santa Maria Novella: Florence's main station)
+pagano | they pay | pagare
+paoli | Paoli (a surname)
+parte | side, part
+passeggeri | passengers | passeggero
+passeggero | passenger
+password | password
+pelle | leather; skin
+pesantissima | really heavy (feminine) | pesante
+pesante | heavy
+preghiamo | we ask (vi preghiamo di = please) | pregare
+pregare | to ask, to beg; to pray
+prendila | take it | prendere | prendi + la
+prenotazione | booking, reservation
+preoccuparti | (non preoccuparti) don't worry | preoccuparsi
+preoccuparsi | to worry
+preparato | prepared, made | preparare
+prometti | you promise | promettere
+prometto | I promise | promettere
+promettere | to promise
+provi | try (Lei command) | provare
+pure | go ahead, by all means; also
+quadri | paintings | quadro
+quadro | painting, picture
+reception | reception (in a hotel)
+regole | rules | regola
+regola | rule
+richiami | call back (Lei command) | richiamare
+ritardo | delay (in ritardo = late)
+salga | go up (Lei command) | salire
+sangue | blood (al sangue = rare)
+santa | saint (feminine) | santo
+scarpe | shoes | scarpa
+scarpa | shoe
+scende | gets off, goes down | scendere
+semplice | simple
+siediti | sit down | sedersi | siedi + ti
+sedersi | to sit down
+sorriso | smile
+spenga | switch off (Lei command) | spegnere
+spegnere | to switch off
+tenere | to keep, to hold
+thank | (English) thank
+tornerà | will come back | tornare
+torri | towers (le Due Torri: Bologna's two leaning towers) | torre
+torre | tower
+traduci | you translate | tradurre
+tradurre | to translate
+trentacinque | thirty-five
+uffizi | the Uffizi, Florence's great art gallery | | uffizi = offices: it was built for the Medici's offices
+uniche | only (feminine plural) | unico
+unico | only, unique
+ve | you, to you (before lo, la, ne) | vi
+vedono | they see | vedere
+venere | Venus
+wifi | wifi
+you | (English) you
 `);

@@ -247,4 +247,19 @@ export const deeper: Record<string, [string, string][]> = {
     ["Loro after the verb", "Formal Italian uses loro after the verb for 'to them': Mando loro una lettera. In speech gli is normal: Gli mando una lettera."],
     ["Verbs like piacere", "Several verbs work like piacere: mi manca (I miss it), mi serve (I need it), mi interessa, mi sembra (it seems to me), mi dispiace."],
   ],
+  "imperativo-pronomi": [
+    ["Combined pronouns on commands", "Two pronouns glue on together: Dammelo! (Give it to me!) Diglielo! (Tell him/her!) Portatemela! (Bring it to me, you all!)."],
+    ["Stress doesn't move", "Adding pronouns doesn't move the stress: PRENdi → PRENdilo → PRENdimelo. Say the long ones slowly first."],
+    ["Andiamo / andiamoci", "The noi command is the same as the present: Andiamo! With a pronoun: Andiamoci (let's go there), Sediamoci (let's sit down)."],
+  ],
+  "imperativo-lei": [
+    ["Loro, very formal", "For a group, voi is normal: Prendete, girate. The Loro forms (Prendano, Si accomodino) survive in very formal settings like hotels and ceremonies."],
+    ["Lei commands are the subjunctive", "The Lei command forms (vada, faccia, sia) are borrowed from the present subjunctive, which you'll meet at B1: Penso che vada bene."],
+    ["Softening", "Add pure, per favore or the conditional to soften: Si accomodi pure. Mi potrebbe dire…? sounds even more polite than Mi dica."],
+  ],
+  "pronomi-combinati": [
+    ["With reflexive verbs", "si becomes se before lo/la/ne: Se lo mette (he puts it on), Se ne va (he leaves), and reflexives combine too: Me lo metto, Te la lavi."],
+    ["andarsene", "andarsene = to go away: Me ne vado, Te ne vai, Se ne va, Ce ne andiamo. Very common."],
+    ["Ce la faccio", "farcela = to manage: Ce la faccio! (I can do it!). Non ce la faccio più (I can't take it any more)."],
+  ],
 };

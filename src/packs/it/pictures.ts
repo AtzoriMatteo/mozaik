@@ -552,4 +552,32 @@ export const pictures: Record<string, PictureSpec> = {
     p("oldman", 330, 214, { c: "iron", flip: true }),
     o("sun", 330, 50),
   ]),
+
+  /* ---------------- A2 · Arriva Siobhan ---------------- */
+  "emma-8-arriva-siobhan": pic("platform", "Bologna station: Siobhan steps off the train from Milan with a huge suitcase, and Emma grabs the other side.", [
+    o("train", 110, 170, { s: 0.8 }),
+    o("suitcase", 250, 200),
+    p("woman", 210, 214, { c: "copper", hair: "long" }),
+    p("woman", 290, 214, { c: "ochre", hair: "ponytail", flip: true }),
+  ]),
+  "emma-9-a-firenze": pic("hall", "The Uffizi: Siobhan stands for half an hour in front of a painting, while a guard watches the room.", [
+    o("frame", 200, 90, { s: 1.4 }),
+    o("bench", 200, 206),
+    p("woman", 170, 214, { c: "ochre", hair: "ponytail" }),
+    p("woman", 240, 214, { c: "copper", hair: "long" }),
+    p("man", 350, 214, { c: "iron", flip: true }),
+  ]),
+  "emma-10-il-regalo": pic("room", "A little leather workshop in Florence: the old craftsman wraps the brown bag for the two sisters.", [
+    o("counter", 200, 200),
+    o("gift", 200, 160),
+    p("oldman", 130, 214, { c: "manganese", glasses: true }),
+    p("woman", 280, 214, { c: "copper", hair: "long", flip: true }),
+    p("woman", 340, 214, { c: "ochre", hair: "ponytail", flip: true }),
+  ]),
+  "check-it-a2-vacanza": pic("room", "Sunday evening: Emma on the phone to her mum in Dublin, who has the new bag and the card in Italian.", [
+    o("phone", 200, 120, { s: 0.8 }),
+    o("gift", 300, 196),
+    p("woman", 120, 212, { pose: "sit", c: "copper", hair: "long" }),
+    p("woman", 290, 214, { c: "cobalt", hair: "bob", flip: true }),
+  ]),
 };

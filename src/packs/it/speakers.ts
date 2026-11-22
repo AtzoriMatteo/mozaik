@@ -26,6 +26,11 @@ export const speakers: Record<string, string> = {
   "lin-6-la-riunione": "Bassi|Ana|Davide|Rita",
   "lin-7-scriviamo-alla-sindaca": "Karim|Karim|Emma|Lin|Lin|Sindaca|Lin|Wei",
   "check-it-a2-quartiere": "Lin|Rita",
+  // A2 unit 5: Siobhan in Italia
+  "emma-8-arriva-siobhan": "Emma|Emma|Giulia|Emma|Emma|Karim|Karim|Rita|Emma|Emma",
+  "emma-9-a-firenze": "Receptionist|Emma|Receptionist|Custode|Cameriere|Emma|Emma",
+  "emma-10-il-regalo": "Emma|Artigiano|Artigiano|Emma|Artigiano|Emma|Emma|Siobhan",
+  "check-it-a2-vacanza": "Mamma|Emma|Mamma",
   // Unit 12: Il primo inverno di Emma
   "emma-1-natale-con-i-tuoi": "Rita|Karim|Giulia|Giulia|Emma|Marco",
   "emma-2-la-vigilia": "Mamma",
