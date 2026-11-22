@@ -8,6 +8,7 @@ import { grammarA2u4 } from "./a2-4";
 import { grammarA2u5 } from "./a2-5";
 import { grammarA2u6 } from "./a2-6";
 import { grammarA2u7 } from "./a2-7";
+import { grammarA2u8 } from "./a2-8";
 import { build, choice, example, fill, match, mistakes, note, passage, pick, slots, sort, spot, step, summary, table, text, transform } from "./helpers";
 
 /**
@@ -1418,4 +1419,4 @@ const points: readonly GrammarPoint[] = [
 ];
 
 /** Each lesson with its "Going deeper" after the summary card. */
-export const grammar: readonly GrammarPoint[] = [...points, ...grammarA2u1, ...grammarA2u2, ...grammarA2u3, ...grammarA2u4, ...grammarA2u5, ...grammarA2u6, ...grammarA2u7].map((g) => ({ ...g, lesson: withDeeper(g.lesson, deeper[g.id]) }));
+export const grammar: readonly GrammarPoint[] = [...points, ...grammarA2u1, ...grammarA2u2, ...grammarA2u3, ...grammarA2u4, ...grammarA2u5, ...grammarA2u6, ...grammarA2u7, ...grammarA2u8].map((g) => ({ ...g, lesson: withDeeper(g.lesson, deeper[g.id]) }));

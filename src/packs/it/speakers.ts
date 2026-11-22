@@ -41,6 +41,11 @@ export const speakers: Record<string, string> = {
   "emma-12-i-miei-studenti": "Emma|Emma|Emma|Emma|Emma",
   "emma-13-cosa-ha-detto": "Emma|Rita|Emma|Rita|Emma|Marco|Rita",
   "check-it-a2-lavoro": "Rita",
+  // A2 unit 8: Radio Pratello
+  "karim-5-in-onda": "Davide|Karim",
+  "karim-6-il-notiziario": "Karim|Karim|Karim|Karim|Karim|Karim",
+  "karim-7-consigli-per-studenti": "Ana|Ana|Emma|Emma|Emma|Ragazzo|Karim|Ragazzo",
+  "check-it-a2-radio": "Mamma|Mamma",
   // Unit 12: Il primo inverno di Emma
   "emma-1-natale-con-i-tuoi": "Rita|Karim|Giulia|Giulia|Emma|Marco",
   "emma-2-la-vigilia": "Mamma",

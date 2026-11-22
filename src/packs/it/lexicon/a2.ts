@@ -645,4 +645,68 @@ ugo | Ugo (a man's name)
 vita | life | | ~ vital
 qualcosa | something
 sbagliato | wrong | sbagliare
+// A2 unit 8: Radio Pratello
+quadrati | square (metri quadrati = square metres) | quadrato
+quadrato | square
+microfoni | microphones | microfono
+microfono | microphone
+idee | ideas | idea
+nervoso | nervous
+infatti | in fact, indeed (it confirms what was said) | | Not "actually": for a surprise use invece
+tecnico | sound technician; technical | | | At the radio: il tecnico del suono
+silenzioso | quiet, silent | | silenzio + -oso
+cavi | cables | cavo
+cavo | cable
+fredde | cold (feminine plural) | freddo
+doveva | was supposed to, had to | dovere
+messaggi | messages | messaggio
+ascoltatori | listeners | ascoltatore
+ascoltatore | listener | | ascoltare + -tore (one who listens)
+inaugurato | opened (officially), inaugurated | inaugurare
+inaugurare | to open officially, to inaugurate
+piantati | planted | piantare
+piantare | to plant | | ~ plant
+accompagnate | take, walk (someone somewhere; voi, imperative) | accompagnare
+accompagnare | to go with, to take someone somewhere | | a + compagno (companion)
+terza | third (feminine) | terzo
+stata | been (feminine) | essere
+avrà | will have | avere
+infine | finally, lastly | | in + fine (end)
+rubata | stolen (feminine) | rubare
+rubare | to steal | | ~ rob
+presa | taken (feminine) | prendere
+pulirla | to clean it (la = the cup) | pulire
+falso | false | | | Falso allarme! = False alarm!
+allarme | alarm | | all'arme! = "to arms!"
+puntata | episode (of a programme) | | | Also: un'altra puntata = another episode of a series
+dedicata | dedicated (feminine) | dedicare
+dedicare | to dedicate
+problema | problem | | | Masculine despite -a: il problema, i problemi
+bisogna | you need to, one must | bisognare | | Never changes: bisogna + infinitive
+bisognare | to be necessary (only bisogna is used)
+contratto | contract
+noioso | boring | | ~ annoying
+sbagliavo | I made mistakes, I used to get it wrong | sbagliare
+capiva | understood (lei, imperfetto) | capire
+amicizia | friendship | | | fare amicizia = to make friends
+appena | just; as soon as | | | appena arrivato = just arrived
+dubbi | doubts | dubbio
+dubbio | doubt | | ~ dubious
+ravioli | dumplings; ravioli | | | Wei's ravioli cinesi are Chinese dumplings
+moglie | wife
+scelto | chosen | scegliere
+voleva | wanted (lei, imperfetto) | volere
+chiamarlo | to call it, to name it | chiamare
+programma | programme | | | Masculine despite -a: il programma
+ascoltato | listened to, heard | ascoltare
+decide | decides | decidere
+decidere | to decide
+mamme | mums | mamma
+ascoltano | listen (loro) | ascoltare
+file | file (computer)
+salvato | saved | salvare
+salvare | to save
+cartella | folder; schoolbag
+premere | to press
+tasto | button, key | | | il tasto verde = the green button
 `);

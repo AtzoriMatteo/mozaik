@@ -642,4 +642,33 @@ export const pictures: Record<string, PictureSpec> = {
     p("oldwoman", 130, 212, { pose: "sit", c: "manganese" }),
     p("woman", 280, 214, { c: "copper", hair: "long", flip: true }),
   ]),
+  "karim-5-in-onda": pic("room", "Radio Pratello's tiny studio: Karim at the microphone, nervous, Nicolò at the computer, Davide giving a thumbs-up.", [
+    o("smalltable", 200, 214),
+    o("microphone", 170, 176),
+    o("laptop", 250, 180),
+    o("lights", 200, 40),
+    p("man", 140, 212, { pose: "sit", c: "cobalt" }),
+    p("man", 270, 212, { pose: "sit", c: "iron", flip: true }),
+    o("wheelchair", 340, 214),
+  ]),
+  "karim-6-il-notiziario": pic("piazza", "The neighbourhood news: the new garden in the little square, opened by the mayor, with twelve young trees.", [
+    o("bigtree", 90, 214, { s: 0.7 }),
+    o("bigtree", 310, 214, { s: 0.7 }),
+    o("bunting", 200, 50),
+    p("woman", 200, 214, { c: "manganese", hair: "bob", pose: "wave" }),
+    o("sun", 340, 50),
+  ]),
+  "karim-7-consigli-per-studenti": pic("room", "In the studio Ana and Emma give advice to new students, and a listener calls in.", [
+    o("smalltable", 200, 214),
+    o("microphone", 160, 176),
+    o("microphone", 240, 176),
+    o("phone", 340, 90),
+    p("woman", 120, 212, { pose: "sit", c: "ochre", hair: "bun" }),
+    p("woman", 280, 212, { pose: "sit", c: "copper", hair: "long", flip: true }),
+  ]),
+  "check-it-a2-radio": pic("room", "A message from Karim's mum in Turin: his father is proud, but Karim talks too fast.", [
+    o("phone", 200, 120),
+    o("frame", 330, 80),
+    p("man", 120, 214, { c: "cobalt", pose: "hold" }),
+  ]),
 };

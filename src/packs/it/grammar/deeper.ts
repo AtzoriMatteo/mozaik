@@ -292,4 +292,19 @@ export const deeper: Record<string, [string, string][]> = {
     ["Words of place and time", "qui → lì, oggi → quel giorno, domani → il giorno dopo, ieri → il giorno prima, questo → quello."],
     ["Other reporting verbs", "Beyond dire and chiedere: rispondere che, raccontare che, spiegare che, promettere di, pregare di."],
   ],
+  connettivi: [
+    ["anzi and comunque", "anzi corrects or goes further: Non è brutto, anzi, è bellissimo. comunque = anyway, however: È caro; comunque, lo compro."],
+    ["perciò, allora, dunque", "Other ways to say 'so': perciò and dunque are a bit more formal, allora is everyday speech (Allora, cosa facciamo?)."],
+    ["sebbene, benché", "Formal 'although' takes the congiuntivo: Sebbene sia stanco, lavora. anche se takes the normal indicative, which is why it's the one to use now."],
+  ],
+  passivo: [
+    ["andare + participle", "andare + participle means 'must be done': Il contratto va letto bene (the contract must be read carefully). Very common in instructions."],
+    ["si passivante", "si + verb is another passive: Si vendono case (houses are sold). The verb agrees with the thing: si vende una casa, si vendono case."],
+    ["No passive without a direct object", "Only verbs with a direct object have a passive. 'I was told' is not *sono stato detto: say mi hanno detto."],
+  ],
+  bisogna: [
+    ["bisogna che + congiuntivo", "To say who, bisogna che takes the congiuntivo: Bisogna che tu venga (you need to come). You'll meet it with the congiuntivo."],
+    ["avere bisogno di", "avere bisogno di = to need: Ho bisogno di aiuto, Ho bisogno di dormire. It changes with the person: ho, hai, ha bisogno."],
+    ["occorre, serve", "occorre and serve also mean 'is needed': Occorre prenotare. Serve una mano? (Need a hand?). With a plural thing: servono due uova."],
+  ],
 };
