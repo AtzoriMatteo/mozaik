@@ -701,4 +701,31 @@ export const pictures: Record<string, PictureSpec> = {
     o("sun", 340, 50),
     o("phone", 120, 120),
   ]),
+  "emma-14-l-idea-di-neri": pic("classroom", "In the school corridor Mr Neri tells Emma about the B1 exam; she isn't sure.", [
+    o("board", 110, 80, { t: "Esame B1 · marzo" }),
+    p("oldman", 200, 214, { c: "iron", glasses: true, pose: "point" }),
+    p("woman", 290, 214, { c: "copper", hair: "long", flip: true }),
+  ]),
+  "emma-15-se-studi-con-me": pic("room", "Four weeks of study: verb cards on the table, a pile of books, and Giulia sending Emma to bed.", [
+    o("smalltable", 200, 214),
+    o("openbook", 180, 178),
+    o("notes", 230, 176),
+    o("moon", 340, 50),
+    p("woman", 120, 212, { pose: "sit", c: "copper", hair: "long" }),
+    p("woman", 290, 214, { c: "ochre", hair: "ponytail", flip: true, pose: "point" }),
+  ]),
+  "emma-16-il-risultato": pic("porticoes", "At Bar Margherita everyone raises a glass to Emma, who has passed her exam.", [
+    o("table", 200, 214),
+    o("wine", 170, 176),
+    o("wine", 230, 176),
+    o("bunting", 200, 40),
+    p("woman", 110, 214, { c: "copper", hair: "long", pose: "wave" }),
+    p("oldwoman", 290, 214, { c: "manganese", flip: true, pose: "hold" }),
+  ], true),
+  "check-it-a2-esame": pic("room", "Emma's certificate in a frame, next to the photo of her sister Siobhan.", [
+    o("frame", 160, 90),
+    o("frame", 250, 90),
+    o("plant", 340, 214),
+    p("woman", 200, 214, { c: "copper", hair: "long" }),
+  ]),
 };

@@ -757,4 +757,66 @@ terribile | terrible
 cento | a hundred | | ~ cent, century
 centoventi | a hundred and twenty
 centodieci | a hundred and ten | | | centodieci e lode: top marks with honours for an Italian degree
+// A2 unit 10: In bocca al lupo!
+febbraio | February
+marzo | March | | Mars, the god of war
+b1 | B1, the intermediate level of the European framework
+penso | I think | pensare | | Penso che + congiuntivo: Penso che sia vero
+credo | I believe, I think | credere
+credere | to believe | | ~ credible, credit
+spero | I hope | sperare
+sperare | to hope | | | Spero di sì = I hope so
+certificato | certificate
+sicura | sure (feminine) | sicuro
+sicuro | sure; safe | | ~ secure
+grammatica | grammar
+sbagli | you're wrong, you make a mistake | sbagliare | | Ti sbagli = you're wrong (sbagliarsi)
+sento | I hear; I feel | sentire
+pensi | you think | pensare | | Che ne pensi? = What do you think (of it)?
+abbia | has (congiuntivo of avere) | avere | | Penso che abbia ragione = I think he's right
+studiamo | we study; let's study | studiare
+affare | deal; business | | | Affare fatto! = It's a deal!
+aiuta | helps | aiutare
+metodo | method
+rispondi | you answer | rispondere
+schede | cards, index cards; forms | scheda
+scheda | card; form; sheet | | | la scheda telefonica = phone card
+verbi | verbs | verbo
+verbo | verb
+irregolari | irregular (plural) | irregolare
+irregolare | irregular
+saprai | you'll know | sapere
+memoria | memory | | | a memoria = by heart
+scritto | the written part; written | scrivere
+cioè | that is, I mean | | ciò + è (that is) | Very common in speech: cioè… = I mean…
+formali | formal (plural) | formale
+distinti | distinguished (Distinti saluti = Yours sincerely) | distinto
+distinto | distinguished; distinct
+abbastanza | enough; quite
+bocca | mouth | | | In bocca al lupo! = Good luck! (literally "into the wolf's mouth")
+lupo | wolf | | Latin lupus | Answer In bocca al lupo with Crepi! (may it die!)
+crepi | may it die (the answer to In bocca al lupo) | crepare
+crepare | to die, to burst (very informal)
+dura | lasts; hard (feminine) | durare
+durare | to last | | ~ duration
+lettura | reading | | leggere
+ascolto | listening; I listen | ascoltare
+esaminatrice | examiner (a woman) | esaminatore
+esaminatore | examiner | | esame + -tore
+arriverà | will arrive, will come | arrivare
+passato | passed | passare
+frase | sentence; phrase
+dorma | sleep (congiuntivo of dormire) | dormire | | Spero che tu dorma = I hope you're sleeping
+passi | you pass | passare
+veniamo | we come | venire
+telefoni | phones | telefono
+metterli | to put them | mettere
+alzate | raise (voi) | alzare
+finite | you finish (voi) | finire
+cornice | frame (for a picture)
+stranieri | foreigners | straniero
+saputo | found out, heard (passato of sapere) | sapere | | Ho saputo… = I heard…, I found out…
+insegni | you teach | insegnare
+lezioni | lessons | lezione
+gratis | free (no money)
 `);

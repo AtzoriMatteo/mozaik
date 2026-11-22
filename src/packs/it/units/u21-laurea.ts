@@ -25,7 +25,7 @@ export const laurea: Unit = {
     title: "La laurea di Karim",
     titleTranslation: "Karim's graduation",
     intro:
-      "December. A year ago Karim said he'd finish engineering \"next year\", and he's kept his word: his thesis is done. His parents are coming from Turin, his aunt from Casablanca, and the whole of Via del Pratello is invited. Emma is about to find out why an Italian laurea is a party, not a ceremony.",
+      "December. When Emma first met him, Karim said he'd finish engineering \"next year\", and he's kept his word: his thesis is done. His parents are coming from Turin, his aunt from Casablanca, and the whole of Via del Pratello is invited. Emma is about to find out why an Italian laurea is a party, not a ceremony.",
   },
   texts: [
     {

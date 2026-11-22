@@ -322,4 +322,19 @@ export const deeper: Record<string, [string, string][]> = {
     ["tutto with numbers", "tutti e due, tutte e tre, tutti e quattro: the e is always there. Ambedue and entrambi also mean 'both'."],
     ["del tutto", "del tutto = completely: Non sono del tutto sicuro (I'm not completely sure)."],
   ],
+  "congiuntivo": [
+    ["noi, voi, loro", "The plural forms: che siamo, che siate, che siano; che abbiamo, che abbiate, che abbiano; che arriviamo, che arriviate, che arrivino."],
+    ["Other triggers", "The congiuntivo also follows voglio che, è importante che, bisogna che, prima che, sebbene: Voglio che tu venga. È importante che tu legga il contratto."],
+    ["Irregular forms", "venire → venga, dire → dica, potere → possa, dovere → debba, sapere → sappia, stare → stia, dare → dia: they come from the io form of the present (vengo → venga)."],
+  ],
+  "se-reale": [
+    ["se + imperfetto in speech", "For things that didn't happen, Italians often say Se lo sapevo, venivo (if I'd known, I'd have come). Correct Italian uses another form (se l'avessi saputo), which you'll meet at B1."],
+    ["quando vs se", "quando is for things that will certainly happen: Quando arriva, ti chiamo. se is for things that may happen: Se arriva, ti chiamo."],
+    ["se = whether", "se also means 'whether' in indirect questions: Non so se viene (I don't know if he's coming)."],
+  ],
+  "pronomi-tonici": [
+    ["sé", "sé is the stressed form for lui, lei, loro when it refers back to the subject: Pensa solo a sé (he only thinks of himself). Often with stesso: da sé, a sé stesso."],
+    ["Stressed instead of clitic", "Mi vede = he sees me (neutral). Vede me = he sees ME (not someone else). Same with a me piace, a te piace: A me piace, a lui no."],
+    ["Exclamations", "Povero me! Beato te! (Lucky you!) Contento lui! (If he's happy…): common little expressions with stressed pronouns."],
+  ],
 };
