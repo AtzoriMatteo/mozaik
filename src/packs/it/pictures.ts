@@ -611,4 +611,35 @@ export const pictures: Record<string, PictureSpec> = {
     o("poster", 320, 100, { t: "Bologna campione!" }),
     p("man", 260, 214, { c: "cobalt", pose: "hold", flip: true }),
   ]),
+
+  /* ---------------- A2 · La prof ---------------- */
+  "emma-11-il-primo-giorno": pic("classroom", "Emma's first evening class: she arrives soaked from the rain, and a student hands her a tissue.", [
+    o("board", 110, 80, { t: "My name is Emma" }),
+    o("raincloud", 330, 50, { s: 0.6 }),
+    p("woman", 200, 214, { c: "copper", hair: "long" }),
+    p("woman", 270, 212, { pose: "sit", c: "cobalt", hair: "bun", flip: true }),
+    p("oldman", 340, 212, { pose: "sit", c: "iron", flip: true }),
+  ]),
+  "emma-12-i-miei-studenti": pic("classroom", "The Tuesday class: Ugo the old cook, Teresa the nurse, and quiet Nicolò singing a U2 song.", [
+    o("board", 100, 80, { t: "Your favourite song?" }),
+    o("notes", 260, 90),
+    p("man", 250, 214, { c: "ochre", pose: "wave" }),
+    p("oldman", 170, 212, { pose: "sit", c: "manganese" }),
+    p("woman", 330, 212, { pose: "sit", c: "cobalt", hair: "bun", flip: true }),
+  ]),
+  "emma-13-cosa-ha-detto": pic("porticoes", "At Bar Margherita Emma tells Rita what the director said, and Marco brings two hot chocolates.", [
+    o("smalltable", 200, 214),
+    o("cup", 186, 180),
+    o("cup", 214, 180),
+    p("woman", 120, 212, { pose: "sit", c: "copper", hair: "long" }),
+    p("oldwoman", 280, 212, { pose: "sit", c: "manganese", flip: true }),
+    p("man", 340, 214, { c: "cobalt", flip: true, pose: "hold" }),
+  ], true),
+  "check-it-a2-lavoro": pic("room", "Rita leafs through a book of old Bologna photographs: Emma's present from her first pay.", [
+    o("openbook", 200, 176),
+    o("smalltable", 200, 214),
+    o("frame", 330, 80),
+    p("oldwoman", 130, 212, { pose: "sit", c: "manganese" }),
+    p("woman", 280, 214, { c: "copper", hair: "long", flip: true }),
+  ]),
 };

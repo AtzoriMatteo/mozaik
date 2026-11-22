@@ -277,4 +277,19 @@ export const deeper: Record<string, [string, string][]> = {
     ["prima di + noun, prima + nothing", "prima di + noun or pronoun: prima di cena, prima di me. Alone, prima means earlier/first: Mangiamo prima?"],
     ["Pronouns on aver/esser", "Pronouns join aver or esser: dopo averlo visto, dopo essermi alzata."],
   ],
+  trapassato: [
+    ["After dopo che and appena", "dopo che and (non) appena often take the trapassato for the earlier action: Dopo che avevo mangiato, sono uscita."],
+    ["Trapassato remoto", "In literature you'll meet ebbi fatto, fui arrivato (after quando, appena + passato remoto). You only need to recognise it."],
+    ["Polite past", "Like volevo, the trapassato can soften: Ero venuto a chiederle un favore (I'd come to ask you a favour)."],
+  ],
+  cui: [
+    ["il cui: whose", "article + cui + noun = whose: la ragazza il cui padre è medico (the girl whose father is a doctor). The article agrees with the thing owned."],
+    ["cui without a", "With verbs like dare, dire, scrivere, the a can be dropped in formal Italian: la persona cui ho scritto. In speech: a cui."],
+    ["il quale", "il quale, la quale, i quali, le quali can replace cui after a preposition, especially in writing: la persona alla quale ho scritto."],
+  ],
+  "discorso-indiretto": [
+    ["Tense shift", "With a past reporting verb: present → imperfetto (Sono stanca → Ha detto che era stanca), passato prossimo → trapassato (Ho mangiato → Ha detto che aveva mangiato), future → past conditional (Verrò → Ha detto che sarebbe venuto)."],
+    ["Words of place and time", "qui → lì, oggi → quel giorno, domani → il giorno dopo, ieri → il giorno prima, questo → quello."],
+    ["Other reporting verbs", "Beyond dire and chiedere: rispondere che, raccontare che, spiegare che, promettere di, pregare di."],
+  ],
 };

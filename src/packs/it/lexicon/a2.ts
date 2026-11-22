@@ -573,4 +573,76 @@ tirare | to throw, to shoot; to pull
 tornati | come back (plural) | tornare
 tribuna | stand (at a stadium)
 venuti | come (plural) | venire
+# Unit A2-7: La prof
+accorge | realises (si accorge) | accorgersi
+accorgersi | to realise, to notice
+alzato | raised (alzare la mano = to put your hand up) | alzare
+am | (English) am
+australia | Australia
+bagnata | wet (feminine) | bagnato
+bagnato | wet
+busta | envelope (busta paga = pay slip)
+calde | hot (feminine plural) | caldo
+cambiato | changed | cambiare
+cantato | sung | cantare
+cioccolate | hot chocolates | cioccolata | | Una cioccolata calda: thick enough to eat with a spoon
+cioccolata | hot chocolate; chocolate
+cominciata | started (feminine) | cominciare
+compiti | homework | compito
+compito | task; (i compiti) homework
+contenti | happy, pleased (plural) | contento
+continuare | to carry on, to continue
+correggi | you correct | correggere
+cui | which, whom (after a preposition) | | | la città in cui abito
+cuoco | cook, chef
+diciassette | seventeen
+dico | I say | dire
+dirle | to tell you (Lei) | dire | dire + le
+dublin | (English) Dublin
+fazzoletto | tissue, handkerchief
+fotografie | photographs | fotografia
+fotografia | photograph
+from | (English) from
+gentilmente | kindly | gentile
+guadagnato | earned | guadagnare
+guadagnare | to earn
+gruppo | group
+guasto | breakdown, fault
+forse | maybe, perhaps
+insegno | I teach | insegnare
+is | (English) is
+lavagna | (black)board
+legati | attached, linked (plural) | legato
+legato | attached, tied
+mistero | mystery
+motivo | reason | | ~ motive
+my | (English) my
+name | (English) name
+nicolò | Nicolò (a boy's name)
+ospedale | hospital
+ottobre | October
+parlato | spoken | parlare
+passo | I spend (time); I pass | passare
+però | but, though, however
+pioggia | rain | piovere
+porge | hands, offers | porgere
+porgere | to hand, to hold out
+raccontarglieli | to tell her about them | raccontare | raccontare + glie + li
+riceve | receives | ricevere
+riconosciuto | recognised | riconoscere
+riconoscere | to recognise
+scusate | sorry, excuse me (to several people) | scusare
+seguito | (di seguito) in a row
+servirà | will be needed (le servirà = you'll need it) | servire
+sfoglia | leafs through | sfogliare
+sfogliare | to leaf through | | s- + foglia (leaf)
+spagnolo | Spanish
+successa | happened (feminine) | succedere
+succedere | to happen
+teresa | Teresa (a woman's name)
+u2 | U2, the Irish band
+ugo | Ugo (a man's name)
+vita | life | | ~ vital
+qualcosa | something
+sbagliato | wrong | sbagliare
 `);
