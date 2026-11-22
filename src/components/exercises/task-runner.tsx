@@ -132,7 +132,7 @@ function TaskBoard({
       return (
         <>
           <p className="exercise-prompt">{task.prompt}</p>
-          <ChoiceBoard options={task.options} answer={task.answer} locked={locked} onCheck={onCheck} />
+          <ChoiceBoard options={task.options} answer={task.answer} seed={seed} locked={locked} onCheck={onCheck} />
         </>
       );
     case "truefalse":
@@ -164,7 +164,7 @@ function TaskBoard({
       return (
         <>
           <p className="exercise-prompt">Play the line. Which of these words is in it?</p>
-          <ChoiceBoard options={task.options} answer={task.answer} lang={lang} locked={locked} onCheck={onCheck} />
+          <ChoiceBoard options={task.options} answer={task.answer} lang={lang} seed={seed} locked={locked} onCheck={onCheck} />
         </>
       );
   }

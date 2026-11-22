@@ -1,12 +1,24 @@
 import type { GrammarPoint } from "@/core/content";
-import { build, choice, example, fill, match, slots, sort, spot, table, text, transform } from "./helpers";
+import { withDeeper } from "@/core/deeper";
+import { deeper } from "./deeper";
+import { grammarA2u1 } from "./a2-1";
+import { grammarA2u2 } from "./a2-2";
+import { grammarA2u3 } from "./a2-3";
+import { grammarA2u4 } from "./a2-4";
+import { grammarA2u5 } from "./a2-5";
+import { grammarA2u6 } from "./a2-6";
+import { grammarA2u7 } from "./a2-7";
+import { grammarA2u8 } from "./a2-8";
+import { grammarA2u9 } from "./a2-9";
+import { grammarA2u10 } from "./a2-10";
+import { build, choice, example, fill, match, mistakes, note, passage, pick, slots, sort, spot, step, summary, table, text, transform } from "./helpers";
 
 /**
  * Grammar the Italian course covers, in teaching order. A1 follows the usual
  * Italian A1 syllabus (Profilo della lingua italiana); every point is quoted
  * from the course and featured by at least one A1 text (checked by tests).
  */
-export const grammar: readonly GrammarPoint[] = [
+const points: readonly GrammarPoint[] = [
   /* ---------------- Unit 1: Ciao! ---------------- */
   {
     id: "essere",
@@ -16,17 +28,23 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-ciao",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("essere is the most common verb in Italian, and it's irregular. Learn it as a little song: sono, sei, è, siamo, siete, sono."),
+        step("How it works"),
         table("essere, present", ["", "", "English"], ["io", "sono", "I am"], ["tu", "sei", "you are"], ["lui / lei / Lei", "è", "he / she is, you are (polite)"], ["noi", "siamo", "we are"], ["voi", "siete", "you are (plural)"], ["loro", "sono", "they are"]),
         text("You usually leave out io, tu, lui: the verb already says who. Sono Emma = I'm Emma. Sei italiana? = Are you Italian? Use the pronoun only to stress or contrast: Io sono irlandese, lui è inglese."),
         slots("Where you're from: essere + di + city", ["Giulia:who | è:verb* | di:from | Bologna", "Giulia is from Bologna."], ["Sono:verb* | di:from | Dublino", "I'm from Dublin."]),
         text("Careful with the accent: è (is) and e (and) are different words. Sono is both 'I am' and 'they are'; the context tells you which."),
+        note("Compared with English", "Italian usually leaves out io, tu, lui: the verb already says who. Sono Emma is a full sentence."),
+        mistakes("Mistakes learners make", ["Karim e di Torino.", "Karim è di Torino.", "è (is) has an accent; e means 'and'."], ["Io è irlandese.", "Io sono irlandese.", "io: sono."], ["Giulia e Karim è coinquilini.", "Giulia e Karim sono coinquilini.", "Two people: sono."]),
+        passage("Via del Pratello", ["Sono", "sono", "è", "Siamo"], ["Ciao! Sono Emma e sono irlandese.", "Hi! I'm Emma and I'm Irish."], ["Giulia è di Bologna.", "Giulia is from Bologna."], ["Karim è di Torino.", "Karim is from Turin."], ["Siamo coinquilini in via del Pratello.", "We're flatmates in Via del Pratello."]),
+        summary("sono, sei, è, siamo, siete, sono.", "io, tu… are usually left out: Sono Emma.", "Where from: essere di + city. Sono di Dublino.", "è (is) is not e (and)."),
       ],
       examples: [
         example("Emma è irlandese.", "Emma is Irish.", "è"),
         example("Sì, sono io! Tu sei Giulia?", "Yes, it's me! Are you Giulia?", "sono", "sei"),
         example("Karim è di Torino e studia ingegneria.", "Karim is from Turin and studies engineering.", "è di"),
-        example("Sono qui da ottant'anni!", "I've been here for eighty years!", "Sono"),
+        example("Sono qui da ottantadue anni!", "I've been here for eighty-two years!", "Sono"),
       ],
       exercises: [
         fill("Emma ", " irlandese.", "è", "Emma is Irish."),
@@ -37,6 +55,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Voi ", " italiani?", ["siete", "siamo", "sono"], 0, "Are you (all) Italian?"),
         match("Match the person to the form.", "io=sono | tu=sei | lei=è | noi=siamo | voi=siete", "essere in the present."),
         spot("Karim e di Torino.", "e", "è", "Karim is from Turin."),
+        pick("Io ", " di Dublino, e tu?", "sono | sei | è", "sono", "I'm from Dublin, and you?"),
+        transform("Say it about us (noi).", "Sono a Bologna.", ["Siamo a Bologna."], "We're in Bologna."),
       ],
     },
   },
@@ -48,10 +68,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-ciao",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian has two ways to say 'you' to one person. tu is informal: friends, family, children, people your age. Lei is polite: strangers, older people, shops, offices."),
+        step("How it works"),
         text("Lei takes the same verb form as lui and lei (he, she): Lei è italiana? = Are you Italian? That's why it often has a capital L in writing, to tell it from lei (she)."),
         table("The same question, two ways", ["tu (informal)", "Lei (polite)", "English"], ["Come stai?", "Come sta?", "How are you?"], ["Come ti chiami?", "Come si chiama?", "What's your name?"], ["Di dove sei?", "Di dov'è?", "Where are you from?"], ["Quanti anni hai?", "Quanti anni ha?", "How old are you?"], ["Ciao!", "Buongiorno! / Arrivederci!", "Hello! / Goodbye!"]),
         text("When someone says Diamoci del tu! or Ci diamo del tu?, they're inviting you to switch to tu. Older people often switch first; follow their lead."),
+        mistakes("Mistakes learners make", ["Buongiorno, signora! Come stai?", "Buongiorno, signora! Come sta?", "An older stranger: Lei, with the lui/lei form."], ["Lei sei italiana?", "Lei è italiana?", "Lei takes è, not sei."], ["Ciao, signora!", "Buongiorno, signora!", "Ciao is for people you call tu."]),
+        passage("Sulle scale", ["Lei è", "Di dov'è"], ["Buongiorno! Lei è la nuova ragazza del terzo piano?", "Good morning! Are you the new girl on the third floor?"], ["Sì, sono Emma. Piacere!", "Yes, I'm Emma. Nice to meet you!"], ["Piacere, io sono Rita. Di dov'è?", "Nice to meet you, I'm Rita. Where are you from?"], ["Sono di Dublino.", "I'm from Dublin."]),
+        summary("tu: friends, family, children, people your age.", "Lei: strangers, older people, shops, offices.", "Lei takes the lui/lei form: Come sta? Lei è…?", "Ciao for tu; Buongiorno and Arrivederci for Lei."),
       ],
       examples: [
         example("Ciao, Giulia! Come stai?", "Hi, Giulia! How are you?", "stai"),
@@ -67,6 +92,8 @@ export const grammar: readonly GrammarPoint[] = [
         transform("Make it informal (tu).", "Lei è inglese?", ["Sei inglese?", "Tu sei inglese?"], "Are you English?"),
         sort("tu or Lei?", ["tu", "Lei"], "Ciao, come stai?=0 | Buongiorno, come sta?=1 | Arrivederci, signora!=1 | Come ti chiami?=0 | Scusi!=1 | Scusa!=0", "Informal or polite?"),
         spot("Buongiorno, signora! Come stai?", "stai", "sta", "Good morning, madam! How are you?"),
+        pick("Signora, Lei ", " italiana?", "è | sei | sono", "è", "Madam, are you Italian?"),
+        pick("Karim, ", " di Torino?", "sei | è | sono", "sei", "Karim, are you from Turin?"),
       ],
     },
   },
@@ -78,11 +105,16 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-ciao",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Every Italian noun is masculine or feminine, even things. The ending is a strong clue."),
+        step("How it works"),
         table("The endings", ["Ending", "Usually", "Examples"], ["-o", "masculine", "il ragazzo, il giorno, il numero"], ["-a", "feminine", "la ragazza, la casa, la strada"], ["-e", "either: learn it", "il cane, il nome / la classe, la stazione"], ["-tà, -zione", "feminine", "la città, la stazione"], ["accented or foreign", "mostly masculine", "il caffè, il bar, il computer"]),
         text("A few famous exceptions: la mano (hand) is feminine, la foto and la moto too (short for fotografia, motocicletta)."),
         text("Adjectives follow the noun's gender: un ragazzo alto, una ragazza alta. Adjectives in -e stay the same: irlandese, inglese, grande."),
         slots("The adjective agrees", ["Giulia:she | è:is | alta:feminine*", "Giulia is tall."], ["il:the | cane:dog (m) | è:is | piccolo:masculine*", "The dog is small."]),
+        mistakes("Mistakes learners make", ["La mano è piccolo.", "La mano è piccola.", "la mano is feminine."], ["Emma è irlandesa.", "Emma è irlandese.", "-e adjectives don't change."], ["Il città è bella.", "La città è bella.", "-tà words are feminine."]),
+        passage("Tre coinquilini", ["vecchia", "bella", "alta", "simpatica", "alto", "simpatico", "irlandese", "italiano"], ["Via del Pratello è una strada vecchia e bella.", "Via del Pratello is an old and pretty street."], ["Giulia è alta e simpatica.", "Giulia is tall and friendly."], ["Karim è alto e simpatico.", "Karim is tall and friendly."], ["Emma è irlandese e Karim è italiano.", "Emma is Irish and Karim is Italian."]),
+        summary("-o: usually masculine (il ragazzo). -a: usually feminine (la casa).", "-e: learn it (il cane, la classe). -tà, -zione: feminine.", "Adjectives follow the noun: alto, alta. -e adjectives stay the same."),
       ],
       examples: [
         example("Giulia è alta e simpatica.", "Giulia is tall and friendly.", "alta", "simpatica"),
@@ -97,6 +129,8 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Via del Pratello è una strada ", ".", "vecchia", "Via del Pratello is an old street.", "vecchio"),
         transform("Make it feminine.", "Il ragazzo è italiano.", "La ragazza è italiana.", "The girl is Italian."),
         spot("La mano è piccolo.", "piccolo", "piccola", "The hand is small (la mano is feminine!)."),
+        pick("La città è ", ".", "bella | bello", "bella", "The city is beautiful."),
+        pick("Il caffè è ", ".", "buono | buona", "buono", "The coffee is good. (il caffè: masculine)"),
       ],
     },
   },
@@ -110,10 +144,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-piacere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("avere is the other key irregular verb. The h is never pronounced: ho sounds like 'o', hanno like 'anno'. It's only there to tell the words apart: ho (I have) vs o (or), ha (has) vs a (to)."),
+        step("How it works"),
         table("avere, present", ["", "", "English"], ["io", "ho", "I have"], ["tu", "hai", "you have"], ["lui / lei / Lei", "ha", "he / she has, you have"], ["noi", "abbiamo", "we have"], ["voi", "avete", "you have (plural)"], ["loro", "hanno", "they have"]),
         text("Where English uses 'to be', Italian often uses avere: age and feelings in your body."),
         table("avere, not 'to be'", ["Italian", "English"], ["Ho ventisei anni.", "I'm twenty-six."], ["Ho fame.", "I'm hungry."], ["Ho sete.", "I'm thirsty."], ["Ho freddo. / Ho caldo.", "I'm cold. / I'm hot."], ["Ho ragione.", "I'm right."]),
+        mistakes("Mistakes learners make", ["Sono ventisei anni.", "Ho ventisei anni.", "Age: avere."], ["Sono fame.", "Ho fame.", "Hunger, thirst, cold: avere."], ["Karim hanno ventitré anni.", "Karim ha ventitré anni.", "lui: ha."]),
+        passage("Quanti anni hai?", ["hai", "Ho", "ho"], ["Quanti anni hai, Karim?", "How old are you, Karim?"], ["Ho ventitré anni. E tu, Emma?", "I'm twenty-three. And you, Emma?"], ["Ho ventisei anni.", "I'm twenty-six."], ["E adesso ho fame!", "And now I'm hungry!"]),
+        summary("ho, hai, ha, abbiamo, avete, hanno (the h is silent).", "Age with avere: Ho ventisei anni.", "Hunger, thirst, cold, hot, right: ho fame, ho sete, ho freddo, ho caldo, ho ragione."),
       ],
       examples: [
         example("Ho ventisei anni. E tu?", "I'm twenty-six. And you?", "Ho", "anni"),
@@ -130,6 +169,7 @@ export const grammar: readonly GrammarPoint[] = [
         spot("Sono ventisei anni.", "Sono", "Ho", "I'm twenty-six (age uses avere)."),
         transform("Say it in Italian, with avere.", "I'm hungry.", "Ho fame.", "Ho fame."),
         match("Match.", "io=ho | tu=hai | lui=ha | noi=abbiamo | loro=hanno", "avere in the present."),
+        pick("Quanti anni ", ", Emma?", "hai | ha | ho", "hai", "How old are you, Emma?"),
       ],
     },
   },
@@ -141,10 +181,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-piacere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian 'the' changes with gender, number, and the sound the next word starts with. It looks like a lot, but there's a clear system."),
+        step("How it works"),
         table("the", ["", "Singular", "Plural", "When"], ["masculine", "il", "i", "most consonants: il libro, i libri"], ["masculine", "lo", "gli", "s + consonant, z, gn, ps, y: lo studente, gli studenti"], ["masculine", "l'", "gli", "a vowel: l'amico, gli amici"], ["feminine", "la", "le", "consonants: la casa, le case"], ["feminine", "l'", "le", "a vowel: l'amica, le amiche"]),
         text("Italian uses 'the' more than English: for things in general (Gli italiani parlano con le mani), and before languages and possessives (l'italiano, la mia casa)."),
         text("'A' or 'an' (un, uno, una, un') is the next lesson."),
+        mistakes("Mistakes learners make", ["Il studente è tedesco.", "Lo studente è tedesco.", "s + consonant: lo."], ["La amica di Emma è simpatica.", "L'amica di Emma è simpatica.", "Before a vowel: l'."], ["I amici di Karim sono simpatici.", "Gli amici di Karim sono simpatici.", "Masculine plural before a vowel: gli."]),
+        passage("Il corso", ["il", "L'", "Gli", "La"], ["Lunedì Emma comincia il corso di italiano.", "On Monday Emma starts her Italian course."], ["L'insegnante si chiama Lucia Bianchi.", "The teacher is called Lucia Bianchi."], ["Gli studenti sono simpatici.", "The students are nice."], ["La classe è piccola.", "The class is small."]),
+        summary("Masculine: il (most), lo (s + consonant, z), l' (vowel). Plural: i, gli.", "Feminine: la, l' (vowel). Plural: le.", "Italian uses the article for things in general: Gli italiani…"),
       ],
       examples: [
         example("Lunedì Emma comincia il corso di italiano.", "On Monday Emma starts her Italian course.", "il corso"),
@@ -158,6 +203,9 @@ export const grammar: readonly GrammarPoint[] = [
         sort("il or lo?", ["il", "lo"], "corso=0 | studente=1 | numero=0 | zio=1 | bar=0 | zero=1", "Look at the first sound."),
         fill("", " corso è buono.", ["Il", "il"], "The course is good."),
         spot("Il studente è tedesco.", "Il", "Lo", "The student is German."),
+        pick("", " amici di Karim sono simpatici.", "Gli | I | Le", "Gli", "Karim's friends are nice."),
+        pick("", " casa è in via del Pratello.", "La | Il | L'", "La", "The flat is in Via del Pratello."),
+        transform("Make it plural.", "lo studente", ["gli studenti"], "the students"),
       ],
     },
   },
@@ -170,10 +218,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-piacere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("'A' or 'an' follows the same sounds as 'the': where you say lo, you say uno; where you say la, you say una."),
+        step("How it works"),
         table("a, an", ["", "Article", "Like 'the'", "Example"], ["masculine", "un", "il, l'", "un caffè, un amico (no apostrophe!)"], ["masculine", "uno", "lo", "uno studente, uno zio"], ["feminine", "una", "la", "una casa, una ragazza"], ["feminine, before a vowel", "un'", "l'", "un'amica, un'altra ragione"]),
         text("The apostrophe is only for women and feminine words: un amico (a male friend), un'amica (a female friend). You only see the difference in writing: they sound the same."),
         text("There's no plural 'a': for 'some' Italian uses dei, degli, delle (you'll meet them at the shops)."),
+        mistakes("Mistakes learners make", ["Karim ha un amica a Torino.", "Karim ha un'amica a Torino.", "Feminine before a vowel: un'."], ["Ho un'amico a Bologna.", "Ho un amico a Bologna.", "Masculine: un, never an apostrophe."], ["Karim è un studente.", "Karim è uno studente.", "s + consonant: uno."]),
+        passage("La classe", ["un", "una", "un'"], ["Il primo è un ragazzo giapponese.", "The first is a Japanese man."], ["Poi parla una ragazza bionda.", "Then a blonde woman speaks."], ["Lucia è un'insegnante simpatica.", "Lucia is a nice teacher."]),
+        summary("un (like il, l'), uno (like lo), una (like la), un' (like l', feminine).", "Apostrophe only for feminine: un'amica, un amico.", "No plural 'a': for 'some' see dei, delle."),
       ],
       examples: [
         example("Il primo è un ragazzo giapponese.", "The first is a Japanese man.", "un ragazzo"),
@@ -187,6 +240,9 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Fernanda è ", " donna brasiliana.", ["una", "un", "un'"], 0, "Fernanda is a Brazilian woman."),
         sort("un or uno?", ["un", "uno"], "amico=0 | studente=1 | caffè=0 | zio=1 | bar=0 | zero=1", "uno where you'd say lo."),
         spot("Karim ha un amica a Torino.", "un", "un'", "Karim has a (female) friend in Turin."),
+        pick("Lucia è ", " insegnante.", "un' | un | una", "un'", "Lucia is a teacher. (feminine, before a vowel)"),
+        match("Match the article.", "studente=uno | amico=un | amica=un' | casa=una", "uno, un, un', una"),
+        transform("Say 'a' instead of 'the'.", "il ragazzo", ["un ragazzo"], "a boy"),
       ],
     },
   },
@@ -198,9 +254,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-piacere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Learn 0–20 by heart, then the tens: venti, trenta, quaranta, cinquanta, sessanta, settanta, ottanta, novanta, cento."),
+        step("How it works"),
         table("Building numbers", ["Rule", "Example"], ["tens + units, one word", "venti + due = ventidue"], ["before uno and otto, drop the last vowel", "ventuno, ventotto, trentuno"], ["tre at the end gets an accent", "ventitré, trentatré"], ["before a noun, uno → un", "trentun anni"], ["before anni (a vowel), you can drop the vowel", "vent'anni, ottant'anni"]),
         text("Phone numbers are said in small groups of digits: tre quattro sette, uno due otto. Prices: un euro e venti = €1.20."),
+        mistakes("Mistakes learners make", ["Kenji ha trentauno anni.", "Kenji ha trentun anni.", "Before a noun: trentun."], ["Karim ha ventitre anni.", "Karim ha ventitré anni.", "-tré has an accent."], ["Ho venti due anni.", "Ho ventidue anni.", "One word."]),
+        passage("In classe", ["trentun", "quarantacinque", "ventitré"], ["Mi chiamo Kenji, ho trentun anni e sono ingegnere.", "My name's Kenji, I'm thirty-one and I'm an engineer."], ["Fernanda ha quarantacinque anni e tre figli.", "Fernanda is forty-five and has three children."], ["Karim ha ventitré anni.", "Karim is twenty-three."]),
+        summary("Tens + units in one word: ventidue.", "Drop the vowel before uno and otto: ventuno, ventotto.", "-tré at the end gets an accent: ventitré.", "Before a noun: trentun anni."),
       ],
       examples: [
         example("Mi chiamo Kenji, ho trentun anni e sono ingegnere.", "My name's Kenji, I'm thirty-one and I'm an engineer.", "trentun"),
@@ -216,6 +277,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Kenji ha ", " anni.", ["trentun", "trentuno", "trentauno"], 0, "Kenji is thirty-one."),
         match("Match.", "venti=20 | trenta=30 | quaranta=40 | cinquanta=50 | cento=100", "The tens."),
         spot("Karim ha ventitre anni.", "ventitre", "ventitré", "Karim is twenty-three (don't forget the accent)."),
+        pick("Ho ", " anni.", "ventotto | ventiotto | venti otto", "ventotto", "I'm twenty-eight."),
+        fill("33 = ", "", "trentatré", "thirty-three"),
       ],
     },
   },
@@ -227,10 +290,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-piacere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("To make a sentence negative, put non directly before the verb. Nothing else changes: no 'do' like in English."),
+        step("How it works"),
         slots(undefined, ["Non:not* | sono:verb | inglese", "I'm not English."], ["Ana:who | non:not* | lavora:verb", "Ana doesn't work."]),
         text("With mai (never) and niente (nothing), Italian keeps non too: Non mi annoio mai. Non capisco niente. Two negatives make a stronger 'no', not a 'yes'."),
         text("Answering: No, non sono inglese. The first no answers the question; non makes the verb negative."),
+        mistakes("Mistakes learners make", ["Io sono non italiana.", "Io non sono italiana.", "non goes right before the verb."], ["No sono inglese.", "Non sono inglese.", "no answers a question; before a verb it's non."]),
+        passage("Non sono inglese!", ["non"], ["Sei inglese, Emma?", "Are you English, Emma?"], ["No, non sono inglese, sono irlandese!", "No, I'm not English, I'm Irish!"], ["E Karim non è di Bologna: è di Torino.", "And Karim isn't from Bologna: he's from Turin."], ["Fernanda non lavora: ha tre figli.", "Fernanda doesn't work: she has three children."]),
+        summary("non right before the verb: Non sono inglese.", "No, non… = No, I'm not…", "With mai and niente, keep non: Non capisco niente."),
       ],
       examples: [
         example("No, non sono inglese, sono irlandese!", "No, I'm not English, I'm Irish!", "non sono"),
@@ -246,6 +314,9 @@ export const grammar: readonly GrammarPoint[] = [
         build("Non | mi | annoio | mai", "I'm never bored."),
         choice("I dialetti ", " un italiano sbagliato.", ["non sono", "sono non", "no sono"], 0, "Dialects aren't wrong Italian."),
         transform("Fix the word order.", "Io sono non italiana.", ["Io non sono italiana.", "Non sono italiana."], "I'm not Italian (non goes before the verb)."),
+        pick("", " sono inglese, sono irlandese.", "Non | No | Mai", "Non", "I'm not English, I'm Irish."),
+        spot("Emma no è inglese.", "no", "non", "Emma isn't English."),
+        fill("Karim ", " è di Bologna.", "non", "Karim isn't from Bologna."),
       ],
     },
   },
@@ -259,10 +330,16 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-famiglia",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian possessives agree with the thing you own, not with the owner, and they usually come with the article: il mio cane, la mia casa."),
+        step("How it works"),
         table("Possessives", ["", "m. sing.", "f. sing.", "m. plural", "f. plural"], ["my", "il mio", "la mia", "i miei", "le mie"], ["your (tu)", "il tuo", "la tua", "i tuoi", "le tue"], ["his / her / your (Lei)", "il suo", "la sua", "i suoi", "le sue"], ["our", "il nostro", "la nostra", "i nostri", "le nostre"], ["your (voi)", "il vostro", "la vostra", "i vostri", "le vostre"], ["their", "il loro", "la loro", "i loro", "le loro"]),
         text("The family rule: with one family member in the singular, drop the article: mio padre, mia sorella, sua madre. In the plural, or with loro, it comes back: i miei fratelli, la loro madre. Mamma and papà usually keep it: la mia mamma."),
         text("suo means his and her: il suo ragazzo = her boyfriend or his boyfriend. The context tells you who."),
+        mistakes("Mistakes learners make", ["La mia madre è infermiera.", "Mia madre è infermiera.", "One family member: no article."], ["Le mie fratelli sono simpatici.", "I miei fratelli sono simpatici.", "fratelli is masculine plural: i miei."], ["Siobhan abita con la sua ragazzo.", "Siobhan abita con il suo ragazzo.", "suo agrees with ragazzo, not with Siobhan."]),
+        note("Compared with English", "English looks at the owner (his, her); Italian looks at the thing owned: il suo ragazzo, la sua casa, for him or for her."),
+        passage("La mia famiglia", ["la mia", "mio padre", "i miei", "mia sorella", "il suo"], ["Questa è la mia famiglia.", "This is my family."], ["Questo signore con la barba è mio padre, Paolo.", "This man with the beard is my father, Paolo."], ["Sono i miei fratelli, Luca e Pietro.", "They're my brothers, Luca and Pietro."], ["È mia sorella Siobhan. Abita a Londra con il suo ragazzo.", "That's my sister Siobhan. She lives in London with her boyfriend."]),
+        summary("Possessives agree with the thing: il mio libro, la mia casa, i miei amici, le mie amiche.", "They usually take the article.", "One family member: no article (mio padre); plural: i miei fratelli."),
       ],
       examples: [
         example("Questa è la mia famiglia.", "This is my family.", "la mia"),
@@ -278,6 +355,8 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Siobhan abita con il ", " ragazzo.", "suo", "Siobhan lives with her boyfriend."),
         transform("Say it with a possessive (my).", "la casa di Emma (Emma speaking)", "la mia casa", "my house"),
         transform("Drop the article where Italian does.", "La mia madre è infermiera.", "Mia madre è infermiera.", "My mother is a nurse."),
+        spot("Le mia sorelle sono simpatiche.", "mia", "mie", "My sisters are nice."),
+        match("Match.", "mio padre=my father | i miei fratelli=my brothers | la sua casa=his or her house | la loro madre=their mother", "Possessives."),
       ],
     },
   },
@@ -289,10 +368,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-famiglia",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Adjectives change their ending to match the noun: masculine or feminine, singular or plural. Most come after the noun: una casa piccola, i capelli corti."),
+        step("How it works"),
         table("Two kinds of adjective", ["", "m. sing.", "f. sing.", "m. plural", "f. plural"], ["-o adjectives", "alto", "alta", "alti", "alte"], ["-e adjectives", "grande", "grande", "grandi", "grandi"]),
         text("Mixed groups use the masculine plural: Luca e Giulia sono simpatici. Adjectives in -co often go -ci for boys and -che for girls: simpatici, simpatiche."),
         text("A few short, common adjectives can go before the noun: una bella città, un piccolo bar, una grande famiglia."),
+        mistakes("Mistakes learners make", ["Le sorelle di Karim sono rumorosi.", "Le sorelle di Karim sono rumorose.", "Feminine plural: -e."], ["Luca e Giulia sono simpatiche.", "Luca e Giulia sono simpatici.", "A mixed group: masculine plural."], ["Le città sono grande.", "Le città sono grandi.", "-e adjectives: -i in the plural."]),
+        passage("Fratelli e sorelle", ["simpatici", "pigri", "simpatiche", "rumorose", "attiva", "piccola", "grande"], ["I miei fratelli sono simpatici, ma un po' pigri!", "My brothers are nice, but a bit lazy!"], ["Le mie sorelle sono simpatiche, ma molto rumorose!", "My sisters are nice, but very loud!"], ["La nonna è molto attiva.", "Grandma is very active."], ["Abitano in una casa piccola con un giardino grande.", "They live in a small house with a big garden."]),
+        summary("-o adjectives: alto, alta, alti, alte.", "-e adjectives: grande, grandi.", "Mixed group: masculine plural.", "Usually after the noun: una casa piccola."),
       ],
       examples: [
         example("Sono simpatici, ma un po' pigri!", "They're nice, but a bit lazy!", "simpatici", "pigri"),
@@ -308,6 +392,8 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Le città italiane sono ", ".", "grandi", "Italian cities are big.", "grande"),
         transform("Make it plural.", "Il ragazzo è simpatico.", "I ragazzi sono simpatici.", "The boys are nice."),
         sort("Which noun does it fit?", ["il cane", "la casa"], "piccolo=0 | piccola=1 | vecchia=1 | grasso=0 | bella=1 | nero=0", "Masculine or feminine ending?"),
+        pick("Luca e Giulia sono ", ".", "simpatici | simpatiche | simpatico", "simpatici", "Luca and Giulia are nice. (mixed group)"),
+        spot("Le mie sorelle sono rumorosi.", "rumorosi", "rumorose", "My sisters are loud."),
       ],
     },
   },
@@ -319,10 +405,16 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-famiglia",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian plurals change the last vowel. No -s!"),
+        step("How it works"),
         table("Plural endings", ["Singular", "Plural", "Examples"], ["-o", "-i", "il nonno → i nonni"], ["-a", "-e", "la sorella → le sorelle"], ["-e", "-i", "il genitore → i genitori, la lezione → le lezioni"], ["accented vowel", "no change", "la città → le città, il caffè → i caffè"], ["foreign word", "no change", "il bar → i bar, il computer → i computer"]),
         text("Spelling keeps the sound: amica → amiche, collega → colleghi (h keeps it hard). Some -co words go soft: amico → amici, simpatico → simpatici."),
         text("A few irregulars to learn: l'uomo → gli uomini, la mano → le mani, il dito → le dita, l'uovo → le uova."),
+        mistakes("Mistakes learners make", ["Le amice di Giulia sono simpatiche.", "Le amiche di Giulia sono simpatiche.", "amica → amiche: h keeps the k sound."], ["Ho due computers.", "Ho due computer.", "Foreign words don't change."], ["Le mane di Marco sono grandi.", "Le mani di Marco sono grandi.", "la mano → le mani."]),
+        note("No -s!", "English and Dutch add -s or -en; Italian changes the last vowel: libro → libri, casa → case."),
+        passage("La domenica", ["famiglia", "nonni", "genitori", "figli", "zii", "cugini", "città"], ["La domenica tutta la famiglia va a casa dei nonni: genitori, figli, zii e cugini.", "On Sundays the whole family goes to the grandparents' house: parents, children, aunts and uncles, cousins."], ["Le città italiane sono belle.", "Italian cities are beautiful."], ["Gli affitti sono cari.", "Rents are expensive."]),
+        summary("-o → -i, -a → -e, -e → -i.", "Accented and foreign words don't change: le città, i bar.", "amica → amiche, amico → amici.", "By heart: le mani, le dita, gli uomini, le uova."),
       ],
       examples: [
         example("Tutta la famiglia va a casa dei nonni: genitori, figli, zii e cugini.", "The whole family goes to the grandparents' house: parents, children, aunts and uncles, cousins.", "nonni", "genitori", "figli", "zii", "cugini"),
@@ -338,6 +430,7 @@ export const grammar: readonly GrammarPoint[] = [
         sort("Does it change in the plural?", ["changes", "stays the same"], "ragazzo=0 | caffè=1 | casa=0 | università=1 | computer=1 | strada=0", "Accented and foreign words don't change."),
         spot("Le amice di Giulia sono simpatiche.", "amice", "amiche", "Giulia's friends are nice."),
         transform("Make it plural.", "la mano", "le mani", "the hands"),
+        pick("Ho due ", ".", "computer | computeri | computers", "computer", "I have two computers. (foreign words don't change)"),
       ],
     },
   },
@@ -351,10 +444,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-al-bar",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian verbs fall into three groups by their infinitive: -are, -ere, -ire. The -are group is the biggest and the most regular. Take off -are and add the endings."),
+        step("How it works"),
         table("parlare (to speak)", ["", "ending", "form"], ["io", "-o", "parlo"], ["tu", "-i", "parli"], ["lui / lei / Lei", "-a", "parla"], ["noi", "-iamo", "parliamo"], ["voi", "-ate", "parlate"], ["loro", "-ano", "parlano"]),
         text("The stress stays on the stem in io, tu, lui and loro: PAR-lo, PAR-la-no. Spelling helps the sound: cercare → cerchi (h keeps the k sound), mangiare → mangi (no double i)."),
         text("The Italian present also covers 'I'm doing' and the near future: Parlo con Marco = I speak / I'm speaking with Marco. Domani lavoro = I'm working tomorrow."),
+        mistakes("Mistakes learners make", ["Tu pagi alla cassa.", "Tu paghi alla cassa.", "Keep the hard g: h."], ["Io parlare italiano.", "Io parlo italiano.", "Change the ending: parlo."], ["Loro parlono di calcio.", "Loro parlano di calcio.", "-are verbs: -ano."]),
+        passage("Al Bar Margherita", ["lavora", "ordina", "giocano", "parlano", "paga"], ["Marco lavora al Bar Margherita.", "Marco works at Bar Margherita."], ["Emma ordina un cappuccino e un cornetto.", "Emma orders a cappuccino and a croissant."], ["Il pomeriggio i pensionati giocano a carte e parlano di calcio.", "In the afternoon pensioners play cards and talk about football."], ["Emma paga alla cassa.", "Emma pays at the till."]),
+        summary("Take off -are: parl-.", "-o, -i, -a, -iamo, -ate, -ano.", "The present is also 'I'm doing' and the near future."),
       ],
       examples: [
         example("Marco prepara il cappuccino e disegna un cuore nella schiuma.", "Marco makes the cappuccino and draws a heart in the foam.", "prepara", "disegna"),
@@ -371,6 +469,7 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Voi ", " italiano?", ["parlate", "parliamo", "parlano"], 0, "Do you (all) speak Italian?"),
         match("Match.", "io=ordino | tu=ordini | lei=ordina | noi=ordiniamo | loro=ordinano", "ordinare (to order)."),
         spot("Tu pagi alla cassa.", "pagi", "paghi", "You pay at the till (keep the hard g)."),
+        pick("Loro ", " di calcio.", "parlano | parlono | parlate", "parlano", "They talk about football."),
       ],
     },
   },
@@ -382,10 +481,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-al-bar",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("vorrei is the conditional of volere (to want): 'I would like'. It's the polite way to ask for anything, in a bar, a shop or an office. Voglio (I want) can sound rude."),
+        step("How it works"),
         slots("vorrei + something, or + a verb", ["Vorrei:I'd like* | un cappuccino", "I'd like a cappuccino."], ["Vorrei:I'd like* | fare:infinitive | l'iscrizione", "I'd like to sign up."]),
         table("Other polite ways to order", ["Italian", "English"], ["Per me un caffè, grazie.", "A coffee for me, thanks."], ["Prendo un cornetto.", "I'll have a croissant."], ["Mi dà uno scontrino?", "Could you give me a receipt?"], ["Posso pagare con la carta?", "Can I pay by card?"]),
         text("Add per favore or grazie and you'll sound perfectly natural."),
+        mistakes("Mistakes learners make", ["Voglio un caffè.", "Vorrei un caffè, per favore.", "voglio sounds rude in a bar."], ["Vorrei faccio l'iscrizione.", "Vorrei fare l'iscrizione.", "vorrei + infinitive."]),
+        passage("Al banco", ["Vorrei", "Per me", "Mi dà"], ["Buongiorno. Vorrei un cappuccino e un cornetto, per favore.", "Good morning. I'd like a cappuccino and a croissant, please."], ["Per me un caffè, grazie.", "A coffee for me, thanks."], ["Mi dà uno scontrino?", "Could you give me a receipt?"]),
+        summary("vorrei + a noun or an infinitive = I'd like.", "voglio (I want) can sound rude.", "Also: Per me…, Prendo…, Mi dà…?"),
       ],
       examples: [
         example("Buongiorno. Vorrei un cappuccino e un cornetto, per favore.", "Good morning. I'd like a cappuccino and a croissant, please.", "Vorrei"),
@@ -397,8 +501,11 @@ export const grammar: readonly GrammarPoint[] = [
         fill("", " un cornetto alla crema, per favore.", ["Vorrei", "vorrei"], "I'd like a custard croissant, please."),
         transform("Make it polite.", "Voglio un cappuccino.", "Vorrei un cappuccino.", "I'd like a cappuccino."),
         build("Vorrei | pagare | con | la | carta", "I'd like to pay by card."),
-        build("Per | me | un | caffè | grazie", "A coffee for me, thanks."),
+        build("Per | me | un | caffè | grazie", "A coffee for me, thanks.", "Un caffè per me grazie"),
         choice("Vorrei ", " l'iscrizione.", ["fare", "faccio", "fa"], 0, "I'd like to sign up (vorrei + infinitive)."),
+        pick("Per ", " un caffè, grazie.", "me | io | mi", "me", "A coffee for me, thanks."),
+        match("Match.", "Vorrei=I'd like | Prendo=I'll have | Per me=for me | Mi dà=could you give me", "Ordering."),
+        spot("Voglio un cornetto, per favore.", "Voglio", "Vorrei", "I'd like a croissant, please."),
       ],
     },
   },
@@ -410,10 +517,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-al-bar",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("A yes/no question in Italian is just a statement with a rising voice. The word order doesn't change: Sei italiana? (rising) vs Sei italiana. (falling)."),
+        step("How it works"),
         table("Question words", ["Word", "Meaning", "Example"], ["che cosa / cosa / che", "what", "Che cosa prendi?"], ["chi", "who", "Chi è?"], ["dove", "where", "Dove abiti?"], ["quando", "when", "Quando vai al bar?"], ["come", "how", "Come stai?"], ["perché", "why", "Perché studi italiano?"], ["quanto / quanti", "how much / how many", "Quanto costa? Quanti anni hai?"]),
         text("The question word comes first, the verb right after, and the subject (if any) at the end: Quanto costa il caffè? Dove abita Emma?"),
         text("Add vero? or no? at the end to check something: Lei non è italiana, vero? = You're not Italian, are you?"),
+        mistakes("Mistakes learners make", ["Dove Emma abita?", "Dove abita Emma?", "Question word, verb, then the subject."], ["Quanto anni hai?", "Quanti anni hai?", "How many: quanti."], ["Quanto costa i cornetti?", "Quanto costano i cornetti?", "Two cornetti: costano."]),
+        passage("Cosa prendete?", ["Cosa", "Quanto"], ["Ciao, ragazzi! Cosa prendete?", "Hi, you two! What are you having?"], ["Per me un caffè. E tu, Emma?", "A coffee for me. And you, Emma?"], ["Un cappuccino. Quanto costa?", "A cappuccino. How much is it?"], ["Un euro e cinquanta.", "One euro fifty."]),
+        summary("Yes/no: same order, rising voice. Sei italiana?", "Question word + verb + subject: Dove abita Emma?", "chi, che cosa, dove, quando, come, perché, quanto/quanti."),
       ],
       examples: [
         example("Ciao, ragazzi! Cosa prendete?", "Hi, you two! What are you having?", "Cosa"),
@@ -429,6 +541,8 @@ export const grammar: readonly GrammarPoint[] = [
         build("Che | cosa | prendi", "What are you having?"),
         build("Quanto | costa | il | caffè", "How much is the coffee?"),
         match("Match the question to the answer.", "Come stai?=Bene, grazie. | Di dove sei?=Di Napoli. | Quanto costa?=Due euro. | Chi è?=È Giulia.", "Questions and answers."),
+        spot("Quanto anni hai?", "Quanto", "Quanti", "How old are you?"),
+        transform("Ask where (dove).", "Emma abita in via del Pratello.", ["Dove abita Emma?"], "Where does Emma live?"),
       ],
     },
   },
@@ -441,10 +555,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-giornata",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("You know -are verbs (parlo, parli, parla). The other two groups are just as regular: take off -ere or -ire and add the endings. Most endings are the same in both groups."),
+        step("How it works"),
         table("Three verbs side by side", ["", "prendere (to take)", "dormire (to sleep)", "finire (to finish)"], ["io", "prendo", "dormo", "finisco"], ["tu", "prendi", "dormi", "finisci"], ["lui / lei / Lei", "prende", "dorme", "finisce"], ["noi", "prendiamo", "dormiamo", "finiamo"], ["voi", "prendete", "dormite", "finite"], ["loro", "prendono", "dormono", "finiscono"]),
         text("Many -ire verbs add -isc- in io, tu, lui/lei and loro: finisco, capisco, preferisco. The dictionary tells you which ones. Others don't: dormo, apro, parto."),
         text("Common -ere verbs: prendere, leggere, scrivere, vivere, chiudere, mettere. Common -ire verbs: aprire, dormire, partire; with -isc-: finire, capire, preferire."),
+        mistakes("Mistakes learners make", ["Giulia finise il lavoro alle sei.", "Giulia finisce il lavoro alle sei.", "sc before e and i: finisce."], ["Io capo l'italiano.", "Io capisco l'italiano.", "capire takes -isc-."], ["Noi prendono l'autobus.", "Noi prendiamo l'autobus.", "noi: -iamo."]),
+        passage("La giornata di Amadou", ["prende", "legge", "scrive", "apre", "accende", "finisce"], ["Alle sette e un quarto Amadou prende l'autobus.", "At quarter past seven Amadou takes the bus."], ["Poi legge le notizie e scrive un messaggio a sua figlia Awa.", "Then he reads the news and writes a message to his daughter Awa."], ["Alle otto apre la sartoria e accende la radio.", "At eight he opens the shop and turns on the radio."], ["La sera finisce alle sette.", "In the evening he finishes at seven."]),
+        summary("-ere and -ire: -o, -i, -e, -iamo, -ete/-ite, -ono.", "Some -ire verbs add -isc-: finisco, capisco, preferisco."),
       ],
       examples: [
         example("Alle sette e un quarto Amadou prende l'autobus.", "At quarter past seven Amadou takes the bus.", "prende"),
@@ -461,6 +580,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Io non ", " il giapponese.", ["capisco", "capo", "capisci"], 0, "I don't understand Japanese (capire takes -isc-)."),
         match("Match.", "io=leggo | tu=leggi | lei=legge | noi=leggiamo | loro=leggono", "leggere (to read)."),
         spot("Giulia finise il lavoro alle sei.", "finise", "finisce", "Giulia finishes work at six."),
+        pick("Il bar ", " alle sei.", "apre | apra | aprisce", "apre", "The bar opens at six."),
+        sort("With -isc- or without?", ["-isc-", "no -isc-"], "finire=0 | dormire=1 | capire=0 | aprire=1", "finisco, capisco; dormo, apro"),
       ],
     },
   },
@@ -472,10 +593,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-giornata",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Some verbs describe what you do to yourself: wake up, get up, wash, get dressed. In the dictionary they end in -si: svegliarsi, alzarsi, lavarsi, vestirsi, chiamarsi. You already know one: mi chiamo."),
+        step("How it works"),
         table("svegliarsi (to wake up)", ["", "", ""], ["io", "mi", "sveglio"], ["tu", "ti", "svegli"], ["lui / lei / Lei", "si", "sveglia"], ["noi", "ci", "svegliamo"], ["voi", "vi", "svegliate"], ["loro", "si", "svegliano"]),
         slots("The little word goes before the verb", ["Amadou | si:himself* | sveglia | alle sei", "Amadou wakes up at six."], ["Io | non | mi:myself* | alzo | presto", "I don't get up early."]),
         text("With non, it's non + mi/ti/si + verb: Non mi alzo. English often has no 'myself' here, but Italian always does."),
+        mistakes("Mistakes learners make", ["Giulia mi sveglia alle otto.", "Giulia si sveglia alle otto.", "lei: si."], ["Io sveglio alle sette.", "Io mi sveglio alle sette.", "The little word must be there."], ["Non alzo mi presto.", "Non mi alzo presto.", "non + mi + verb."]),
+        passage("La mattina", ["si sveglia", "Si alza", "si lava", "si veste", "mi sveglio"], ["Amadou si sveglia ogni mattina alle sei.", "Amadou wakes up every morning at six."], ["Si alza subito, si lava e si veste.", "He gets up straight away, washes and gets dressed."], ["Io invece mi sveglio alle sette e mezza!", "I, on the other hand, wake up at half past seven!"]),
+        summary("mi, ti, si, ci, vi, si + the verb: mi sveglio.", "The little word goes before the verb: Non mi alzo.", "You know one already: mi chiamo."),
       ],
       examples: [
         example("Amadou si sveglia ogni mattina alle sei.", "Amadou wakes up every morning at six.", "si sveglia"),
@@ -491,6 +617,8 @@ export const grammar: readonly GrammarPoint[] = [
         transform("Say it about Giulia.", "Mi chiamo Emma.", "Si chiama Giulia.", "She's called Giulia."),
         build("Non | mi | alzo | mai | alle | sei", "I never get up at six."),
         spot("Giulia mi sveglia alle otto.", "mi", "si", "Giulia wakes up at eight."),
+        pick("Come ", " chiami?", "ti | si | mi", "ti", "What's your name?"),
+        match("Match.", "io=mi | tu=ti | lei=si | noi=ci | voi=vi", "The little words."),
       ],
     },
   },
@@ -502,10 +630,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-giornata",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian says 'they are the three': Sono le tre. Only one o'clock, noon and midnight are singular: È l'una, è mezzogiorno, è mezzanotte."),
+        step("How it works"),
         table("What time is it?", ["Italian", "time"], ["Sono le otto.", "8:00"], ["Sono le otto e dieci.", "8:10"], ["Sono le otto e un quarto.", "8:15"], ["Sono le otto e mezza.", "8:30"], ["Sono le nove meno un quarto.", "8:45"], ["È l'una.", "1:00"], ["È mezzogiorno.", "12:00"]),
         text("To say when something happens, use alle (a + le): alle sette, alle sei e mezza. One o'clock is all'una; noon is a mezzogiorno."),
         text("Watch out: in Italian 'mezza' after the hour means half past, like English. Le otto e mezza = 8:30. Timetables use 24 hours: alle diciannove = at 7 pm."),
+        mistakes("Mistakes learners make", ["È le tre.", "Sono le tre.", "Plural, except for one o'clock."], ["Sono l'una.", "È l'una.", "One o'clock is singular."], ["La lezione comincia a le nove.", "La lezione comincia alle nove.", "a + le = alle."]),
+        passage("Che ore sono?", ["Sono le sei e mezza", "alle sei e mezza", "Alle sette e un quarto", "all'una"], ["Che ore sono? Sono le sei e mezza.", "What time is it? It's half past six."], ["Amadou fa colazione alle sei e mezza.", "Amadou has breakfast at half past six."], ["Alle sette e un quarto prende l'autobus.", "At quarter past seven he takes the bus."], ["Il sabato la sartoria chiude all'una.", "On Saturdays the shop closes at one."]),
+        summary("Sono le tre; è l'una, è mezzogiorno.", "At: alle tre, all'una, a mezzogiorno.", "e un quarto, e mezza, meno un quarto."),
       ],
       examples: [
         example("Alle sei e mezza fa colazione", "At half past six he has breakfast", "Alle sei e mezza"),
@@ -521,6 +654,8 @@ export const grammar: readonly GrammarPoint[] = [
         match("Match the time.", "le tre e mezza=3:30 | le tre e un quarto=3:15 | le quattro meno un quarto=3:45 | le tre e dieci=3:10", "Telling the time."),
         transform("Write 7:30 in words.", "Sono le 7:30.", "Sono le sette e mezza.", "It's half past seven."),
         build("Il | bar | apre | alle | sei | e | mezza", "The bar opens at half past six."),
+        pick("Il negozio apre ", " otto.", "alle | a le | le", "alle", "The shop opens at eight."),
+        spot("Sono l'una e mezza.", "Sono", "È", "It's half past one."),
       ],
     },
   },
@@ -533,9 +668,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-quartiere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("c'è (ci + è) means 'there is'; ci sono means 'there are'. Use them to say what you find somewhere: in a room, in a street, in a town."),
+        step("How it works"),
         table("One or more", ["", "Italian", "English"], ["one", "C'è una farmacia.", "There's a chemist's."], ["more", "Ci sono due bar.", "There are two bars."], ["question", "C'è un ufficio postale?", "Is there a post office?"], ["no", "Non c'è l'ascensore.", "There's no lift."]),
         text("Questions just go up at the end: C'è un bar qui vicino? To ask how many: Quanti/Quante ... ci sono?"),
+        mistakes("Mistakes learners make", ["Nel cortile c'è due tavoli.", "Nel cortile ci sono due tavoli.", "More than one: ci sono."], ["Ci è un bar qui vicino?", "C'è un bar qui vicino?", "ci + è = c'è."], ["Ci sono una farmacia.", "C'è una farmacia.", "One thing: c'è."]),
+        passage("La casa di Hiro", ["C'è", "c'è", "ci sono"], ["C'è un ingresso stretto, poi c'è il soggiorno con un grande divano verde.", "There's a narrow hall, then there's the living room with a big green sofa."], ["In cucina ci sono tante piante e un vecchio tavolo di legno.", "In the kitchen there are lots of plants and an old wooden table."], ["Quante stanze ci sono?", "How many rooms are there?"]),
+        summary("c'è + one thing; ci sono + more.", "Question: rising voice. C'è un bar qui vicino?", "No: non c'è, non ci sono."),
       ],
       examples: [
         example("C'è un ingresso stretto, poi c'è il soggiorno con un grande divano verde.", "There's a narrow hall, then there's the living room with a big green sofa.", "C'è", "c'è"),
@@ -551,6 +691,8 @@ export const grammar: readonly GrammarPoint[] = [
         transform("Make it plural.", "C'è una sedia in cucina.", "Ci sono due sedie in cucina.", "There are two chairs in the kitchen."),
         build("Quanti | bar | ci | sono | in | via | del | Pratello", "How many bars are there on Via del Pratello?"),
         spot("Nel cortile c'è due tavoli.", "c'è", "ci sono", "There are two tables in the courtyard (two tables: ci sono)."),
+        pick("Quante stanze ", "?", "ci sono | c'è | sono", "ci sono", "How many rooms are there?"),
+        match("Match.", "C'è=una farmacia | Ci sono=due bar | Non c'è=l'ascensore", "c'è and ci sono"),
       ],
     },
   },
@@ -562,9 +704,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-quartiere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("When a, da, di, in or su come before the (il, la, i, le...), they melt into one word. You've already met some: al bar, alla cassa, alle sei."),
+        step("How it works"),
         table("The main ones", ["", "+ il", "+ la", "+ l'", "+ i", "+ le"], ["a", "al", "alla", "all'", "ai", "alle"], ["da", "dal", "dalla", "dall'", "dai", "dalle"], ["di", "del", "della", "dell'", "dei", "delle"], ["in", "nel", "nella", "nell'", "nei", "nelle"], ["su", "sul", "sulla", "sull'", "sui", "sulle"]),
         text("con, per and tra don't join: con il, per la, tra i. In the table only the first letters change: in becomes ne-, di becomes de-."),
+        mistakes("Mistakes learners make", ["Le foto sono sulla tavolo.", "Le foto sono sul tavolo.", "il tavolo: su + il = sul."], ["Il gatto è su il divano.", "Il gatto è sul divano.", "su + il join: sul."], ["Vado a il bar.", "Vado al bar.", "a + il = al."]),
+        passage("Il palazzo", ["Sul", "Nel", "Dal", "dal"], ["Sul divano c'è un gatto grigio.", "On the sofa there's a grey cat."], ["Nel cortile c'è un lungo tavolo.", "In the courtyard there's a long table."], ["Dal balcone si vede tutta la via.", "From the balcony you can see the whole street."], ["Hiro arriva dal Giappone.", "Hiro comes from Japan."]),
+        summary("a, da, di, in, su + il, la, l', i, le join into one word.", "in → nel, nella…; di → del, della…", "con, per, tra stay apart: con il."),
       ],
       examples: [
         example("Sul divano c'è un gatto grigio.", "On the sofa there's a grey cat.", "Sul"),
@@ -580,6 +727,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Il bar è di fronte ", " sartoria.", ["alla", "al", "nella"], 0, "The bar is across from the tailor's."),
         match("Match.", "in + il=nel | su + la=sulla | a + le=alle | da + il=dal | di + la=della", "Prepositions with the article."),
         spot("Le foto sono sulla tavolo.", "sulla", "sul", "The photos are on the table."),
+        pick("Vado ", " stazione.", "alla | al | a la", "alla", "I'm going to the station."),
+        pick("Il gatto è ", " divano.", "sul | sulla | su il", "sul", "The cat is on the sofa."),
       ],
     },
   },
@@ -591,10 +740,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-quartiere",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("To tell someone what to do, Italian uses the imperative. With a friend (tu), -are verbs end in -a and the others in -i: gira! prendi! senti!"),
+        step("How it works"),
         table("tu and Lei", ["verb", "to a friend (tu)", "politely (Lei)"], ["girare", "gira", "giri"], ["prendere", "prendi", "prenda"], ["andare", "vai", "vada"], ["uscire", "esci", "esca"], ["scusare", "scusa", "scusi"]),
         text("The Lei form swaps the vowel: -are verbs end in -i, the others in -a. That's why you say Scusi! to a stranger and Scusa! to a friend."),
         table("Directions", ["Italian", "English"], ["a destra / a sinistra", "right / left"], ["dritto", "straight on"], ["fino a", "as far as"], ["la prima / la seconda strada", "the first / second street"], ["accanto a, davanti a, dietro", "next to, in front of, behind"]),
+        mistakes("Mistakes learners make", ["Scusa, signore, dov'è la stazione?", "Scusi, signore, dov'è la stazione?", "A stranger: Lei, scusi."], ["Signora, vai dritto.", "Signora, vada dritto.", "Lei: vada."], ["Karim, giri a destra!", "Karim, gira a destra!", "A friend: gira."]),
+        passage("Dov'è l'ufficio postale?", ["Scusi", "Esca", "giri", "Vada"], ["Scusi, c'è un ufficio postale qui vicino?", "Excuse me, is there a post office near here?"], ["Sì. Esca dal portone e giri a destra.", "Yes. Go out of the main door and turn right."], ["Vada dritto fino alla piazza.", "Go straight on to the square."], ["Grazie mille!", "Thanks a lot!"]),
+        summary("tu: -are verbs → -a (gira), others → -i (prendi).", "Lei: swap the vowel: giri, prenda.", "Irregular: vai / vada, esci / esca."),
       ],
       examples: [
         example("Esca dal portone e giri a destra. Vada dritto fino alla piazza.", "Go out of the main door and turn right. Go straight on to the square.", "Esca", "giri", "Vada"),
@@ -609,6 +763,8 @@ export const grammar: readonly GrammarPoint[] = [
         transform("Say it to a friend.", "Giri a sinistra.", "Gira a sinistra.", "Turn left."),
         build("Vai | dritto | e | poi | gira | a | destra", "Go straight on and then turn right."),
         spot("Scusa, signore, dov'è la stazione?", "Scusa", "Scusi", "Excuse me, sir, where's the station?"),
+        pick("Signora, ", " la seconda strada.", "prenda | prendi | prende", "prenda", "Madam, take the second street. (Lei)"),
+        sort("tu or Lei?", ["tu", "Lei"], "gira=0 | giri=1 | vai=0 | vada=1 | prendi=0 | prenda=1", "gira, vai, prendi to a friend; giri, vada, prenda politely"),
       ],
     },
   },
@@ -621,9 +777,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-spesa",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("To say 'some', Italian uses di + the article, the same forms you know from 'of the': del, dello, della, dell', dei, degli, delle."),
+        step("How it works"),
         table("Some", ["", "Italian", "English"], ["il pane", "del pane", "some bread"], ["la frutta", "della frutta", "some fruit"], ["l'acqua", "dell'acqua", "some water"], ["i pomodori", "dei pomodori", "some tomatoes"], ["le mele", "delle mele", "some apples"]),
         text("It's often optional: Compro pane = Compro del pane. In questions and with non, leave it out: Hai pane? Non ho latte."),
+        mistakes("Mistakes learners make", ["Vorrei dei frutta.", "Vorrei della frutta.", "la frutta: della."], ["Compro delle pomodori.", "Compro dei pomodori.", "i pomodori: dei."]),
+        passage("Al mercato", ["delle", "dell'", "del", "delle verdure"], ["Qui comprano la frutta fresca per il negozio: delle mele, delle arance e dell'uva.", "Here they buy fresh fruit for the shop: some apples, some oranges and some grapes."], ["Poi Wei compra anche del formaggio e del pane per la cena di Karim.", "Then Wei also buys some cheese and some bread for Karim's dinner."], ["Mi servono delle verdure.", "I need some vegetables."]),
+        summary("some = di + the article: del, della, dell', dei, degli, delle.", "It's often optional: Compro pane = Compro del pane.", "Not in questions or with non: Non ho latte."),
       ],
       examples: [
         example("Qui comprano la frutta fresca per il negozio: delle mele, delle arance e dell'uva.", "Here they buy fresh fruit for the shop: some apples, some oranges and some grapes.", "delle", "dell'"),
@@ -638,6 +799,8 @@ export const grammar: readonly GrammarPoint[] = [
         fill("C'è ", " acqua in cucina?", "dell'", "Is there some water in the kitchen?", "di + l'"),
         match("Match.", "il riso=del riso | la pasta=della pasta | l'olio=dell'olio | i ceci=dei ceci | le uova=delle uova", "Some."),
         spot("Vorrei dei frutta.", "dei", "della", "I'd like some fruit."),
+        pick("Compro ", " pomodori.", "dei | delle | del", "dei", "I'm buying some tomatoes."),
+        transform("Say 'some'.", "il pane", ["del pane"], "some bread"),
       ],
     },
   },
@@ -649,10 +812,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-spesa",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("After a quantity, use di (no article): un chilo di carote, una bottiglia d'olio."),
+        step("How it works"),
         table("Quantities", ["Italian", "English"], ["un chilo di", "a kilo of"], ["mezzo chilo di", "half a kilo of"], ["un etto di", "100 grams of"], ["due etti di", "200 grams of"], ["un litro di", "a litre of"], ["una bottiglia di", "a bottle of"], ["un pacco di", "a packet of"]),
         text("The etto (100 g) is how Italians buy cheese, ham and olives at the counter: due etti di formaggio. Prices are per kilo: Le arance costano due euro al chilo."),
         table("Asking about prices", ["Italian", "English"], ["Quanto costa?", "How much is it? (one thing)"], ["Quanto costano?", "How much are they?"], ["Quanto pago?", "How much do I owe?"], ["In tutto...", "In total..."]),
+        mistakes("Mistakes learners make", ["Vorrei un chilo delle carote.", "Vorrei un chilo di carote.", "After a quantity: di, no article."], ["Quanto costa le arance?", "Quanto costano le arance?", "More than one: costano."], ["Due etto di formaggio, per favore.", "Due etti di formaggio, per favore.", "Plural: etti."]),
+        passage("Dal fruttivendolo", ["un chilo di", "mezzo chilo di", "due etti di", "al chilo"], ["Buongiorno, vorrei un chilo di carote e mezzo chilo di zucchine.", "Good morning, I'd like a kilo of carrots and half a kilo of courgettes."], ["E due etti di ceci, per favore.", "And two hundred grams of chickpeas, please."], ["Quanto costano le arance?", "How much are the oranges?"], ["Costano due euro al chilo.", "They cost two euros a kilo."]),
+        summary("Quantity + di: un chilo di mele, una bottiglia d'acqua.", "un etto = 100 g.", "Quanto costa? (one) / Quanto costano? (more)."),
       ],
       examples: [
         example("un chilo di carote, mezzo chilo di zucchine e due cipolle", "a kilo of carrots, half a kilo of courgettes and two onions", "un chilo di", "mezzo chilo di"),
@@ -667,6 +835,8 @@ export const grammar: readonly GrammarPoint[] = [
         match("Match.", "un litro di=latte | un pacco di=pasta | una bottiglia di=vino | mezzo chilo di=fragole", "Quantities."),
         build("Le | mele | costano | un | euro | al | chilo", "Apples cost one euro a kilo."),
         spot("Vorrei un chilo delle carote.", "delle", "di", "I'd like a kilo of carrots."),
+        pick("Quanto ", " le mele?", "costano | costa", "costano", "How much are the apples?"),
+        transform("Ask the price.", "il pane", ["Quanto costa il pane?"], "How much is the bread?"),
       ],
     },
   },
@@ -678,10 +848,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-spesa",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Three irregular verbs, always followed by an infinitive: potere (can), volere (want), dovere (must, have to)."),
+        step("How it works"),
         table("The forms", ["", "potere", "volere", "dovere"], ["io", "posso", "voglio", "devo"], ["tu", "puoi", "vuoi", "devi"], ["lui / lei / Lei", "può", "vuole", "deve"], ["noi", "possiamo", "vogliamo", "dobbiamo"], ["voi", "potete", "volete", "dovete"], ["loro", "possono", "vogliono", "devono"]),
         slots("Modal + infinitive", ["Posso:can* | pagare | con la carta?", "Can I pay by card?"], ["Karim | deve:must* | comprare | il sale", "Karim has to buy salt."]),
         text("Asking for something in a shop or bar, vorrei is politer than voglio. Posso...? is the polite way to ask permission."),
+        mistakes("Mistakes learners make", ["Karim deve compra il sale.", "Karim deve comprare il sale.", "Modal + infinitive."], ["Lin, può venire sabato?", "Lin, puoi venire sabato?", "tu: puoi."], ["Voglio un caffè.", "Vorrei un caffè.", "In a bar: vorrei."]),
+        passage("La cena", ["vuole", "puoi", "devo", "Possiamo"], ["Il nonno Wei vuole assaggiare tutto.", "Grandpa Wei wants to taste everything."], ["Lin, puoi venire sabato?", "Lin, can you come on Saturday?"], ["Sì, ma prima devo comprare il pane.", "Yes, but first I have to buy bread."], ["Possiamo mangiare?", "Can we eat?"]),
+        summary("potere (can), volere (want), dovere (must) + infinitive.", "posso, voglio, devo; può, vuole, deve.", "Posso…? asks permission; vorrei is politer than voglio."),
       ],
       examples: [
         example("Posso pagare con la carta?", "Can I pay by card?", "Posso"),
@@ -695,8 +870,10 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Lin, ", " venire sabato?", "puoi", "Lin, can you come on Saturday?", "potere, tu"),
         choice("Il nonno ", " provare il cuscus.", ["vuole", "vuoi", "voglio"], 0, "Grandpa wants to try couscous."),
         match("Match.", "io=devo | tu=devi | lei=deve | noi=dobbiamo | loro=devono", "dovere (must)."),
-        build("Devi | comprare | il | pane | per | stasera", "You have to buy bread for tonight."),
+        build("Devi | comprare | il | pane | per | stasera", "You have to buy bread for tonight.", "Per stasera devi comprare il pane"),
         spot("Karim deve compra il sale.", "compra", "comprare", "Karim has to buy salt (modal + infinitive)."),
+        pick("", " mangiare?", "Possiamo | Potete | Possono", "Possiamo", "Can we eat?"),
+        transform("Add dovere (io).", "Compro il sale.", ["Devo comprare il sale."], "I have to buy salt."),
       ],
     },
   },
@@ -708,9 +885,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-spesa",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Hundreds and thousands join on in one word, like the tens: centoventi, duecentocinquanta. Cento has no un (cento = a hundred); mille becomes -mila in the plural: duemila."),
+        step("How it works"),
         table("Big numbers", ["number", "Italian"], ["100", "cento"], ["101", "centouno"], ["200", "duecento"], ["1000", "mille"], ["2000", "duemila"], ["1995", "millenovecentonovantacinque"]),
         text("Prices: euro, then e, then the cents. €18.50 = diciotto euro e cinquanta. Euro is the same in the plural: un euro, venti euro."),
+        mistakes("Mistakes learners make", ["Il pane costa due euri.", "Il pane costa due euro.", "euro doesn't change."], ["Costa due mille euro.", "Costa duemila euro.", "One word; mille → mila."], ["Costa un cento euro.", "Costa cento euro.", "cento has no un."]),
+        passage("Alla cassa", ["diciotto euro e cinquanta", "ottantatré"], ["Sono diciotto euro e cinquanta.", "It's eighteen euros fifty."], ["Il vino costa dodici euro.", "The wine costs twelve euros."], ["In tutto sono ottantatré euro.", "That's eighty-three in total."]),
+        summary("Hundreds and thousands join on: centoventi, duecento.", "mille, but duemila.", "Prices: diciotto euro e cinquanta. euro never changes."),
       ],
       examples: [
         example("Sono diciotto euro e cinquanta.", "It's eighteen euros fifty.", "diciotto euro e cinquanta"),
@@ -724,6 +906,9 @@ export const grammar: readonly GrammarPoint[] = [
         match("Match.", "cento=100 | mille=1000 | trecento=300 | duemila=2000", "Big numbers."),
         transform("Write the price in words.", "Costa €12.", "Costa dodici euro.", "It costs twelve euros."),
         spot("Il pane costa due euri.", "euri", "euro", "The bread costs two euros (euro doesn't change)."),
+        fill("1000 = ", "", "mille", "one thousand"),
+        pick("€101 = ", " euro.", "centouno | cento e uno | uncento", "centouno", "A hundred and one euros."),
+        build("Sono | diciotto | euro | e | cinquanta", "It's eighteen euros fifty."),
       ],
     },
   },
@@ -736,10 +921,16 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-tempo-libero",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian says 'it pleases me' instead of 'I like'. The thing you like is the subject: if it's one thing or an activity, piace; if it's more than one, piacciono."),
+        step("How it works"),
         table("Who likes", ["", "Italian", "English"], ["me", "mi piace", "I like"], ["you", "ti piace", "you like"], ["him", "gli piace", "he likes"], ["her / you (Lei)", "le piace", "she likes / you like"], ["us", "ci piace", "we like"], ["them", "gli piace", "they like"]),
         slots("One or more", ["Mi | piace:singular* | il jazz", "I like jazz."], ["Mi | piacciono:plural* | i film", "I like films."], ["Non | mi | piace | ballare", "I don't like dancing."]),
         text("With a name, use a: A Davide piace la musica. To ask: Ti piace...? Le piace...? (polite)."),
+        mistakes("Mistakes learners make", ["Mi piace le arance.", "Mi piacciono le arance.", "More than one: piacciono."], ["Io piace il jazz.", "Mi piace il jazz.", "It pleases me: mi."], ["Davide piace la musica.", "A Davide piace la musica.", "With a name: a."]),
+        note("Compared with English", "Think 'it pleases me': the thing is the subject, so the verb agrees with the thing, not with you."),
+        passage("Davide", ["piace", "Gli piace", "mi piacciono", "mi piace"], ["A Davide piace lo sport, soprattutto il basket.", "Davide likes sport, especially basketball."], ["Gli piace anche la musica, soprattutto il jazz.", "He also likes music, especially jazz."], ["I film mi piacciono, ma preferisco la musica dal vivo.", "I like films, but I prefer live music."], ["Ballare? Non mi piace per niente!", "Dancing? I don't like it at all!"]),
+        summary("mi piace + one thing or a verb.", "mi piacciono + more things.", "mi, ti, gli, le, ci… A + name: A Davide piace…"),
       ],
       examples: [
         example("Gli piace anche la musica, soprattutto il jazz.", "He also likes music, especially jazz.", "Gli piace"),
@@ -755,6 +946,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Signora, ", " piace la musica jazz?", ["le", "ti", "mi"], 0, "Madam, do you like jazz? (Lei)"),
         transform("Make it plural.", "Mi piace il film.", "Mi piacciono i film.", "I like the films."),
         spot("Mi piace le arance.", "piace", "piacciono", "I like oranges."),
+        pick("A Davide ", " il jazz.", "piace | piacciono", "piace", "Davide likes jazz."),
+        sort("piace or piacciono?", ["piace", "piacciono"], "il jazz=0 | i film=1 | ballare=0 | le tagliatelle=1 | la musica=0 | i concerti=1", "One thing or a verb: piace. More things: piacciono."),
       ],
     },
   },
@@ -766,9 +959,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-tempo-libero",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Words for how often usually go after the verb: Esco spesso. Gioco sempre il sabato. A volte can also start the sentence."),
+        step("How it works"),
         table("From always to never", ["Italian", "English"], ["sempre", "always"], ["quasi sempre", "almost always"], ["spesso", "often"], ["a volte", "sometimes"], ["raramente", "rarely"], ["quasi mai", "hardly ever"], ["non... mai", "never"]),
         text("mai needs non before the verb: Non ballo mai. Non vado mai al cinema. Italian is happy with this double negative."),
+        mistakes("Mistakes learners make", ["Io ballo mai.", "Io non ballo mai.", "mai needs non."], ["Mai vado al cinema.", "Non vado mai al cinema.", "non before the verb, mai after it."]),
+        passage("La settimana di Davide", ["quasi sempre", "Spesso", "non balla mai"], ["Il martedì e il giovedì sera va all'allenamento.", "On Tuesday and Thursday evenings he goes to training."], ["Il sabato c'è quasi sempre una partita.", "On Saturdays there's almost always a match."], ["Spesso esce con gli amici e va ai concerti.", "He often goes out with friends to concerts."], ["Ma non balla mai!", "But he never dances!"]),
+        summary("sempre, spesso, a volte, raramente, non… mai.", "They usually go after the verb: Esco spesso.", "non… mai: Non ballo mai."),
       ],
       examples: [
         example("Il sabato c'è quasi sempre una partita.", "On Saturdays there's almost always a match.", "quasi sempre"),
@@ -777,12 +975,15 @@ export const grammar: readonly GrammarPoint[] = [
         example("Va bene, a volte ballo.", "OK, sometimes I dance.", "a volte"),
       ],
       exercises: [
-        choice("Io non vado ", " al cinema.", ["mai", "sempre", "spesso"], 0, "I never go to the cinema."),
+        choice("Davide ", ".", ["non balla mai", "balla mai", "mai balla"], 0, "Davide never dances. (mai needs non before the verb)"),
         fill("Karim non corre ", ".", "mai", "Karim never runs."),
         choice("Davide gioca ", " il martedì e il giovedì.", ["sempre", "mai", "non"], 0, "Davide always plays on Tuesdays and Thursdays."),
         transform("Say the opposite.", "Esco sempre il venerdì.", "Non esco mai il venerdì.", "I never go out on Fridays."),
-        build("A | volte | andiamo | ai | concerti", "Sometimes we go to concerts."),
+        build("A | volte | andiamo | ai | concerti", "Sometimes we go to concerts.", "Andiamo ai concerti a volte"),
         spot("Io ballo mai.", "ballo", "non ballo", "I never dance (mai needs non)."),
+        pick("Esco ", ", quasi ogni sera.", "spesso | mai | raramente", "spesso", "I go out often, almost every evening."),
+        match("Match.", "sempre=always | spesso=often | a volte=sometimes | mai=never", "How often."),
+        transform("Say the opposite.", "Non vado mai al cinema.", ["Vado sempre al cinema."], "I always go to the cinema."),
       ],
     },
   },
@@ -794,9 +995,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-tempo-libero",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Some of the most used verbs are irregular. Learn them as you met them: vado al bar, vengo anch'io, esco con gli amici, faccio un picnic."),
+        step("How it works"),
         table("Four irregular verbs", ["", "andare (go)", "venire (come)", "uscire (go out)", "fare (do, make)"], ["io", "vado", "vengo", "esco", "faccio"], ["tu", "vai", "vieni", "esci", "fai"], ["lui / lei / Lei", "va", "viene", "esce", "fa"], ["noi", "andiamo", "veniamo", "usciamo", "facciamo"], ["voi", "andate", "venite", "uscite", "fate"], ["loro", "vanno", "vengono", "escono", "fanno"]),
         text("andare a + a town or an activity (vado a Milano, vado a ballare); andare in + a country or a place (vado in palestra). fare is everywhere: fa bel tempo, faccio colazione, facciamo un picnic."),
+        mistakes("Mistakes learners make", ["Io vieno alla festa.", "Io vengo alla festa.", "venire: vengo."], ["Io fo colazione.", "Io faccio colazione.", "fare: faccio."], ["Loro andano in palestra.", "Loro vanno in palestra.", "andare: vanno."]),
+        passage("Il fine settimana", ["vanno", "Vieni", "facciamo", "esco"], ["Sabato pomeriggio Emma, Karim e Marco vanno a vedere la partita di Davide.", "On Saturday afternoon Emma, Karim and Marco go to watch Davide's match."], ["Vieni anche tu, Giulia?", "Are you coming too, Giulia?"], ["Domenica facciamo un picnic con tutti.", "On Sunday we're having a picnic with everyone."], ["Stasera io esco con Giulia.", "Tonight I'm going out with Giulia."]),
+        summary("andare: vado, vai, va, andiamo, andate, vanno.", "venire: vengo, vieni, viene… uscire: esco, esci, esce…", "fare: faccio, fai, fa, facciamo, fate, fanno."),
       ],
       examples: [
         example("Il martedì e il giovedì sera va all'allenamento", "On Tuesday and Thursday evenings he goes to training", "va"),
@@ -812,6 +1018,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Che cosa ", " sabato?", ["fai", "fa", "faccio"], 0, "What are you doing on Saturday?"),
         match("Match.", "io=vado | tu=vai | lei=va | noi=andiamo | loro=vanno", "andare (to go)."),
         spot("Io vieno alla festa.", "vieno", "vengo", "I'm coming to the party."),
+        pick("Noi ", " un picnic.", "facciamo | fanno | faciamo", "facciamo", "We're having a picnic."),
+        transform("Say it about Karim.", "Vado al bar.", ["Karim va al bar."], "Karim goes to the bar."),
       ],
     },
   },
@@ -824,9 +1032,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-lavoro",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Two ways to say your job: Faccio l'ingegnere (fare + the article) or Sono ingegnere (essere, no article). Both are normal."),
+        step("How it works"),
         table("Masculine and feminine", ["he", "she"], ["l'infermiere", "l'infermiera"], ["il cameriere", "la cameriera"], ["lo studente", "la studentessa"], ["il dottore", "la dottoressa"], ["l'architetto", "l'architetto / l'architetta"], ["il / la farmacista", "same form"]),
         text("Graduates are often called dottore / dottoressa, even if they aren't doctors. Architects, engineers and lawyers are often called by their job: Buongiorno, architetto! Buongiorno, avvocato!"),
+        mistakes("Mistakes learners make", ["Faccio ingegnere.", "Faccio l'ingegnere.", "fare needs the article."], ["Sono l'ingegnere.", "Sono ingegnere.", "essere: no article."], ["Giulia è studente.", "Giulia è studentessa.", "Feminine: studentessa."]),
+        passage("Che lavoro fai?", ["è architetto", "Sono architetto", "fa il sarto", "fa il barista"], ["Ana è architetto. Ha ventinove anni ed è di Recife.", "Ana is an architect. She's twenty-nine and from Recife."], ["Sono architetto, ma cerco ancora lavoro.", "I'm an architect, but I'm still looking for work."], ["Amadou fa il sarto e Marco fa il barista.", "Amadou is a tailor and Marco is a barista."]),
+        summary("Faccio + il/la + job: faccio il medico.", "Sono + job, no article: sono medico.", "Many jobs have a feminine: infermiera, cameriera, studentessa."),
       ],
       examples: [
         example("Faccio l'ingegnere.", "I'm an engineer.", "Faccio l'ingegnere"),
@@ -840,6 +1053,9 @@ export const grammar: readonly GrammarPoint[] = [
         transform("Say it about a woman.", "Lui è infermiere.", "Lei è infermiera.", "She's a nurse."),
         match("Match.", "il sarto=sews clothes | il barista=makes coffee | l'architetto=designs houses | l'infermiera=works in a hospital", "Jobs."),
         spot("Faccio ingegnere.", "ingegnere", "l'ingegnere", "I'm an engineer (fare needs the article)."),
+        pick("Marco fa ", " barista.", "il | un | —", "il", "Marco is a barista. (fare + the article)"),
+        pick("Sono ", " architetto.", "— | lo | il", "—", "I'm an architect. (essere: no article)", "Say your job with essere:"),
+        build("Faccio | il | cameriere | in | un | bar", "I'm a waiter in a bar."),
       ],
     },
   },
@@ -851,9 +1067,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-lavoro",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("English says 'I have lived here for two years'. Italian uses the present, because it's still true: Vivo qui da due anni."),
+        step("How it works"),
         slots("Present + da + time", ["Vivo | a Bologna | da:for* | due anni", "I've lived in Bologna for two years."], ["Da quanto tempo:how long* | lavori | qui?", "How long have you worked here?"]),
         text("da also works with a starting point: Lavoro qui da settembre (since September), Studio italiano da lunedì."),
+        mistakes("Mistakes learners make", ["Vivo qui per due anni.", "Vivo qui da due anni.", "Still true: da."], ["Ho vissuto a Bologna da due anni.", "Vivo a Bologna da due anni.", "Still going on: the present."]),
+        note("Compared with English", "English: I have lived here for two years. Italian: I live here since two years. The present, because it's still true."),
+        passage("Da quanto tempo?", ["da due anni", "Da quanto tempo", "Da sei anni", "da lunedì"], ["Ana vive a Bologna da due anni.", "Ana has lived in Bologna for two years."], ["Da quanto tempo vive in Italia?", "How long have you lived in Italy?"], ["Da sei anni. E tu?", "For six years. And you?"], ["Io studio italiano da lunedì.", "I've been studying Italian since Monday."]),
+        summary("Still going on: present + da. Vivo qui da due anni.", "da + a starting point: da settembre.", "Question: Da quanto tempo…?"),
       ],
       examples: [
         example("Vive a Bologna da due anni.", "She's lived in Bologna for two years.", "da due anni"),
@@ -866,6 +1088,10 @@ export const grammar: readonly GrammarPoint[] = [
         transform("Answer with da.", "Quando sei arrivata a Bologna? Due anni fa.", "Vivo a Bologna da due anni.", "I've lived in Bologna for two years."),
         build("Da | quanto | tempo | abiti | in | via | del | Pratello", "How long have you lived on Via del Pratello?"),
         spot("Vivo qui per due anni.", "per", "da", "I've lived here for two years (still true: da)."),
+        pick("Studio italiano ", " lunedì.", "da | fa | per", "da", "I've been studying Italian since Monday."),
+        pick("Abito qui ", " un anno.", "da | per | fa", "da", "I've lived here for a year."),
+        match("Match.", "da due anni=for two years | da settembre=since September | da quanto tempo?=how long?", "da"),
+        transform("Answer with da.", "Da quanto tempo abiti qui? (tre anni)", ["Abito qui da tre anni."], "I've lived here for three years."),
       ],
     },
   },
@@ -877,10 +1103,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-lavoro",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("To say what you did, Italian usually uses the passato prossimo: a form of avere + the past participle. It covers both 'I worked' and 'I have worked'."),
+        step("How it works"),
         table("lavorare", ["", "avere", "participle"], ["io", "ho", "lavorato"], ["tu", "hai", "lavorato"], ["lui / lei / Lei", "ha", "lavorato"], ["noi", "abbiamo", "lavorato"], ["voi", "avete", "lavorato"], ["loro", "hanno", "lavorato"]),
         table("Participles", ["infinitive", "participle"], ["lavorare", "lavorato"], ["ricevere", "ricevuto"], ["finire", "finito"], ["fare", "fatto"], ["leggere", "letto"], ["scrivere", "scritto"], ["prendere", "preso"], ["vedere", "visto"]),
         text("Verbs of movement (andare, venire, arrivare) use essere instead: that's in the next unit. With non: Non ho mangiato."),
+        mistakes("Mistakes learners make", ["Sabato ho mangiare in trattoria.", "Sabato ho mangiato in trattoria.", "avere + participle."], ["Ho leggiuto il libro.", "Ho letto il libro.", "leggere → letto."], ["Karim ha preparata il cuscus.", "Karim ha preparato il cuscus.", "With avere the participle ends in -o."]),
+        passage("Ana cerca lavoro", ["ha studiato", "ha finito", "ha mandato", "Ho lavorato"], ["Ana ha studiato architettura all'università.", "Ana studied architecture at university."], ["A luglio ha finito il master.", "In July she finished her master's."], ["Questo mese ha mandato venti curriculum.", "This month she's sent twenty CVs."], ["Ho lavorato tre anni in uno studio a Recife.", "I worked for three years in a firm in Recife."]),
+        summary("avere + participle: ho lavorato.", "-are → -ato, -ere → -uto, -ire → -ito.", "By heart: fatto, letto, scritto, preso, visto."),
       ],
       examples: [
         example("Ha studiato architettura all'università e a luglio ha finito il master.", "She studied architecture at the university and in July she finished her master's.", "Ha studiato", "ha finito"),
@@ -896,6 +1127,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Ana ", " venti curriculum.", ["ha mandato", "è mandato", "ha mandata"], 0, "Ana has sent twenty CVs."),
         match("Match.", "fare=fatto | scrivere=scritto | prendere=preso | vedere=visto | finire=finito", "Participles."),
         spot("Sabato ho mangiare in trattoria.", "mangiare", "mangiato", "On Saturday I ate at a trattoria."),
+        pick("Sabato ", " un libro.", "ho letto | ho leggiuto | ho leggere", "ho letto", "On Saturday I read a book."),
+        transform("Put it in the past.", "Karim prepara il cuscus.", ["Karim ha preparato il cuscus."], "Karim made couscous."),
       ],
     },
   },
@@ -908,10 +1141,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-viaggio",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Where and how you travel takes small words that don't match English. Learn them as pairs."),
+        step("How it works"),
         table("Where", ["", "Italian", "English"], ["town", "a Napoli, a Bologna", "to / in Naples, Bologna"], ["country, region", "in Italia, in Brasile, in Sicilia", "to / in Italy, Brazil, Sicily"], ["someone's home", "da Marco, dalla mamma", "to / at Marco's, Mum's"], ["places", "al bar, alla stazione, in centro, in ufficio", "to the bar, station, centre, office"]),
         table("How", ["Italian", "English"], ["in treno, in autobus, in aereo, in macchina, in bici", "by train, bus, plane, car, bike"], ["a piedi", "on foot"]),
         text("ci mette / ci vogliono say how long a trip takes: Il treno ci mette tre ore. Ci vogliono nove ore."),
+        mistakes("Mistakes learners make", ["Vivo in Bologna.", "Vivo a Bologna.", "Towns: a."], ["Vado a Italia.", "Vado in Italia.", "Countries: in."], ["Vado in piedi.", "Vado a piedi.", "On foot: a piedi."]),
+        passage("Marco va a Napoli", ["a Napoli", "dalla mamma", "in treno", "in aereo", "in centro"], ["Marco va a Napoli dalla mamma.", "Marco is going to his mum's in Naples."], ["Va in treno.", "He's going by train."], ["Ma perché non vai in aereo?", "But why don't you fly?"], ["Con il treno arrivo in centro!", "By train I arrive in the centre!"]),
+        summary("a + town (a Napoli); in + country or region (in Italia).", "in + transport (in treno), but a piedi.", "da + a person: da Marco, dalla mamma."),
       ],
       examples: [
         example("Va a Napoli dalla figlia.", "She's going to Naples to her daughter's.", "a Napoli", "dalla figlia"),
@@ -927,6 +1165,8 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Vai a Napoli ", " treno o in aereo?", "in", "Are you going to Naples by train or by plane?"),
         match("Match.", "a=Roma | in=Spagna | da=Marco | in=treno", "Where and how."),
         spot("Vivo in Bologna da due anni.", "in", "a", "I've lived in Bologna for two years (town: a)."),
+        pick("Vado ", " Spagna.", "in | a | da", "in", "I'm going to Spain."),
+        sort("a or in?", ["a", "in"], "Roma=0 | Italia=1 | Napoli=0 | Sicilia=1 | Firenze=0 | treno=1", "a + town; in + country, region, transport"),
       ],
     },
   },
@@ -938,9 +1178,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-viaggio",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Most verbs make the past with avere (ho mangiato). Verbs of going, coming and changing use essere: andare, venire, partire, arrivare, tornare, uscire, entrare, nascere, stare, essere."),
+        step("How it works"),
         table("andare", ["", "essere", "he / she", "they"], ["io", "sono", "andato", "andata"], ["tu", "sei", "andato", "andata"], ["lui / lei", "è", "andato", "andata"], ["noi", "siamo", "andati", "andate"], ["voi", "siete", "andati", "andate"], ["loro", "sono", "andati", "andate"]),
         text("With essere the participle changes like an adjective: Marco è partito, Emma è partita, Marco ed Emma sono partiti, Emma e Giulia sono partite."),
+        mistakes("Mistakes learners make", ["Ieri ho andato al mercato.", "Ieri sono andato al mercato.", "andare takes essere."], ["Emma è andato a Firenze.", "Emma è andata a Firenze.", "With essere the ending agrees."], ["Giulia e Lin sono andati al cinema.", "Giulia e Lin sono andate al cinema.", "Two women: -e."]),
+        passage("Il viaggio", ["è partito", "è arrivato", "siamo andati"], ["Venerdì mattina il treno è partito alle otto e quindici.", "On Friday morning the train left at quarter past eight."], ["Alle undici e quarantacinque il treno è arrivato a Napoli Centrale.", "At quarter to twelve the train arrived at Napoli Centrale."], ["Sabato siamo andati al mare.", "On Saturday we went to the seaside."]),
+        summary("Going, coming, changing: essere + participle.", "The participle agrees: andato, andata, andati, andate."),
       ],
       examples: [
         example("Venerdì mattina il treno è partito alle otto e quindici, in orario.", "On Friday morning the train left at quarter past eight, on time.", "è partito"),
@@ -956,6 +1201,8 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Giulia e Lin sono ", " al cinema.", ["andate", "andati", "andata"], 0, "Giulia and Lin went to the cinema."),
         transform("Say it about Ana.", "Marco è uscito alle sette.", "Ana è uscita alle sette.", "Ana went out at seven."),
         spot("Ieri ho andato al mercato.", "ho", "sono", "Yesterday I went to the market (andare takes essere)."),
+        pick("Emma ", " a casa alle dieci.", "è tornata | ha tornato | è tornato", "è tornata", "Emma came home at ten."),
+        sort("Marco or Emma?", ["Marco è…", "Emma è…"], "partito=0 | partita=1 | andato=0 | andata=1 | arrivato=0 | arrivata=1", "With essere the ending agrees."),
       ],
     },
   },
@@ -968,9 +1215,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-salute",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian says 'the head makes me pain': mi fa male la testa. Like piacere, the verb agrees with the thing that hurts: fa for one, fanno for more."),
+        step("How it works"),
         table("Who it hurts", ["", "Italian", "English"], ["me", "mi fa male", "it hurts (me)"], ["you", "ti fa male", "does it hurt (you)?"], ["him / her / you (Lei)", "gli / le fa male", "it hurts him / her / you"]),
         text("Short version for the most common pains: ho mal di testa, ho mal di gola, ho mal di pancia. And: ho la febbre, ho il raffreddore, ho la tosse."),
+        mistakes("Mistakes learners make", ["Mi fa male le orecchie.", "Mi fanno male le orecchie.", "More than one: fanno."], ["Ho male la testa.", "Ho mal di testa.", "The short way: ho mal di…"], ["Mi fanno male la gola.", "Mi fa male la gola.", "One thing: fa."]),
+        passage("Giulia sta male", ["Mi fa male", "mi fanno male", "le fa male"], ["Giulia sta male.", "Giulia is ill."], ["Mi fa male la gola e mi fanno male le orecchie.", "My throat hurts and my ears hurt."], ["Ha freddo e le fa male la testa.", "She's cold and her head hurts."], ["Ho la febbre!", "I have a temperature!"]),
+        summary("mi fa male + one thing; mi fanno male + more.", "Short: ho mal di testa, di gola, di pancia.", "ho la febbre, il raffreddore, la tosse."),
       ],
       examples: [
         example("Mi fa male la gola e mi fanno male le orecchie.", "My throat hurts and my ears hurt.", "Mi fa male", "mi fanno male"),
@@ -983,6 +1235,9 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Ti ", " male la testa?", "fa", "Does your head hurt?", "fare"),
         match("Match.", "testa=head | gola=throat | pancia=stomach | orecchie=ears | piedi=feet", "The body."),
         spot("Mi fa male le orecchie.", "fa", "fanno", "My ears hurt (plural: fanno)."),
+        pick("Ho mal ", " testa.", "di | la | a", "di", "I have a headache."),
+        transform("Say it the short way.", "Mi fa male la testa.", ["Ho mal di testa."], "I have a headache."),
+        build("Mi | fanno | male | i | piedi", "My feet hurt."),
       ],
     },
   },
@@ -994,9 +1249,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-salute",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("You know Come stai? Stare is the verb for how you feel and for staying somewhere: sto bene, sto male, sto a casa, sto a letto."),
+        step("How it works"),
         table("stare", ["", ""], ["io", "sto"], ["tu", "stai"], ["lui / lei / Lei", "sta"], ["noi", "stiamo"], ["voi", "state"], ["loro", "stanno"]),
         text("The doctor's advice comes in the Lei imperative: Stia a letto! Beva molta acqua! Prenda questo! To a friend: Stai a letto! Bevi! Prendi!"),
+        mistakes("Mistakes learners make", ["Come stai? Sono bene, grazie.", "Come stai? Sto bene, grazie.", "How you are: stare."], ["Signora, stai a letto!", "Signora, stia a letto!", "Lei: stia."], ["Noi stanno a casa.", "Noi stiamo a casa.", "noi: stiamo."]),
+        passage("Dal medico", ["Sto male", "Stia", "sta benissimo"], ["Sto male. Mi fa male la gola.", "I feel ill. My throat hurts."], ["Stia a letto due o tre giorni e beva molta acqua.", "Stay in bed for two or three days and drink lots of water."], ["Due settimane dopo Giulia sta benissimo.", "Two weeks later Giulia is perfectly well."]),
+        summary("stare: sto, stai, sta, stiamo, state, stanno.", "How you are: sto bene, sto male. Staying: sto a casa.", "The doctor (Lei): Stia a letto!"),
       ],
       examples: [
         example("Sto male. Mi fa male la gola", "I feel ill. My throat hurts", "Sto male"),
@@ -1011,6 +1271,9 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Signora, ", " a letto e beva molto.", ["stia", "stai", "sta"], 0, "Madam, stay in bed and drink a lot. (Lei)"),
         transform("Say it to a friend.", "Stia a casa!", "Stai a casa!", "Stay at home!"),
         spot("Come stai? Sono bene, grazie.", "Sono", "Sto", "How are you? I'm fine, thanks."),
+        pick("Come ", ", signora Rita?", "sta | stai | sto", "sta", "How are you, Mrs Rita?"),
+        match("Match.", "io=sto | tu=stai | lei=sta | noi=stiamo | loro=stanno", "stare"),
+        build("Oggi | sto | a | casa", "Today I'm staying at home.", "Sto a casa oggi"),
       ],
     },
   },
@@ -1022,9 +1285,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-salute",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Most body words follow the normal rules: la testa → le teste, il piede → i piedi. A few pairs of the body are special: they become feminine in the plural, with -a."),
+        step("How it works"),
         table("Special plurals", ["one", "two or more"], ["la mano", "le mani"], ["il braccio", "le braccia"], ["il dito", "le dita"], ["il ginocchio", "le ginocchia"], ["l'orecchio", "le orecchie"], ["l'occhio", "gli occhi"]),
         text("With the body Italian uses the article, not my: Mi fa male la testa (not la mia testa). Alza le mani! = Raise your hands!"),
+        mistakes("Mistakes learners make", ["Davide si lava le mano.", "Davide si lava le mani.", "la mano → le mani."], ["I bracci di Davide sono forti.", "Le braccia di Davide sono forti.", "il braccio → le braccia."], ["Mi fa male la mia testa.", "Mi fa male la testa.", "With the body: the article, not mio."]),
+        passage("Dopo la partita", ["le braccia", "le mani", "le orecchie"], ["Davide ha le braccia forti.", "Davide has strong arms."], ["Dopo la partita gli fanno male le mani.", "After the match his hands hurt."], ["Giulia ha mal di gola e le fanno male le orecchie.", "Giulia has a sore throat and her ears hurt."]),
+        summary("le mani, le braccia, le dita, le ginocchia, le orecchie.", "Body parts take the article, not mio: Mi fa male la testa."),
       ],
       examples: [
         example("mi fanno male le orecchie", "my ears hurt", "le orecchie"),
@@ -1036,6 +1304,10 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Mi fanno male le ", ".", "ginocchia", "My knees hurt.", "il ginocchio"),
         match("Match.", "la mano=le mani | il braccio=le braccia | il dito=le dita | l'orecchio=le orecchie", "Special plurals."),
         spot("Davide si lava le mano.", "mano", "mani", "Davide washes his hands."),
+        transform("Make it plural.", "la mano", ["le mani"], "the hands"),
+        transform("Make it plural.", "il dito", ["le dita"], "the fingers"),
+        sort("Special plural (-a) or normal?", ["-a", "normal"], "braccia=0 | piedi=1 | dita=0 | teste=1 | ginocchia=0 | occhi=1", "le braccia, le dita, le ginocchia; i piedi, le teste, gli occhi"),
+        pick("Mi fa male ", " testa.", "la | la mia | mia", "la", "My head hurts."),
       ],
     },
   },
@@ -1048,10 +1320,15 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-feste",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("Italian dates are il + a normal number + the month: il venticinque dicembre. Only the first day uses an ordinal: il primo gennaio."),
+        step("How it works"),
         table("Months", ["", "", ""], ["gennaio", "febbraio", "marzo"], ["aprile", "maggio", "giugno"], ["luglio", "agosto", "settembre"], ["ottobre", "novembre", "dicembre"]),
         table("When", ["Italian", "English"], ["il sei gennaio", "on 6 January"], ["a dicembre / in dicembre", "in December"], ["in inverno, in primavera", "in winter, in spring"], ["d'estate, d'autunno", "in summer, in autumn"], ["l'anno prossimo, l'anno scorso", "next year, last year"]),
         text("Months, days and seasons are written with a small letter: lunedì, gennaio, l'estate."),
+        mistakes("Mistakes learners make", ["Natale è il 25 Dicembre.", "Natale è il venticinque dicembre.", "Months: small letter."], ["Natale è in venticinque dicembre.", "Natale è il venticinque dicembre.", "Dates: il + number."], ["Capodanno è il uno gennaio.", "Capodanno è il primo gennaio.", "The first: primo."]),
+        passage("Le feste", ["Il ventitré dicembre", "A dicembre", "Il sei gennaio", "il primo gennaio"], ["Il ventitré dicembre Emma e Marco partono in treno.", "On the twenty-third of December Emma and Marco leave by train."], ["A dicembre via del Pratello è piena di luci.", "In December Via del Pratello is full of lights."], ["Il sei gennaio è l'Epifania.", "The sixth of January is Epiphany."], ["Capodanno è il primo gennaio.", "New Year's Day is the first of January."]),
+        summary("il + number + month: il venticinque dicembre.", "Only the first: il primo.", "a or in + month; in + season (or d'estate).", "Months and days: small letters."),
       ],
       examples: [
         example("Il ventitré dicembre Emma e Marco partono in treno.", "On the twenty-third of December Emma and Marco leave by train.", "Il ventitré dicembre"),
@@ -1065,6 +1342,9 @@ export const grammar: readonly GrammarPoint[] = [
         fill("", " inverno fa freddo.", ["In", "in"], "In winter it's cold."),
         match("Match.", "gennaio=January | aprile=April | agosto=August | ottobre=October", "Months."),
         spot("Il compleanno di Rita è il uno marzo.", "uno", "primo", "Rita's birthday is on 1 March."),
+        pick("Oggi è il ", " gennaio.", "dieci | decimo", "dieci", "Today is the tenth of January."),
+        transform("Write the date in words.", "25/12", ["il venticinque dicembre"], "25 December"),
+        build("Il | mio | compleanno | è | a | luglio", "My birthday is in July."),
       ],
     },
   },
@@ -1076,9 +1356,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-feste",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("A simple test: if the verb can have an object (eat something, see someone, buy something), it takes avere. If it's about movement or a change of state, it takes essere."),
+        step("How it works"),
         table("Which one?", ["avere", "essere"], ["ho mangiato, ho visto", "sono andato/a, sono arrivato/a"], ["ho comprato, ho fatto", "sono partito/a, sono tornato/a"], ["ho conosciuto, ho bevuto", "sono rimasto/a, sono stato/a"], ["ho dormito, ho lavorato", "sono nato/a, sono uscito/a"]),
         text("Piacere also takes essere: Mi è piaciuto il presepe. Non mi è piaciuto il capitone."),
+        mistakes("Mistakes learners make", ["Marco ha partito alle otto.", "Marco è partito alle otto.", "partire: essere."], ["Sono mangiato troppo.", "Ho mangiato troppo.", "mangiare: avere."], ["Mi ha piaciuto il presepe.", "Mi è piaciuto il presepe.", "piacere: essere."]),
+        passage("Natale a Napoli", ["Abbiamo mangiato", "sono andati", "sono rimasta", "è piaciuto"], ["Abbiamo mangiato gli spaghetti alle vongole.", "We ate spaghetti with clams."], ["Poi molti sono andati a messa.", "Then many went to Mass."], ["Io sono rimasta a casa con la zia.", "I stayed at home with the aunt."], ["Mi è piaciuto molto il presepe.", "I really liked the nativity scene."]),
+        summary("Can it have an object (eat something)? avere.", "Movement or change? essere, and the ending agrees.", "piacere: mi è piaciuto."),
       ],
       examples: [
         example("Abbiamo mangiato gli spaghetti alle vongole", "We ate spaghetti with clams", "Abbiamo mangiato"),
@@ -1094,6 +1379,8 @@ export const grammar: readonly GrammarPoint[] = [
         fill("Mi ", " molto il presepe.", "è piaciuto", "I really liked the nativity scene.", "piacere"),
         sort("Avere or essere?", ["avere", "essere"], "mangiare=0 | andare=1 | vedere=0 | partire=1 | comprare=0 | tornare=1", "Avere or essere in the past."),
         spot("Marco ha partito alle otto.", "ha", "è", "Marco left at eight."),
+        pick("Ieri Lin ", " con Davide.", "è uscita | ha uscito | è uscito", "è uscita", "Yesterday Lin went out with Davide."),
+        transform("Put it in the past.", "Emma parte alle otto.", ["Emma è partita alle otto."], "Emma left at eight."),
       ],
     },
   },
@@ -1105,9 +1392,14 @@ export const grammar: readonly GrammarPoint[] = [
     unit: "it-a1-feste",
     lesson: {
       blocks: [
+        step("What it's for"),
         text("fa after a length of time means 'ago': un anno fa, dieci minuti fa. It goes after the time, like English."),
+        step("How it works"),
         slots("time + fa", ["Un anno | fa:ago* | è arrivata | a Bologna", "A year ago she arrived in Bologna."], ["Due giorni | fa:ago* | ho visto | Marco", "I saw Marco two days ago."]),
         text("Don't mix it up with da: Vivo qui da un anno (I've lived here for a year, still true) vs Sono arrivata un anno fa (I arrived a year ago, finished)."),
+        mistakes("Mistakes learners make", ["Vivo a Bologna fa due anni.", "Vivo a Bologna da due anni.", "Still true: da."], ["Fa un anno sono arrivata.", "Un anno fa sono arrivata.", "fa comes after the time."], ["Sono arrivata da un anno.", "Sono arrivata un anno fa.", "Finished: fa."]),
+        passage("Un anno dopo", ["Un anno fa", "da un anno", "Due giorni fa"], ["Un anno fa Emma è arrivata a Bologna con una valigia e tre parole di italiano.", "A year ago Emma arrived in Bologna with a suitcase and three words of Italian."], ["Adesso vive in via del Pratello da un anno.", "Now she's lived in Via del Pratello for a year."], ["Due giorni fa ha visto Marco al bar.", "Two days ago she saw Marco at the bar."]),
+        summary("time + fa = ago: un anno fa.", "Usually with the past: Sono arrivata un anno fa.", "Still true: da. Vivo qui da un anno."),
       ],
       examples: [
         example("Un anno fa è arrivata a Bologna con una valigia e tre parole di italiano.", "A year ago she arrived in Bologna with a suitcase and three words of Italian.", "Un anno fa"),
@@ -1119,7 +1411,14 @@ export const grammar: readonly GrammarPoint[] = [
         choice("Ho conosciuto Giulia due anni ", ".", ["fa", "da", "per"], 0, "I met Giulia two years ago."),
         transform("Use fa.", "Ho visto Marco lunedì. Oggi è mercoledì.", "Ho visto Marco due giorni fa.", "I saw Marco two days ago."),
         spot("Vivo a Bologna fa due anni.", "fa", "da", "I've lived in Bologna for two years (still true: da)."),
+        pick("Ho visto Marco ", ".", "due giorni fa | fa due giorni | da due giorni", "due giorni fa", "I saw Marco two days ago."),
+        match("Match.", "un anno fa=a year ago | da un anno=for a year (still true) | due giorni fa=two days ago", "fa and da"),
+        build("Tre | mesi | fa | sono | arrivato | in | Italia", "Three months ago I arrived in Italy.", "Sono arrivato in Italia tre mesi fa"),
+        transform("Use fa.", "Sono arrivata a Bologna. (un anno)", ["Sono arrivata a Bologna un anno fa.", "Un anno fa sono arrivata a Bologna."], "I arrived in Bologna a year ago."),
       ],
     },
   },
 ];
+
+/** Each lesson with its "Going deeper" after the summary card. */
+export const grammar: readonly GrammarPoint[] = [...points, ...grammarA2u1, ...grammarA2u2, ...grammarA2u3, ...grammarA2u4, ...grammarA2u5, ...grammarA2u6, ...grammarA2u7, ...grammarA2u8, ...grammarA2u9, ...grammarA2u10].map((g) => ({ ...g, lesson: withDeeper(g.lesson, deeper[g.id]) }));

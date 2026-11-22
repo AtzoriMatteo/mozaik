@@ -895,4 +895,6 @@ ginocchio | knee | | | Irregular plural: le ginocchia
 ginocchia | knees | ginocchio
 cordiale | cordial, warm
 cordiali | cordial (cordiali saluti = kind regards) | cordiale
+auguri | wishes; congratulations | augurio | | Tanti auguri! = Happy birthday! / Congratulations!
+augurio | wish
 `);

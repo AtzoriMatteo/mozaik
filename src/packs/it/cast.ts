@@ -6,6 +6,7 @@ export const cast: Cast = {
   gender: {
     Emma: "f", Giulia: "f", Karim: "m", Marco: "m", Rita: "f", Hiro: "m", Ingrid: "f", Ana: "f", Lucia: "f", Amadou: "m", Awa: "f", Turista: "any", Lin: "f", Davide: "m", Benassi: "m", Francesco: "m", Kenji: "m", Fernanda: "f", Impiegato: "m", Signora: "f", Signore: "m", Mamma: "f", Zio: "m", Dottoressa: "f", Farmacista: "f", Venditrice: "f", Madre: "f", Stefano: "m", Speaker: "any", Wei: "m", Franco: "m", Fruttivendolo: "m",
     Nonna: "f",
+    Anna: "f", Youssef: "m", Fatima: "f", Nicolò: "m", Ragazzo: "m", Fioraio: "m", Presidente: "any",
     // Roles.
     Segretaria: "f", Receptionist: "any", Cassiera: "f", Barista: "any", Cliente: "any", Annuncio: "any",
   },

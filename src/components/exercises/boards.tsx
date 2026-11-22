@@ -415,14 +415,17 @@ export function ChoiceBoard({
   options,
   answer,
   lang,
+  seed,
   locked,
   onCheck,
-}: BoardProps & { options: string[]; answer: number; lang?: string }) {
+}: BoardProps & { options: string[]; answer: number; lang?: string; seed: string }) {
   const [picked, setPicked] = useState<number | null>(null);
+  // Content lists the right answer first; shown in a stable shuffled order so it isn't always the top one.
+  const shown = useMemo(() => shuffleTiles(options.map((o, i) => ({ o, i })), `${seed}-choice`), [options, seed]);
   return (
     <div className="board">
       <div className="option-stack" lang={lang}>
-        {options.map((o, i) => (
+        {shown.map(({ o, i }) => (
           <button
             key={o}
             type="button"

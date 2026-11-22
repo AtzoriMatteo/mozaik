@@ -112,3 +112,40 @@ export const sort = (prompt: string, groups: string[], items: string, translatio
   }),
   translation,
 });
+
+/* ---- Textbook-style lesson parts (21 Nov 2026) ---- */
+
+export const step = (title: string): LessonBlock => ({ kind: "step", title });
+
+export const mistakes = (caption: string | undefined, ...items: [string, string, string][]): LessonBlock => ({
+  kind: "mistakes",
+  caption,
+  items: items.map(([wrong, right, why]) => ({ wrong, right, why })),
+});
+
+export const note = (title: string, t: string): LessonBlock => ({ kind: "note", title, text: t });
+
+export const passage = (title: string, highlight: string[], ...sentences: [string, string][]): LessonBlock => ({
+  kind: "passage",
+  title,
+  highlight,
+  sentences: sentences.map(([t, translation]) => ({ text: t, translation })),
+});
+
+export const summary = (...points: string[]): LessonBlock => ({ kind: "summary", points });
+
+export const NOTHING = "—";
+
+export const pick = (
+  before: string,
+  after: string,
+  options: string,
+  answer: string,
+  translation: string,
+  prompt?: string,
+): Exercise => {
+  const opts = options.split("|").map((o) => o.trim());
+  const i = opts.indexOf(answer);
+  if (i < 0) throw new Error(`pick: "${answer}" is not one of ${options}`);
+  return { kind: "choice", before, after, options: opts, answer: i, translation, prompt };
+};

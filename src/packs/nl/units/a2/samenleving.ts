@@ -119,7 +119,7 @@ export const samenleving: Unit = {
       level: "A2",
       title: "Afval scheiden",
       titleTranslation: "Sorting your rubbish",
-      grammar: ["separable-verbs", "om-te", "imperative"],
+      grammar: ["separable-verbs", "om-te", "imperative", "alle-allemaal", "passive"],
       paragraphs: [
         [
           s("In Nederland gooi je niet al je afval in één bak. Je scheidt het: papier, glas, plastic, gft en restafval.", "In the Netherlands you don't throw all your rubbish in one bin. You sort it: paper, glass, plastic, organic waste and other waste."),

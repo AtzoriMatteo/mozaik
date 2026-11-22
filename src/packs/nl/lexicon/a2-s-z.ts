@@ -332,6 +332,7 @@ zat | sat; was | zitten
 zaten | sat; were | zitten
 zaterdagavond | Saturday evening
 zaterdagmiddag | Saturday afternoon
+vrijdagmiddag | Friday afternoon
 zeehonden | seals | zeehond | | Literally 'sea dogs'
 zeeland | Zeeland (a province: 'sea land')
 zei | said | zeggen
@@ -355,6 +356,7 @@ zonnebloemen | sunflowers | zonnebloem
 zorg | care | | | de zorg = healthcare
 zorgt | makes sure; takes care | zorgen | | zorgen voor = take care of
 zorgverzekering | health insurance | | | Compulsory for everyone who lives and works in NL
+zouden | would (plural) | zullen
 zou | would | zullen | | Zou je…? = Would you…? The polite way to ask
 zuid | south | | | Zuid-Holland = South Holland
 zundert | Zundert (Van Gogh's birthplace)

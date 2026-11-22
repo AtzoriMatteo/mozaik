@@ -41,5 +41,8 @@ export const p = (prompt: string, ...cues: string[]): WritingPoint => ({ prompt,
 /** A point with a sentence frame: "…" marks the learner's own words. */
 export const pf = (prompt: string, frame: string, ...cues: string[]): WritingPoint => ({ prompt, frame, cues });
 
+/** An A2 writing topic. */
+export const a2 = (t: Omit<WritingTask, "level">): WritingTask => ({ ...t, level: "A2" });
+
 /** An A1 writing topic. */
 export const a1 = (t: Omit<WritingTask, "level">): WritingTask => ({ ...t, level: "A1" });

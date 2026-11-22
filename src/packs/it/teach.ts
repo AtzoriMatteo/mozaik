@@ -90,6 +90,9 @@ export const teachIt: Record<string, TaughtWord[]> = {
     t("continuare", "to continue", "Voglio continuare a studiare.", "I want to keep studying."),
     t("vita", "life (lunga vita a... = long live...)", "Lunga vita al re!", "Long live the king!"),
   ],
+  "it-a1-famiglia": [
+    t("auguri", "congratulations, best wishes", "Auguri per il bambino!", "Congratulations on the baby!"),
+  ],
   "it-a1-piacere": [
     t("cercare", "to look for", "Cerco amici italiani per parlare.", "I'm looking for Italian friends to talk to."),
     t("spagnolo", "Spanish", "Parlo spagnolo e un po' di inglese.", "I speak Spanish and a little English."),

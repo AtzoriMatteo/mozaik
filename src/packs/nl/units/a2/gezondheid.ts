@@ -20,7 +20,7 @@ export const gezondheid: Unit = {
       level: "A2",
       title: "Eerst naar de huisarts",
       titleTranslation: "First, the GP",
-      grammar: ["modal-past", "perfect-hebben", "subordinate-order"],
+      grammar: ["modal-past", "perfect-hebben", "subordinate-order", "hoeven"],
       paragraphs: [
         [
           s("Sofia komt uit Portugal en woont sinds een jaar in Rotterdam. Vorige maand had ze opeens veel pijn in haar rug.", "Sofia is from Portugal and has lived in Rotterdam for a year. Last month she suddenly had a lot of pain in her back."),
@@ -166,7 +166,7 @@ export const gezondheid: Unit = {
       situation: "Daniel calls his GP's practice early in the morning.",
       grammar: ["time-numbers", "modal-verbs", "questions"],
       lines: [
-        line("Assistente", "Huisartsenpraktijk De Linde, goedemorgen, u spreekt met Sanne.", "De Linde GP practice, good morning, this is Sanne speaking."),
+        line("Assistente", "Huisartsenpraktijk De Linde, goedemorgen, u spreekt met Mirjam.", "De Linde GP practice, good morning, this is Mirjam speaking."),
         line("Daniel", "Goedemorgen, met Daniel Novak. Ik wil graag een afspraak maken.", "Good morning, this is Daniel Novak. I'd like to make an appointment."),
         line("Assistente", "Wat is uw geboortedatum?", "What is your date of birth?"),
         line("Daniel", "Twaalf maart 1994.", "The twelfth of March 1994."),

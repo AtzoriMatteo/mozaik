@@ -271,13 +271,13 @@ export const werkCheckpoint: Checkpoint = {
   text: [
     [
       s("Zondag na het werk geeft Ruth Fatima een briefje.", "On Sunday after work Ruth gives Fatima a note."),
-      s("\"Volgende week: zaterdag van zeven tot één, zondag van acht tot twaalf. Zondag komt er een grote groep: veertig broodjes! Kun je dan om half acht beginnen? Op maandag en dinsdag is de bakker dicht. Ruth\"", "\"Next week: Saturday from seven to one, Sunday from eight to twelve. On Sunday a big group is coming: forty rolls! Can you start at half past seven then? On Monday and Tuesday the bakery is closed. Ruth\""),
+      s("\"Volgende week: zaterdag van zeven tot één, zondag van acht tot twaalf. Zondag komt er een grote groep: veertig broodjes! Kun je dan om half acht beginnen? Op maandagmiddag is de bakker dicht. Ruth\"", "\"Next week: Saturday from seven to one, Sunday from eight to twelve. On Sunday a big group is coming: forty rolls! Can you start at half past seven then? On Monday afternoon the bakery is closed. Ruth\""),
     ],
   ],
   textTasks: [
     { kind: "truefalse", statement: "Zondag moet Fatima vroeger beginnen.", translation: "On Sunday Fatima has to start earlier.", answer: true },
     { kind: "choice", prompt: "Why does Ruth ask her to come early on Sunday?", options: ["A big group wants forty rolls", "Ruth is ill", "The bakery opens earlier every Sunday"], answer: 0 },
-    { kind: "choice", prompt: "When is the bakery closed?", options: ["Monday and Tuesday", "Saturday and Sunday", "Only Monday"], answer: 0 },
+    { kind: "choice", prompt: "When is the bakery closed?", options: ["On Monday afternoon", "Saturday and Sunday", "All day on Monday and Tuesday"], answer: 0 },
   ],
   listening: {
     situation: "Luca leaves Fatima a voice message.",

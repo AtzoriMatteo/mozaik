@@ -7,6 +7,55 @@ export const speakers: Record<string, string> = {
   "le-mani-parlano": "-|-|-",
   "la-famiglia-di-giulia": "Giulia|Giulia|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma|Giulia|Emma",
   "a-trentanni-con-mamma-e-papa": "La mamma di Karim",
+  // A2 unit 1: Rita racconta
+  "rita-5-il-pratello-di-una-volta": "Rita|Rita|Emma|Rita|Rita|Emma|Rita|Emma|Rita|Emma|Rita",
+  "rita-6-il-ballo": "Rita|Rita|Rita|Emma|Rita|Rita|Emma|Rita|Rita",
+  "rita-7-sai-chi-era": "Emma|Karim|Karim|Emma|Karim|Emma|Karim|Emma|Karim|Emma|Karim",
+  "check-it-a2-ricordi": "Karim|Rita",
+  // A2 unit 2: Ana trasloca
+  "ana-5-cerco-casa": "-|Ferri|Ana|Ferri|Ferri|Emma|Ana",
+  "ana-6-il-trasloco": "Karim|Ana|Karim|Ana|Davide|Marco|Rita|Ana|Ana|Ana",
+  "check-it-a2-casa": "Karim|Giulia|Ana",
+  // A2 unit 3: Emma resta?
+  "emma-5-il-corso-finisce": "Lucia|Kenji|Ingrid|Ingrid|Fernanda|Lucia|Emma|Lucia|Lucia",
+  "emma-6-al-posto-tuo": "Rita|Rita|Marco|Marco|Giulia|Karim|Emma|Rita",
+  "emma-7-cosa-stai-facendo": "Emma|Giulia|Karim|Rita|Emma|Rita|Marco|Emma",
+  "check-it-a2-progetti": "Neri|Emma|Rita",
+  // A2 unit 4: La piazzetta
+  "lin-5-l-avviso": "-|Wei|Lin|Wei|Davide|Rita",
+  "lin-6-la-riunione": "Bassi|Ana|Davide|Rita",
+  "lin-7-scriviamo-alla-sindaca": "Karim|Karim|Emma|Lin|Lin|Sindaca|Lin|Wei",
+  "check-it-a2-quartiere": "Lin|Rita",
+  // A2 unit 5: Siobhan in Italia
+  "emma-8-arriva-siobhan": "Emma|Emma|Giulia|Emma|Emma|Karim|Karim|Rita|Emma|Emma",
+  "emma-9-a-firenze": "Receptionist|Emma|Receptionist|Custode|Cameriere|Emma|Emma",
+  "emma-10-il-regalo": "Emma|Artigiano|Artigiano|Emma|Artigiano|Emma|Emma|Siobhan",
+  "check-it-a2-vacanza": "Mamma|Emma|Mamma",
+  // A2 unit 6: Davide in finale
+  "davide-5-l-allenamento": "Paola|Davide|Karim|Paola|Davide|Davide|Karim|Karim",
+  "davide-6-come-si-gioca": "Davide|Davide|Emma|Davide|Davide|Emma|Davide",
+  "davide-7-la-finale": "Paola|Davide",
+  "check-it-a2-sport": "Davide|Davide",
+  // A2 unit 7: Emma insegna
+  "emma-11-il-primo-giorno": "Emma|Neri|Neri",
+  "emma-12-i-miei-studenti": "Emma|Emma|Emma|Emma|Emma",
+  "emma-13-cosa-ha-detto": "Emma|Rita|Emma|Rita|Emma|Marco|Rita",
+  "check-it-a2-lavoro": "Rita",
+  // A2 unit 8: Radio Pratello
+  "karim-5-in-onda": "Davide|Karim",
+  "karim-6-il-notiziario": "Karim|Karim|Karim|Karim|Karim|Karim",
+  "karim-7-consigli-per-studenti": "Ana|Ana|Emma|Emma|Emma|Ragazzo|Karim|Ragazzo",
+  "check-it-a2-radio": "Mamma|Mamma",
+  // A2 unit 9: Dottore!
+  "karim-8-la-tesi": "Giulia|Giulia|Emma|Giulia|Giulia|Karim|Marco|Marco",
+  "karim-9-la-proclamazione": "Presidente|Amici|Youssef",
+  "karim-10-il-papiro": "Rita|Rita|Karim|Karim",
+  "check-it-a2-laurea": "Karim|Davide",
+  // A2 unit 10: In bocca al lupo!
+  "emma-14-l-idea-di-neri": "Neri|Emma|Neri|Neri|Emma|Giulia|Giulia|Emma",
+  "emma-15-se-studi-con-me": "Rita|Karim|Davide|Lin|Giulia|Giulia",
+  "emma-16-il-risultato": "Rita|Emma|Emma|Marco|Rita|Emma",
+  "check-it-a2-esame": "Emma|Neri",
   // Unit 12: Il primo inverno di Emma
   "emma-1-natale-con-i-tuoi": "Rita|Karim|Giulia|Giulia|Emma|Marco",
   "emma-2-la-vigilia": "Mamma",

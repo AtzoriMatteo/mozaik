@@ -90,7 +90,7 @@ export const wonen: Unit = {
       level: "A2",
       title: "Een klacht",
       titleTranslation: "A complaint",
-      grammar: ["er-preposition", "perfect-hebben", "subordinate-order"],
+      grammar: ["er-preposition", "perfect-hebben", "subordinate-order", "laten"],
       paragraphs: [
         [
           s("Kofi woont nu drie maanden in zijn nieuwe appartement. Hij is er heel blij mee, maar er is een probleem.", "Kofi has now lived in his new flat for three months. He's very happy with it, but there's a problem."),
@@ -104,7 +104,7 @@ export const wonen: Unit = {
         ],
         [
           s("Daarnaast doet de bel het niet. Pakketjes komen daardoor vaak niet aan, omdat de bezorger denkt dat ik niet thuis ben.", "Also, the doorbell doesn't work. Because of that, parcels often don't arrive, because the delivery person thinks I'm not home."),
-          s("Kunt u een monteur sturen die naar allebei kan kijken? Ik ben na vijf uur altijd thuis, en op woensdag de hele dag.", "Could you send a repairman who can look at both? I'm always home after five, and all day on Wednesday."),
+          s("Kunt u allebei laten repareren? Ik ben na vijf uur altijd thuis, en op woensdag de hele dag.", "Could you have both of them repaired? I'm always home after five, and all day on Wednesday."),
           s("Ik hoop dat u er snel iets aan kunt doen. Bedankt!", "I hope you can do something about it soon. Thanks in advance."),
           s("Met vriendelijke groet, Kofi Mensah", "Kind regards, Kofi Mensah"),
         ],

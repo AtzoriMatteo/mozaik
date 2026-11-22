@@ -20,7 +20,7 @@ export const kleren: UnitContent = {
       level: "A1",
       title: "Een winterjas",
       titleTranslation: "A winter coat",
-      grammar: ["comparatives", "adjective-e", "demonstratives", "questions"],
+      grammar: ["comparatives", "adjective-e", "demonstratives", "questions", "welk-wat-voor"],
       paragraphs: [
         [
           s("Het is november en het is koud.", "It's November and it's cold."),
@@ -32,7 +32,7 @@ export const kleren: UnitContent = {
           s("In de eerste winkel zijn de jassen mooi, maar heel duur.", "In the first shop the coats are nice, but very expensive."),
           s("In de tweede winkel is er uitverkoop.", "In the second shop there's a sale."),
           s("Kwame ziet een donkerblauwe jas met een capuchon.", "Kwame sees a dark blue coat with a hood."),
-          s("\"Heeft u deze jas in maat M?\" vraagt hij aan de verkoopster.", "\"Do you have this coat in size M?\" he asks the shop assistant."),
+          s("\"Wat voor jas zoekt u?\" vraagt de verkoopster. \"Een warme jas. Heeft u deze in maat M?\"", "\"What kind of coat are you looking for?\" asks the shop assistant. \"A warm coat. Do you have this one in size M?\""),
           s("\"Even kijken. Ja, hier is hij. De paskamer is achterin.\"", "\"Let me check. Yes, here it is. The fitting room is at the back.\""),
         ],
         [
@@ -227,11 +227,11 @@ export const feestdagen: UnitContent = {
       level: "A1",
       title: "Oud en nieuw",
       titleTranslation: "New Year's Eve",
-      grammar: ["gaan-future", "conjunctions", "modal-verbs"],
+      grammar: ["gaan-future", "conjunctions", "modal-verbs", "aan-het"],
       paragraphs: [
         [
           s("Op eenendertig december is het oudejaarsavond.", "The thirty-first of December is New Year's Eve."),
-          s("In de keuken bakt Bram oliebollen: ronde bollen van deeg, gebakken in olie, met poedersuiker.", "In the kitchen Bram is frying oliebollen: round balls of dough, fried in oil, with icing sugar."),
+          s("In de keuken is Bram oliebollen aan het bakken: ronde bollen van deeg, gebakken in olie, met poedersuiker.", "In the kitchen Bram is frying oliebollen: round balls of dough, fried in oil, with icing sugar."),
           s("Het huis ruikt naar olie, maar de oliebollen zijn heerlijk.", "The house smells of oil, but the oliebollen are delicious."),
         ],
         [
