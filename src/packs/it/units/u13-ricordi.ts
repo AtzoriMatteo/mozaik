@@ -94,7 +94,7 @@ export const ricordi: Unit = {
       paragraphs: [
         [
           s("Il giorno dopo Emma va in biblioteca con Karim. Vuole sapere di più sulla storia di via del Pratello.", "The next day Emma goes to the library with Karim. She wants to know more about the history of Via del Pratello."),
-          s("\"Conosci qualcuno che sa queste cose?\" chiede Emma. \"Io!\" dice Karim. \"Studio storia, ti ricordi?\"", "\"Do you know anyone who knows these things?\" Emma asks. \"Me!\" says Karim. \"I study history, remember?\""),
+          s("\"Conosci qualcuno che sa queste cose?\" chiede Emma. \"Io!\" dice Karim. \"Studio ingegneria, ma leggo sempre libri di storia.\"", "\"Do you know anyone who knows these things?\" Emma asks. \"Me!\" says Karim. \"I study engineering, but I'm always reading history books.\""),
         ],
         [
           s("\"Sai perché si chiama Pratello?\" \"Sì, lo so: qui una volta c'era un piccolo prato, fuori dalle mura della città.\"", "\"Do you know why it's called Pratello?\" \"Yes, I know: there used to be a little meadow here, outside the city walls.\""),
@@ -110,7 +110,7 @@ export const ricordi: Unit = {
         mc("Where does the name Pratello come from?", ["A little meadow outside the city walls", "A famous family", "A street market"], 0),
         tf("Karim conosce Gino.", "Karim knows Gino.", false),
         mc("How were the porticoes born?", ["People built rooms over the street", "The city wanted shade", "Shops needed more space"], 0),
-        tf("Karim studia storia.", "Karim studies history.", true),
+        tf("Karim legge sempre libri di storia.", "Karim is always reading history books.", true),
       ],
     },
   ],

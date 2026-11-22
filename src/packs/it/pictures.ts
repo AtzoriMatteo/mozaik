@@ -651,9 +651,9 @@ export const pictures: Record<string, PictureSpec> = {
     p("man", 270, 212, { pose: "sit", c: "iron", flip: true }),
     o("wheelchair", 340, 214),
   ]),
-  "karim-6-il-notiziario": pic("piazza", "The neighbourhood news: the new garden in the little square, opened by the mayor, with twelve young trees.", [
+  "karim-6-il-notiziario": pic("park", "The neighbourhood news: the new basketball court in the garden, opened by the mayor, with young trees around it.", [
+    o("hoop", 330, 90),
     o("bigtree", 90, 214, { s: 0.7 }),
-    o("bigtree", 310, 214, { s: 0.7 }),
     o("bunting", 200, 50),
     p("woman", 200, 214, { c: "manganese", hair: "bob", pose: "wave" }),
     o("sun", 340, 50),
@@ -670,5 +670,35 @@ export const pictures: Record<string, PictureSpec> = {
     o("phone", 200, 120),
     o("frame", 330, 80),
     p("man", 120, 214, { c: "cobalt", pose: "hold" }),
+  ]),
+  "karim-8-la-tesi": pic("room", "Karim's thesis is printed at last: a hundred and twenty pages on the table, and Giulia laughing at the pile.", [
+    o("smalltable", 200, 214),
+    o("notes", 200, 176),
+    o("laptop", 250, 180),
+    p("man", 130, 212, { pose: "sit", c: "cobalt" }),
+    p("woman", 290, 214, { c: "ochre", hair: "ponytail", flip: true, pose: "point" }),
+  ]),
+  "karim-9-la-proclamazione": pic("hall", "The graduation: Karim in his blue suit and red tie, wearing the laurel crown, his parents clapping in the front row.", [
+    o("crown", 200, 120),
+    o("flag", 340, 70),
+    p("man", 200, 214, { c: "cobalt" }),
+    p("man", 90, 212, { pose: "sit", c: "iron" }),
+    p("woman", 140, 212, { pose: "sit", c: "copper", hair: "bob" }),
+    p("oldman", 310, 214, { c: "manganese", flip: true }),
+  ]),
+  "karim-10-il-papiro": pic("porticoes", "The party at Bar Margherita: Karim reads the papiro standing on a chair, surrounded by cakes and sparkling wine.", [
+    o("table", 200, 214),
+    o("cake", 160, 180),
+    o("wine", 240, 176),
+    o("poster", 330, 80, { t: "DOTTORE!" }),
+    o("bunting", 200, 40),
+    p("man", 90, 214, { c: "cobalt", pose: "hold" }),
+  ], true),
+  "check-it-a2-laurea": pic("room", "The day after: the laurel crown, the papiro and red confetti still on the table while Karim sleeps till noon.", [
+    o("smalltable", 200, 214),
+    o("crown", 190, 180, { s: 0.6 }),
+    o("letter", 230, 182),
+    o("sun", 340, 50),
+    o("phone", 120, 120),
   ]),
 };

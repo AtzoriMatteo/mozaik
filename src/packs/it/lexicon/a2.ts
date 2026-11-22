@@ -709,4 +709,52 @@ salvare | to save
 cartella | folder; schoolbag
 premere | to press
 tasto | button, key | | | il tasto verde = the green button
+// A2 unit 9: Dottore!
+tesi | thesis, dissertation | | | Pronounced TEH-zee; the plural is also tesi
+mesi | months | mese
+treni | trains | treno
+futuro | future | | | Also the future tense: il futuro
+cerimonia | ceremony
+presenta | presents (lui, lei) | presentare
+professori | professors, teachers | professore
+conti | sums, accounts | conto
+conto | bill; sum | | | fare i conti = to do the sums; Il conto, per favore!
+fatima | Fatima (a woman's name)
+quanta | how much, so much (feminine) | quanto | | Quanta gente! = So many people!
+tanta | so much, a lot of (feminine) | tanto
+cibo | food
+cravatta | tie | | Croatian: the soldiers' scarves gave the word
+marito | husband
+quarta | fourth (feminine) | quarto
+domande | questions | domanda
+presidente | president; chair (of a committee)
+proclamo | I declare, I proclaim | proclamare
+proclamare | to declare, to proclaim
+applaudono | clap, applaud (loro) | applaudire
+applaudire | to clap, to applaud
+corona | crown | | | la corona d'alloro: the laurel crown for a new graduate
+alloro | laurel, bay leaf | | | Laureato (graduate) comes from laurea, the laurel crown
+cantano | sing (loro) | cantare
+spumante | sparkling wine | | spumare (to foam)
+confetti | sugared almonds | | | Not paper confetti! Red for a graduation, white for a wedding
+matrimonio | wedding; marriage
+papiro | papiro: a funny poster about a new graduate | | Literally "papyrus" | A big sheet with a cartoon and a joking poem, read out at the party
+disegno | drawing | | ~ design
+poesia | poem; poetry
+scherzi | jokes | scherzo
+scherzo | joke | | | Scherzo! = Just kidding!
+leggerlo | to read it | leggere
+arrivava | arrived, used to arrive (lui, imperfetto) | arrivare
+siete | you are (voi) | essere
+arriviamo | we arrive | arrivare
+regali | presents | regalo
+emozionata | excited, moved (feminine) | emozionato
+emozionato | excited, moved, emotional | | Not "emotional" in a bad way: emozionato is happy nerves
+quei | those (before most masculine plurals) | quello
+nastri | ribbons | nastro
+nastro | ribbon; tape
+terribile | terrible
+cento | a hundred | | ~ cent, century
+centoventi | a hundred and twenty
+centodieci | a hundred and ten | | | centodieci e lode: top marks with honours for an Italian degree
 `);

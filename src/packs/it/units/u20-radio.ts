@@ -25,7 +25,7 @@ export const radio: Unit = {
     title: "Karim alla radio",
     titleTranslation: "Karim on the radio",
     intro:
-      "November. The street radio that interviewed people about the garden needs a new presenter, and Karim says yes. Davide makes the posters, Nicolò from Emma's class turns out to be a sound genius, and every Thursday at nine Via del Pratello is on air.",
+      "November. The neighbourhood is starting its own little radio and needs a presenter, and Karim says yes. Davide makes the posters, Nicolò from Emma's class turns out to be a sound genius, and every Thursday at nine Via del Pratello is on air.",
   },
   texts: [
     {
@@ -64,7 +64,7 @@ export const radio: Unit = {
       paragraphs: [
         [
           s("Ogni giovedì Karim legge le notizie del quartiere. Le scrive con Lin, che sa sempre tutto.", "Every Thursday Karim reads the neighbourhood news. He writes it with Lin, who always knows everything."),
-          s("\"Prima notizia: il giardino della piazzetta è stato inaugurato sabato dalla sindaca. Sono stati piantati dodici alberi.\"", "\"First item: the garden in the little square was opened on Saturday by the mayor. Twelve trees have been planted.\""),
+          s("\"Prima notizia: il nuovo campo da basket del giardino è stato inaugurato sabato dalla sindaca. Sono stati piantati anche dodici alberi.\"", "\"First item: the new basketball court in the garden was opened on Saturday by the mayor. Twelve trees have been planted too.\""),
         ],
         [
           s("\"Seconda notizia: da lunedì la strada davanti alla scuola viene chiusa alle macchine dalle otto alle nove. Quindi, genitori, accompagnate i bambini a piedi!\"", "\"Second item: from Monday the street in front of the school will be closed to cars from eight to nine. So, parents, walk your children to school!\""),
@@ -77,8 +77,8 @@ export const radio: Unit = {
         ],
       ],
       tasks: [
-        order("Put the news in order.", "The garden was opened", "The school street closes to cars", "The shoemaker's workshop was bought", "The cup was 'stolen'"),
-        mc("Who opened the garden?", ["The mayor", "Rita", "Lin"], 0),
+        order("Put the news in order.", "The basketball court was opened", "The school street closes to cars", "The shoemaker's workshop was bought", "The cup was 'stolen'"),
+        mc("Who opened the basketball court?", ["The mayor", "Rita", "Lin"], 0),
         tf("La coppa è stata rubata davvero.", "The cup was really stolen.", false),
         mc("What will the neighbourhood have again?", ["A shoemaker", "A cinema", "A market"], 0),
       ],

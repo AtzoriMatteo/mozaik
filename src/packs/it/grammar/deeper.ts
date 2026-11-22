@@ -307,4 +307,19 @@ export const deeper: Record<string, [string, string][]> = {
     ["avere bisogno di", "avere bisogno di = to need: Ho bisogno di aiuto, Ho bisogno di dormire. It changes with the person: ho, hai, ha bisogno."],
     ["occorre, serve", "occorre and serve also mean 'is needed': Occorre prenotare. Serve una mano? (Need a hand?). With a plural thing: servono due uova."],
   ],
+  "quello-bello": [
+    ["buono and grande", "buono before a noun copies un/uno: un buon caffè, un buono studente, una buon'idea. grande can shorten to gran before a consonant: un gran caffè, una gran festa."],
+    ["quello as a pronoun", "quello che = what, the thing that: Quello che dici è vero. Fai quello che vuoi."],
+    ["santo", "santo works like bello before names: San Petronio, Sant'Anna, Santo Stefano (s + consonant)."],
+  ],
+  "molto-tanto-troppo": [
+    ["parecchio", "parecchio, parecchia, parecchi = quite a lot: C'era parecchia gente. Colloquial and very common."],
+    ["tanto quanto", "tanto… quanto compares equal amounts: Ho tanti amici quanti ne hai tu (as many friends as you)."],
+    ["tanto = anyway", "In speech tanto can mean 'anyway, it makes no difference': Prendo l'ombrello, tanto non costa niente."],
+  ],
+  tutto: [
+    ["tutto quanto", "tutto quanto, tutti quanti = absolutely all of it, every single one: Mangiamo tutto quanto! Ciao a tutti quanti!"],
+    ["tutto with numbers", "tutti e due, tutte e tre, tutti e quattro: the e is always there. Ambedue and entrambi also mean 'both'."],
+    ["del tutto", "del tutto = completely: Non sono del tutto sicuro (I'm not completely sure)."],
+  ],
 };
