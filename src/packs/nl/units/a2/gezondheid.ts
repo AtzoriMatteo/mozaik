@@ -109,7 +109,13 @@ export const gezondheid: Unit = {
           s("De eerste week heb ik bijna alleen geslapen. Ik probeerde een boek te lezen, maar dat lukte niet.", "The first week I did almost nothing but sleep. I tried to read a book, but it didn't work."),
           s("Mijn buurvrouw heeft elke dag soep voor me gebracht. Zonder haar had ik niets te eten gehad!", "My neighbour brought me soup every day. Without her I'd have had nothing to eat!"),
           s("Nu voel ik me weer beter. Ik ben vandaag voor het eerst weer gaan werken, maar ik ben nog steeds snel moe.", "Now I feel better again. Today I went back to work for the first time, but I still get tired quickly."),
-          s("Hoe gaat het met jou? Liefs, Lars", "How are you? Love, Lars"),
+          s("Hoe gaat het met jou?", "How are you?"),
+        ],
+        [
+          s("Liefs,", "Love,"),
+        ],
+        [
+          s("Lars", "Lars"),
         ],
       ],
       tasks: [

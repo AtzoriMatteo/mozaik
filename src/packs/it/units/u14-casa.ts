@@ -106,7 +106,12 @@ export const casa: Unit = {
         [
           s("La sera spesso vado al Bar Margherita. Ci trovo sempre qualcuno: Rita, Karim, Davide.", "In the evening I often go to Bar Margherita. I always find someone there: Rita, Karim, Davide."),
           s("Il mese prossimo vieni a Bologna? Ti porto sui colli: ci andiamo in autobus e mangiamo all'aperto.", "Will you come to Bologna next month? I'll take you up the hills: we'll go there by bus and eat outside."),
-          s("Un bacio grande, Ana", "A big kiss, Ana"),
+        ],
+        [
+          s("Un bacio grande,", "A big kiss,"),
+        ],
+        [
+          s("Ana", "Ana"),
         ],
       ],
       tasks: [

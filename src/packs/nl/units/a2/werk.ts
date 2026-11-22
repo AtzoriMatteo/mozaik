@@ -61,6 +61,8 @@ export const werk: Unit = {
       paragraphs: [
         [
           s("Geachte heer of mevrouw,", "Dear Sir or Madam,"),
+        ],
+        [
           s("Met veel interesse heb ik uw vacature voor medewerker klantenservice gelezen. Ik wil graag reageren.", "I read your advert for a customer service assistant with great interest. I would like to apply."),
         ],
         [
@@ -76,7 +78,11 @@ export const werk: Unit = {
         [
           s("Ik kan 32 uur per week werken, want mijn dochter gaat op woensdagmiddag naar haar oma.", "I can work 32 hours a week, because my daughter goes to her grandma's on Wednesday afternoons."),
           s("Ik vertel u graag meer in een gesprek.", "I'd be happy to tell you more in an interview."),
+        ],
+        [
           s("Met vriendelijke groet,", "Kind regards,"),
+        ],
+        [
           s("Agnieszka Nowak", "Agnieszka Nowak"),
         ],
       ],

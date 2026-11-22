@@ -98,6 +98,8 @@ export const wonen: Unit = {
         ],
         [
           s("Beste mevrouw Bakker,", "Dear Mrs Bakker,"),
+        ],
+        [
           s("Ik schrijf u omdat er al twee weken schimmel in de badkamer zit. Het wordt elke dag erger.", "I'm writing to you because there's been mould in the bathroom for two weeks. It gets worse every day."),
           s("Ik heb er al een keer over gebeld, maar ik heb nog niets gehoord.", "I've already called about it once, but I haven't heard anything yet."),
           s("Ik denk dat het komt door de ventilator, die niet meer werkt. Ik heb er een foto van gemaakt; die stuur ik mee.", "I think it's because of the extractor fan, which doesn't work any more. I've taken a photo of it, which I'm attaching."),
@@ -106,7 +108,12 @@ export const wonen: Unit = {
           s("Daarnaast doet de bel het niet. Pakketjes komen daardoor vaak niet aan, omdat de bezorger denkt dat ik niet thuis ben.", "Also, the doorbell doesn't work. Because of that, parcels often don't arrive, because the delivery person thinks I'm not home."),
           s("Kunt u allebei laten repareren? Ik ben na vijf uur altijd thuis, en op woensdag de hele dag.", "Could you have both of them repaired? I'm always home after five, and all day on Wednesday."),
           s("Ik hoop dat u er snel iets aan kunt doen. Bedankt!", "I hope you can do something about it soon. Thanks in advance."),
-          s("Met vriendelijke groet, Kofi Mensah", "Kind regards, Kofi Mensah"),
+        ],
+        [
+          s("Met vriendelijke groet,", "Kind regards,"),
+        ],
+        [
+          s("Kofi Mensah", "Kofi Mensah"),
         ],
       ],
       tasks: [
