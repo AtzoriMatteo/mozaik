@@ -5,6 +5,16 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-26 (evening) — Library texts as real long reads
+
+**Asked (Matteo).** The texts are still so short.
+
+**Built (Claude).** Each Library story continues with new chapters: Dutch A1
+about 430, A2 about 620, B1 about 900 words; Italian A1 about 400, A2 about 590,
+B1 about 810. Six questions each now. The course's length limits no longer apply
+to Library texts. Two forms (Dutch keek, pratend) stay as text-only word help,
+because in the lexicon they confuse the writing checker's verb rules.
+
 ## 2026-11-26 (later) — Library: fewer, longer texts; a curated Out there
 
 **Asked (Matteo).** Fix the empty button after C2; too many texts in the Library,
