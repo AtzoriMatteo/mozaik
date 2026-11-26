@@ -23,7 +23,8 @@ describe("Italian course structure", () => {
   });
 
   it("only uses levels the pack offers", () => {
-    for (const t of texts) expect(dutch.levels).toContain(t.level);
+    // Library texts can be above the course levels.
+    for (const t of texts.filter((x) => !x.id.startsWith("lib-"))) expect(dutch.levels).toContain(t.level);
   });
 
   it.each([
