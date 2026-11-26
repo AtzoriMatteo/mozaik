@@ -383,4 +383,376 @@ vola | flies | volare
 volare | to fly
 weekend | weekend
 zuppa | soup
+
+# Longer Library texts (second round)
+abitassero | lived (congiuntivo, loro) | abitare
+abitavano | lived, used to live (loro) | abitare
+accusa | accuses | accusare
+accusare | to accuse
+affittato | rented | affittare
+affittare | to rent
+aggiunto | added | aggiungere
+aggiungere | to add
+aglio | garlic
+aiutarsi | to help each other | aiutare
+aiutata | helped (feminine) | aiutare
+amiche | (female) friends | amica
+ammala | falls ill (si ammala) | ammalarsi
+ammalarsi | to fall ill | | malato (ill)
+anagrafe | registry office | | | You register your residence at the anagrafe of your comune
+androne | entrance hall (of a building)
+apertura | opening | | aprire (to open)
+appuntamento | appointment, date | | | un appuntamento fisso = a regular date
+argentina | Argentina
+arrivate | arrived (feminine plural) | arrivare
+arrivati | arrived (plural) | arrivare
+arrosto | roast
+asilo | nursery | | | l'asilo nido = nursery for babies and toddlers
+asinello | little donkey | asino
+asino | donkey
+attaccato | stuck up, attached | attaccare
+attaccare | to stick, to attach; to attack
+attraversiamo | we cross | attraversare
+attraversare | to cross
+aumentate | increased (feminine plural) | aumentare
+aumentare | to increase | | ~ augment
+avuto | had | avere
+bagni | toilets, bathrooms | bagno | | i bagni chimici = portable toilets
+ballano | dance (loro) | ballare
+banda | (brass) band
+barbabietole | beetroots | barbabietola
+barbabietola | beetroot
+barbecue | barbecue
+belli | beautiful (plural) | bello
+betlemme | Bethlehem
+birra | beer
+bollette | (utility) bills | bolletta
+bolletta | bill (gas, electricity)
+bue | ox
+burocrazia | bureaucracy
+buttano | throw away (loro) | buttare
+buttavano | were throwing away (loro) | buttare
+buttare | to throw (away)
+cadono | fall (loro) | cadere
+calmarsi | to calm down
+camminava | walked, used to walk | camminare
+cannone | cannon
+carichi | loads | carico
+carico | load
+cassette | (letter)boxes; crates | cassetta | | le cassette della posta = letterboxes
+cassetta | small box; letterbox
+castello | castle
+centri | centres | centro
+cesto | basket
+chiacchierava | chatted, used to chat | chiacchierare
+chiederle | to ask her | chiedere
+chiese | churches; asked | chiesa
+chiesero | asked (loro, past) | chiedere
+chimici | chemical (plural) | chimico
+chimico | chemical
+cinquantadue | fifty-two
+civile | civil | | | il servizio civile = voluntary civilian service for young people
+colore | colour
+comici | comedians | comico
+comico | comedian; funny
+comprava | bought, used to buy | comprare
+comunicare | to tell, to communicate
+comunità | community
+conchiglie | shells | conchiglia
+conchiglia | shell | | ~ conch
+concorrenza | competition (in business)
+conosceva | knew | conoscere
+conoscevamo | knew (noi) | conoscere
+consigli | pieces of advice | consiglio
+consiglio | (piece of) advice
+contadino | farmer | | contado (countryside)
+contanti | cash
+controllano | check (loro) | controllare
+controlli | checks | controllo
+controllo | check, inspection
+coppie | couples | coppia
+coppia | couple
+crescentine | crescentine (Bologna's fried bread) | crescentina
+crescentina | crescentina (fried bread from Bologna)
+cucinano | cook (loro) | cucinare
+cucino | I cook | cucinare
+cupola | dome
+dappertutto | everywhere
+date | dates | data
+dedicati | dedicated (plural) | dedicare
+delfini | dolphins | delfino
+delfino | dolphin
+difficoltà | difficulty | | | famiglie in difficoltà = families in need
+disse | said (past) | dire
+diventano | become (loro) | diventare
+diventati | become, got (plural) | diventare
+diverse | different (feminine plural) | diverso
+divide | divides, sorts | dividere
+dividono | divide, share (loro) | dividere
+dormiva | was sleeping | dormire
+dovuto | had to | dovere
+durante | during
+duri | harsh, hard (plural) | duro
+duro | hard, harsh
+eleganza | elegance
+elencano | list (loro) | elencare
+elencare | to list
+emigrati | emigrants | emigrato
+emigrato | emigrant
+enzo | Enzo (a man's name)
+esistono | exist (loro) | esistere
+esistere | to exist
+ewa | Ewa (a Polish woman's name)
+facciata | façade, front (of a building)
+famose | famous (feminine plural) | famoso
+faticosa | tiring (feminine) | faticoso
+faticoso | tiring | | fatica (effort)
+faticosissimo | exhausting | faticoso
+fatti | done, made (plural) | fare
+filo | thread, string | | | la mozzarella fa il filo = the mozzarella goes stringy
+fisso | fixed, regular
+forni | ovens | forno
+forno | oven
+frana | slides down, collapses | franare | | una frana = a landslide
+franare | to slide down, to collapse
+fritta | fried (feminine) | fritto
+funzionato | worked | funzionare
+gas | gas
+gianicolo | the Gianicolo (a hill in Rome)
+giorgia | Giorgia (a girl's name)
+giro | round; tour | | | nel giro di una settimana = within a week
+giuseppe | Joseph
+gocciolanti | dripping (plural) | gocciolante
+gocciolante | dripping | | goccia (drop)
+guardava | was watching | guardare
+guidava | was driving, was steering | guidare
+igiene | hygiene
+imitarle | to copy them | imitare
+imitare | to imitate, to copy
+imprenditore | businessman, entrepreneur
+incontrato | met | incontrare
+ingredienti | ingredients | ingrediente
+ingrediente | ingredient
+insalata | salad
+insomma | in short, basically
+interi | whole (plural) | intero
+interno | inside, interior | | | dall'interno = from the inside
+invitarono | invited (loro, past) | invitare
+invito | invitation; I invite
+lasciava | let, used to let | lasciare
+lavano | wash (loro) | lavare
+lavorano | work (loro) | lavorare
+lecce | Lecce (a city in Puglia)
+legame | link, bond | | legare (to tie)
+leggi | laws | legge
+levanto | Levanto (a town near the Cinque Terre)
+liti | quarrels | lite
+lite | quarrel, row
+litigare | to argue, to quarrel
+litigato | argued | litigare
+locale | local
+maestra | (primary school) teacher | maestro
+magazzini | warehouses | magazzino
+magi | Magi (i Re Magi = the Three Kings) | | | The Befana's story begins with the Three Kings
+marta | Marta (a woman's name)
+maschera | mask
+mazurche | mazurkas | mazurca
+mazurca | mazurka (a dance)
+mense | canteens; soup kitchens | mensa
+mensa | canteen | | | la mensa dei poveri = soup kitchen
+mercati | markets | mercato
+miglior | best (before a noun) | migliore
+milioni | millions | milione
+monumenti | monuments | monumento
+morbide | soft (feminine plural) | morbido
+morbido | soft
+mortaio | mortar (for pounding)
+motore | engine
+mozzarella | mozzarella
+nido | nest | | | l'asilo nido = nursery (for under-threes)
+nonostante | despite
+normali | ordinary, normal (plural) | normale
+nuotato | swum | nuotare
+nuotare | to swim
+ordinano | order (loro) | ordinare
+organizzato | organised | organizzare
+ostetrica | midwife
+pacchi | parcels | pacco
+pacco | parcel, packet
+paella | paella
+pagate | paid (feminine plural) | pagare
+palazzi | buildings | palazzo
+pannolini | nappies | pannolino
+pannolino | nappy | | panno (cloth) + -ino
+parcheggia | parks | parcheggiare
+parcheggiare | to park
+parlarne | to talk about it | parlare
+parrocchie | parishes | parrocchia
+parrocchia | parish
+partirono | left, set off (loro, past) | partire
+partì | left, set off (past) | partire
+passeggiata | walk, stroll | | | fare una passeggiata = to go for a walk
+passeggino | pushchair
+pecorino | pecorino (sheep's cheese) | | pecora (sheep)
+pediatra | paediatrician
+pensarci | to think about it | pensare
+pensato | thought | pensare
+pensava | was thinking | pensare
+pentì | regretted (si pentì) | pentirsi
+pentirsi | to regret, to repent
+perso | lost | perdere
+pesche | peaches | pesca
+pesca | peach; fishing
+pesci | fish (plural) | pesce
+pettorine | bibs (worn by volunteers) | pettorina
+pettorina | bib | | petto (chest)
+pezzetto | little piece | pezzo
+piazze | squares | piazza
+piero | Piero (a man's name)
+pila | pile, stack; battery
+pizzeria | pizzeria
+polacca | Polish (feminine) | polacco
+polacco | Polish
+polke | polkas | polka
+polka | polka
+polonia | Poland
+portava | brought, used to bring | portare
+portiere | concierge, doorman; goalkeeper
+portieri | concierges | portiere
+poveri | the poor; poor (plural) | povero
+pratiche | practical (feminine plural) | pratico
+pratico | practical
+prenotazioni | bookings | prenotazione
+prenotazione | booking, reservation
+preparava | made, used to make | preparare
+priya | Priya (a woman's name)
+probabilmente | probably
+problemi | problems | problema
+programmi | programmes | programma
+prosciutto | ham
+provano | try (loro) | provare
+quartieri | neighbourhoods | quartiere
+quelle | those (feminine) | quello
+raccolto | picked, gathered | raccogliere
+raccontano | tell (each other) | raccontare
+raccontato | told | raccontare
+re | king(s) | | | i Re Magi = the Three Kings
+recuperare | to recover, to save
+residenza | residence (official address)
+responsabile | person in charge; responsible
+rete | network; net
+ricevo | I receive | ricevere
+richieste | requests | richiesta
+richiesta | request
+riconosce | recognises | riconoscere
+riconoscere | to recognise
+ricorda | remembers (si ricorda) | ricordare
+ripide | steep (feminine plural) | ripido
+ripido | steep
+riscaldamento | heating
+ristorante | restaurant
+ristoratori | restaurant owners | ristoratore
+ristoratore | restaurant owner
+ritrova | finds again | ritrovare
+ritrovare | to find again
+romana | Roman (feminine) | romano
+romani | Romans | romano
+romano | Roman
+rosa | Rosa (a woman's name); pink; rose
+rosanna | Rosanna (a woman's name)
+rotto | broken | rompere
+sabati | Saturdays | sabato
+sacerdote | priest
+salata | savoury, salty (feminine) | salato | | una torta salata = a savoury tart
+salato | salty, savoury
+salgono | climb, go up (loro) | salire
+salutano | greet (loro) | salutare
+samosa | samosa(s)
+sanno | know (loro); smell of (sanno di) | sapere | | Le mani sanno di aglio = their hands smell of garlic
+saranno | will be (loro) | essere
+sarò | I'll be | essere
+scadenza | expiry date, deadline
+scogli | rocks (by the sea) | scoglio
+scoglio | rock (in the sea)
+scrivevano | wrote, used to write (loro) | scrivere
+scuro | dark
+sensazione | feeling, sensation
+sentieri | paths | sentiero
+sentiva | felt (si sentiva) | sentire
+serva | is needed (congiuntivo of servire) | servire | | che non serva più = that it's no longer needed
+servire | to serve; to be needed
+servita | been useful (feminine) | servire
+servizio | service
+severe | strict (feminine plural) | severo
+severo | strict, severe
+sicurezza | safety, security
+silenziosa | quiet (feminine) | silenzioso
+siti | websites, sites | sito
+sito | website, site
+sleale | unfair, disloyal | | s- + leale (loyal)
+soli | alone (plural) | solo
+soltanto | only, just
+sottile | thin
+spara | fires, shoots | sparare
+sparare | to shoot, to fire
+spendere | to spend (money)
+spento | switched off | spegnere
+spegnere | to switch off
+spera | hopes | sperare
+sperando | hoping | sperare
+spese | costs, expenses | spesa
+spettacoli | shows | spettacolo
+spettacolo | show
+sporco | dirty
+spreco | waste | | sprecare (to waste)
+stagionato | aged, mature (cheese)
+stende | hangs out (washing) | stendere
+stendere | to hang out (washing), to spread
+stufa | stove
+sull' | on the (before a vowel) | | su + l'
+sullo | on the (before s + consonant, z) | | su + lo
+supplì | supplì (fried rice ball, a Roman snack) | | From French surprise: the mozzarella inside
+tajarin | tajarin (thin egg pasta from Piedmont)
+tasse | taxes | tassa
+tassa | tax
+televisivi | television (plural) | televisivo
+televisivo | television (adjective)
+terrazze | terraces | terrazza
+terrazza | terrace
+terrazzo | terrace, balcony
+tiene | holds | tenere
+tipica | typical (feminine) | tipico
+tommaso | Tommaso (a boy's name)
+tondo | round | | | girare in tondo = to go round in circles
+tonnellate | tonnes | tonnellata
+tonnellata | tonne
+torte | cakes, tarts | torta
+tradizionale | traditional
+tram | tram
+tramontato | set (the sun) | tramontare
+tramontare | to set (the sun)
+trasloca | moves (house) | traslocare
+traslocare | to move (house) | | tras- (across) + luogo (place)
+trastevere | Trastevere (a neighbourhood in Rome) | | tras + Tevere: across the Tiber
+tremila | three thousand
+trenino | little train; rack railway | treno
+trovò | found (past) | trovare
+turismo | tourism
+ultimi | last, recent (plural) | ultimo
+unire | to unite, to bring together
+vacanze | holidays | vacanza
+valzer | waltzes; waltz
+vantaggi | advantages | vantaggio
+vantaggio | advantage
+vendemmia | grape harvest
+vergogna | is ashamed (si vergogna); shame | vergognarsi
+verso | towards
+vigile | municipal police officer; traffic warden | | | il vigile urbano
+vigili | municipal police officers | vigile
+viverla | to live it | vivere
+volantini | leaflets | volantino
+volantino | leaflet | | volare (to fly): a little flying sheet
+volevano | wanted (loro) | volere
+volontarie | volunteers (women) | volontario
+yassin | Yassin (a boy's name)
 `);
