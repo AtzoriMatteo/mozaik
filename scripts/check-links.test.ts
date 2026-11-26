@@ -7,9 +7,11 @@ import { listPacks } from "@/core/registry";
  */
 const links = listPacks().flatMap((p) => (p.resources ?? []).map((r) => [`${p.code}/${r.id}`, r.url] as const));
 
-describe("Beyond the course links", () => {
+describe("Library outside links", () => {
   it.each(links)("%s answers", async (_id, url) => {
     const res = await fetch(url, { method: "GET", redirect: "follow", headers: { "user-agent": "Mozaik link check" } });
+    // 403 and 429: some sites turn away scripts (they open fine in a browser).
+    if (res.status === 403 || res.status === 429) return;
     expect(res.status, url).toBeLessThan(400);
   }, 20_000);
 });

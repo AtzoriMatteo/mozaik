@@ -165,7 +165,7 @@ export const libraryResources: Resource[] = [
     level: "C2",
     title: "Max Havelaar",
     by: "Multatuli",
-    slug: "Max_Havelaar_(roman)",
+    slug: "Max_Havelaar",
     why: "The 1860 novel that changed how the Netherlands saw its colonies. Old spelling, sharp irony.",
     how: "Read it in chunks with a modern edition; the coffee broker Droogstoppel is the funny part.",
   }),
