@@ -66,10 +66,11 @@ describe.each(listPacks().map((p) => [p.code, p] as const))("%s Library prompts 
     const issues = (pack.checkWriting?.(p.model) ?? []).map((i) => `${p.model.slice(i.start, i.end)}: ${i.message}`);
     expect(issues, p.id).toEqual([]);
   });
-  it("has the A1 prompts written out in full, with lots of variety", () => {
-    const a1 = libraryPrompts(pack, "A1");
-    expect(a1.length).toBeGreaterThanOrEqual(20);
-    expect(a1.every((p) => p.model)).toBe(true);
-    expect(new Set(a1.map((p) => p.form)).size).toBeGreaterThanOrEqual(5);
+  it.each(["A1", "A2"] as const)("has the %s prompts written out in full, with lots of variety", (level) => {
+    const ps = libraryPrompts(pack, level);
+    expect(ps.length).toBeGreaterThanOrEqual(20);
+    expect(ps.every((p) => p.model)).toBe(true);
+    expect(new Set(ps.map((p) => p.form)).size).toBeGreaterThanOrEqual(5);
+    expect(new Set(ps.map((p) => p.topic)).size).toBeGreaterThanOrEqual(6);
   });
 });
