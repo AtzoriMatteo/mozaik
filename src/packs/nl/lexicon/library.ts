@@ -249,4 +249,237 @@ zaterdagochtend | Saturday morning
 zolang | as long as | | zo + lang
 zomeravond | summer evening
 zwanger | pregnant
+
+# Longer Library texts (second round)
+6 | six (6 december = the sixth of December)
+aaien | to stroke (an animal)
+aanstaat | is on | aanstaan | | De muziek staat aan = the music is on
+aanstaan | to be on (a device)
+aantal | number (of things) | | aan + tal (number) | Het aantal klanten = the number of clients
+aanvraag | application, request | | aan + vragen
+aanvragen | to apply for, to request
+aanzette | switched on | aanzetten
+aanzetten | to switch on
+anneke | Anneke (a woman's name)
+ateliers | studios, workshops | atelier
+atelier | (artist's) studio | | From French
+bagagedrager | luggage rack (on a bike) | | bagage + drager (carrier)
+bakte | baked, grilled | bakken
+banden | tyres; bands, ties | band
+barbecue | barbecue
+bankmedewerker | bank employee | | bank + medewerker (staff member)
+bedenken | to come up with, to think of | | be- + denken
+bederft | spoils, goes off | bederven
+bederven | to spoil, to go off
+bedoelt | means | bedoelen
+bedoelen | to mean | | | Wat bedoel je? = What do you mean?
+bedreiging | threat | | bedreigen (to threaten)
+belanden | to end up
+belangrijke | important | belangrijk
+belden | called, phoned (plural) | bellen
+berekend | calculated | berekenen
+berekenen | to calculate | | be- + rekenen (to count)
+beschadigd | damaged | beschadigen
+beschadigen | to damage | | be- + schade (damage)
+beschuldigen | to accuse | | be- + schuld (guilt)
+bezorgers | delivery riders | bezorger
+bezorger | delivery person | | bezorgen (to deliver)
+bieten | beetroots | biet
+biet | beetroot | | ~ beet
+bijten | to bite | | ~ bite
+blijkt | turns out, shows | blijken
+blijken | to turn out, to prove to be
+boosheid | anger | | boos + -heid
+boten | boats | boot
+bovendien | moreover, also
+bredere | wider | breed
+chocoladeletters | chocolate letters (a Sinterklaas treat) | chocoladeletter
+chocoladeletter | chocolate letter (Sinterklaas treat) | | | Your first initial in chocolate, for 5 December
+chocoladerepen | chocolate bars | chocoladereep
+chocoladereep | chocolate bar
+comfort | comfort
+daans | Daan's | | | Names take -s for 'of': Daans zus = Daan's sister
+dadels | dates (fruit) | dadel
+dadel | date (fruit)
+deelnemers | participants | deelnemer
+deelnemer | participant | | deel (part) + nemer (taker)
+distributiecentrum | distribution centre
+duitsers | Germans | duitser
+duitser | German (person)
+echtpaar | married couple | | echt (married, real) + paar (pair)
+eenzaam | lonely | | een + -zaam: ~ lonesome
+einde | end
+energie | energy
+energiecontract | energy contract
+eritrea | Eritrea
+ernstige | serious | ernstig
+ernstig | serious | | ~ earnest
+euro's | euros | euro
+families | families | familie
+feestdagen | holidays (Christmas, New Year) | feestdag
+feestdag | public holiday | | feest + dag
+fietslessen | cycling lessons | fietsles
+fietsles | cycling lesson
+fietste | cycled | fietsen
+files | traffic jams | file | | False friend: een file is a traffic jam, not a file
+file | traffic jam; queue
+filmmuseum | film museum
+gaven | gave (plural) | geven | | elkaar een hand geven = to shake hands
+geleid | led | leiden
+gepensioneerde | retired | | gepensioneerd (retired)
+gerecycled | recycled | recyclen
+gestegen | risen | stijgen
+gestoken | put, stuck (into) | steken | | geld in iets steken = to put money into something
+gezondheidszorg | health care | | gezondheid + zorg (care)
+glimlacht | smiles | glimlachen
+glimlachen | to smile | | glim (gleam) + lachen
+golven | waves | golf
+groentesoep | vegetable soup
+groepjes | little groups | groepje
+groepje | small group
+haringen | herrings | haring
+haring | herring | | | Eaten raw with onions, held by the tail
+herkomst | origin | | her (here) + komst (coming)
+hielp | helped | helpen
+huisje | little house, cottage | | huis + -je
+hulpverlener | social worker, care worker | | hulp + verlener (giver)
+inkomen | income | | in + komen: what comes in
+interview | interview
+intocht | arrival (of Sinterklaas), entry | | in + tocht (march)
+juf | (primary school) teacher (a woman) | | | Children say juf and meester to their teachers
+juiste | right, correct | juist
+kalkoenen | turkeys | kalkoen
+kalkoen | turkey | | From Calicut, India (the bird was thought to come from there)
+kenden | knew (people; plural) | kennen
+kerstbomen | Christmas trees | kerstboom
+kerstdiner | Christmas dinner
+kerstpakketten | Christmas hampers | kerstpakket
+kerstpakket | Christmas hamper
+kinderopvang | childcare | | kinder + opvang (taking in)
+kinderwagen | pram | | kinder + wagen (cart)
+klimaat | climate
+koelcel | cold store | | koel (cool) + cel (cell)
+koffiepauze | coffee break
+koog | Koog (in De Koog, a village on Texel)
+krabben | crabs | krab
+kratten | crates | krat
+lag | lay | liggen
+lammetje | little lamb | lam
+lampjes | (fairy) lights | lampje
+lampje | little light
+lasten | costs, burdens | last | | vaste lasten = fixed monthly costs
+leerden | learned, got to know (plural) | leren
+lekkerst | tastiest | lekker
+lekkerste | tastiest | lekker
+lessen | lessons | les
+leuker | nicer, more fun | leuk
+levering | delivery | | leveren (to deliver)
+lievelingskleur | favourite colour | | lieveling (darling) + kleur
+live | live (on TV)
+maakten | made (plural) | maken
+meegemaakt | experienced, seen | meemaken | | Ik heb veel meegemaakt = I've seen a lot
+meemaken | to experience, to go through
+meerdere | several | | meer + -dere
+middelbare | secondary (middelbare school) | middelbaar | | de middelbare school = secondary school (12–18)
+middelbaar | secondary, middle
+miljarden | billions | miljard
+moeilijkst | hardest | moeilijk
+momenten | moments | moment
+natuurgebieden | nature areas | natuurgebied
+negentigste | ninetieth | | | op zijn negentigste = at ninety
+noemt | calls, names | noemen
+omafiets | upright Dutch bike (literally 'granny bike') | | oma (granny) + fiets
+onderzoek | research, investigation
+onderzoekers | researchers | onderzoeker
+onderzoeker | researcher
+ontdekken | to discover | | ont- (un-) + dekken (to cover)
+opleidt | trains, educates | opleiden
+opleiden | to train, to educate
+oplevert | yields, brings in | opleveren
+opleveren | to yield, to bring in
+oplossingen | solutions | oplossing
+overblijft | is left over | overblijven
+overblijven | to be left over
+oversteken | to cross (a street) | | over + steken
+pallet | pallet
+papieren | papers, paperwork | papier
+pedalen | pedals | pedaal
+planning | plan, planning
+poepte | pooed | poepen
+pont | (small) ferry | | | In Amsterdam the free ferries across the IJ are called de pont
+probeert | tries | proberen
+problemen | problems | probleem
+quiche | quiche
+rechtbank | court | | recht (law) + bank (bench)
+rechte | straight, upright | recht
+rechtop | upright, straight up | | recht + op
+rekeningen | bills | rekening
+rest | rest
+rok | skirt
+samenleving | society | | samen + leven: living together
+samosa's | samosas | samosa
+samosa | samosa
+schapenboerderij | sheep farm
+schapenknuffel | toy sheep
+scheelt | saves, makes a difference | schelen | | Dat scheelt veel = that makes a big difference
+schoolplein | playground (at school)
+schuldhulp | debt counselling | | schuld (debt) + hulp
+scooters | scooters | scooter
+snelheid | speed | | snel + -heid
+snelle | fast | snel
+soorten | kinds, sorts | soort
+speciale | special | speciaal
+staart | tail
+stallingen | bike parks | stalling
+stalling | (bike) park, storage | | stallen (to store, stable)
+stiller | quieter | stil
+stress | stress
+stroom | electricity; stream, current | | ~ stream
+struikelt | trips, stumbles | struikelen
+studieschuld | student debt | | studie + schuld
+tekeningen | drawings | tekening
+terugkrijg | get back | terugkrijgen
+thermoskan | thermos flask
+thuiswerken | to work from home | | thuis + werken
+tieners | teenagers | tiener
+tiener | teenager | | ~ teen
+tijdens | during
+tranen | tears | traan
+typische | typical | typisch
+vaste | fixed | vast | | vaste lasten = fixed costs
+verdeeld | divided, shared out | verdelen
+verhalen | stories | verhaal
+verhuist | moves (house) | verhuizen
+verloskundige | midwife | | | In the Netherlands most pregnancies are followed by a midwife, not a doctor
+verse | fresh | vers
+versieren | to decorate
+verwachtte | expected | verwachten
+verwend | spoilt
+vrijwilligersorganisaties | volunteer organisations | vrijwilligersorganisatie
+vrijwilligersorganisatie | volunteer organisation
+vuilniswagen | bin lorry, garbage truck | | vuilnis (rubbish) + wagen
+waarschijnlijk | probably | | waar (true) + schijnlijk: likely true
+wandelde | walked | wandelen
+wasmachine | washing machine
+weduwe | widow | | ~ widow
+weggaat | leaves, goes away | weggaan
+weggegooid | thrown away | weggooien
+weggehaald | removed | weghalen
+werelden | worlds | wereld
+werkgever | employer | | werk + gever (giver)
+wild | wild
+woningcorporatie | housing corporation
+wormen | worms | worm
+yassin | Yassin (a boy's name)
+zadel | saddle | | ~ saddle
+zakte | sank | zakken
+zamelen | collect (with in) | inzamelen
+zandkastelen | sandcastles | zandkasteel
+zandkasteel | sandcastle
+zette | put, switched | zetten
+zevenenzestig | sixty-seven
+zwommen | swam (plural) | zwemmen
+gooiden | threw (plural) | gooien
+evenwicht | balance | | even (equal) + wicht (weight)
+prijzen | prices | prijs
 `);
