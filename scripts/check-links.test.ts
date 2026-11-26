@@ -5,7 +5,11 @@ import { listPacks } from "@/core/registry";
  * Checks that every "Beyond the course" link still answers. Run with
  * `npm run check-links` (needs the internet, so it's not part of npm test).
  */
-const links = listPacks().flatMap((p) => (p.resources ?? []).map((r) => [`${p.code}/${r.id}`, r.url] as const));
+const links = [
+  ...new Map(
+    listPacks().flatMap((p) => [...(p.resources ?? []), ...(p.library?.outThere ?? [])].map((r) => [r.url, `${p.code}/${r.id}`] as const)),
+  ),
+].map(([url, id]) => [id, url] as const);
 
 describe("Library outside links", () => {
   it.each(links)("%s answers", async (_id, url) => {

@@ -138,4 +138,249 @@ preparano | prepare, make (loro) | preparare
 stanno | stand, stay; are (loro) | stare
 vendono | sell (loro) | vendere
 lunghe | long (feminine plural) | lungo
+
+# A1–A2 long texts and longer B1 texts
+5 | five (5 gennaio = the fifth of January)
+6 | six (6 gennaio = the sixth of January)
+abitanti | inhabitants | abitante
+abitante | inhabitant | | abitare (to live)
+abitato | lived | abitare
+acciughe | anchovies | acciuga
+acciuga | anchovy
+aiuto | help; I help | aiutare
+amina | Amina (a woman's name)
+appendono | hang (loro) | appendere
+appendere | to hang (up)
+attore | actor
+avevano | had (loro) | avere
+bambina | little girl | bambino
+banchi | (market) stalls; desks | banco
+barche | boats | barca
+barca | boat
+basilico | basil
+bellissimo | very beautiful | bello
+borse | bags | borsa
+borsa | bag
+bruno | Bruno (a man's name)
+bussato | knocked | bussare
+bussare | to knock
+calda | warm, hot (feminine) | caldo
+calze | stockings, socks | calza
+calza | stocking, sock | | | la calza della Befana = the Befana's stocking
+cambia | changes, moves | cambiare
+camere | bedrooms | camera
+camino | fireplace, chimney
+camminato | walked | camminare
+cantina | cellar; wine cellar
+cappuccio | hood | | cappa (cloak) + -uccio; it gave cappuccino its name
+carbonara | carbonara (pasta with egg, cheese and guanciale)
+cartoccio | paper cone, paper bag | | carta (paper)
+cassetto | drawer | | cassa (box) + -etto
+cavolfiore | cauliflower | | cavolo (cabbage) + fiore (flower)
+centinaia | hundreds | centinaio
+centinaio | about a hundred
+cercato | looked for | cercare
+chiacchiera | chats | chiacchierare
+chiacchierare | to chat
+chiamata | called, named (feminine) | chiamare
+chitarra | guitar
+cioccolatini | chocolates | cioccolatino
+cioccolatino | (a) chocolate
+colline | hills | collina
+collina | hill | | ~ hill (Latin collis)
+colosseo | Colosseum
+coltiva | grows, farms | coltivare
+coltivare | to grow, to cultivate
+combinazione | combination
+conoscevano | knew (loro) | conoscere
+corniglia | Corniglia (one of the Cinque Terre)
+costruiti | built (plural) | costruire
+costruire | to build | | ~ construct
+credono | believe (loro) | credere | | non ci credono = they can't believe it
+critiche | criticisms | critica
+croccante | crispy, crunchy
+crostini | crostini (toasted bread with toppings) | crostino
+crostino | small toast with a topping
+decidono | decide (loro) | decidere
+decine | tens, dozens | decina
+decina | about ten
+diecimila | ten thousand
+difficili | difficult (plural) | difficile
+dipinto | painted | dipingere
+dipingere | to paint
+discute | discusses | discutere
+discutere | to discuss, to argue
+dormito | slept | dormire
+dovrebbe | should (lui, lei) | dovere
+duemila | two thousand
+elena | Elena (a woman's name)
+finché | as long as, until
+firmato | signed | firmare
+firmare | to sign | | ~ firm (confirm)
+focaccia | focaccia (flat oven bread)
+fontana | fountain | | | Fontana di Trevi = the Trevi Fountain
+formaggi | cheeses | formaggio
+fortunato | lucky
+fredda | cold (feminine) | freddo
+fritte | fried (feminine plural) | fritto
+fruttivendolo | greengrocer | | frutta + vendere (to sell)
+furgone | van
+gelata | freezing; frozen (feminine) | gelato | | L'acqua è gelata = the water is freezing
+generazioni | generations | generazione
+generazione | generation
+germania | Germany
+gialle | yellow (feminine plural) | giallo
+gialli | yellow (plural) | giallo
+gianni | Gianni (a man's name)
+gioco | toy; game
+giusta | right (feminine) | giusto
+gridato | shouted | gridare
+gridare | to shout
+guardavano | were looking at (loro) | guardare
+imballate | packed (feminine plural) | imballare
+imballare | to pack
+importanti | important (plural) | importante
+incinta | pregnant
+intere | whole (feminine plural) | intero
+intero | whole, entire
+internet | internet
+lampade | lamps | lampada
+lampada | lamp
+lancia | throws | lanciare
+lanciare | to throw | | ~ launch
+langhe | the Langhe (hills in Piedmont)
+lavori | works, jobs | lavoro | | lavori rumorosi = noisy work (building work)
+leggono | read (loro) | leggere
+liguria | Liguria (region of north-west Italy)
+liscio | liscio (traditional ballroom dance); smooth
+lontani | far (plural) | lontano
+mandarino | mandarin (orange)
+menù | menu
+mettono | put (loro) | mettere | | si mettono = go, are put
+minestrone | minestrone (vegetable soup)
+minuscola | tiny (feminine) | minuscolo
+minuscolo | tiny | | ~ minuscule
+misto | mixed | | | fritto misto = mixed fried fish
+moncalieri | Moncalieri (a town next to Turin)
+moneta | coin
+montano | put up, assemble (loro) | montare
+montare | to put up, to assemble
+monterosso | Monterosso (one of the Cinque Terre)
+morta | dead, died (feminine) | morire
+muretti | low (dry-stone) walls | muretto
+muretto | low wall | | muro + -etto
+naso | nose
+noce | walnut
+noleggiato | hired | noleggiare
+noleggiare | to hire, to rent (a car, a bike)
+nora | Nora (a girl's name)
+novembre | November
+nuove | new (feminine plural) | nuovo
+organizzano | organise (loro) | organizzare
+ottima | excellent (feminine) | ottimo
+paesaggio | landscape, scenery | | paese + -aggio
+panforti | panforte (Sienese spiced fruit cake) | panforte
+panforte | panforte (spiced fruit cake from Siena) | | pane (bread) + forte (strong)
+parcheggi | car parks | parcheggio
+parenti | relatives | parente | | False friend: parenti are relatives, not parents (genitori)
+pareti | walls (inside) | parete
+parete | (inside) wall
+parmigiano | parmesan
+peluche | soft toys | | From French
+pensano | think (loro) | pensare
+permessi | permits | permesso
+pesanti | heavy (plural) | pesante
+pescatori | fishermen | pescatore
+pescatore | fisherman | | pescare (to fish)
+pesto | pesto (basil sauce) | | pestare (to crush)
+pianerottolo | landing (on the stairs) | | | il vicino di pianerottolo = the neighbour across the landing
+piemonte | Piedmont | | pie' (foot) + monte: at the foot of the mountains
+pietra | stone
+pinoli | pine nuts | pinolo
+pinolo | pine nut
+piovuto | rained | piovere
+pizze | pizzas | pizza
+pochissimi | very few | poco
+potevano | could (loro) | potere
+prestavano | lent (loro) | prestare
+prestare | to lend
+qualche | some, a few | | | Always singular: qualche noce = a few walnuts
+quattrocento | four hundred
+raccolta | collection | | raccogliere (to collect)
+regala | gives (as a present) | regalare
+regalare | to give (as a present)
+regolamento | regulations, rules
+ribollita | ribollita (Tuscan bread and vegetable soup) | | ri- + bollita: boiled again
+riempiono | fill (loro) | riempire
+rimasti | stayed (plural) | rimanere
+rimanere | to stay, to remain
+rocce | rocks | roccia
+roccia | rock
+rumorosi | noisy (plural) | rumoroso
+rumoroso | noisy | | rumore (noise)
+salito | climbed | salire
+salotto | living room
+scalini | steps | scalino
+scalino | step, stair
+scatoloni | (big cardboard) boxes | scatolone
+scatolone | big box | | scatola + -one (big)
+scelta | choice | | scegliere (to choose)
+sciacchetrà | Sciacchetrà (a sweet wine of the Cinque Terre)
+scritte | written (feminine plural) | scrivere
+secoli | centuries | secolo
+secolo | century
+seduti | sitting, seated (plural) | sedere | | Si sono seduti = they sat down
+seicento | six hundred
+sembrava | seemed | sembrare
+sembrare | to seem
+sentiero | path, footpath
+sentirli | to hear them | sentire
+serata | evening (its whole length) | | sera + -ata
+sistema | system | | | Masculine despite -a: il sistema
+sofia | Sofia (a girl's name)
+sollevare | to lift
+spiaggia | beach
+strette | narrow (feminine plural) | stretto
+stretto | narrow; tight
+superiori | secondary (school); higher | superiore | | le scuole superiori = secondary school (14–19)
+superiore | higher, upper
+tende | curtains; marquees, tents | tenda
+tenda | curtain; tent
+tengono | hold (loro) | tenere
+termini | Termini (Rome's main station)
+terre | lands | terra | | Cinque Terre = Five Lands
+tiramisù | tiramisù | | tira mi su: pick me up
+toppe | patches | toppa
+toppa | patch
+torniamo | let's go back; we go back | tornare
+toscani | Tuscan (plural) | toscano
+toscano | Tuscan
+trevi | Trevi (Fontana di Trevi, in Rome)
+trofie | trofie (short twisted Ligurian pasta)
+tulipani | tulips | tulipano
+tulipano | tulip
+tristi | sad (plural) | triste
+turisti | tourists | turista
+turistici | tourist (adjective, plural) | turistico
+turistico | tourist (adjective)
+turni | shifts, turns | turno
+uccelli | birds | uccello
+ulivi | olive trees | ulivo
+ulivo | olive tree
+valigie | suitcases | valigia
+vecchi | old (plural) | vecchio
+vecchietta | little old woman | vecchia | vecchia + -etta
+vecchia | old woman; old (feminine)
+vedeva | could see; saw | vedere | | si vedeva il porto = you could see the harbour
+vera | real, true (feminine) | vero
+vernazza | Vernazza (one of the Cinque Terre)
+verona | Verona (a city in the Veneto)
+viaggi | trips, journeys | viaggio
+vigne | vineyards, vines | vigna
+vigna | vineyard
+vin | wine (in vin santo, a Tuscan dessert wine) | vino
+vola | flies | volare
+volare | to fly
+weekend | weekend
+zuppa | soup
 `);

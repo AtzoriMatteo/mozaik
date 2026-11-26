@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getPack } from "@/core/registry";
 import type { CefrLevel, LanguagePack } from "@/core/language-pack";
-import { LIBRARY_LEVELS, libraryPrompts, readingShelf } from "@/core/library";
-import { RESOURCE_KIND_LABEL, resourcesFor, type Resource } from "@/core/resources";
+import { LIBRARY_LEVELS, courseTextCount, libraryPrompts, outThere, readingShelf } from "@/core/library";
+import { RESOURCE_KIND_LABEL, type Resource } from "@/core/resources";
 import { useProgress } from "@/lib/progress/use-read-texts";
 import { ConnectClaude } from "@/components/writing/connect-claude";
 
@@ -99,50 +99,51 @@ export function LibraryPage({ lang }: { lang: string }) {
 function ReadHere({ pack, level, onShelf }: { pack: LanguagePack; level: CefrLevel; onShelf: (s: Shelf) => void }) {
   const { doneIds } = useProgress("read", pack.code);
   const shelf = readingShelf(pack, level);
+  const inCourse = courseTextCount(pack, level);
+  const courseLine =
+    inCourse > 0 ? (
+      <p className="library-note">
+        The {inCourse} shorter {level} texts of the course are in their units: <Link href="/course">open the course</Link>.
+      </p>
+    ) : null;
   if (shelf.length === 0) {
     return (
       <section className="library-empty">
-        <p>No Mozaik texts at {level} yet: the course and the Library texts are growing level by level.</p>
+        <p>The long {level} texts are still being written: they come level by level.</p>
         <p>
           Meanwhile, <button type="button" className="link-button" onClick={() => onShelf("out")}>find {level} reading out there</button>{" "}
           or <button type="button" className="link-button" onClick={() => onShelf("write")}>pick something to write</button>.
         </p>
+        {courseLine}
       </section>
     );
   }
-  const read = shelf.filter((s) => doneIds.has(s.text.id)).length;
   return (
     <section aria-label={`${level} texts on Mozaik`}>
-      <p className="library-count">
-        {shelf.length} texts at {level} · {read} read
-      </p>
-      {byTopic(shelf, (s) => s.topic).map(([topic, items]) => (
-        <section key={topic} className="library-topic">
-          <h2>{topic}</h2>
-          <ul className="library-list">
-            {items.map(({ text, words, fromUnit }) => (
-              <li key={text.id}>
-                <Link href={`/read/${pack.code}/${text.id}`} className="activity-row" data-done={doneIds.has(text.id) || undefined}>
-                  <span className="library-row-main">
-                    <span lang={pack.code} className="library-row-title">{text.title}</span>
-                    <span className="library-row-sub">{text.titleTranslation}</span>
-                  </span>
-                  <span className="library-row-meta">
-                    {Math.max(1, Math.round(words / 120))} min{fromUnit ? "" : " · Library"}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+      <p className="library-note">Longer texts to read in one go, with help on every word and a few questions at the end.</p>
+      <ul className="library-list library-texts">
+        {shelf.map(({ text, words, topic }) => (
+          <li key={text.id}>
+            <Link href={`/read/${pack.code}/${text.id}`} className="activity-row" data-done={doneIds.has(text.id) || undefined}>
+              <span className="library-row-main">
+                <span lang={pack.code} className="library-row-title">{text.title}</span>
+                <span className="library-row-sub">{text.titleTranslation}</span>
+              </span>
+              <span className="library-row-meta">
+                {topic} · {Math.max(1, Math.round(words / 150))} min
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {courseLine}
     </section>
   );
 }
 
 function OutThere({ pack, level }: { pack: LanguagePack; level: CefrLevel }) {
   const { doneIds, toggle } = useProgress("beyond", pack.code);
-  const items = resourcesFor(pack, level);
+  const items = outThere(pack, level);
   if (items.length === 0) return <p className="library-empty">Nothing collected for {level} yet.</p>;
   return (
     <section aria-label={`${level} material out there`}>

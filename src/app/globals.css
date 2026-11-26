@@ -5835,12 +5835,12 @@ button.vocab-word:hover {
   padding: 0.6rem 0;
   background: var(--porcelain);
 }
-.library-levels button {
-  min-width: 2.9rem;
-  padding: 0 0.5rem;
-}
-.library-shelves {
-  width: fit-content;
+/* Both bars span the column, their buttons share it equally: no empty space at the end. */
+.library-levels button,
+.library-shelves button {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 0.4rem;
 }
 .library-count,
 .library-note {

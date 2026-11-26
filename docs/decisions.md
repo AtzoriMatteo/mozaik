@@ -5,6 +5,27 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-26 (later) — Library: fewer, longer texts; a curated Out there
+
+**Asked (Matteo).** Fix the empty button after C2; too many texts in the Library,
+so its own longer texts instead, fewer per level; check the outside sources and
+keep only very relevant, helpful ones with a broad range.
+
+**Built (Claude).**
+- The level bar stretched to the full width and left a blank box after C2; the
+  buttons of both bars now share the width.
+- Read here shows only the Library's own texts, at most 4 per level (now 3):
+  A1 about 200 words, A2 about 300–350, B1 about 300–450. Course texts stay in
+  the course, with one link to them. New per language: 3 at A1 (a day in the
+  capital, a new neighbour, the market), 3 at A2 (an island weekend, Sinterklaas
+  or the Befana, moving house); the B1 ones are longer and one of each was
+  dropped. Word help on every word, 4 questions each.
+- Out there is its own curated list, one entry per source (the per-episode and
+  per-book entries stay on unit pages only). Dutch: books, easy-language
+  publisher, NOS, Jeugdjournaal, a beginners' podcast, YouTube channels, DBNL.
+  Italian: books, Focus Junior, Il Post, RaiNews, Liber Liber. Italian still has
+  no listening or video sources: new ones couldn't be checked from here.
+
 ## 2026-11-26 — The Library
 
 **Asked (Matteo).** A separate section where you pick your level and get writing

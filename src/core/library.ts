@@ -1,6 +1,7 @@
 import type { ReadingText } from "./content";
 import type { CefrLevel, LanguagePack } from "./language-pack";
 import type { WritingTask } from "./writing";
+import type { Resource } from "./resources";
 
 /**
  * The Library: everything at one level, outside the course order. Reading on
@@ -18,6 +19,8 @@ export type LibraryPack = {
   prompts: readonly WritingTask[];
   /** Extra texts that belong to no unit, with the topic they're filed under. */
   texts?: readonly (ReadingText & { topic: string })[];
+  /** Out there: a short, curated list per level, one entry per source. */
+  outThere?: readonly Resource[];
 };
 
 const FORMS = new Set<WritingTask["form"]>(["message", "email", "form", "description", "story", "opinion", "diary"]);
@@ -81,17 +84,22 @@ export function findLibraryPrompt(pack: LanguagePack, id: string): WritingTask |
   return pack.library?.prompts.find((p) => p.id === id);
 }
 
-export type ShelfText = { text: ReadingText; topic: string; words: number; fromUnit: boolean };
+export type ShelfText = { text: ReadingText; topic: string; words: number };
 
-/** Every text at a level, course texts first in course order, then Library texts. */
+/** The Library's own texts at a level: few, long, outside the course. */
 export function readingShelf(pack: LanguagePack, level: CefrLevel): ShelfText[] {
   const count = (t: ReadingText) =>
     t.paragraphs.flat().reduce((n, s) => n + pack.tokenize(s.text).filter((x) => x.kind === "word").length, 0);
-  const fromUnits = pack.units
-    .filter((u) => u.level === level)
-    .flatMap((u) => u.texts.map((t) => ({ text: t, topic: u.titleTranslation, words: count(t), fromUnit: true })));
-  const extra = (pack.library?.texts ?? [])
+  return (pack.library?.texts ?? [])
     .filter((t) => t.level === level)
-    .map((t) => ({ text: t, topic: t.topic, words: count(t), fromUnit: false }));
-  return [...fromUnits, ...extra];
+    .map((t) => ({ text: t, topic: t.topic, words: count(t) }));
+}
+
+/** How many course texts a level has (they're read in the course, not listed here). */
+export function courseTextCount(pack: LanguagePack, level: CefrLevel): number {
+  return pack.units.filter((u) => u.level === level).reduce((n, u) => n + u.texts.length, 0);
+}
+
+export function outThere(pack: LanguagePack, level: CefrLevel): Resource[] {
+  return (pack.library?.outThere ?? []).filter((r) => r.level === level);
 }
