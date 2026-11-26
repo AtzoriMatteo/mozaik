@@ -28,6 +28,21 @@ export type Resource = {
   stretch?: boolean;
 };
 
+/** A book to read: no link, just what it is and how to use it (borrow it, buy it). */
+export type Book = {
+  id: string;
+  level: CefrLevel;
+  kind: "book";
+  title: string;
+  /** Author, and series or publisher when that helps to find it. */
+  by: string;
+  /** What it is and why it fits this level, in a line or two. */
+  why: string;
+  /** How to read it. */
+  how: string;
+  stretch?: boolean;
+};
+
 export const RESOURCE_KIND_LABEL: Record<Resource["kind"], string> = {
   watch: "Watch",
   listen: "Listen",

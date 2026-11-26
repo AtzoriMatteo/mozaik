@@ -1,7 +1,7 @@
 import type { ReadingText } from "./content";
 import type { CefrLevel, LanguagePack } from "./language-pack";
 import type { WritingTask } from "./writing";
-import type { Resource } from "./resources";
+import type { Book, Resource } from "./resources";
 
 /**
  * The Library: everything at one level, outside the course order. Reading on
@@ -20,7 +20,7 @@ export type LibraryPack = {
   /** Extra texts that belong to no unit, with the topic they're filed under. */
   texts?: readonly (ReadingText & { topic: string })[];
   /** Out there: a short, curated list per level, one entry per source. */
-  outThere?: readonly Resource[];
+  outThere?: readonly (Resource | Book)[];
 };
 
 const FORMS = new Set<WritingTask["form"]>(["message", "email", "form", "description", "story", "opinion", "diary"]);
@@ -100,6 +100,6 @@ export function courseTextCount(pack: LanguagePack, level: CefrLevel): number {
   return pack.units.filter((u) => u.level === level).reduce((n, u) => n + u.texts.length, 0);
 }
 
-export function outThere(pack: LanguagePack, level: CefrLevel): Resource[] {
+export function outThere(pack: LanguagePack, level: CefrLevel): (Resource | Book)[] {
   return (pack.library?.outThere ?? []).filter((r) => r.level === level);
 }

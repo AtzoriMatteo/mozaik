@@ -5,6 +5,33 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-26 (night) — Library A1: curated Out there, full writing prompts
+
+**Asked (Matteo).** Out there should be the main focus, very well curated; books
+can be a list (title, author, a line) without links. Writing must be really
+well done: good prompts, huge variety, solid structure, solidly checked. Start
+with A1.
+
+**Built (Claude).**
+- Out there gets a Books section: title, author, what it is and how to read
+  it, no link. A1 Dutch: Global Storybooks, Eenvoudig Communiceren (Leesniveau
+  filter), Potje Nederlands, Super Easy Dutch, Bart de Pau, Station Nederlands
+  on Oefenen.nl (free at home with an account), and the books Nijntje, Kikker,
+  Dikkie Dik. A1 Italian: Coffee Break Italian, Super Easy Italian, and the books
+  La Pimpa, Dov'è Yukio? (Alma, Letture Italiano Facile A1), Rodari's
+  Filastrocche. Each site was checked by opening it or from its own pages.
+- Writing A1: 24 prompts per language written out in full, over eight topics and
+  six text types (profiles, notes to neighbours, messages to a landlord, orders,
+  invitations, sick notes, forms, postcards, diaries, lost-property reports…).
+  Each has six points with a sentence frame and cue words (so the free check can
+  tell whether a point is covered) and a model answer that covers every point.
+  A test checks every model: long enough, every point covered, and (Dutch)
+  clean in Mozaik's grammar checker. Italian has no Mozaik grammar rules yet, so
+  its models were proofread by hand; learners get spelling and LanguageTool.
+
+**Still to do.** A2–C2 the same way; Italian A1 is still thinner than Dutch on
+practice sites.
+
 ## 2026-11-26 (evening) — Library texts as real long reads
 
 **Asked (Matteo).** The texts are still so short.

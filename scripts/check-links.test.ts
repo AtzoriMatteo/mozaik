@@ -7,7 +7,7 @@ import { listPacks } from "@/core/registry";
  */
 const links = [
   ...new Map(
-    listPacks().flatMap((p) => [...(p.resources ?? []), ...(p.library?.outThere ?? [])].map((r) => [r.url, `${p.code}/${r.id}`] as const)),
+    listPacks().flatMap((p) => [...(p.resources ?? []), ...(p.library?.outThere ?? [])].flatMap((r) => ("url" in r ? [[r.url, `${p.code}/${r.id}`] as const] : []))),
   ),
 ].map(([url, id]) => [id, url] as const);
 

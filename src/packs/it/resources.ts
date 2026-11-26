@@ -1,4 +1,4 @@
-import type { Resource } from "@/core/resources";
+import type { Book, Resource } from "@/core/resources";
 
 /**
  * Real Italian to read next to the course, A1 to C2: books (linked to their
@@ -9,8 +9,8 @@ import type { Resource } from "@/core/resources";
 const WIKI = "An Italian Wikipedia page about the book: the first lines say what it's about. Borrow it at a library (biblioteca) or buy it in any bookshop.";
 const wiki = (slug: string) => `https://it.wikipedia.org/wiki/${slug}`;
 
-type Book = Pick<Resource, "id" | "level" | "title" | "by" | "why" | "how"> & { slug: string; stretch?: boolean };
-const book = (b: Book): Resource => ({
+type WikiBook = Pick<Resource, "id" | "level" | "title" | "by" | "why" | "how"> & { slug: string; stretch?: boolean };
+const book = (b: WikiBook): Resource => ({
   id: b.id,
   level: b.level,
   kind: "read",
@@ -24,26 +24,59 @@ const book = (b: Book): Resource => ({
   stretch: b.stretch,
 });
 
-export const resources: Resource[] = [
-  book({
-    id: "pimpa",
+export const resources: (Resource | Book)[] = [
+  {
+    id: "coffee-break-italian",
     level: "A1",
+    kind: "listen",
+    title: "Coffee Break Italian",
+    by: "Coffee Break Languages",
+    url: "https://podcasts.apple.com/ie/podcast/coffee-break-italian/id958179457",
+    why: "15-minute lessons from scratch, in English and Italian, with a teacher, a learner and a native speaker.",
+    how: "Start at Season 1, episode 1. One lesson a day; say every phrase out loud with them.",
+    onSite: "The Apple Podcasts page (English menus): press play on an episode, or search 'Coffee Break Italian' in any podcast app.",
+    siteLanguage: "English",
+  },
+  {
+    id: "super-easy-italian",
+    level: "A1",
+    kind: "watch",
+    title: "Super Easy Italian",
+    by: "Easy Italian",
+    url: "https://easy-languages.org/easy-italian",
+    why: "Street interviews and short videos for beginners, all subtitled in Italian and English.",
+    how: "Start with the Super Easy Italian videos. Read the Italian subtitles; check the English only when stuck.",
+    onSite: "The Easy Languages page for Italian (English menus), with links to the videos and the podcast.",
+    siteLanguage: "English",
+  },
+  {
+    id: "book-pimpa",
+    level: "A1",
+    kind: "book",
     title: "La Pimpa",
     by: "Altan",
-    slug: "Pimpa",
     why: "The red-spotted dog every Italian child knows: one or two short sentences per picture.",
     how: "Read a story out loud; the pictures explain the words.",
-  }),
-  book({
-    id: "filastrocche-rodari",
+  },
+  {
+    id: "book-dove-yukio",
     level: "A1",
+    kind: "book",
+    title: "Dov'è Yukio?",
+    by: "Alessandro De Giuli · Alma Edizioni, Letture Italiano Facile (A1)",
+    why: "A short mystery set in Rome, written for A1 learners: about 60 pages, with notes and the audio online.",
+    how: "A chapter a day. Listen to the chapter first, then read it.",
+  },
+  {
+    id: "book-filastrocche",
+    level: "A1",
+    kind: "book",
     title: "Filastrocche in cielo e in terra",
     by: "Gianni Rodari",
-    slug: "Filastrocche_in_cielo_e_in_terra",
-    why: "Short rhymes in simple words: easy to remember, and great for sounds.",
+    why: "Short rhymes in simple words by Italy's best-loved children's writer: easy to remember, great for sounds.",
     how: "Read one rhyme a day out loud until you can say it without looking.",
     stretch: true,
-  }),
+  },
   book({
     id: "geronimo-stilton",
     level: "A2",
