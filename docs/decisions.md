@@ -5,6 +5,32 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-26 — The Library
+
+**Asked (Matteo).** A separate section where you pick your level and get writing
+prompts and reading suggestions (on the site and outside: books, articles).
+Called Library, free, lots of prompts and texts written beforehand, and an easy
+way to connect your own Claude account for writing checks.
+
+**Built (Claude), first increment.**
+- /library/[lang] (and /library for the current language, in the main nav):
+  a level picker A1–C2 and three shelves: Read here (every Mozaik text at that
+  level, grouped by unit topic, read ones marked), Out there (the old "Beyond the
+  course" links, which now live here; /beyond redirects), Write.
+- Write: 119 prompts per language (Dutch, and Italian adapted to Italy), 10–25
+  per level, grouped by topic, A1 to C2. Written in a compact text format
+  (packs/*/library/prompts-*.ts) and opened in the same writing screen as the
+  units, with the same free checks. No model answers: Claude's "how a native
+  would write it" replaces them when connected.
+- Connect Claude: three guided steps, and the key is tested before it's saved.
+  **Trade-off (flagged):** a Claude.ai Pro/Max plan can't be linked to other sites,
+  so this needs an API key from the Anthropic console. The key stays in the
+  browser and calls go straight to Anthropic; the learner pays a fraction of a
+  cent per check, and Mozaik stays free.
+
+**Next.** Reading out there for every level in both languages (links checked),
+then extra Library texts in batches per level.
+
 ## 2026-11-22 (morning, later) — Letters laid out like letters; flagged sentences
 
 **Asked (Matteo).** Seven flagged sentences; and "no space between Ayşe and then

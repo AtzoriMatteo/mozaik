@@ -9,6 +9,7 @@ import { coreVocabularyA1 } from "./vocabulary";
 import { coreVocabularyA2 } from "./vocabulary-a2";
 import { sounds } from "./speaking/sounds";
 import { resources } from "./resources";
+import { library } from "./library";
 import { tips } from "./tips";
 import { articleFor } from "./articles";
 import { zipf } from "./frequency";
@@ -129,6 +130,7 @@ export const dutch: LanguagePack = {
   sounds,
   coreVocabulary: { A1: coreVocabularyA1, A2: coreVocabularyA2 },
   resources,
+  library,
   tips,
   nounArticle: articleFor,
   properArticles: new Set(["nederlander", "noordzee", "waddenzee", "randstad", "italiaan", "mexicaan", "europeaan", "engelsen"]),

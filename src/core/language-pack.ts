@@ -11,6 +11,7 @@ import type { Handbook } from "./handbook";
 import type { Expression, GrammarPoint, Lexicon, PictureSpec, ReadingText, SlangPart, Unit } from "./content";
 import type { Sound } from "./pronunciation";
 import type { Resource } from "./resources";
+import type { LibraryPack } from "./library";
 import type { LearningTip } from "./tips";
 import type { WritingIssue } from "./writing";
 
@@ -92,6 +93,8 @@ export interface LanguagePack {
   languageTool?: string;
   /** Real material outside the course (links only), per level. */
   resources?: readonly Resource[];
+  /** The Library: writing prompts and extra texts at every level, outside the course order. */
+  library?: LibraryPack;
   /** The article of a noun (dictionary form), for flashcards: "de", "het", "l'"… or null. */
   nounArticle?: (lemma: string) => string | null;
   /** Articles a learner might type before a noun, to check flashcard answers. */
@@ -142,8 +145,9 @@ export function unitNumber(pack: LanguagePack, unit: Unit): { n: number; of: num
 }
 
 /** Every text in a pack, in course order. */
+/** Every text the reader can open: the units' texts, then the Library's own. */
 export function allTexts(pack: LanguagePack): ReadingText[] {
-  return pack.units.flatMap((u) => u.texts);
+  return [...pack.units.flatMap((u) => u.texts), ...(pack.library?.texts ?? [])];
 }
 
 /** A word form with a noun sense and another one. */

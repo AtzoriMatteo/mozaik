@@ -5819,3 +5819,107 @@ button.vocab-word:hover {
   border-radius: 6px;
   box-shadow: 0 1px 0 var(--grout), 0 0 0 1px var(--grout);
 }
+
+/* Library */
+.library {
+  display: grid;
+  gap: 1.25rem;
+  max-width: var(--measure);
+}
+.library-controls {
+  display: grid;
+  gap: 0.6rem;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 0.6rem 0;
+  background: var(--porcelain);
+}
+.library-levels button {
+  min-width: 2.9rem;
+  padding: 0 0.5rem;
+}
+.library-shelves {
+  width: fit-content;
+}
+.library-count,
+.library-note {
+  margin: 0;
+  color: var(--ink-muted);
+}
+.library-topic {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.library-topic h2 {
+  font-size: var(--step-1);
+  margin: 0;
+}
+.library-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--grout);
+  border: 1px solid var(--grout);
+}
+.library-list li {
+  background: var(--tile);
+}
+.library-list .activity-row {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+.library-row-main {
+  display: grid;
+  gap: 0.1rem;
+}
+.library-row-title {
+  font-weight: 600;
+}
+.library-row-sub,
+.library-row-meta {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+.library-empty {
+  padding: 1rem 1.1rem;
+  background: var(--tile);
+  border-left: 4px solid var(--grout);
+}
+.connect-claude {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1rem 1.1rem;
+  background: var(--tile);
+  border-left: 4px solid var(--glaze-copper);
+}
+.connect-claude h2 {
+  font-size: var(--step-1);
+  margin: 0;
+}
+.connect-claude p {
+  margin: 0;
+}
+.connect-claude[data-connected] {
+  border-left-color: var(--ok);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.connect-steps {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+}
+.library-list .activity-row[data-done] .library-row-title {
+  color: var(--ink-muted);
+}
+.library-list .activity-row[data-done] .library-row-meta::after {
+  content: " · done";
+}

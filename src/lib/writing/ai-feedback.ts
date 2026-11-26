@@ -105,3 +105,25 @@ export async function askForFeedback(
   const text = (data.content ?? []).filter((b) => b.type === "text").map((b) => b.text ?? "").join("");
   return parseFeedback(text, points.length);
 }
+
+/** Try a key with the smallest possible request, so a wrong key shows up before the first real check. */
+export async function testKey(key: string): Promise<"ok" | "rejected" | "no-credit" | "offline"> {
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": key,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true",
+      },
+      body: JSON.stringify({ model: AI_MODEL, max_tokens: 1, messages: [{ role: "user", content: "Hi" }] }),
+    });
+    if (res.ok) return "ok";
+    if (res.status === 401 || res.status === 403) return "rejected";
+    if (res.status === 400 || res.status === 402 || res.status === 429) return "no-credit";
+    return "offline";
+  } catch {
+    return "offline";
+  }
+}

@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getPack, listPacks } from "@/core/registry";
-import { BeyondPage } from "@/components/beyond/beyond-page";
+import { redirect } from "next/navigation";
+import { listPacks } from "@/core/registry";
 
 type Params = { lang: string };
 
@@ -9,14 +7,8 @@ export function generateStaticParams(): Params[] {
   return listPacks().map((pack) => ({ lang: pack.code }));
 }
 
-export const metadata: Metadata = { title: "Beyond the course · Mozaik" };
-
+/** "Beyond the course" is now part of the Library. */
 export default async function BeyondRoute({ params }: { params: Promise<Params> }) {
   const { lang } = await params;
-  if (!getPack(lang)) notFound();
-  return (
-    <main>
-      <BeyondPage lang={lang} />
-    </main>
-  );
+  redirect(`/library/${lang}`);
 }

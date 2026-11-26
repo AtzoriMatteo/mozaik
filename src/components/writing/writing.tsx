@@ -13,6 +13,8 @@ import {
 import { unitWords } from "@/core/unit-words";
 import type { Unit } from "@/core/content";
 import { askForFeedback, AI_KEY_STORAGE, type AiCorrection, type AiFeedback } from "@/lib/writing/ai-feedback";
+import { findLibraryPrompt, libraryPrompts } from "@/core/library";
+import { ConnectClaude } from "./connect-claude";
 import { SpeakButton } from "@/components/speak-button";
 import { useCourseProgress } from "@/lib/progress/use-course-progress";
 import { useSpelling } from "@/lib/writing/use-spelling";
@@ -153,16 +155,17 @@ const STATUS_NOTE: Record<Exclude<PointStatus, "ok">, string> = {
   copied: "That's the example word for word. Keep the pattern, but make it about you.",
 };
 
-export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId: string; taskId: string }) {
+/** A writing topic: from a unit, or (no unitId) a Library prompt. */
+export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId?: string; taskId: string }) {
   const pack = getPack(lang) as LanguagePack;
-  const unit = pack.units.find((u) => u.id === unitId)!;
-  const task = unit.writing!.find((t) => t.id === taskId)!;
+  const unit = unitId ? pack.units.find((u) => u.id === unitId) : undefined;
+  const task = (unit ? unit.writing?.find((t) => t.id === taskId) : findLibraryPrompt(pack, taskId))!;
   const progress = useCourseProgress(pack);
   const spelling = useSpelling(pack);
   const lengths = lengthsFor(pack, task);
   // Cheap to work out (unit words are cached), so plain calls rather than memos.
   const examples = pointExamples(pack, task);
-  const keyWords = topicWords(pack, unit, task);
+  const keyWords = unit ? topicWords(pack, unit, task) : [];
   const fromTask = taskNames(pack, task);
   const guide = guidanceFor(pack, task);
   const [showEnglish, setShowEnglish] = useState(false);
@@ -303,13 +306,17 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
     setFinished(true);
   }
 
-  const others = (unit.writing ?? []).filter((t) => t.id !== task.id && !progress.writingDone.has(t.id));
+  const siblings = unit ? (unit.writing ?? []) : libraryPrompts(pack, task.level).filter((t) => t.topic === task.topic);
+  const others = siblings.filter((t) => t.id !== task.id && !progress.writingDone.has(t.id));
+  const hrefFor = (t: WritingTask) => (unit ? `/write/${lang}/${unit.id}/${t.id}` : `/library/${lang}/write/${t.id}`);
   const issueCount = checked && !stale ? checked.issues.reduce((n, l) => n + l.length, 0) : 0;
   const todo = points.map((p, i) => (covered[i] ? null : i + 1)).filter((x): x is number => x !== null);
 
   return (
     <article className="writing">
-      <Link href={`/write/${lang}/${unit.id}`} className="back-link">All writing topics</Link>
+      <Link href={unit ? `/write/${lang}/${unit.id}` : `/library/${lang}`} className="back-link">
+        {unit ? "All writing topics" : "Library"}
+      </Link>
       <header className="unit-page-head">
         <p className="reader-unit">
           <span className="level-tag">{task.level}</span>
@@ -356,7 +363,9 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
           <section className="write-ready" aria-labelledby="ready-title">
             <h2 id="ready-title">Get ready</h2>
             <p>
-              Write a sentence or two for each point below. Stuck? Open its example, keep the pattern and make it about you.
+              {task.model
+                ? "Write a sentence or two for each point below. Stuck? Open its example, keep the pattern and make it about you."
+                : "Write a sentence or two for each point below. There's no model text here: the checks, and Claude if you connect it, show you how to make it sound natural."}
             </p>
             {keyWords.length > 0 ? (
               <details>
@@ -368,16 +377,20 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
                     </li>
                   ))}
                 </ul>
-                <Link href={`/words/${lang}/${unit.id}`} className="link-button" target="_blank">
-                  All words of this unit
-                </Link>
+                {unit ? (
+                  <Link href={`/words/${lang}/${unit.id}`} className="link-button" target="_blank">
+                    All words of this unit
+                  </Link>
+                ) : null}
               </details>
             ) : null}
-            <details>
-              <summary>Read a whole example text first</summary>
-              <p lang={lang} className="ready-model">{task.model}</p>
-              <p className="setting-note">The long version. Read it, then close it and write your own.</p>
-            </details>
+            {task.model ? (
+              <details>
+                <summary>Read a whole example text first</summary>
+                <p lang={lang} className="ready-model">{task.model}</p>
+                <p className="setting-note">The long version. Read it, then close it and write your own.</p>
+              </details>
+            ) : null}
           </section>
 
           <ol className="write-points">
@@ -555,30 +568,32 @@ export function WritingTaskView({ lang, unitId, taskId }: { lang: string; unitId
               <div className="finish-box">
                 <p>
                   <strong>Done.</strong>{" "}
-                  {(unit.writing ?? []).filter((t) => progress.writingDone.has(t.id)).length >= WRITING_REQUIRED
-                    ? "This unit's writing tile is glazed."
-                    : `One more topic in this unit glazes its writing tile.`}
+                  {!unit
+                    ? "It's kept in the Library as written."
+                    : (unit.writing ?? []).filter((t) => progress.writingDone.has(t.id)).length >= WRITING_REQUIRED
+                      ? "This unit's writing tile is glazed."
+                      : `One more topic in this unit glazes its writing tile.`}
                 </p>
                 <div className="button-row">
                   {others[0] ? (
-                    <Link href={`/write/${lang}/${unit.id}/${others[0].id}`} className="button">
+                    <Link href={hrefFor(others[0])} className="button">
                       Next topic: {others[0].titleTranslation}
                     </Link>
-                  ) : (
+                  ) : unit ? (
                     <NextActivityLink pack={pack} next={nextActivity(pack, { kind: "write", id: unit.id })} onDone={() => {}} />
+                  ) : (
+                    <Link href={`/library/${lang}`} className="button">Back to the Library</Link>
                   )}
                 </div>
               </div>
             </>
           ) : null}
 
-          <AiSettings
-            aiKey={aiKey}
-            onSave={(k) => {
+          <ConnectClaude
+            compact
+            onChange={(k) => {
               setAiKey(k);
-              writeLocal(AI_KEY_STORAGE, k || null);
-              setUseAi(!!k);
-              writeLocal(AI_ON_KEY, k ? "on" : null);
+              setUseAi(!!k && readLocal(AI_ON_KEY) !== "off");
             }}
           />
 
@@ -769,48 +784,3 @@ function Compare({ lang, points, mine, examples }: { lang: string; points: strin
   );
 }
 
-function AiSettings({ aiKey, onSave }: { aiKey: string; onSave: (key: string) => void }) {
-  const [draft, setDraft] = useState("");
-  return (
-    <details className="ai-settings">
-      <summary>AI teacher (optional){aiKey ? ": on" : ""}</summary>
-      <p>
-        Mozaik&apos;s own rules check the shape of your sentences. An AI teacher can also tell you whether they mean what
-        you wanted and sound natural. It uses your own{" "}
-        <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Anthropic API key</a>, so
-        Mozaik stays free: a check costs you a fraction of a cent.
-      </p>
-      <ul className="setting-note">
-        <li>Your key is kept in this browser only. It never goes to Mozaik&apos;s servers or your account.</li>
-        <li>When you check, your text goes straight from this browser to Anthropic (Claude Haiku).</li>
-      </ul>
-      {aiKey ? (
-        <div className="button-row">
-          <span className="setting-note">Key saved: …{aiKey.slice(-4)}</span>
-          <button type="button" className="button button-quiet" onClick={() => onSave("")}>Remove the key</button>
-        </div>
-      ) : (
-        <form
-          className="ai-key-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (draft.trim()) onSave(draft.trim());
-            setDraft("");
-          }}
-        >
-          <label htmlFor="ai-key">API key</label>
-          <input
-            id="ai-key"
-            type="password"
-            autoComplete="off"
-            spellCheck={false}
-            placeholder="sk-ant-…"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-          />
-          <button type="submit" className="button" disabled={!draft.trim().startsWith("sk-")}>Save</button>
-        </form>
-      )}
-    </details>
-  );
-}

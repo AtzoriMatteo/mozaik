@@ -89,15 +89,13 @@ export function CourseOverview() {
         </section>
       ))}
 
-      {pack.resources?.length ? (
       <section className="beyond-teaser">
-          <h2>Beyond the course</h2>
-          <p>Real {pack.name} for your level: videos, shows, podcasts and books, picked to match what you can follow.</p>
-          <Link href={`/beyond/${pack.code}`} className="button button-quiet">
-            See what to watch, hear and read
-          </Link>
-        </section>
-      ) : null}
+        <h2>Library</h2>
+        <p>Pick any level, A1 to C2: every text on Mozaik, real {pack.name} to read out there, and lots of things to write.</p>
+        <Link href={`/library/${pack.code}`} className="button button-quiet">
+          Open the Library
+        </Link>
+      </section>
       <LearningTip pack={pack} place="course" />
     </>
   );
