@@ -19,3 +19,16 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+
+  links:
+    # Opens every outside link (Library "Out there"). Separate so a site being
+    # down for a moment doesn't block a merge, but a broken link shows up red.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check-links

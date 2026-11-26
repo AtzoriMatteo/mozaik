@@ -7,9 +7,18 @@ import { listPacks } from "@/core/registry";
  */
 const links = listPacks().flatMap((p) => (p.resources ?? []).map((r) => [`${p.code}/${r.id}`, r.url] as const));
 
-describe("Beyond the course links", () => {
+describe("Library outside links", () => {
   it.each(links)("%s answers", async (_id, url) => {
-    const res = await fetch(url, { method: "GET", redirect: "follow", headers: { "user-agent": "Mozaik link check" } });
+    let res: Response;
+    try {
+      res = await fetch(url, { method: "GET", redirect: "follow", headers: { "user-agent": "Mozaik link check" } });
+    } catch (e) {
+      // The site answered with more headers than Node accepts (cookie walls): it's up.
+      if ((e as { cause?: { code?: string } }).cause?.code === "UND_ERR_HEADERS_OVERFLOW") return;
+      throw e;
+    }
+    // 403 and 429: some sites turn away scripts (they open fine in a browser).
+    if (res.status === 403 || res.status === 429) return;
     expect(res.status, url).toBeLessThan(400);
   }, 20_000);
 });

@@ -8,7 +8,8 @@ import { units } from "./units";
 import { coreVocabularyA1 } from "./vocabulary";
 import { coreVocabularyA2 } from "./vocabulary-a2";
 import { sounds } from "./speaking/sounds";
-import { resources } from "./resources";
+import { resources as courseResources } from "./resources";
+import { libraryResources } from "./resources-library";
 import { library } from "./library";
 import { tips } from "./tips";
 import { articleFor } from "./articles";
@@ -25,6 +26,8 @@ import { dutchStems } from "./stems";
 import { homographs } from "./homographs";
 import { makeDisplayCase } from "./case";
 import { dutchPosInContext } from "./pos";
+
+const resources = [...courseResources, ...libraryResources];
 
 /**
  * Dutch uses apostrophes inside words ("auto's", "baby's") and as the start
