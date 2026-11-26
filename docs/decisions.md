@@ -28,8 +28,18 @@ way to connect your own Claude account for writing checks.
   browser and calls go straight to Anthropic; the learner pays a fraction of a
   cent per check, and Mozaik stays free.
 
-**Next.** Reading out there for every level in both languages (links checked),
-then extra Library texts in batches per level.
+**Then, same day.**
+- Out there: 16 Dutch and 16 Italian reading suggestions across A1–C2 (books
+  linked to their Wikipedia page, easy-language publishers, news, free
+  classics). A new CI job opens every outside link; sites that turn away
+  scripts (403) count as up.
+- First Library texts: 4 Dutch and 4 Italian at B1 (Dutch bike culture,
+  neighbourhood mediation, the food bank, a first working week; a sagra, the
+  condominium meeting, the banco alimentare, a first day at a Milan office), with
+  word help for every word and comprehension questions. Library texts may be
+  above the course levels.
+
+**Next.** More Library texts in batches: B1 → B2 → C1 → C2.
 
 ## 2026-11-22 (morning, later) — Letters laid out like letters; flagged sentences
 
