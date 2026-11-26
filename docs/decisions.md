@@ -5,6 +5,12 @@ Newest first. Each entry: what we decided, why, and what it costs us.
 
 ---
 
+## 2026-11-26 (late night) — Library A2: curated Out there, full writing prompts
+
+- **Out there, A2.** Dutch: Jeugdjournaal, Easy Dutch, Dutchies to be, plus two new podcasts with transcripts (TalkDutch, a daily A2 conversation; Inburgering.org A2, with a quiz per episode) and a Books list without links (Jip en Janneke, Dolfje Weerwolfje, Mees Kees). Italian: Podcast Italiano, plus Learn Italian with Lucrezia and Easy Italian (watch), lingua.com's levelled texts with questions (read), Loescher's free A2 worksheets (practise — the free Italian practice site we were missing), and Books: Geronimo Stilton, Favole al telefono, Le magiche ricette di Matilda and STORIE di italiani famosi (graded Alma readers with audio).
+- **Writing, A2.** 25 prompts per language written out in full like A1 (writing-a2.ts): 6 points each with a frame and cue words, and a model answer of at least 120 words that covers every point (Dutch models also pass the checker). 9 topics, 7 forms (email, message, form, description, story, opinion, diary). Italian prompts are set in Italy (a sagra instead of Koningsdag, Idealista instead of Kamernet). The old compact A2 lists (prompts-a.ts) are gone.
+- Test: A1 and A2 must each have 20+ full prompts across 5+ forms and 6+ topics.
+
 ## 2026-11-26 (night) — Library A1: curated Out there, full writing prompts
 
 **Asked (Matteo).** Out there should be the main focus, very well curated; books
@@ -1835,9 +1841,3 @@ speaker would call one word.
 - Where course content comes from: AI-generated and reviewed, hand-written,
   or a mix. (Proposed for Milestone 1: AI-generated, carefully checked, with
   a "this sounds odd" flag for later native review.)
-
-## 2026-11-26 (late night) — Library A2: curated Out there, full writing prompts
-
-- **Out there, A2.** Dutch: Jeugdjournaal, Easy Dutch, Dutchies to be, plus two new podcasts with transcripts (TalkDutch, a daily A2 conversation; Inburgering.org A2, with a quiz per episode) and a Books list without links (Jip en Janneke, Dolfje Weerwolfje, Mees Kees). Italian: Podcast Italiano, plus Learn Italian with Lucrezia and Easy Italian (watch), lingua.com's levelled texts with questions (read), Loescher's free A2 worksheets (practise — the free Italian practice site we were missing), and Books: Geronimo Stilton, Favole al telefono, Le magiche ricette di Matilda and STORIE di italiani famosi (graded Alma readers with audio).
-- **Writing, A2.** 25 prompts per language written out in full like A1 (writing-a2.ts): 6 points each with a frame and cue words, and a model answer of at least 120 words that covers every point (Dutch models also pass the checker). 9 topics, 7 forms (email, message, form, description, story, opinion, diary). Italian prompts are set in Italy (a sagra instead of Koningsdag, Idealista instead of Kamernet). The old compact A2 lists (prompts-a.ts) are gone.
-- Test: A1 and A2 must each have 20+ full prompts across 5+ forms and 6+ topics.
