@@ -1,4 +1,4 @@
-import type { Resource } from "@/core/resources";
+import type { Book, Resource } from "@/core/resources";
 
 /**
  * Outside reading for the Library, A1 to C2: books (linked to their Dutch
@@ -10,8 +10,8 @@ import type { Resource } from "@/core/resources";
 const WIKI = "A Dutch Wikipedia page about the book: the first lines say what it's about. Borrow it at a public library (de bibliotheek, often with an e-book in the online library app) or buy it in any bookshop.";
 const wiki = (slug: string) => `https://nl.wikipedia.org/wiki/${slug}`;
 
-type Book = Pick<Resource, "id" | "level" | "title" | "by" | "why" | "how"> & { slug: string; stretch?: boolean };
-const book = (b: Book): Resource => ({
+type WikiBook = Pick<Resource, "id" | "level" | "title" | "by" | "why" | "how"> & { slug: string; stretch?: boolean };
+const book = (b: WikiBook): Resource => ({
   id: b.id,
   level: b.level,
   kind: "read",
@@ -28,7 +28,46 @@ const book = (b: Book): Resource => ({
 const STORYBOOKS = "https://global-asp.github.io/storybooks-ireland/stories/nl/level1";
 const POTJE = "https://www.rug.nl/language-centre/develop-yourself/potje-nederlands?lang=en";
 
-export const libraryResources: Resource[] = [
+export const libraryResources: (Resource | Book)[] = [
+  {
+    id: "lib-station-nederlands",
+    level: "A1",
+    kind: "practise",
+    title: "Station Nederlands, on Oefenen.nl",
+    by: "Stichting Oefenen.nl",
+    url: "https://www.oefenen.nl",
+    why: "A course for newcomers: 105 short lessons with video, from zero to A1 and beyond. Free at home.",
+    how: "Make a free account, open Station Nederlands 1 and do one lesson a day.",
+    onSite: "The site is in Dutch (an English information page is linked). Log in or make an account, then choose Taal and Station Nederlands.",
+    siteLanguage: "Dutch",
+  },
+  {
+    id: "lib-book-nijntje",
+    level: "A1",
+    kind: "book",
+    title: "Nijntje",
+    by: "Dick Bruna",
+    why: "The little white rabbit known as Miffy: four short rhyming lines per page and a picture that shows them. The first Dutch books most children read.",
+    how: "Read one book out loud. Look up nothing: the pictures tell you.",
+  },
+  {
+    id: "lib-book-kikker",
+    level: "A1",
+    kind: "book",
+    title: "Kikker (Kikker is verliefd, Kikker en de vogel…)",
+    by: "Max Velthuijs",
+    why: "Picture books about Frog and his friends: short sentences, big feelings, a story on every page.",
+    how: "Read a book twice: first for the story, then out loud, slowly.",
+  },
+  {
+    id: "lib-book-dikkie-dik",
+    level: "A1",
+    kind: "book",
+    title: "Dikkie Dik",
+    by: "Jet Boeke",
+    why: "A fat ginger cat and his little adventures at home: everyday words for the house, food and family.",
+    how: "One story a day; point at things in the picture and say their names.",
+  },
   {
     id: "lib-storybooks",
     level: "A1",
@@ -125,23 +164,14 @@ export const libraryResources: Resource[] = [
     onSite: "A YouTube channel. Open the Videos tab, or use the search icon to find a topic.",
     siteLanguage: "English",
   },
-  book({
-    id: "nijntje",
-    level: "A1",
-    title: "Nijntje (Miffy) picture books",
-    by: "Dick Bruna",
-    slug: "Nijntje",
-    why: "Four short rhyming lines per page and a picture that shows them: the first real Dutch book most children read.",
-    how: "Read one book out loud. Look up nothing: the pictures tell you.",
-  }),
   {
     id: "eenvoudig-communiceren",
-    level: "A2",
+    level: "A1",
     kind: "read",
     title: "Easy-to-read books and newspapers",
     by: "Eenvoudig Communiceren (publisher)",
     url: "https://www.eenvoudigcommuniceren.nl",
-    why: "Real novels and news for adults, rewritten at A1, A2 and B1: grown-up stories at your level.",
+    why: "Novels and news for adults, written at A1, A2 and B1: grown-up stories at your level.",
     how: "Pick one book at your level and read a chapter a day. Many libraries have them.",
     onSite: "A Dutch publisher's site. Open Boeken and use the Leesniveau filter (A1, A2, B1…). Kranten has news in easy Dutch.",
     siteLanguage: "Dutch",

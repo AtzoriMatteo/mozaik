@@ -13,6 +13,7 @@ import { cast } from "./cast";
 import { expressions } from "./expressions";
 import { handbook } from "./handbook";
 import { resources } from "./resources";
+import type { Resource } from "@/core/resources";
 import { library } from "./library";
 import { tokenizeItalian } from "./tokenize";
 import { verbTools } from "./verbs";
@@ -58,7 +59,7 @@ export const italian: LanguagePack = {
   grammar,
   sounds,
   coreVocabulary: { A1: coreVocabularyA1 },
-  resources,
+  resources: resources.filter((r): r is Resource => r.kind !== "book"),
   library,
   tips,
   nounArticle: articleFor,

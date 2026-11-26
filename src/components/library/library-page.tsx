@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getPack } from "@/core/registry";
 import type { CefrLevel, LanguagePack } from "@/core/language-pack";
 import { LIBRARY_LEVELS, courseTextCount, libraryPrompts, outThere, readingShelf } from "@/core/library";
-import { RESOURCE_KIND_LABEL, type Resource } from "@/core/resources";
+import { RESOURCE_KIND_LABEL, type Book, type Resource } from "@/core/resources";
 import { useProgress } from "@/lib/progress/use-read-texts";
 import { ConnectClaude } from "@/components/writing/connect-claude";
 
@@ -145,13 +145,15 @@ function OutThere({ pack, level }: { pack: LanguagePack; level: CefrLevel }) {
   const { doneIds, toggle } = useProgress("beyond", pack.code);
   const items = outThere(pack, level);
   if (items.length === 0) return <p className="library-empty">Nothing collected for {level} yet.</p>;
+  const books = items.filter((r): r is Book => r.kind === "book");
+  const links = items.filter((r): r is Resource => r.kind !== "book");
   return (
     <section aria-label={`${level} material out there`}>
       <p className="lede library-note">
-        Real {pack.name} made for people, not for textbooks. Mozaik only links to it: it opens on its own site, and nothing is embedded, so nobody tracks you here.
+        Real {pack.name} made for people, not for textbooks. Links open on their own site; nothing is embedded, so nobody tracks you here.
       </p>
       {KINDS.map((kind) => {
-        const list = items.filter((r) => r.kind === kind);
+        const list = links.filter((r) => r.kind === kind);
         if (list.length === 0) return null;
         return (
           <section key={kind} className="library-topic">
@@ -164,6 +166,30 @@ function OutThere({ pack, level }: { pack: LanguagePack; level: CefrLevel }) {
           </section>
         );
       })}
+      {books.length > 0 ? (
+        <section className="library-topic">
+          <h2>Books</h2>
+          <p className="library-note">Borrow them at a library or buy them anywhere: no link needed.</p>
+          <ul className="resource-list">
+            {books.map((b) => (
+              <li key={b.id} className="resource" data-done={doneIds.has(b.id) || undefined}>
+                <div className="resource-main">
+                  <span className="resource-title" lang={pack.code}>{b.title}</span>
+                  <span className="resource-by">{b.by}</span>
+                  {b.stretch ? <span className="resource-stretch">A bit above {b.level}</span> : null}
+                  <p className="resource-why">{b.why}</p>
+                  <p className="resource-how">
+                    <strong>How:</strong> {b.how}
+                  </p>
+                </div>
+                <button type="button" className="resource-done" aria-pressed={doneIds.has(b.id)} onClick={() => toggle(b.id)}>
+                  {doneIds.has(b.id) ? "Read it" : "Mark as read"}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </section>
   );
 }

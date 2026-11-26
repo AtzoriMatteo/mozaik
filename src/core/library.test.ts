@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { listPacks } from "./registry";
 import { LIBRARY_LEVELS, libraryPrompts, parsePrompts } from "./library";
+import { countWords, coveredPoints, LONG_ENOUGH, lengthsFor } from "./writing";
 
 describe("parsePrompts", () => {
   it("reads topic, header, situation and points", () => {
@@ -37,7 +38,7 @@ describe.each(listPacks().map((p) => [p.code, p] as const))("%s Library prompts"
 describe.each(listPacks().map((p) => [p.code, p] as const))("%s Library: texts and Out there", (_code, pack) => {
   it("lists each outside source once, with something at every level", () => {
     const list = pack.library?.outThere ?? [];
-    const urls = list.map((r) => r.url);
+    const urls = list.flatMap((r) => ("url" in r ? [r.url] : []));
     expect(new Set(urls).size).toBe(urls.length);
     for (const level of LIBRARY_LEVELS) expect(list.filter((r) => r.level === level).length, level).toBeGreaterThanOrEqual(2);
   });
@@ -48,5 +49,27 @@ describe.each(listPacks().map((p) => [p.code, p] as const))("%s Library: texts a
       expect(words, t.id).toBeGreaterThanOrEqual(min[t.level]);
     }
     for (const level of LIBRARY_LEVELS) expect((pack.library?.texts ?? []).filter((t) => t.level === level).length, level).toBeLessThanOrEqual(4);
+  });
+});
+
+describe.each(listPacks().map((p) => [p.code, p] as const))("%s Library prompts with model answers", (_code, pack) => {
+  const withModel = libraryPrompts(pack).filter((p) => p.model);
+  it.each(withModel.map((p) => [p.id, p] as const))("%s: frames and cues on every point; the model is long enough, covers every point and passes the checker", (_id, p) => {
+    expect(p.points.length, p.id).toBe(6);
+    for (const pt of p.points) {
+      expect(pt.frame, `${p.id}: ${pt.prompt}`).toBeTruthy();
+      expect(pt.cues?.length, `${p.id}: ${pt.prompt}`).toBeGreaterThan(0);
+    }
+    expect(countWords(p.model), p.id).toBeGreaterThanOrEqual(lengthsFor(pack, p)[2] * LONG_ENOUGH);
+    const covered = coveredPoints(pack, p.model, p.points);
+    expect(p.points.filter((_, i) => !covered[i]).map((pt) => pt.prompt), p.id).toEqual([]);
+    const issues = (pack.checkWriting?.(p.model) ?? []).map((i) => `${p.model.slice(i.start, i.end)}: ${i.message}`);
+    expect(issues, p.id).toEqual([]);
+  });
+  it("has the A1 prompts written out in full, with lots of variety", () => {
+    const a1 = libraryPrompts(pack, "A1");
+    expect(a1.length).toBeGreaterThanOrEqual(20);
+    expect(a1.every((p) => p.model)).toBe(true);
+    expect(new Set(a1.map((p) => p.form)).size).toBeGreaterThanOrEqual(5);
   });
 });
