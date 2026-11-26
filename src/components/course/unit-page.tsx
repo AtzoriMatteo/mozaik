@@ -219,8 +219,8 @@ export function UnitPage({ lang, unitId }: { lang: string; unitId: string }) {
             </li>
           ))}
           <li>
-            <Link href={`/beyond/${lang}`} className="activity-row activity-row-more">
-              <span className="activity-title">Everything for {unit.level}</span>
+            <Link href={`/library/${lang}`} className="activity-row activity-row-more">
+              <span className="activity-title">Everything for {unit.level}, in the Library</span>
             </Link>
           </li>
         </SkillSection>

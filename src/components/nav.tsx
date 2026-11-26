@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/", label: "Home", match: [], exact: true, icon: "M4 11 L12 4 L20 11 M6 10 V20 H18 V10" },
   { href: "/course", label: "Course", match: ["/course", "/read", "/listen", "/grammar", "/speak", "/write"], icon: "M4 4 H11 V11 H4 Z M13 4 H20 V11 H13 Z M4 13 H11 V20 H4 Z M13 13 H20 V20 H13 Z" },
   { href: "/review", label: "Review", match: ["/review"], icon: "M5 6 H15 V18 H5 Z M9 3 H19 V15" },
+  { href: "/library", label: "Library", match: ["/library"], icon: "M5 4 V20 M9 4 V20 M13 5 L17 19 M4 20 H20" },
   { href: "/plan", label: "Plan", match: ["/plan"], icon: "M4 6 H20 V20 H4 Z M4 10 H20 M8 3 V7 M16 3 V7" },
   { href: "/handbook", label: "Handbook", match: ["/handbook"], icon: "M5 4 H17 A2 2 0 0 1 19 6 V20 H7 A2 2 0 0 1 5 18 Z M5 18 A2 2 0 0 1 7 16 H19" },
 ];

@@ -44,7 +44,7 @@ export function Reader({ lang, textId }: { lang: string; textId: string }) {
   const [check, setCheck] = useState<"idle" | "running" | { right: number; total: number }>("idle");
   const tasks = text.tasks ?? [];
   return (
-    <ReaderView pack={pack} text={text} unit={unit} flagKind="text">
+    <ReaderView pack={pack} text={text} unit={unit} flagKind="text" back={unit ? undefined : { href: `/library/${pack.code}`, label: "Library" }}>
       <footer className="reader-end">
         {tasks.length > 0 && check === "idle" ? (
           <div className="check-invite">

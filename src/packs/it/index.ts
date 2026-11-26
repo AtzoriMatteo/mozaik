@@ -13,6 +13,7 @@ import { cast } from "./cast";
 import { expressions } from "./expressions";
 import { handbook } from "./handbook";
 import { resources } from "./resources";
+import { library } from "./library";
 import { tokenizeItalian } from "./tokenize";
 import { verbTools } from "./verbs";
 
@@ -58,6 +59,7 @@ export const italian: LanguagePack = {
   sounds,
   coreVocabulary: { A1: coreVocabularyA1 },
   resources,
+  library,
   tips,
   nounArticle: articleFor,
   // Places, feasts and names keep their capital on a card: l'Italia, il Natale.

@@ -34,8 +34,10 @@ export type WritingTask = {
   situationTarget?: string;
   /** Up to six points; shorter lengths ask for the first few. */
   points: WritingPoint[];
-  /** A model answer for the longest length, in the target language. */
+  /** A model answer for the longest length, in the target language ("" for Library prompts). */
   model: string;
+  /** What it's about, for grouping Library prompts. */
+  topic?: string;
 };
 
 /** Word counts to choose from, per level: short, medium, long. */

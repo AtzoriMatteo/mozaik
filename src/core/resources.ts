@@ -21,7 +21,7 @@ export type Resource = {
   /** What you'll see when the link opens and what to click: no guessing on a foreign site. */
   onSite: string;
   /** The language of the site's own buttons and menus. */
-  siteLanguage: "English" | "Dutch" | "English and Dutch";
+  siteLanguage: "English" | "Dutch" | "English and Dutch" | "Italian" | "English and Italian";
   /** Units it goes well with (shown on those unit pages). */
   units?: string[];
   /** A little above the level: worth a try, no pressure. */
