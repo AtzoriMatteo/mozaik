@@ -33,3 +33,20 @@ describe.each(listPacks().map((p) => [p.code, p] as const))("%s Library prompts"
     }
   });
 });
+
+describe.each(listPacks().map((p) => [p.code, p] as const))("%s Library: texts and Out there", (_code, pack) => {
+  it("lists each outside source once, with something at every level", () => {
+    const list = pack.library?.outThere ?? [];
+    const urls = list.map((r) => r.url);
+    expect(new Set(urls).size).toBe(urls.length);
+    for (const level of LIBRARY_LEVELS) expect(list.filter((r) => r.level === level).length, level).toBeGreaterThanOrEqual(2);
+  });
+  it("keeps Library texts few and long", () => {
+    const min: Record<string, number> = { A1: 150, A2: 270, B1: 280, B2: 600, C1: 750, C2: 900 };
+    for (const t of pack.library?.texts ?? []) {
+      const words = t.paragraphs.flat().reduce((n, s) => n + pack.tokenize(s.text).filter((x) => x.kind === "word").length, 0);
+      expect(words, t.id).toBeGreaterThanOrEqual(min[t.level]);
+    }
+    for (const level of LIBRARY_LEVELS) expect((pack.library?.texts ?? []).filter((t) => t.level === level).length, level).toBeLessThanOrEqual(4);
+  });
+});

@@ -26,6 +26,22 @@ export const textsB1: LibraryText[] = [
         s("Er zijn ook minder leuke kanten. Elk jaar worden er honderdduizenden fietsen gestolen, en rond de grote stations is het vaak moeilijk om een plek te vinden.", "There are less pleasant sides too. Every year hundreds of thousands of bikes are stolen, and around the big stations it's often hard to find a space."),
         s("Daarom hebben de meeste mensen twee sloten, en een fiets die er niet te mooi uitziet.", "That's why most people have two locks, and a bike that doesn't look too nice."),
       ],
+      [
+        s("Wie in Nederland komt wonen, moet vaak opnieuw leren fietsen. Niet omdat je het niet kunt, maar omdat er regels zijn die je nergens anders ziet.", "Anyone who comes to live in the Netherlands often has to learn to cycle again. Not because you can't, but because there are rules you don't see anywhere else."),
+        s("Je steekt je hand uit als je afslaat, je fietst nooit op de stoep en je let op de haaientanden: witte driehoeken op de weg die betekenen dat je voorrang moet geven.", "You hold out your hand when you turn, you never cycle on the pavement and you watch out for the shark's teeth: white triangles on the road that mean you have to give way."),
+      ],
+      [
+        s("Nederlanders fietsen ook in situaties die buitenlanders verbazen. Ze vervoeren een kast, een kerstboom of drie kinderen op één fiets. Ze fietsen in een pak naar hun werk, en in de regen met een paraplu in hun hand.", "The Dutch also cycle in situations that amaze foreigners. They carry a cupboard, a Christmas tree or three children on one bike. They cycle to work in a suit, and in the rain with an umbrella in their hand."),
+        s("Een helm dragen ze bijna nooit. Dat lijkt gevaarlijk, maar omdat er zoveel fietsers zijn, letten automobilisten goed op. Ze zijn er zelf ook vaak één.", "They almost never wear a helmet. That seems dangerous, but because there are so many cyclists, drivers pay close attention. Often they're cyclists themselves too."),
+      ],
+      [
+        s("De laatste jaren rijden er steeds meer elektrische fietsen. Vooral ouderen gebruiken ze, maar ook mensen die verder van hun werk wonen. Daardoor worden de fietspaden drukker en sneller, en daar zijn niet alle fietsers blij mee.", "In recent years more and more electric bikes have appeared. Older people use them most, but also people who live further from work. As a result the cycle paths are getting busier and faster, and not all cyclists are happy about that."),
+        s("Toch is de liefde voor de fiets niet veranderd. Op Koningsdag, bij het station of op een zomeravond langs de gracht: overal zie je hetzelfde beeld. Een land op twee wielen.", "Still, the love of the bike hasn't changed. On King's Day, at the station or on a summer evening by the canal: everywhere you see the same picture. A country on two wheels."),
+      ],
+      [
+        s("Ook buitenlandse steden kijken naar Nederland. Delegaties uit Parijs, New York en Bogotá komen naar Utrecht om de grootste fietsenstalling ter wereld te zien, onder het station, met plek voor meer dan twaalfduizend fietsen.", "Foreign cities look to the Netherlands too. Delegations from Paris, New York and Bogotá come to Utrecht to see the world's biggest bike park, under the station, with room for more than twelve thousand bikes."),
+        s("Het Nederlandse geheim is volgens experts niet de cultuur, maar de keuzes van de politiek: wie veilige fietspaden bouwt, krijgt fietsers.", "According to experts, the Dutch secret isn't the culture but the choices of politicians: build safe cycle paths and you get cyclists."),
+      ],
     ],
     tasks: [
       mc("Why does the Netherlands suit cycling?", ["It's flat, distances are short and there are cycle paths", "Cars are forbidden in towns", "Bikes are free"], 0),
@@ -54,6 +70,22 @@ export const textsB1: LibraryText[] = [
         s("Een andere buurvrouw gaf Ingrid een tip: buurtbemiddeling. Dat is gratis, en de bemiddelaars zijn vrijwilligers die geen kant kiezen. Ze luisteren naar allebei de buren en helpen hen om zelf een oplossing te vinden.", "Another neighbour gave Ingrid a tip: neighbourhood mediation. It's free, and the mediators are volunteers who don't take sides. They listen to both neighbours and help them find a solution themselves."),
         s("Bij het gesprek bleek dat Bert een slechte rug heeft. Hij kon de heg niet meer knippen, maar schaamde zich om dat te zeggen.", "In the conversation it turned out that Bert has a bad back. He couldn't trim the hedge any more, but was ashamed to say so."),
         s("De oplossing was simpel: de zoon van Ingrid knipt de heg twee keer per jaar, en Bert betaalt de koffie.", "The solution was simple: Ingrid's son trims the hedge twice a year, and Bert pays for the coffee."),
+      ],
+      [
+        s("Volgens de organisatie van buurtbemiddeling gaat het bij ruzies tussen buren vaak over dezelfde dingen: lawaai, rommel, parkeren, huisdieren en bomen of heggen. Het probleem zelf is meestal klein, maar het wordt groot omdat mensen niet meer met elkaar praten.", "According to the neighbourhood mediation organisation, rows between neighbours are often about the same things: noise, mess, parking, pets and trees or hedges. The problem itself is usually small, but it grows because people stop talking to each other."),
+        s("Een boze brief of een bericht in de groepsapp maakt het vaak erger. Wie een brief krijgt, voelt zich aangevallen en schrijft een nog bozere brief terug.", "An angry letter or a message in the group chat often makes it worse. Whoever gets a letter feels attacked and writes an even angrier letter back."),
+      ],
+      [
+        s("Een gesprek met bemiddelaars duurt meestal anderhalf uur. Eerst vertelt de ene buur zijn verhaal, dan de andere. Niemand mag de ander onderbreken. Daarna zoeken ze samen naar afspraken die voor allebei werken.", "A conversation with mediators usually takes an hour and a half. First one neighbour tells their story, then the other. Nobody may interrupt the other. Afterwards they look together for agreements that work for both."),
+        s("De bemiddelaars geven geen oordeel en ze geven ook geen advies. Ze stellen vragen, en ze zorgen ervoor dat iedereen rustig blijft.", "The mediators don't give a verdict and they don't give advice either. They ask questions, and they make sure everyone stays calm."),
+      ],
+      [
+        s("In ongeveer zeventig procent van de gevallen vinden de buren een oplossing. Dat is veel goedkoper en sneller dan een rechtszaak, en je blijft daarna gewoon buren.", "In about seventy per cent of cases the neighbours find a solution. That's much cheaper and quicker than a court case, and afterwards you simply stay neighbours."),
+        s("Ingrid en Bert drinken nu weer samen koffie op zaterdagochtend, en de tomaten groeien weer. Volgens Ingrid hadden ze het gesprek veel eerder moeten hebben. Twee jaar ruzie, en het ging eigenlijk om een slechte rug.", "Ingrid and Bert have coffee together again on Saturday mornings, and the tomatoes are growing again. According to Ingrid they should have had the conversation much sooner. Two years of rowing, and it was really about a bad back."),
+      ],
+      [
+        s("Buurtbemiddeling bestaat in bijna alle Nederlandse gemeenten. Je kunt je zelf aanmelden, maar ook de politie, de woningbouwvereniging of de huisarts kan je doorsturen.", "Neighbourhood mediation exists in almost all Dutch municipalities. You can sign up yourself, but the police, the housing association or your GP can also refer you."),
+        s("Het werkt alleen als beide buren meedoen. Daarom bellen de bemiddelaars altijd eerst allebei op, om uit te leggen wat ze doen en dat het gesprek vertrouwelijk is.", "It only works if both neighbours take part. That's why the mediators always call both first, to explain what they do and that the conversation is confidential."),
       ],
     ],
     tasks: [
@@ -84,40 +116,28 @@ export const textsB1: LibraryText[] = [
         s("Wat hem het meest raakt, is dat veel klanten zich schamen. Daarom maakt hij altijd een praatje en vraagt hij hoe het met de kinderen gaat.", "What touches him most is that many clients are ashamed. That's why he always has a chat and asks how the children are."),
         s("Volgens hem kan het iedereen overkomen: een ziekte, een scheiding of een baan die verdwijnt, en je hebt hulp nodig.", "According to him it can happen to anyone: an illness, a divorce or a job that disappears, and you need help."),
       ],
+      [
+        s("In Nederland zijn er ruim honderdzeventig voedselbanken. Samen helpen ze elke week tienduizenden mensen. Ongeveer een derde van hen is kind.", "There are more than a hundred and seventy food banks in the Netherlands. Together they help tens of thousands of people every week. About a third of them are children."),
+        s("De voedselbanken krijgen geen geld van de overheid. Ze werken bijna helemaal met vrijwilligers en met eten en geld dat bedrijven, kerken, scholen en gewone mensen geven.", "The food banks get no money from the government. They work almost entirely with volunteers and with food and money given by companies, churches, schools and ordinary people."),
+      ],
+      [
+        s("Niet iedereen vindt het goed dat er voedselbanken zijn. Sommige mensen zeggen dat het in een rijk land niet nodig zou moeten zijn. Volgens hen moet de overheid zorgen dat iedereen genoeg geld heeft om eten te kopen.", "Not everyone thinks it's good that there are food banks. Some people say that in a rich country they shouldn't be needed. According to them the government should make sure everyone has enough money to buy food."),
+        s("Mohamed begrijpt die kritiek, maar hij ziet ook elke donderdag de mensen in de rij. Zolang zij hulp nodig hebben, blijft hij komen.", "Mohamed understands that criticism, but he also sees the people in the queue every Thursday. As long as they need help, he'll keep coming."),
+      ],
+      [
+        s("Onlangs kwam een vrouw die vroeger klant was, naar de hal. Ze had een nieuwe baan en geen schulden meer. Ze wilde zelf vrijwilliger worden.", "Recently a woman who used to be a client came to the hall. She had a new job and no more debts. She wanted to become a volunteer herself."),
+        s("Voor Mohamed was dat de mooiste dag van het jaar. Het laat zien waar de voedselbank voor is: niet alleen eten geven, maar mensen helpen om weer op eigen benen te staan.", "For Mohamed that was the best day of the year. It shows what the food bank is for: not just giving food, but helping people stand on their own two feet again."),
+      ],
+      [
+        s("Steeds meer supermarkten werken mee aan inzamelacties. Bij de ingang staan dan vrijwilligers met een lijst: pasta, rijst, koffie, shampoo en luiers. Klanten kopen iets extra en geven het bij de uitgang af.", "More and more supermarkets take part in collection drives. Volunteers then stand at the entrance with a list: pasta, rice, coffee, shampoo and nappies. Customers buy something extra and hand it in at the exit."),
+        s("Mohamed staat daar ook soms. Wat hem opvalt: mensen die zelf weinig hebben, geven vaak het meest.", "Mohamed stands there sometimes too. What strikes him: people who have little themselves often give the most."),
+      ],
     ],
     tasks: [
       mc("Where does the food come from?", ["Supermarkets and companies that can't sell it", "The government", "Farmers abroad"], 0),
       tf("Je kunt zo lang klant blijven als je wilt.", "You can stay a client as long as you like.", false),
       mc("Why did Mohamed start volunteering?", ["He retired and was afraid of being bored", "He needed food himself", "His school asked him"], 0),
       tf("Mohamed praat met de klanten omdat veel van hen zich schamen.", "Mohamed chats with the clients because many of them are ashamed.", true),
-    ],
-  },
-  {
-    id: "lib-b1-mijn-eerste-werkweek",
-    level: "B1",
-    topic: "Work",
-    title: "Mijn eerste werkweek",
-    titleTranslation: "My first working week",
-    grammar: [],
-    paragraphs: [
-      [
-        s("Vorige maand begon Lucía als verpleegkundige in een ziekenhuis in Utrecht. Ze komt uit Valencia en woont pas een jaar in Nederland. Haar Nederlands is goed, maar die eerste week was toch spannend.", "Last month Lucía started as a nurse at a hospital in Utrecht. She's from Valencia and has only lived in the Netherlands for a year. Her Dutch is good, but that first week was still nerve-racking."),
-        s("Op maandag kreeg ze een rondleiding en een pasje. Iedereen noemde haar meteen bij haar voornaam, ook de artsen. In Spanje was dat anders.", "On Monday she got a tour and an ID badge. Everyone called her by her first name straight away, even the doctors. In Spain that was different."),
-      ],
-      [
-        s("Het moeilijkste was niet het werk, maar de taal tussen collega's. Ze praten snel, gebruiken veel afkortingen en maken grapjes die ze niet altijd begreep.", "The hardest part wasn't the work, but the language between colleagues. They talk fast, use a lot of abbreviations and make jokes she didn't always understand."),
-        s("Ook de patiënten waren een uitdaging. Een oudere meneer sprak zwaar dialect, en ze moest hem drie keer vragen om iets te herhalen. Gelukkig vond hij dat niet erg; hij lachte en praatte daarna langzamer.", "The patients were a challenge too. An older gentleman spoke a strong dialect, and she had to ask him three times to repeat something. Luckily he didn't mind; he laughed and spoke more slowly after that."),
-      ],
-      [
-        s("Wat haar opviel, was hoe direct haar collega's zijn. Als iets niet goed gaat, zeggen ze het meteen. In het begin voelde dat onvriendelijk, maar ze merkte dat het helpt: je weet altijd waar je staat.", "What struck her was how direct her colleagues are. If something isn't going well, they say so right away. At first that felt unfriendly, but she noticed it helps: you always know where you stand."),
-        s("Op vrijdag nam de afdeling taart mee, omdat een collega jarig was. Lucía bleef na haar dienst nog even zitten. Voor het eerst voelde ze zich echt een deel van het team.", "On Friday the ward brought cake, because a colleague had a birthday. Lucía stayed on a little after her shift. For the first time she really felt part of the team."),
-      ],
-    ],
-    tasks: [
-      mc("What was hardest for Lucía?", ["The language between colleagues", "The work itself", "Finding the hospital"], 0),
-      tf("In het ziekenhuis gebruiken de artsen ook voornamen.", "In the hospital the doctors use first names too.", true),
-      mc("How did the older patient react?", ["He laughed and spoke more slowly", "He got angry", "He asked for another nurse"], 0),
-      tf("Lucía vindt de directe manier van praten nog steeds onvriendelijk.", "Lucía still finds the direct way of talking unfriendly.", false),
     ],
   },
 ];

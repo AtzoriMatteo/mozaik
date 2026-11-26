@@ -25,6 +25,14 @@ export const textsB1: LibraryText[] = [
         s("Molte sagre sono nate negli anni sessanta e settanta, quando tanti giovani lasciavano la campagna per lavorare in città. La sagra era un modo per tornare a casa almeno una volta all'anno.", "Many sagre began in the sixties and seventies, when lots of young people were leaving the countryside to work in the cities. The sagra was a way of coming home at least once a year."),
         s("Oggi c'è chi critica le sagre perché alcune vendono prodotti che non hanno niente a che fare con il territorio. Ma per chi vive in un piccolo paese, restano il momento più bello dell'estate.", "Today some people criticise sagre because some of them sell products that have nothing to do with the area. But for those who live in a small village, they remain the best moment of the summer."),
       ],
+      [
+        s("Prendiamo la sagra del tartufo di un piccolo paese delle Langhe, in Piemonte. Il paese ha seicento abitanti, ma nel fine settimana della sagra arrivano più di diecimila persone.", "Take the truffle sagra of a small village in the Langhe, in Piedmont. The village has six hundred inhabitants, but on the sagra weekend more than ten thousand people arrive."),
+        s("Per mesi i volontari preparano tutto: chiedono i permessi al comune, montano le tende, comprano i tavoli e organizzano i turni in cucina. Chi non sa cucinare lava i piatti o lavora alla cassa.", "For months the volunteers prepare everything: they ask the council for permits, put up the marquees, buy the tables and organise the kitchen shifts. Those who can't cook wash up or work at the till."),
+      ],
+      [
+        s("Alla sagra si mangia seduti uno accanto all'altro, anche con persone che non si conoscono. Si chiacchiera, si passa il vino, e alla fine della serata qualcuno comincia sempre a ballare il liscio.", "At the sagra you eat sitting next to each other, even with people you don't know. You chat, you pass the wine, and at the end of the evening someone always starts dancing the liscio."),
+        s("Per molti turisti stranieri è il modo migliore per conoscere la vera cucina italiana: niente menù turistici, ma i piatti che le famiglie del posto preparano da generazioni.", "For many foreign tourists it's the best way to get to know real Italian cooking: no tourist menus, but the dishes the local families have made for generations."),
+      ],
     ],
     tasks: [
       mc("What is a sagra about?", ["A typical local product", "A saint's life", "A football match"], 0),
@@ -52,6 +60,14 @@ export const textsB1: LibraryText[] = [
       [
         s("Dopo molte discussioni, qualcuno ha proposto una soluzione: chi abita più in alto paga di più, come prevede anche la legge. Alla fine hanno votato quasi tutti a favore.", "After a lot of discussion, someone proposed a solution: those who live higher up pay more, as the law also provides. In the end almost everyone voted in favour."),
         s("Paola è uscita stanca ma contenta. Le riunioni di condominio hanno una brutta fama in Italia, e spesso finiscono in litigi. Questa volta, però, i vicini si sono ascoltati.", "Paola came out tired but happy. Residents' meetings have a bad reputation in Italy, and they often end in quarrels. This time, though, the neighbours listened to each other."),
+      ],
+      [
+        s("Nelle riunioni si discute di tutto: chi deve pulire le scale, dove si mettono le biciclette, se si può tenere un cane, a che ora si possono fare lavori rumorosi.", "At the meetings everything is discussed: who has to clean the stairs, where the bikes go, whether you can keep a dog, at what time noisy work can be done."),
+        s("Le regole sono scritte nel regolamento di condominio, un documento che pochi hanno letto davvero. Quando nasce un problema, però, tutti lo cercano nel cassetto.", "The rules are written in the building regulations, a document few people have really read. When a problem comes up, though, everyone looks for it in the drawer."),
+      ],
+      [
+        s("Il signor Bruno, che abita al terzo piano da quarant'anni, dice che una volta era diverso. I vicini si conoscevano tutti, si prestavano lo zucchero e i bambini giocavano insieme in cortile.", "Mr Bruno, who has lived on the third floor for forty years, says it used to be different. The neighbours all knew each other, lent each other sugar and the children played together in the courtyard."),
+        s("Oggi molti appartamenti sono in affitto, la gente cambia spesso e qualcuno non conosce nemmeno il nome del vicino di pianerottolo. Per questo, secondo lui, le riunioni sono importanti: sono l'unico momento in cui ci si vede tutti.", "Today many flats are rented, people move often and some don't even know the name of the neighbour across the landing. That's why, according to him, the meetings are important: they're the only time everyone sees each other."),
       ],
     ],
     tasks: [
@@ -81,40 +97,20 @@ export const textsB1: LibraryText[] = [
         s("Graziella ha cominciato dopo la pensione. All'inizio si vergognava a fermare gli sconosciuti, ma ha scoperto che la maggior parte delle persone è generosa.", "Graziella started after she retired. At first she was embarrassed to stop strangers, but she found out that most people are generous."),
         s("La cosa che la colpisce di più è che spesso danno di più quelli che hanno di meno. Un ragazzo, una volta, le ha lasciato un pacco di pasta e le ha detto che due anni prima anche la sua famiglia riceveva quei sacchetti.", "What strikes her most is that those who have least often give most. Once a young man left her a packet of pasta and told her that two years earlier his family had received those bags too."),
       ],
+      [
+        s("In Italia il banco alimentare aiuta ogni anno centinaia di migliaia di persone. La raccolta più grande si fa un sabato di novembre, in migliaia di supermercati in tutto il paese, con l'aiuto di decine di migliaia di volontari.", "In Italy the food bank helps hundreds of thousands of people every year. The biggest collection takes place on a Saturday in November, in thousands of supermarkets all over the country, with the help of tens of thousands of volunteers."),
+        s("Molti volontari sono studenti delle scuole superiori o pensionati, ma ci sono anche intere famiglie che passano la giornata insieme davanti a un supermercato.", "Many volunteers are secondary school students or pensioners, but there are also whole families who spend the day together outside a supermarket."),
+      ],
+      [
+        s("Non tutti sono d'accordo con questo sistema. Alcuni pensano che in un paese ricco nessuno dovrebbe avere bisogno di aiuto per mangiare, e che lo Stato dovrebbe fare di più.", "Not everyone agrees with this system. Some think that in a rich country nobody should need help to eat, and that the state should do more."),
+        s("Graziella capisce queste critiche, ma ogni sabato vede le persone in fila e le borse che si riempiono. Finché qualcuno avrà bisogno, dice, lei sarà lì, con il suo sacchetto giallo.", "Graziella understands these criticisms, but every Saturday she sees the people queuing and the bags filling up. As long as someone needs help, she says, she'll be there, with her yellow bag."),
+      ],
     ],
     tasks: [
       mc("What does Graziella do at the supermarket?", ["She asks customers to buy food for others", "She does her own shopping", "She works at the till"], 0),
       tf("Il banco alimentare butta il cibo che i supermercati non vendono.", "The food bank throws away the food supermarkets don't sell.", false),
       mc("What surprised Graziella?", ["Most people are generous", "Nobody wanted to help", "The food was bad"], 0),
       tf("La famiglia del ragazzo aveva ricevuto aiuto dal banco alimentare.", "The young man's family had received help from the food bank.", true),
-    ],
-  },
-  {
-    id: "lib-b1-il-primo-giorno-in-ufficio",
-    level: "B1",
-    topic: "Work",
-    title: "Il primo giorno in ufficio",
-    titleTranslation: "The first day at the office",
-    grammar: [],
-    paragraphs: [
-      [
-        s("Il mese scorso Tomás ha cominciato a lavorare in un'agenzia di comunicazione a Milano. È argentino, ha studiato italiano all'università e vive in Italia da un anno, ma il primo giorno era comunque nervoso.", "Last month Tomás started working at a communications agency in Milan. He's Argentinian, studied Italian at university and has lived in Italy for a year, but on the first day he was nervous all the same."),
-        s("Il capo lo ha presentato a tutti, e lui ha stretto la mano a venti persone. Alcune colleghe lo hanno salutato con due baci, e lui non sapeva se doveva fare lo stesso.", "The boss introduced him to everyone, and he shook hands with twenty people. Some colleagues greeted him with two kisses, and he didn't know whether he should do the same."),
-      ],
-      [
-        s("La sorpresa più grande è arrivata alle undici: tutto l'ufficio è sceso al bar per il caffè. Si sta in piedi al bancone, si parla di calcio e di politica, e dopo dieci minuti si torna al lavoro.", "The biggest surprise came at eleven: the whole office went down to the bar for coffee. You stand at the counter, talk about football and politics, and after ten minutes you go back to work."),
-        s("Tomás ha ordinato un cappuccino, e un collega gli ha spiegato ridendo che dopo pranzo nessuno lo prende. La mattina sì, il pomeriggio mai.", "Tomás ordered a cappuccino, and a colleague explained to him, laughing, that nobody has one after lunch. In the morning yes, in the afternoon never."),
-      ],
-      [
-        s("Il lavoro vero e proprio è stato più facile del previsto. Le riunioni però erano lunghe e tutti parlavano nello stesso momento, così era difficile capire chi avesse deciso cosa.", "The work itself was easier than he expected. The meetings, though, were long and everyone talked at the same time, so it was hard to understand who had decided what."),
-        s("La sera ha chiamato sua madre a Buenos Aires. Le ha detto che i colleghi erano simpatici e che a Milano si lavora tanto. Ma soprattutto le ha detto che il caffè, al bar sotto l'ufficio, era il migliore della sua vita.", "In the evening he called his mother in Buenos Aires. He told her his colleagues were nice and that people work a lot in Milan. But above all he told her that the coffee at the bar below the office was the best of his life."),
-      ],
-    ],
-    tasks: [
-      mc("What happened at eleven?", ["The whole office went to the bar for coffee", "There was a long meeting", "Tomás went home"], 0),
-      tf("Secondo il collega, gli italiani prendono il cappuccino dopo pranzo.", "According to the colleague, Italians have cappuccino after lunch.", false),
-      mc("What was hard about the meetings?", ["Everyone talked at the same time", "They were in English", "They were very short"], 0),
-      tf("Tomás ha raccontato alla madre che il caffè era ottimo.", "Tomás told his mother the coffee was excellent.", true),
     ],
   },
 ];
